@@ -9,6 +9,7 @@
 //
 //   node keeper/keeper.mjs settle [--epoch N]     calls to settle a round (after 06:00 UTC)
 //   node keeper/keeper.mjs score  [--epoch N]     calls to score it (30 minutes after settling)
+//   node keeper/keeper.mjs blitz                  settle calls for finished Blitz rounds that have tickets
 
 const CORE = '0x79F55DAa8a3CF2Eb76EE40e26ff6E244a4cC1eD4';
 const SCORER = '0x5ea789e7cd9C157793dDA75959829F8C1527C16b';
@@ -18,6 +19,7 @@ const FEEDS = [
   ['ETH/USD', '0x9ef1B8c0E4F7dc8bF5719Ea496883DC6401d5b2e'],
   ['BNB/USD', '0x0567F2323251f0Aab15c8dFb1967E4e8A7D42aeE'],
 ];
+const BLITZ = '0x0000000000000000000000000000000000000000'; // set when Blitz is deployed
 const RPC = process.env.LEAGUE_RPC || 'https://bsc-rpc.publicnode.com';
 const HORIZON = 21600;
 const SEL = {
@@ -153,6 +155,24 @@ async function cmdScore(epoch) {
   print({ ok: true, action: 'score', epoch, cards: total, submitted, alreadyScored: submitted - todo.length, calls });
 }
 
+async function cmdBlitz(now) {
+  if (/^0x0+$/.test(BLITZ)) fail('Blitz is not deployed yet.');
+  const current = Math.floor(now / 21600);
+  const calls = [];
+  // The last eight finished rounds: a round r is finished once now > (r + 2) * 6 hours.
+  for (let r = current - 2; r > current - 10; r--) {
+    const minted = Number(slot(await call(BLITZ, '0xc31ef0f6' + word(r)), 0)); // roundMinted(uint32)
+    if (minted === 0) continue;
+    const res = await call(BLITZ, '0xcdd20022' + word(r)); // resultOf(uint32)
+    if (slot(res, 2) !== 0n) continue;
+    const inputData = '0x61a6287f' + word(r); // settle(uint32)
+    let simulation = 'ok';
+    try { await call(BLITZ, inputData); } catch (e) { simulation = `would fail: ${e.message} ${e.data || ''}`; }
+    calls.push({ round: r, tickets: minted, to: BLITZ, value: '0', inputData, simulation });
+  }
+  print({ ok: true, action: 'blitz-settle', currentRound: current, calls });
+}
+
 const args = parseArgs(process.argv.slice(2));
 try {
   const now = await chainTime();
@@ -160,5 +180,6 @@ try {
   if (!Number.isInteger(epoch) || epoch < 0) fail('--epoch must be a whole number.');
   if (args._[0] === 'settle') await cmdSettle(epoch, now);
   else if (args._[0] === 'score') await cmdScore(epoch);
-  else { console.log('Usage:\n  node keeper/keeper.mjs settle [--epoch N]\n  node keeper/keeper.mjs score [--epoch N]'); process.exit(args._[0] ? 1 : 0); }
+  else if (args._[0] === 'blitz') await cmdBlitz(now);
+  else { console.log('Usage:\n  node keeper/keeper.mjs settle [--epoch N]\n  node keeper/keeper.mjs score [--epoch N]\n  node keeper/keeper.mjs blitz'); process.exit(args._[0] ? 1 : 0); }
 } catch (e) { fail(e.message || String(e)); }

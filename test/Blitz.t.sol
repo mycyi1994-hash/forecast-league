@@ -6,14 +6,24 @@ import {Blitz} from "../src/Blitz.sol";
 import {CardTestUtils} from "./utils/CardTestUtils.sol";
 
 contract BlitzAgentID {
-    mapping(address => uint256) public balanceOf;
+    mapping(address => uint256) private _balance;
+    bool public reverts;
 
     function give(address a) external {
-        balanceOf[a] = 1;
+        _balance[a] = 1;
     }
 
     function take(address a) external {
-        balanceOf[a] = 0;
+        _balance[a] = 0;
+    }
+
+    function setReverts(bool v) external {
+        reverts = v;
+    }
+
+    function balanceOf(address a) external view returns (uint256) {
+        require(!reverts, "boom");
+        return _balance[a];
     }
 }
 
@@ -54,6 +64,8 @@ contract BlitzFeedMock {
 }
 
 contract BlitzTest is CardTestUtils {
+    event BatchMetadataUpdate(uint256 _fromTokenId, uint256 _toTokenId);
+
     BlitzAgentID aid;
     BlitzFeedMock feed;
     Blitz blitz;
@@ -83,6 +95,14 @@ contract BlitzTest is CardTestUtils {
             feed.push(t, p);
             p += stepPerUpdate;
         }
+    }
+
+    /// @dev Gives the round that is open now a ticket, so that it can be settled.
+    function _seed() internal {
+        address seeder = address(uint160(0x5EED0000) + uint160(block.timestamp / ROUND));
+        aid.give(seeder);
+        vm.prank(seeder);
+        blitz.mint();
     }
 
     function _lock(uint32 r) internal pure returns (uint256) {
@@ -319,6 +339,7 @@ contract BlitzTest is CardTestUtils {
     }
 
     function test_usesTheLatestFeedRoundAtOrBeforeEachTime() public {
+        _seed();
         // Updates straddle both reference times: the one just after must not be used.
         uint256 lock = _lock(R0);
         uint256 target = _target(R0);
@@ -337,6 +358,7 @@ contract BlitzTest is CardTestUtils {
     }
 
     function test_latestRoundIsUsedWhenItIsBeforeTheTime() public {
+        _seed();
         uint256 lock = _lock(R0);
         uint256 target = _target(R0);
         feed.push(lock - 60, 100e8);
@@ -368,6 +390,7 @@ contract BlitzTest is CardTestUtils {
     }
 
     function test_voidWhenTheFeedCannotBeRead() public {
+        _seed();
         _fill(T0, _target(R0) + 600, 60_000e8, 1e8);
         vm.warp(_target(R0) + 600);
         feed.setLatestReverts(true);
@@ -377,6 +400,7 @@ contract BlitzTest is CardTestUtils {
     }
 
     function test_voidWhenTheFeedHasNoRoundBeforeTheTime() public {
+        _seed();
         uint256 target = _target(R0);
         feed.push(target + 10, 100e8);
         feed.push(target + 70, 101e8);
@@ -387,6 +411,7 @@ contract BlitzTest is CardTestUtils {
     }
 
     function test_rejectsBadPrices() public {
+        _seed();
         uint256 lock = _lock(R0);
         uint256 target = _target(R0);
         feed.push(lock - 60, 0);
@@ -399,6 +424,7 @@ contract BlitzTest is CardTestUtils {
 
     /// @dev The on-chain search must agree with a plain scan for any update pattern and time.
     function testFuzz_searchMatchesAPlainScan(uint256 seed, uint256 lockOffset) public {
+        _seed();
         uint256 lock = _lock(R0);
         uint256 target = _target(R0);
         uint256 t = T0;
@@ -462,6 +488,7 @@ contract BlitzTest is CardTestUtils {
     }
 
     function test_voidWhenTheFeedPhaseStartedAfterTheTime() public {
+        _seed();
         uint256 target = _target(R0);
         feed.push(target + 10, 100e8); // round 1 of the phase is already too late
         feed.push(target + 70, 101e8);
@@ -475,6 +502,7 @@ contract BlitzTest is CardTestUtils {
     }
 
     function test_equalTimestampsUseTheLastRound() public {
+        _seed();
         uint256 lock = _lock(R0);
         uint256 target = _target(R0);
         feed.push(lock - 30, 100e8);
@@ -490,6 +518,9 @@ contract BlitzTest is CardTestUtils {
     }
 
     function test_negativeAndOversizeAnswersAreVoid() public {
+        _seed();
+        vm.warp(T0 + ROUND + 10);
+        _seed();
         uint256 lock = _lock(R0);
         uint256 target = _target(R0);
         feed.push(lock - 60, -5);
@@ -695,6 +726,40 @@ contract BlitzTest is CardTestUtils {
 
     function _json(uint256 id) internal view returns (string memory) {
         return _jsonOf(blitz.tokenURI(id));
+    }
+
+    function test_settleNeedsARoundWithTickets() public {
+        _fill(T0, _target(R0) + 600, 60_000e8, 1e8);
+        vm.warp(_target(R0) + 600);
+        vm.expectRevert(Blitz.NoTickets.selector);
+        blitz.settle(R0);
+        vm.expectRevert(Blitz.NoTickets.selector);
+        blitz.settle(0);
+    }
+
+    function test_settlementAnnouncesTheTicketRange() public {
+        vm.prank(alice);
+        blitz.up();
+        vm.prank(bob);
+        blitz.down();
+        _fill(T0, _target(R0) + 600, 60_000e8, 1e8);
+        vm.warp(_target(R0) + 600);
+        vm.expectEmit(true, true, true, true, address(blitz));
+        emit BatchMetadataUpdate(1, 2);
+        blitz.settle(R0);
+    }
+
+    function test_balanceOfTheZeroAddressReverts() public {
+        vm.expectRevert(Blitz.ZeroAddress.selector);
+        blitz.balanceOf(address(0));
+        assertEq(blitz.balanceOf(stranger), 0);
+    }
+
+    function test_todoToleratesARegistryThatReverts() public {
+        aid.setReverts(true);
+        (uint32 round, bool canMint,,,,) = blitz.todo(alice);
+        assertEq(round, R0);
+        assertFalse(canMint);
     }
 
     function test_constructorRejectsAddressesWithoutCode() public {

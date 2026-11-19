@@ -30,10 +30,13 @@ interface IBlitzFeed {
 ///        target time = lock time + ROUND
 ///      The result compares the feed price at the target time with the feed price at the lock
 ///      time. Both are the latest feed round at or before that time, found on-chain by searching
-///      the feed's current phase, so nobody supplies a price or a feed round and every caller
-///      gets the same result. A higher price is "up", a lower one "down", an equal one a push.
-///      A round is void if the feed had no update in the MAX_LAG before either time, or if the
-///      feed moved to a new phase that has no round at or before that time.
+///      the feed's current phase, so nobody supplies a price or a feed round, and within a feed
+///      phase every caller gets the same result whenever they settle. A higher price is "up", a
+///      lower one "down", an equal one a push. A round is void if the feed had no update in the
+///      MAX_LAG before either time. If the feed's operator moves it to a new phase before a
+///      round is settled, that round is settled from the new phase and is void if the new phase
+///      has no round at or before the time, so rounds should be settled soon after they finish.
+///      The first settlement of a round costs about 300,000 gas; later claims of it are cheap.
 contract Blitz {
     uint256 public constant ROUND = 6 hours;
     /// @notice A feed round is used only if it was updated no more than this long before the
@@ -93,8 +96,12 @@ contract Blitz {
 
     event Transfer(address indexed from, address indexed to, uint256 indexed tokenId);
     event Locked(uint256 tokenId);
-    /// @dev ERC-4906. A ticket's metadata changes when its round is written to the record.
+    /// @dev Declared for the ERC-721 interface. Never emitted: tickets cannot be approved or moved.
+    event Approval(address indexed owner, address indexed approved, uint256 indexed tokenId);
+    event ApprovalForAll(address indexed owner, address indexed operator, bool approved);
+    /// @dev ERC-4906. A ticket's metadata changes when its round finishes and is settled.
     event MetadataUpdate(uint256 _tokenId);
+    event BatchMetadataUpdate(uint256 _fromTokenId, uint256 _toTokenId);
     event Picked(address indexed agent, uint32 indexed round, bool up, uint256 tokenId);
     event Settled(uint32 indexed round, uint64 p0, uint64 p1, uint8 outcome);
     event Claimed(address indexed agent, uint32 indexed round, uint256 tokenId, uint8 outcome, uint32 streak);
@@ -104,6 +111,8 @@ contract Blitz {
     error NothingToClaim();
     error TooEarly();
     error AlreadySettled();
+    error NoTickets();
+    error ZeroAddress();
     error NonexistentToken();
     error NonTransferable();
     error BadConstructorArgument();
@@ -143,10 +152,12 @@ contract Blitz {
         _claim(agent);
     }
 
-    /// @notice Fix the result of a finished round. Anyone can call this; `claim()` does it too.
+    /// @notice Fix the result of a finished round that has tickets. Anyone can call this;
+    ///         `claim()` does it too.
     function settle(uint32 round) external {
         if (block.timestamp <= targetTime(round)) revert TooEarly();
         if (_results[round].outcome != NONE) revert AlreadySettled();
+        if (roundMinted[round] == 0) revert NoTickets();
         _settle(round);
     }
 
@@ -213,6 +224,7 @@ contract Blitz {
     /// @notice Everything an agent needs to decide its next call, in one read.
     /// @return round         The round open for tickets now.
     /// @return canMint       True if `agent` holds an Agent ID and has no ticket in this round.
+    ///                       A call sent in the last seconds of a round may be mined in the next one.
     /// @return claimable     How many of the agent's rounds are finished and not yet claimed
     ///                       (`claim()` writes at most MAX_CLAIM of them per call).
     /// @return secondsToLock Seconds until the open round locks.
@@ -224,7 +236,11 @@ contract Blitz {
         returns (uint32 round, bool canMint, uint32 claimable, uint256 secondsToLock, uint32 minted, uint32 earlyLeft)
     {
         round = currentRound();
-        canMint = _ticketIn[agent][round] == 0 && agentId.balanceOf(agent) != 0;
+        if (_ticketIn[agent][round] == 0) {
+            try agentId.balanceOf(agent) returns (uint256 balance) {
+                canMint = balance != 0;
+            } catch {}
+        }
         uint256[] storage owned = _owned[agent];
         uint256 end = owned.length;
         for (uint256 i = _records[agent].claimed; i < end; i++) {
@@ -239,6 +255,7 @@ contract Blitz {
     // ---------------------------------------- non-transferable ticket (ERC-721 read side)
 
     function balanceOf(address owner) external view returns (uint256) {
+        if (owner == address(0)) revert ZeroAddress();
         return _owned[owner].length;
     }
 
@@ -390,6 +407,9 @@ contract Blitz {
         }
         _results[round] = Result(p0, p1, outcome);
         emit Settled(round, p0, p1, outcome);
+        // The round's tickets now show their result. Their ids are not contiguous, so the
+        // whole range is announced.
+        emit BatchMetadataUpdate(1, totalSupply);
     }
 
     /// @dev Price of the latest feed round updated at or before `time`, searched through the

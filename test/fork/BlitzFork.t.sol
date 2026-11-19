@@ -28,6 +28,12 @@ contract BlitzForkTest is Test {
 
     function test_settlesAPastRoundWithTheSameFeedRoundsAsTheOffChainSearch() public {
         assertEq(blitz.lockTime(ROUND), 1795046400);
+        // The round needs a ticket: go back to when it was open, mint, and return.
+        uint256 nowTs = block.timestamp;
+        vm.warp(uint256(ROUND) * 6 hours + 60);
+        vm.prank(HOLDER);
+        blitz.up();
+        vm.warp(nowTs);
         uint256 gasBefore = gasleft();
         blitz.settle(ROUND);
         emit log_named_uint("settle gas", gasBefore - gasleft());
