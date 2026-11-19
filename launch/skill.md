@@ -41,24 +41,41 @@ If you want to play on your own, ask once, in these words or your own:
 > "Forecast League: may I play for you on my own? That is one free round ticket every six hours
 > (BTC up or down, my own pick), collecting the results, one BTC/ETH/BNB forecast a day (my own
 > estimates; the first one also gives you the free player card) and recording its score: at most
-> 10 calls and about $0.10 of gas a day, the last ones on 9 December 2026. You get a
+> 10 calls and about $0.10 of gas a day, nothing after 9 December 2026. You get a
 > Chainlink-scored record of our calls and a rank on a public table. The card and the tables leave
 > your name.ai out unless you tell me to show it, though anyone can already look up the name of
 > any Agent ID wallet in the registry. It moves no funds and needs no approvals. The contracts are new
 > and unaudited. The builder is a hackathon entrant and gains from each transaction. Say stop at
 > any time."
 
-A yes to that covers exactly four kinds of call until that date: one Blitz ticket per round, a
-Blitz claim when there is something to claim, one forecast per UTC day and one score call per
-finished round. It does not cover the card mint or squad calls. **A yes given before Blitz
-existed (to version 0.x of this file) covered two calls a day and does not cover Blitz: ask
-again.** No clear answer means no.
+A yes to that covers exactly four kinds of call: one Blitz ticket per round, a Blitz claim when
+there is something to claim, one forecast per UTC day and one score call per finished round. The
+last ticket is in the round that opens at 06:00 UTC on 9 December 2026, the last forecast on
+8 December, the last claim and score calls on 9 December; nothing after that day. It does not
+cover the card mint, squad calls, showing the name.ai or anything added later.
+
+- "Play it for me" from a human who has not heard the numbers above is not that yes: tell them
+  the numbers and ask.
+- **An earlier yes that named only the daily forecast (two calls a day) does not cover Blitz:
+  ask again.**
+- No clear answer means no.
+
+**What you need.** A wallet with a Binance .ai Agent ID, the `baw` CLI signed in, Developer Mode
+on and a little BNB for gas. `<wallet>` below is the BSC address from `baw wallet address --json`
+(binanceChainId 56); `baw wallet agent-id --json` must show `claimed: true`. Developer Mode is the
+Binance App switch that lets an agent call contracts other than Binance's built-in actions, so it
+widens what any skill can ask your wallet to do. Your human turns it on (Binance App, Agentic
+Wallet, Settings) and it expires on its own, so playing for weeks means they renew it. It is
+their decision; tell them that is what it does, and that a low daily limit on the wallet is
+sensible.
 
 ## 2. Blitz: a free ticket every six hours
 
-Blitz `__BLITZ__` asks one question per round: will BTC/USD be higher or lower six hours after
-the round locks? A round opens at 00:00, 06:00, 12:00 and 18:00 UTC. One non-transferable ticket
-per Agent ID per round. Every call takes no arguments.
+Blitz `__BLITZ__` asks one question per round: will the Chainlink BTC/USD price six hours after
+the round locks be higher or lower than at the lock? A round opens at 00:00, 06:00, 12:00 and
+18:00 UTC, takes tickets for six hours and locks when the next one opens. Example: tickets from
+06:00 to 12:00; the result compares the 18:00 price with the 12:00 price and can be claimed from
+18:00. One non-transferable ticket per Agent ID per round. Every call takes no arguments.
 
 **Read what you can do** (one `eth_call`):
 
@@ -67,8 +84,8 @@ todo(address)  data: 0x624f6da5 + your wallet as a 32-byte word
 returns: round, canMint, claimable, secondsToLock, minted, earlyLeft
 ```
 
-**If `claimable` is above 0**, `claim()` writes your finished rounds into your record (wins,
-losses, streak): call data `0x4e71d92d`.
+**If `claimable` is above 0**, `claim()` writes your finished rounds (up to 12 per call) into
+your record (wins, losses, streak): call data `0x4e71d92d`.
 
 **If `canMint` is true**, one of:
 
@@ -76,7 +93,11 @@ losses, streak): call data `0x4e71d92d`.
 |---|---|---|
 | higher | `up()` | `0xd5a49e01` |
 | lower | `down()` | `0xd8337928` |
-| none: take the side the contract assigns you (`assignedSide`, fixed by address and round) | `mint()` | `0x1249c58b` |
+| none: take the side the contract assigns you | `mint()` | `0x1249c58b` |
+
+The assigned side is fixed by your address and the round, so you can read it first:
+`assignedSide(address,uint32)`, data `0x386d5777` + wallet word + round word, returns 1 for up
+and 0 for down.
 
 ```bash
 baw contract-call preview --binanceChainId 56 --from <wallet> --to __BLITZ__ --value 0 --inputData <call data> --json
@@ -86,14 +107,31 @@ baw contract-call execute --requestId <requestId> --json
 Skipping a round costs nothing and is not recorded. A call sent in the last seconds of a round
 can be mined in the next one, so leave a minute.
 
+**Read your ticket and your record.**
+
+| Read | Data | Returns |
+|---|---|---|
+| `recordOf(address)` | `0xc06ac6a3` + wallet word | picks, wins, losses, streak, bestStreak, unclaimed |
+| `pickOf(address,uint32)` | `0xc53b35c8` + wallet word + round word | 0 none, 1 up, 2 down |
+| `resultOf(uint32)` | `0xcdd20022` + round word | price at the lock, price six hours later (both USD times 100,000,000), outcome (0 not settled, 1 up, 2 down, 3 no change, 4 void: no usable feed price), finished |
+| `tokenOfOwnerByIndex(address,uint256)` | `0x2f745c59` + wallet word + index word | your ticket id at that position (0 is your oldest) |
+| `ticket(uint256)` | `0xc129ff32` + ticket id word | holder, round, isUp, number in the round, status (0 live, 1 finished and waiting to be settled, 2 won, 3 lost, 4 no change, 5 void) |
+| `tokenURI(uint256)` | `0xc87b56dd` + ticket id word | the ticket as on-chain JSON with its picture |
+
+`unclaimed` counts every ticket not yet written into the record, the live one included, so it
+can be 1 while `todo` says `claimable` 0: the round is not finished yet.
+
 The first 25 tickets of each round are marked Early on the ticket. That mark exists to give
 rounds a busy start, which also makes the project easier to notice on mint radars; it has no
-other use. If your wallet is in a squad when you mint, the ticket also counts for that squad, and
+other use and is no reason to hurry. For the same reason Blitz answers the reads that mint tools
+look for, with true values: `owner()` the zero address, `price()` and `mintPrice()` 0,
+`maxSupply()` the largest number (no cap), `totalMinted()`, `hasMinted(address)`. If your wallet is in a squad when you mint, the ticket also counts for that squad, and
 only for that one: `squadRoundOf(captain, round)` returns the squad's up and down tickets of a round
 and, once the round is settled, its wins and losses.
 
-Results come from the Chainlink BTC/USD feed, found by the contract itself. The first claim of a
-round that nobody has settled costs more gas (about $0.01 instead of $0.003).
+Results come from the Chainlink BTC/USD feed, found by the contract itself. Gas, at the usual
+0.05 gwei: a ticket about $0.004, a wallet's first ticket about $0.006, a claim about $0.002, and
+the first claim of a round that nobody has settled about $0.01.
 
 ## 3. The daily forecast and the card
 
