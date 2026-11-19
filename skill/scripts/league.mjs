@@ -3,7 +3,7 @@
 //
 // It only does two things:
 //   1. reads public data from BNB Chain (status)
-//   2. builds the call data for a forecast submission (encode)
+//   2. builds call data: for a forecast submission (encode) or for the player card alone (encode-mint)
 // It never signs, never sends a transaction, never reads wallet or session files,
 // and contacts nothing except the public RPC endpoint below.
 
@@ -14,8 +14,8 @@ const CONFIG = {
   chainId: 56,
   rpc: process.env.LEAGUE_RPC || 'https://bsc-rpc.publicnode.com',
   // Filled in at deployment. `encode` refuses to run while this is the zero address.
-  core: '0xCf036d37A22Dd1C93d4558bA0293a4171167B1d8',
-  scorer: '0x0f55E09159a16C05d137D00E006f9A406CFEB400',
+  core: '0x79F55DAa8a3CF2Eb76EE40e26ff6E244a4cC1eD4',
+  scorer: '0x5ea789e7cd9C157793dDA75959829F8C1527C16b',
   agentId: '0x60b9262456de011f7d15a54cdd8c48baaa8b022f',
   feeds: {
     btc: '0x264990fbd0A4796A3E3d8E37C4d5F87a3aCa5Ebf',
@@ -28,6 +28,7 @@ const CONFIG = {
 
 const SEL = {
   submit: '0x6b89ae10', // submit(uint64[3],bool,uint32)
+  mint: '0x1249c58b', // mint()
   currentEpoch: '0x76671808',
   cardOf: '0x48e748a0',
   showName: '0xfeeb4e45',
@@ -212,6 +213,44 @@ async function cmdEncode(args) {
   );
 }
 
+/** Call data for getting the player card without submitting a forecast. */
+async function cmdEncodeMint(args) {
+  if (CONFIG.core.toLowerCase() === ZERO) fail('The league contract address is not configured yet.');
+  const address = args.address === true ? undefined : args.address;
+  if (address) {
+    if (slot(await call(CONFIG.agentId, SEL.balanceOf + addressWord(address)), 0) === 0n) {
+      fail(`${address} does not hold an Agent ID. Claim one in the Binance App first.`);
+    }
+    const card = slot(await call(CONFIG.core, SEL.cardOf + addressWord(address)), 0);
+    if (card !== 0n) fail(`${address} already has player card #${card}. There is one card per Agent ID.`);
+  }
+  console.log(
+    JSON.stringify(
+      {
+        ok: true,
+        // Pass these three values to `baw contract-call preview` exactly as they are.
+        binanceChainId: String(CONFIG.chainId),
+        to: CONFIG.core,
+        value: '0',
+        inputData: SEL.mint,
+        // Show this summary to the user before asking for confirmation.
+        summary: {
+          action: 'Mint a Forecast League player card (no funds are sent)',
+          contract: CONFIG.core,
+          function: 'mint()',
+          valueSent: '0 BNB',
+          checkedAddress: address || 'not checked (no --address given)',
+          note:
+            'One non-transferable card per Agent ID holder. The card has no monetary value. ' +
+            'Submitting a forecast mints the card as well, so this step is optional.',
+        },
+      },
+      null,
+      2,
+    ),
+  );
+}
+
 async function cmdStatus(args) {
   const out = { ok: true, chainId: CONFIG.chainId };
   const now = await chainTime();
@@ -269,6 +308,7 @@ if (isMain) {
   const command = args._[0];
   try {
     if (command === 'encode') await cmdEncode(args);
+    else if (command === 'encode-mint') await cmdEncodeMint(args);
     else if (command === 'status') await cmdStatus(args);
     else {
       console.log(
@@ -276,6 +316,7 @@ if (isMain) {
           'Usage:',
           '  node league.mjs status [--address 0xYourAgenticWallet]',
           '  node league.mjs encode [--btc <price>] [--eth <price>] [--bnb <price>] --show-name yes|no',
+          '  node league.mjs encode-mint [--address 0xYourAgenticWallet]',
         ].join('\n'),
       );
       process.exit(command ? 1 : 0);

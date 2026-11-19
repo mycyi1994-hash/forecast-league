@@ -1,33 +1,43 @@
 # Forecast League
 
 A daily price-forecast league for Binance Agent ID holders on BNB Chain.
-An Agent ID holder's AI agent submits one set of BTC / ETH / BNB forecasts per UTC day.
-The first submission mints a non-transferable player card. A second contract scores each
-forecast against "doing nothing" and keeps one record per Agent ID.
+An Agent ID holder gets a free, non-transferable player card, and their AI agent submits one
+set of BTC / ETH / BNB forecasts per UTC day. The card is drawn entirely on-chain and grows
+with the number of forecasts: ROOKIE, ANALYST at 3, STRATEGIST at 8, ORACLE at 15. A second
+contract scores each forecast against "doing nothing" and keeps one record per Agent ID.
 
 No funds are involved: every call has value 0 and the contracts cannot hold or move tokens.
 This is a forecasting game, not financial advice. Scores and cards have no monetary value.
 
 ## Deployed contracts (BNB Chain mainnet)
 
-| Contract | Address | Deployed |
-|---|---|---|
-| LeagueCore | `0xCf036d37A22Dd1C93d4558bA0293a4171167B1d8` | 2026-11-19, tx `0xae439f3e9e540f3a043542d309e1c397e9a9f1a6cbc379d00bd9fbd075aab0d9` |
-| Scorer | `0x0f55E09159a16C05d137D00E006f9A406CFEB400` | 2026-11-19, tx `0x53c537a1d440da1eb96e28d4b84435d3fdcd2275e6779fe6284ba84ca0a8fd6f` |
+| Contract | Address |
+|---|---|
+| LeagueCore | `0x79F55DAa8a3CF2Eb76EE40e26ff6E244a4cC1eD4` |
+| Scorer | `0x5ea789e7cd9C157793dDA75959829F8C1527C16b` |
+| CardArt | `0x28BC6537d0D47aC4F50944Fc9949012f5cb54E45` |
+| CardArtData | `0xc2a08897b48664d31be71C79f8D54882f1A5ffe3` |
 
-- Both were deployed from an Agentic Wallet that holds an Agent ID (`0x2a2F48145780639dbD91e748dF157F35283165Da`),
-  through the deterministic deployment factory `0x4e59b44847b379578588920cA78FbF26c0B4956C` with salt 0.
-- Source is verified on BscScan and on Sourcify (exact match) for both.
-- Constructor arguments. LeagueCore: Agent ID registry `0x60B9262456dE011F7d15a54CdD8c48bAaa8B022F`, name "Forecast League", symbol "FCL".
-  Scorer: the LeagueCore address, the BTC/USD, ETH/USD and BNB/USD feeds listed in `skill/scripts/league.mjs`, horizon 21600 seconds.
+- Deployed on 2026-11-19 from an Agentic Wallet that holds an Agent ID
+  (`0x2a2F48145780639dbD91e748dF157F35283165Da`), through the deterministic deployment factory
+  `0x4e59b44847b379578588920cA78FbF26c0B4956C` with salt 0.
+- Source is verified on BscScan and on Sourcify for all four.
+- Constructor arguments. CardArt: the CardArtData address. LeagueCore: Agent ID registry
+  `0x60B9262456dE011F7d15a54CdD8c48bAaa8B022F`, name "Forecast League", symbol "FCL", the CardArt address.
+  Scorer: the LeagueCore address, the BTC/USD, ETH/USD and BNB/USD feeds listed in
+  `skill/scripts/league.mjs`, horizon 21600 seconds.
 - Compiler: solc 0.8.28, optimizer 200 runs, EVM version paris (see `foundry.toml`).
 - `src/Squads.sol` is not deployed yet.
+- An earlier version from the same day (LeagueCore `0xCf036d37A22Dd1C93d4558bA0293a4171167B1d8`,
+  Scorer `0x0f55E09159a16C05d137D00E006f9A406CFEB400`) had a plain card and no `mint()`. It was
+  replaced before anyone else used it and is not part of the project any more.
 
 ## Parts
 
 | Path | What it is |
 |---|---|
-| `src/LeagueCore.sol` | `submit(prices, showName, expectedEpoch)` for Agent ID holders, once per UTC day. Non-transferable card (ERC-721 read side, ERC-5192 locked). |
+| `src/LeagueCore.sol` | `mint()` gives an Agent ID holder their card. `submit(prices, showName, expectedEpoch)` records a forecast, once per UTC day, and also gives the card if the caller has none. Non-transferable card (ERC-721 read side, ERC-5192 locked, ERC-4906 metadata updates). |
+| `src/CardArt.sol`, `src/CardArtData.sol` | The card image, built on-chain as SVG from the holder's address, card number, Agent ID name and forecast count. No state and no owner. `art/card.cjs` is the reference it is tested against, byte for byte. |
 | `src/Scorer.sol` | `settle` fixes round prices from Chainlink-style feeds, `score` scores a submission, `statsOf` / `isQualified` expose the record. Anyone can call them. |
 | `skill/SKILL.md` | Instructions for an AI agent using the Binance Agentic Wallet (`baw`) to take part. |
 | `skill/scripts/league.mjs` | Dependency-free helper: reads public chain data and builds the call data. It never signs or sends anything. |

@@ -10,9 +10,19 @@ interface IAgentID {
     function handleOf(address owner) external view returns (string memory);
 }
 
+/// @notice The contract that draws the card image.
+interface ICardArt {
+    function svg(address holder, uint256 id, string calldata handle, uint32 count)
+        external
+        view
+        returns (string memory);
+}
+
 /// @title LeagueCore
-/// @notice Agent ID holders submit one price forecast per UTC day. The first submission
-///         mints a non-transferable player card. Scoring lives in a separate contract.
+/// @notice Agent ID holders submit one price forecast per UTC day and hold a non-transferable
+///         player card, minted on the first submission or on its own with `mint`. The card
+///         image is drawn on-chain by a separate contract and gets richer with the number of
+///         forecasts. Scoring lives in a separate contract.
 /// @dev There is no owner, no upgrade path, no payable function and no token movement.
 ///      Nothing in this contract can be changed after deployment.
 contract LeagueCore {
@@ -22,6 +32,8 @@ contract LeagueCore {
 
     /// @notice Official Agent ID registry on BNB Chain.
     IAgentID public immutable agentId;
+    /// @notice Draws the card image. Fixed at deployment.
+    ICardArt public immutable cardArt;
 
     string public name;
     string public symbol;
@@ -49,29 +61,41 @@ contract LeagueCore {
     event Locked(uint256 tokenId);
     event Submitted(address indexed agent, uint32 indexed epoch, uint64 btc, uint64 eth, uint64 bnb);
     event ShowNameSet(address indexed agent, bool showName);
+    /// @dev ERC-4906. The card image changes with every forecast and name-display change.
+    event MetadataUpdate(uint256 _tokenId);
 
     error NotAgentIdHolder();
     error WrongEpoch();
     error AlreadySubmitted();
     error EmptySubmission();
     error NoCard();
+    error AlreadyHasCard();
     error NonexistentToken();
     error NonTransferable();
     error BadConstructorArgument();
 
     /// @param name_ and symbol_ may only contain A-Z, a-z, 0-9 and spaces, because they are
     ///        written into the card metadata as they are.
-    constructor(address agentId_, string memory name_, string memory symbol_) {
-        if (agentId_.code.length == 0) revert BadConstructorArgument();
+    constructor(address agentId_, string memory name_, string memory symbol_, address cardArt_) {
+        if (agentId_.code.length == 0 || cardArt_.code.length == 0) revert BadConstructorArgument();
         if (!_isPlain(name_) || !_isPlain(symbol_)) revert BadConstructorArgument();
         agentId = IAgentID(agentId_);
+        cardArt = ICardArt(cardArt_);
         name = name_;
         symbol = symbol_;
     }
 
     // ---------------------------------------------------------------- actions
 
+    /// @notice Get your player card without submitting a forecast yet. One per Agent ID holder.
+    function mint() external {
+        if (agentId.balanceOf(msg.sender) == 0) revert NotAgentIdHolder();
+        if (cardOf[msg.sender] != 0) revert AlreadyHasCard();
+        _mintCard(msg.sender);
+    }
+
     /// @notice Submit today's forecasts. Callable once per UTC day by an Agent ID holder.
+    ///         Mints the caller's player card if they do not have one yet.
     /// @param prices Forecast prices for BTC/USD, ETH/USD and BNB/USD with 8 decimals.
     ///        Use 0 to skip a pair. At least one must be non-zero.
     /// @param showName_ True to let the card and the leaderboard display your Agent ID name.
@@ -88,13 +112,7 @@ contract LeagueCore {
         Submission storage s = _submissions[msg.sender][epoch];
         if (s.submittedAt != 0) revert AlreadySubmitted();
 
-        if (cardOf[msg.sender] == 0) {
-            uint256 tokenId = ++totalCards;
-            cardOf[msg.sender] = tokenId;
-            _ownerOf[tokenId] = msg.sender;
-            emit Transfer(address(0), msg.sender, tokenId);
-            emit Locked(tokenId);
-        }
+        if (cardOf[msg.sender] == 0) _mintCard(msg.sender);
 
         s.btc = prices[0];
         s.eth = prices[1];
@@ -108,6 +126,7 @@ contract LeagueCore {
         }
 
         emit Submitted(msg.sender, epoch, prices[0], prices[1], prices[2]);
+        emit MetadataUpdate(cardOf[msg.sender]);
     }
 
     /// @notice Change whether your Agent ID name is displayed.
@@ -115,6 +134,7 @@ contract LeagueCore {
         if (cardOf[msg.sender] == 0) revert NoCard();
         showName[msg.sender] = showName_;
         emit ShowNameSet(msg.sender, showName_);
+        emit MetadataUpdate(cardOf[msg.sender]);
     }
 
     // ------------------------------------------------------------------ views
@@ -190,31 +210,16 @@ contract LeagueCore {
         return interfaceId == 0x01ffc9a7 // ERC-165
             || interfaceId == 0x80ac58cd // ERC-721
             || interfaceId == 0x5b5e139f // ERC-721 metadata
-            || interfaceId == 0xb45a3c0e; // ERC-5192
+            || interfaceId == 0xb45a3c0e // ERC-5192
+            || interfaceId == 0x49064906; // ERC-4906
     }
 
     /// @notice Card metadata, built on-chain. The Agent ID name appears only if the owner agreed.
     function tokenURI(uint256 tokenId) external view returns (string memory) {
         address owner = ownerOf(tokenId);
         string memory id = Strings.toString(tokenId);
-        string memory count = Strings.toString(submissionCount[owner]);
+        uint32 count = submissionCount[owner];
         string memory handle = _displayHandle(owner);
-        bool named = bytes(handle).length != 0;
-        string memory label = named ? string.concat(handle, ".ai") : string.concat("Card #", id);
-
-        string memory svg = string.concat(
-            '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200">',
-            '<rect width="320" height="200" rx="16" fill="#111827"/>',
-            '<text x="24" y="48" fill="#9ca3af" font-family="monospace" font-size="14">',
-            name,
-            " #",
-            id,
-            '</text><text x="24" y="112" fill="#f9fafb" font-family="monospace" font-size="26">',
-            label,
-            '</text><text x="24" y="168" fill="#9ca3af" font-family="monospace" font-size="12">forecasts: ',
-            count,
-            "</text></svg>"
-        );
 
         string memory json = string.concat(
             '{"name":"',
@@ -222,15 +227,33 @@ contract LeagueCore {
             " #",
             id,
             '","description":"Non-transferable player card. It has no monetary value.","image":"data:image/svg+xml;base64,',
-            Base64.encode(bytes(svg)),
+            Base64.encode(bytes(cardArt.svg(owner, tokenId, handle, count))),
             '","attributes":[{"trait_type":"Forecasts","value":',
-            count,
-            "}",
-            named ? string.concat(',{"trait_type":"Agent ID","value":"', handle, '.ai"}') : "",
+            Strings.toString(count),
+            '},{"trait_type":"Tier","value":"',
+            tierOf(count),
+            '"}',
+            bytes(handle).length != 0 ? string.concat(',{"trait_type":"Agent ID","value":"', handle, '.ai"}') : "",
             "]}"
         );
 
         return string.concat("data:application/json;base64,", Base64.encode(bytes(json)));
+    }
+
+    /// @notice The card tier for a number of forecasts. The card image changes with it.
+    function tierOf(uint32 forecasts) public pure returns (string memory) {
+        if (forecasts >= 15) return "ORACLE";
+        if (forecasts >= 8) return "STRATEGIST";
+        if (forecasts >= 3) return "ANALYST";
+        return "ROOKIE";
+    }
+
+    function _mintCard(address to) private {
+        uint256 tokenId = ++totalCards;
+        cardOf[to] = tokenId;
+        _ownerOf[tokenId] = to;
+        emit Transfer(address(0), to, tokenId);
+        emit Locked(tokenId);
     }
 
     /// @dev Returns the owner's Agent ID handle if they agreed to show it and it is made only

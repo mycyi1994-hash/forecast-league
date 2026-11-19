@@ -1,9 +1,11 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.28;
 
-import {Test} from "forge-std/Test.sol";
 import {LeagueCore} from "../src/LeagueCore.sol";
 import {Scorer} from "../src/Scorer.sol";
+import {CardArt} from "../src/CardArt.sol";
+import {CardArtData} from "../src/CardArtData.sol";
+import {CardTestUtils} from "./utils/CardTestUtils.sol";
 
 contract MockAgentID {
     mapping(address => uint256) public balanceOf;
@@ -54,13 +56,14 @@ contract MockFeed {
     }
 }
 
-contract LeagueTest is Test {
+contract LeagueTest is CardTestUtils {
     MockAgentID aid;
     MockFeed fBtc;
     MockFeed fEth;
     MockFeed fBnb;
     LeagueCore core;
     Scorer scorer;
+    CardArt art;
 
     address alice = address(0xA11CE);
     address bob = address(0xB0B);
@@ -77,7 +80,8 @@ contract LeagueTest is Test {
         fBtc = new MockFeed();
         fEth = new MockFeed();
         fBnb = new MockFeed();
-        core = new LeagueCore(address(aid), "Forecast League", "FCL");
+        art = new CardArt(address(new CardArtData()));
+        core = new LeagueCore(address(aid), "Forecast League", "FCL", address(art));
         scorer = new Scorer(address(core), address(fBtc), address(fEth), address(fBnb), HORIZON);
         aid.give(alice, "alice01");
         aid.give(bob, "bob");
@@ -171,15 +175,17 @@ contract LeagueTest is Test {
 
     function test_constructorRejectsBadArguments() public {
         vm.expectRevert(LeagueCore.BadConstructorArgument.selector);
-        new LeagueCore(address(0x1234), "Forecast League", "FCL"); // no contract at that address
+        new LeagueCore(address(0x1234), "Forecast League", "FCL", address(art)); // no registry at that address
         vm.expectRevert(LeagueCore.BadConstructorArgument.selector);
-        new LeagueCore(address(aid), 'Bad"Name', "FCL");
+        new LeagueCore(address(aid), "Forecast League", "FCL", address(0x1234)); // no card art at that address
         vm.expectRevert(LeagueCore.BadConstructorArgument.selector);
-        new LeagueCore(address(aid), "Forecast League", "<b>");
+        new LeagueCore(address(aid), 'Bad"Name', "FCL", address(art));
         vm.expectRevert(LeagueCore.BadConstructorArgument.selector);
-        new LeagueCore(address(aid), "", "FCL");
+        new LeagueCore(address(aid), "Forecast League", "<b>", address(art));
         vm.expectRevert(LeagueCore.BadConstructorArgument.selector);
-        new LeagueCore(address(aid), "This name is longer than thirty two chars", "FCL");
+        new LeagueCore(address(aid), "", "FCL", address(art));
+        vm.expectRevert(LeagueCore.BadConstructorArgument.selector);
+        new LeagueCore(address(aid), "This name is longer than thirty two chars", "FCL", address(art));
     }
 
     function test_eventsOnFirstSubmit() public {
@@ -191,6 +197,8 @@ contract LeagueTest is Test {
         emit LeagueCore.ShowNameSet(alice, true);
         vm.expectEmit(true, true, false, true, address(core));
         emit LeagueCore.Submitted(alice, E0, 5, 6, 7);
+        vm.expectEmit(false, false, false, true, address(core));
+        emit LeagueCore.MetadataUpdate(1);
         vm.prank(alice);
         core.submit(_p(5, 6, 7), true, E0);
     }
@@ -232,6 +240,7 @@ contract LeagueTest is Test {
         assertTrue(core.supportsInterface(0x80ac58cd));
         assertTrue(core.supportsInterface(0x5b5e139f));
         assertTrue(core.supportsInterface(0xb45a3c0e));
+        assertTrue(core.supportsInterface(0x49064906));
         assertFalse(core.supportsInterface(0xffffffff));
         vm.expectRevert(LeagueCore.NonexistentToken.selector);
         core.ownerOf(1);
@@ -246,56 +255,7 @@ contract LeagueTest is Test {
     }
 
     function _decodedJson(uint256 tokenId) internal view returns (string memory) {
-        string memory uri = core.tokenURI(tokenId);
-        bytes memory u = bytes(uri);
-        bytes memory prefix = bytes("data:application/json;base64,");
-        bytes memory b64 = new bytes(u.length - prefix.length);
-        for (uint256 i = 0; i < b64.length; i++) {
-            b64[i] = u[i + prefix.length];
-        }
-        return string(_b64decode(b64));
-    }
-
-    function _b64val(bytes1 c) internal pure returns (uint8) {
-        if (c >= "A" && c <= "Z") return uint8(c) - 65;
-        if (c >= "a" && c <= "z") return uint8(c) - 71;
-        if (c >= "0" && c <= "9") return uint8(c) + 4;
-        if (c == "+") return 62;
-        if (c == "/") return 63;
-        return 0; // padding
-    }
-
-    function _b64decode(bytes memory data) internal pure returns (bytes memory out) {
-        require(data.length % 4 == 0, "b64 length");
-        uint256 pad = 0;
-        if (data.length > 0 && data[data.length - 1] == "=") pad++;
-        if (data.length > 1 && data[data.length - 2] == "=") pad++;
-        out = new bytes((data.length / 4) * 3 - pad);
-        uint256 o = 0;
-        for (uint256 i = 0; i < data.length; i += 4) {
-            uint24 chunk = (uint24(_b64val(data[i])) << 18) | (uint24(_b64val(data[i + 1])) << 12)
-                | (uint24(_b64val(data[i + 2])) << 6) | uint24(_b64val(data[i + 3]));
-            if (o < out.length) out[o++] = bytes1(uint8(chunk >> 16));
-            if (o < out.length) out[o++] = bytes1(uint8(chunk >> 8));
-            if (o < out.length) out[o++] = bytes1(uint8(chunk));
-        }
-    }
-
-    function _contains(string memory hay, string memory needle) internal pure returns (bool) {
-        bytes memory h = bytes(hay);
-        bytes memory n = bytes(needle);
-        if (n.length > h.length) return false;
-        for (uint256 i = 0; i + n.length <= h.length; i++) {
-            bool ok = true;
-            for (uint256 j = 0; j < n.length; j++) {
-                if (h[i + j] != n[j]) {
-                    ok = false;
-                    break;
-                }
-            }
-            if (ok) return true;
-        }
-        return false;
+        return _jsonOf(core.tokenURI(tokenId));
     }
 
     function test_tokenURI_showsNameOnlyWithConsent() public {
@@ -306,14 +266,142 @@ contract LeagueTest is Test {
         assertTrue(_contains(hidden, "Forecast League #1"));
         assertTrue(_contains(hidden, "no monetary value"));
 
+        assertTrue(_contains(_svgOf(hidden), ">AGENT #0001</text>")); // the image hides the name too
+        assertFalse(_contains(_svgOf(hidden), "alice01"));
+
         vm.prank(alice);
         core.setShowName(true);
         string memory shown = _decodedJson(1);
         assertTrue(_contains(shown, '"value":"alice01.ai"'));
+        assertTrue(_contains(_svgOf(shown), ">alice01.ai</text>"));
+        assertEq(
+            keccak256(bytes(_svgOf(shown))), keccak256(bytes(art.svg(alice, 1, "alice01", 1))), "image comes from CardArt"
+        );
 
         vm.prank(alice);
         core.setShowName(false);
         assertFalse(_contains(_decodedJson(1), "alice01"));
+        assertFalse(_contains(_svgOf(_decodedJson(1)), "alice01"));
+    }
+
+    // ------------------------------------------------------------------ mint
+
+    function test_mint_onlyForHolders_onlyOnce() public {
+        vm.prank(mallory);
+        vm.expectRevert(LeagueCore.NotAgentIdHolder.selector);
+        core.mint();
+
+        vm.expectEmit(true, true, true, true, address(core));
+        emit LeagueCore.Transfer(address(0), alice, 1);
+        vm.expectEmit(false, false, false, true, address(core));
+        emit LeagueCore.Locked(1);
+        vm.prank(alice);
+        core.mint();
+
+        assertEq(core.cardOf(alice), 1);
+        assertEq(core.ownerOf(1), alice);
+        assertEq(core.totalCards(), 1);
+        assertEq(core.balanceOf(alice), 1);
+        assertEq(core.submissionCount(alice), 0);
+        assertFalse(core.showName(alice));
+
+        vm.prank(alice);
+        vm.expectRevert(LeagueCore.AlreadyHasCard.selector);
+        core.mint();
+        assertEq(core.totalCards(), 1);
+    }
+
+    function test_mintThenSubmit_keepsTheSameCard() public {
+        vm.prank(alice);
+        core.mint();
+        vm.prank(bob);
+        core.mint();
+
+        vm.recordLogs();
+        vm.prank(alice);
+        core.submit(_p(5, 6, 7), true, _e());
+        assertEq(vm.getRecordedLogs().length, 3, "ShowNameSet, Submitted and MetadataUpdate only, no second mint");
+
+        assertEq(core.cardOf(alice), 1);
+        assertEq(core.cardOf(bob), 2);
+        assertEq(core.totalCards(), 2);
+        assertEq(core.submissionCount(alice), 1);
+    }
+
+    function test_submitThenMint_reverts() public {
+        vm.prank(alice);
+        core.submit(_p(5, 6, 7), false, _e());
+        vm.prank(alice);
+        vm.expectRevert(LeagueCore.AlreadyHasCard.selector);
+        core.mint();
+        assertEq(core.totalCards(), 1);
+    }
+
+    function test_mintedCardWithoutForecasts_hasMetadata() public {
+        vm.prank(alice);
+        core.mint();
+        string memory json = _decodedJson(1);
+        assertTrue(_contains(json, '{"trait_type":"Forecasts","value":0}'));
+        assertTrue(_contains(json, '{"trait_type":"Tier","value":"ROOKIE"}'));
+        string memory svg = _svgOf(json);
+        assertTrue(_contains(svg, ">ROOKIE</text>"));
+        assertTrue(_contains(svg, "FORECASTS 0</text>"));
+        assertTrue(_contains(svg, ">GENESIS</text>"));
+    }
+
+    // ------------------------------------------------------------------ tiers
+
+    function test_tierOf_thresholds() public view {
+        assertEq(core.tierOf(0), "ROOKIE");
+        assertEq(core.tierOf(2), "ROOKIE");
+        assertEq(core.tierOf(3), "ANALYST");
+        assertEq(core.tierOf(7), "ANALYST");
+        assertEq(core.tierOf(8), "STRATEGIST");
+        assertEq(core.tierOf(14), "STRATEGIST");
+        assertEq(core.tierOf(15), "ORACLE");
+        assertEq(core.tierOf(type(uint32).max), "ORACLE");
+    }
+
+    /// The Tier attribute and the picture change together as forecasts accumulate.
+    function test_tierAttributeAndImage_followTheForecastCount() public {
+        string[4] memory names = ["ROOKIE", "ANALYST", "STRATEGIST", "ORACLE"];
+        for (uint32 n = 1; n <= 15; n++) {
+            vm.warp(T0 + (n - 1) * DAY);
+            vm.prank(alice);
+            core.submit(_p(1, 0, 0), true, _e());
+            if (n == 1 || n == 2 || n == 3 || n == 7 || n == 8 || n == 14 || n == 15) {
+                uint256 ti = n >= 15 ? 3 : n >= 8 ? 2 : n >= 3 ? 1 : 0;
+                string memory json = _decodedJson(1);
+                assertTrue(
+                    _contains(json, string.concat('{"trait_type":"Tier","value":"', names[ti], '"}')), names[ti]
+                );
+                assertTrue(_contains(json, string.concat('{"trait_type":"Forecasts","value":', vm.toString(n), "}")));
+                string memory svg = _svgOf(json);
+                assertTrue(_contains(svg, string.concat(">", names[ti], "</text>")));
+                assertTrue(_contains(svg, string.concat("FORECASTS ", vm.toString(n), "</text>")));
+                assertEq(art.tierOf(n), ti);
+            }
+        }
+    }
+
+    /// Not an assertion of a limit, just a record: gas of one tokenURI call per tier.
+    function test_gas_tokenURI_perTier() public {
+        uint32[4] memory at = [uint32(1), 3, 8, 15];
+        uint256 next = 0;
+        for (uint32 n = 1; n <= 15; n++) {
+            vm.warp(T0 + (n - 1) * DAY);
+            vm.prank(alice);
+            core.submit(_p(1, 0, 0), true, _e());
+            if (n == at[next]) {
+                uint256 before = gasleft();
+                string memory uri = core.tokenURI(1);
+                uint256 used = before - gasleft();
+                emit log_named_uint(string.concat("tokenURI gas, ", core.tierOf(n)), used);
+                emit log_named_uint("  token URI bytes", bytes(uri).length);
+                assertLt(used, 15_000_000);
+                next = next == 3 ? 3 : next + 1;
+            }
+        }
     }
 
     function test_tokenURI_rejectsOddHandlesAndSurvivesRegistryFailure() public {

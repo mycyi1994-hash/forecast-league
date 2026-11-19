@@ -116,15 +116,123 @@ contract SquadsTest is Test {
         vm.stopPrank();
     }
 
-    function test_captainCannotJoinAnotherSquad() public {
+    function test_captainWithMembersCannotLeaveOrJoinElsewhere() public {
+        vm.prank(alice);
+        squads.createSquad();
+        vm.prank(bob);
+        squads.createSquad();
+        vm.prank(carol);
+        squads.joinSquad("alice");
+
+        vm.warp(T0 + 30 days);
+        vm.startPrank(alice);
+        vm.expectRevert(Squads.CaptainHasMembers.selector);
+        squads.joinSquad("bob");
+        vm.expectRevert(Squads.CaptainHasMembers.selector);
+        squads.leaveSquad();
+        vm.stopPrank();
+        assertTrue(squads.isSquad(alice));
+        assertEq(squads.totalSquads(), 2);
+    }
+
+    function test_captainAloneCanCloseAndJoinAnotherSquad_afterCooldown() public {
         vm.prank(alice);
         squads.createSquad();
         vm.prank(bob);
         squads.createSquad();
 
         vm.prank(alice);
-        vm.expectRevert(Squads.AlreadyCaptain.selector);
+        vm.expectRevert(Squads.CooldownNotOver.selector);
         squads.joinSquad("bob");
+        assertTrue(squads.isSquad(alice)); // the refused move left the squad open
+        assertEq(squads.totalSquads(), 2);
+
+        vm.warp(T0 + 7 days);
+        vm.expectEmit(true, false, false, true, address(squads));
+        emit Squads.SquadClosed(alice);
+        vm.expectEmit(true, true, true, true, address(squads));
+        emit Squads.SquadJoined(alice, bob, alice);
+        vm.prank(alice);
+        squads.joinSquad("bob");
+
+        assertFalse(squads.isSquad(alice));
+        assertEq(squads.totalSquads(), 1);
+        assertEq(squads.memberCount(alice), 0);
+        assertEq(squads.memberCount(bob), 2);
+        assertEq(squads.squadName(alice), "");
+
+        vm.prank(carol);
+        vm.expectRevert(Squads.UnknownSquad.selector); // the closed squad cannot be joined
+        squads.joinSquad("alice");
+    }
+
+    function test_cannotJoinOwnName() public {
+        vm.prank(alice);
+        squads.createSquad();
+        vm.warp(T0 + 30 days);
+        vm.prank(alice);
+        vm.expectRevert(Squads.AlreadyInThisSquad.selector);
+        squads.joinSquad("alice");
+        assertTrue(squads.isSquad(alice));
+    }
+
+    function test_leaveSquad() public {
+        vm.prank(bob);
+        vm.expectRevert(Squads.NotInASquad.selector);
+        squads.leaveSquad();
+
+        vm.prank(alice);
+        squads.createSquad();
+        vm.prank(bob);
+        squads.joinSquad("alice");
+
+        vm.prank(bob);
+        vm.expectRevert(Squads.CooldownNotOver.selector);
+        squads.leaveSquad();
+
+        vm.warp(T0 + 7 days);
+        vm.expectEmit(true, true, true, true, address(squads));
+        emit Squads.SquadJoined(bob, address(0), alice);
+        vm.prank(bob);
+        squads.leaveSquad();
+        (address captain, uint40 since) = squads.squadOf(bob);
+        assertEq(captain, address(0));
+        assertEq(since, T0 + 7 days);
+        assertEq(squads.memberCount(alice), 1);
+
+        // Leaving used up the cooldown; joining again from "no squad" is immediate.
+        vm.prank(bob);
+        squads.joinSquad("alice");
+        assertEq(squads.memberCount(alice), 2);
+
+        // A captain alone can leave too, which closes the squad.
+        vm.warp(T0 + 14 days);
+        vm.prank(bob);
+        squads.leaveSquad();
+        vm.prank(alice);
+        squads.leaveSquad();
+        assertFalse(squads.isSquad(alice));
+        assertEq(squads.totalSquads(), 0);
+        assertEq(squads.memberCount(alice), 0);
+    }
+
+    function test_captainsListHasNoDuplicates() public {
+        vm.prank(alice);
+        squads.createSquad();
+        vm.prank(bob);
+        squads.createSquad();
+        assertEq(squads.captainsCount(), 2);
+        assertEq(squads.captains(0), alice);
+        assertEq(squads.captains(1), bob);
+
+        vm.warp(T0 + 7 days);
+        vm.prank(alice);
+        squads.leaveSquad(); // closes alice's squad
+        vm.prank(alice);
+        squads.createSquad(); // opens it again
+        assertEq(squads.captainsCount(), 2);
+        assertEq(squads.totalSquads(), 2);
+        assertTrue(squads.isSquad(alice));
     }
 
     function test_switchingNeedsTheCooldown() public {

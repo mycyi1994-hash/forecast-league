@@ -1,9 +1,11 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.28;
 
-import {Test} from "forge-std/Test.sol";
 import {LeagueCore} from "../../src/LeagueCore.sol";
 import {Scorer, IPriceFeed} from "../../src/Scorer.sol";
+import {CardArt} from "../../src/CardArt.sol";
+import {CardArtData} from "../../src/CardArtData.sol";
+import {CardTestUtils} from "../utils/CardTestUtils.sol";
 
 interface IFeedLatest {
     function latestRoundData() external view returns (uint80, int256, uint256, uint256, uint80);
@@ -12,7 +14,7 @@ interface IFeedLatest {
 
 /// @notice Runs against a fork of BNB Chain mainnet with the real Agent ID registry and price feeds.
 ///         Run with: FOUNDRY_PROFILE=fork forge test
-contract MainnetForkTest is Test {
+contract MainnetForkTest is CardTestUtils {
     address constant AGENT_ID = 0x60B9262456dE011F7d15a54CdD8c48bAaa8B022F;
     address constant FEED_BTC = 0x264990fbd0A4796A3E3d8E37C4d5F87a3aCa5Ebf;
     address constant FEED_ETH = 0x9ef1B8c0E4F7dc8bF5719Ea496883DC6401d5b2e;
@@ -27,7 +29,8 @@ contract MainnetForkTest is Test {
     function setUp() public {
         vm.createSelectFork("bsc");
         nowTs = block.timestamp;
-        core = new LeagueCore(AGENT_ID, "Forecast League", "FCL");
+        CardArt art = new CardArt(address(new CardArtData()));
+        core = new LeagueCore(AGENT_ID, "Forecast League", "FCL", address(art));
         scorer = new Scorer(address(core), FEED_BTC, FEED_ETH, FEED_BNB, 6 hours);
     }
 
@@ -50,9 +53,18 @@ contract MainnetForkTest is Test {
         vm.expectRevert(LeagueCore.NotAgentIdHolder.selector);
         core.submit([uint64(1), 0, 0], false, uint32(block.timestamp / 1 days));
 
+        vm.prank(address(0xBEEF));
+        vm.expectRevert(LeagueCore.NotAgentIdHolder.selector);
+        core.mint();
+
+        vm.prank(HOLDER);
+        core.mint();
+        assertEq(core.cardOf(HOLDER), 1);
+
         vm.prank(HOLDER);
         core.submit([uint64(6_380_000_000_000), 180_000_000_000, 59_000_000_000], true, uint32(block.timestamp / 1 days));
         assertEq(core.cardOf(HOLDER), 1);
+        assertEq(core.totalCards(), 1);
     }
 
     function test_realFeeds_fullRound() public {
@@ -101,9 +113,21 @@ contract MainnetForkTest is Test {
         assertLe(total, 300);
         emit log_named_int("total score", total);
 
-        // The card metadata is produced for a real holder who agreed to show the name.
-        string memory uri = core.tokenURI(1);
-        assertGt(bytes(uri).length, 200);
+        // The card shows the real Agent ID name, read from the registry, because the holder agreed.
+        string memory json = _jsonOf(core.tokenURI(1));
+        assertTrue(_contains(json, '{"trait_type":"Agent ID","value":"dopaminekr.ai"}'));
+        assertTrue(_contains(json, '{"trait_type":"Tier","value":"ROOKIE"}'));
+        string memory svg = _svgOf(json);
+        assertTrue(_contains(svg, ">dopaminekr.ai</text>"));
+        assertTrue(_contains(svg, 'dopaminekr<tspan fill="#'));
         assertEq(scorer.MAX_LAG(), 30 minutes);
+
+        // Opting out removes the name from the metadata and from the picture.
+        vm.prank(HOLDER);
+        core.setShowName(false);
+        json = _jsonOf(core.tokenURI(1));
+        assertFalse(_contains(json, "dopaminekr"));
+        assertFalse(_contains(_svgOf(json), "dopaminekr"));
+        assertTrue(_contains(_svgOf(json), ">AGENT #0001</text>"));
     }
 }
