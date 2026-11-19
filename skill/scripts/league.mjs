@@ -1,0 +1,286 @@
+#!/usr/bin/env node
+// Forecast League helper. Node 18+, no dependencies.
+//
+// It only does two things:
+//   1. reads public data from BNB Chain (status)
+//   2. builds the call data for a forecast submission (encode)
+// It never signs, never sends a transaction, never reads wallet or session files,
+// and contacts nothing except the public RPC endpoint below.
+
+import { realpathSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
+
+const CONFIG = {
+  chainId: 56,
+  rpc: process.env.LEAGUE_RPC || 'https://bsc-rpc.publicnode.com',
+  // Filled in at deployment. `encode` refuses to run while this is the zero address.
+  core: '0xCf036d37A22Dd1C93d4558bA0293a4171167B1d8',
+  scorer: '0x0f55E09159a16C05d137D00E006f9A406CFEB400',
+  agentId: '0x60b9262456de011f7d15a54cdd8c48baaa8b022f',
+  feeds: {
+    btc: '0x264990fbd0A4796A3E3d8E37C4d5F87a3aCa5Ebf',
+    eth: '0x9ef1B8c0E4F7dc8bF5719Ea496883DC6401d5b2e',
+    bnb: '0x0567F2323251f0Aab15c8dFb1967E4e8A7D42aeE',
+  },
+  // A forecast further than this from the current price is treated as a typing mistake.
+  maxDeviationPercent: 50,
+};
+
+const SEL = {
+  submit: '0x6b89ae10', // submit(uint64[3],bool,uint32)
+  currentEpoch: '0x76671808',
+  cardOf: '0x48e748a0',
+  showName: '0xfeeb4e45',
+  submissionCount: '0x920ccaf1',
+  submissionOf: '0x044e613c',
+  statsOf: '0x15cfc405',
+  isQualified: '0xa421d668',
+  latestRoundData: '0xfeaf968c',
+  balanceOf: '0x70a08231',
+};
+
+const ZERO = '0x0000000000000000000000000000000000000000';
+// Submissions prepared this close to the daily lock are refused: they may land in the next day.
+const MIN_SECONDS_BEFORE_LOCK = 180;
+const PAIRS = ['btc', 'eth', 'bnb'];
+const U64_MAX = (1n << 64n) - 1n;
+
+function fail(message) {
+  console.log(JSON.stringify({ ok: false, error: message }, null, 2));
+  process.exit(1);
+}
+
+function word(value) {
+  return BigInt(value).toString(16).padStart(64, '0');
+}
+
+function addressWord(address) {
+  if (!/^0x[0-9a-fA-F]{40}$/.test(address)) fail(`Not an address: ${address}`);
+  return address.slice(2).toLowerCase().padStart(64, '0');
+}
+
+/** "64300.5" -> 6430050000000n (8 decimals), exact, no floating point. */
+export function parsePrice(text, label) {
+  if (text === undefined || text === null || text === '' || text === '0') return 0n;
+  if (!/^\d+(\.\d{1,8})?$/.test(String(text))) {
+    fail(`${label}: "${text}" is not a plain positive number with at most 8 decimals.`);
+  }
+  const [whole, frac = ''] = String(text).split('.');
+  const value = BigInt(whole) * 100000000n + BigInt(frac.padEnd(8, '0'));
+  if (value > U64_MAX) fail(`${label}: number too large.`);
+  return value;
+}
+
+export function formatPrice(value) {
+  const v = BigInt(value);
+  const whole = v / 100000000n;
+  const frac = (v % 100000000n).toString().padStart(8, '0').replace(/0+$/, '');
+  return frac ? `${whole}.${frac}` : `${whole}`;
+}
+
+export function encodeSubmit(prices, showName, epoch) {
+  return SEL.submit + prices.map(word).join('') + word(showName ? 1 : 0) + word(epoch);
+}
+
+/** Only an explicit yes/no is accepted, so a choice is never changed by accident. */
+export function parseYesNo(value, label) {
+  if (value === 'yes' || value === 'true') return true;
+  if (value === 'no' || value === 'false') return false;
+  fail(`${label} must be given as yes or no.`);
+}
+
+/** Time of the latest block. The contract decides the day from this clock, not from ours. */
+async function chainTime() {
+  const block = await rpc('eth_getBlockByNumber', ['latest', false]);
+  return Number(BigInt(block.timestamp));
+}
+
+async function rpc(method, params) {
+  const res = await fetch(CONFIG.rpc, {
+    method: 'POST',
+    headers: { 'content-type': 'application/json' },
+    body: JSON.stringify({ jsonrpc: '2.0', id: 1, method, params }),
+  });
+  const body = await res.json();
+  if (body.error) throw new Error(`${method}: ${body.error.message}`);
+  return body.result;
+}
+
+async function call(to, data) {
+  return rpc('eth_call', [{ to, data }, 'latest']);
+}
+
+function slot(hex, index) {
+  return BigInt('0x' + hex.slice(2 + index * 64, 2 + (index + 1) * 64));
+}
+
+function signed(value, bits) {
+  return value >= 1n << BigInt(bits - 1) ? value - (1n << 256n) : value;
+}
+
+async function currentPrices() {
+  const out = {};
+  for (const pair of PAIRS) {
+    const data = await call(CONFIG.feeds[pair], SEL.latestRoundData);
+    out[pair] = slot(data, 1);
+  }
+  return out;
+}
+
+function parseArgs(argv) {
+  const args = { _: [] };
+  for (let i = 0; i < argv.length; i++) {
+    const a = argv[i];
+    if (!a.startsWith('--')) {
+      args._.push(a);
+      continue;
+    }
+    const key = a.slice(2);
+    const next = argv[i + 1];
+    if (next === undefined || next.startsWith('--')) args[key] = true;
+    else {
+      args[key] = next;
+      i++;
+    }
+  }
+  return args;
+}
+
+function nextLock(nowSeconds) {
+  return (Math.floor(nowSeconds / 86400) + 1) * 86400;
+}
+
+async function cmdEncode(args) {
+  if (CONFIG.core.toLowerCase() === ZERO) fail('The league contract address is not configured yet.');
+  const prices = PAIRS.map((p) => parsePrice(args[p], p.toUpperCase()));
+  if (prices.every((p) => p === 0n)) fail('Give at least one of --btc, --eth, --bnb.');
+
+  const live = await currentPrices();
+  PAIRS.forEach((pair, i) => {
+    if (prices[i] === 0n) return;
+    const diff = prices[i] > live[pair] ? prices[i] - live[pair] : live[pair] - prices[i];
+    if (diff * 100n > live[pair] * BigInt(CONFIG.maxDeviationPercent)) {
+      fail(
+        `${pair.toUpperCase()}: forecast ${formatPrice(prices[i])} is more than ${CONFIG.maxDeviationPercent}% away ` +
+          `from the current price ${formatPrice(live[pair])}. This looks like a typing mistake.`,
+      );
+    }
+  });
+
+  const showName = parseYesNo(args['show-name'], '--show-name');
+  const now = await chainTime();
+  const lock = nextLock(now);
+  const epoch = Math.floor(now / 86400);
+  if (lock - now < MIN_SECONDS_BEFORE_LOCK) {
+    fail(
+      `Today's round locks in ${lock - now} seconds. That is too close: the submission could be ` +
+        'included after 00:00 UTC and would then be rejected. Wait until after the lock and submit for the next round.',
+    );
+  }
+  console.log(
+    JSON.stringify(
+      {
+        ok: true,
+        // Pass these three values to `baw contract-call preview` exactly as they are.
+        binanceChainId: String(CONFIG.chainId),
+        to: CONFIG.core,
+        value: '0',
+        inputData: encodeSubmit(prices, showName, epoch),
+        // Show this summary to the user before asking for confirmation.
+        summary: {
+          action: 'Submit forecasts to Forecast League (no funds are sent)',
+          contract: CONFIG.core,
+          function: 'submit(uint64[3] prices, bool showName, uint32 expectedEpoch)',
+          forecasts: Object.fromEntries(
+            PAIRS.map((p, i) => [`${p.toUpperCase()}/USD`, prices[i] === 0n ? 'skipped' : formatPrice(prices[i])]),
+          ),
+          currentPrices: Object.fromEntries(PAIRS.map((p) => [`${p.toUpperCase()}/USD`, formatPrice(live[p])])),
+          showAgentIdName: showName,
+          valueSent: '0 BNB',
+          epoch,
+          roundLocksAt: new Date(lock * 1000).toISOString(),
+          minutesUntilLock: Math.floor((lock - now) / 60),
+          resultAt: 'about 6.5 hours after the lock',
+          note:
+            'One submission per UTC day. If this call is included after the lock time it is rejected ' +
+            '(WrongEpoch) and nothing is recorded. Not financial advice. Scores and cards have no monetary value.',
+        },
+      },
+      null,
+      2,
+    ),
+  );
+}
+
+async function cmdStatus(args) {
+  const out = { ok: true, chainId: CONFIG.chainId };
+  const now = await chainTime();
+  out.now = new Date(now * 1000).toISOString();
+  out.roundLocksAt = new Date(nextLock(now) * 1000).toISOString();
+  const live = await currentPrices();
+  out.currentPrices = Object.fromEntries(PAIRS.map((p) => [`${p.toUpperCase()}/USD`, formatPrice(live[p])]));
+
+  const address = args.address;
+  if (address) {
+    const holder = slot(await call(CONFIG.agentId, SEL.balanceOf + addressWord(address)), 0) > 0n;
+    out.address = address;
+    out.holdsAgentId = holder;
+  }
+
+  if (CONFIG.core.toLowerCase() === ZERO) {
+    out.league = 'not deployed yet';
+  } else if (address) {
+    const epoch = slot(await call(CONFIG.core, SEL.currentEpoch), 0);
+    const sub = await call(CONFIG.core, SEL.submissionOf + addressWord(address) + word(epoch));
+    const submittedAt = slot(sub, 3);
+    out.card = Number(slot(await call(CONFIG.core, SEL.cardOf + addressWord(address)), 0)) || null;
+    out.submissions = Number(slot(await call(CONFIG.core, SEL.submissionCount + addressWord(address)), 0));
+    out.showAgentIdName = slot(await call(CONFIG.core, SEL.showName + addressWord(address)), 0) === 1n;
+    out.submittedToday = submittedAt !== 0n;
+    if (submittedAt !== 0n) {
+      out.todaysForecasts = Object.fromEntries(
+        PAIRS.map((p, i) => [`${p.toUpperCase()}/USD`, slot(sub, i) === 0n ? 'skipped' : formatPrice(slot(sub, i))]),
+      );
+    }
+    if (CONFIG.scorer.toLowerCase() !== ZERO) {
+      const st = await call(CONFIG.scorer, SEL.statsOf + addressWord(address));
+      out.record = {
+        scoredDays: Number(slot(st, 0)),
+        scoredForecasts: Number(slot(st, 1)),
+        betterThanDoingNothing: Number(slot(st, 2)),
+        totalScore: Number(signed(slot(st, 3), 256)),
+        qualified: slot(await call(CONFIG.scorer, SEL.isQualified + addressWord(address)), 0) === 1n,
+      };
+    }
+  }
+  console.log(JSON.stringify(out, null, 2));
+}
+
+function isMainModule() {
+  try {
+    return realpathSync(process.argv[1]) === realpathSync(fileURLToPath(import.meta.url));
+  } catch {
+    return false;
+  }
+}
+const isMain = isMainModule();
+if (isMain) {
+  const args = parseArgs(process.argv.slice(2));
+  const command = args._[0];
+  try {
+    if (command === 'encode') await cmdEncode(args);
+    else if (command === 'status') await cmdStatus(args);
+    else {
+      console.log(
+        [
+          'Usage:',
+          '  node league.mjs status [--address 0xYourAgenticWallet]',
+          '  node league.mjs encode [--btc <price>] [--eth <price>] [--bnb <price>] --show-name yes|no',
+        ].join('\n'),
+      );
+      process.exit(command ? 1 : 0);
+    }
+  } catch (e) {
+    fail(e.message || String(e));
+  }
+}

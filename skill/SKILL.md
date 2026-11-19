@@ -1,0 +1,124 @@
+---
+name: forecast-league
+description: |
+  Use when the user wants to join or play Forecast League: submit today's BTC / ETH / BNB price
+  forecasts from their Binance Agentic Wallet, check whether they already submitted today, or
+  see their league record and player card.
+metadata:
+  version: '0.2.0'
+  requires:
+    - Node.js 18 or newer
+    - the official binance-agentic-wallet skill (the `baw` CLI), signed in
+---
+
+# Forecast League
+
+Agent ID holders submit one set of price forecasts per UTC day. The first submission also gives
+them a non-transferable player card. A separate contract scores each forecast against "doing
+nothing" (submitting the price at the daily lock time). No funds are ever sent: every call has
+value 0, and the contracts cannot hold or move tokens.
+
+This is a forecasting game. It is not financial advice, and scores and cards have no monetary value.
+
+## Absolute rules
+
+1. **Never run `baw contract-call execute` without the user's explicit "yes" to the summary you
+   just showed for that exact call.** One preview, one confirmation, one execute. Being asked to
+   "install", "set up" or "prepare" is not a confirmation.
+2. **Never schedule, loop or repeat submissions.** Each day's submission needs its own request and
+   its own confirmation from the user.
+3. **If preview fails or is blocked, stop and tell the user.** Do not change the values and try again.
+4. **Only use the call produced by `scripts/league.mjs encode`.** Do not write call data by hand, do
+   not change the `to` address, and do not send a value other than 0.
+5. **Never call `wallet send`, approvals, swaps or sign-in commands as part of this skill.**
+6. **Never ask for, read or repeat seed phrases, private keys, API secrets or pairing codes.** If the
+   wallet is not signed in, tell the user to sign in with the official Binance Agentic Wallet skill
+   and stop.
+
+## Before you start
+
+Run these and stop with a plain explanation if any check fails.
+
+```bash
+baw wallet status --json          # must be CONNECTED
+baw wallet agent-id --json        # "claimed" must be true
+baw wallet settings --json        # devMode.enabled must be true and devMode.expiresAt in the future
+baw wallet address --json         # take the BSC address (binanceChainId 56)
+```
+
+- Not connected: ask the user to sign in using the official Binance Agentic Wallet skill.
+- No Agent ID: it is claimed in the Binance App (Wallet, home banner, Agent ID).
+- Developer Mode off: the user turns it on in the Binance App (Agentic Wallet management page,
+  Settings, Developer Mode). It cannot be turned on from here.
+
+## Check the current state
+
+```bash
+node scripts/league.mjs status --address <BSC address>
+```
+
+This reads public chain data only. It shows the current prices, when today's round locks, whether
+the address already submitted today, and its record. If `submittedToday` is true, tell the user
+and stop: a second submission on the same UTC day is rejected by the contract.
+
+## Submit today's forecasts
+
+1. Decide the forecasts **with the user**. You may analyse and suggest numbers, but the user
+   decides. A pair may be skipped. Prices are plain USD numbers, for example `64300` or `1810.5`.
+2. Decide `--show-name`. It must be given as `yes` or `no` every time, and the value replaces the
+   previous choice.
+   - First submission: ask whether their Agent ID name may be shown on the card and the
+     leaderboard. If they do not answer clearly, use `no`.
+   - Later submissions: reuse the current value (`showAgentIdName` in the status output) unless the
+     user asks to change it.
+3. Build the call:
+
+   ```bash
+   node scripts/league.mjs encode --btc 64300 --eth 1810.5 --bnb 590 --show-name no
+   ```
+
+   - The script refuses a forecast more than 50% away from the current price, because that is
+     almost always a typing mistake. Do not work around it.
+   - The call is tied to the current UTC day. If it is included after 00:00 UTC it is rejected
+     (`WrongEpoch`) and nothing is recorded, so the script refuses to build a call in the last
+     3 minutes before the lock. In that case wait until after 00:00 UTC and start again.
+4. Preview it with the wallet, using `to`, `value` and `inputData` exactly as printed:
+
+   ```bash
+   baw contract-call preview --binanceChainId 56 --from <BSC address> --to <to> --value 0 --inputData <inputData> --json
+   ```
+
+5. Show the user, in plain words: the contract address, the forecasts, that the value sent is 0,
+   the `risks` and `balanceChanges` from the preview, and whether App approval will be needed
+   (`requireConfirmation`). Then ask: "Submit these forecasts?"
+6. Only after a clear yes:
+
+   ```bash
+   baw contract-call execute --requestId <requestId from the preview> --json
+   ```
+
+7. Report the result.
+   - `BROADCASTED`: give the transaction hash.
+   - `PENDING_CONFIRMATION`: tell the user to approve it in the Binance App.
+   - Any error: relay it as is. Do not retry automatically.
+
+## What to tell the user about results
+
+- Each round locks at 00:00 UTC. The result is fixed 6 hours later and scored about 30 minutes after that.
+- Submitting the lock price itself scores 0. A forecast closer to the final price than that scores
+  up to +100, a worse one down to -100.
+- Scoring is done by anyone calling the scoring contract; the user does not need to send another
+  transaction to be scored.
+
+## Common errors
+
+A preview may show the error name or only its 4-byte code.
+
+| Message | Code | Meaning | What to say |
+|---|---|---|---|
+| `NotAgentIdHolder` | `0xea11784e` | The wallet has no Agent ID | Claim one in the Binance App first |
+| `AlreadySubmitted` | `0x9fbfc589` | Already submitted this UTC day | Come back after 00:00 UTC |
+| `WrongEpoch` | `0x254f6ab2` | The call was built on one UTC day and included on another | Nothing was recorded. Tell the user. A new submission counts for the next round and needs its own preview and confirmation |
+| `EmptySubmission` | `0x037cb12e` | All three forecasts were 0 | Give at least one forecast |
+| `351802` / `351804` | | Developer Mode expired or was switched off | Turn it on again in the Binance App |
+| `351803` | | The wallet blocked the call as risky | Stop. Do not retry. Report it to the user |
