@@ -6,6 +6,7 @@
   const SCORER = '0x5ea789e7cd9C157793dDA75959829F8C1527C16b';
   const REGISTRY = '0x60b9262456de011f7d15a54cdd8c48baaa8b022f';
   const SQUADS = '0x1eAeEE5BA7582858b266920E79938203E92120D0';
+  const BLITZ = ''; // set when Blitz is deployed
   const MULTICALL = '0xcA11bde05977b3631167028862bE2a173976CA11';
   const RPCS = ['https://bsc-rpc.publicnode.com', 'https://bsc-dataseed.bnbchain.org', 'https://bsc-dataseed.binance.org'];
   const SEL = {
@@ -13,6 +14,8 @@
     submissionOf: '0x044e613c', statsOf: '0x15cfc405', roundOf: '0xdba20268', handleOf: '0xc50a1514',
     aggregate3: '0x82ad56cb', scored: '0xa86c3b41',
     squadOf: '0xbb2623a3', isSquad: '0x29303707', memberCount: '0xb843b11a', captainsCount: '0x1b88c370', captains: '0xf412511e',
+    bTotalSupply: '0x18160ddd', bTotalPlayers: '0xf60cdcf6', bCurrentRound: '0x8a19c8bc', bRoundMinted: '0xc31ef0f6',
+    bTicket: '0xc129ff32', bRecordOf: '0xc06ac6a3',
   };
   const BATCH = 250;
 
@@ -167,8 +170,10 @@
       };
     }).filter((q) => q.open).sort((a, b) => b.score - a.score || b.members - a.members || b.forecasts - a.forecasts);
 
+    const blitz = BLITZ ? await loadBlitz(rows) : null;
+
     return {
-      squads,
+      squads, blitz,
       now, epoch, lockAt: (epoch + 1) * 86400, resultAt: (epoch + 1) * 86400 + 6.5 * 3600,
       total, forecasters: ranked.length, submittedToday: rows.filter((r) => r.submittedToday).length,
       lastEpoch: last,
@@ -181,6 +186,35 @@
     };
   }
 
-  const api = { load, scoreOf, encodeAggregate3, decodeAggregate3, CORE, SCORER, SQUADS };
+  // Blitz: players are found from the latest tickets, their records read from the contract.
+  async function loadBlitz(cardRows) {
+    const head = await multicall([
+      { to: BLITZ, data: SEL.bTotalSupply }, { to: BLITZ, data: SEL.bTotalPlayers }, { to: BLITZ, data: SEL.bCurrentRound },
+    ]);
+    const supply = Number(slot(head[0], 0)); const players = Number(slot(head[1], 0)); const round = Number(slot(head[2], 0));
+    const from = Math.max(1, supply - 1999);
+    const ids = []; for (let id = supply; id >= from; id--) ids.push(id);
+    const tickets = (await multicall([{ to: BLITZ, data: SEL.bRoundMinted + word(round) },
+      ...ids.map((id) => ({ to: BLITZ, data: SEL.bTicket + word(id) }))]));
+    const minted = Number(slot(tickets[0], 0));
+    let up = 0; let down = 0; const owners = [];
+    tickets.slice(1).forEach((t) => {
+      if (!t) return;
+      const owner = '0x' + t.slice(26, 66); if (!owners.includes(owner)) owners.push(owner);
+      if (Number(slot(t, 1)) === round) { if (slot(t, 2) === 1n) up++; else down++; }
+    });
+    const recs = await multicall(owners.map((o) => ({ to: BLITZ, data: SEL.bRecordOf + addrWord(o) })));
+    const nameOf = {}; cardRows.forEach((r) => { if (r.name && r.owner) nameOf[r.owner.toLowerCase()] = r.name; });
+    const table = owners.map((owner, i) => {
+      const r = recs[i];
+      return {
+        owner, name: nameOf[owner.toLowerCase()] || '', tickets: Number(slot(r, 0)), wins: Number(slot(r, 1)), losses: Number(slot(r, 2)),
+        streak: Number(slot(r, 3)), best: Number(slot(r, 4)), unclaimed: Number(slot(r, 5)),
+      };
+    }).sort((a, b) => (b.wins - b.losses) - (a.wins - a.losses) || b.best - a.best || b.tickets - a.tickets);
+    return { address: BLITZ, supply, players, round, minted, up, down, lockAt: (round + 1) * 21600, table };
+  }
+
+  const api = { load, scoreOf, encodeAggregate3, decodeAggregate3, CORE, SCORER, SQUADS, BLITZ };
   if (typeof module !== 'undefined' && module.exports) module.exports = api; else root.League = api;
 })(typeof window !== 'undefined' ? window : globalThis);
