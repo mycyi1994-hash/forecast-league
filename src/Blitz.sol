@@ -63,7 +63,7 @@ contract Blitz {
 
     IAgentIDHolder public immutable agentId;
     IBlitzFeed public immutable feed;
-    /// @notice The squads contract. A ticket and its result also count for the holder's squad.
+    /// @notice The squads contract. A ticket also counts for the squad its holder is in when it is minted.
     ISquadsOf public immutable squads;
 
     struct Result {
@@ -79,10 +79,10 @@ contract Blitz {
         uint8 side; // 1 up, 2 down
     }
 
-    struct SquadRecord {
-        uint32 tickets;
-        uint32 wins;
-        uint32 losses;
+    /// @dev Tickets a squad's members minted in one round, by side.
+    struct SquadRound {
+        uint32 up;
+        uint32 down;
     }
 
     struct Record {
@@ -100,13 +100,13 @@ contract Blitz {
     uint256 public totalPlayers;
     /// @notice Tickets minted in a round.
     mapping(uint32 => uint32) public roundMinted;
-    /// @notice Tickets minted in a round by members of a squad (the squad is its captain's address).
-    mapping(address => mapping(uint32 => uint32)) public squadRoundTickets;
+    /// @notice Tickets ever minted by members of a squad (the squad is its captain's address).
+    mapping(address => uint32) public squadTickets;
 
     mapping(uint32 => Result) private _results;
     mapping(uint256 => Ticket) private _tickets;
     mapping(address => Record) private _records;
-    mapping(address => SquadRecord) private _squadRecords; // by captain
+    mapping(address => mapping(uint32 => SquadRound)) private _squadRounds; // by captain and round
     mapping(address => uint256[]) private _owned; // ticket ids of an address, oldest first
     mapping(address => mapping(uint32 => uint256)) private _ticketIn; // ticket id of an address in a round
 
@@ -242,12 +242,36 @@ contract Blitz {
         return (rec.picks, rec.wins, rec.losses, rec.streak, rec.bestStreak, rec.picks - rec.claimed);
     }
 
-    /// @notice A squad's Blitz record, by its captain's address. A ticket counts for the squad
-    ///         its holder is in when the ticket is minted; a win or a loss counts for the squad
-    ///         the holder is in when the round is written to the record.
-    function squadRecordOf(address captain) external view returns (uint32 tickets, uint32 wins, uint32 losses) {
-        SquadRecord memory sq = _squadRecords[captain];
-        return (sq.tickets, sq.wins, sq.losses);
+    /// @notice A squad's tickets in one round and what became of them. A ticket counts for the
+    ///         squad its holder is in at the moment it is minted, and for no other: joining,
+    ///         leaving or claiming later changes nothing. Wins and losses follow from the round's
+    ///         result, so they are zero until the round is settled and for a push or a void.
+    function squadRoundOf(address captain, uint32 round)
+        public
+        view
+        returns (uint32 upTickets, uint32 downTickets, uint32 wins, uint32 losses)
+    {
+        SquadRound memory sr = _squadRounds[captain][round];
+        uint8 outcome = _results[round].outcome;
+        if (outcome == UP) return (sr.up, sr.down, sr.up, sr.down);
+        if (outcome == DOWN) return (sr.up, sr.down, sr.down, sr.up);
+        return (sr.up, sr.down, 0, 0);
+    }
+
+    /// @notice The same, summed over the rounds `fromRound` to `toRound` inclusive. A read for
+    ///         standings; the range is the caller's choice.
+    function squadTally(address captain, uint32 fromRound, uint32 toRound)
+        external
+        view
+        returns (uint32 tickets, uint32 wins, uint32 losses)
+    {
+        for (uint32 r = fromRound; r <= toRound; r++) {
+            (uint32 u, uint32 d, uint32 w, uint32 l) = squadRoundOf(captain, r);
+            tickets += u + d;
+            wins += w;
+            losses += l;
+            if (r == type(uint32).max) break;
+        }
     }
 
     /// @notice Everything an agent needs to decide its next call, in one read.
@@ -296,11 +320,6 @@ contract Blitz {
     /// @notice A ticket costs nothing.
     function price() external pure returns (uint256) {
         return 0;
-    }
-
-    /// @notice One ticket per Agent ID in each round.
-    function maxPerWallet() external pure returns (uint256) {
-        return 1;
     }
 
     /// @notice Tickets ever minted. The same as `totalSupply`; there is no cap.
@@ -427,8 +446,9 @@ contract Blitz {
 
         address captain = _squadOf(msg.sender);
         if (captain != address(0)) {
-            _squadRecords[captain].tickets += 1;
-            squadRoundTickets[captain][r] += 1;
+            squadTickets[captain] += 1;
+            if (side == UP) _squadRounds[captain][r].up += 1;
+            else _squadRounds[captain][r].down += 1;
             emit SquadTicket(captain, r, msg.sender);
         }
     }
@@ -439,8 +459,6 @@ contract Blitz {
         uint256 i = rec.claimed;
         uint256 end = owned.length;
         uint256 done;
-        uint32 won;
-        uint32 lost;
         while (i < end && done < MAX_CLAIM) {
             uint256 tokenId = owned[i];
             Ticket memory t = _tickets[tokenId];
@@ -452,11 +470,9 @@ contract Blitz {
                     rec.wins += 1;
                     rec.streak += 1;
                     if (rec.streak > rec.bestStreak) rec.bestStreak = rec.streak;
-                    won += 1;
                 } else {
                     rec.losses += 1;
                     rec.streak = 0;
-                    lost += 1;
                 }
             }
             emit Claimed(agent, t.round, tokenId, outcome, rec.streak);
@@ -467,14 +483,6 @@ contract Blitz {
         if (done == 0) revert NothingToClaim();
         // forge-lint: disable-next-line(unsafe-typecast)
         rec.claimed = uint32(i);
-        if (won != 0 || lost != 0) {
-            address captain = _squadOf(agent);
-            if (captain != address(0)) {
-                SquadRecord storage sq = _squadRecords[captain];
-                sq.wins += won;
-                sq.losses += lost;
-            }
-        }
     }
 
     function _settle(uint32 round) private returns (uint8 outcome) {
@@ -548,8 +556,9 @@ contract Blitz {
         }
     }
 
-    /// @dev The captain of the squad an address is in, or zero. A squads contract that cannot
-    ///      be read counts as "no squad", so it can never block a ticket or a claim.
+    /// @dev The captain of the squad an address is in, or zero. A revert or running out of gas in
+    ///      the squads contract counts as "no squad". The squads address is fixed at deployment
+    ///      to this project's own verified contract, which has no owner and cannot change.
     function _squadOf(address agent) private view returns (address captain) {
         try squads.squadOf(agent) returns (address c, uint40) {
             return c;

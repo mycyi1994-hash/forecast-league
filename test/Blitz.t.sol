@@ -83,6 +83,7 @@ contract BlitzFeedMock {
 
 contract BlitzTest is CardTestUtils {
     event BatchMetadataUpdate(uint256 _fromTokenId, uint256 _toTokenId);
+    event SquadTicket(address indexed captain, uint32 indexed round, address indexed agent);
 
     BlitzAgentID aid;
     BlitzFeedMock feed;
@@ -652,55 +653,100 @@ contract BlitzTest is CardTestUtils {
 
     // ----------------------------------------------------------------- squads
 
-    function test_ticketsAndResultsCountForTheSquad() public {
+    function test_ticketsCountForTheSquadHeldAtMint() public {
         address captain = address(0xCA9);
         squads.set(alice, captain);
         squads.set(bob, captain);
+        vm.expectEmit(true, true, true, true, address(blitz));
+        emit SquadTicket(captain, R0, alice);
         vm.prank(alice);
         blitz.up();
         vm.prank(bob);
         blitz.down();
-        assertEq(blitz.squadRoundTickets(captain, R0), 2);
-        (uint32 tickets, uint32 wins, uint32 losses) = blitz.squadRecordOf(captain);
-        assertEq(tickets, 2);
-        assertEq(wins + losses, 0);
+        assertEq(blitz.squadTickets(captain), 2);
+        (uint32 up, uint32 down, uint32 wins, uint32 losses) = blitz.squadRoundOf(captain, R0);
+        assertEq(up, 1);
+        assertEq(down, 1);
+        assertEq(wins + losses, 0); // not settled yet
 
-        _fill(T0, _target(R0) + 600, 60_000e8, 1e8); // rising: alice wins, bob loses
+        _fill(T0, _target(R0) + 600, 60_000e8, 1e8); // rising
         vm.warp(_target(R0) + 600);
-        vm.prank(alice);
-        blitz.claim();
-        blitz.claimFor(bob);
-        (tickets, wins, losses) = blitz.squadRecordOf(captain);
-        assertEq(tickets, 2);
+        blitz.settle(R0); // nobody has claimed: the squad's result follows from the round alone
+        (up, down, wins, losses) = blitz.squadRoundOf(captain, R0);
         assertEq(wins, 1);
         assertEq(losses, 1);
+        (uint32 tickets, uint32 w, uint32 l) = blitz.squadTally(captain, R0, R0 + 3);
+        assertEq(tickets, 2);
+        assertEq(w, 1);
+        assertEq(l, 1);
     }
 
     function test_noSquadCountsNothing() public {
         vm.prank(alice);
         blitz.up();
-        (uint32 tickets,,) = blitz.squadRecordOf(address(0));
-        assertEq(tickets, 0);
-        assertEq(blitz.squadRoundTickets(address(0), R0), 0);
+        assertEq(blitz.squadTickets(address(0)), 0);
+        (uint32 up, uint32 down,,) = blitz.squadRoundOf(address(0), R0);
+        assertEq(up + down, 0);
     }
 
-    function test_resultsFollowTheSquadAtClaimTime() public {
-        address first = address(0xCA9);
-        address second = address(0xCAA);
-        squads.set(alice, first);
-        vm.prank(alice);
-        blitz.up();
-        squads.set(alice, second); // moved before claiming
-        _fill(T0, _target(R0) + 600, 60_000e8, 1e8);
-        vm.warp(_target(R0) + 600);
+    /// @dev The gaming a claim-time rule would allow: none of it moves a squad's numbers.
+    function test_joiningLeavingOrClaimingLaterChangesNoSquadNumber() public {
+        address home = address(0xCA9);
+        address rival = address(0xCAA);
+        // Alice plays three rounds in no squad and loses them all.
+        for (uint256 k = 0; k < 3; k++) {
+            vm.warp(T0 + k * ROUND + 100);
+            vm.prank(alice);
+            blitz.down();
+        }
+        // Bob plays one round for the home squad and loses it too.
+        squads.set(bob, home);
+        vm.warp(T0 + 100);
+        vm.prank(bob);
+        blitz.down();
+        _fill(T0, T0 + 6 * ROUND, 60_000e8, 1e8); // rising throughout: every "down" loses
+        vm.warp(T0 + 5 * ROUND + 100);
+
+        // Alice joins the rival squad with her backlog of losses and claims.
+        squads.set(alice, rival);
         vm.prank(alice);
         blitz.claim();
-        (uint32 t1, uint32 w1,) = blitz.squadRecordOf(first);
-        (uint32 t2, uint32 w2,) = blitz.squadRecordOf(second);
-        assertEq(t1, 1);
-        assertEq(w1, 0);
-        assertEq(t2, 0);
-        assertEq(w2, 1);
+        (uint32 tickets, uint32 wins, uint32 losses) = blitz.squadTally(rival, R0, R0 + 5);
+        assertEq(tickets + wins + losses, 0);
+        assertEq(blitz.squadTickets(rival), 0);
+
+        // Bob leaves his squad before his loss is claimed, a third party claims for him, he rejoins.
+        squads.set(bob, address(0));
+        blitz.claimFor(bob);
+        squads.set(bob, home);
+        (tickets, wins, losses) = blitz.squadTally(home, R0, R0 + 5);
+        assertEq(tickets, 1);
+        assertEq(wins, 0);
+        assertEq(losses, 1);
+    }
+
+    function test_pushAndVoidGiveASquadNoResult() public {
+        address captain = address(0xCA9);
+        squads.set(alice, captain);
+        vm.prank(alice);
+        blitz.up();
+        vm.warp(T0 + ROUND + 100);
+        vm.prank(alice);
+        blitz.up();
+        // Round R0: flat (push). Round R0 + 1: no feed update near its target (void).
+        feed.push(T0 + ROUND - 60, 100e8);
+        feed.push(T0 + 2 * ROUND - 60, 100e8);
+        feed.push(T0 + 3 * ROUND + 60, 100e8);
+        vm.warp(T0 + 3 * ROUND + 100);
+        blitz.settle(R0);
+        blitz.settle(R0 + 1);
+        (,, uint8 o0,) = blitz.resultOf(R0);
+        (,, uint8 o1,) = blitz.resultOf(R0 + 1);
+        assertEq(o0, 3);
+        assertEq(o1, 4);
+        (uint32 tickets, uint32 wins, uint32 losses) = blitz.squadTally(captain, R0, R0 + 1);
+        assertEq(tickets, 2);
+        assertEq(wins + losses, 0);
     }
 
     function test_aSquadsContractThatRevertsBlocksNothing() public {
@@ -708,7 +754,7 @@ contract BlitzTest is CardTestUtils {
         squads.setReverts(true);
         vm.prank(alice);
         blitz.up();
-        assertEq(blitz.squadRoundTickets(address(0xCA9), R0), 0);
+        assertEq(blitz.squadTickets(address(0xCA9)), 0);
         _fill(T0, _target(R0) + 600, 60_000e8, 1e8);
         vm.warp(_target(R0) + 600);
         vm.prank(alice);
@@ -853,7 +899,6 @@ contract BlitzTest is CardTestUtils {
         assertEq(blitz.owner(), address(0));
         assertEq(blitz.mintPrice(), 0);
         assertEq(blitz.price(), 0);
-        assertEq(blitz.maxPerWallet(), 1);
         assertEq(blitz.maxSupply(), type(uint256).max);
         assertFalse(blitz.hasMinted(alice));
         vm.prank(alice);

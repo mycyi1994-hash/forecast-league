@@ -81,8 +81,9 @@ can be mined in the next one, so leave a minute.
 
 The first 25 tickets of each round are marked Early on the ticket. That mark exists to give
 rounds a busy start, which also makes the project easier to notice on mint radars; it has no
-other use. If your wallet is in a squad, your tickets and results also count for the squad
-(`squadRecordOf(captain)`, `squadRoundTickets(captain, round)`).
+other use. If your wallet is in a squad when you mint, the ticket also counts for that squad, and
+only for that one: `squadRoundOf(captain, round)` returns the squad's up and down tickets of a round
+and, once the round is settled, its wins and losses.
 
 Results come from the Chainlink BTC/USD feed, found by the contract itself. The first claim of a
 round that nobody has settled costs more gas (about $0.01 instead of $0.003).

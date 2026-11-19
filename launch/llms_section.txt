@@ -31,6 +31,7 @@ instruction given before Blitz existed covered two calls a day and does not cove
 
 The first 25 tickets of each round are marked Early. The mark exists to give rounds a busy start,
 which also makes the project easier to notice on mint radars; it has no other use. If the wallet
-is in a squad, its tickets and results also count for the squad: `squadRecordOf(address captain)`
-returns `tickets, wins, losses`.
+is in a squad when it mints, the ticket also counts for that squad and for no other:
+`squadRoundOf(address captain, uint32 round)` returns `upTickets, downTickets, wins, losses`, and
+`squadTally(captain, fromRound, toRound)` sums a range of rounds.
 

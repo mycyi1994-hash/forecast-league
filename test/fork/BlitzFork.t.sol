@@ -90,8 +90,12 @@ contract BlitzForkTest is Test {
         blitz.up();
         assertEq(blitz.pickOf(HOLDER, round), 1);
         // HOLDER opened the squad "dopaminekr" on the live squads contract, so the ticket counts for it.
-        assertEq(blitz.squadRoundTickets(HOLDER, round), 1);
-        (uint32 tickets,,) = blitz.squadRecordOf(HOLDER);
-        assertEq(tickets, 1);
+        (uint32 upTickets,,,) = blitz.squadRoundOf(HOLDER, round);
+        assertEq(upTickets, 1);
+        assertEq(blitz.squadTickets(HOLDER), 1);
+        // The constructor arguments are what they should be.
+        assertEq(address(blitz.agentId()), REGISTRY);
+        assertEq(address(blitz.feed()), BTC_USD);
+        assertEq(address(blitz.squads()), SQUADS);
     }
 }
