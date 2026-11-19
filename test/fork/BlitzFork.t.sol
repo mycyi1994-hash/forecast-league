@@ -31,7 +31,7 @@ contract BlitzForkTest is Test {
         uint256 gasBefore = gasleft();
         blitz.settle(ROUND);
         emit log_named_uint("settle gas", gasBefore - gasleft());
-        (uint64 p0, uint64 p1, uint8 outcome) = blitz.resultOf(ROUND);
+        (uint64 p0, uint64 p1, uint8 outcome,) = blitz.resultOf(ROUND);
         (, int256 a0,,,) = IFeed(BTC_USD).getRoundData(LOCK_FEED_ROUND);
         (, int256 a1,,,) = IFeed(BTC_USD).getRoundData(TARGET_FEED_ROUND);
         assertEq(p0, uint64(uint256(a0)));
@@ -39,8 +39,42 @@ contract BlitzForkTest is Test {
         assertEq(outcome, a1 > a0 ? 1 : a1 < a0 ? 2 : 3);
     }
 
+    /// @dev Worst case for one call: twelve finished rounds, none of them settled yet.
+    function test_gasOfClaimingTwelveUnsettledRounds() public {
+        uint256 nowTs = block.timestamp;
+        uint256 start = (nowTs / 6 hours - 14) * 6 hours + 60;
+        for (uint256 k = 0; k < 12; k++) {
+            vm.warp(start + k * 6 hours);
+            vm.prank(HOLDER);
+            blitz.up();
+        }
+        vm.warp(nowTs);
+        (,, uint32 claimable,,,) = blitz.todo(HOLDER);
+        assertEq(claimable, 12);
+        uint256 gasBefore = gasleft();
+        vm.prank(HOLDER);
+        blitz.claim();
+        emit log_named_uint("claim gas, 12 unsettled rounds", gasBefore - gasleft());
+        (uint32 picks, uint32 wins, uint32 losses,,, uint32 unclaimed) = blitz.recordOf(HOLDER);
+        assertEq(picks, 12);
+        assertEq(unclaimed, 0);
+        assertLe(wins + losses, 12);
+        emit log_named_uint("wins", wins);
+        emit log_named_uint("losses", losses);
+    }
+
+    function test_ticketImage() public {
+        vm.prank(HOLDER);
+        blitz.mint();
+        emit log_string(blitz.tokenURI(1));
+        uint256 gasBefore = gasleft();
+        vm.prank(address(0xBEEF));
+        try blitz.mint() {} catch {}
+        gasBefore;
+    }
+
     function test_aRealHolderPlaysARound() public {
-        (uint32 round, bool canPick,,) = blitz.todo(HOLDER);
+        (uint32 round, bool canPick,,,,) = blitz.todo(HOLDER);
         assertTrue(canPick);
         vm.prank(HOLDER);
         blitz.up();

@@ -1,6 +1,9 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.28;
 
+import {Base64} from "@openzeppelin/contracts/utils/Base64.sol";
+import {Strings} from "@openzeppelin/contracts/utils/Strings.sol";
+
 /// @notice The function of the official Agent ID registry that this contract reads.
 interface IAgentIDHolder {
     function balanceOf(address owner) external view returns (uint256);
@@ -13,29 +16,36 @@ interface IBlitzFeed {
 }
 
 /// @title Blitz
-/// @notice A short forecasting round for Agent ID holders: will BTC/USD be higher or lower six
-///         hours after the round locks? One pick per round with `up()` or `down()`, and `claim()`
-///         writes finished rounds into the caller's record. Every call takes no arguments, so an
-///         agent can play with fixed call data.
-/// @dev There is no owner, no upgrade path, no payable function and no token movement.
+/// @notice A free round ticket for Agent ID holders, every six hours: will BTC/USD be higher or
+///         lower six hours after the round locks? Each Agent ID can mint one ticket per round.
+///         `up()` and `down()` choose the side, `mint()` takes the side this contract assigns
+///         to the caller for that round. `claim()` writes finished rounds into the record.
+///         Every call takes no arguments, so an agent can play with fixed call data.
+/// @dev There is no owner, no upgrade path, no payable function and no token movement. Tickets
+///      are non-transferable ERC-721 tokens with metadata built on-chain.
 ///
-///      Round `r` is open for picks during [r * ROUND, (r + 1) * ROUND).
+///      Round `r` is open for tickets during [r * ROUND, (r + 1) * ROUND). A transaction mined
+///      exactly at a boundary belongs to the round that starts there.
 ///        lock time   = (r + 1) * ROUND
 ///        target time = lock time + ROUND
 ///      The result compares the feed price at the target time with the feed price at the lock
-///      time. Both are the latest feed round at or before that time, found on-chain, so nobody
-///      supplies a price or a feed round. A higher price is "up", a lower one "down", an equal
-///      one a push. A round is void if the feed had no update in the MAX_LAG before either time,
-///      or if nobody settled it while its feed rounds were still within SEARCH_WINDOW.
+///      time. Both are the latest feed round at or before that time, found on-chain by searching
+///      the feed's current phase, so nobody supplies a price or a feed round and every caller
+///      gets the same result. A higher price is "up", a lower one "down", an equal one a push.
+///      A round is void if the feed had no update in the MAX_LAG before either time, or if the
+///      feed moved to a new phase that has no round at or before that time.
 contract Blitz {
     uint256 public constant ROUND = 6 hours;
     /// @notice A feed round is used only if it was updated no more than this long before the
     ///         reference time.
     uint256 public constant MAX_LAG = 30 minutes;
-    /// @notice How many feed rounds back from the latest one the on-chain search looks.
-    uint256 public constant SEARCH_WINDOW = 16384;
     /// @notice Most rounds one `claim()` writes. Call again if more are finished.
     uint256 public constant MAX_CLAIM = 12;
+    /// @notice The first tickets of each round carry the "Early" mark.
+    uint32 public constant EARLY_COUNT = 100;
+
+    string public constant name = "Forecast League Blitz";
+    string public constant symbol = "BLITZ";
 
     uint8 private constant NONE = 0;
     uint8 private constant UP = 1;
@@ -52,34 +62,50 @@ contract Blitz {
         uint8 outcome; // 0 not settled, 1 up, 2 down, 3 push, 4 void
     }
 
+    struct Ticket {
+        address owner;
+        uint32 round;
+        uint32 seq; // position among the round's tickets, starting at 1
+        uint8 side; // 1 up, 2 down
+    }
+
     struct Record {
         uint32 picks;
         uint32 wins;
         uint32 losses;
         uint32 streak; // current run of wins
         uint32 bestStreak;
-        uint32 claimed; // how many of the address's picked rounds are written to the record
+        uint32 claimed; // how many of the address's tickets are written to the record
     }
 
-    /// @notice Number of addresses that have made at least one pick.
+    /// @notice Number of tickets ever minted. Ticket ids run from 1 to this number.
+    uint256 public totalSupply;
+    /// @notice Number of addresses that hold at least one ticket.
     uint256 public totalPlayers;
-    /// @notice Number of picks ever made.
-    uint256 public totalPicks;
+    /// @notice Tickets minted in a round.
+    mapping(uint32 => uint32) public roundMinted;
 
     mapping(uint32 => Result) private _results;
+    mapping(uint256 => Ticket) private _tickets;
     mapping(address => Record) private _records;
-    mapping(address => uint32[]) private _picked; // rounds an address picked in, oldest first
-    mapping(address => mapping(uint32 => uint8)) private _pick; // 1 up, 2 down
+    mapping(address => uint256[]) private _owned; // ticket ids of an address, oldest first
+    mapping(address => mapping(uint32 => uint256)) private _ticketIn; // ticket id of an address in a round
 
-    event Picked(address indexed agent, uint32 indexed round, bool up);
+    event Transfer(address indexed from, address indexed to, uint256 indexed tokenId);
+    event Locked(uint256 tokenId);
+    /// @dev ERC-4906. A ticket's metadata changes when its round is written to the record.
+    event MetadataUpdate(uint256 _tokenId);
+    event Picked(address indexed agent, uint32 indexed round, bool up, uint256 tokenId);
     event Settled(uint32 indexed round, uint64 p0, uint64 p1, uint8 outcome);
-    event Claimed(address indexed agent, uint32 indexed round, bool up, uint8 outcome, uint32 streak);
+    event Claimed(address indexed agent, uint32 indexed round, uint256 tokenId, uint8 outcome, uint32 streak);
 
     error NotAgentIdHolder();
     error AlreadyPicked();
     error NothingToClaim();
     error TooEarly();
     error AlreadySettled();
+    error NonexistentToken();
+    error NonTransferable();
     error BadConstructorArgument();
 
     constructor(address agentId_, address feed_) {
@@ -90,46 +116,31 @@ contract Blitz {
 
     // ---------------------------------------------------------------- actions
 
-    /// @notice Pick "higher" for the round that is open now.
+    /// @notice Mint this round's ticket with the side "higher".
     function up() external {
-        _pickNow(UP);
+        _mintTicket(UP);
     }
 
-    /// @notice Pick "lower" for the round that is open now.
+    /// @notice Mint this round's ticket with the side "lower".
     function down() external {
-        _pickNow(DOWN);
+        _mintTicket(DOWN);
+    }
+
+    /// @notice Mint this round's ticket with the side this contract assigns to the caller for
+    ///         the round (see `assignedSide`). For callers that do not want to choose.
+    function mint() external {
+        _mintTicket(assignedSide(msg.sender, currentRound()) ? UP : DOWN);
     }
 
     /// @notice Write your finished rounds into your record, oldest first, at most MAX_CLAIM per
     ///         call. Settles a round first if nobody has yet. Reverts if no round of yours is finished.
     function claim() external {
-        Record storage rec = _records[msg.sender];
-        uint32[] storage rounds = _picked[msg.sender];
-        uint256 i = rec.claimed;
-        uint256 end = rounds.length;
-        uint256 done;
-        while (i < end && done < MAX_CLAIM) {
-            uint32 r = rounds[i];
-            if (block.timestamp <= targetTime(r)) break;
-            uint8 outcome = _results[r].outcome;
-            if (outcome == NONE) outcome = _settle(r);
-            uint8 mine = _pick[msg.sender][r];
-            if (outcome == UP || outcome == DOWN) {
-                if (outcome == mine) {
-                    rec.wins += 1;
-                    rec.streak += 1;
-                    if (rec.streak > rec.bestStreak) rec.bestStreak = rec.streak;
-                } else {
-                    rec.losses += 1;
-                    rec.streak = 0;
-                }
-            }
-            emit Claimed(msg.sender, r, mine == UP, outcome, rec.streak);
-            i++;
-            done++;
-        }
-        if (done == 0) revert NothingToClaim();
-        rec.claimed = uint32(i);
+        _claim(msg.sender);
+    }
+
+    /// @notice The same for any address. A record cannot be kept flattering by not claiming.
+    function claimFor(address agent) external {
+        _claim(agent);
     }
 
     /// @notice Fix the result of a finished round. Anyone can call this; `claim()` does it too.
@@ -153,78 +164,237 @@ contract Blitz {
         return (uint256(round) + 2) * ROUND;
     }
 
+    /// @notice The side `mint()` gives an address in a round: true for up. Fixed by the address
+    ///         and the round, so it can be read before minting.
+    function assignedSide(address agent, uint32 round) public pure returns (bool) {
+        return uint256(keccak256(abi.encode(agent, round))) & 1 == 1;
+    }
+
     /// @notice Result of a round. `outcome`: 0 not settled, 1 up, 2 down, 3 push, 4 void.
-    function resultOf(uint32 round) external view returns (uint64 p0, uint64 p1, uint8 outcome) {
+    ///         `finished` is true once the target time has passed, settled or not.
+    function resultOf(uint32 round) external view returns (uint64 p0, uint64 p1, uint8 outcome, bool finished) {
         Result memory res = _results[round];
-        return (res.p0, res.p1, res.outcome);
+        return (res.p0, res.p1, res.outcome, block.timestamp > targetTime(round));
     }
 
-    /// @notice The pick an address made in a round: 0 none, 1 up, 2 down.
+    /// @notice The side an address took in a round: 0 none, 1 up, 2 down.
     function pickOf(address agent, uint32 round) external view returns (uint8) {
-        return _pick[agent][round];
+        return _tickets[_ticketIn[agent][round]].side;
     }
 
-    /// @notice An address's record. `pending` is the number of its picks not yet written by `claim()`.
+    /// @notice A ticket. `status`: 0 live (round not finished), 1 finished and waiting to be
+    ///         settled, 2 won, 3 lost, 4 push, 5 void.
+    function ticket(uint256 tokenId)
+        external
+        view
+        returns (address owner, uint32 round, bool isUp, uint32 seq, uint8 status)
+    {
+        Ticket memory t = _tickets[tokenId];
+        if (t.owner == address(0)) revert NonexistentToken();
+        return (t.owner, t.round, t.side == UP, t.seq, _status(t));
+    }
+
+    /// @notice The ticket id of an address at a position in its own list (0 is its oldest).
+    function tokenOfOwnerByIndex(address owner, uint256 index) external view returns (uint256) {
+        return _owned[owner][index];
+    }
+
+    /// @notice An address's record. `unclaimed` counts its tickets not yet written by `claim()`,
+    ///         finished or not; `todo` says how many of them can be claimed now.
     function recordOf(address agent)
         external
         view
-        returns (uint32 picks, uint32 wins, uint32 losses, uint32 streak, uint32 bestStreak, uint32 pending)
+        returns (uint32 picks, uint32 wins, uint32 losses, uint32 streak, uint32 bestStreak, uint32 unclaimed)
     {
         Record memory rec = _records[agent];
         return (rec.picks, rec.wins, rec.losses, rec.streak, rec.bestStreak, rec.picks - rec.claimed);
     }
 
     /// @notice Everything an agent needs to decide its next call, in one read.
-    /// @return round        The round open for picks now.
-    /// @return canPick      True if `agent` holds an Agent ID and has not picked in this round.
-    /// @return claimable    How many of the agent's rounds are finished and not yet claimed
-    ///                      (`claim()` writes at most MAX_CLAIM of them per call).
+    /// @return round         The round open for tickets now.
+    /// @return canMint       True if `agent` holds an Agent ID and has no ticket in this round.
+    /// @return claimable     How many of the agent's rounds are finished and not yet claimed
+    ///                       (`claim()` writes at most MAX_CLAIM of them per call).
     /// @return secondsToLock Seconds until the open round locks.
+    /// @return minted        Tickets minted in the open round so far.
+    /// @return earlyLeft     How many of the round's "Early" tickets are left.
     function todo(address agent)
         external
         view
-        returns (uint32 round, bool canPick, uint32 claimable, uint256 secondsToLock)
+        returns (uint32 round, bool canMint, uint32 claimable, uint256 secondsToLock, uint32 minted, uint32 earlyLeft)
     {
         round = currentRound();
-        canPick = _pick[agent][round] == NONE && agentId.balanceOf(agent) != 0;
-        uint32[] storage rounds = _picked[agent];
-        uint256 end = rounds.length;
+        canMint = _ticketIn[agent][round] == 0 && agentId.balanceOf(agent) != 0;
+        uint256[] storage owned = _owned[agent];
+        uint256 end = owned.length;
         for (uint256 i = _records[agent].claimed; i < end; i++) {
-            if (block.timestamp <= targetTime(rounds[i])) break;
+            if (block.timestamp <= targetTime(_tickets[owned[i]].round)) break;
             claimable += 1;
         }
         secondsToLock = lockTime(round) - block.timestamp;
+        minted = roundMinted[round];
+        earlyLeft = minted >= EARLY_COUNT ? 0 : EARLY_COUNT - minted;
+    }
+
+    // ---------------------------------------- non-transferable ticket (ERC-721 read side)
+
+    function balanceOf(address owner) external view returns (uint256) {
+        return _owned[owner].length;
+    }
+
+    function ownerOf(uint256 tokenId) public view returns (address owner) {
+        owner = _tickets[tokenId].owner;
+        if (owner == address(0)) revert NonexistentToken();
+    }
+
+    /// @notice ERC-5192: every ticket is permanently locked.
+    function locked(uint256 tokenId) external view returns (bool) {
+        ownerOf(tokenId);
+        return true;
+    }
+
+    function getApproved(uint256 tokenId) external view returns (address) {
+        ownerOf(tokenId);
+        return address(0);
+    }
+
+    function isApprovedForAll(address, address) external pure returns (bool) {
+        return false;
+    }
+
+    function approve(address, uint256) external pure {
+        revert NonTransferable();
+    }
+
+    function setApprovalForAll(address, bool) external pure {
+        revert NonTransferable();
+    }
+
+    function transferFrom(address, address, uint256) external pure {
+        revert NonTransferable();
+    }
+
+    function safeTransferFrom(address, address, uint256) external pure {
+        revert NonTransferable();
+    }
+
+    function safeTransferFrom(address, address, uint256, bytes calldata) external pure {
+        revert NonTransferable();
+    }
+
+    function supportsInterface(bytes4 interfaceId) external pure returns (bool) {
+        return interfaceId == 0x01ffc9a7 // ERC-165
+            || interfaceId == 0x80ac58cd // ERC-721
+            || interfaceId == 0x5b5e139f // ERC-721 metadata
+            || interfaceId == 0xb45a3c0e // ERC-5192
+            || interfaceId == 0x49064906; // ERC-4906
+    }
+
+    /// @notice Ticket metadata and image, built on-chain from fixed text and numbers only.
+    function tokenURI(uint256 tokenId) external view returns (string memory) {
+        Ticket memory t = _tickets[tokenId];
+        if (t.owner == address(0)) revert NonexistentToken();
+        string memory id = Strings.toString(tokenId);
+        string memory round = Strings.toString(t.round);
+        string memory side = t.side == UP ? "UP" : "DOWN";
+        string memory status = _statusText(_status(t));
+        bool early = t.seq <= EARLY_COUNT;
+
+        string memory head = string.concat(
+            '{"name":"Blitz #',
+            id,
+            '","description":"Non-transferable round ticket of Forecast League Blitz. It has no monetary value.","image":"data:image/svg+xml;base64,',
+            Base64.encode(bytes(_svg(id, round, t.side == UP, status, early)))
+        );
+        string memory json = string.concat(
+            head,
+            '","attributes":[{"trait_type":"Round","value":',
+            round,
+            '},{"trait_type":"Pick","value":"',
+            side,
+            '"},{"trait_type":"Result","value":"',
+            status,
+            '"},{"trait_type":"Early","value":"',
+            early ? "Yes" : "No",
+            '"}]}'
+        );
+        return string.concat("data:application/json;base64,", Base64.encode(bytes(json)));
     }
 
     // -------------------------------------------------------------- internal
 
-    function _pickNow(uint8 side) private {
+    function _mintTicket(uint8 side) private {
         if (agentId.balanceOf(msg.sender) == 0) revert NotAgentIdHolder();
         uint32 r = currentRound();
-        if (_pick[msg.sender][r] != NONE) revert AlreadyPicked();
-        _pick[msg.sender][r] = side;
-        _picked[msg.sender].push(r);
+        if (_ticketIn[msg.sender][r] != 0) revert AlreadyPicked();
+
+        uint256 tokenId = ++totalSupply;
+        uint32 seq = ++roundMinted[r];
+        _tickets[tokenId] = Ticket(msg.sender, r, seq, side);
+        _ticketIn[msg.sender][r] = tokenId;
+        _owned[msg.sender].push(tokenId);
         Record storage rec = _records[msg.sender];
         if (rec.picks == 0) totalPlayers += 1;
         rec.picks += 1;
-        totalPicks += 1;
-        emit Picked(msg.sender, r, side == UP);
+
+        emit Transfer(address(0), msg.sender, tokenId);
+        emit Locked(tokenId);
+        emit Picked(msg.sender, r, side == UP, tokenId);
+    }
+
+    function _claim(address agent) private {
+        Record storage rec = _records[agent];
+        uint256[] storage owned = _owned[agent];
+        uint256 i = rec.claimed;
+        uint256 end = owned.length;
+        uint256 done;
+        while (i < end && done < MAX_CLAIM) {
+            uint256 tokenId = owned[i];
+            Ticket memory t = _tickets[tokenId];
+            if (block.timestamp <= targetTime(t.round)) break;
+            uint8 outcome = _results[t.round].outcome;
+            if (outcome == NONE) outcome = _settle(t.round);
+            if (outcome == UP || outcome == DOWN) {
+                if (outcome == t.side) {
+                    rec.wins += 1;
+                    rec.streak += 1;
+                    if (rec.streak > rec.bestStreak) rec.bestStreak = rec.streak;
+                } else {
+                    rec.losses += 1;
+                    rec.streak = 0;
+                }
+            }
+            emit Claimed(agent, t.round, tokenId, outcome, rec.streak);
+            emit MetadataUpdate(tokenId);
+            i++;
+            done++;
+        }
+        if (done == 0) revert NothingToClaim();
+        // forge-lint: disable-next-line(unsafe-typecast)
+        rec.claimed = uint32(i);
     }
 
     function _settle(uint32 round) private returns (uint8 outcome) {
         (uint64 p0, bool ok0) = _priceAt(lockTime(round));
         (uint64 p1, bool ok1) = _priceAt(targetTime(round));
-        if (!ok0 || !ok1) outcome = VOID;
-        else if (p1 > p0) outcome = UP;
-        else if (p1 < p0) outcome = DOWN;
-        else outcome = PUSH;
+        if (!ok0 || !ok1) {
+            outcome = VOID;
+            p0 = 0;
+            p1 = 0;
+        } else if (p1 > p0) {
+            outcome = UP;
+        } else if (p1 < p0) {
+            outcome = DOWN;
+        } else {
+            outcome = PUSH;
+        }
         _results[round] = Result(p0, p1, outcome);
         emit Settled(round, p0, p1, outcome);
     }
 
-    /// @dev Price of the latest feed round updated at or before `time`, searched inside the
-    ///      feed's current phase. `ok` is false if there is none within SEARCH_WINDOW, if it is
-    ///      older than MAX_LAG, or if the feed's data cannot be read.
+    /// @dev Price of the latest feed round updated at or before `time`, searched through the
+    ///      whole of the feed's current phase. `ok` is false if the phase has no such round,
+    ///      if that round is older than MAX_LAG, or if the feed's data cannot be read.
     function _priceAt(uint256 time) private view returns (uint64 price, bool ok) {
         uint80 latest;
         uint256 latestAt;
@@ -242,7 +412,7 @@ contract Blitz {
         if (latestAt <= time) {
             found = hi;
         } else {
-            uint256 lo = hi > SEARCH_WINDOW ? hi - SEARCH_WINDOW : 1;
+            uint256 lo = 1;
             if (lo == hi) return (0, false);
             (uint256 loAt,) = _read(phase, lo);
             if (loAt == 0 || loAt > time) return (0, false);
@@ -270,5 +440,62 @@ contract Blitz {
         } catch {
             return (0, 0);
         }
+    }
+
+    /// @dev 0 live, 1 finished and not settled, 2 won, 3 lost, 4 push, 5 void.
+    function _status(Ticket memory t) private view returns (uint8) {
+        if (block.timestamp <= targetTime(t.round)) return 0;
+        uint8 outcome = _results[t.round].outcome;
+        if (outcome == NONE) return 1;
+        if (outcome == PUSH) return 4;
+        if (outcome == VOID) return 5;
+        return outcome == t.side ? 2 : 3;
+    }
+
+    function _statusText(uint8 status) private pure returns (string memory) {
+        if (status == 0) return "LIVE";
+        if (status == 1) return "SETTLING";
+        if (status == 2) return "WON";
+        if (status == 3) return "LOST";
+        if (status == 4) return "PUSH";
+        return "VOID";
+    }
+
+    function _svg(string memory id, string memory round, bool isUp, string memory status, bool early)
+        private
+        pure
+        returns (string memory)
+    {
+        string memory color = isUp ? "#c8ff7a" : "#ff8b8b";
+        string memory top = string.concat(
+            '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500"><rect width="500" height="500" rx="36" fill="#0b0e14"/>',
+            '<rect x="14" y="14" width="472" height="472" rx="26" fill="none" stroke="',
+            color,
+            '" stroke-width="4"/><g font-family="monospace"><text x="40" y="70" fill="#9aa0b4" font-size="20" letter-spacing="4">FORECAST LEAGUE BLITZ</text>',
+            '<text x="40" y="108" fill="#eef0f6" font-size="22">ROUND ',
+            round,
+            "</text>"
+        );
+        string memory middle = string.concat(
+            '<path d="',
+            isUp ? "M250 140 L340 280 H160 Z" : "M250 280 L340 140 H160 Z",
+            '" fill="',
+            color,
+            '"/><text x="250" y="365" text-anchor="middle" fill="',
+            color,
+            '" font-size="64" font-weight="bold">',
+            isUp ? "UP" : "DOWN",
+            "</text>"
+        );
+        string memory bottom = string.concat(
+            '<text x="250" y="420" text-anchor="middle" fill="#eef0f6" font-size="28" letter-spacing="6">',
+            status,
+            '</text><text x="40" y="462" fill="#9aa0b4" font-size="18">#',
+            id,
+            "</text>",
+            early ? '<text x="460" y="462" text-anchor="end" fill="#ffd95a" font-size="18" letter-spacing="3">EARLY</text>' : "",
+            "</g></svg>"
+        );
+        return string.concat(top, middle, bottom);
     }
 }
