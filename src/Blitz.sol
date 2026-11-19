@@ -252,6 +252,38 @@ contract Blitz {
         earlyLeft = minted >= EARLY_COUNT ? 0 : EARLY_COUNT - minted;
     }
 
+    // ------------------------------------------- common reads that mint tools look for
+
+    /// @notice There is no owner. Returned so that tools reading `owner()` see that.
+    function owner() external pure returns (address) {
+        return address(0);
+    }
+
+    /// @notice A ticket costs nothing.
+    function mintPrice() external pure returns (uint256) {
+        return 0;
+    }
+
+    /// @notice A ticket costs nothing.
+    function price() external pure returns (uint256) {
+        return 0;
+    }
+
+    /// @notice One ticket per Agent ID in each round.
+    function maxPerWallet() external pure returns (uint256) {
+        return 1;
+    }
+
+    /// @notice Tickets ever minted. The same as `totalSupply`; there is no cap.
+    function totalMinted() external view returns (uint256) {
+        return totalSupply;
+    }
+
+    /// @notice True if the address already has its ticket for the round open now.
+    function hasMinted(address agent) external view returns (bool) {
+        return _ticketIn[agent][currentRound()] != 0;
+    }
+
     // ---------------------------------------- non-transferable ticket (ERC-721 read side)
 
     function balanceOf(address owner) external view returns (uint256) {

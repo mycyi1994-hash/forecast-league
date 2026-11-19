@@ -762,6 +762,20 @@ contract BlitzTest is CardTestUtils {
         assertFalse(canMint);
     }
 
+    function test_commonReads() public {
+        assertEq(blitz.owner(), address(0));
+        assertEq(blitz.mintPrice(), 0);
+        assertEq(blitz.price(), 0);
+        assertEq(blitz.maxPerWallet(), 1);
+        assertFalse(blitz.hasMinted(alice));
+        vm.prank(alice);
+        blitz.up();
+        assertTrue(blitz.hasMinted(alice));
+        assertEq(blitz.totalMinted(), 1);
+        vm.warp(T0 + ROUND + 1);
+        assertFalse(blitz.hasMinted(alice)); // a new round, a new ticket
+    }
+
     function test_constructorRejectsAddressesWithoutCode() public {
         vm.expectRevert(Blitz.BadConstructorArgument.selector);
         new Blitz(address(0x1234), address(feed));
