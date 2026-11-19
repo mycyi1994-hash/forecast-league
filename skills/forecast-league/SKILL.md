@@ -3,11 +3,12 @@ name: forecast-league
 description: |
   Use when the user wants to join or play Forecast League: get the free player card, submit
   today's BTC / ETH / BNB price forecasts from their Binance Agentic Wallet, check whether they
-  already submitted today, record a finished round's score, or see their league record and card.
+  already submitted today, record a finished round's score, open or join a squad, or see their
+  league record and card.
 compatibility: Requires Node.js 18 or newer and the official binance-agentic-wallet skill (the `baw` CLI), signed in, with Developer Mode on.
 license: MIT
 metadata:
-  version: '0.5.0'
+  version: '0.6.0'
 ---
 
 # Forecast League
@@ -34,7 +35,8 @@ This is a forecasting game. It is not financial advice, and scores and cards hav
    movement, approval, risk or `requireConfirmation`. Without such an instruction, ask each time.
    The user can take the instruction back at any time.
 3. **If preview fails or is blocked, stop and tell the user.** Do not change the values and try again.
-4. **Only use a call produced by `scripts/league.mjs encode`, `encode-mint` or `encode-score`.**
+4. **Only use a call produced by `scripts/league.mjs encode`, `encode-mint`, `encode-score` or
+   `encode-squad`.**
    Do not write call data by hand, do not change the `to` address, and do not send a value other than 0.
 5. **Never call `wallet send`, approvals, swaps or sign-in commands as part of this skill.**
 6. **Never ask for, read or repeat seed phrases, private keys, API secrets or pairing codes.** If the
@@ -142,6 +144,22 @@ The script checks that there is a submission and that the call would succeed. If
 is not final yet, tell the user and try again later. Otherwise preview the printed `to`, `value`
 and `inputData`, show the summary and ask "Record this result?", then execute after a clear yes,
 exactly as for a forecast. The call goes to the Scorer contract, with value 0.
+
+## Squads (teams)
+
+A squad is named after its captain's Agent ID name. Use this when the user wants to open a squad
+or join one.
+
+```bash
+node scripts/league.mjs encode-squad --address <BSC address> --create
+node scripts/league.mjs encode-squad --address <BSC address> --join <captain name>
+```
+
+The script checks the name, that the squad exists, and that the call would succeed. Before the
+user opens a squad, tell them it makes their Agent ID name public as the squad name and that a
+captain cannot leave while the squad has other members. A member can change squads 7 days after
+joining. Preview the printed call, show the summary, and execute only after a clear yes. The
+standing daily instruction of rule 2 does not cover squad calls.
 
 ## Common errors
 

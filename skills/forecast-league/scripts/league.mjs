@@ -4,7 +4,8 @@
 // It only does two things:
 //   1. reads public data from BNB Chain (status)
 //   2. builds call data: for a forecast submission (encode), for the player card alone (encode-mint),
-//      or for writing a finished round's score into the record (encode-score)
+//      for writing a finished round's score into the record (encode-score),
+//      or for opening or joining a squad (encode-squad)
 // It never signs, never sends a transaction, never reads wallet or session files,
 // and contacts nothing except the public RPC endpoint below.
 
@@ -17,6 +18,7 @@ const CONFIG = {
   // Filled in at deployment. `encode` refuses to run while this is the zero address.
   core: '0x79F55DAa8a3CF2Eb76EE40e26ff6E244a4cC1eD4',
   scorer: '0x5ea789e7cd9C157793dDA75959829F8C1527C16b',
+  squads: '0x1eAeEE5BA7582858b266920E79938203E92120D0',
   agentId: '0x60b9262456de011f7d15a54cdd8c48baaa8b022f',
   feeds: {
     btc: '0x264990fbd0A4796A3E3d8E37C4d5F87a3aCa5Ebf',
@@ -31,6 +33,12 @@ const SEL = {
   submit: '0x6b89ae10', // submit(uint64[3],bool,uint32)
   mint: '0x1249c58b', // mint()
   score: '0xa2f93a8f', // score(address,uint32) on the Scorer
+  createSquad: '0x40796e83', // on Squads
+  joinSquad: '0x376dcc1a', // joinSquad(string) on Squads
+  squadOf: '0xbb2623a3',
+  isSquad: '0x29303707',
+  memberCount: '0xb843b11a',
+  ownerOfHandle: '0x1da94fb4',
   currentEpoch: '0x76671808',
   cardOf: '0x48e748a0',
   showName: '0xfeeb4e45',
@@ -343,6 +351,59 @@ async function cmdEncodeScore(args) {
   );
 }
 
+async function cmdEncodeSquad(args) {
+  const address = args.address === true ? undefined : args.address;
+  if (!address) fail('Give --address <your wallet>.');
+  const create = args.create === true;
+  const join = typeof args.join === 'string' ? args.join.toLowerCase().replace(/\.ai$/, '') : undefined;
+  if (create === (join !== undefined)) fail('Give exactly one of --create or --join <captain name>.');
+  if (slot(await call(CONFIG.agentId, SEL.balanceOf + addressWord(address)), 0) === 0n) {
+    fail(`${address} does not hold an Agent ID. Claim one in the Binance App first.`);
+  }
+  const current = '0x' + (await call(CONFIG.squads, SEL.squadOf + addressWord(address))).slice(26, 66);
+  let inputData; let summary;
+  if (create) {
+    if (slot(await call(CONFIG.squads, SEL.isSquad + addressWord(address)), 0) === 1n) fail(`${address} already has an open squad.`);
+    inputData = SEL.createSquad;
+    summary = {
+      action: 'Open a Forecast League squad named after your Agent ID (no funds are sent)',
+      function: 'createSquad()',
+      note: 'This makes your Agent ID name public as the squad name. Others join by typing it. ' +
+        'A captain cannot leave while the squad has other members.',
+    };
+  } else {
+    if (!/^[a-z0-9]{1,32}$/.test(join)) fail('The captain name may only contain a-z and 0-9, for example "alice" or "alice.ai".');
+    const hex = Buffer.from(join, 'utf8').toString('hex');
+    const nameData = word(0x20) + word(join.length) + hex.padEnd(Math.ceil(join.length / 32) * 64, '0');
+    const captain = '0x' + (await call(CONFIG.agentId, SEL.ownerOfHandle + nameData)).slice(26, 66);
+    if (captain === ZERO) fail(`There is no Agent ID named ${join}.ai.`);
+    if (slot(await call(CONFIG.squads, SEL.isSquad + addressWord(captain)), 0) === 0n) fail(`${join}.ai has not opened a squad.`);
+    if (captain.toLowerCase() === current.toLowerCase()) fail(`${address} is already in the squad of ${join}.ai.`);
+    inputData = SEL.joinSquad + nameData;
+    summary = {
+      action: `Join the Forecast League squad of ${join}.ai (no funds are sent)`,
+      function: 'joinSquad(string captainHandle)',
+      captain,
+      membersNow: Number(slot(await call(CONFIG.squads, SEL.memberCount + addressWord(captain)), 0)),
+      note: 'You can move to another squad 7 days after joining this one.',
+    };
+  }
+  // Dry run, so a call that would fail (for example the 7 day cooldown) is never handed to the wallet.
+  try {
+    await rpc('eth_call', [{ from: address, to: CONFIG.squads, data: inputData }, 'latest']);
+  } catch (e) {
+    fail(`This call would fail right now (${e.message}). The usual reason is the 7 day wait after joining a squad, ` +
+      'or a captain trying to leave a squad that still has members.');
+  }
+  console.log(JSON.stringify({
+    ok: true,
+    // Pass these three values to `baw contract-call preview` exactly as they are.
+    binanceChainId: String(CONFIG.chainId), to: CONFIG.squads, value: '0', inputData,
+    // Show this summary to the user before asking for confirmation.
+    summary: { ...summary, contract: CONFIG.squads, valueSent: '0 BNB', currentSquad: current === ZERO ? 'none' : current },
+  }, null, 2));
+}
+
 function isMainModule() {
   try {
     return realpathSync(process.argv[1]) === realpathSync(fileURLToPath(import.meta.url));
@@ -358,6 +419,7 @@ if (isMain) {
     if (command === 'encode') await cmdEncode(args);
     else if (command === 'encode-mint') await cmdEncodeMint(args);
     else if (command === 'encode-score') await cmdEncodeScore(args);
+    else if (command === 'encode-squad') await cmdEncodeSquad(args);
     else if (command === 'status') await cmdStatus(args);
     else {
       console.log(
@@ -367,6 +429,7 @@ if (isMain) {
           '  node league.mjs encode [--btc <price>] [--eth <price>] [--bnb <price>] --show-name yes|no',
           '  node league.mjs encode-mint [--address 0xYourAgenticWallet]',
           '  node league.mjs encode-score --address 0xYourAgenticWallet [--epoch <number>]',
+          '  node league.mjs encode-squad --address 0xYourAgenticWallet (--create | --join <captain name>)',
         ].join('\n'),
       );
       process.exit(command ? 1 : 0);

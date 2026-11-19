@@ -5,12 +5,14 @@
   const CORE = '0x79F55DAa8a3CF2Eb76EE40e26ff6E244a4cC1eD4';
   const SCORER = '0x5ea789e7cd9C157793dDA75959829F8C1527C16b';
   const REGISTRY = '0x60b9262456de011f7d15a54cdd8c48baaa8b022f';
+  const SQUADS = '0x1eAeEE5BA7582858b266920E79938203E92120D0';
   const MULTICALL = '0xcA11bde05977b3631167028862bE2a173976CA11';
   const RPCS = ['https://bsc-rpc.publicnode.com', 'https://bsc-dataseed.bnbchain.org', 'https://bsc-dataseed.binance.org'];
   const SEL = {
     totalCards: '0xe994c15d', ownerOf: '0x6352211e', submissionCount: '0x920ccaf1', showName: '0xfeeb4e45',
     submissionOf: '0x044e613c', statsOf: '0x15cfc405', roundOf: '0xdba20268', handleOf: '0xc50a1514',
     aggregate3: '0x82ad56cb', scored: '0xa86c3b41',
+    squadOf: '0xbb2623a3', isSquad: '0x29303707', memberCount: '0xb843b11a', captainsCount: '0x1b88c370', captains: '0xf412511e',
   };
   const BATCH = 250;
 
@@ -91,10 +93,12 @@
     const last = epoch - 1; // the round whose submissions closed at the latest 00:00 UTC
     const head = await multicall([
       { to: CORE, data: SEL.totalCards },
+      { to: SQUADS, data: SEL.captainsCount },
       ...[0, 1, 2].map((f) => ({ to: SCORER, data: SEL.roundOf + word(last) + word(f) })),
     ]);
     const total = Number(slot(head[0], 0));
-    const round = [1, 2, 3].map((i) => {
+    const captainsCount = head[1] ? Number(slot(head[1], 0)) : 0;
+    const round = [2, 3, 4].map((i) => {
       const r = head[i];
       return r ? { p0: slot(r, 0), p1: slot(r, 2), settled: slot(r, 4) !== 0n, final: slot(r, 5) === 1n } : { p0: 0n, p1: 0n, settled: false, final: false };
     });
@@ -106,11 +110,12 @@
       const a = addrWord(o || '0x' + '0'.repeat(40));
       calls.push({ to: CORE, data: SEL.submissionCount + a }, { to: CORE, data: SEL.showName + a },
         { to: SCORER, data: SEL.statsOf + a }, { to: CORE, data: SEL.submissionOf + a + word(epoch) },
-        { to: CORE, data: SEL.submissionOf + a + word(last) }, { to: SCORER, data: SEL.scored + a + word(last) });
+        { to: CORE, data: SEL.submissionOf + a + word(last) }, { to: SCORER, data: SEL.scored + a + word(last) },
+        { to: SQUADS, data: SEL.squadOf + a });
     });
     const res = await multicall(calls);
     const rows = owners.map((owner, i) => {
-      const [count, show, stats, today, prev, done] = res.slice(i * 6, i * 6 + 6);
+      const [count, show, stats, today, prev, done, squad] = res.slice(i * 7, i * 7 + 7);
       const forecasts = count ? Number(slot(count, 0)) : 0;
       let lastScore = null; // score of the latest closed round, worked out from the settled prices
       if (prev && slot(prev, 3) !== 0n) {
@@ -130,6 +135,7 @@
         total: stats ? Number(signed(slot(stats, 3), 256)) : 0,
         submittedToday: !!today && slot(today, 3) !== 0n, lastScore, name: '',
         lastInRecord: !!done && slot(done, 0) === 1n,
+        squad: squad && slot(squad, 0) !== 0n ? '0x' + squad.slice(26, 66) : null,
       };
     });
     const named = rows.filter((r) => r.showName && r.owner);
@@ -143,7 +149,26 @@
     });
     const ranked = rows.filter((r) => r.forecasts > 0).sort((a, b) =>
       b.points - a.points || b.forecasts - a.forecasts || a.id - b.id);
+    // Squads: every captain that ever opened one, filtered to the open ones.
+    const caps = (await multicall(Array.from({ length: captainsCount }, (_, i) => ({ to: SQUADS, data: SEL.captains + word(i) }))))
+      .map((r) => '0x' + r.slice(26, 66));
+    const capInfo = await multicall(caps.flatMap((c) => [
+      { to: SQUADS, data: SEL.isSquad + addrWord(c) }, { to: SQUADS, data: SEL.memberCount + addrWord(c) },
+      { to: REGISTRY, data: SEL.handleOf + addrWord(c) },
+    ]));
+    const squads = caps.map((captain, i) => {
+      const members = rows.filter((r) => r.squad === captain);
+      // Squad score: the five best members. A member who does not play, or plays badly, cannot pull it down.
+      const best = members.map((r) => r.points).sort((a, b) => b - a).slice(0, 5).filter((p) => p > 0);
+      return {
+        captain, open: !!capInfo[i * 3] && slot(capInfo[i * 3], 0) === 1n,
+        members: capInfo[i * 3 + 1] ? Number(slot(capInfo[i * 3 + 1], 0)) : 0, name: decodeString(capInfo[i * 3 + 2]),
+        score: best.reduce((a, p) => a + p, 0), forecasts: members.reduce((a, r) => a + r.forecasts, 0),
+      };
+    }).filter((q) => q.open).sort((a, b) => b.score - a.score || b.members - a.members || b.forecasts - a.forecasts);
+
     return {
+      squads,
       now, epoch, lockAt: (epoch + 1) * 86400, resultAt: (epoch + 1) * 86400 + 6.5 * 3600,
       total, forecasters: ranked.length, submittedToday: rows.filter((r) => r.submittedToday).length,
       lastEpoch: last,
@@ -156,6 +181,6 @@
     };
   }
 
-  const api = { load, scoreOf, encodeAggregate3, decodeAggregate3, CORE, SCORER };
+  const api = { load, scoreOf, encodeAggregate3, decodeAggregate3, CORE, SCORER, SQUADS };
   if (typeof module !== 'undefined' && module.exports) module.exports = api; else root.League = api;
 })(typeof window !== 'undefined' ? window : globalThis);

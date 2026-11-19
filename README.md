@@ -23,6 +23,7 @@ This is a forecasting game, not financial advice. Scores and cards have no monet
 | Scorer | `0x5ea789e7cd9C157793dDA75959829F8C1527C16b` |
 | CardArt | `0x28BC6537d0D47aC4F50944Fc9949012f5cb54E45` |
 | CardArtData | `0xc2a08897b48664d31be71C79f8D54882f1A5ffe3` |
+| Squads | `0x1eAeEE5BA7582858b266920E79938203E92120D0` |
 
 - Deployed on 2026-11-19 from an Agentic Wallet that holds an Agent ID
   (`0x2a2F48145780639dbD91e748dF157F35283165Da`), through the deterministic deployment factory
@@ -33,7 +34,8 @@ This is a forecasting game, not financial advice. Scores and cards have no monet
   Scorer: the LeagueCore address, the BTC/USD, ETH/USD and BNB/USD feeds listed in
   `skills/forecast-league/scripts/league.mjs`, horizon 21600 seconds.
 - Compiler: solc 0.8.28, optimizer 200 runs, EVM version paris (see `foundry.toml`).
-- `src/Squads.sol` is not deployed yet.
+- Squads was deployed on 2026-11-19 the same way (constructor argument: the Agent ID registry) and is
+  verified on BscScan and Sourcify.
 - An earlier version from the same day (LeagueCore `0xCf036d37A22Dd1C93d4558bA0293a4171167B1d8`,
   Scorer `0x0f55E09159a16C05d137D00E006f9A406CFEB400`) had a plain card and no `mint()`. It was
   replaced before anyone else used it and is not part of the project any more.
@@ -57,7 +59,9 @@ only after the user says yes.
 | `src/Scorer.sol` | `settle` fixes round prices from Chainlink-style feeds, `score` scores a submission, `statsOf` / `isQualified` expose the record. Anyone can call them. |
 | `skills/forecast-league/SKILL.md` | Instructions for an AI agent using the Binance Agentic Wallet (`baw`) to take part. |
 | `skills/forecast-league/scripts/league.mjs` | Dependency-free helper: reads public chain data and builds the call data. It never signs or sends anything. |
-| `src/Squads.sol` | Teams. A holder opens a squad named after their Agent ID; others join it by that name. Not deployed yet. |
+| `src/Squads.sol` | Teams. A holder opens a squad named after their Agent ID; others join it by that name. The site ranks squads by the summed score of their five best members. |
+| `keeper/keeper.mjs` | Builds the `settle` and `scoreMany` calls that close a round. Read-only; anyone can run it and send the calls. |
+| `docs/league.js` | The website's read-only data layer: standings and squads straight from the contracts. |
 | `test/` | Unit tests with mocks. `test/fork/` runs against a fork of BNB Chain mainnet with the real Agent ID registry and price feeds. |
 
 ## How Agent ID is used
