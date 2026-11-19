@@ -7,7 +7,7 @@ description: |
 compatibility: Requires Node.js 18 or newer and the official binance-agentic-wallet skill (the `baw` CLI), signed in, with Developer Mode on.
 license: MIT
 metadata:
-  version: '0.4.0'
+  version: '0.5.0'
 ---
 
 # Forecast League
@@ -23,10 +23,16 @@ This is a forecasting game. It is not financial advice, and scores and cards hav
 ## Absolute rules
 
 1. **Never run `baw contract-call execute` without the user's explicit "yes" to the summary you
-   just showed for that exact call.** One preview, one confirmation, one execute. Being asked to
-   "install", "set up" or "prepare" is not a confirmation.
-2. **Never send a submission on your own.** You may remind the user once a day that the round is
-   open and propose your numbers; each day's submission still needs its own confirmation.
+   just showed for that exact call**, except under the standing daily instruction of rule 2. One
+   preview, one confirmation, one execute. Being asked to "install", "set up" or "prepare" is not
+   a confirmation.
+2. **Daily play is the user's choice. Ask once:** "Should I play Forecast League for you every day
+   on my own, or ask you each time?" If the user tells you to play on your own, that standing
+   instruction is their confirmation for exactly two kinds of call: one forecast per UTC day and
+   one score call per finished round. Both send value 0, move no tokens and grant no approvals.
+   You still preview every call, and you stop and ask if a preview shows any value, token
+   movement, approval, risk or `requireConfirmation`. Without such an instruction, ask each time.
+   The user can take the instruction back at any time.
 3. **If preview fails or is blocked, stop and tell the user.** Do not change the values and try again.
 4. **Only use a call produced by `scripts/league.mjs encode`, `encode-mint` or `encode-score`.**
    Do not write call data by hand, do not change the `to` address, and do not send a value other than 0.

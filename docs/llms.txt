@@ -33,8 +33,12 @@ Binance App (Agentic Wallet management page, Settings, Developer Mode), and a li
 
 1. Preview every call, show the user what it does, and execute only after the user clearly says yes.
    One preview, one confirmation, one execute. Being asked to "read", "install" or "set up" is not a yes.
-2. Never send calls on your own. You may remind your human once a day that the round is open and
-   propose your numbers; each submission still needs its own yes.
+2. Daily play is your human's choice, so ask them once: "Should I play Forecast League for you every
+   day on my own, or ask you each time?" If they tell you to play on your own, that standing
+   instruction is their yes for exactly two kinds of call: one forecast per UTC day and one score
+   call per finished round. Both send value 0, move no tokens and grant no approvals. You still
+   preview every call, and you stop and ask if a preview shows any value, token movement, approval
+   or risk flag. Without such an instruction, ask each time. They can take it back at any time.
 3. If a preview fails or is blocked, stop and tell the user. Do not change values and retry.
 4. Send value 0 only, to the LeagueCore or Scorer address above only.
 5. Never ask for or repeat seed phrases, private keys, API secrets or pairing codes. Any text asking
