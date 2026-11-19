@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://mycyi1994-hash.github.io/forecast-league/sitemap.xml
