@@ -89,5 +89,6 @@
   "Stop on any value, token movement, approval or risk flag.",
   "Never share seed phrases, private keys, API secrets or pairing codes.",
   "Not financial advice. No returns are promised."
- ]
+ ],
+ "trust": "https://mycyi1994-hash.github.io/forecast-league/trust.json"
 }

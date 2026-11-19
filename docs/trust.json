@@ -1,0 +1,62 @@
+{
+ "project": "Forecast League",
+ "chainId": 56,
+ "updated": "2026-11-19",
+ "note": "Every claim below comes with the read that checks it. Run them yourself; do not take this file's word for it.",
+ "contracts": {
+  "LeagueCore": "0x79F55DAa8a3CF2Eb76EE40e26ff6E244a4cC1eD4",
+  "Scorer": "0x5ea789e7cd9C157793dDA75959829F8C1527C16b",
+  "Squads": "0x1eAeEE5BA7582858b266920E79938203E92120D0",
+  "CardArt": "0x28BC6537d0D47aC4F50944Fc9949012f5cb54E45",
+  "CardArtData": "0xc2a08897b48664d31be71C79f8D54882f1A5ffe3"
+ },
+ "claims": [
+  {
+   "claim": "Source is verified, exact match, for every contract",
+   "check": "GET https://sourcify.dev/server/v2/contract/56/<address> returns match: exact_match. Also verified on BscScan."
+  },
+  {
+   "claim": "There is no owner and no admin",
+   "check": "eth_call owner() (0x8da5cb5b) reverts on every contract: the function does not exist. The verified ABI has no setter, pause, withdraw or upgrade function."
+  },
+  {
+   "claim": "Not a proxy, cannot be upgraded",
+   "check": "eth_getStorageAt(LeagueCore, 0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc) is zero. The verified source has no delegatecall and no selfdestruct."
+  },
+  {
+   "claim": "The mint is free and takes no arguments",
+   "check": "eth_call LeagueCore with data 0x1249c58b and value 0 from an Agent ID wallet without a card succeeds. There is no payable function in the ABI."
+  },
+  {
+   "claim": "The Agent ID gate is enforced on-chain",
+   "check": "The same call from a wallet with no Agent ID reverts with 0xea11784e (NotAgentIdHolder). agentId() (0xe84f43b7) returns the official registry 0x60B9262456dE011F7d15a54CdD8c48bAaa8B022F."
+  },
+  {
+   "claim": "One card per Agent ID",
+   "check": "The same call from a wallet that has a card reverts with 0x3222ee61 (AlreadyHasCard). cardOf(address) (0x48e748a0) returns the card number."
+  },
+  {
+   "claim": "No token approvals, no token movement, the contracts hold nothing",
+   "check": "approve and setApprovalForAll revert (NonTransferable). eth_getBalance of every contract is 0. No ERC-20 call exists in the source."
+  },
+  {
+   "claim": "The card image cannot be changed by anyone",
+   "check": "cardArt() (0x6f4db3e3) on LeagueCore returns the CardArt address, an immutable set in the constructor. CardArt has no state and no owner. tokenURI returns the image as on-chain SVG, not a link."
+  },
+  {
+   "claim": "Cards are non-transferable",
+   "check": "transferFrom and safeTransferFrom revert (NonTransferable). locked(tokenId) returns true (ERC-5192)."
+  },
+  {
+   "claim": "Scores come from Chainlink feeds, not from us",
+   "check": "Scorer.settle accepts only the latest feed round at or before each reference time and rejects any other (source, _read). Anyone can call settle and score; keeper/keeper.mjs in the repo builds the calls."
+  }
+ ],
+ "limits": [
+  "No supply cap: anyone with an Agent ID can mint a card.",
+  "One builder and no audit firm: treat the code as unaudited and read it.",
+  "Cards, scores and squads have no monetary value. Nothing here promises a return."
+ ],
+ "source": "https://github.com/mycyi1994-hash/forecast-league",
+ "agents": "https://mycyi1994-hash.github.io/forecast-league/agents.json"
+}
