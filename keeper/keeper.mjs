@@ -113,9 +113,28 @@ function parseArgs(argv) {
 function print(obj) { console.log(JSON.stringify(obj, null, 2)); }
 function fail(message) { print({ ok: false, error: message }); process.exit(1); }
 
+/** Addresses that submitted a forecast in an epoch, and which of them are not in the record yet. */
+async function submitters(epoch) {
+  const total = Number(slot(await call(CORE, SEL.totalCards), 0));
+  const owners = (await multicall(Array.from({ length: total }, (_, i) => ({ to: CORE, data: SEL.ownerOf + word(i + 1) }))))
+    .map((r) => '0x' + r.slice(26));
+  const res = await multicall(owners.flatMap((o) => [
+    { to: CORE, data: SEL.submissionOf + addrWord(o) + word(epoch) },
+    { to: SCORER, data: SEL.scored + addrWord(o) + word(epoch) },
+  ]));
+  const submitted = owners.filter((_, i) => slot(res[i * 2], 3) !== 0n);
+  const todo = owners.filter((_, i) => slot(res[i * 2], 3) !== 0n && slot(res[i * 2 + 1], 0) === 0n);
+  return { cards: total, submitted, todo };
+}
+
 async function cmdSettle(epoch, now) {
   const lockAt = (epoch + 1) * 86400; const targetAt = lockAt + HORIZON;
   if (now <= targetAt) fail(`Too early. Epoch ${epoch} can be settled after ${new Date(targetAt * 1000).toISOString()}.`);
+  const { submitted } = await submitters(epoch);
+  if (submitted.length === 0) {
+    print({ ok: true, action: 'settle', epoch, submitted: 0, calls: [], note: 'Nobody submitted a forecast in this epoch, so there is nothing to settle.' });
+    return;
+  }
   const calls = [];
   for (let f = 0; f < FEEDS.length; f++) {
     const [pair, feed] = FEEDS[f];
@@ -131,19 +150,19 @@ async function cmdSettle(epoch, now) {
       targetRound: { id: rt.toString(), updatedAt: new Date((await updatedAt(feed, rt)) * 1000).toISOString() },
     });
   }
-  print({ ok: true, action: 'settle', epoch, lockAt: new Date(lockAt * 1000).toISOString(), targetAt: new Date(targetAt * 1000).toISOString(), calls });
+  print({ ok: true, action: 'settle', epoch, submitted: submitted.length, lockAt: new Date(lockAt * 1000).toISOString(), targetAt: new Date(targetAt * 1000).toISOString(), calls });
 }
 
 async function cmdScore(epoch) {
-  const total = Number(slot(await call(CORE, SEL.totalCards), 0));
-  const owners = (await multicall(Array.from({ length: total }, (_, i) => ({ to: CORE, data: SEL.ownerOf + word(i + 1) }))))
-    .map((r) => '0x' + r.slice(26));
-  const res = await multicall(owners.flatMap((o) => [
-    { to: CORE, data: SEL.submissionOf + addrWord(o) + word(epoch) },
-    { to: SCORER, data: SEL.scored + addrWord(o) + word(epoch) },
-  ]));
-  const todo = owners.filter((_, i) => slot(res[i * 2], 3) !== 0n && slot(res[i * 2 + 1], 0) === 0n);
-  const submitted = owners.filter((_, i) => slot(res[i * 2], 3) !== 0n).length;
+  const { cards, submitted, todo } = await submitters(epoch);
+  // scoreMany skips addresses it cannot score, so its simulation succeeds even when nothing
+  // would be written. Check that every pair of the round is final before offering the calls.
+  const finals = await Promise.all([0, 1, 2].map(async (f) => slot(await call(SCORER, SEL.roundOf + word(epoch) + word(f)), 5) === 1n));
+  if (!finals.every(Boolean)) {
+    print({ ok: true, action: 'score', epoch, cards, submitted: submitted.length, alreadyScored: submitted.length - todo.length, calls: [],
+      note: 'The round is not final yet for every pair. Settle it first; it becomes final 30 minutes after settlement.' });
+    return;
+  }
   const calls = [];
   for (let i = 0; i < todo.length; i += SCORE_BATCH) {
     const part = todo.slice(i, i + SCORE_BATCH);
@@ -152,7 +171,7 @@ async function cmdScore(epoch) {
     try { await call(SCORER, inputData); } catch (e) { simulation = `would fail: ${e.message} ${e.data || ''}`; }
     calls.push({ to: SCORER, value: '0', inputData, agents: part.length, simulation });
   }
-  print({ ok: true, action: 'score', epoch, cards: total, submitted, alreadyScored: submitted - todo.length, calls });
+  print({ ok: true, action: 'score', epoch, cards, submitted: submitted.length, alreadyScored: submitted.length - todo.length, calls });
 }
 
 async function cmdBlitz(now) {

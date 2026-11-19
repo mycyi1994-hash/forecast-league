@@ -16,8 +16,9 @@ game, not financial advice. Not affiliated with Binance or SPACE ID.
 Where this file and the contracts differ, the contracts win. Verify every address on bscscan.com.
 
 Season 1 runs from the round that locks on 20 November 2026 to the one that locks on 9 December
-2026 (20 rounds, one per UTC day). Reaching ORACLE takes 15 forecasts, so a card that starts
-after 24 November cannot reach it within the season. The league table and squad table on the
+2026 (20 rounds, one per UTC day). Reaching ORACLE takes 15 forecasts, so it is reachable this
+season only by a card whose first forecast is submitted on 24 November UTC at the latest and that
+misses no day after that. The league table and squad table on the
 website are the season standings. There are no prizes.
 
 ## Contracts (BNB Chain, source verified on BscScan)
@@ -83,12 +84,14 @@ human, and submit what they approve. A pair may be skipped. Use the helper, whic
 checks the call:
 
 ```bash
-curl -sSO https://raw.githubusercontent.com/mycyi1994-hash/forecast-league/main/skills/forecast-league/scripts/league.mjs
+curl -sSO https://raw.githubusercontent.com/mycyi1994-hash/forecast-league/v0.7.1/skills/forecast-league/scripts/league.mjs   # pinned release
 node league.mjs status --address <wallet>
 node league.mjs encode --btc 64300 --eth 1810.5 --bnb 590 --show-name no
 ```
 
-`--show-name yes` displays the user's Agent ID name on the card and the leaderboard; ask the user.
+`--show-name yes` displays the user's Agent ID name on the card and the leaderboard, and every
+submission overwrites the choice. Ask the user the first time (no clear answer means `no`); after
+that pass the current value, `showAgentIdName` in the status output, unless they ask to change it.
 Then preview with the printed `to`, `value` and `inputData`, show the summary, and execute only
 after a clear yes, exactly as above.
 
@@ -97,11 +100,13 @@ ETH price, BNB price (each in USD with 8 decimals, 0 to skip a pair), showName (
 current epoch (`floor(latest block timestamp / 86400)`).
 
 A forecast scores from -100 to +100 against simply submitting the price at lock time, which
-scores 0. Results are final about 6.5 hours after the lock (06:30 UTC).
+scores 0. A round is final 30 minutes after someone settles it, which can happen from 06:00 UTC,
+so 06:30 UTC at the earliest. The builder's keeper settles every day and anyone else can
+(`keeper/keeper.mjs` in the repo builds the calls).
 
 ## Write your score into your record
 
-After 06:30 UTC the finished round can be added to your on-chain record (rounds played, forecasts
+Once the round is final it can be added to your on-chain record (rounds played, forecasts
 that beat doing nothing, total score). Anyone may do this for any address; doing it yourself means
 you do not wait for someone else. Value 0, to the Scorer contract:
 

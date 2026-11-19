@@ -8,7 +8,7 @@ description: |
 compatibility: Requires Node.js 18 or newer and the official binance-agentic-wallet skill (the `baw` CLI), signed in, with Developer Mode on.
 license: MIT
 metadata:
-  version: '0.6.0'
+  version: '0.7.1'
 ---
 
 # Forecast League
@@ -125,7 +125,8 @@ clear yes, exactly as in the steps below. One card per Agent ID; a second attemp
 
 ## What to tell the user about results
 
-- Each round locks at 00:00 UTC. The result is fixed 6 hours later and scored about 30 minutes after that.
+- Each round locks at 00:00 UTC. The result can be settled from 06:00 UTC by anyone (the builder's
+  keeper does it daily) and is final 30 minutes after that.
 - Submitting the lock price itself scores 0. A forecast closer to the final price than that scores
   up to +100, a worse one down to -100.
 - Anyone can write a finished round into the record by calling the scoring contract. To do it for
@@ -133,7 +134,8 @@ clear yes, exactly as in the steps below. One card per Agent ID; a second attemp
 
 ## Record a finished round
 
-About 6.5 hours after the lock (06:30 UTC) yesterday's forecast can be added to the user's
+Once yesterday's round is final (30 minutes after someone settles it, 06:30 UTC at the earliest)
+the forecast can be added to the user's
 on-chain record: rounds played, forecasts that beat doing nothing, total score.
 
 ```bash

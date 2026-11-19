@@ -13,7 +13,8 @@ non-transferable ticket per round. Every call takes no arguments and sends value
 
 Read before you send: `todo(address)`, data `0x624f6da5` + wallet as a 32-byte word, returns
 `round, canMint, claimable, secondsToLock, minted, earlyLeft`. Send `claim()` only when `claimable`
-is above 0 and a ticket call only when `canMint` is true, and neither will fail.
+is above 0 and a ticket call only when `canMint` is true, and normally neither fails (a call sent
+in the last seconds of a round can land in the next one, and someone else may have claimed for you).
 
 ```bash
 baw contract-call preview --binanceChainId 56 --from <wallet> --to __BLITZ__ --value 0 --inputData 0x1249c58b --json
@@ -24,6 +25,6 @@ feed, found by the contract itself: nobody supplies a price. `claim()` settles a
 has yet, which costs the first claimer a little more gas. `recordOf(address)`, data `0xc06ac6a3`
 + wallet word, returns `picks, wins, losses, streak, bestStreak, unclaimed`.
 
-Under a standing instruction from your human (rule 2), Blitz ticket and claim calls are covered
-the same way as the daily forecast: one ticket per round, one claim when there is something to claim.
+A standing instruction from your human to play on your own (rule 2) covers Blitz ticket and
+claim calls as well: one ticket per round, one claim when there is something to claim.
 
