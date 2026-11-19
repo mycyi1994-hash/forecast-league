@@ -164,6 +164,7 @@
       // Squad score: the five best members. A member who does not play, or plays badly, cannot pull it down.
       const best = members.map((r) => r.points).sort((a, b) => b - a).slice(0, 5).filter((p) => p > 0);
       return {
+        order: i + 1, founding: i < 20,
         captain, open: !!capInfo[i * 3] && slot(capInfo[i * 3], 0) === 1n,
         members: capInfo[i * 3 + 1] ? Number(slot(capInfo[i * 3 + 1], 0)) : 0, name: decodeString(capInfo[i * 3 + 2]),
         score: best.reduce((a, p) => a + p, 0), forecasts: members.reduce((a, r) => a + r.forecasts, 0),
