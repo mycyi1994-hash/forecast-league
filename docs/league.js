@@ -208,11 +208,16 @@
       ...ids.map((id) => ({ to: BLITZ, data: SEL.bTicket + word(id) }))]));
     const minted = Number(slot(tickets[0], 0));
     let up = 0; let down = 0; const owners = [];
+    const now = new Set(); const before = new Set(); // players of the open round and of the one before it
     tickets.slice(1).forEach((t) => {
       if (!t) return;
       const owner = '0x' + t.slice(26, 66); if (!owners.includes(owner)) owners.push(owner);
-      if (Number(slot(t, 1)) === round) { if (slot(t, 2) === 1n) up++; else down++; }
+      const r = Number(slot(t, 1));
+      if (r === round) { now.add(owner); if (slot(t, 2) === 1n) up++; else down++; }
+      if (r === round - 1) before.add(owner);
     });
+    // Of the players of the previous round, how many have a ticket in the open one so far.
+    const returning = [...before].filter((o) => now.has(o)).length;
     const recs = await multicall(owners.map((o) => ({ to: BLITZ, data: SEL.bRecordOf + addrWord(o) })));
     const nameOf = {}; cardRows.forEach((r) => { if (r.name && r.owner) nameOf[r.owner.toLowerCase()] = r.name; });
     const table = owners.map((owner, i) => {
@@ -222,7 +227,8 @@
         streak: Number(slot(r, 3)), best: Number(slot(r, 4)), unclaimed: Number(slot(r, 5)),
       };
     }).sort((a, b) => (b.wins - b.losses) - (a.wins - a.losses) || b.best - a.best || b.tickets - a.tickets);
-    return { address: BLITZ, supply, players, round, minted, up, down, lockAt: (round + 1) * 21600, table };
+    return { address: BLITZ, supply, players, round, minted, up, down, lockAt: (round + 1) * 21600, table,
+      previousRoundPlayers: before.size, returning };
   }
 
   const api = { load, scoreOf, encodeAggregate3, decodeAggregate3, CORE, SCORER, SQUADS, BLITZ };

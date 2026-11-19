@@ -198,7 +198,10 @@ async function cmdFunnel() {
   const league = createRequire(import.meta.url)('../docs/league.js');
   const d = await league.load();
   print({ ok: true, action: 'funnel', at: new Date(d.now * 1000).toISOString(), ...d.funnel, forecastsInOpenRound: d.submittedToday, squads: d.squads.length,
-    blitz: d.blitz ? { tickets: d.blitz.supply, players: d.blitz.players, ticketsThisRound: d.blitz.minted } : 'not deployed' });
+    squadMembers: d.squads.map((q) => ({ squad: q.name || q.captain, members: q.members })),
+    blitz: d.blitz ? { tickets: d.blitz.supply, players: d.blitz.players, round: d.blitz.round, ticketsThisRound: d.blitz.minted,
+      previousRoundPlayers: d.blitz.previousRoundPlayers, returnedThisRound: d.blitz.returning,
+      returnRate: d.blitz.previousRoundPlayers ? Math.round(100 * d.blitz.returning / d.blitz.previousRoundPlayers) + '%' : 'n/a' } : 'not deployed' });
 }
 
 const args = parseArgs(process.argv.slice(2));

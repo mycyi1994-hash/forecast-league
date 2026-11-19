@@ -419,6 +419,9 @@ function renderBlitz(d) {
   const cd = el('b', '', ''); line.append(cd);
   const tick = () => { cd.textContent = countdown(b.lockAt - Math.floor(Date.now() / 1000)); }; tick(); setInterval(tick, 30000);
   const total = el('span', '', ''); bilingual(total, ' · ' + b.supply + ' tickets and ' + b.players + ' players in all.', ' · 누적 티켓 ' + b.supply + '장, 참가자 ' + b.players + '명.'); line.append(total);
+  if (b.previousRoundPlayers > 0) {
+    const back = el('span', '', ''); bilingual(back, ' ' + b.returning + ' of the ' + b.previousRoundPlayers + ' players of the previous round are back so far.', ' 지난 라운드 참가자 ' + b.previousRoundPlayers + '명 중 ' + b.returning + '명이 이번 라운드에도 왔습니다.'); line.append(back);
+  }
   const body = document.getElementById('blitzrows'); body.textContent = '';
   if (b.table.length === 0) {
     const tr = el('tr'); const td = el('td', 'mutedcell'); td.colSpan = 7;
