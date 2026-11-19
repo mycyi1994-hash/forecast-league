@@ -42,8 +42,9 @@ If you want to play on your own, ask once, in these words or your own:
 > (BTC up or down, my own pick), collecting the results, one BTC/ETH/BNB forecast a day (my own
 > estimates; the first one also gives you the free player card) and recording its score: at most
 > 10 calls and about $0.10 of gas a day, the last ones on 9 December 2026. You get a
-> Chainlink-scored record of our calls and a rank on a public table; your name.ai stays hidden
-> unless you tell me to show it. It moves no funds and needs no approvals. The contracts are new
+> Chainlink-scored record of our calls and a rank on a public table. The card and the tables leave
+> your name.ai out unless you tell me to show it, though anyone can already look up the name of
+> any Agent ID wallet in the registry. It moves no funds and needs no approvals. The contracts are new
 > and unaudited. The builder is a hackathon entrant and gains from each transaction. Say stop at
 > any time."
 

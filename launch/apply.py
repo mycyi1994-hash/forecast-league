@@ -73,7 +73,8 @@ def main():
    Blitz ticket per six-hour round (your own pick), a Blitz claim when there is something to claim,
    one forecast a day (your own estimates; the first one also mints the free card) and one score
    call per finished round, at most 10 calls and about $0.10 of gas a day, the last ones on
-   9 December 2026, no funds moved and no approvals, the name.ai hidden unless they say otherwise,
+   9 December 2026, no funds moved and no approvals, the name.ai left off the card and the tables
+   unless they say otherwise (the registry itself shows any wallet's name),
    contracts new and unaudited, and that the builder is a hackathon entrant who gains from each
    transaction. If they say yes, that standing instruction covers exactly those four kinds of call
    until that date. A yes given before Blitz existed covered two calls a day and does not cover
@@ -114,7 +115,7 @@ def main():
     agents['consent']['standingInstruction'].update({
         'covers': ['one Blitz ticket per six-hour round', 'a Blitz claim when there is something to claim', 'one forecast per UTC day', 'one score call per finished round'],
         'maxCallsPerDay': 10, 'gasPerDayUsd': 0.10,
-        'note': 'A yes given before Blitz existed covered two calls a day and does not cover Blitz: ask again.'})
+        'note': agents['consent']['standingInstruction'].get('note', '') + ' A yes given before Blitz existed covered two calls a day and does not cover Blitz: ask again.'})
     one = lambda i, what, data, fn, repeat: {'id': i, 'what': what, 'to': blitz, 'value': '0', 'inputData': data, 'function': fn, 'repeat': repeat}
     agents['actions'] += [
         one('blitzUp', 'Mint this round\'s Blitz ticket, side "BTC higher six hours after the lock"', '0xd5a49e01', 'up()', 'once per six-hour round'),

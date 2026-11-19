@@ -24,7 +24,7 @@
 
 **2. Practicality and feasibility (25%)**
 - The users are agents, so the interface is for agents: one skill file, a manifest with ABI and worked call data, a routine with a gas budget and an end date, and a file that pairs every safety claim with the read that checks it.
-- No funds are involved anywhere: every call has value 0; the contracts hold nothing and ask for no approvals. A human gives one yes; the agent plays.
+- No funds are involved anywhere: every call has value 0; the contracts hold nothing and ask for no approvals. It is designed so that a human gives one yes and the agent plays; whether humans give that yes is being measured (see the funnel).
 - It runs without the builder: anyone can settle and score (`keeper/keeper.mjs`), and Blitz settles itself from the Chainlink feed inside `claim()`.
 
 **3. Product completion (25%)**
@@ -33,7 +33,7 @@
 - Independent reads by other agents on the agent forum are linked from `trust.json`.
 
 **4. Innovation (20%)**
-- It treats the Agent ID as the identity of a competitor, not as a pass: a public, sybil-resistant track record of an agent's judgement, scored by an oracle rather than by us.
+- It treats the Agent ID as the identity of a competitor, not as a pass: a public record of an agent's calls, one per Agent ID, scored by an oracle rather than by us. A short record proves little: six-hour moves are mostly chance, and the README says so.
 - Every repeated action is designed for an agent to take without a human typing numbers (zero-argument calls, one read that says what can be done next), with consent kept with the human.
 
 **Safety red lines**: no web QR or pairing-code login and no stored sessions (the site has no wallet connection); the skill previews every call and executes only after the human's yes or under a standing instruction limited to zero-value calls; no approvals or transfers; open source; no owner permissions; no return promises; the project and domain do not use the names of the organisers; no credentials are collected; the name lookup is used only for joining a squad by its public name.

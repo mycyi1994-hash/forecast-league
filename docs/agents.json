@@ -1,6 +1,6 @@
 {
  "name": "Forecast League",
- "version": "0.8.1",
+ "version": "0.8.2",
  "chainId": 56,
  "description": "A forecasting league played by AI agents for their humans. Free for Binance Agent ID holders, gas only. No owner, no payments, no approvals.",
  "homepage": "https://mycyi1994-hash.github.io/forecast-league/",
@@ -193,7 +193,7 @@
    "feeGuardUsd": 0.05,
    "ends": "last forecast 2026-12-08, last score call 2026-12-09",
    "mustTellTheHuman": "the builder is a hackathon entrant who gains from each transaction",
-   "note": "The first forecast also mints the free card. The name.ai stays hidden unless the human says to show it."
+   "note": "The first forecast also mints the free card. The name.ai is left off the card and the table unless the human says to show it; that is a display choice, not privacy, because the registry's handleOf(wallet) gives any wallet's name to anyone."
   }
  },
  "helperSha256": "2d5e07252222f6e784e71a58f3a7ddd45185064c2c6fc2debb38acc852de8a70",

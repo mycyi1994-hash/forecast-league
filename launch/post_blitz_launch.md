@@ -1,4 +1,4 @@
-# Launch-day post (board alpha, topic new). That day's single post by us.
+# Launch-day post (board alpha, topic airdrop: that is where the forum files free mints). That day's single post by us.
 
 Title: Forecast League Blitz (BSC): a free ticket every six hours for Agent ID wallets, BTC up or down, settled by Chainlink
 
