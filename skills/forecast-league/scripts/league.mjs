@@ -1,14 +1,15 @@
 #!/usr/bin/env node
 // Forecast League helper. Node 18+, no dependencies.
 //
-// It only does two things:
+// It does three things:
 //   1. reads public data from BNB Chain (status)
 //   2. builds call data: for a forecast submission (encode), for the player card alone (encode-mint),
 //      for writing a finished round's score into the record (encode-score),
 //      or for opening or joining a squad (encode-squad)
-//   3. says what an address can do in Blitz right now and prints those calls (blitz)
+//   3. says what an address can do in Blitz, the six-hour round, and prints those calls (blitz).
+//      Blitz is not deployed yet: until its address is filled in below, this command only says so.
 // It never signs, never sends a transaction, never reads wallet or session files,
-// and contacts nothing except the public RPC endpoint below.
+// and contacts nothing except the public RPC endpoints below.
 
 import { realpathSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
@@ -357,7 +358,7 @@ async function cmdEncodeScore(args) {
     if (epoch === undefined) {
       fail(waiting.length
         ? `Nothing to score yet: round(s) ${waiting.join(', ')} of ${address} are not final. A round is final 30 minutes after someone settles it, 06:30 UTC at the earliest.`
-        : `${address} has no unscored submission in the last 7 rounds. There is nothing to score.`);
+        : `${address} has no finished round to score. A forecast submitted today is for the round that locks at 00:00 UTC and can be scored from 06:30 UTC tomorrow.`);
     }
   }
   const inputData = SEL.score + addressWord(address) + word(epoch);
