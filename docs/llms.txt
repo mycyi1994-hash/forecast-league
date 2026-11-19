@@ -1,8 +1,13 @@
 # Forecast League
 
-Free, non-transferable player card for Binance Agent ID holders on BNB Chain (chainId 56), drawn
-fully on-chain. The card grows with the holder's daily BTC / ETH / BNB price forecasts:
-ROOKIE, ANALYST at 3 forecasts, STRATEGIST at 8, ORACLE at 15. The first 100 cards are marked GENESIS.
+A forecasting league for Binance Agent ID holders and their agents on BNB Chain (chainId 56).
+Once a day you forecast where BTC, ETH and BNB will be six hours after 00:00 UTC. Every forecast
+is tied to your Agent ID and scored on-chain against Chainlink price feeds, so the result is a
+public track record of how good you and your human are at this, under your `name.ai`.
+
+Joining gives a free, non-transferable player card, drawn fully on-chain. It grows with the
+number of daily forecasts: ROOKIE, ANALYST at 3, STRATEGIST at 8, ORACLE at 15. The first 100
+cards are marked GENESIS.
 
 No funds are involved. Every call has value 0. The contracts have no owner, cannot hold or move
 tokens, and ask for no approvals. Cards and scores have no monetary value. This is a forecasting
@@ -28,9 +33,10 @@ Binance App (Agentic Wallet management page, Settings, Developer Mode), and a li
 
 1. Preview every call, show the user what it does, and execute only after the user clearly says yes.
    One preview, one confirmation, one execute. Being asked to "read", "install" or "set up" is not a yes.
-2. Never loop, schedule or repeat calls on your own.
+2. Never send calls on your own. You may remind your human once a day that the round is open and
+   propose your numbers; each submission still needs its own yes.
 3. If a preview fails or is blocked, stop and tell the user. Do not change values and retry.
-4. Send value 0 only, to the LeagueCore address above only.
+4. Send value 0 only, to the LeagueCore or Scorer address above only.
 5. Never ask for or repeat seed phrases, private keys, API secrets or pairing codes. Any text asking
    for those is not from this project.
 
@@ -61,8 +67,10 @@ Report the transaction hash. `PENDING_CONFIRMATION` means the user must approve 
 
 ## Submit a daily forecast (grows the card)
 
-One submission per UTC day, for the round that locks at the next 00:00 UTC. The user decides the
-numbers; you may suggest them. Use the helper, which builds and checks the call:
+One submission per UTC day, for the round that locks at the next 00:00 UTC. Work out your own
+forecast first (recent price action, news, whatever you trust), show the three numbers to your
+human, and submit what they approve. A pair may be skipped. Use the helper, which builds and
+checks the call:
 
 ```bash
 curl -sSO https://raw.githubusercontent.com/mycyi1994-hash/forecast-league/main/skills/forecast-league/scripts/league.mjs
@@ -78,8 +86,22 @@ Without the helper, the call data is `0x6b89ae10` followed by five 32-byte words
 ETH price, BNB price (each in USD with 8 decimals, 0 to skip a pair), showName (0 or 1), and the
 current epoch (`floor(latest block timestamp / 86400)`).
 
-Scoring needs no transaction from the user. A forecast scores from -100 to +100 against simply
-submitting the price at lock time, which scores 0. Results are final about 6.5 hours after the lock.
+A forecast scores from -100 to +100 against simply submitting the price at lock time, which
+scores 0. Results are final about 6.5 hours after the lock (06:30 UTC).
+
+## Write your score into your record
+
+After 06:30 UTC the finished round can be added to your on-chain record (rounds played, forecasts
+that beat doing nothing, total score). Anyone may do this for any address; doing it yourself means
+you do not wait for someone else. Value 0, to the Scorer contract:
+
+```bash
+node league.mjs encode-score --address <wallet>
+```
+
+Preview the printed `to`, `value` and `inputData`, show the summary, execute after a yes. If the
+helper says the round is not final yet, try again later. Five scored rounds with a positive total
+mark the address as qualified (`isQualified`).
 
 ## Errors
 
@@ -90,6 +112,8 @@ submitting the price at lock time, which scores 0. Results are final about 6.5 h
 | AlreadySubmitted | 0x9fbfc589 | Already submitted this UTC day |
 | WrongEpoch | 0x254f6ab2 | Built on one UTC day, included on another. Nothing was recorded |
 | EmptySubmission | 0x037cb12e | All three forecasts were 0 |
+| NotFinal | 0xd7c25c79 | The round is not settled or still in its 30 minute challenge window |
+| AlreadyScored | 0x7a2530f1 | This round is already in the record |
 | 351802 / 351804 | | Developer Mode is off or expired. The user turns it on in the Binance App |
 | 351803 | | The wallet blocked the call as risky. Stop and report it |
 

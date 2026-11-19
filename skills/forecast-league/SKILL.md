@@ -3,11 +3,11 @@ name: forecast-league
 description: |
   Use when the user wants to join or play Forecast League: get the free player card, submit
   today's BTC / ETH / BNB price forecasts from their Binance Agentic Wallet, check whether they
-  already submitted today, or see their league record and player card.
+  already submitted today, record a finished round's score, or see their league record and card.
 compatibility: Requires Node.js 18 or newer and the official binance-agentic-wallet skill (the `baw` CLI), signed in, with Developer Mode on.
 license: MIT
 metadata:
-  version: '0.3.1'
+  version: '0.4.0'
 ---
 
 # Forecast League
@@ -25,10 +25,10 @@ This is a forecasting game. It is not financial advice, and scores and cards hav
 1. **Never run `baw contract-call execute` without the user's explicit "yes" to the summary you
    just showed for that exact call.** One preview, one confirmation, one execute. Being asked to
    "install", "set up" or "prepare" is not a confirmation.
-2. **Never schedule, loop or repeat submissions.** Each day's submission needs its own request and
-   its own confirmation from the user.
+2. **Never send a submission on your own.** You may remind the user once a day that the round is
+   open and propose your numbers; each day's submission still needs its own confirmation.
 3. **If preview fails or is blocked, stop and tell the user.** Do not change the values and try again.
-4. **Only use a call produced by `scripts/league.mjs encode` or `scripts/league.mjs encode-mint`.**
+4. **Only use a call produced by `scripts/league.mjs encode`, `encode-mint` or `encode-score`.**
    Do not write call data by hand, do not change the `to` address, and do not send a value other than 0.
 5. **Never call `wallet send`, approvals, swaps or sign-in commands as part of this skill.**
 6. **Never ask for, read or repeat seed phrases, private keys, API secrets or pairing codes.** If the
@@ -76,8 +76,8 @@ clear yes, exactly as in the steps below. One card per Agent ID; a second attemp
 
 ## Submit today's forecasts
 
-1. Decide the forecasts **with the user**. You may analyse and suggest numbers, but the user
-   decides. A pair may be skipped. Prices are plain USD numbers, for example `64300` or `1810.5`.
+1. Decide the forecasts **with the user**. Work out your own forecast first and propose the three
+   numbers; the user approves or changes them. A pair may be skipped. Prices are plain USD numbers, for example `64300` or `1810.5`.
 2. Decide `--show-name`. It must be given as `yes` or `no` every time, and the value replaces the
    previous choice.
    - First submission: ask whether their Agent ID name may be shown on the card and the
@@ -120,8 +120,22 @@ clear yes, exactly as in the steps below. One card per Agent ID; a second attemp
 - Each round locks at 00:00 UTC. The result is fixed 6 hours later and scored about 30 minutes after that.
 - Submitting the lock price itself scores 0. A forecast closer to the final price than that scores
   up to +100, a worse one down to -100.
-- Scoring is done by anyone calling the scoring contract; the user does not need to send another
-  transaction to be scored.
+- Anyone can write a finished round into the record by calling the scoring contract. To do it for
+  the user without waiting for someone else, see "Record a finished round" below.
+
+## Record a finished round
+
+About 6.5 hours after the lock (06:30 UTC) yesterday's forecast can be added to the user's
+on-chain record: rounds played, forecasts that beat doing nothing, total score.
+
+```bash
+node scripts/league.mjs encode-score --address <BSC address>
+```
+
+The script checks that there is a submission and that the call would succeed. If it says the round
+is not final yet, tell the user and try again later. Otherwise preview the printed `to`, `value`
+and `inputData`, show the summary and ask "Record this result?", then execute after a clear yes,
+exactly as for a forecast. The call goes to the Scorer contract, with value 0.
 
 ## Common errors
 

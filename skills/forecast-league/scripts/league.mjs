@@ -3,7 +3,8 @@
 //
 // It only does two things:
 //   1. reads public data from BNB Chain (status)
-//   2. builds call data: for a forecast submission (encode) or for the player card alone (encode-mint)
+//   2. builds call data: for a forecast submission (encode), for the player card alone (encode-mint),
+//      or for writing a finished round's score into the record (encode-score)
 // It never signs, never sends a transaction, never reads wallet or session files,
 // and contacts nothing except the public RPC endpoint below.
 
@@ -29,6 +30,7 @@ const CONFIG = {
 const SEL = {
   submit: '0x6b89ae10', // submit(uint64[3],bool,uint32)
   mint: '0x1249c58b', // mint()
+  score: '0xa2f93a8f', // score(address,uint32) on the Scorer
   currentEpoch: '0x76671808',
   cardOf: '0x48e748a0',
   showName: '0xfeeb4e45',
@@ -295,6 +297,52 @@ async function cmdStatus(args) {
   console.log(JSON.stringify(out, null, 2));
 }
 
+async function cmdEncodeScore(args) {
+  if (CONFIG.scorer.toLowerCase() === ZERO) fail('The scorer contract address is not configured yet.');
+  const address = args.address === true ? undefined : args.address;
+  if (!address) fail('Give --address <wallet whose forecast should be scored>.');
+  const now = await chainTime();
+  const epoch = args.epoch !== undefined && args.epoch !== true ? Number(args.epoch) : Math.floor(now / 86400) - 1;
+  if (!Number.isInteger(epoch) || epoch < 0) fail('--epoch must be a whole number.');
+  const sub = await call(CONFIG.core, SEL.submissionOf + addressWord(address) + word(epoch));
+  if (slot(sub, 3) === 0n) fail(`${address} made no submission in epoch ${epoch}. There is nothing to score.`);
+  const inputData = SEL.score + addressWord(address) + word(epoch);
+  // Dry run, so a call that would fail is never handed to the wallet.
+  try {
+    await rpc('eth_call', [{ from: address, to: CONFIG.scorer, data: inputData }, 'latest']);
+  } catch (e) {
+    const resultAt = new Date(((epoch + 1) * 86400 + 6.5 * 3600) * 1000).toISOString();
+    fail(
+      `Scoring epoch ${epoch} would fail right now (${e.message}). Either it is already scored, or the round is ` +
+        `not final yet. Results are final about 6.5 hours after the lock, around ${resultAt}.`,
+    );
+  }
+  console.log(
+    JSON.stringify(
+      {
+        ok: true,
+        // Pass these three values to `baw contract-call preview` exactly as they are.
+        binanceChainId: String(CONFIG.chainId),
+        to: CONFIG.scorer,
+        value: '0',
+        inputData,
+        // Show this summary to the user before asking for confirmation.
+        summary: {
+          action: 'Write the score of a finished round into the on-chain record (no funds are sent)',
+          contract: CONFIG.scorer,
+          function: 'score(address agent, uint32 epoch)',
+          agent: address,
+          epoch,
+          valueSent: '0 BNB',
+          note: 'Anyone may call this for any address. It only records the result of a forecast that was already submitted.',
+        },
+      },
+      null,
+      2,
+    ),
+  );
+}
+
 function isMainModule() {
   try {
     return realpathSync(process.argv[1]) === realpathSync(fileURLToPath(import.meta.url));
@@ -309,6 +357,7 @@ if (isMain) {
   try {
     if (command === 'encode') await cmdEncode(args);
     else if (command === 'encode-mint') await cmdEncodeMint(args);
+    else if (command === 'encode-score') await cmdEncodeScore(args);
     else if (command === 'status') await cmdStatus(args);
     else {
       console.log(
@@ -317,6 +366,7 @@ if (isMain) {
           '  node league.mjs status [--address 0xYourAgenticWallet]',
           '  node league.mjs encode [--btc <price>] [--eth <price>] [--bnb <price>] --show-name yes|no',
           '  node league.mjs encode-mint [--address 0xYourAgenticWallet]',
+          '  node league.mjs encode-score --address 0xYourAgenticWallet [--epoch <number>]',
         ].join('\n'),
       );
       process.exit(command ? 1 : 0);
