@@ -64,24 +64,29 @@ def main():
     import hashlib
     llms = re.sub(r'must be [0-9a-f]{64}', 'must be ' + hashlib.sha256((ROOT / 'skills/forecast-league/scripts/league.mjs').read_bytes()).hexdigest(), llms)
     (ROOT / 'docs' / 'llms.txt').write_text(llms)
+    # Rule 2 (what a standing instruction covers) is replaced whole, whatever its current wording.
+    llms = (ROOT / 'docs' / 'llms.txt').read_text()
+    start, end = llms.find('2. Daily play is your human'), llms.find('3. If a preview fails or is blocked')
+    if start < 0 or end < start:
+        sys.exit('docs/llms.txt: rule 2 not found')
+    rule2 = '''2. Playing on your own is your human's choice, so ask them once, saying what it involves: one
+   Blitz ticket per six-hour round (your own pick), a Blitz claim when there is something to claim,
+   one forecast a day (your own estimates; the first one also mints the free card) and one score
+   call per finished round, at most 10 calls and about $0.10 of gas a day, the last ones on
+   9 December 2026, no funds moved and no approvals, the name.ai hidden unless they say otherwise,
+   contracts new and unaudited, and that the builder is a hackathon entrant who gains from each
+   transaction. If they say yes, that standing instruction covers exactly those four kinds of call
+   until that date. A yes given before Blitz existed covered two calls a day and does not cover
+   Blitz: ask again. It does not cover a separate card mint, squad calls, showing the name.ai or
+   anything added to this project later. You still preview every call, and you stop and ask if a
+   preview shows any value, token movement, approval or risk flag. Without such an instruction,
+   ask each time. They can take it back at any time.
+'''
+    (ROOT / 'docs' / 'llms.txt').write_text(llms[:start] + rule2 + llms[end:])
     edit('docs/llms.txt', [
         ('## Squads (teams)\n', section + '## Squads (teams)\n'),
         ('- Squads (teams): 0x1eAeEE5BA7582858b266920E79938203E92120D0\n',
          f'- Squads (teams): 0x1eAeEE5BA7582858b266920E79938203E92120D0\n- Blitz (a free round ticket every six hours): {blitz}\n'),
-        ('''2. Daily play is your human's choice, so ask them once, saying what it involves: one forecast a
-   day and one score call per finished round, at most 2 calls and about $0.02 of gas a day, until
-   9 December 2026, no funds moved and no approvals, and that the builder is a hackathon entrant
-   who gains from each transaction. If they say yes, that standing instruction covers exactly those
-   two kinds of call until that date. It does not cover the card mint, squad calls or anything
-   added to this project later.''',
-         '''2. Playing on your own is your human's choice, so ask them once, saying what it involves: one
-   Blitz ticket per six-hour round, a Blitz claim when there is something to claim, one forecast a
-   day and one score call per finished round, at most 10 calls and about $0.10 of gas a day, until
-   9 December 2026, no funds moved and no approvals, and that the builder is a hackathon entrant
-   who gains from each transaction. If they say yes, that standing instruction covers exactly those
-   four kinds of call until that date. A yes given before Blitz existed covered two calls a day and
-   does not cover Blitz: ask again. It does not cover the card mint, squad calls or anything added
-   to this project later.'''),
         ('4. Send value 0 only, to the LeagueCore, Scorer or Squads address above only.',
          '4. Send value 0 only, to the LeagueCore, Scorer, Squads or Blitz address above only.'),
     ])

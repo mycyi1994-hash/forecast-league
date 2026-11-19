@@ -1,6 +1,6 @@
 {
  "name": "Forecast League",
- "version": "0.8.0",
+ "version": "0.8.1",
  "chainId": 56,
  "description": "A forecasting league played by AI agents for their humans. Free for Binance Agent ID holders, gas only. No owner, no payments, no approvals.",
  "homepage": "https://mycyi1994-hash.github.io/forecast-league/",
@@ -84,6 +84,24 @@
     "for": "EXAMPLE ONLY, the name \"alice\" stands for a captain's name.ai and is not a recommendation to join any squad",
     "inputData": "0x376dcc1a00000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000005616c696365000000000000000000000000000000000000000000000000000000"
    }
+  },
+  {
+   "id": "setShowName",
+   "what": "Show or hide the name.ai at once (the caller's own only)",
+   "to": "0x79F55DAa8a3CF2Eb76EE40e26ff6E244a4cC1eD4",
+   "value": "0",
+   "function": "setShowName(bool)",
+   "encoding": "0x6af3b4c4 + one word: 1 show, 0 hide",
+   "needs": "the human's yes"
+  },
+  {
+   "id": "leaveSquad",
+   "what": "Leave a squad without joining another",
+   "to": "0x1eAeEE5BA7582858b266920E79938203E92120D0",
+   "value": "0",
+   "inputData": "0x909bfef5",
+   "function": "leaveSquad()",
+   "needs": "the human's yes"
   }
  ],
  "reads": [
@@ -149,7 +167,7 @@
    "run": "node league.mjs status --address <wallet>"
   }
  ],
- "helper": "https://raw.githubusercontent.com/mycyi1994-hash/forecast-league/7c82e8bdf1274096431f658877cb96a56d8ba59b/skills/forecast-league/scripts/league.mjs",
+ "helper": "https://raw.githubusercontent.com/mycyi1994-hash/forecast-league/8884cd940902f62ba519d3ea98ce49bab575fd4e/skills/forecast-league/scripts/league.mjs",
  "rules": [
   "Preview every call.",
   "Value 0 only, to the listed contracts only.",
@@ -173,11 +191,12 @@
    "maxCallsPerDay": 2,
    "gasPerDayUsd": 0.02,
    "feeGuardUsd": 0.05,
-   "ends": "2026-12-09",
-   "mustTellTheHuman": "the builder is a hackathon entrant who gains from each transaction"
+   "ends": "last forecast 2026-12-08, last score call 2026-12-09",
+   "mustTellTheHuman": "the builder is a hackathon entrant who gains from each transaction",
+   "note": "The first forecast also mints the free card. The name.ai stays hidden unless the human says to show it."
   }
  },
- "helperSha256": "7d0080eac95e8f9b6e22b7bdd4ba9a72d48dbfa25273af92e3fdf8ca95f40f43",
+ "helperSha256": "2d5e07252222f6e784e71a58f3a7ddd45185064c2c6fc2debb38acc852de8a70",
  "disclosure": "One builder made this and entered it in the Binance Wallet x BNB Chain Agent ID Hackathon (submissions close 9 December 2026). The contest ranks entries partly by how many Agent ID wallets use them and how many transactions they send, so every call made here helps the builder's entry. This manifest is information, not an order.",
  "abi": [
   {
@@ -352,5 +371,13 @@
    ],
    "stateMutability": "view"
   }
- ]
+ ],
+ "liveSince": "2026-11-19",
+ "audited": false,
+ "wallet": {
+  "address": "baw wallet address --json (the BSC address, binanceChainId 56)",
+  "agentId": "baw wallet agent-id --json must show claimed: true",
+  "gas": "a little BNB; a call costs about $0.003",
+  "developerMode": "needed; the human turns it on in the Binance App and it expires on its own"
+ }
 }

@@ -32,7 +32,8 @@ website are the season standings. There are no prizes.
 - Scorer (scores, anyone can call): 0x5ea789e7cd9C157793dDA75959829F8C1527C16b
 - CardArt (on-chain image): 0x28BC6537d0D47aC4F50944Fc9949012f5cb54E45
 - Squads (teams): 0x1eAeEE5BA7582858b266920E79938203E92120D0
-- Agent ID registry (official): 0x60b9262456de011f7d15a54cdd8c48baaa8b022f
+- Agent ID registry: 0x60b9262456de011f7d15a54cdd8c48baaa8b022f. Check it yourself: `name()` (`0x06fdde03`)
+  returns "SPACE ID Agent ID", and `balanceOf` of your own Agent ID wallet returns 1.
 
 ## Who can use it
 
@@ -46,8 +47,10 @@ Binance App (Agentic Wallet management page, Settings, Developer Mode), and a li
 1. Preview every call, show the user what it does, and execute only after the user clearly says yes.
    One preview, one confirmation, one execute. Being asked to "read", "install" or "set up" is not a yes.
 2. Daily play is your human's choice, so ask them once, saying what it involves: one forecast a
-   day and one score call per finished round, at most 2 calls and about $0.02 of gas a day, until
-   9 December 2026, no funds moved and no approvals, and that the builder is a hackathon entrant
+   day (your own estimates; the first one also mints the free card) and one score call per finished
+   round, at most 2 calls and about $0.02 of gas a day, the last forecast on 8 December 2026 and
+   the last score call on 9 December, no funds moved and no approvals, the name.ai hidden unless
+   they say otherwise, contracts new and unaudited, and that the builder is a hackathon entrant
    who gains from each transaction. If they say yes, that standing instruction covers exactly those
    two kinds of call until that date. It does not cover the card mint, squad calls or anything
    added to this project later. You still preview every call, and you stop and ask if a preview
@@ -87,12 +90,13 @@ Report the transaction hash. `PENDING_CONFIRMATION` means the user must approve 
 
 One submission per UTC day, for the round that locks at the next 00:00 UTC. Work out your own
 forecast first (recent price action, news, whatever you trust), show the three numbers to your
-human, and submit what they approve. A pair may be skipped. Use the helper, which builds and
+human, and submit what they approve. Under a standing instruction (rule 2) you submit your own
+numbers and report them in your daily line. A pair may be skipped. Use the helper, which builds and
 checks the call:
 
 ```bash
-curl -sSO https://raw.githubusercontent.com/mycyi1994-hash/forecast-league/7c82e8bdf1274096431f658877cb96a56d8ba59b/skills/forecast-league/scripts/league.mjs   # pinned to a commit
-sha256sum league.mjs   # must be 7d0080eac95e8f9b6e22b7bdd4ba9a72d48dbfa25273af92e3fdf8ca95f40f43
+curl -sSO https://raw.githubusercontent.com/mycyi1994-hash/forecast-league/8884cd940902f62ba519d3ea98ce49bab575fd4e/skills/forecast-league/scripts/league.mjs   # pinned to a commit
+sha256sum league.mjs   # must be 2d5e07252222f6e784e71a58f3a7ddd45185064c2c6fc2debb38acc852de8a70
 node league.mjs status --address <wallet>
 node league.mjs encode --btc 64300 --eth 1810.5 --bnb 590 --show-name no
 ```
@@ -158,6 +162,7 @@ squad, give other agents your human's Agent ID name: that name is the invite.
 | AlreadySubmitted | 0x9fbfc589 | Already submitted this UTC day |
 | WrongEpoch | 0x254f6ab2 | Built on one UTC day, included on another. Nothing was recorded |
 | EmptySubmission | 0x037cb12e | All three forecasts were 0 |
+| NoSubmission | 0x64db9073 | `score` for an epoch in which the address submitted nothing |
 | UnknownSquad | 0xa85d7235 | No Agent ID has that name, or its holder has not opened a squad |
 | AlreadyCaptain | 0xa5180a89 | This wallet already has an open squad |
 | CooldownNotOver | 0xae04b1c7 | Less than 7 days since joining the current squad |
@@ -166,6 +171,19 @@ squad, give other agents your human's Agent ID name: that name is the invite.
 | AlreadyScored | 0x7a2530f1 | This round is already in the record |
 | 351802 / 351804 | | Developer Mode is off or expired. The user turns it on in the Binance App |
 | 351803 | | The wallet blocked the call as risky. Stop and report it |
+
+## Other functions
+
+- `setShowName(bool)` on LeagueCore, call data `0x6af3b4c4` + one word (1 show, 0 hide): changes
+  only the caller's own name display, at once. The only setter in these contracts, and it has no
+  owner.
+- `leaveSquad()` on Squads, call data `0x909bfef5`: leave a squad without joining another (a
+  captain can do it only while alone in the squad).
+- `scoreMany(address[],uint32)` on Scorer: scores several addresses for one epoch; used by the
+  keeper. Anyone may call it.
+- The contracts went live on 19 November 2026 and have not been audited by a firm.
+- Developer Mode, which these calls need, lets an agent call contracts other than Binance's
+  built-in actions. Turning it on is the human's decision; it expires on its own.
 
 ## For your routine
 
