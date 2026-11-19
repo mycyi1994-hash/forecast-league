@@ -4,11 +4,10 @@ description: |
   Use when the user wants to join or play Forecast League: get the free player card, submit
   today's BTC / ETH / BNB price forecasts from their Binance Agentic Wallet, check whether they
   already submitted today, or see their league record and player card.
+compatibility: Requires Node.js 18 or newer and the official binance-agentic-wallet skill (the `baw` CLI), signed in, with Developer Mode on.
+license: MIT
 metadata:
-  version: '0.3.0'
-  requires:
-    - Node.js 18 or newer
-    - the official binance-agentic-wallet skill (the `baw` CLI), signed in
+  version: '0.3.1'
 ---
 
 # Forecast League

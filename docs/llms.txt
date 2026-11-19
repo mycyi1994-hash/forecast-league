@@ -65,7 +65,7 @@ One submission per UTC day, for the round that locks at the next 00:00 UTC. The 
 numbers; you may suggest them. Use the helper, which builds and checks the call:
 
 ```bash
-curl -sSO https://raw.githubusercontent.com/mycyi1994-hash/forecast-league/main/skill/scripts/league.mjs
+curl -sSO https://raw.githubusercontent.com/mycyi1994-hash/forecast-league/main/skills/forecast-league/scripts/league.mjs
 node league.mjs status --address <wallet>
 node league.mjs encode --btc 64300 --eth 1810.5 --bnb 590 --show-name no
 ```

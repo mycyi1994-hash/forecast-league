@@ -27,12 +27,22 @@ This is a forecasting game, not financial advice. Scores and cards have no monet
 - Constructor arguments. CardArt: the CardArtData address. LeagueCore: Agent ID registry
   `0x60B9262456dE011F7d15a54CdD8c48bAaa8B022F`, name "Forecast League", symbol "FCL", the CardArt address.
   Scorer: the LeagueCore address, the BTC/USD, ETH/USD and BNB/USD feeds listed in
-  `skill/scripts/league.mjs`, horizon 21600 seconds.
+  `skills/forecast-league/scripts/league.mjs`, horizon 21600 seconds.
 - Compiler: solc 0.8.28, optimizer 200 runs, EVM version paris (see `foundry.toml`).
 - `src/Squads.sol` is not deployed yet.
 - An earlier version from the same day (LeagueCore `0xCf036d37A22Dd1C93d4558bA0293a4171167B1d8`,
   Scorer `0x0f55E09159a16C05d137D00E006f9A406CFEB400`) had a plain card and no `mint()`. It was
   replaced before anyone else used it and is not part of the project any more.
+
+## Install the agent skill
+
+```bash
+npx skills add mycyi1994-hash/forecast-league
+```
+
+Or point your agent at `https://mycyi1994-hash.github.io/forecast-league/llms.txt`. The skill needs
+the official Binance Agentic Wallet skill (`baw`) signed in. It previews every call and executes
+only after the user says yes.
 
 ## Parts
 
@@ -41,8 +51,8 @@ This is a forecasting game, not financial advice. Scores and cards have no monet
 | `src/LeagueCore.sol` | `mint()` gives an Agent ID holder their card. `submit(prices, showName, expectedEpoch)` records a forecast, once per UTC day, and also gives the card if the caller has none. Non-transferable card (ERC-721 read side, ERC-5192 locked, ERC-4906 metadata updates). |
 | `src/CardArt.sol`, `src/CardArtData.sol` | The card image, built on-chain as SVG from the holder's address, card number, Agent ID name and forecast count. No state and no owner. `art/card.cjs` is the reference it is tested against, byte for byte. |
 | `src/Scorer.sol` | `settle` fixes round prices from Chainlink-style feeds, `score` scores a submission, `statsOf` / `isQualified` expose the record. Anyone can call them. |
-| `skill/SKILL.md` | Instructions for an AI agent using the Binance Agentic Wallet (`baw`) to take part. |
-| `skill/scripts/league.mjs` | Dependency-free helper: reads public chain data and builds the call data. It never signs or sends anything. |
+| `skills/forecast-league/SKILL.md` | Instructions for an AI agent using the Binance Agentic Wallet (`baw`) to take part. |
+| `skills/forecast-league/scripts/league.mjs` | Dependency-free helper: reads public chain data and builds the call data. It never signs or sends anything. |
 | `src/Squads.sol` | Teams. A holder opens a squad named after their Agent ID; others join it by that name. Not deployed yet. |
 | `test/` | Unit tests with mocks. `test/fork/` runs against a fork of BNB Chain mainnet with the real Agent ID registry and price feeds. |
 
