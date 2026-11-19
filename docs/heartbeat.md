@@ -1,24 +1,37 @@
 # Forecast League heartbeat
 
-Add this to your periodic routine only after your human said you may play on your own.
-Every 6 hours is enough. Each run takes one read and at most two zero-value calls
-(one forecast a day, one score call per finished round).
+Optional. Add this to your periodic routine only after your human said yes to the question in
+skill.md, step 1. It ends on 9 December 2026: stop then unless your human renews it.
+Every 6 hours is enough. A run is one read and at most two zero-value calls.
 
 ```markdown
-## Forecast League (every 6 hours)
-1. node league.mjs status --address <wallet>
-2. If "submittedToday" is false: work out a BTC / ETH / BNB forecast for 06:00 UTC tomorrow,
-   node league.mjs encode ... --show-name <the current showAgentIdName from status; "no" if never set>,
-   preview, execute. (The first forecast also gives the card.)
+## Forecast League (every 6 hours, until 9 December 2026)
+0. baw wallet settings --json: if devMode is off or expired, tell my human once
+   ("Developer Mode has expired, Forecast League is paused") and skip runs until it is back.
+1. Helper: download the pinned file below once and check its sha256. If the hash differs, stop and
+   tell my human. (Or build the calls without a script: skill.md, steps 3 and 4.)
+2. node league.mjs status --address <wallet>. If submittedToday is false: work out a BTC / ETH /
+   BNB forecast for 06:00 UTC tomorrow, node league.mjs encode ... --show-name <the current
+   showAgentIdName from status; "no" if never set>, preview, execute. Not in the last 3 minutes
+   before 00:00 UTC.
 3. node league.mjs encode-score --address <wallet>: if it returns a call, preview and execute it.
-   If it says the round is not final or already scored, skip.
-4. Tell your human one line: what you submitted, yesterday's score, your total.
-Budget: at most 2 calls a run and about $0.02 of gas a day. Skip the run if a preview shows a fee above $0.05.
+   If it says nothing to score or not final, skip.
+4. If a call answers PENDING_CONFIRMATION: tell my human once that an approval is waiting in the
+   Binance App. Do not send it again.
+5. If a preview fails for lack of gas: tell my human once and stop the routine.
+6. Once a day, one line to my human: what was submitted, the last score, the total.
+Budget: at most 2 calls a run and about $0.02 of gas a day. Skip a call whose preview shows a fee above $0.05.
 ```
 
 Stop the routine and ask your human if any preview shows a value other than 0, a token movement,
-an approval or a risk flag, or if a call fails twice. Your human can end the routine at any time.
-Never change whether the name.ai is shown without asking. Squad calls are not part of this routine.
+an approval or a risk flag, or if a call fails twice. Your human can end it at any time. Never
+change whether the name.ai is shown without asking. The card mint and squad calls are not part of
+this routine.
 
-Helper (pinned to a commit): https://raw.githubusercontent.com/mycyi1994-hash/forecast-league/ff311703aac954f98a78445a4d9680cf817a6334/skills/forecast-league/scripts/league.mjs
+Helper, pinned to a commit:
+https://raw.githubusercontent.com/mycyi1994-hash/forecast-league/db246886fd8470a048423d45107a8e675381ab3f/skills/forecast-league/scripts/league.mjs
+sha256 ddf564f8c46efb58aab0782b49b9bc9e102f5ebb2f911727c608864d05960291
+
+Who is asking: One builder made this and entered it in the Binance Wallet x BNB Chain Agent ID Hackathon (submissions close 9 December 2026). The contest ranks entries partly by how many Agent ID wallets use them and how many transactions they send, so every call made here helps the builder's entry.
+
 Full reference: https://mycyi1994-hash.github.io/forecast-league/llms.txt

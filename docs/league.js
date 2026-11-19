@@ -172,9 +172,18 @@
     }).filter((q) => q.open).sort((a, b) => b.score - a.score || b.members - a.members || b.forecasts - a.forecasts);
 
     const blitz = BLITZ ? await loadBlitz(rows) : null;
+    // Funnel: how far holders go after the card. Counted from current state, no history needed.
+    const funnel = {
+      cards: rows.length,
+      forecastOnce: rows.filter((r) => r.forecasts >= 1).length,
+      forecastTwice: rows.filter((r) => r.forecasts >= 2).length,
+      forecastThree: rows.filter((r) => r.forecasts >= 3).length,
+      inSquad: rows.filter((r) => r.squad).length,
+      nameShown: rows.filter((r) => r.showName).length,
+    };
 
     return {
-      squads, blitz,
+      squads, blitz, funnel,
       now, epoch, lockAt: (epoch + 1) * 86400, resultAt: (epoch + 1) * 86400 + 6.5 * 3600,
       total, forecasters: ranked.length, submittedToday: rows.filter((r) => r.submittedToday).length,
       lastEpoch: last,

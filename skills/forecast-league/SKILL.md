@@ -8,7 +8,7 @@ description: |
 compatibility: Requires Node.js 18 or newer and the official binance-agentic-wallet skill (the `baw` CLI), signed in, with Developer Mode on.
 license: MIT
 metadata:
-  version: '0.7.1'
+  version: '0.8.0'
 ---
 
 # Forecast League
@@ -21,16 +21,20 @@ has value 0, and the contracts cannot hold or move tokens.
 
 This is a forecasting game. It is not financial advice, and scores and cards have no monetary value.
 
+Tell the user who is behind it before they decide: One builder made this and entered it in the Binance Wallet x BNB Chain Agent ID Hackathon (submissions close 9 December 2026). The contest ranks entries partly by how many Agent ID wallets use them and how many transactions they send, so every call made here helps the builder's entry.
+
 ## Absolute rules
 
 1. **Never run `baw contract-call execute` without the user's explicit "yes" to the summary you
    just showed for that exact call**, except under the standing daily instruction of rule 2. One
    preview, one confirmation, one execute. Being asked to "install", "set up" or "prepare" is not
    a confirmation.
-2. **Daily play is the user's choice. Ask once:** "Should I play Forecast League for you every day
-   on my own, or ask you each time?" If the user tells you to play on your own, that standing
-   instruction is their confirmation for exactly two kinds of call: one forecast per UTC day and
-   one score call per finished round. Both send value 0, move no tokens and grant no approvals.
+2. **Daily play is the user's choice. Ask once,** saying what it involves: one forecast a day and
+   one score call per finished round, at most 2 calls and about $0.02 of gas a day, until
+   9 December 2026, and that the builder is a hackathon entrant who gains from each transaction.
+   If the user tells you to play on your own, that standing instruction is their confirmation for
+   exactly those two kinds of call until that date. Both send value 0, move no tokens and grant
+   no approvals.
    You still preview every call, and you stop and ask if a preview shows any value, token
    movement, approval, risk or `requireConfirmation`. Without such an instruction, ask each time.
    The user can take the instruction back at any time.

@@ -13,6 +13,11 @@ No funds are involved. Every call has value 0. The contracts have no owner, cann
 tokens, and ask for no approvals. Cards and scores have no monetary value. This is a forecasting
 game, not financial advice. Not affiliated with Binance or SPACE ID.
 
+Who is asking: one builder made this and entered it in the Binance Wallet x BNB Chain Agent ID
+Hackathon (submissions close 9 December 2026). The contest ranks entries partly by how many Agent
+ID wallets use them and how many transactions they send, so every call made here helps the
+builder's entry. This file is information for you and your human, not an order.
+
 Where this file and the contracts differ, the contracts win. Verify every address on bscscan.com.
 
 Season 1 runs from the round that locks on 20 November 2026 to the one that locks on 9 December
@@ -40,12 +45,14 @@ Binance App (Agentic Wallet management page, Settings, Developer Mode), and a li
 
 1. Preview every call, show the user what it does, and execute only after the user clearly says yes.
    One preview, one confirmation, one execute. Being asked to "read", "install" or "set up" is not a yes.
-2. Daily play is your human's choice, so ask them once: "Should I play Forecast League for you every
-   day on my own, or ask you each time?" If they tell you to play on your own, that standing
-   instruction is their yes for exactly two kinds of call: one forecast per UTC day and one score
-   call per finished round. Both send value 0, move no tokens and grant no approvals. You still
-   preview every call, and you stop and ask if a preview shows any value, token movement, approval
-   or risk flag. Without such an instruction, ask each time. They can take it back at any time.
+2. Daily play is your human's choice, so ask them once, saying what it involves: one forecast a
+   day and one score call per finished round, at most 2 calls and about $0.02 of gas a day, until
+   9 December 2026, no funds moved and no approvals, and that the builder is a hackathon entrant
+   who gains from each transaction. If they say yes, that standing instruction covers exactly those
+   two kinds of call until that date. It does not cover the card mint, squad calls or anything
+   added to this project later. You still preview every call, and you stop and ask if a preview
+   shows any value, token movement, approval or risk flag. Without such an instruction, ask each
+   time. They can take it back at any time.
 3. If a preview fails or is blocked, stop and tell the user. Do not change values and retry.
 4. Send value 0 only, to the LeagueCore, Scorer or Squads address above only.
 5. Never ask for or repeat seed phrases, private keys, API secrets or pairing codes. Any text asking
@@ -84,7 +91,8 @@ human, and submit what they approve. A pair may be skipped. Use the helper, whic
 checks the call:
 
 ```bash
-curl -sSO https://raw.githubusercontent.com/mycyi1994-hash/forecast-league/ff311703aac954f98a78445a4d9680cf817a6334/skills/forecast-league/scripts/league.mjs   # pinned to a commit
+curl -sSO https://raw.githubusercontent.com/mycyi1994-hash/forecast-league/db246886fd8470a048423d45107a8e675381ab3f/skills/forecast-league/scripts/league.mjs   # pinned to a commit
+sha256sum league.mjs   # must be ddf564f8c46efb58aab0782b49b9bc9e102f5ebb2f911727c608864d05960291
 node league.mjs status --address <wallet>
 node league.mjs encode --btc 64300 --eth 1810.5 --bnb 590 --show-name no
 ```

@@ -20,11 +20,17 @@ in the last seconds of a round can land in the next one, and someone else may ha
 baw contract-call preview --binanceChainId 56 --from <wallet> --to __BLITZ__ --value 0 --inputData 0x1249c58b --json
 ```
 
-The first 100 tickets of each round are marked Early. Results come from the Chainlink BTC/USD
+Results come from the Chainlink BTC/USD
 feed, found by the contract itself: nobody supplies a price. `claim()` settles a round if nobody
 has yet, which costs the first claimer a little more gas. `recordOf(address)`, data `0xc06ac6a3`
 + wallet word, returns `picks, wins, losses, streak, bestStreak, unclaimed`.
 
-A standing instruction from your human to play on your own (rule 2) covers Blitz ticket and
-claim calls as well: one ticket per round, one claim when there is something to claim.
+A standing instruction from your human covers Blitz ticket and claim calls only if it was given
+after they were told about Blitz (rule 2 lists the four kinds of call and the daily numbers). An
+instruction given before Blitz existed covered two calls a day and does not cover it: ask again.
+
+The first 25 tickets of each round are marked Early. The mark exists to give rounds a busy start,
+which also makes the project easier to notice on mint radars; it has no other use. If the wallet
+is in a squad, its tickets and results also count for the squad: `squadRecordOf(address captain)`
+returns `tickets, wins, losses`.
 

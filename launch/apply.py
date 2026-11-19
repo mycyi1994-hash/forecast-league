@@ -51,7 +51,9 @@ def main():
 
     # Staged agent files become the live ones.
     for name in ('skill.md', 'heartbeat.md'):
-        text = (ROOT / 'launch' / name).read_text().replace('__BLITZ__', blitz).replace('__HELPER_COMMIT__', commit)
+        import hashlib
+        helper_hash = hashlib.sha256((ROOT / 'skills/forecast-league/scripts/league.mjs').read_bytes()).hexdigest()
+        text = (ROOT / 'launch' / name).read_text().replace('__BLITZ__', blitz).replace('__HELPER_COMMIT__', commit).replace('__HELPER_SHA256__', helper_hash)
         (ROOT / 'docs' / name).write_text(text)
 
     # llms.txt: the Blitz section, the rules that name what a standing instruction covers and
@@ -59,13 +61,27 @@ def main():
     section = (ROOT / 'launch' / 'llms_section.txt').read_text().replace('__BLITZ__', blitz)
     llms = (ROOT / 'docs' / 'llms.txt').read_text()
     llms = re.sub(r'forecast-league/[0-9a-f]{40}/skills', f'forecast-league/{commit}/skills', llms)
+    import hashlib
+    llms = re.sub(r'must be [0-9a-f]{64}', 'must be ' + hashlib.sha256((ROOT / 'skills/forecast-league/scripts/league.mjs').read_bytes()).hexdigest(), llms)
     (ROOT / 'docs' / 'llms.txt').write_text(llms)
     edit('docs/llms.txt', [
         ('## Squads (teams)\n', section + '## Squads (teams)\n'),
         ('- Squads (teams): 0x1eAeEE5BA7582858b266920E79938203E92120D0\n',
          f'- Squads (teams): 0x1eAeEE5BA7582858b266920E79938203E92120D0\n- Blitz (a free round ticket every six hours): {blitz}\n'),
-        ('instruction is their yes for exactly two kinds of call: one forecast per UTC day and one score\n   call per finished round. Both send value 0, move no tokens and grant no approvals.',
-         'instruction is their yes for exactly four kinds of call: one forecast per UTC day, one score\n   call per finished round, one Blitz ticket per six-hour round and one Blitz claim when there is\n   something to claim. All send value 0, move no tokens and grant no approvals.'),
+        ('''2. Daily play is your human's choice, so ask them once, saying what it involves: one forecast a
+   day and one score call per finished round, at most 2 calls and about $0.02 of gas a day, until
+   9 December 2026, no funds moved and no approvals, and that the builder is a hackathon entrant
+   who gains from each transaction. If they say yes, that standing instruction covers exactly those
+   two kinds of call until that date. It does not cover the card mint, squad calls or anything
+   added to this project later.''',
+         '''2. Playing on your own is your human's choice, so ask them once, saying what it involves: one
+   Blitz ticket per six-hour round, a Blitz claim when there is something to claim, one forecast a
+   day and one score call per finished round, at most 10 calls and about $0.10 of gas a day, until
+   9 December 2026, no funds moved and no approvals, and that the builder is a hackathon entrant
+   who gains from each transaction. If they say yes, that standing instruction covers exactly those
+   four kinds of call until that date. A yes given before Blitz existed covered two calls a day and
+   does not cover Blitz: ask again. It does not cover the card mint, squad calls or anything added
+   to this project later.'''),
         ('4. Send value 0 only, to the LeagueCore, Scorer or Squads address above only.',
          '4. Send value 0 only, to the LeagueCore, Scorer, Squads or Blitz address above only.'),
     ])
@@ -90,8 +106,10 @@ def main():
     agents['helper'] = f'https://raw.githubusercontent.com/mycyi1994-hash/forecast-league/{commit}/skills/forecast-league/scripts/league.mjs'
     import hashlib
     agents['helperSha256'] = hashlib.sha256((ROOT / 'skills/forecast-league/scripts/league.mjs').read_bytes()).hexdigest()
-    agents['consent'] = ("Preview every call. Execute after the human's clear yes. A standing instruction from the human to play on "
-                         "your own covers only the forecast, score, Blitz ticket and Blitz claim calls.")
+    agents['consent']['standingInstruction'].update({
+        'covers': ['one Blitz ticket per six-hour round', 'a Blitz claim when there is something to claim', 'one forecast per UTC day', 'one score call per finished round'],
+        'maxCallsPerDay': 10, 'gasPerDayUsd': 0.10,
+        'note': 'A yes given before Blitz existed covered two calls a day and does not cover Blitz: ask again.'})
     one = lambda i, what, data, fn, repeat: {'id': i, 'what': what, 'to': blitz, 'value': '0', 'inputData': data, 'function': fn, 'repeat': repeat}
     agents['actions'] += [
         one('blitzUp', 'Mint this round\'s Blitz ticket, side "BTC higher six hours after the lock"', '0xd5a49e01', 'up()', 'once per six-hour round'),
@@ -108,8 +126,12 @@ def main():
 
     # The skill packaged for skill directories.
     edit('skills/forecast-league/SKILL.md', [
-        ('one score call per finished round. Both send value 0, move no tokens and grant no approvals.',
-         'one score call per finished round, plus one Blitz ticket per six-hour round and one Blitz claim\n   (`scripts/league.mjs blitz`). All send value 0, move no tokens and grant no approvals.'),
+        ('''exactly those two kinds of call until that date. Both send value 0, move no tokens and grant
+   no approvals.''',
+         '''exactly those two kinds of call until that date. Both send value 0, move no tokens and grant
+   no approvals. Blitz (`scripts/league.mjs blitz`: one ticket per six-hour round and a claim) is
+   covered only if the user said yes after being told about it and its numbers: at most 10 calls
+   and about $0.10 of gas a day in all.'''),
     ])
     # The staged manual carries its own version line.
     edit('docs/skill.md', [('version: 1.0.0', f'version: {version}')])

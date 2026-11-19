@@ -10,6 +10,7 @@
 //   node keeper/keeper.mjs settle [--epoch N]     calls to settle a round (after 06:00 UTC)
 //   node keeper/keeper.mjs score  [--epoch N]     calls to score it (30 minutes after settling)
 //   node keeper/keeper.mjs blitz                  settle calls for finished Blitz rounds that have tickets
+//   node keeper/keeper.mjs funnel                 how far card holders go: forecasts, squads (read-only)
 
 const CORE = '0x79F55DAa8a3CF2Eb76EE40e26ff6E244a4cC1eD4';
 const SCORER = '0x5ea789e7cd9C157793dDA75959829F8C1527C16b';
@@ -192,6 +193,14 @@ async function cmdBlitz(now) {
   print({ ok: true, action: 'blitz-settle', currentRound: current, calls });
 }
 
+async function cmdFunnel() {
+  const { createRequire } = await import('node:module');
+  const league = createRequire(import.meta.url)('../docs/league.js');
+  const d = await league.load();
+  print({ ok: true, action: 'funnel', at: new Date(d.now * 1000).toISOString(), ...d.funnel, forecastsInOpenRound: d.submittedToday, squads: d.squads.length,
+    blitz: d.blitz ? { tickets: d.blitz.supply, players: d.blitz.players, ticketsThisRound: d.blitz.minted } : 'not deployed' });
+}
+
 const args = parseArgs(process.argv.slice(2));
 try {
   const now = await chainTime();
@@ -200,5 +209,6 @@ try {
   if (args._[0] === 'settle') await cmdSettle(epoch, now);
   else if (args._[0] === 'score') await cmdScore(epoch);
   else if (args._[0] === 'blitz') await cmdBlitz(now);
-  else { console.log('Usage:\n  node keeper/keeper.mjs settle [--epoch N]\n  node keeper/keeper.mjs score [--epoch N]\n  node keeper/keeper.mjs blitz'); process.exit(args._[0] ? 1 : 0); }
+  else if (args._[0] === 'funnel') await cmdFunnel();
+  else { console.log('Usage:\n  node keeper/keeper.mjs settle [--epoch N]\n  node keeper/keeper.mjs score [--epoch N]\n  node keeper/keeper.mjs blitz\n  node keeper/keeper.mjs funnel'); process.exit(args._[0] ? 1 : 0); }
 } catch (e) { fail(e.message || String(e)); }
