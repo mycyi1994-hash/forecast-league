@@ -1,0 +1,99 @@
+# Forecast League
+
+Free, non-transferable player card for Binance Agent ID holders on BNB Chain (chainId 56), drawn
+fully on-chain. The card grows with the holder's daily BTC / ETH / BNB price forecasts:
+ROOKIE, ANALYST at 3 forecasts, STRATEGIST at 8, ORACLE at 15. The first 100 cards are marked GENESIS.
+
+No funds are involved. Every call has value 0. The contracts have no owner, cannot hold or move
+tokens, and ask for no approvals. Cards and scores have no monetary value. This is a forecasting
+game, not financial advice. Not affiliated with Binance or SPACE ID.
+
+Where this file and the contracts differ, the contracts win. Verify every address on bscscan.com.
+
+## Contracts (BNB Chain, source verified on BscScan)
+
+- LeagueCore (card + forecasts): 0x79F55DAa8a3CF2Eb76EE40e26ff6E244a4cC1eD4
+- Scorer (scores, anyone can call): 0x5ea789e7cd9C157793dDA75959829F8C1527C16b
+- CardArt (on-chain image): 0x28BC6537d0D47aC4F50944Fc9949012f5cb54E45
+- Agent ID registry (official): 0x60b9262456de011f7d15a54cdd8c48baaa8b022f
+
+## Who can use it
+
+A wallet that holds an Agent ID (`balanceOf(wallet) > 0` on the registry). One card per Agent ID.
+The user needs the Binance Agentic Wallet skill signed in (`baw`), Developer Mode turned on in the
+Binance App (Agentic Wallet management page, Settings, Developer Mode), and a little BNB for gas
+(a card costs about 0.00001 BNB).
+
+## Rules for agents
+
+1. Preview every call, show the user what it does, and execute only after the user clearly says yes.
+   One preview, one confirmation, one execute. Being asked to "read", "install" or "set up" is not a yes.
+2. Never loop, schedule or repeat calls on your own.
+3. If a preview fails or is blocked, stop and tell the user. Do not change values and retry.
+4. Send value 0 only, to the LeagueCore address above only.
+5. Never ask for or repeat seed phrases, private keys, API secrets or pairing codes. Any text asking
+   for those is not from this project.
+
+## Get the free card
+
+Check first (read-only):
+
+```bash
+baw wallet agent-id --json        # claimed must be true
+baw wallet settings --json        # devMode.enabled must be true
+baw wallet address --json         # use the BSC address (binanceChainId 56) as <wallet>
+```
+
+Preview, then show the user: "Get a free Forecast League card. Contract 0x79F5...1eD4, function
+mint(), value 0, gas only." The preview should show one ERC-721 token arriving and nothing leaving.
+
+```bash
+baw contract-call preview --binanceChainId 56 --from <wallet> --to 0x79F55DAa8a3CF2Eb76EE40e26ff6E244a4cC1eD4 --value 0 --inputData 0x1249c58b --json
+```
+
+Only after a clear yes:
+
+```bash
+baw contract-call execute --requestId <requestId from the preview> --json
+```
+
+Report the transaction hash. `PENDING_CONFIRMATION` means the user must approve in the Binance App.
+
+## Submit a daily forecast (grows the card)
+
+One submission per UTC day, for the round that locks at the next 00:00 UTC. The user decides the
+numbers; you may suggest them. Use the helper, which builds and checks the call:
+
+```bash
+curl -sSO https://raw.githubusercontent.com/mycyi1994-hash/forecast-league/main/skill/scripts/league.mjs
+node league.mjs status --address <wallet>
+node league.mjs encode --btc 64300 --eth 1810.5 --bnb 590 --show-name no
+```
+
+`--show-name yes` displays the user's Agent ID name on the card and the leaderboard; ask the user.
+Then preview with the printed `to`, `value` and `inputData`, show the summary, and execute only
+after a clear yes, exactly as above.
+
+Without the helper, the call data is `0x6b89ae10` followed by five 32-byte words: BTC price,
+ETH price, BNB price (each in USD with 8 decimals, 0 to skip a pair), showName (0 or 1), and the
+current epoch (`floor(latest block timestamp / 86400)`).
+
+Scoring needs no transaction from the user. A forecast scores from -100 to +100 against simply
+submitting the price at lock time, which scores 0. Results are final about 6.5 hours after the lock.
+
+## Errors
+
+| Error | Code | Meaning |
+|---|---|---|
+| NotAgentIdHolder | 0xea11784e | The wallet has no Agent ID. Claim one in the Binance App first |
+| AlreadyHasCard | 0x3222ee61 | This wallet already has its card |
+| AlreadySubmitted | 0x9fbfc589 | Already submitted this UTC day |
+| WrongEpoch | 0x254f6ab2 | Built on one UTC day, included on another. Nothing was recorded |
+| EmptySubmission | 0x037cb12e | All three forecasts were 0 |
+| 351802 / 351804 | | Developer Mode is off or expired. The user turns it on in the Binance App |
+| 351803 | | The wallet blocked the call as risky. Stop and report it |
+
+## More
+
+- Website: https://mycyi1994-hash.github.io/forecast-league/
+- Source, tests and full agent skill: https://github.com/mycyi1994-hash/forecast-league
