@@ -403,6 +403,15 @@ function renderSquads(d) {
     const tr = el('tr'); const who = el('td', 'who');
     if (q.name) who.append(el('b', '', q.name + '.ai')); else who.append(el('small', '', q.captain.slice(0, 6) + '…' + q.captain.slice(-4)));
     if (q.founding) who.append(el('span', 'tag', 'FOUNDING #' + q.order));
+    if (q.name) {
+      const b = el('button', 'mini', ''); bilingual(b, 'Copy join line', '가입 문장 복사'); b.style.marginLeft = '8px';
+      b.onclick = async () => {
+        const text = 'Read https://mycyi1994-hash.github.io/forecast-league/skill.md and, if I confirm, join the Forecast League squad ' + q.name + '.ai for me.';
+        try { await navigator.clipboard.writeText(text); } catch (e) {}
+        const old = b.innerHTML; b.textContent = '✓'; setTimeout(() => { b.innerHTML = old; }, 1200);
+      };
+      who.append(b);
+    }
     const score = el('td', 'num', signedText(q.score)); score.classList.add(q.score > 0 ? 'pos' : 'mutedcell');
     tr.append(el('td', 'num', String(i + 1)), who, el('td', 'num', String(q.members)), el('td', 'num', String(q.forecasts)), score);
     body.append(tr);
