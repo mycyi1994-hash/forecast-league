@@ -69,8 +69,8 @@ unless they ask to change it.
 **With the helper** (Node 18+, no dependencies, reads the chain and prints call data, never signs):
 
 ```bash
-curl -sSO https://raw.githubusercontent.com/mycyi1994-hash/forecast-league/db246886fd8470a048423d45107a8e675381ab3f/skills/forecast-league/scripts/league.mjs
-sha256sum league.mjs   # must be ddf564f8c46efb58aab0782b49b9bc9e102f5ebb2f911727c608864d05960291, otherwise stop
+curl -sSO https://raw.githubusercontent.com/mycyi1994-hash/forecast-league/7c82e8bdf1274096431f658877cb96a56d8ba59b/skills/forecast-league/scripts/league.mjs
+sha256sum league.mjs   # must be 7d0080eac95e8f9b6e22b7bdd4ba9a72d48dbfa25273af92e3fdf8ca95f40f43, otherwise stop
 node league.mjs status --address <wallet>
 node league.mjs encode --btc <price> --eth <price> --bnb <price> --show-name yes|no
 ```

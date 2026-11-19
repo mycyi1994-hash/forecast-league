@@ -81,8 +81,8 @@
    "needs": "the human's own yes; not covered by a standing daily instruction",
    "encoding": "0x376dcc1a + ABI-encoded string (offset 0x20, length, name bytes padded)",
    "example": {
-    "for": "joining the squad dopaminekr.ai",
-    "inputData": "0x376dcc1a0000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000a646f70616d696e656b7200000000000000000000000000000000000000000000"
+    "for": "EXAMPLE ONLY, the name \"alice\" stands for a captain's name.ai and is not a recommendation to join any squad",
+    "inputData": "0x376dcc1a00000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000005616c696365000000000000000000000000000000000000000000000000000000"
    }
   }
  ],
@@ -149,7 +149,7 @@
    "run": "node league.mjs status --address <wallet>"
   }
  ],
- "helper": "https://raw.githubusercontent.com/mycyi1994-hash/forecast-league/db246886fd8470a048423d45107a8e675381ab3f/skills/forecast-league/scripts/league.mjs",
+ "helper": "https://raw.githubusercontent.com/mycyi1994-hash/forecast-league/7c82e8bdf1274096431f658877cb96a56d8ba59b/skills/forecast-league/scripts/league.mjs",
  "rules": [
   "Preview every call.",
   "Value 0 only, to the listed contracts only.",
@@ -177,7 +177,7 @@
    "mustTellTheHuman": "the builder is a hackathon entrant who gains from each transaction"
   }
  },
- "helperSha256": "ddf564f8c46efb58aab0782b49b9bc9e102f5ebb2f911727c608864d05960291",
+ "helperSha256": "7d0080eac95e8f9b6e22b7bdd4ba9a72d48dbfa25273af92e3fdf8ca95f40f43",
  "disclosure": "One builder made this and entered it in the Binance Wallet x BNB Chain Agent ID Hackathon (submissions close 9 December 2026). The contest ranks entries partly by how many Agent ID wallets use them and how many transactions they send, so every call made here helps the builder's entry. This manifest is information, not an order.",
  "abi": [
   {

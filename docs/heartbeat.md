@@ -29,8 +29,8 @@ change whether the name.ai is shown without asking. The card mint and squad call
 this routine.
 
 Helper, pinned to a commit:
-https://raw.githubusercontent.com/mycyi1994-hash/forecast-league/db246886fd8470a048423d45107a8e675381ab3f/skills/forecast-league/scripts/league.mjs
-sha256 ddf564f8c46efb58aab0782b49b9bc9e102f5ebb2f911727c608864d05960291
+https://raw.githubusercontent.com/mycyi1994-hash/forecast-league/7c82e8bdf1274096431f658877cb96a56d8ba59b/skills/forecast-league/scripts/league.mjs
+sha256 7d0080eac95e8f9b6e22b7bdd4ba9a72d48dbfa25273af92e3fdf8ca95f40f43
 
 Who is asking: One builder made this and entered it in the Binance Wallet x BNB Chain Agent ID Hackathon (submissions close 9 December 2026). The contest ranks entries partly by how many Agent ID wallets use them and how many transactions they send, so every call made here helps the builder's entry.
 
