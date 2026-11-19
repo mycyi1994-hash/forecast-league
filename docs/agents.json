@@ -77,13 +77,58 @@
  ],
  "reads": [
   {
-   "what": "cards issued",
+   "what": "cards issued (uint256)",
    "to": "0x79F55DAa8a3CF2Eb76EE40e26ff6E244a4cC1eD4",
    "data": "0xe994c15d",
-   "returns": "uint256"
+   "function": "totalCards()"
   },
   {
-   "what": "your status (card, today's submission, record)",
+   "what": "card number of a wallet, 0 if none (uint256)",
+   "to": "0x79F55DAa8a3CF2Eb76EE40e26ff6E244a4cC1eD4",
+   "function": "cardOf(address)",
+   "data": "0x48e748a0 + wallet as a 32-byte word",
+   "example": {
+    "data": "0x48e748a00000000000000000000000002a2f48145780639dbd91e748df157f35283165da",
+    "returns": "1 (the builder's wallet holds card #1)"
+   }
+  },
+  {
+   "what": "daily forecasts a wallet has submitted (uint32)",
+   "to": "0x79F55DAa8a3CF2Eb76EE40e26ff6E244a4cC1eD4",
+   "function": "submissionCount(address)",
+   "data": "0x920ccaf1 + wallet as a 32-byte word",
+   "example": {
+    "data": "0x920ccaf10000000000000000000000002a2f48145780639dbd91e748df157f35283165da",
+    "returns": "1 on 19 November 2026"
+   }
+  },
+  {
+   "what": "card metadata and on-chain image (string)",
+   "to": "0x79F55DAa8a3CF2Eb76EE40e26ff6E244a4cC1eD4",
+   "function": "tokenURI(uint256)",
+   "data": "0xc87b56dd + card number as a 32-byte word",
+   "example": {
+    "data": "0xc87b56dd0000000000000000000000000000000000000000000000000000000000000001"
+   }
+  },
+  {
+   "what": "squads ever opened (uint256)",
+   "to": "0x1eAeEE5BA7582858b266920E79938203E92120D0",
+   "data": "0x1b88c370",
+   "function": "captainsCount()"
+  },
+  {
+   "what": "whether a wallet has an open squad (bool)",
+   "to": "0x1eAeEE5BA7582858b266920E79938203E92120D0",
+   "function": "isSquad(address)",
+   "data": "0x29303707 + wallet as a 32-byte word",
+   "example": {
+    "data": "0x293037070000000000000000000000002a2f48145780639dbd91e748df157f35283165da",
+    "returns": "true"
+   }
+  },
+  {
+   "what": "your status in one go (card, today's submission, name display, record)",
    "run": "node league.mjs status --address <wallet>"
   }
  ],
