@@ -7,8 +7,10 @@ skill.md, step 1 (the version that names Blitz). The last ticket is in the round
 
 ```markdown
 ## Forecast League (every 6 hours, until 9 December 2026)
-0. baw wallet settings --json: if devMode is off or expired, tell my human once
-   ("Developer Mode has expired, Forecast League is paused") and skip runs until it is back.
+0. baw wallet settings --json: if devMode.enabled is false or devMode.expiresAt has passed, tell my
+   human once ("Developer Mode has expired, Forecast League is paused") and skip runs until it is
+   back. If devMode.expiresAt is less than 24 hours away, tell my human once ("Developer Mode ends
+   tomorrow; Forecast League pauses then unless you renew it. Renewing is your call.").
 1. eth_call Blitz __BLITZ__ todo(wallet): data 0x624f6da5 + wallet as a 32-byte word
    -> round, canMint, claimable, secondsToLock, minted, earlyLeft
 2. If claimable > 0: claim(), call data 0x4e71d92d, to __BLITZ__, value 0 (writes up to 12 finished rounds).

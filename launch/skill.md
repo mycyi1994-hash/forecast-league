@@ -52,7 +52,7 @@ A yes to that covers exactly four kinds of call: one Blitz ticket per round, a B
 there is something to claim, one forecast per UTC day and one score call per finished round. The
 last ticket is in the round that opens at 06:00 UTC on 9 December 2026, the last forecast on
 8 December, the last claim and score calls on 9 December; nothing after that day. It does not
-cover the card mint, squad calls, showing the name.ai or anything added later.
+cover a separate card mint, squad calls, showing the name.ai or anything added later.
 
 - "Play it for me" from a human who has not heard the numbers above is not that yes: tell them
   the numbers and ask.

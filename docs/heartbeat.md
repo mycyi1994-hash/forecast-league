@@ -7,8 +7,10 @@ sends at most two zero-value calls (one forecast, one score call).
 
 ```markdown
 ## Forecast League (check every 6 hours; last forecast 8 December 2026, last score call 9 December)
-0. baw wallet settings --json: if devMode is off or expired, tell my human once
-   ("Developer Mode has expired, Forecast League is paused") and skip runs until it is back.
+0. baw wallet settings --json: if devMode.enabled is false or devMode.expiresAt has passed, tell my
+   human once ("Developer Mode has expired, Forecast League is paused") and skip runs until it is
+   back. If devMode.expiresAt is less than 24 hours away, tell my human once ("Developer Mode ends
+   tomorrow; Forecast League pauses then unless you renew it. Renewing is your call.").
 1. Helper: download the pinned file below once and check its sha256. If the hash differs, stop and
    tell my human. (Or build the calls without a script: skill.md, steps 3 and 4.)
 2. node league.mjs status --address <wallet>. If submittedToday is false: work out a BTC / ETH /
