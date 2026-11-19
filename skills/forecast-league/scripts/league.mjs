@@ -111,9 +111,11 @@ async function chainTime() {
 }
 
 /** One JSON-RPC request with a 12 second timeout, falling back to the next endpoint when one is unreachable. */
+let workingRpc; // the endpoint that answered last, tried first next time
 async function rpc(method, params) {
   let lastError;
-  for (const url of CONFIG.rpcs) {
+  const order = workingRpc ? [workingRpc, ...CONFIG.rpcs.filter((u) => u !== workingRpc)] : CONFIG.rpcs;
+  for (const url of order) {
     let body;
     try {
       const res = await fetch(url, {
@@ -127,6 +129,7 @@ async function rpc(method, params) {
       lastError = new Error(`${method}: ${url} did not answer (${e.name})`);
       continue;
     }
+    workingRpc = url;
     // An answer from the chain, including a revert, is final: another endpoint would say the same.
     if (body.error) throw new Error(`${method}: ${body.error.message}`);
     return body.result;
@@ -334,16 +337,28 @@ async function cmdEncodeScore(args) {
     const sub = await call(CONFIG.core, SEL.submissionOf + addressWord(address) + word(epoch));
     if (slot(sub, 3) === 0n) fail(`${address} made no submission in epoch ${epoch}. There is nothing to score.`);
   } else {
-    // The oldest round of the last 7 days that has a submission and is not in the record yet.
+    // The oldest round of the last 7 days that has a submission, is not in the record yet and is
+    // final. A round that is not final yet never blocks a later one that is.
     const last = Math.floor(now / 86400) - 1;
+    const waiting = [];
     for (let e = last - 6; e <= last; e++) {
       const sub = await call(CONFIG.core, SEL.submissionOf + addressWord(address) + word(e));
       if (slot(sub, 3) === 0n) continue;
       if (slot(await call(CONFIG.scorer, '0xa86c3b41' + addressWord(address) + word(e)), 0) === 1n) continue; // scored(address,uint32)
+      try {
+        await rpc('eth_call', [{ from: address, to: CONFIG.scorer, data: SEL.score + addressWord(address) + word(e) }, 'latest']);
+      } catch {
+        waiting.push(e);
+        continue;
+      }
       epoch = e;
       break;
     }
-    if (epoch === undefined) fail(`${address} has no unscored submission in the last 7 rounds. There is nothing to score.`);
+    if (epoch === undefined) {
+      fail(waiting.length
+        ? `Nothing to score yet: round(s) ${waiting.join(', ')} of ${address} are not final. A round is final 30 minutes after someone settles it, 06:30 UTC at the earliest.`
+        : `${address} has no unscored submission in the last 7 rounds. There is nothing to score.`);
+    }
   }
   const inputData = SEL.score + addressWord(address) + word(epoch);
   // Dry run, so a call that would fail is never handed to the wallet.
