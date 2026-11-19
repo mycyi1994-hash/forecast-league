@@ -219,7 +219,7 @@ contract Blitz {
     function ticket(uint256 tokenId)
         external
         view
-        returns (address owner, uint32 round, bool isUp, uint32 seq, uint8 status)
+        returns (address holder, uint32 round, bool isUp, uint32 seq, uint8 status)
     {
         Ticket memory t = _tickets[tokenId];
         if (t.owner == address(0)) revert NonexistentToken();
@@ -227,8 +227,8 @@ contract Blitz {
     }
 
     /// @notice The ticket id of an address at a position in its own list (0 is its oldest).
-    function tokenOfOwnerByIndex(address owner, uint256 index) external view returns (uint256) {
-        return _owned[owner][index];
+    function tokenOfOwnerByIndex(address holder, uint256 index) external view returns (uint256) {
+        return _owned[holder][index];
     }
 
     /// @notice An address's record. `unclaimed` counts its tickets not yet written by `claim()`,
@@ -321,14 +321,14 @@ contract Blitz {
 
     // ---------------------------------------- non-transferable ticket (ERC-721 read side)
 
-    function balanceOf(address owner) external view returns (uint256) {
-        if (owner == address(0)) revert ZeroAddress();
-        return _owned[owner].length;
+    function balanceOf(address holder) external view returns (uint256) {
+        if (holder == address(0)) revert ZeroAddress();
+        return _owned[holder].length;
     }
 
-    function ownerOf(uint256 tokenId) public view returns (address owner) {
-        owner = _tickets[tokenId].owner;
-        if (owner == address(0)) revert NonexistentToken();
+    function ownerOf(uint256 tokenId) public view returns (address holder) {
+        holder = _tickets[tokenId].owner;
+        if (holder == address(0)) revert NonexistentToken();
     }
 
     /// @notice ERC-5192: every ticket is permanently locked.
