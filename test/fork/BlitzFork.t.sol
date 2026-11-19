@@ -13,6 +13,7 @@ contract BlitzForkTest is Test {
     address constant REGISTRY = 0x60B9262456dE011F7d15a54CdD8c48bAaa8B022F;
     address constant BTC_USD = 0x264990fbd0A4796A3E3d8E37C4d5F87a3aCa5Ebf;
     address constant HOLDER = 0x2a2F48145780639dbD91e748dF157F35283165Da; // holds dopaminekr.ai
+    address constant SQUADS = 0x1eAeEE5BA7582858b266920E79938203E92120D0; // the live squads contract; HOLDER is a captain
     // Lock 2026-11-19 00:00 UTC, target 06:00 UTC. The two feed rounds were found off-chain
     // by keeper/keeper.mjs for the same times.
     uint32 constant ROUND = 83103;
@@ -23,7 +24,7 @@ contract BlitzForkTest is Test {
 
     function setUp() public {
         vm.createSelectFork("bsc");
-        blitz = new Blitz(REGISTRY, BTC_USD);
+        blitz = new Blitz(REGISTRY, BTC_USD, SQUADS);
     }
 
     function test_settlesAPastRoundWithTheSameFeedRoundsAsTheOffChainSearch() public {
@@ -88,5 +89,9 @@ contract BlitzForkTest is Test {
         vm.expectRevert(Blitz.NotAgentIdHolder.selector);
         blitz.up();
         assertEq(blitz.pickOf(HOLDER, round), 1);
+        // HOLDER opened the squad "dopaminekr" on the live squads contract, so the ticket counts for it.
+        assertEq(blitz.squadRoundTickets(HOLDER, round), 1);
+        (uint32 tickets,,) = blitz.squadRecordOf(HOLDER);
+        assertEq(tickets, 1);
     }
 }

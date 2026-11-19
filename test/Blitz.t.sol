@@ -27,6 +27,24 @@ contract BlitzAgentID {
     }
 }
 
+contract BlitzSquadsMock {
+    mapping(address => address) public captainOf;
+    bool public reverts;
+
+    function set(address member, address captain) external {
+        captainOf[member] = captain;
+    }
+
+    function setReverts(bool v) external {
+        reverts = v;
+    }
+
+    function squadOf(address member) external view returns (address captain, uint40 since) {
+        require(!reverts, "boom");
+        return (captainOf[member], 1);
+    }
+}
+
 /// @dev A feed with one phase and consecutive rounds 1..n, like a Chainlink aggregator.
 contract BlitzFeedMock {
     uint256 public phase = 3;
@@ -68,6 +86,7 @@ contract BlitzTest is CardTestUtils {
 
     BlitzAgentID aid;
     BlitzFeedMock feed;
+    BlitzSquadsMock squads;
     Blitz blitz;
 
     address alice = address(0xA11CE);
@@ -82,7 +101,8 @@ contract BlitzTest is CardTestUtils {
         assertEq(T0 % ROUND, 0);
         aid = new BlitzAgentID();
         feed = new BlitzFeedMock();
-        blitz = new Blitz(address(aid), address(feed));
+        squads = new BlitzSquadsMock();
+        blitz = new Blitz(address(aid), address(feed), address(squads));
         aid.give(alice);
         aid.give(bob);
         vm.warp(T0 + 1 hours);
@@ -153,7 +173,7 @@ contract BlitzTest is CardTestUtils {
         assertEq(claimable, 0);
         assertEq(secs, 5 hours);
         assertEq(minted, 0);
-        assertEq(earlyLeft, 100);
+        assertEq(earlyLeft, 25);
         (, bool strangerCan,,,,) = blitz.todo(stranger);
         assertFalse(strangerCan);
 
@@ -163,7 +183,7 @@ contract BlitzTest is CardTestUtils {
         assertFalse(canPick);
         assertEq(claimable, 0);
         assertEq(minted, 1);
-        assertEq(earlyLeft, 99);
+        assertEq(earlyLeft, 24);
 
         _fill(T0, _target(R0) + 600, 60_000e8, 1e8);
         vm.warp(_target(R0) + 600);
@@ -605,29 +625,96 @@ contract BlitzTest is CardTestUtils {
         assertLt(ups, 140);
     }
 
-    function test_firstHundredTicketsOfARoundAreEarly() public {
-        for (uint160 i = 1; i <= 101; i++) {
+    function test_firstTicketsOfARoundAreEarly() public {
+        for (uint160 i = 1; i <= 26; i++) {
             address a = address(uint160(0x1000) + i);
             aid.give(a);
             vm.prank(a);
             blitz.up();
         }
-        (,,, uint32 seq100,) = blitz.ticket(100);
-        (,,, uint32 seq101,) = blitz.ticket(101);
-        assertEq(seq100, 100);
-        assertEq(seq101, 101);
-        assertEq(blitz.roundMinted(R0), 101);
+        (,,, uint32 seq25,) = blitz.ticket(25);
+        (,,, uint32 seq26,) = blitz.ticket(26);
+        assertEq(seq25, 25);
+        assertEq(seq26, 26);
+        assertEq(blitz.roundMinted(R0), 26);
         (,,,, uint32 minted, uint32 earlyLeft) = blitz.todo(alice);
-        assertEq(minted, 101);
+        assertEq(minted, 26);
         assertEq(earlyLeft, 0);
-        assertTrue(_contains(_json(100), '"trait_type":"Early","value":"Yes"'));
-        assertTrue(_contains(_json(101), '"trait_type":"Early","value":"No"'));
+        assertTrue(_contains(_json(25), '"trait_type":"Early","value":"Yes"'));
+        assertTrue(_contains(_json(26), '"trait_type":"Early","value":"No"'));
         // The next round starts its own count.
         vm.warp(T0 + ROUND + 5);
         vm.prank(alice);
         blitz.up();
-        (,,, uint32 seqNext,) = blitz.ticket(102);
+        (,,, uint32 seqNext,) = blitz.ticket(27);
         assertEq(seqNext, 1);
+    }
+
+    // ----------------------------------------------------------------- squads
+
+    function test_ticketsAndResultsCountForTheSquad() public {
+        address captain = address(0xCA9);
+        squads.set(alice, captain);
+        squads.set(bob, captain);
+        vm.prank(alice);
+        blitz.up();
+        vm.prank(bob);
+        blitz.down();
+        assertEq(blitz.squadRoundTickets(captain, R0), 2);
+        (uint32 tickets, uint32 wins, uint32 losses) = blitz.squadRecordOf(captain);
+        assertEq(tickets, 2);
+        assertEq(wins + losses, 0);
+
+        _fill(T0, _target(R0) + 600, 60_000e8, 1e8); // rising: alice wins, bob loses
+        vm.warp(_target(R0) + 600);
+        vm.prank(alice);
+        blitz.claim();
+        blitz.claimFor(bob);
+        (tickets, wins, losses) = blitz.squadRecordOf(captain);
+        assertEq(tickets, 2);
+        assertEq(wins, 1);
+        assertEq(losses, 1);
+    }
+
+    function test_noSquadCountsNothing() public {
+        vm.prank(alice);
+        blitz.up();
+        (uint32 tickets,,) = blitz.squadRecordOf(address(0));
+        assertEq(tickets, 0);
+        assertEq(blitz.squadRoundTickets(address(0), R0), 0);
+    }
+
+    function test_resultsFollowTheSquadAtClaimTime() public {
+        address first = address(0xCA9);
+        address second = address(0xCAA);
+        squads.set(alice, first);
+        vm.prank(alice);
+        blitz.up();
+        squads.set(alice, second); // moved before claiming
+        _fill(T0, _target(R0) + 600, 60_000e8, 1e8);
+        vm.warp(_target(R0) + 600);
+        vm.prank(alice);
+        blitz.claim();
+        (uint32 t1, uint32 w1,) = blitz.squadRecordOf(first);
+        (uint32 t2, uint32 w2,) = blitz.squadRecordOf(second);
+        assertEq(t1, 1);
+        assertEq(w1, 0);
+        assertEq(t2, 0);
+        assertEq(w2, 1);
+    }
+
+    function test_aSquadsContractThatRevertsBlocksNothing() public {
+        squads.set(alice, address(0xCA9));
+        squads.setReverts(true);
+        vm.prank(alice);
+        blitz.up();
+        assertEq(blitz.squadRoundTickets(address(0xCA9), R0), 0);
+        _fill(T0, _target(R0) + 600, 60_000e8, 1e8);
+        vm.warp(_target(R0) + 600);
+        vm.prank(alice);
+        blitz.claim();
+        (, uint32 wins,,,,) = blitz.recordOf(alice);
+        assertEq(wins, 1);
     }
 
     function test_ticketMetadataFollowsTheRound() public {
@@ -767,6 +854,7 @@ contract BlitzTest is CardTestUtils {
         assertEq(blitz.mintPrice(), 0);
         assertEq(blitz.price(), 0);
         assertEq(blitz.maxPerWallet(), 1);
+        assertEq(blitz.maxSupply(), type(uint256).max);
         assertFalse(blitz.hasMinted(alice));
         vm.prank(alice);
         blitz.up();
@@ -778,8 +866,10 @@ contract BlitzTest is CardTestUtils {
 
     function test_constructorRejectsAddressesWithoutCode() public {
         vm.expectRevert(Blitz.BadConstructorArgument.selector);
-        new Blitz(address(0x1234), address(feed));
+        new Blitz(address(0x1234), address(feed), address(squads));
         vm.expectRevert(Blitz.BadConstructorArgument.selector);
-        new Blitz(address(aid), address(0x1234));
+        new Blitz(address(aid), address(0x1234), address(squads));
+        vm.expectRevert(Blitz.BadConstructorArgument.selector);
+        new Blitz(address(aid), address(feed), address(0x1234));
     }
 }

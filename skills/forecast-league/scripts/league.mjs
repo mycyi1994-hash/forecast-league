@@ -15,7 +15,8 @@ import { fileURLToPath } from 'node:url';
 
 const CONFIG = {
   chainId: 56,
-  rpc: process.env.LEAGUE_RPC || 'https://bsc-rpc.publicnode.com',
+  // Public endpoints, tried in order. LEAGUE_RPC puts one of your own first.
+  rpcs: [process.env.LEAGUE_RPC, 'https://bsc-rpc.publicnode.com', 'https://bsc-dataseed.bnbchain.org', 'https://bsc-dataseed.binance.org'].filter(Boolean),
   // Filled in at deployment. `encode` refuses to run while this is the zero address.
   core: '0x79F55DAa8a3CF2Eb76EE40e26ff6E244a4cC1eD4',
   scorer: '0x5ea789e7cd9C157793dDA75959829F8C1527C16b',
@@ -109,15 +110,28 @@ async function chainTime() {
   return Number(BigInt(block.timestamp));
 }
 
+/** One JSON-RPC request with a 12 second timeout, falling back to the next endpoint when one is unreachable. */
 async function rpc(method, params) {
-  const res = await fetch(CONFIG.rpc, {
-    method: 'POST',
-    headers: { 'content-type': 'application/json' },
-    body: JSON.stringify({ jsonrpc: '2.0', id: 1, method, params }),
-  });
-  const body = await res.json();
-  if (body.error) throw new Error(`${method}: ${body.error.message}`);
-  return body.result;
+  let lastError;
+  for (const url of CONFIG.rpcs) {
+    let body;
+    try {
+      const res = await fetch(url, {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ jsonrpc: '2.0', id: 1, method, params }),
+        signal: AbortSignal.timeout(12000),
+      });
+      body = await res.json();
+    } catch (e) {
+      lastError = new Error(`${method}: ${url} did not answer (${e.name})`);
+      continue;
+    }
+    // An answer from the chain, including a revert, is final: another endpoint would say the same.
+    if (body.error) throw new Error(`${method}: ${body.error.message}`);
+    return body.result;
+  }
+  throw lastError || new Error(`${method}: no RPC endpoint configured`);
 }
 
 async function call(to, data) {
@@ -313,10 +327,24 @@ async function cmdEncodeScore(args) {
   const address = args.address === true ? undefined : args.address;
   if (!address) fail('Give --address <wallet whose forecast should be scored>.');
   const now = await chainTime();
-  const epoch = args.epoch !== undefined && args.epoch !== true ? Number(args.epoch) : Math.floor(now / 86400) - 1;
-  if (!Number.isInteger(epoch) || epoch < 0) fail('--epoch must be a whole number.');
-  const sub = await call(CONFIG.core, SEL.submissionOf + addressWord(address) + word(epoch));
-  if (slot(sub, 3) === 0n) fail(`${address} made no submission in epoch ${epoch}. There is nothing to score.`);
+  let epoch;
+  if (args.epoch !== undefined && args.epoch !== true) {
+    epoch = Number(args.epoch);
+    if (!Number.isInteger(epoch) || epoch < 0) fail('--epoch must be a whole number.');
+    const sub = await call(CONFIG.core, SEL.submissionOf + addressWord(address) + word(epoch));
+    if (slot(sub, 3) === 0n) fail(`${address} made no submission in epoch ${epoch}. There is nothing to score.`);
+  } else {
+    // The oldest round of the last 7 days that has a submission and is not in the record yet.
+    const last = Math.floor(now / 86400) - 1;
+    for (let e = last - 6; e <= last; e++) {
+      const sub = await call(CONFIG.core, SEL.submissionOf + addressWord(address) + word(e));
+      if (slot(sub, 3) === 0n) continue;
+      if (slot(await call(CONFIG.scorer, '0xa86c3b41' + addressWord(address) + word(e)), 0) === 1n) continue; // scored(address,uint32)
+      epoch = e;
+      break;
+    }
+    if (epoch === undefined) fail(`${address} has no unscored submission in the last 7 rounds. There is nothing to score.`);
+  }
   const inputData = SEL.score + addressWord(address) + word(epoch);
   // Dry run, so a call that would fail is never handed to the wallet.
   try {
