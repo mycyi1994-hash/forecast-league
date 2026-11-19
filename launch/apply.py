@@ -1,11 +1,15 @@
 #!/usr/bin/env python3
 """Turns Blitz on in the public files once the contract is deployed.
 
-Usage: python3 launch/apply.py <Blitz address> <release tag, for example v1.0.0>
+Two steps, because the agent files pin the helper to the commit that contains it:
 
-It fills the address into the site, the helper and the keeper, replaces the live agent files
-with the staged ones, and updates the statements that change when Blitz exists. It changes
-files only; committing, tagging and pushing are done by hand afterwards.
+  python3 launch/apply.py code <Blitz address>
+      fills the address into the site, the helper and the keeper. Commit and push that.
+  python3 launch/apply.py docs <Blitz address> <version, for example 1.0.0> <that commit's full hash>
+      replaces the live agent files with the staged ones and updates the statements that
+      change when Blitz exists. Review the diff, run the checks, then commit and push.
+
+It changes files only.
 """
 import json
 import re
@@ -27,25 +31,34 @@ def edit(path, pairs):
 
 
 def main():
-    if len(sys.argv) != 3 or not re.fullmatch(r'0x[0-9a-fA-F]{40}', sys.argv[1]) or not re.fullmatch(r'v\d+\.\d+\.\d+', sys.argv[2]):
+    args = sys.argv[1:]
+    if len(args) < 2 or args[0] not in ('code', 'docs') or not re.fullmatch(r'0x[0-9a-fA-F]{40}', args[1]):
         sys.exit(__doc__)
-    blitz, tag = sys.argv[1], sys.argv[2]
+    blitz = args[1]
 
-    # Addresses in code.
-    edit('docs/league.js', [("const BLITZ = '';", f"const BLITZ = '{blitz}';")])
-    edit('skills/forecast-league/scripts/league.mjs', [(f"blitz: '{ZERO}',", f"blitz: '{blitz}',")])
-    edit('keeper/keeper.mjs', [(f"const BLITZ = '{ZERO}';", f"const BLITZ = '{blitz}';")])
+    if args[0] == 'code':
+        if len(args) != 2:
+            sys.exit(__doc__)
+        edit('docs/league.js', [("const BLITZ = '';", f"const BLITZ = '{blitz}';")])
+        edit('skills/forecast-league/scripts/league.mjs', [(f"blitz: '{ZERO}',", f"blitz: '{blitz}',")])
+        edit('keeper/keeper.mjs', [(f"const BLITZ = '{ZERO}';", f"const BLITZ = '{blitz}';")])
+        print(f'Blitz {blitz} filled into the code. Commit and push, then run the docs step with that commit hash.')
+        return
+
+    if len(args) != 4 or not re.fullmatch(r'\d+\.\d+\.\d+', args[2]) or not re.fullmatch(r'[0-9a-f]{40}', args[3]):
+        sys.exit(__doc__)
+    version, commit = args[2], args[3]
 
     # Staged agent files become the live ones.
     for name in ('skill.md', 'heartbeat.md'):
-        text = (ROOT / 'launch' / name).read_text().replace('__BLITZ__', blitz).replace('__TAG__', tag)
+        text = (ROOT / 'launch' / name).read_text().replace('__BLITZ__', blitz).replace('__HELPER_COMMIT__', commit)
         (ROOT / 'docs' / name).write_text(text)
 
     # llms.txt: the Blitz section, the rules that name what a standing instruction covers and
     # where calls may go, the contract list and the helper pin.
     section = (ROOT / 'launch' / 'llms_section.txt').read_text().replace('__BLITZ__', blitz)
     llms = (ROOT / 'docs' / 'llms.txt').read_text()
-    llms = re.sub(r'forecast-league/v\d+\.\d+\.\d+/skills', f'forecast-league/{tag}/skills', llms)
+    llms = re.sub(r'forecast-league/[0-9a-f]{40}/skills', f'forecast-league/{commit}/skills', llms)
     (ROOT / 'docs' / 'llms.txt').write_text(llms)
     edit('docs/llms.txt', [
         ('## Squads (teams)\n', section + '## Squads (teams)\n'),
@@ -72,9 +85,11 @@ def main():
 
     # agents.json: the Blitz calls and the wider standing instruction.
     agents = json.loads((ROOT / 'docs' / 'agents.json').read_text())
-    agents['version'] = tag.lstrip('v')
+    agents['version'] = version
     agents['contracts']['Blitz'] = blitz
-    agents['helper'] = f'https://raw.githubusercontent.com/mycyi1994-hash/forecast-league/{tag}/skills/forecast-league/scripts/league.mjs'
+    agents['helper'] = f'https://raw.githubusercontent.com/mycyi1994-hash/forecast-league/{commit}/skills/forecast-league/scripts/league.mjs'
+    import hashlib
+    agents['helperSha256'] = hashlib.sha256((ROOT / 'skills/forecast-league/scripts/league.mjs').read_bytes()).hexdigest()
     agents['consent'] = ("Preview every call. Execute after the human's clear yes. A standing instruction from the human to play on "
                          "your own covers only the forecast, score, Blitz ticket and Blitz claim calls.")
     one = lambda i, what, data, fn, repeat: {'id': i, 'what': what, 'to': blitz, 'value': '0', 'inputData': data, 'function': fn, 'repeat': repeat}
@@ -96,7 +111,9 @@ def main():
         ('one score call per finished round. Both send value 0, move no tokens and grant no approvals.',
          'one score call per finished round, plus one Blitz ticket per six-hour round and one Blitz claim\n   (`scripts/league.mjs blitz`). All send value 0, move no tokens and grant no approvals.'),
     ])
-    print(f'Blitz {blitz} filled in for release {tag}. Review the diff, run the tests, then commit, tag and push.')
+    # The staged manual carries its own version line.
+    edit('docs/skill.md', [('version: 1.0.0', f'version: {version}')])
+    print(f'Blitz {blitz} turned on in the agent files, version {version}. Review the diff, run the checks, then commit and push.')
 
 
 if __name__ == '__main__':

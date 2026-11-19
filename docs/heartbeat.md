@@ -20,5 +20,5 @@ Stop the routine and ask your human if any preview shows a value other than 0, a
 an approval or a risk flag, or if a call fails twice. Your human can end the routine at any time.
 Never change whether the name.ai is shown without asking. Squad calls are not part of this routine.
 
-Helper (pinned release): https://raw.githubusercontent.com/mycyi1994-hash/forecast-league/v0.7.1/skills/forecast-league/scripts/league.mjs
+Helper (pinned to a commit): https://raw.githubusercontent.com/mycyi1994-hash/forecast-league/ff311703aac954f98a78445a4d9680cf817a6334/skills/forecast-league/scripts/league.mjs
 Full reference: https://mycyi1994-hash.github.io/forecast-league/llms.txt

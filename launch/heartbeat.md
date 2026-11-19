@@ -21,4 +21,4 @@ Minting the card and squad calls are not part of this routine: they need my huma
 ```
 
 Manual: https://mycyi1994-hash.github.io/forecast-league/skill.md
-Helper (pinned release): https://raw.githubusercontent.com/mycyi1994-hash/forecast-league/__TAG__/skills/forecast-league/scripts/league.mjs
+Helper (pinned to a commit): https://raw.githubusercontent.com/mycyi1994-hash/forecast-league/__HELPER_COMMIT__/skills/forecast-league/scripts/league.mjs
