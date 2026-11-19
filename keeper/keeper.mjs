@@ -11,6 +11,7 @@
 //   node keeper/keeper.mjs score  [--epoch N]     calls to score it (30 minutes after settling)
 //   node keeper/keeper.mjs blitz                  settle calls for finished Blitz rounds that have tickets
 //   node keeper/keeper.mjs funnel                 how far card holders go: forecasts, squads (read-only)
+//   node keeper/keeper.mjs evidence               what wallets other than the builder's have done (read-only)
 
 const CORE = '0x79F55DAa8a3CF2Eb76EE40e26ff6E244a4cC1eD4';
 const SCORER = '0x5ea789e7cd9C157793dDA75959829F8C1527C16b';
@@ -204,6 +205,58 @@ async function cmdFunnel() {
       returnRate: d.blitz.previousRoundPlayers ? Math.round(100 * d.blitz.returning / d.blitz.previousRoundPlayers) + '%' : 'n/a' } : 'not deployed' });
 }
 
+// The numbers the strategy is judged by, read from the chain: what outside wallets (everyone except
+// the holder of card #1, the builder) have actually done. Read-only.
+async function cmdEvidence() {
+  const { createRequire } = await import('node:module');
+  const league = createRequire(import.meta.url)('../docs/league.js');
+  const d = await league.load();
+  const builder = (d.rows[0] && d.rows[0].owner || '').toLowerCase();
+  const outside = d.rows.filter((r) => r.owner && r.owner.toLowerCase() !== builder);
+  const out = {
+    ok: true, action: 'evidence', at: new Date(d.now * 1000).toISOString(), cards: d.rows.length,
+    outsideForecasters: outside.filter((r) => r.forecasts >= 1).length,
+    outsideWithAScoredForecast: outside.filter((r) => r.scoredRounds >= 1).length,
+    outsideWithThreeScoredForecasts: outside.filter((r) => r.scoredRounds >= 3).length,
+    outsideSquadsOfThreeOrMore: d.squads.filter((q) => q.captain.toLowerCase() !== builder && q.members >= 3).length,
+    blitz: 'not deployed',
+  };
+  if (!/^0x0+$/.test(BLITZ)) {
+    const head = await multicall([{ to: BLITZ, data: '0x18160ddd' }, { to: BLITZ, data: '0x8a19c8bc' }]); // totalSupply, currentRound
+    const supply = Number(slot(head[0], 0)); const current = Number(slot(head[1], 0));
+    const ids = []; for (let id = supply; id >= Math.max(1, supply - 5999); id--) ids.push(id);
+    const tickets = await multicall(ids.map((id) => ({ to: BLITZ, data: '0xc129ff32' + word(id) }))); // ticket(uint256)
+    const byRound = new Map(); // round -> set of holders
+    for (const t of tickets) {
+      if (!t) continue;
+      const holder = '0x' + t.slice(26, 66); const r = Number(slot(t, 1));
+      if (!byRound.has(r)) byRound.set(r, new Set());
+      byRound.get(r).add(holder);
+    }
+    const last12 = []; for (let r = current - 11; r <= current; r++) last12.push(r);
+    const rounds = last12.map((r) => {
+      const now = byRound.get(r) || new Set(); const before = byRound.get(r - 1) || new Set();
+      const back = [...before].filter((h) => now.has(h)).length;
+      return { round: r, open: r === current, tickets: now.size, returnedFromPrevious: before.size ? Math.round(100 * back / before.size) + '%' : 'n/a' };
+    });
+    const count = new Map();
+    for (const r of last12) for (const h of byRound.get(r) || []) if (h !== builder) count.set(h, (count.get(h) || 0) + 1);
+    const holders = [...new Set([...byRound.values()].flatMap((set) => [...set]))].filter((h) => h !== builder);
+    const recs = await multicall(holders.map((h) => ({ to: BLITZ, data: '0xc06ac6a3' + addrWord(h) }))); // recordOf(address)
+    const finished = [...byRound.keys()].filter((r) => r <= current - 2).sort((a, b) => b - a).slice(0, 40);
+    const results = await multicall(finished.map((r) => ({ to: BLITZ, data: '0xcdd20022' + word(r) }))); // resultOf(uint32)
+    const outcomes = results.map((x) => (x ? Number(slot(x, 2)) : 0));
+    out.blitz = {
+      tickets: supply, currentRound: current, last12Rounds: rounds.slice(Math.max(0, rounds.findIndex((r) => r.tickets > 0))),
+      outsideWalletsInEightOfLast12Rounds: [...count.values()].filter((n) => n >= 8).length,
+      outsideWalletsWithATicketAndAClaim: recs.filter((x) => x && slot(x, 0) - slot(x, 5) > 0n).length,
+      finishedRoundsWithTickets: finished.length, settled: outcomes.filter((o) => o !== 0).length,
+      voidRounds: outcomes.filter((o) => o === 4).length,
+    };
+  }
+  print(out);
+}
+
 const args = parseArgs(process.argv.slice(2));
 try {
   const now = await chainTime();
@@ -213,5 +266,6 @@ try {
   else if (args._[0] === 'score') await cmdScore(epoch);
   else if (args._[0] === 'blitz') await cmdBlitz(now);
   else if (args._[0] === 'funnel') await cmdFunnel();
-  else { console.log('Usage:\n  node keeper/keeper.mjs settle [--epoch N]\n  node keeper/keeper.mjs score [--epoch N]\n  node keeper/keeper.mjs blitz\n  node keeper/keeper.mjs funnel'); process.exit(args._[0] ? 1 : 0); }
+  else if (args._[0] === 'evidence') await cmdEvidence();
+  else { console.log('Usage:\n  node keeper/keeper.mjs settle [--epoch N]\n  node keeper/keeper.mjs score [--epoch N]\n  node keeper/keeper.mjs blitz\n  node keeper/keeper.mjs funnel\n  node keeper/keeper.mjs evidence'); process.exit(args._[0] ? 1 : 0); }
 } catch (e) { fail(e.message || String(e)); }
