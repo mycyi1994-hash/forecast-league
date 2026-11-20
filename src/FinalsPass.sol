@@ -223,16 +223,20 @@ contract FinalsPass is ERC721 {
         return string.concat("data:application/json;base64,", Base64.encode(bytes(json)));
     }
 
-    /// @notice Collection text for marketplaces. No fee recipient and no royalty.
+    /// @notice Collection text and image for marketplaces, built on-chain. No fee recipient and no
+    ///         royalty.
     function contractURI() external pure returns (string memory) {
-        return string.concat(
-            "data:application/json;base64,",
-            Base64.encode(
-                bytes(
-                    '{"name":"Forecast League Finals Pass","description":"Season One pass of Forecast League, a free prediction league for Binance Agent ID wallets on BNB Chain. 2000 at most, one per Agent ID wallet, free mint until 8 December 2026. No owner, no royalty, no reserve. The builder gives it no value and promises none.","external_link":"https://mycyi1994-hash.github.io/forecast-league/"}'
-                )
+        string memory image = Base64.encode(
+            bytes(
+                '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400"><rect width="400" height="400" fill="#0b0c12"/><rect x="30" y="70" width="340" height="260" rx="22" fill="none" stroke="#f2c84b" stroke-width="6"/><g font-family="monospace" text-anchor="middle"><text x="200" y="128" fill="#9aa0b4" font-size="15" letter-spacing="4">FORECAST LEAGUE</text><text x="200" y="196" fill="#eef0f6" font-size="34" letter-spacing="2">FINALS PASS</text><text x="200" y="250" fill="#f2c84b" font-size="30">2000</text><text x="200" y="364" fill="#9aa0b4" font-size="13" letter-spacing="3">SEASON ONE</text></g></svg>'
             )
         );
+        string memory json = string.concat(
+            '{"name":"Forecast League Finals Pass","description":"Season One pass of Forecast League, a free prediction league for Binance Agent ID wallets on BNB Chain. 2000 at most, one per Agent ID wallet, free mint until 8 December 2026. No owner, no royalty, no reserve. The builder gives it no value and promises none.","image":"data:image/svg+xml;base64,',
+            image,
+            '","external_link":"https://mycyi1994-hash.github.io/forecast-league/"}'
+        );
+        return string.concat("data:application/json;base64,", Base64.encode(bytes(json)));
     }
 
     // -------------------------------------------------------------- internal

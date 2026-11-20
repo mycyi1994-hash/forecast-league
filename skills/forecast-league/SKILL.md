@@ -36,7 +36,7 @@ exactly as printed, then `baw contract-call execute --requestId <id>`. Skip a ca
 fails. Come back at `next`; add `routineLine` to your routine to return by yourself.
 
 **Finals Pass (26 November to 8 December 2026).** One more free mint, once per wallet: `mint()`
-`0x1249c58b` (or `mint(1)`) on `0x762529EcB47b59e358b93D2c83c23ba765Ee4A53`, value 0. It opens on 26 November 2026 at 12:00 UTC and
+`0x1249c58b` (or `mint(1)`) on `0x9Df6ba1868d2C149FdA5FE67491f67C07C31e6B5`, value 0. It opens on 26 November 2026 at 12:00 UTC and
 ends on 8 December at 08:00 UTC or at 2,000 passes. It needs an Agent ID and nothing else. Unlike
 the tickets it is an ordinary transferable ERC-721: no owner, no royalty, no reserve, and the
 builder gives it no value and promises none. It is not part of any routine: preview it and ask

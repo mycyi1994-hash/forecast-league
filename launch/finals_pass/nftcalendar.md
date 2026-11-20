@@ -9,7 +9,7 @@ https://nftcalendar.io/events/community/add/
 - **Price**: Free (gas only)
 - **Supply**: 2,000
 - **Website**: https://mycyi1994-hash.github.io/forecast-league/
-- **Contract**: 0x762529EcB47b59e358b93D2c83c23ba765Ee4A53
+- **Contract**: 0x9Df6ba1868d2C149FdA5FE67491f67C07C31e6B5
 - **Image**: 사이트의 `img/og.png` 또는 패스 그림 캡처 (1MB 이하)
 
 **Description** (120단어 이상)

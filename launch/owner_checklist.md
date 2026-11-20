@@ -38,7 +38,7 @@ the skill previews every call and executes only after the human's explicit confi
 
 ## 3. 파이널 패스 배포 (오늘~11월 23일, 거래 한 번)
 
-계약은 완성했고 테스트를 통과했습니다. 사양은 2,000장 한정, 지갑당 1장, Agent ID만 있으면 민팅, 양도 가능, 11월 26일 21:00(한국시간) 오픈, 12월 8일 17:00 마감입니다. 주소는 미리 정해져 있습니다: `0x762529EcB47b59e358b93D2c83c23ba765Ee4A53`
+계약은 완성했고 테스트를 통과했습니다. 사양은 2,000장 한정, 지갑당 1장, Agent ID만 있으면 민팅, 양도 가능, 11월 26일 21:00(한국시간) 오픈, 12월 8일 17:00 마감입니다. 주소는 미리 정해져 있습니다: `0x9Df6ba1868d2C149FdA5FE67491f67C07C31e6B5`
 
 에이전틱 월렛이 연결된 AI에게 아래를 그대로 보냅니다. 비용은 약 0.00013 BNB입니다.
 
@@ -48,7 +48,7 @@ https://raw.githubusercontent.com/mycyi1994-hash/forecast-league/main/launch/fin
 
 배포한 뒤 바로 할 일 세 가지:
 
-1. **제출 폼에 주소 추가**: `0x762529EcB47b59e358b93D2c83c23ba765Ee4A53` (Finals Pass). 추가해야 이 계약의 지갑과 거래가 집계됩니다.
+1. **제출 폼에 주소 추가**: `0x9Df6ba1868d2C149FdA5FE67491f67C07C31e6B5` (Finals Pass). 추가해야 이 계약의 지갑과 거래가 집계됩니다.
 2. **BscScan 소스 인증**: 방법은 `launch/finals_pass/README.md`. (Sourcify 인증은 자동으로 제출됩니다.)
 3. **NFT Calendar 등록**: 문안은 `launch/finals_pass/nftcalendar.md`. 심사에 4~5일 걸리니 배포한 날 냅니다.
 

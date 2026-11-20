@@ -7,7 +7,7 @@
 // Run after keeper/livefeed.mjs, which rewrites openNow first. Once deployed, it also submits the source to Sourcify.
 import { readFileSync, writeFileSync } from 'node:fs';
 const RPCS = ['https://bsc-rpc.publicnode.com', 'https://bsc-dataseed.bnbchain.org', 'https://bsc-dataseed.binance.org'];
-const PASS = '0x762529EcB47b59e358b93D2c83c23ba765Ee4A53';
+const PASS = '0x9Df6ba1868d2C149FdA5FE67491f67C07C31e6B5';
 const OPENS_AT = 1795694400, CLOSES_AT = 1796716800, MAX_SUPPLY = 2000;
 const SITE = 'https://mycyi1994-hash.github.io/forecast-league';
 async function rpc(method, params) {

@@ -950,7 +950,7 @@
  },
  "finalsPass": {
   "what": "Season One pass: a free, numbered ERC-721, one per Agent ID wallet, 2,000 at most",
-  "contract": "0x762529EcB47b59e358b93D2c83c23ba765Ee4A53",
+  "contract": "0x9Df6ba1868d2C149FdA5FE67491f67C07C31e6B5",
   "status": "https://mycyi1994-hash.github.io/forecast-league/api/finals-pass.json (says whether the contract is deployed and whether the mint is open)",
   "opensAt": "2026-11-26T12:00:00Z",
   "closesAt": "2026-12-08T08:00:00Z",
