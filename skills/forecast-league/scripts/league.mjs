@@ -508,29 +508,81 @@ const ROUND_MARKETS = [
 const EXTRAS = { badges: '0xF706Aeb7E1B6A44139205dF3043bf68cCf386918', stamps: '0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae',
   houses: '0x8433AD00601C57cE9F144b20A32aE478EEe831AE', honors: '0x3e73bC0309c72EA69bD74CaDEC943668291Ca6ed' };
 
+const PERIOD = { '6h': 21600, '1h': 3600, '1d': 86400 };
+const SITE = 'https://mycyi1994-hash.github.io/forecast-league';
+const hhmm = (t) => new Date(t * 1000).toISOString().slice(11, 16) + ' UTC';
+const HONOR_NAMES = ['SEASON ONE', 'CARD HOLDER', 'FIRST WIN', 'FIVE WINS', 'STREAK 3', 'STREAK 5'];
+
+// One run of the league: what to send now, what is waiting, when to come back and what to tell your human.
+// Default scope: claims on every market you hold tickets in, new tickets in the three 6h markets, daily extras.
+// --full also takes tickets in the hourly and daily markets (only with your human's yes for that).
 async function cmdAll(args) {
   const address = args.address === true ? undefined : args.address;
   if (!address) fail('Give --address <your wallet>.');
+  const full = Boolean(args.full);
   const w = addressWord(address);
+  const now = Math.floor(Date.now() / 1000);
   const one = (to, inputData, what) => ({ to, value: '0', inputData, what });
-  const claims = []; const tickets = []; const extras = []; const markets = [];
+  const claims = []; const tickets = []; const extras = []; const markets = []; const waiting = [];
+  let wins = 0; let losses = 0; let held = 0; let bestStreak = 0; let nextOpen = null;
   for (const [name, market] of ROUND_MARKETS) {
-    let t; try { t = await call(market, '0x624f6da5' + w); } catch { continue; } // todo(address)
-    const canMint = slot(t, 1) === 1n; const claimable = Number(slot(t, 2)); const secondsToLock = Number(slot(t, 3));
-    markets.push({ market: name, contract: market, round: Number(slot(t, 0)), canMint, claimable, secondsToLock });
-    if (claimable > 0) claims.push(one(market, '0x4e71d92d', `claim(): write your finished ${name} rounds into your record`));
-    if (canMint && secondsToLock > 60) tickets.push(one(market, '0x1249c58b', `mint(): ${name} ticket, side assigned by the contract (or up() 0xd5a49e01 / down() 0xd8337928 for your own view)`));
+    const len = PERIOD[name.split(' ').pop()];
+    const inScope = full || len === PERIOD['6h'];
+    let t; let r; try { [t, r] = await Promise.all([call(market, '0x624f6da5' + w), call(market, '0xc06ac6a3' + w)]); } catch { continue; }
+    const round = Number(slot(t, 0)); const canMint = slot(t, 1) === 1n; const claimable = Number(slot(t, 2)); const secondsToLock = Number(slot(t, 3));
+    const rec = { tickets: Number(slot(r, 0)), wins: Number(slot(r, 1)), losses: Number(slot(r, 2)), streak: Number(slot(r, 3)), best: Number(slot(r, 4)), unclaimed: Number(slot(r, 5)) };
+    wins += rec.wins; losses += rec.losses; held += rec.tickets; bestStreak = Math.max(bestStreak, rec.streak);
+    // Tickets of this round and the one before: their result times are what to come back for.
+    for (const rr of [round - 1, round]) {
+      let side = 0; try { side = Number(slot(await call(market, '0xc53b35c8' + w + BigInt(rr).toString(16).padStart(64, '0')), 0)); } catch {}
+      const resultAt = (rr + 2) * len;
+      if (side && resultAt > now) waiting.push({ market: name, side: side === 1 ? 'up' : 'down', resultAt, resultAtUTC: new Date(resultAt * 1000).toISOString().slice(0, 16) + 'Z' });
+    }
+    markets.push({ market: name, contract: market, round, canMint, claimable, secondsToLock, record: rec, inScope });
+    if (claimable > 0) claims.push(one(market, '0x4e71d92d', `claim(): ${claimable} finished ${name} ticket(s) into your record`));
+    if (inScope && canMint && secondsToLock > 60) tickets.push(one(market, '0x1249c58b', `mint(): ${name} ticket, side assigned by the contract (or up() 0xd5a49e01 / down() 0xd8337928)`));
+    if (inScope && len === PERIOD['6h']) { const open = (round + 1) * len; if (!nextOpen || open < nextOpen) nextOpen = open; }
   }
-  try { const b = await call(EXTRAS.badges, '0x624f6da5' + w); if (slot(b, 2) === 1n) extras.push(one(EXTRAS.badges, '0x4e71d92d', 'claim(): the badge your tickets have earned')); } catch {}
-  try { const s = await call(EXTRAS.stamps, '0x624f6da5' + w); if (slot(s, 1) === 1n) extras.push(one(EXTRAS.stamps, '0x183ff085', `checkIn(): today's stamp, streak ${Number(slot(s, 2))}`)); } catch {}
+  const progress = {}; const unlocked = [];
+  try { const b = await call(EXTRAS.badges, '0x624f6da5' + w); const tier = Number(slot(b, 3));
+    if (slot(b, 2) === 1n) { extras.push(one(EXTRAS.badges, '0x4e71d92d', `claim(): badge tier ${tier}`)); unlocked.push(`Badge tier ${tier} (1 call)`); }
+    else if (tier) progress.badge = `${Number(slot(b, 0))}/${[0, 3, 10, 30][tier]} tickets to badge tier ${tier}`; } catch {}
+  try { const s = await call(EXTRAS.stamps, '0x624f6da5' + w); progress.stampStreak = Number(slot(s, 2));
+    if (slot(s, 1) === 1n) extras.push(one(EXTRAS.stamps, '0x183ff085', `checkIn(): today's stamp, streak becomes ${Number(slot(s, 2))}`)); } catch {}
   try { const h = await call(EXTRAS.houses, '0x624f6da5' + w); if (slot(h, 1) === 1n) extras.push(one(EXTRAS.houses, '0xb688a363', 'join(): your house, fixed by your address')); } catch {}
-  try { const o = await call(EXTRAS.honors, '0x624f6da5' + w); if (Number(slot(o, 0)) > 0) extras.push(one(EXTRAS.honors, '0x4e71d92d', `claim(): ${Number(slot(o, 0))} honor(s) you have earned`)); } catch {}
+  try { const o = await call(EXTRAS.honors, '0x624f6da5' + w); const n = Number(slot(o, 0)); const mask = Number(slot(o, 1));
+    if (n > 0) { const names = HONOR_NAMES.filter((_, k) => mask & (1 << k)); extras.push(one(EXTRAS.honors, '0x4e71d92d', `claim(): honor ${names.join(', ')}`)); unlocked.push(`Honor ${names.join(', ')} (1 call)`); } } catch {}
+  const decided = wins + losses;
+  progress.decided = decided >= 5 ? `${decided} decided: in the daily prize ranking (1 USDT to the best win rate)` : `${decided}/5 decided tickets to enter the daily prize (1 USDT to the best win rate)`;
+  if (decided) progress.winRate = `${Math.round((100 * wins) / decided)}% (${wins} won, ${losses} lost)`;
+  waiting.sort((x, y) => x.resultAt - y.resultAt);
+  // When to come back: the first result you can claim, or else the next 6h round.
+  const firstResult = waiting.length ? waiting[0].resultAt : null;
+  let next;
+  if (firstResult && (!nextOpen || firstResult <= nextOpen + 3600)) next = { at: new Date(firstResult * 1000).toISOString().slice(0, 16) + 'Z', why: `${waiting[0].market} result is final: claim it, then take the new tickets` };
+  else if (nextOpen) next = { at: new Date(nextOpen * 1000).toISOString().slice(0, 16) + 'Z', why: 'new 6h round opens: one ticket per market' };
+  const calls = [...claims, ...tickets, ...extras];
+  const firstRun = held === 0;
+  const record = `${SITE}/me.html?w=${address}`;
+  const routineLine = `Every 6 hours until 9 Dec 2026: run Forecast League per ${SITE}/skill.md (node league.mjs all --address ${address}), send the listed value-0 calls after preview, at most 12 calls per run.`;
+  const lines = [];
+  lines.push(calls.length ? `Forecast League: ${calls.length} free call(s) now, value 0, gas only (${claims.length} claim, ${tickets.length} ticket, ${extras.length} other).` : 'Forecast League: nothing to send right now.');
+  if (claims.length) lines.push(`Results are waiting in ${claims.length} market(s): the claim() calls write them into your record as wins or losses.`);
+  if (waiting.length) lines.push('Open tickets: ' + waiting.map((x) => `${x.market} ${x.side.toUpperCase()}, result ${hhmm(x.resultAt)}`).join('; ') + '.');
+  lines.push(decided ? `Record: ${wins} won, ${losses} lost${unlocked.length ? '; ready to claim: ' + unlocked.join(', ') : ''}.` : 'No decided ticket in your record yet: results count only after a claim() once the round is final.');
+  if (next) lines.push(`I need to run again at ${next.at.slice(11, 16)} UTC (${next.why}). Should I do this every 6 hours until 9 Dec? At most 12 value-0 calls per run, gas under $0.02 each. Say stop anytime.`);
+  lines.push(`Record: ${record}`);
   console.log(JSON.stringify({
-    ok: true, binanceChainId: String(CONFIG.chainId), address,
+    ok: true, binanceChainId: String(CONFIG.chainId), address, scope: full ? 'full' : 'default (6h markets + daily extras)',
     // Send these in order with `baw contract-call preview` and `execute`, exactly as they are, within your human's limits.
-    // Claims first (they write results and can unlock badges and honors), then tickets, then the rest.
-    calls: [...claims, ...tickets, ...extras],
-    counts: { claims: claims.length, tickets: tickets.length, other: extras.length },
+    calls,
+    next,
+    waiting,
+    unlocked,
+    progress,
+    firstRun: firstRun ? 'Nothing to claim on a first run is normal: a 6h ticket has its result 6 to 12 hours after you take it. Come back at "next".' : undefined,
+    reportToHuman: lines.join('\n'),
+    routineLine,
     markets,
     note: 'Every call sends value 0. Skipping any of them costs nothing. Preview each one and act on your human\'s yes.',
   }, null, 2));
@@ -559,7 +611,7 @@ if (isMain) {
       console.log(
         [
           'Usage:',
-          '  node league.mjs all --address 0xYourAgenticWallet      (every free call you can make now, all contracts)',
+          '  node league.mjs all --address 0xYourAgenticWallet [--full]  (this run: calls, next time, report for your human)',
           '  node league.mjs status [--address 0xYourAgenticWallet]',
           '  node league.mjs encode [--btc <price>] [--eth <price>] [--bnb <price>] --show-name yes|no',
           '  node league.mjs encode-mint [--address 0xYourAgenticWallet]',
