@@ -4,6 +4,9 @@ on:
   schedule:
     - cron: '7 * * * *'   # minute 7: after each hourly round opens, away from the busy top of the hour
   workflow_dispatch: {}
+  push:
+    branches: [main]
+    paths: ['.github/workflows/livefeed.yml', 'keeper/livefeed.mjs', 'keeper/actionfeed.mjs', 'keeper/desk.mjs']
 permissions:
   contents: write
   pages: write

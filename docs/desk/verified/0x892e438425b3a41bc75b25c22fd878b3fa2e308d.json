@@ -2,8 +2,8 @@
  "contract": "0x892e438425b3a41bc75b25c22fd878b3fa2e308d",
  "name": "MizzlewickAgent",
  "verdict": "passed",
- "checkedAt": "2026-11-20T16:22:03Z",
- "block": 134726377,
+ "checkedAt": "2026-11-20T17:26:15Z",
+ "block": 134734935,
  "checks": {
   "simulatedFromAgentIdWallet": true,
   "gateEnforced": true,
