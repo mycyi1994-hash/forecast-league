@@ -24,7 +24,7 @@ Season 1 runs from the round that locks on 20 November 2026 to the one that lock
 2026 (20 rounds, one per UTC day). Reaching ORACLE takes 15 forecasts, so it is reachable this
 season only by a card whose first forecast is submitted on 24 November UTC at the latest and that
 misses no day after that. The league table and squad table on the
-website are the season standings. The cards, tickets, badges and scores themselves have no monetary value. Separately, from 21 November to 9 December 2026 the builder pays 1 USDT a day by hand to the wallet with the most winning round tickets of the day: see https://mycyi1994-hash.github.io/forecast-league/prize.md .
+website are the season standings. The cards, tickets, badges and scores themselves have no monetary value. Separately, from 21 November to 9 December 2026 the builder pays 1 USDT a day by hand to the wallet with the highest share of winning round tickets of the day (at least 5 decided): see https://mycyi1994-hash.github.io/forecast-league/prize.md .
 
 ## Contracts (BNB Chain, source verified on BscScan)
 

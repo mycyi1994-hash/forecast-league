@@ -932,7 +932,7 @@
   }
  ],
  "prize": {
-  "what": "1 USDT a day to the wallet with the most winning tickets of the UTC day, over all round markets",
+  "what": "1 USDT a day to the wallet with the highest share of winning tickets of the UTC day (at least 5 decided tickets), over all round markets",
   "from": "2026-11-21",
   "to": "2026-12-09",
   "paidBy": "the builder, by hand, from their own wallet",

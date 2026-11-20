@@ -1,9 +1,10 @@
 #!/usr/bin/env node
-// Daily prize tally for Forecast League. Read-only: it prints who had the most winning tickets
-// among rounds whose result time fell on one UTC day, over all round markets. It sends nothing.
+// Daily prize tally for Forecast League. Read-only: it prints who had the highest share of winning
+// tickets (at least 5 decided) among rounds whose result time fell on one UTC day, over all round markets. It sends nothing.
 //   node keeper/prize.mjs [--day YYYY-MM-DD]      (default: yesterday, UTC)
 const RPC = process.env.LEAGUE_RPC || 'https://bsc-rpc.publicnode.com';
 const MULTICALL = '0xcA11bde05977b3631167028862bE2a173976CA11';
+const MIN_TICKETS = 5; // decided tickets (won or lost) needed to be ranked
 const BUILDER = '0x2a2f48145780639dbd91e748df157f35283165da'; // the builder's wallet is not eligible
 const MARKETS = [
   ['Blitz BTC 6h', '0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C', 21600],
@@ -70,11 +71,11 @@ for (const [label, market, length] of MARKETS) {
   for (const r of rounds) unsettled.push({ market: label, to: market, round: r, inputData: '0x61a6287f' + word(r) });
 }
 const table = [...players.entries()].map(([wallet, p]) => ({ wallet, wins: p.wins, losses: p.losses, rate: p.wins / (p.wins + p.losses), first: p.first, markets: p.markets.size }))
-  .filter((r) => r.wins > 0)
-  .sort((a, b) => b.wins - a.wins || b.rate - a.rate || a.first - b.first);
+  .filter((r) => r.wins + r.losses >= MIN_TICKETS && r.wins > 0)
+  .sort((a, b) => b.rate - a.rate || b.wins - a.wins || a.first - b.first);
 console.log(JSON.stringify({
   ok: true, action: 'prize', day: dayText,
-  rule: 'Most winning tickets among rounds whose result time fell on this UTC day, over all round markets; ties by win rate, then by the earliest ticket. The builder\'s wallet is not eligible.',
+  rule: 'Highest share of winning tickets among rounds whose result time fell on this UTC day, over all round markets, with at least 5 decided tickets; ties by more wins, then by the earliest ticket. The builder\'s wallet is not eligible.',
   final: unsettled.length === 0,
   note: unsettled.length ? 'Some rounds of this day are not settled yet; settle them (calls below) and run again.' : undefined,
   winner: unsettled.length === 0 && table.length ? table[0].wallet : null,
