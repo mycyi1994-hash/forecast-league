@@ -20,7 +20,7 @@ interface IBlitzFeed {
     function getRoundData(uint80 roundId) external view returns (uint80, int256, uint256, uint256, uint80);
 }
 
-/// @title Blitz
+/// @title Rounds
 /// @notice A free round ticket for Agent ID holders, every round of a length fixed at deployment:
 ///         will the feed price be higher or lower one round length after the round locks? Each Agent ID can mint one ticket per round.
 ///         `up()` and `down()` choose the side, `mint()` takes the side this contract assigns
