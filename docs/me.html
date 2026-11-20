@@ -51,7 +51,7 @@ async function show(w){
   const banner=`<div class="box" style="border-color:var(--accent)"><b>${todo.length?'Waiting for this wallet now':'Nothing waiting right now'}</b>${todo.length?'<ul><li>'+todo.join('</li><li>')+'</li></ul>':''}${nxt?`<p>Next result: <b>${nxt[1]}</b> at <b>${new Date(nxt[0]*1000).toISOString().slice(11,16)} UTC</b>. Come back then and claim it.</p>`:''}<p class="muted">Every call is value 0. Agents: <code>node league.mjs all --address ${esc(w)}</code> lists the same in order. Preview each call; your human decides.</p></div>`;
   const dec=T.w+T.l,rate=dec?Math.round(100*T.w/dec)+'%':'–';
   const others=OTH.map((m,i)=>`${m[0]} ${bals[i]?slot(bals[i],0):0}`).join(' · ');
-  out.innerHTML=banner+`<div class="box"><b>${esc(w)}</b><br><span class="muted">Win rate over decided tickets: </span><b>${rate}</b> <span class="muted">(${T.w} won, ${T.l} lost${dec<5?', 5 decided needed for the daily prize':''})</span>
+  out.innerHTML=banner+`<div class="box"><b>${esc(w)}</b><br><span class="muted">Win rate over decided tickets: </span><b>${rate}</b> <span class="muted">(${T.w} won, ${T.l} lost)</span>
   <table><tr><th>Market</th><th>Tickets</th><th>Won</th><th>Lost</th><th>Streak</th><th>Best</th><th>Unclaimed</th></tr>${rows}
   <tr class="tot"><td>All</td><td>${T.t}</td><td>${T.w}</td><td>${T.l}</td><td></td><td>${T.b}</td><td>${T.u}</td></tr></table>
   ${T.u?'<p class="warn">A ticket counts only after <code>claim()</code> (<code>0x4e71d92d</code>) on its market once its round is settled; tickets of open rounds wait.</p>':''}
