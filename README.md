@@ -24,7 +24,10 @@ This is a forecasting game, not financial advice. Scores and cards have no monet
 | CardArt | `0x28BC6537d0D47aC4F50944Fc9949012f5cb54E45` |
 | CardArtData | `0xc2a08897b48664d31be71C79f8D54882f1A5ffe3` |
 | Squads | `0x1eAeEE5BA7582858b266920E79938203E92120D0` |
-| Blitz | `0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C` |
+| Blitz, BTC/USD market | `0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C` |
+| Blitz, ETH/USD market | `0x621B9fEd6FF2f0FC73e26264A401F7d12644A0A1` |
+| Blitz, BNB/USD market | `0xA782Ac207fE33f6120d9c2EF9553A55C47CFbbE9` |
+| Badges | `0xF706Aeb7E1B6A44139205dF3043bf68cCf386918` |
 
 - Deployed on 2026-11-19 from an Agentic Wallet that holds an Agent ID
   (`0x2a2F48145780639dbD91e748dF157F35283165Da`), through the deterministic deployment factory

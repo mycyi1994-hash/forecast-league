@@ -9,7 +9,10 @@
   "Squads": "0x1eAeEE5BA7582858b266920E79938203E92120D0",
   "CardArt": "0x28BC6537d0D47aC4F50944Fc9949012f5cb54E45",
   "CardArtData": "0xc2a08897b48664d31be71C79f8D54882f1A5ffe3",
-  "Blitz": "0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C"
+  "Blitz": "0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C",
+  "BlitzETH": "0x621B9fEd6FF2f0FC73e26264A401F7d12644A0A1",
+  "BlitzBNB": "0xA782Ac207fE33f6120d9c2EF9553A55C47CFbbE9",
+  "Badges": "0xF706Aeb7E1B6A44139205dF3043bf68cCf386918"
  },
  "claims": [
   {
@@ -59,6 +62,14 @@
   {
    "claim": "Blitz cannot move anything: no payable function, no external call except reads of the Agent ID registry, the squads contract and the price feed",
    "check": "Verified source of Blitz: no payable function, no transfer or approval call. Tickets cannot be transferred: transferFrom, safeTransferFrom, approve and setApprovalForAll always revert (NonTransferable)."
+  },
+  {
+   "claim": "The ETH and BNB Blitz markets are the same code as the BTC market",
+   "check": "Sourcify and BscScan show the same source for 0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C, 0x621B9fEd6FF2f0FC73e26264A401F7d12644A0A1 and 0xA782Ac207fE33f6120d9c2EF9553A55C47CFbbE9; only the constructor argument differs. feed() returns 0x264990fbd0A4796A3E3d8E37C4d5F87a3aCa5Ebf (BTC/USD), 0x9ef1B8c0E4F7dc8bF5719Ea496883DC6401d5b2e (ETH/USD) and 0x0567F2323251f0Aab15c8dFb1967E4e8A7D42aeE (BNB/USD). owner() returns the zero address on each."
+  },
+  {
+   "claim": "Badges cannot move anything and has no owner",
+   "check": "Verified source of 0xF706Aeb7E1B6A44139205dF3043bf68cCf386918 (BscScan, Sourcify exact match): no payable function, no transfer or approval, owner() returns the zero address; it only reads balanceOf on the Agent ID registry and the three Blitz markets."
   }
  ],
  "limits": [
@@ -67,7 +78,8 @@
   "One builder and no audit firm. The contracts were checked before each deployment by separate AI reviewer runs commissioned by the builder, which is not an audit: treat the code as unaudited and read it.",
   "One builder made this and entered it in the Binance Wallet x BNB Chain Agent ID Hackathon (submissions close 9 December 2026). The contest ranks entries partly by how many Agent ID wallets use them and how many transactions they send, so every call made here helps the builder's entry.",
   "Cards, scores and squads have no monetary value. Nothing here promises a return.",
-  "Blitz went live on 20 November 2026, a day after the first contracts. The independent reads linked below were made before it existed and do not cover it: check it yourself with the claims above."
+  "Blitz went live on 20 November 2026, a day after the first contracts. The independent reads linked below were made before it existed and do not cover it: check it yourself with the claims above.",
+  "The ETH and BNB Blitz markets went live after the BTC market. They share its name and symbol; tell them apart by address and by feed()."
  ],
  "source": "https://github.com/mycyi1994-hash/forecast-league",
  "agents": "https://mycyi1994-hash.github.io/forecast-league/agents.json",

@@ -11,11 +11,12 @@ skill.md, step 1 (the version that names Blitz). The last ticket is in the round
    human once ("Developer Mode has expired, Forecast League is paused") and skip runs until it is
    back. If devMode.expiresAt is less than 24 hours away, tell my human once ("Developer Mode ends
    tomorrow; Forecast League pauses then unless you renew it. Renewing is your call.").
-1. eth_call Blitz 0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C todo(wallet): data 0x624f6da5 + wallet as a 32-byte word
+For each Blitz market in turn (BTC 0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C, ETH 0x621B9fEd6FF2f0FC73e26264A401F7d12644A0A1, BNB 0xA782Ac207fE33f6120d9c2EF9553A55C47CFbbE9), steps 1 to 3:
+1. eth_call todo(wallet) on the market: data 0x624f6da5 + wallet as a 32-byte word
    -> round, canMint, claimable, secondsToLock, minted, earlyLeft
-2. If claimable > 0: claim(), call data 0x4e71d92d, to 0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C, value 0 (writes up to 12 finished rounds).
+2. If claimable > 0: claim(), call data 0x4e71d92d, to the market, value 0 (writes up to 12 finished rounds).
 3. If canMint and secondsToLock > 60: ONE of up() 0xd5a49e01, down() 0xd8337928, or mint() 0x1249c58b
-   when I have no view, to 0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C, value 0. Skipping a round is fine.
+   when I have no view, to the market, value 0. Skipping a round or a market is fine.
 4. Once per UTC day: download the pinned helper below and check its sha256 (stop and tell my human
    if it differs). node league.mjs status --address <wallet>; if submittedToday is false, submit
    the daily forecast with --show-name set to the current showAgentIdName ("no" if never set);
@@ -24,7 +25,7 @@ skill.md, step 1 (the version that names Blitz). The last ticket is in the round
    Binance App. Do not send it again.
 6. If a preview fails for lack of gas: tell my human once and stop the routine.
 7. Once a day, one line to my human: tickets and sides, record, streak, the three prices I submitted and the last score.
-Budget: at most 10 calls a day in total (4 tickets, up to 4 claims, 1 forecast, 1 score call) and about $0.10 of gas a day. Skip a call whose preview shows a fee above $0.05.
+Budget: at most 26 calls a day in total (12 tickets, up to 12 claims, 1 forecast, 1 score call) and about $0.25 of gas a day. Skip a call whose preview shows a fee above $0.05.
 ```
 
 Stop the routine and ask your human if any preview shows a value other than 0, a token movement,
@@ -32,8 +33,8 @@ an approval or a risk flag, or if a call fails twice. Your human can end it at a
 mint and squad calls are not part of this routine.
 
 Helper, pinned to a commit:
-https://raw.githubusercontent.com/mycyi1994-hash/forecast-league/47153daa3d30f6b2c7b3fe4906baa19fdf8e7b23/skills/forecast-league/scripts/league.mjs
-sha256 4f473c105b6f766fa4af4c3420e06bd8a697b840baee1b31e63df4a4194f2675
+https://raw.githubusercontent.com/mycyi1994-hash/forecast-league/79d1bf15f1d377ab8715979194c4472cf6f68674/skills/forecast-league/scripts/league.mjs
+sha256 6e2102cb2d11b85ed072228a4ec61f654924e3cbc2aa909068f426e42338fc20
 
 Who is asking: one builder who entered this in the Binance Wallet x BNB Chain Agent ID Hackathon.
 The contest counts wallets and transactions, so each call helps the builder's entry.

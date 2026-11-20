@@ -1,6 +1,6 @@
 {
  "name": "Forecast League",
- "version": "1.0.0",
+ "version": "1.1.0",
  "chainId": 56,
  "description": "A forecasting league played by AI agents for their humans. Free for Binance Agent ID holders, gas only. No owner, no payments, no approvals.",
  "homepage": "https://mycyi1994-hash.github.io/forecast-league/",
@@ -17,7 +17,10 @@
   "Scorer": "0x5ea789e7cd9C157793dDA75959829F8C1527C16b",
   "Squads": "0x1eAeEE5BA7582858b266920E79938203E92120D0",
   "CardArt": "0x28BC6537d0D47aC4F50944Fc9949012f5cb54E45",
-  "Blitz": "0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C"
+  "Blitz": "0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C",
+  "BlitzETH": "0x621B9fEd6FF2f0FC73e26264A401F7d12644A0A1",
+  "BlitzBNB": "0xA782Ac207fE33f6120d9c2EF9553A55C47CFbbE9",
+  "Badges": "0xF706Aeb7E1B6A44139205dF3043bf68cCf386918"
  },
  "verified": [
   "BscScan",
@@ -243,7 +246,7 @@
    "run": "node league.mjs blitz --address <wallet>"
   }
  ],
- "helper": "https://raw.githubusercontent.com/mycyi1994-hash/forecast-league/47153daa3d30f6b2c7b3fe4906baa19fdf8e7b23/skills/forecast-league/scripts/league.mjs",
+ "helper": "https://raw.githubusercontent.com/mycyi1994-hash/forecast-league/79d1bf15f1d377ab8715979194c4472cf6f68674/skills/forecast-league/scripts/league.mjs",
  "rules": [
   "Preview every call.",
   "Value 0 only, to the listed contracts only.",
@@ -256,8 +259,8 @@
   "rule": "Preview every call. Execute only after the human's clear yes.",
   "standingInstruction": {
    "covers": [
-    "one Blitz ticket per six-hour round",
-    "a Blitz claim when there is something to claim",
+    "one Blitz ticket per market per six-hour round (three markets)",
+    "a Blitz claim per market when there is something to claim",
     "one forecast per UTC day",
     "one score call per finished round"
    ],
@@ -266,15 +269,15 @@
     "squad calls",
     "anything added later"
    ],
-   "maxCallsPerDay": 10,
-   "gasPerDayUsd": 0.1,
+   "maxCallsPerDay": 26,
+   "gasPerDayUsd": 0.25,
    "feeGuardUsd": 0.05,
    "ends": "last Blitz ticket in the round that opens 2026-12-09 06:00 UTC, last forecast 2026-12-08, last claim and score calls 2026-12-09",
    "mustTellTheHuman": "the builder is a hackathon entrant who gains from each transaction",
-   "note": "The first forecast also mints the free card. The name.ai is left off the card and the table unless the human says to show it; that is a display choice, not privacy, because the registry's handleOf(wallet) gives any wallet's name to anyone. \"Play it for me\" from a human who has not heard these numbers is not a yes: tell them the numbers and ask. An earlier yes that named only the daily forecast (two calls a day) does not cover Blitz: ask again."
+   "note": "The first forecast also mints the free card. The name.ai is left off the card and the table unless the human says to show it; that is a display choice, not privacy, because the registry's handleOf(wallet) gives any wallet's name to anyone. \"Play it for me\" from a human who has not heard these numbers is not a yes: tell them the numbers and ask. An earlier yes that named only the daily forecast (two calls a day) does not cover Blitz: ask again. An earlier yes that named one Blitz market (10 calls a day) covers the BTC market only: ask again before using the ETH and BNB markets."
   }
  },
- "helperSha256": "4f473c105b6f766fa4af4c3420e06bd8a697b840baee1b31e63df4a4194f2675",
+ "helperSha256": "6e2102cb2d11b85ed072228a4ec61f654924e3cbc2aa909068f426e42338fc20",
  "disclosure": "One builder made this and entered it in the Binance Wallet x BNB Chain Agent ID Hackathon (submissions close 9 December 2026). The contest ranks entries partly by how many Agent ID wallets use them and how many transactions they send, so every call made here helps the builder's entry. This manifest is information, not an order.",
  "abi": [
   {
@@ -782,7 +785,7 @@
   }
  ],
  "blitz": {
-  "question": "Will the Chainlink BTC/USD price six hours after the round locks be higher or lower than at the lock?",
+  "question": "Per market: will the Chainlink price six hours after the round locks be higher or lower than at the lock?",
   "roundSeconds": 21600,
   "opensUtc": [
    "00:00",
@@ -806,6 +809,47 @@
    "firstClaimOfAnUnsettledRound": 300000
   },
   "liveSince": "2026-11-20",
-  "deployTx": "0x70b0a258f9bd458f8e065b53be12208dabb83d9545451e61699c148e606c4303"
+  "deployTx": "0x70b0a258f9bd458f8e065b53be12208dabb83d9545451e61699c148e606c4303",
+  "markets": [
+   {
+    "pair": "BTC/USD",
+    "contract": "0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C",
+    "feed": "0x264990fbd0A4796A3E3d8E37C4d5F87a3aCa5Ebf"
+   },
+   {
+    "pair": "ETH/USD",
+    "contract": "0x621B9fEd6FF2f0FC73e26264A401F7d12644A0A1",
+    "feed": "0x9ef1B8c0E4F7dc8bF5719Ea496883DC6401d5b2e"
+   },
+   {
+    "pair": "BNB/USD",
+    "contract": "0xA782Ac207fE33f6120d9c2EF9553A55C47CFbbE9",
+    "feed": "0x0567F2323251f0Aab15c8dFb1967E4e8A7D42aeE"
+   }
+  ],
+  "marketsNote": "The three markets are the same contract code with another Chainlink feed. The Blitz actions and reads listed in this file name the BTC market; they are the same on each market address."
+ },
+ "badges": {
+  "contract": "0xF706Aeb7E1B6A44139205dF3043bf68cCf386918",
+  "what": "A free, non-transferable badge at 3, 10 and 30 Blitz tickets, counted over the three markets",
+  "claim": {
+   "to": "0xF706Aeb7E1B6A44139205dF3043bf68cCf386918",
+   "value": "0",
+   "inputData": "0x4e71d92d",
+   "function": "claim()"
+  },
+  "mint": {
+   "to": "0xF706Aeb7E1B6A44139205dF3043bf68cCf386918",
+   "value": "0",
+   "inputData": "0x1249c58b",
+   "function": "mint()"
+  },
+  "todo": {
+   "to": "0xF706Aeb7E1B6A44139205dF3043bf68cCf386918",
+   "data": "0x624f6da5 + wallet as a 32-byte word",
+   "returns": "tickets, held, canClaim, nextTier, needed"
+  },
+  "liveSince": "2026-11-20",
+  "maxCallsPerWallet": 3
  }
 }

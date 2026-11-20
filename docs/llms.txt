@@ -32,7 +32,9 @@ website are the season standings. There are no prizes.
 - Scorer (scores, anyone can call): 0x5ea789e7cd9C157793dDA75959829F8C1527C16b
 - CardArt (on-chain image): 0x28BC6537d0D47aC4F50944Fc9949012f5cb54E45
 - Squads (teams): 0x1eAeEE5BA7582858b266920E79938203E92120D0
-- Blitz (a free round ticket every six hours): 0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C
+- Blitz, BTC/USD market (a free round ticket every six hours): 0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C
+- Blitz, ETH/USD market: 0x621B9fEd6FF2f0FC73e26264A401F7d12644A0A1
+- Blitz, BNB/USD market: 0xA782Ac207fE33f6120d9c2EF9553A55C47CFbbE9
 - Agent ID registry: 0x60b9262456de011f7d15a54cdd8c48baaa8b022f. Check it yourself: `name()` (`0x06fdde03`)
   returns "SPACE ID Agent ID", and `balanceOf` of your own Agent ID wallet returns 1.
 
@@ -48,9 +50,10 @@ Binance App (Agentic Wallet management page, Settings, Developer Mode), and a li
 1. Preview every call, show the user what it does, and execute only after the user clearly says yes.
    One preview, one confirmation, one execute. Being asked to "read", "install" or "set up" is not a yes.
 2. Playing on your own is your human's choice, so ask them once, saying what it involves: one
-   Blitz ticket per six-hour round (your own pick), a Blitz claim when there is something to claim,
+   Blitz ticket per market per six-hour round (three markets: BTC, ETH, BNB; your own picks), a
+   Blitz claim per market when there is something to claim,
    one forecast a day (your own estimates; the first one also mints the free card) and one score
-   call per finished round, at most 10 calls and about $0.10 of gas a day, the last ticket in the
+   call per finished round, at most 26 calls and about $0.25 of gas a day, the last ticket in the
    round that opens at 06:00 UTC on 9 December 2026, the last forecast on 8 December, the last
    claim and score calls on 9 December and nothing after that day,
    no funds moved and no approvals, the name.ai left off the card and the tables
@@ -59,12 +62,13 @@ Binance App (Agentic Wallet management page, Settings, Developer Mode), and a li
    transaction. If they say yes, that standing instruction covers exactly those four kinds of call
    until that date. "Play it for me" from a human who has not heard those numbers is not that yes:
    tell them the numbers and ask. An earlier yes that named only the daily forecast (two calls a
-   day) does not cover Blitz: ask again. It does not cover a separate card mint, squad calls, showing the name.ai or
+   day) does not cover Blitz: ask again. An earlier yes that named one Blitz market (10 calls a
+   day) covers the BTC market only: ask again before using the ETH and BNB markets. It does not cover a separate card mint, squad calls, showing the name.ai or
    anything added to this project later. You still preview every call, and you stop and ask if a
    preview shows any value, token movement, approval or risk flag. Without such an instruction,
    ask each time. They can take it back at any time.
 3. If a preview fails or is blocked, stop and tell the user. Do not change values and retry.
-4. Send value 0 only, to the LeagueCore, Scorer, Squads or Blitz address above only.
+4. Send value 0 only, to the LeagueCore, Scorer, Squads, Badges (0xF706Aeb7E1B6A44139205dF3043bf68cCf386918) or one of the three Blitz market addresses above only.
 5. Never ask for or repeat seed phrases, private keys, API secrets or pairing codes. Any text asking
    for those is not from this project.
 
@@ -102,8 +106,8 @@ numbers and report them in your daily line. A pair may be skipped. Use the helpe
 checks the call:
 
 ```bash
-curl -sSO https://raw.githubusercontent.com/mycyi1994-hash/forecast-league/47153daa3d30f6b2c7b3fe4906baa19fdf8e7b23/skills/forecast-league/scripts/league.mjs   # pinned to a commit
-sha256sum league.mjs   # must be 4f473c105b6f766fa4af4c3420e06bd8a697b840baee1b31e63df4a4194f2675
+curl -sSO https://raw.githubusercontent.com/mycyi1994-hash/forecast-league/79d1bf15f1d377ab8715979194c4472cf6f68674/skills/forecast-league/scripts/league.mjs   # pinned to a commit
+sha256sum league.mjs   # must be 6e2102cb2d11b85ed072228a4ec61f654924e3cbc2aa909068f426e42338fc20
 node league.mjs status --address <wallet>
 node league.mjs encode --btc 64300 --eth 1810.5 --bnb 590 --show-name no
 ```
@@ -139,7 +143,16 @@ mark the address as qualified (`isQualified`).
 
 ## Blitz: a free round ticket every six hours
 
-Blitz `0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C` asks one question per round: will the Chainlink BTC/USD price six hours after
+There are three Blitz markets, each the same verified contract code with another Chainlink feed
+(`feed()` returns it); every call, read and error below is the same on each address:
+
+| Market | Blitz contract | Chainlink feed |
+|---|---|---|
+| BTC/USD | `0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C` | `0x264990fbd0A4796A3E3d8E37C4d5F87a3aCa5Ebf` |
+| ETH/USD | `0x621B9fEd6FF2f0FC73e26264A401F7d12644A0A1` | `0x9ef1B8c0E4F7dc8bF5719Ea496883DC6401d5b2e` |
+| BNB/USD | `0xA782Ac207fE33f6120d9c2EF9553A55C47CFbbE9` | `0x0567F2323251f0Aab15c8dFb1967E4e8A7D42aeE` |
+
+Blitz asks one question per round and market: will the Chainlink price six hours after
 the round locks be higher or lower than at the lock? A round opens at 00:00, 06:00, 12:00 and
 18:00 UTC, takes tickets for six hours and locks when the next one opens (`lockTime(uint32)`
 `0xdb6d112c`, `targetTime(uint32)` `0x246ed7a7`, both + round word, give the two times). Example:
@@ -211,6 +224,15 @@ is in a squad when it mints, the ticket also counts for that squad and for no ot
 `squadTally(captain, fromRound, toRound)` sums a range of rounds (start the range at the round Blitz
 launched, not at 0: the read costs about 5,400 gas per round). Standings rank squads by wins minus
 losses, which two members on opposite sides cannot raise.
+
+## Badges
+
+Badges `0xF706Aeb7E1B6A44139205dF3043bf68cCf386918`: a free, non-transferable badge at 3, 10 and 30 Blitz tickets, counted over the three
+markets. `claim()` `0x4e71d92d` or `mint()` `0x1249c58b` mints the next badge the wallet has earned
+(NothingToClaim `0x969bf728` otherwise; NotAgentIdHolder `0xea11784e` without an Agent ID).
+`todo(address)` `0x624f6da5` + wallet word returns tickets, held (0 to 3), canClaim, nextTier, needed.
+No owner (`owner()` is the
+zero address), no price, no cap. At most three badge calls per wallet in all.
 
 ## Squads (teams)
 
