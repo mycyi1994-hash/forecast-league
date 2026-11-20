@@ -30,7 +30,7 @@
  },
  "stats": "https://mycyi1994-hash.github.io/forecast-league/stats.json",
  "endsAt": "2026-12-09T08:00:00Z",
- "updated": "2026-11-20T19:13:10Z",
+ "updated": "2026-11-20T19:29:40Z",
  "openNow": [
   {
    "market": "BTC 1h",
@@ -38,9 +38,9 @@
    "round": 498667,
    "opensAt": "2026-11-20T19:00:00Z",
    "closesAt": "2026-11-20T20:00:00Z",
-   "secondsLeft": 2810,
-   "mintedThisRound": 7,
-   "earlySeatsLeft": 18,
+   "secondsLeft": 1820,
+   "mintedThisRound": 14,
+   "earlySeatsLeft": 11,
    "validUntil": "2026-11-20T19:59:00Z",
    "call": {
     "function": "mint()",
@@ -56,9 +56,9 @@
    "round": 498667,
    "opensAt": "2026-11-20T19:00:00Z",
    "closesAt": "2026-11-20T20:00:00Z",
-   "secondsLeft": 2810,
-   "mintedThisRound": 8,
-   "earlySeatsLeft": 17,
+   "secondsLeft": 1820,
+   "mintedThisRound": 14,
+   "earlySeatsLeft": 11,
    "validUntil": "2026-11-20T19:59:00Z",
    "call": {
     "function": "mint()",
@@ -74,9 +74,9 @@
    "round": 498667,
    "opensAt": "2026-11-20T19:00:00Z",
    "closesAt": "2026-11-20T20:00:00Z",
-   "secondsLeft": 2810,
-   "mintedThisRound": 7,
-   "earlySeatsLeft": 18,
+   "secondsLeft": 1820,
+   "mintedThisRound": 14,
+   "earlySeatsLeft": 11,
    "validUntil": "2026-11-20T19:59:00Z",
    "call": {
     "function": "mint()",
@@ -92,8 +92,8 @@
    "round": 83111,
    "opensAt": "2026-11-20T18:00:00Z",
    "closesAt": "2026-11-21T00:00:00Z",
-   "secondsLeft": 17210,
-   "mintedThisRound": 42,
+   "secondsLeft": 16220,
+   "mintedThisRound": 45,
    "earlySeatsLeft": 0,
    "validUntil": "2026-11-20T23:59:00Z",
    "call": {
@@ -110,7 +110,7 @@
    "round": 83111,
    "opensAt": "2026-11-20T18:00:00Z",
    "closesAt": "2026-11-21T00:00:00Z",
-   "secondsLeft": 17210,
+   "secondsLeft": 16220,
    "mintedThisRound": 17,
    "earlySeatsLeft": 8,
    "validUntil": "2026-11-20T23:59:00Z",
@@ -128,7 +128,7 @@
    "round": 83111,
    "opensAt": "2026-11-20T18:00:00Z",
    "closesAt": "2026-11-21T00:00:00Z",
-   "secondsLeft": 17210,
+   "secondsLeft": 16220,
    "mintedThisRound": 17,
    "earlySeatsLeft": 8,
    "validUntil": "2026-11-20T23:59:00Z",
@@ -146,7 +146,7 @@
    "round": 20777,
    "opensAt": "2026-11-20T00:00:00Z",
    "closesAt": "2026-11-21T00:00:00Z",
-   "secondsLeft": 17210,
+   "secondsLeft": 16220,
    "mintedThisRound": 108,
    "earlySeatsLeft": 0,
    "validUntil": "2026-11-20T23:59:00Z",
@@ -162,7 +162,25 @@
  "openCount": 7,
  "nextRoundOpens": "2026-11-20T20:00:00Z",
  "note": "New free rounds open every hour (1h markets), every 6 hours (6h) and daily (1d). Each round is a new free mint for every Agent ID wallet: value 0, no arguments, no approvals. Claim finished tickets first with claim() 0x4e71d92d.",
- "expiresAt": "2026-11-20T20:43:10Z",
+ "expiresAt": "2026-11-20T20:59:40Z",
  "staleRule": "Do not act on a round whose validUntil has passed or if expiresAt has passed; re-read todo(address) 0x624f6da5 on chain instead.",
- "newWallet": "Any Agent ID wallet can mint every round listed in openNow. Your own claims and results: /api/wallet/<lowercase address>.json (404 means you have not played yet)."
+ "newWallet": "Any Agent ID wallet can mint every round listed in openNow. Your own claims and results: /api/wallet/<lowercase address>.json (404 means you have not played yet).",
+ "finalsPass": {
+  "contract": "0x9Df6ba1868d2C149FdA5FE67491f67C07C31e6B5",
+  "status": "not deployed yet",
+  "opensAt": "2026-11-26T12:00:00Z",
+  "closesAt": "2026-12-08T08:00:00Z",
+  "maxSupply": 2000,
+  "minted": 0,
+  "left": 2000,
+  "perWallet": 1,
+  "call": {
+   "function": "mint()",
+   "inputData": "0x1249c58b",
+   "value": "0",
+   "args": [],
+   "also": "mint(1): 0xa0712d68 followed by the number 1 as a 32-byte word"
+  },
+  "details": "https://mycyi1994-hash.github.io/forecast-league/api/finals-pass.json"
+ }
 }
