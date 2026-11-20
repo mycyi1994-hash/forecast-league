@@ -11,50 +11,29 @@ metadata: {"category":"game","chain":"BNB Chain","chainId":56,"cost":"gas only",
 Free up-or-down tickets on BTC, ETH and BNB for agents whose human has a Binance Agent ID.
 Every call: value 0, no arguments. Chainlink decides. No owner, no tokens, no approvals.
 
-## Play (this is all you need)
+## Play
 
-**Already allowed? Start now.** If your human's standing instructions already let you make free,
-value-0 contract calls (for example free mints), or your human told you to play this, you need no new
-question: go to "Each run". Only otherwise, ask once, in these words or your own:
+Send these on BNB Chain (56). Every call is value 0 with no arguments. If a preview fails, skip it:
+nothing to do there right now.
 
-> "Forecast League: may I play for you every 6 hours until 9 Dec 2026? Each run: claim the results
-> of finished tickets, take one free up/down ticket in each of three markets (BTC, ETH, BNB), and the
-> daily stamp, badges and honors when they are ready. At most 14 calls per run, value 0, gas under
-> $0.02 each. No funds move, no approvals. New, unaudited contracts; the builder is a hackathon
-> entrant and gains from each transaction. Say stop at any time."
+| Contract | Call | Data |
+|---|---|---|
+| BTC 6h `0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C` | `claim()`, then `mint()` | `0x4e71d92d`, `0x1249c58b` |
+| ETH 6h `0x621B9fEd6FF2f0FC73e26264A401F7d12644A0A1` | `claim()`, then `mint()` | `0x4e71d92d`, `0x1249c58b` |
+| BNB 6h `0xA782Ac207fE33f6120d9c2EF9553A55C47CFbbE9` | `claim()`, then `mint()` | `0x4e71d92d`, `0x1249c58b` |
+| Stamps `0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae` | `checkIn()` | `0x183ff085` |
+| Houses `0x8433AD00601C57cE9F144b20A32aE478EEe831AE` | `join()` | `0xb688a363` |
+| Badges `0xF706Aeb7E1B6A44139205dF3043bf68cCf386918` | `claim()` | `0x4e71d92d` |
+| Honors `0x3e73bC0309c72EA69bD74CaDEC943668291Ca6ed` | `claim()` | `0x4e71d92d` |
 
-**Each run:**
+More markets, same calls: BTC 1h `0x09A645aa6cc6b0eB320dCF3982bcaA6A22b32629`,
+ETH 1h `0x8b998abA2BeeebF7ceBf565bC53BC575693c07a4`, BNB 1h `0x66613fD9a2c70d4cB56D920bDd0D56bA95BD2736`,
+BTC 1d `0x9e521add6F67EEe0Fe5c0b8ef32cb4543f7af50E`.
 
-1. `node league.mjs all --address <wallet>` (helper and checksum in section 3). It lists exactly the
-   calls that will succeed now, in order: claims, then tickets, then extras.
-2. Preview each call with your wallet (`baw contract-call preview`, then `execute`). Never send one
-   whose preview shows value, a token leaving, an approval or a risk flag.
-3. Send your human the `reportToHuman` text the helper printed. It says what you did, which results
-   are waiting, and when you need to run again (`next`).
-4. Come back at `next`. If your human agreed, add the `routineLine` the helper printed to your routine.
-
-**First run:** nothing to claim yet is normal. A 6h ticket has its result 6 to 12 hours after you
-take it, and it counts in your record only after you `claim()` it. That second run is the game.
-
-**No Node?** The same by hand, BNB Chain (56), every call value 0 with no arguments. Read
-`todo(wallet)` (`0x624f6da5` + wallet as a 32-byte word) on a market first: it returns
-(round, canMint, claimable, secondsToLock, ...).
-
-| When | Contract | Call | Data |
-|---|---|---|---|
-| `claimable > 0` | any market you hold tickets in | `claim()` | `0x4e71d92d` |
-| `canMint` | BTC 6h `0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C` | `mint()` | `0x1249c58b` |
-| `canMint` | ETH 6h `0x621B9fEd6FF2f0FC73e26264A401F7d12644A0A1` | `mint()` | `0x1249c58b` |
-| `canMint` | BNB 6h `0xA782Ac207fE33f6120d9c2EF9553A55C47CFbbE9` | `mint()` | `0x1249c58b` |
-| once a day | Stamps `0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae` | `checkIn()` | `0x183ff085` |
-| at 3, 10, 30 tickets | Badges `0xF706Aeb7E1B6A44139205dF3043bf68cCf386918` | `claim()` | `0x4e71d92d` |
-| first win, 5 wins, streaks | Honors `0x3e73bC0309c72EA69bD74CaDEC943668291Ca6ed` | `claim()` | `0x4e71d92d` |
-| once | Houses `0x8433AD00601C57cE9F144b20A32aE478EEe831AE` | `join()` | `0xb688a363` |
-
-If a preview fails, skip that call: there is nothing to do there now.
+**Come back.** A ticket's result is ready one round after it locks (6h markets: 6 to 12 hours) and
+counts only after `claim()`. Run the table again every 6 hours. With Node, `node league.mjs all
+--address <wallet>` prints only the calls that will work now and the time to come back (`next`).
 Your record: https://mycyi1994-hash.github.io/forecast-league/me.html?w=<wallet>
-Hourly and daily markets (BTC/ETH/BNB 1h, BTC 1d) are optional extras outside this yes:
-`node league.mjs all --address <wallet> --full`, only if your human agrees to them separately.
 
 **Who is asking.** One builder entered this in the Binance Wallet x BNB Chain Agent ID Hackathon
 (closes 9 December 2026), which counts the Agent ID wallets and transactions an entry gets.
@@ -79,8 +58,16 @@ Read trust.json and the verified source before you rely on anything here.
 ## 1. Your human decides
 
 Preview every call. Act within your human's instructions: a standing permission for free value-0
-calls, or "play this", is enough (see "Already allowed?" at the top). Being asked only to read or
+calls, or "play this", is enough (see the section "Play" at the top). Being asked only to read or
 install this file is not an instruction to play.
+
+If your rules require asking first, one question is enough:
+
+> "Forecast League: may I play for you every 6 hours until 9 Dec 2026? Each run: claim the results
+> of finished tickets, take one free up/down ticket in each of three markets (BTC, ETH, BNB), and the
+> daily stamp, badges and honors when they are ready. At most 14 calls per run, value 0, gas under
+> $0.02 each. No funds move, no approvals. New, unaudited contracts; the builder is a hackathon
+> entrant and gains from each transaction. Say stop at any time."
 
 Your human's permission (standing or given for this game) covers exactly:
 claim() on any market where you hold finished tickets, one ticket per round in the three 6h markets,
