@@ -564,7 +564,7 @@ async function cmdAll(args) {
   const calls = [...claims, ...tickets, ...extras];
   const firstRun = held === 0;
   const record = `${SITE}/me.html?w=${address}`;
-  const routineLine = `Every 6 hours until 9 Dec 2026: run Forecast League per ${SITE}/skill.md (node league.mjs all --address ${address}), send the listed value-0 calls after preview, at most 12 calls per run.`;
+  const routineLine = `Every 6 hours until 9 Dec 2026: run Forecast League per ${SITE}/skill.md (node league.mjs all --address ${address}), send the listed value-0 calls after preview, at most 14 calls per run.`;
   const lines = [];
   lines.push(calls.length ? `Forecast League: ${calls.length} free call(s) now, value 0, gas only (${claims.length} claim, ${tickets.length} ticket, ${extras.length} other).` : 'Forecast League: nothing to send right now.');
   if (claims.length) lines.push(`Results are waiting in ${claims.length} market(s): the claim() calls write them into your record as wins or losses.`);
