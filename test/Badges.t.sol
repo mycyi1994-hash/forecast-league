@@ -128,6 +128,20 @@ contract BadgesTest is Test {
         assertTrue(badges.supportsInterface(0x80ac58cd));
     }
 
+    function test_rejectsTheSameMarketTwiceAndAddressesWithoutBalanceOf() public {
+        vm.expectRevert(Badges.BadConstructorArgument.selector);
+        new Badges(address(registry), address(m0), address(m0), address(0));
+        vm.expectRevert(Badges.BadConstructorArgument.selector);
+        new Badges(address(registry), address(m0), address(m1), address(m1));
+        vm.expectRevert();
+        new Badges(address(registry), address(this), address(0), address(0));
+    }
+
+    function test_hasMintedIsTrueWithoutAnAgentId() public {
+        m0.set(bob, 5);
+        assertTrue(badges.hasMinted(bob));
+    }
+
     function test_rejectsBadConstructorArguments() public {
         vm.expectRevert(Badges.BadConstructorArgument.selector);
         new Badges(address(0x1234), address(m0), address(0), address(0));

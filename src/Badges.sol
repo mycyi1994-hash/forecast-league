@@ -67,6 +67,15 @@ contract Badges {
         if (agentId_.code.length == 0 || market0_.code.length == 0) revert BadConstructorArgument();
         if (market1_ != address(0) && market1_.code.length == 0) revert BadConstructorArgument();
         if (market2_ != address(0) && market2_.code.length == 0) revert BadConstructorArgument();
+        // The same market twice would count its tickets twice.
+        if (market1_ == market0_ || market2_ == market0_ || (market1_ != address(0) && market1_ == market2_)) {
+            revert BadConstructorArgument();
+        }
+        // Each address must answer `balanceOf`: with no owner, a wrong address could never be repaired.
+        IBadgeAgentID(agentId_).balanceOf(address(this));
+        IBadgeTickets(market0_).balanceOf(address(this));
+        if (market1_ != address(0)) IBadgeTickets(market1_).balanceOf(address(this));
+        if (market2_ != address(0)) IBadgeTickets(market2_).balanceOf(address(this));
         agentId = IBadgeAgentID(agentId_);
         market0 = IBadgeTickets(market0_);
         market1 = IBadgeTickets(market1_);
@@ -102,7 +111,8 @@ contract Badges {
     /// @return held      The highest badge it holds: 0 none, 1, 2 or 3.
     /// @return canClaim  True if `claim()` would mint a badge now.
     /// @return nextTier  The badge it would mint next (1, 2 or 3), or 0 if it holds all three.
-    /// @return needed    Tickets still missing for that badge; 0 if it can be claimed.
+    /// @return needed    Tickets still missing for that badge; 0 if the tickets are enough. `canClaim`
+    ///                   is still false then for an address that holds no Agent ID.
     function todo(address agent)
         external
         view
@@ -157,11 +167,17 @@ contract Badges {
     }
 
     /// @notice True if the address has nothing to mint now: it holds the badge of every tier its
-    ///         tickets reach.
+    ///         tickets reach (so it is also true for an address with no tickets), or it holds no
+    ///         Agent ID.
     function hasMinted(address agent) external view returns (bool) {
         uint8 held = tierOf[agent];
         if (held >= 3) return true;
-        return ticketsOf(agent) < _threshold(held + 1);
+        if (ticketsOf(agent) < _threshold(held + 1)) return true;
+        try agentId.balanceOf(agent) returns (uint256 balance) {
+            return balance == 0;
+        } catch {
+            return true;
+        }
     }
 
     // ---------------------------------------- non-transferable badge (ERC-721 read side)
