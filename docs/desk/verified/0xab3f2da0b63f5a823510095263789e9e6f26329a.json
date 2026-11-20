@@ -1,0 +1,16 @@
+{
+ "contract": "0xab3f2da0b63f5a823510095263789e9e6f26329a",
+ "name": "HobnorbAgent",
+ "verdict": "passed",
+ "checkedAt": "2026-11-20T16:22:03Z",
+ "block": 134726377,
+ "checks": {
+  "simulatedFromAgentIdWallet": true,
+  "gateEnforced": true,
+  "upgradeable": false,
+  "owner": null,
+  "sourceVerified": true
+ },
+ "badge": "Checked by Agent ID Mint Desk: https://mycyi1994-hash.github.io/forecast-league/desk/verified/0xab3f2da0b63f5a823510095263789e9e6f26329a.json",
+ "note": "Heuristic simulation, not an audit."
+}

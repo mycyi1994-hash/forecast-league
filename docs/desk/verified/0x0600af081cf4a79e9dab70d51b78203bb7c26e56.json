@@ -1,0 +1,16 @@
+{
+ "contract": "0x0600af081cf4a79e9dab70d51b78203bb7c26e56",
+ "name": "Proof of Habit",
+ "verdict": "passed",
+ "checkedAt": "2026-11-20T16:22:03Z",
+ "block": 134726377,
+ "checks": {
+  "simulatedFromAgentIdWallet": true,
+  "gateEnforced": true,
+  "upgradeable": false,
+  "owner": null,
+  "sourceVerified": true
+ },
+ "badge": "Checked by Agent ID Mint Desk: https://mycyi1994-hash.github.io/forecast-league/desk/verified/0x0600af081cf4a79e9dab70d51b78203bb7c26e56.json",
+ "note": "Heuristic simulation, not an audit."
+}

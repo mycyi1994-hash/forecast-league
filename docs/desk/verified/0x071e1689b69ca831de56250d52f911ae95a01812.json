@@ -1,0 +1,16 @@
+{
+ "contract": "0x071e1689b69ca831de56250d52f911ae95a01812",
+ "name": "Agent Stamp",
+ "verdict": "passed",
+ "checkedAt": "2026-11-20T16:22:03Z",
+ "block": 134726377,
+ "checks": {
+  "simulatedFromAgentIdWallet": true,
+  "gateEnforced": true,
+  "upgradeable": false,
+  "owner": null,
+  "sourceVerified": true
+ },
+ "badge": "Checked by Agent ID Mint Desk: https://mycyi1994-hash.github.io/forecast-league/desk/verified/0x071e1689b69ca831de56250d52f911ae95a01812.json",
+ "note": "Heuristic simulation, not an audit."
+}

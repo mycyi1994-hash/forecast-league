@@ -1,0 +1,16 @@
+{
+ "contract": "0x79f55daa8a3cf2eb76ee40e26ff6e244a4cc1ed4",
+ "name": "Forecast League Card",
+ "verdict": "passed",
+ "checkedAt": "2026-11-20T16:22:03Z",
+ "block": 134726377,
+ "checks": {
+  "simulatedFromAgentIdWallet": true,
+  "gateEnforced": true,
+  "upgradeable": false,
+  "owner": null,
+  "sourceVerified": true
+ },
+ "badge": "Checked by Agent ID Mint Desk: https://mycyi1994-hash.github.io/forecast-league/desk/verified/0x79f55daa8a3cf2eb76ee40e26ff6e244a4cc1ed4.json",
+ "note": "Heuristic simulation, not an audit."
+}

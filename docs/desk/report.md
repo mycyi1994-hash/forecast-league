@@ -1,0 +1,48 @@
+# Agent ID Mint Desk — 2026-11-20T16:22 UTC
+
+Every Binance-Agent-ID-gated mint the public radar has seen on BNB Chain, simulated from real Agent ID wallets at block 134726377.
+**987 free and open now** · 171 paid · 275 closed or failing · 1433 checked. Heuristics, not an audit; preview every call.
+
+## Free now, passing every check
+| # | Name | Contract | Call data |
+|---|---|---|---|
+| 1 | AgentStreak Badge | `0xa011517fd16f6a240c309e9df8316e56306f5361` | `0xd9a59e330000000000000000000000000000000000000000000000000000000000000000` |
+| – | Forecast League (desk operator; 12 contracts, new rounds hourly) | see https://mycyi1994-hash.github.io/forecast-league/api/state | `0x1249c58b` |
+| 3 | NeoGods | `0x2746bb6c6ec8fc968b8f0159618af1bb30ab593d` | `0xa0712d680000000000000000000000000000000000000000000000000000000000000001` |
+| 4 | Agent Rally Badge | `0x3745de1b6f2d2f818b680ecb2533e2703eac77fd` | `0x183ff085` |
+| 5 | AgentGate Badge | `0x84dc4a6972ae91946f7c852c3bbe7bc09f0f0b0e` | `0x75266d960000000000000000000000000000000000000000000000000000000000000000` |
+| 6 | 相信币安 | `0x2d15595d2e6efb1c1ebf938cd7fd0f57d11c6b86` | `0xa0712d680000000000000000000000000000000000000000000000000000000000000001` |
+| 7 | AgentStamp | `0xc29741f54bf41d7df36f952a9f207a1a91fbd1e7` | `0x183ff085` |
+| 8 | AgentStreak Badge | `0x3ce06b00de25d6062d771664c231bb7af725ecdb` | `0x4e71d92d0000000000000000000000000000000000000000000000000000000000000001` |
+| 9 | AgentMark Badge | `0xbc682d5cf1ad8ffae05ba119cf88bd6ede75267c` | `0xda1b3cb0` |
+| 10 | Agent Badge | `0x82fda371747880a36fefcd14526d428860f7644a` | `0x1249c58b0000000000000000000000000000000000000000000000000000000000000001` |
+| 11 | FairMint Agent | `0xa45ca208d015c81bf2f5e606437e4f9d1d8c2fe8` | `0x1249c58b` |
+| 12 | AgentSeal | `0xb013a27ce9483939dbd64e6c8ec155293692cdec` | `0x9bceb40f8219986403e58184a53f305fb65dd14f3f1cc0db9550e676830194a1bd5db7dd` |
+| 13 | Agent Stamp | `0xc44668e726b5eb68760516a9214939e0323d5e6f` | `0x4e71d92d` |
+| 14 | AgentB | `0x06ecae09523da3698640728cc205305df5c33988` | `0x1249c58b0000000000000000000000000000000000000000000000000000000000000001` |
+| 15 | New Drop | `0x32cf34bbb7e01f75db33d55da850bf26ba056f50` | `0x1249c58b0000000000000000000000000000000000000000000000000000000000000001` |
+| 16 | Agent Pioneer Badge | `0x3ead2fea444399ca004033c7512f2c4c1eb0b7f3` | `0x1249c58b0000000000000000000000000000000000000000000000000000000000000001` |
+| 17 | Agent Permit Badge | `0x25dfbcffcc844012f7dab492e863906de5a5609b` | `0xda1b3cb0` |
+| 18 | bucket | `0x2b0d3b384c341020aed1d49907b5708c423ba6da` | `0xa0712d680000000000000000000000000000000000000000000000000000000000000001` |
+| 19 | AgentCheck Badge | `0x3bce1dabf3a78041c0b37d7e28e448bdf6bd5192` | `0x183ff085` |
+| 20 | Adventure Agent AI | `0x7635ef16370ef490298649a188c9205d1d7fda67` | `0x5fa788200000000000000000000000000000000000000000000000000000000000000000` |
+| 21 | 大码女装 | `0xe9213e18b421dd7f4e39937647f4553bb45f3d65` | `0x94bf804d00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000` |
+| 22 | Agent Passport | `0x27a8edd097d9ecbb99df3ab6032a9d2994c966d7` | `0x1249c58b` |
+| 23 | AgentStreak Badge | `0x1c0e0fbe2b29c05a41c3e762ea6394af78c78f27` | `0x183ff085` |
+| 24 | Proof of Habit Join Pass | `0x165d51e696d42d442eb1fa9f715c08b26ddff968` | `0x4e71d92d` |
+| 25 | AgentWall Badge | `0x484508765eb1b7e6471d745722be747b581638a1` | `0x24c214d3000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000097777773333333334340000000000000000000000000000000000000000000000` |
+
+## Free now, with warnings
+- Volt Wardens `0xf46ed98e467fc20709ec2b199882cd116b5c1cf4`: has an owner with admin powers
+- Compasso `0x6551529ec146020ee59b41265614b7a00a166a3f`: has an owner with admin powers
+- ELSY `0x6a643762fc509c9bc8b2f89f21fd3a222c0eb7b1`: has an owner with admin powers
+- Candlix `0x263d87e3b4a284b6e4b0b80f7945b6095113ffe6`: has an owner with admin powers
+- Dandelio `0xfe7c4f078a21c44733b7d604a66145d3ed1b252f`: has an owner with admin powers
+- Coffeeling `0x4b896313b21a1190f257f1560df03a22ccc77fdc`: has an owner with admin powers
+- AgentNOVA `0x43462d7f269fde4914b03e1e07067a61b62b9540`: has an owner with admin powers
+- Quantum Scribes `0xe6cc326dc9a1fa00a6d2ee0b2ad1e3e0fe9b1a59`: has an owner with admin powers
+- Tuggle `0xf3ac82120aaa67728f88ea6c430204384bbcedb5`: has an owner with admin powers
+- Strawgrim `0x96c17ab9d750ad979bba894a234c31911289f669`: has an owner with admin powers
+
+Machine-readable: https://mycyi1994-hash.github.io/forecast-league/desk/projects.json · Badge for passing projects: https://mycyi1994-hash.github.io/forecast-league/desk/verified/<address>.json
+Operator: Forecast League, a Binance Agent ID Hackathon entry. Its own contracts are listed under the same checks.

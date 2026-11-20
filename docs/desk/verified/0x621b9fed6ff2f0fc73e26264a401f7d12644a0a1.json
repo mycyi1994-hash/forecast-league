@@ -1,0 +1,16 @@
+{
+ "contract": "0x621b9fed6ff2f0fc73e26264a401f7d12644a0a1",
+ "name": "Forecast League Blitz ETH 6h",
+ "verdict": "passed",
+ "checkedAt": "2026-11-20T16:22:03Z",
+ "block": 134726377,
+ "checks": {
+  "simulatedFromAgentIdWallet": true,
+  "gateEnforced": true,
+  "upgradeable": false,
+  "owner": null,
+  "sourceVerified": true
+ },
+ "badge": "Checked by Agent ID Mint Desk: https://mycyi1994-hash.github.io/forecast-league/desk/verified/0x621b9fed6ff2f0fc73e26264a401f7d12644a0a1.json",
+ "note": "Heuristic simulation, not an audit."
+}

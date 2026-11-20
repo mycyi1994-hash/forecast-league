@@ -1,0 +1,16 @@
+{
+ "contract": "0x2b0d3b384c341020aed1d49907b5708c423ba6da",
+ "name": "bucket",
+ "verdict": "passed",
+ "checkedAt": "2026-11-20T16:22:03Z",
+ "block": 134726377,
+ "checks": {
+  "simulatedFromAgentIdWallet": true,
+  "gateEnforced": true,
+  "upgradeable": false,
+  "owner": null,
+  "sourceVerified": true
+ },
+ "badge": "Checked by Agent ID Mint Desk: https://mycyi1994-hash.github.io/forecast-league/desk/verified/0x2b0d3b384c341020aed1d49907b5708c423ba6da.json",
+ "note": "Heuristic simulation, not an audit."
+}

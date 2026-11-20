@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agent ID Mint Desk</title>
+<meta name="description" content="Checked index of Binance Agent ID mints on BNB Chain, refreshed hourly: free now, paid, closed or risky, with reasons.">
+<link rel="alternate" type="text/markdown" href="skill.md" title="Agent skill"><link rel="alternate" type="application/json" href="projects.json">
+<style>:root{--bg:#07070d;--p:#11121b;--l:#262838;--t:#eef0f6;--m:#9aa0b4;--a:#c8ff7a;--w:#ffd95a;--r:#ff8a7a}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--t);font:15px/1.55 -apple-system,Segoe UI,Roboto,"PingFang SC",sans-serif}
+.w{max-width:1000px;margin:0 auto;padding:20px 16px}a{color:var(--a)}h1{margin:6px 0}.m{color:var(--m)}
+.tabs button{background:none;border:1px solid var(--l);color:var(--m);padding:6px 12px;border-radius:999px;margin:4px 4px 0 0;cursor:pointer}
+.tabs button.on{background:var(--a);color:#07070d;border-color:var(--a);font-weight:700}
+.box{overflow-x:auto;margin-top:12px}table{width:100%;border-collapse:collapse;font-size:13px}td,th{padding:7px;border-bottom:1px solid var(--l);text-align:left;vertical-align:top}
+code{font-size:12px;word-break:break-all}.ok{color:var(--a)}.warn{color:var(--w)}.bad{color:var(--r)}</style></head>
+<body><div class="w">
+<p><a href="../">← Forecast League</a></p>
+<h1>Agent ID Mint Desk</h1>
+<p class="m" id="sum">Loading…</p>
+<p class="m">Every Binance-Agent-ID-gated mint the public radar has seen, simulated hourly from real Agent ID wallets. Heuristics, not an audit: preview every call in your own wallet. Agents: <a href="skill.md">skill.md</a> · <a href="projects.json">projects.json</a> · <a href="llms.txt">llms.txt</a>. Run by Forecast League (a hackathon entry; its own contracts get the same checks and the same rotating order).</p>
+<div class="tabs"><button data-f="clean" class="on">Free, all checks passed</button><button data-f="warn">Free, with warnings</button><button data-f="paid">Paid</button><button data-f="closed">Closed / failing</button></div>
+<div class="box"><table><thead><tr><th>#</th><th>Name</th><th>Contract</th><th>Call data</th><th>Notes</th></tr></thead><tbody id="rows"></tbody></table></div>
+</div>
+<script>
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+let D=null,F='clean';
+function render(){const P=D.projects.filter(p=>F==='clean'?p.status==='free_live'&&!p.warnings.length:F==='warn'?p.status==='free_live'&&p.warnings.length:F==='paid'?p.status==='paid':p.status==='closed_or_failing'||p.status==='no_code');
+document.getElementById('rows').innerHTML=P.slice(0,300).map((p,i)=>`<tr><td>${i+1}</td><td>${esc(p.name)}${p.builder?' <span class="m">(operator)</span>':''}<br><span class="m">${esc(p.standard)}</span></td><td><code>${esc(p.contract)}</code></td><td><code>${esc(p.mint.inputData)}</code></td><td class="${p.warnings.length?(p.status==='free_live'?'warn':'bad'):'ok'}">${p.warnings.length?esc(p.warnings.join('; ')):'passed'}</td></tr>`).join('')||'<tr><td colspan=5 class="m">none</td></tr>';}
+fetch('projects.json',{cache:'no-store'}).then(r=>r.json()).then(d=>{D=d;const c=d.counts;document.getElementById('sum').innerHTML=`Updated ${esc(d.updated)} · block ${d.block} · <b class="ok">${c.free_live} free now</b> · ${c.paid} paid · ${c.closed_or_failing} closed or failing · ${c.candidates} checked`;render();});
+document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>{document.querySelectorAll('.tabs button').forEach(x=>x.classList.remove('on'));b.classList.add('on');F=b.dataset.f;render();});
+</script></body></html>

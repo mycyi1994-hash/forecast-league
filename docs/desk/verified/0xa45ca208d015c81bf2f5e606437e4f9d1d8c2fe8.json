@@ -1,0 +1,16 @@
+{
+ "contract": "0xa45ca208d015c81bf2f5e606437e4f9d1d8c2fe8",
+ "name": "FairMint Agent",
+ "verdict": "passed",
+ "checkedAt": "2026-11-20T16:22:03Z",
+ "block": 134726377,
+ "checks": {
+  "simulatedFromAgentIdWallet": true,
+  "gateEnforced": true,
+  "upgradeable": false,
+  "owner": null,
+  "sourceVerified": true
+ },
+ "badge": "Checked by Agent ID Mint Desk: https://mycyi1994-hash.github.io/forecast-league/desk/verified/0xa45ca208d015c81bf2f5e606437e4f9d1d8c2fe8.json",
+ "note": "Heuristic simulation, not an audit."
+}

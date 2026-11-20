@@ -1,0 +1,16 @@
+{
+ "contract": "0x8837bd107a6e8812bde0eeb6adec089f53f9bcc2",
+ "name": "AgentShift Worker",
+ "verdict": "passed",
+ "checkedAt": "2026-11-20T16:22:03Z",
+ "block": 134726377,
+ "checks": {
+  "simulatedFromAgentIdWallet": true,
+  "gateEnforced": true,
+  "upgradeable": false,
+  "owner": null,
+  "sourceVerified": true
+ },
+ "badge": "Checked by Agent ID Mint Desk: https://mycyi1994-hash.github.io/forecast-league/desk/verified/0x8837bd107a6e8812bde0eeb6adec089f53f9bcc2.json",
+ "note": "Heuristic simulation, not an audit."
+}

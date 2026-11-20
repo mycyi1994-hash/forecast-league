@@ -1,0 +1,16 @@
+{
+ "contract": "0xe8c46e7c734259fec1a78fc846dcfad94ecb70e5",
+ "name": "Tigora",
+ "verdict": "passed",
+ "checkedAt": "2026-11-20T16:22:03Z",
+ "block": 134726377,
+ "checks": {
+  "simulatedFromAgentIdWallet": true,
+  "gateEnforced": true,
+  "upgradeable": false,
+  "owner": null,
+  "sourceVerified": true
+ },
+ "badge": "Checked by Agent ID Mint Desk: https://mycyi1994-hash.github.io/forecast-league/desk/verified/0xe8c46e7c734259fec1a78fc846dcfad94ecb70e5.json",
+ "note": "Heuristic simulation, not an audit."
+}

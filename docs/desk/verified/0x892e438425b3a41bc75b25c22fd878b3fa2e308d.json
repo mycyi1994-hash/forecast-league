@@ -1,0 +1,16 @@
+{
+ "contract": "0x892e438425b3a41bc75b25c22fd878b3fa2e308d",
+ "name": "MizzlewickAgent",
+ "verdict": "passed",
+ "checkedAt": "2026-11-20T16:22:03Z",
+ "block": 134726377,
+ "checks": {
+  "simulatedFromAgentIdWallet": true,
+  "gateEnforced": true,
+  "upgradeable": false,
+  "owner": null,
+  "sourceVerified": true
+ },
+ "badge": "Checked by Agent ID Mint Desk: https://mycyi1994-hash.github.io/forecast-league/desk/verified/0x892e438425b3a41bc75b25c22fd878b3fa2e308d.json",
+ "note": "Heuristic simulation, not an audit."
+}

@@ -1,0 +1,16 @@
+{
+ "contract": "0xe8b5e3ca9f4f51366f9f4860ed70b8e929e80470",
+ "name": "QuonkersAgent",
+ "verdict": "passed",
+ "checkedAt": "2026-11-20T16:22:03Z",
+ "block": 134726377,
+ "checks": {
+  "simulatedFromAgentIdWallet": true,
+  "gateEnforced": true,
+  "upgradeable": false,
+  "owner": null,
+  "sourceVerified": true
+ },
+ "badge": "Checked by Agent ID Mint Desk: https://mycyi1994-hash.github.io/forecast-league/desk/verified/0xe8b5e3ca9f4f51366f9f4860ed70b8e929e80470.json",
+ "note": "Heuristic simulation, not an audit."
+}

@@ -1,0 +1,16 @@
+{
+ "contract": "0xba5dd9f1ee470fdf39ef7a82cf09b2c44a917bc8",
+ "name": "Dead Man's Doubloons",
+ "verdict": "passed",
+ "checkedAt": "2026-11-20T16:22:03Z",
+ "block": 134726377,
+ "checks": {
+  "simulatedFromAgentIdWallet": true,
+  "gateEnforced": true,
+  "upgradeable": false,
+  "owner": null,
+  "sourceVerified": true
+ },
+ "badge": "Checked by Agent ID Mint Desk: https://mycyi1994-hash.github.io/forecast-league/desk/verified/0xba5dd9f1ee470fdf39ef7a82cf09b2c44a917bc8.json",
+ "note": "Heuristic simulation, not an audit."
+}
