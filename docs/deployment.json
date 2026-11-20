@@ -400,5 +400,127 @@
    "todo": "todo(address) 0x624f6da5"
   }
  ],
- "note": "Every call is value 0 with no arguments. Preview each call; skip any whose simulation fails. Tickets and badges have no monetary value. Hackathon entry; new and unaudited."
+ "note": "Every call is value 0 with no arguments. Preview each call; skip any whose simulation fails. Tickets and badges have no monetary value. Hackathon entry; new and unaudited.",
+ "updated": "2026-11-20T14:37:27Z",
+ "openNow": [
+  {
+   "market": "BTC 1h",
+   "contract": "0x09A645aa6cc6b0eB320dCF3982bcaA6A22b32629",
+   "round": 498662,
+   "opensAt": "2026-11-20T14:00:00Z",
+   "closesAt": "2026-11-20T15:00:00Z",
+   "secondsLeft": 1353,
+   "mintedThisRound": 14,
+   "earlySeatsLeft": 11,
+   "call": {
+    "function": "mint()",
+    "inputData": "0x1249c58b",
+    "value": "0",
+    "args": []
+   },
+   "alreadyMinted": "hasMinted(address) is per round: false again every new round"
+  },
+  {
+   "market": "ETH 1h",
+   "contract": "0x8b998abA2BeeebF7ceBf565bC53BC575693c07a4",
+   "round": 498662,
+   "opensAt": "2026-11-20T14:00:00Z",
+   "closesAt": "2026-11-20T15:00:00Z",
+   "secondsLeft": 1353,
+   "mintedThisRound": 14,
+   "earlySeatsLeft": 11,
+   "call": {
+    "function": "mint()",
+    "inputData": "0x1249c58b",
+    "value": "0",
+    "args": []
+   },
+   "alreadyMinted": "hasMinted(address) is per round: false again every new round"
+  },
+  {
+   "market": "BNB 1h",
+   "contract": "0x66613fD9a2c70d4cB56D920bDd0D56bA95BD2736",
+   "round": 498662,
+   "opensAt": "2026-11-20T14:00:00Z",
+   "closesAt": "2026-11-20T15:00:00Z",
+   "secondsLeft": 1353,
+   "mintedThisRound": 14,
+   "earlySeatsLeft": 11,
+   "call": {
+    "function": "mint()",
+    "inputData": "0x1249c58b",
+    "value": "0",
+    "args": []
+   },
+   "alreadyMinted": "hasMinted(address) is per round: false again every new round"
+  },
+  {
+   "market": "BTC 6h",
+   "contract": "0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C",
+   "round": 83110,
+   "opensAt": "2026-11-20T12:00:00Z",
+   "closesAt": "2026-11-20T18:00:00Z",
+   "secondsLeft": 12153,
+   "mintedThisRound": 67,
+   "earlySeatsLeft": 0,
+   "call": {
+    "function": "mint()",
+    "inputData": "0x1249c58b",
+    "value": "0",
+    "args": []
+   },
+   "alreadyMinted": "hasMinted(address) is per round: false again every new round"
+  },
+  {
+   "market": "ETH 6h",
+   "contract": "0x621B9fEd6FF2f0FC73e26264A401F7d12644A0A1",
+   "round": 83110,
+   "opensAt": "2026-11-20T12:00:00Z",
+   "closesAt": "2026-11-20T18:00:00Z",
+   "secondsLeft": 12153,
+   "mintedThisRound": 34,
+   "earlySeatsLeft": 0,
+   "call": {
+    "function": "mint()",
+    "inputData": "0x1249c58b",
+    "value": "0",
+    "args": []
+   },
+   "alreadyMinted": "hasMinted(address) is per round: false again every new round"
+  },
+  {
+   "market": "BNB 6h",
+   "contract": "0xA782Ac207fE33f6120d9c2EF9553A55C47CFbbE9",
+   "round": 83110,
+   "opensAt": "2026-11-20T12:00:00Z",
+   "closesAt": "2026-11-20T18:00:00Z",
+   "secondsLeft": 12153,
+   "mintedThisRound": 33,
+   "earlySeatsLeft": 0,
+   "call": {
+    "function": "mint()",
+    "inputData": "0x1249c58b",
+    "value": "0",
+    "args": []
+   },
+   "alreadyMinted": "hasMinted(address) is per round: false again every new round"
+  },
+  {
+   "market": "BTC 1d",
+   "contract": "0x9e521add6F67EEe0Fe5c0b8ef32cb4543f7af50E",
+   "round": 20777,
+   "opensAt": "2026-11-20T00:00:00Z",
+   "closesAt": "2026-11-21T00:00:00Z",
+   "secondsLeft": 33753,
+   "mintedThisRound": 104,
+   "earlySeatsLeft": 0,
+   "call": {
+    "function": "mint()",
+    "inputData": "0x1249c58b",
+    "value": "0",
+    "args": []
+   },
+   "alreadyMinted": "hasMinted(address) is per round: false again every new round"
+  }
+ ]
 }
