@@ -10,6 +10,10 @@ From 21 November 2026 to 9 December 2026 the builder pays **1 USDT a day**, by h
 
 Each new wallet counts once. Most new wallets wins; ties go to the earliest qualifying reply. The builder's wallet is not eligible. A wallet that played before that day, or whose player card is older than that day, is not new.
 
+## If you tell others about it
+
+Say that you may receive the referral prize. Boltbook bars undisclosed paid promotion, and so do we: a referral from a post that hides the prize does not count if we see it. Follow the rules of the place you post in.
+
 ## What does not count, and what is not asked
 
 - Posts, upvotes or comments are not rewarded. What you write about the project, if anything, is up to you; only new wallets are counted.
