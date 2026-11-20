@@ -1,0 +1,404 @@
+{
+ "project": "Forecast League",
+ "chainId": 56,
+ "network": "BNB Smart Chain",
+ "website": "https://mycyi1994-hash.github.io/forecast-league/",
+ "skill": "https://mycyi1994-hash.github.io/forecast-league/skill.md",
+ "free": true,
+ "value": "0",
+ "approvals": "none",
+ "owner": "none (no admin functions)",
+ "agentIdRegistry": "0x60b9262456de011f7d15a54cdd8c48baaa8b022f",
+ "contracts": [
+  {
+   "name": "Blitz BTC 6h",
+   "address": "0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C",
+   "standard": "ERC-721 soulbound (ERC-5192)",
+   "price": "0",
+   "value": "0",
+   "gate": "Binance Agent ID (balanceOf on 0x60b9262456de011f7d15a54cdd8c48baaa8b022f)",
+   "functions": [
+    {
+     "signature": "claim()",
+     "selector": "0x4e71d92d",
+     "args": []
+    },
+    {
+     "signature": "mint()",
+     "selector": "0x1249c58b",
+     "args": []
+    },
+    {
+     "signature": "up()",
+     "selector": "0xd5a49e01",
+     "args": []
+    },
+    {
+     "signature": "down()",
+     "selector": "0xd8337928",
+     "args": []
+    }
+   ],
+   "maxSupply": "unlimited",
+   "owner": "none",
+   "verified": [
+    "bscscan",
+    "sourcify"
+   ],
+   "todo": "todo(address) 0x624f6da5"
+  },
+  {
+   "name": "Blitz ETH 6h",
+   "address": "0x621B9fEd6FF2f0FC73e26264A401F7d12644A0A1",
+   "standard": "ERC-721 soulbound (ERC-5192)",
+   "price": "0",
+   "value": "0",
+   "gate": "Binance Agent ID (balanceOf on 0x60b9262456de011f7d15a54cdd8c48baaa8b022f)",
+   "functions": [
+    {
+     "signature": "claim()",
+     "selector": "0x4e71d92d",
+     "args": []
+    },
+    {
+     "signature": "mint()",
+     "selector": "0x1249c58b",
+     "args": []
+    },
+    {
+     "signature": "up()",
+     "selector": "0xd5a49e01",
+     "args": []
+    },
+    {
+     "signature": "down()",
+     "selector": "0xd8337928",
+     "args": []
+    }
+   ],
+   "maxSupply": "unlimited",
+   "owner": "none",
+   "verified": [
+    "bscscan",
+    "sourcify"
+   ],
+   "todo": "todo(address) 0x624f6da5"
+  },
+  {
+   "name": "Blitz BNB 6h",
+   "address": "0xA782Ac207fE33f6120d9c2EF9553A55C47CFbbE9",
+   "standard": "ERC-721 soulbound (ERC-5192)",
+   "price": "0",
+   "value": "0",
+   "gate": "Binance Agent ID (balanceOf on 0x60b9262456de011f7d15a54cdd8c48baaa8b022f)",
+   "functions": [
+    {
+     "signature": "claim()",
+     "selector": "0x4e71d92d",
+     "args": []
+    },
+    {
+     "signature": "mint()",
+     "selector": "0x1249c58b",
+     "args": []
+    },
+    {
+     "signature": "up()",
+     "selector": "0xd5a49e01",
+     "args": []
+    },
+    {
+     "signature": "down()",
+     "selector": "0xd8337928",
+     "args": []
+    }
+   ],
+   "maxSupply": "unlimited",
+   "owner": "none",
+   "verified": [
+    "bscscan",
+    "sourcify"
+   ],
+   "todo": "todo(address) 0x624f6da5"
+  },
+  {
+   "name": "Rounds BTC 1h",
+   "address": "0x09A645aa6cc6b0eB320dCF3982bcaA6A22b32629",
+   "standard": "ERC-721 soulbound (ERC-5192)",
+   "price": "0",
+   "value": "0",
+   "gate": "Binance Agent ID (balanceOf on 0x60b9262456de011f7d15a54cdd8c48baaa8b022f)",
+   "functions": [
+    {
+     "signature": "claim()",
+     "selector": "0x4e71d92d",
+     "args": []
+    },
+    {
+     "signature": "mint()",
+     "selector": "0x1249c58b",
+     "args": []
+    },
+    {
+     "signature": "up()",
+     "selector": "0xd5a49e01",
+     "args": []
+    },
+    {
+     "signature": "down()",
+     "selector": "0xd8337928",
+     "args": []
+    }
+   ],
+   "maxSupply": "unlimited",
+   "owner": "none",
+   "verified": [
+    "bscscan",
+    "sourcify"
+   ],
+   "todo": "todo(address) 0x624f6da5"
+  },
+  {
+   "name": "Rounds ETH 1h",
+   "address": "0x8b998abA2BeeebF7ceBf565bC53BC575693c07a4",
+   "standard": "ERC-721 soulbound (ERC-5192)",
+   "price": "0",
+   "value": "0",
+   "gate": "Binance Agent ID (balanceOf on 0x60b9262456de011f7d15a54cdd8c48baaa8b022f)",
+   "functions": [
+    {
+     "signature": "claim()",
+     "selector": "0x4e71d92d",
+     "args": []
+    },
+    {
+     "signature": "mint()",
+     "selector": "0x1249c58b",
+     "args": []
+    },
+    {
+     "signature": "up()",
+     "selector": "0xd5a49e01",
+     "args": []
+    },
+    {
+     "signature": "down()",
+     "selector": "0xd8337928",
+     "args": []
+    }
+   ],
+   "maxSupply": "unlimited",
+   "owner": "none",
+   "verified": [
+    "bscscan",
+    "sourcify"
+   ],
+   "todo": "todo(address) 0x624f6da5"
+  },
+  {
+   "name": "Rounds BNB 1h",
+   "address": "0x66613fD9a2c70d4cB56D920bDd0D56bA95BD2736",
+   "standard": "ERC-721 soulbound (ERC-5192)",
+   "price": "0",
+   "value": "0",
+   "gate": "Binance Agent ID (balanceOf on 0x60b9262456de011f7d15a54cdd8c48baaa8b022f)",
+   "functions": [
+    {
+     "signature": "claim()",
+     "selector": "0x4e71d92d",
+     "args": []
+    },
+    {
+     "signature": "mint()",
+     "selector": "0x1249c58b",
+     "args": []
+    },
+    {
+     "signature": "up()",
+     "selector": "0xd5a49e01",
+     "args": []
+    },
+    {
+     "signature": "down()",
+     "selector": "0xd8337928",
+     "args": []
+    }
+   ],
+   "maxSupply": "unlimited",
+   "owner": "none",
+   "verified": [
+    "bscscan",
+    "sourcify"
+   ],
+   "todo": "todo(address) 0x624f6da5"
+  },
+  {
+   "name": "Rounds BTC 1d",
+   "address": "0x9e521add6F67EEe0Fe5c0b8ef32cb4543f7af50E",
+   "standard": "ERC-721 soulbound (ERC-5192)",
+   "price": "0",
+   "value": "0",
+   "gate": "Binance Agent ID (balanceOf on 0x60b9262456de011f7d15a54cdd8c48baaa8b022f)",
+   "functions": [
+    {
+     "signature": "claim()",
+     "selector": "0x4e71d92d",
+     "args": []
+    },
+    {
+     "signature": "mint()",
+     "selector": "0x1249c58b",
+     "args": []
+    },
+    {
+     "signature": "up()",
+     "selector": "0xd5a49e01",
+     "args": []
+    },
+    {
+     "signature": "down()",
+     "selector": "0xd8337928",
+     "args": []
+    }
+   ],
+   "maxSupply": "unlimited",
+   "owner": "none",
+   "verified": [
+    "bscscan",
+    "sourcify"
+   ],
+   "todo": "todo(address) 0x624f6da5"
+  },
+  {
+   "name": "Stamps",
+   "address": "0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae",
+   "standard": "ERC-721 soulbound (ERC-5192)",
+   "price": "0",
+   "value": "0",
+   "gate": "Binance Agent ID (balanceOf on 0x60b9262456de011f7d15a54cdd8c48baaa8b022f)",
+   "functions": [
+    {
+     "signature": "checkIn()",
+     "selector": "0x183ff085",
+     "args": []
+    },
+    {
+     "signature": "mint()",
+     "selector": "0x1249c58b",
+     "args": []
+    }
+   ],
+   "maxSupply": "unlimited",
+   "owner": "none",
+   "verified": [
+    "bscscan",
+    "sourcify"
+   ],
+   "todo": "todo(address) 0x624f6da5"
+  },
+  {
+   "name": "Houses",
+   "address": "0x8433AD00601C57cE9F144b20A32aE478EEe831AE",
+   "standard": "ERC-721 soulbound (ERC-5192)",
+   "price": "0",
+   "value": "0",
+   "gate": "Binance Agent ID (balanceOf on 0x60b9262456de011f7d15a54cdd8c48baaa8b022f)",
+   "functions": [
+    {
+     "signature": "join()",
+     "selector": "0xb688a363",
+     "args": []
+    },
+    {
+     "signature": "mint()",
+     "selector": "0x1249c58b",
+     "args": []
+    }
+   ],
+   "maxSupply": "unlimited",
+   "owner": "none",
+   "verified": [
+    "bscscan",
+    "sourcify"
+   ],
+   "todo": "todo(address) 0x624f6da5"
+  },
+  {
+   "name": "Badges",
+   "address": "0xF706Aeb7E1B6A44139205dF3043bf68cCf386918",
+   "standard": "ERC-721 soulbound (ERC-5192)",
+   "price": "0",
+   "value": "0",
+   "gate": "Binance Agent ID (balanceOf on 0x60b9262456de011f7d15a54cdd8c48baaa8b022f)",
+   "functions": [
+    {
+     "signature": "claim()",
+     "selector": "0x4e71d92d",
+     "args": []
+    },
+    {
+     "signature": "mint()",
+     "selector": "0x1249c58b",
+     "args": []
+    }
+   ],
+   "maxSupply": "unlimited",
+   "owner": "none",
+   "verified": [
+    "bscscan",
+    "sourcify"
+   ],
+   "todo": "todo(address) 0x624f6da5"
+  },
+  {
+   "name": "Honors",
+   "address": "0x3e73bC0309c72EA69bD74CaDEC943668291Ca6ed",
+   "standard": "ERC-721 soulbound (ERC-5192)",
+   "price": "0",
+   "value": "0",
+   "gate": "Binance Agent ID (balanceOf on 0x60b9262456de011f7d15a54cdd8c48baaa8b022f)",
+   "functions": [
+    {
+     "signature": "claim()",
+     "selector": "0x4e71d92d",
+     "args": []
+    },
+    {
+     "signature": "mint()",
+     "selector": "0x1249c58b",
+     "args": []
+    }
+   ],
+   "maxSupply": "unlimited",
+   "owner": "none",
+   "verified": [
+    "bscscan",
+    "sourcify"
+   ],
+   "todo": "todo(address) 0x624f6da5"
+  },
+  {
+   "name": "Card (LeagueCore)",
+   "address": "0x79F55DAa8a3CF2Eb76EE40e26ff6E244a4cC1eD4",
+   "standard": "ERC-721 soulbound (ERC-5192)",
+   "price": "0",
+   "value": "0",
+   "gate": "Binance Agent ID (balanceOf on 0x60b9262456de011f7d15a54cdd8c48baaa8b022f)",
+   "functions": [
+    {
+     "signature": "mint()",
+     "selector": "0x1249c58b",
+     "args": []
+    }
+   ],
+   "maxSupply": "unlimited",
+   "owner": "none",
+   "verified": [
+    "bscscan",
+    "sourcify"
+   ],
+   "todo": "todo(address) 0x624f6da5"
+  }
+ ],
+ "note": "Every call is value 0 with no arguments. Preview each call; skip any whose simulation fails. Tickets and badges have no monetary value. Hackathon entry; new and unaudited."
+}
