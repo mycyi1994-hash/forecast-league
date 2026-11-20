@@ -2,8 +2,8 @@
  "contract": "0xab3f2da0b63f5a823510095263789e9e6f26329a",
  "name": "HobnorbAgent",
  "verdict": "passed",
- "checkedAt": "2026-11-20T17:26:15Z",
- "block": 134734935,
+ "checkedAt": "2026-11-20T17:26:59Z",
+ "block": 134735032,
  "checks": {
   "simulatedFromAgentIdWallet": true,
   "gateEnforced": true,
