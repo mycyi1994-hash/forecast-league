@@ -21,7 +21,7 @@ const FEEDS = [
   ['ETH/USD', '0x9ef1B8c0E4F7dc8bF5719Ea496883DC6401d5b2e'],
   ['BNB/USD', '0x0567F2323251f0Aab15c8dFb1967E4e8A7D42aeE'],
 ];
-const BLITZ = '0x0000000000000000000000000000000000000000'; // set when Blitz is deployed
+const BLITZ = '0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C'; // set when Blitz is deployed
 const RPC = process.env.LEAGUE_RPC || 'https://bsc-rpc.publicnode.com';
 const HORIZON = 21600;
 const SEL = {

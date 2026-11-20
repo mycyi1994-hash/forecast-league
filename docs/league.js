@@ -6,7 +6,7 @@
   const SCORER = '0x5ea789e7cd9C157793dDA75959829F8C1527C16b';
   const REGISTRY = '0x60b9262456de011f7d15a54cdd8c48baaa8b022f';
   const SQUADS = '0x1eAeEE5BA7582858b266920E79938203E92120D0';
-  const BLITZ = ''; // set when Blitz is deployed
+  const BLITZ = '0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C'; // set when Blitz is deployed
   const MULTICALL = '0xcA11bde05977b3631167028862bE2a173976CA11';
   const RPCS = ['https://bsc-rpc.publicnode.com', 'https://bsc-dataseed.bnbchain.org', 'https://bsc-dataseed.binance.org'];
   const SEL = {

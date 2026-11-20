@@ -7,7 +7,6 @@
 //      for writing a finished round's score into the record (encode-score),
 //      or for opening or joining a squad (encode-squad)
 //   3. says what an address can do in Blitz, the six-hour round, and prints those calls (blitz).
-//      Blitz is not deployed yet: until its address is filled in below, this command only says so.
 // It never signs, never sends a transaction, never reads wallet or session files,
 // and contacts nothing except the public RPC endpoints below.
 
@@ -22,8 +21,8 @@ const CONFIG = {
   core: '0x79F55DAa8a3CF2Eb76EE40e26ff6E244a4cC1eD4',
   scorer: '0x5ea789e7cd9C157793dDA75959829F8C1527C16b',
   squads: '0x1eAeEE5BA7582858b266920E79938203E92120D0',
-  // Blitz, the six-hour round. The zero address until it is deployed.
-  blitz: '0x0000000000000000000000000000000000000000',
+  // Blitz, the six-hour round.
+  blitz: '0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C',
   agentId: '0x60b9262456de011f7d15a54cdd8c48baaa8b022f',
   feeds: {
     btc: '0x264990fbd0A4796A3E3d8E37C4d5F87a3aCa5Ebf',
