@@ -6,7 +6,11 @@
   const SCORER = '0x5ea789e7cd9C157793dDA75959829F8C1527C16b';
   const REGISTRY = '0x60b9262456de011f7d15a54cdd8c48baaa8b022f';
   const SQUADS = '0x1eAeEE5BA7582858b266920E79938203E92120D0';
-  const BLITZ = '0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C'; // set when Blitz is deployed
+  const BLITZ = '0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C'; // Blitz, BTC/USD market
+  // Blitz markets: the same contract code, one per Chainlink feed. An empty address is a market that is not open.
+  const BLITZ_ETH = '';
+  const BLITZ_BNB = '';
+  const MARKETS = [{ pair: 'BTC', address: BLITZ }, { pair: 'ETH', address: BLITZ_ETH }, { pair: 'BNB', address: BLITZ_BNB }];
   const MULTICALL = '0xcA11bde05977b3631167028862bE2a173976CA11';
   const RPCS = ['https://bsc-rpc.publicnode.com', 'https://bsc-dataseed.bnbchain.org', 'https://bsc-dataseed.binance.org'];
   const SEL = {
@@ -171,7 +175,18 @@
       };
     }).filter((q) => q.open).sort((a, b) => b.score - a.score || b.members - a.members || b.forecasts - a.forecasts);
 
-    const blitz = BLITZ ? await loadBlitz(rows) : null;
+    // One entry per open market; `blitz` stays the BTC market for older readers.
+    const blitzMarkets = [];
+    for (const m of MARKETS) if (m.address) blitzMarkets.push({ pair: m.pair, ...(await loadBlitz(rows, m.address)) });
+    const blitz = blitzMarkets.length ? blitzMarkets[0] : null;
+    // Players across all markets: tickets, wins and losses added up, streaks as the best of the markets.
+    const merged = new Map();
+    blitzMarkets.forEach((m) => m.table.forEach((r) => {
+      const k = r.owner.toLowerCase(); const a = merged.get(k);
+      if (!a) merged.set(k, { ...r });
+      else { a.tickets += r.tickets; a.wins += r.wins; a.losses += r.losses; a.unclaimed += r.unclaimed; a.streak = Math.max(a.streak, r.streak); a.best = Math.max(a.best, r.best); }
+    }));
+    const blitzTable = [...merged.values()].sort((a, b) => (b.wins - b.losses) - (a.wins - a.losses) || b.best - a.best || b.tickets - a.tickets);
     // Funnel: how far holders go after the card. Counted from current state, no history needed.
     const funnel = {
       cards: rows.length,
@@ -183,7 +198,7 @@
     };
 
     return {
-      squads, blitz, funnel,
+      squads, blitz, blitzMarkets, blitzTable, funnel,
       now, epoch, lockAt: (epoch + 1) * 86400, resultAt: (epoch + 1) * 86400 + 6.5 * 3600,
       total, forecasters: ranked.length, submittedToday: rows.filter((r) => r.submittedToday).length,
       lastEpoch: last,
@@ -197,7 +212,7 @@
   }
 
   // Blitz: players are found from the latest tickets, their records read from the contract.
-  async function loadBlitz(cardRows) {
+  async function loadBlitz(cardRows, BLITZ) {
     const head = await multicall([
       { to: BLITZ, data: SEL.bTotalSupply }, { to: BLITZ, data: SEL.bTotalPlayers }, { to: BLITZ, data: SEL.bCurrentRound },
     ]);
@@ -228,9 +243,9 @@
       };
     }).sort((a, b) => (b.wins - b.losses) - (a.wins - a.losses) || b.best - a.best || b.tickets - a.tickets);
     return { address: BLITZ, supply, players, round, minted, up, down, lockAt: (round + 1) * 21600, table,
-      previousRoundPlayers: before.size, returning };
+      previousRoundPlayers: before.size, returning, holders: owners };
   }
 
-  const api = { load, scoreOf, encodeAggregate3, decodeAggregate3, CORE, SCORER, SQUADS, BLITZ };
+  const api = { load, scoreOf, encodeAggregate3, decodeAggregate3, CORE, SCORER, SQUADS, BLITZ, MARKETS };
   if (typeof module !== 'undefined' && module.exports) module.exports = api; else root.League = api;
 })(typeof window !== 'undefined' ? window : globalThis);

@@ -21,7 +21,11 @@ const FEEDS = [
   ['ETH/USD', '0x9ef1B8c0E4F7dc8bF5719Ea496883DC6401d5b2e'],
   ['BNB/USD', '0x0567F2323251f0Aab15c8dFb1967E4e8A7D42aeE'],
 ];
-const BLITZ = '0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C'; // set when Blitz is deployed
+const BLITZ = '0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C'; // Blitz, BTC/USD market
+// Blitz markets: the same contract code, one per Chainlink feed. An empty address is a market that is not open.
+const BLITZ_ETH = '';
+const BLITZ_BNB = '';
+const MARKETS = [['BTC', BLITZ], ['ETH', BLITZ_ETH], ['BNB', BLITZ_BNB]].filter(([, a]) => a && !/^0x0+$/.test(a));
 const RPC = process.env.LEAGUE_RPC || 'https://bsc-rpc.publicnode.com';
 const HORIZON = 21600;
 const SEL = {
@@ -177,19 +181,21 @@ async function cmdScore(epoch) {
 }
 
 async function cmdBlitz(now) {
-  if (/^0x0+$/.test(BLITZ)) fail('Blitz is not deployed yet.');
+  if (MARKETS.length === 0) fail('Blitz is not deployed yet.');
   const current = Math.floor(now / 21600);
   const calls = [];
-  // The last eight finished rounds: a round r is finished once now > (r + 2) * 6 hours.
-  for (let r = current - 2; r > current - 10; r--) {
-    const minted = Number(slot(await call(BLITZ, '0xc31ef0f6' + word(r)), 0)); // roundMinted(uint32)
-    if (minted === 0) continue;
-    const res = await call(BLITZ, '0xcdd20022' + word(r)); // resultOf(uint32)
-    if (slot(res, 2) !== 0n) continue;
-    const inputData = '0x61a6287f' + word(r); // settle(uint32)
-    let simulation = 'ok';
-    try { await call(BLITZ, inputData); } catch (e) { simulation = `would fail: ${e.message} ${e.data || ''}`; }
-    calls.push({ round: r, tickets: minted, to: BLITZ, value: '0', inputData, simulation });
+  for (const [pair, market] of MARKETS) {
+    // The last eight finished rounds: a round r is finished once now > (r + 2) * 6 hours.
+    for (let r = current - 2; r > current - 10; r--) {
+      const minted = Number(slot(await call(market, '0xc31ef0f6' + word(r)), 0)); // roundMinted(uint32)
+      if (minted === 0) continue;
+      const res = await call(market, '0xcdd20022' + word(r)); // resultOf(uint32)
+      if (slot(res, 2) !== 0n) continue;
+      const inputData = '0x61a6287f' + word(r); // settle(uint32)
+      let simulation = 'ok';
+      try { await call(market, inputData); } catch (e) { simulation = `would fail: ${e.message} ${e.data || ''}`; }
+      calls.push({ pair, round: r, tickets: minted, to: market, value: '0', inputData, simulation });
+    }
   }
   print({ ok: true, action: 'blitz-settle', currentRound: current, calls });
 }
@@ -221,17 +227,19 @@ async function cmdEvidence() {
     outsideSquadsOfThreeOrMore: d.squads.filter((q) => q.captain.toLowerCase() !== builder && q.members >= 3).length,
     blitz: 'not deployed',
   };
-  if (!/^0x0+$/.test(BLITZ)) {
-    const head = await multicall([{ to: BLITZ, data: '0x18160ddd' }, { to: BLITZ, data: '0x8a19c8bc' }]); // totalSupply, currentRound
+  const cardHolders = new Set(d.rows.map((r) => (r.owner || '').toLowerCase()));
+  const everyTicketHolder = new Set(); const markets = [];
+  for (const [pair, market] of MARKETS) {
+    const head = await multicall([{ to: market, data: '0x18160ddd' }, { to: market, data: '0x8a19c8bc' }]); // totalSupply, currentRound
     const supply = Number(slot(head[0], 0)); const current = Number(slot(head[1], 0));
     const ids = []; for (let id = supply; id >= Math.max(1, supply - 5999); id--) ids.push(id);
-    const tickets = await multicall(ids.map((id) => ({ to: BLITZ, data: '0xc129ff32' + word(id) }))); // ticket(uint256)
+    const tickets = await multicall(ids.map((id) => ({ to: market, data: '0xc129ff32' + word(id) }))); // ticket(uint256)
     const byRound = new Map(); // round -> set of holders
     for (const t of tickets) {
       if (!t) continue;
       const holder = '0x' + t.slice(26, 66); const r = Number(slot(t, 1));
       if (!byRound.has(r)) byRound.set(r, new Set());
-      byRound.get(r).add(holder);
+      byRound.get(r).add(holder); everyTicketHolder.add(holder);
     }
     const last12 = []; for (let r = current - 11; r <= current; r++) last12.push(r);
     const rounds = last12.map((r) => {
@@ -242,21 +250,30 @@ async function cmdEvidence() {
     const count = new Map();
     for (const r of last12) for (const h of byRound.get(r) || []) if (h !== builder) count.set(h, (count.get(h) || 0) + 1);
     const holders = [...new Set([...byRound.values()].flatMap((set) => [...set]))].filter((h) => h !== builder);
-    const recs = await multicall(holders.map((h) => ({ to: BLITZ, data: '0xc06ac6a3' + addrWord(h) }))); // recordOf(address)
+    const recs = await multicall(holders.map((h) => ({ to: market, data: '0xc06ac6a3' + addrWord(h) }))); // recordOf(address)
     const finished = [...byRound.keys()].filter((r) => r <= current - 2).sort((a, b) => b - a).slice(0, 40);
-    const results = await multicall(finished.map((r) => ({ to: BLITZ, data: '0xcdd20022' + word(r) }))); // resultOf(uint32)
+    const results = await multicall(finished.map((r) => ({ to: market, data: '0xcdd20022' + word(r) }))); // resultOf(uint32)
     const outcomes = results.map((x) => (x ? Number(slot(x, 2)) : 0));
-    const cardHolders = new Set(d.rows.map((r) => (r.owner || '').toLowerCase()));
-    const allTicketHolders = new Set([...byRound.values()].flatMap((set) => [...set]));
-    // Wallets that used any of the contracts: card holders plus ticket holders without a card.
-    out.walletsAcrossContracts = cardHolders.size + [...allTicketHolders].filter((h) => !cardHolders.has(h)).length;
-    out.blitz = {
-      tickets: supply, currentRound: current, ticketHoldersWithoutACard: [...allTicketHolders].filter((h) => !cardHolders.has(h)).length, last12Rounds: rounds.slice(Math.max(0, rounds.findIndex((r) => r.tickets > 0))),
+    markets.push({
+      pair, contract: market, tickets: supply, currentRound: current, players: holders.length + (everyTicketHolder.has(builder) ? 1 : 0),
+      last12Rounds: rounds.slice(Math.max(0, rounds.findIndex((r) => r.tickets > 0))),
       outsideWalletsInEightOfLast12Rounds: [...count.values()].filter((n) => n >= 8).length,
       outsideWalletsWithATicketAndAClaim: recs.filter((x) => x && slot(x, 0) - slot(x, 5) > 0n).length,
       finishedRoundsWithTickets: finished.length, settled: outcomes.filter((o) => o !== 0).length,
       voidRounds: outcomes.filter((o) => o === 4).length,
-    };
+    });
+  }
+  if (markets.length) {
+    const withoutCard = [...everyTicketHolder].filter((h) => !cardHolders.has(h)).length;
+    const forecasts = d.rows.reduce((a, r) => a + r.forecasts, 0);
+    const ticketsAll = markets.reduce((a, m) => a + m.tickets, 0);
+    const claims = markets.reduce((a, m) => a + m.outsideWalletsWithATicketAndAClaim, 0);
+    // The two numbers the Pioneer award counts. Wallets: card holders plus ticket holders without a card.
+    // Transactions: a lower bound from state (card or first forecast, later forecasts, tickets, at least one claim per claiming wallet).
+    out.walletsAcrossContracts = cardHolders.size + withoutCard;
+    out.transactionsAtLeast = d.rows.length + Math.max(0, forecasts - d.rows.filter((r) => r.forecasts > 0).length) + ticketsAll + claims;
+    out.blitz = { ...markets[0], ticketHoldersWithoutACard: withoutCard, ticketsInAllMarkets: ticketsAll };
+    if (markets.length > 1) out.blitzMarkets = markets;
   }
   print(out);
 }

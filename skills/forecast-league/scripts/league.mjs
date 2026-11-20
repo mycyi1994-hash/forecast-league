@@ -23,6 +23,9 @@ const CONFIG = {
   squads: '0x1eAeEE5BA7582858b266920E79938203E92120D0',
   // Blitz, the six-hour round.
   blitz: '0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C',
+  // Further Blitz markets: the same contract code with another Chainlink feed. Empty means not open.
+  blitzEth: '',
+  blitzBnb: '',
   agentId: '0x60b9262456de011f7d15a54cdd8c48baaa8b022f',
   feeds: {
     btc: '0x264990fbd0A4796A3E3d8E37C4d5F87a3aCa5Ebf',
@@ -454,28 +457,42 @@ async function cmdBlitz(args) {
   if (CONFIG.blitz.toLowerCase() === ZERO) fail('Blitz is not deployed yet.');
   const address = args.address === true ? undefined : args.address;
   if (!address) fail('Give --address <your wallet>.');
-  const t = await call(CONFIG.blitz, '0x624f6da5' + addressWord(address)); // todo(address)
-  const r = await call(CONFIG.blitz, '0xc06ac6a3' + addressWord(address)); // recordOf(address)
-  const canMint = slot(t, 1) === 1n; const claimable = Number(slot(t, 2));
-  const one = (inputData, what) => ({ to: CONFIG.blitz, value: '0', inputData, what });
-  const calls = [];
-  if (claimable > 0) calls.push(one('0x4e71d92d', 'claim(): write your finished rounds into your record'));
-  if (canMint) {
-    calls.push({ chooseOne: [
-      one('0xd5a49e01', 'up(): ticket for "BTC higher six hours after the lock"'),
-      one('0xd8337928', 'down(): ticket for "BTC lower"'),
-      one('0x1249c58b', 'mint(): ticket with the side the contract assigns you'),
-    ] });
+  // One market per Chainlink feed. The first one is BTC/USD; the others exist only if their address is filled in.
+  const open = [['BTC', CONFIG.blitz], ['ETH', CONFIG.blitzEth], ['BNB', CONFIG.blitzBnb]].filter(([, a]) => a && a.toLowerCase() !== ZERO);
+  const markets = [];
+  for (const [pair, market] of open) {
+    const t = await call(market, '0x624f6da5' + addressWord(address)); // todo(address)
+    const r = await call(market, '0xc06ac6a3' + addressWord(address)); // recordOf(address)
+    const canMint = slot(t, 1) === 1n; const claimable = Number(slot(t, 2));
+    const one = (inputData, what) => ({ to: market, value: '0', inputData, what });
+    const calls = [];
+    if (claimable > 0) calls.push(one('0x4e71d92d', `claim(): write your finished ${pair} rounds into your record`));
+    if (canMint) {
+      calls.push({ chooseOne: [
+        one('0xd5a49e01', `up(): ticket for "${pair} higher six hours after the lock"`),
+        one('0xd8337928', `down(): ticket for "${pair} lower"`),
+        one('0x1249c58b', 'mint(): ticket with the side the contract assigns you'),
+      ] });
+    }
+    markets.push({
+      pair, contract: market, round: Number(slot(t, 0)), canMint, claimable, secondsToLock: Number(slot(t, 3)),
+      ticketsThisRound: Number(slot(t, 4)), earlyLeft: Number(slot(t, 5)),
+      record: { tickets: Number(slot(r, 0)), wins: Number(slot(r, 1)), losses: Number(slot(r, 2)), streak: Number(slot(r, 3)), bestStreak: Number(slot(r, 4)), unclaimed: Number(slot(r, 5)) },
+      calls,
+    });
   }
-  console.log(JSON.stringify({
-    ok: true, binanceChainId: String(CONFIG.chainId), contract: CONFIG.blitz,
-    round: Number(slot(t, 0)), canMint, claimable, secondsToLock: Number(slot(t, 3)),
-    ticketsThisRound: Number(slot(t, 4)), earlyLeft: Number(slot(t, 5)),
-    record: { tickets: Number(slot(r, 0)), wins: Number(slot(r, 1)), losses: Number(slot(r, 2)), streak: Number(slot(r, 3)), bestStreak: Number(slot(r, 4)), unclaimed: Number(slot(r, 5)) },
+  const first = markets[0];
+  const out = {
+    ok: true, binanceChainId: String(CONFIG.chainId), contract: first.contract,
+    round: first.round, canMint: first.canMint, claimable: first.claimable, secondsToLock: first.secondsToLock,
+    ticketsThisRound: first.ticketsThisRound, earlyLeft: first.earlyLeft, record: first.record,
     // Send these with `baw contract-call preview` and `execute`, exactly as they are. Nothing to send if the list is empty.
-    calls,
-    note: 'Every call sends value 0. One ticket per round; rounds open at 00:00, 06:00, 12:00 and 18:00 UTC.',
-  }, null, 2));
+    calls: markets.flatMap((m) => m.calls),
+    note: 'Every call sends value 0. One ticket per market per round; rounds open at 00:00, 06:00, 12:00 and 18:00 UTC.',
+  };
+  // With more than one market open, each one is listed with its own state; `calls` above holds the calls of all of them.
+  if (markets.length > 1) out.markets = markets;
+  console.log(JSON.stringify(out, null, 2));
 }
 
 function isMainModule() {

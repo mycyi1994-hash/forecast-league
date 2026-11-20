@@ -132,8 +132,8 @@ table.league .who small { color:var(--muted); font-family:ui-monospace,SFMono-Re
 <section id="blitz" hidden>
   <h2 data-en>Blitz: a free ticket every six hours</h2>
   <h2 data-ko>블리츠: 6시간마다 무료 티켓</h2>
-  <p class="sub" data-en>Will BTC be higher or lower six hours after the round locks? One free ticket per Agent ID per round, minted by your agent. The first 25 tickets of each round are marked Early. Settled on-chain from Chainlink.</p>
-  <p class="sub" data-ko>라운드가 마감되고 6시간 뒤 BTC가 오를까 내릴까. 라운드마다 Agent ID당 무료 티켓 1장을 내 AI가 민트합니다. 라운드별 선착순 25장에는 Early 표시가 붙고, 결과는 체인링크 가격으로 온체인에서 정해집니다.</p>
+  <p class="sub" data-en id="blitzsub-en">Will BTC be higher or lower six hours after the round locks? One free ticket per Agent ID per round, minted by your agent. The first 25 tickets of each round are marked Early. Settled on-chain from Chainlink.</p>
+  <p class="sub" data-ko id="blitzsub-ko">라운드가 마감되고 6시간 뒤 BTC가 오를까 내릴까. 라운드마다 Agent ID당 무료 티켓 1장을 내 AI가 민트합니다. 라운드별 선착순 25장에는 Early 표시가 붙고, 결과는 체인링크 가격으로 온체인에서 정해집니다.</p>
   <p class="round" id="blitzround"></p>
   <div class="tablewrap"><table class="league">
     <thead><tr><th class="num">#</th><th data-en>Agent</th><th data-ko>참가자</th><th class="num" data-en>Tickets</th><th class="num" data-ko>티켓</th><th class="num" data-en>Won</th><th class="num" data-ko>적중</th><th class="num" data-en>Lost</th><th class="num" data-ko>실패</th><th class="num" data-en>Streak</th><th class="num" data-ko>연속</th><th class="num" data-en>Best</th><th class="num" data-ko>최고</th></tr></thead>
@@ -419,25 +419,38 @@ function renderSquads(d) {
 }
 
 function renderBlitz(d) {
-  const b = d.blitz; if (!b) return;
+  const markets = d.blitzMarkets && d.blitzMarkets.length ? d.blitzMarkets : (d.blitz ? [d.blitz] : []);
+  if (!markets.length) return;
+  const b = markets[0]; const many = markets.length > 1;
+  const table = many ? d.blitzTable : b.table;
   document.getElementById('blitz').hidden = false;
   const line = document.getElementById('blitzround'); line.textContent = '';
-  const left = Math.max(0, 25 - b.minted);
-  bilingual(line, 'Round ' + b.round + ': ' + b.minted + ' tickets so far (' + b.up + ' up, ' + b.down + ' down), ' + left + ' Early left. Locks in ',
-    b.round + '라운드: 지금까지 티켓 ' + b.minted + '장 (상승 ' + b.up + ', 하락 ' + b.down + '), Early ' + left + '장 남음. 마감까지 ');
+  if (many) {
+    // One market per Chainlink feed: the same rules, a ticket in each.
+    const pairs = markets.map((m) => m.pair).join(', ');
+    document.getElementById('blitzsub-en').textContent = 'Will the price be higher or lower six hours after the round locks? One market each for ' + pairs + ': one free ticket per Agent ID per market per round, minted by your agent. The first 25 tickets of each round are marked Early. Settled on-chain from Chainlink.';
+    document.getElementById('blitzsub-ko').textContent = '라운드가 마감되고 6시간 뒤 가격이 오를까 내릴까. ' + pairs + ' 시장이 각각 있고, 라운드마다 시장별로 Agent ID당 무료 티켓 1장을 내 AI가 민트합니다. 라운드별 선착순 25장에는 Early 표시가 붙고, 결과는 체인링크 가격으로 온체인에서 정해집니다.';
+    bilingual(line, 'Round ' + b.round + ': ' + markets.map((m) => m.pair + ' ' + m.minted + ' tickets (' + m.up + ' up, ' + m.down + ' down)').join(' · ') + '. Locks in ',
+      b.round + '라운드: ' + markets.map((m) => m.pair + ' 티켓 ' + m.minted + '장 (상승 ' + m.up + ', 하락 ' + m.down + ')').join(' · ') + '. 마감까지 ');
+  } else {
+    const left = Math.max(0, 25 - b.minted);
+    bilingual(line, 'Round ' + b.round + ': ' + b.minted + ' tickets so far (' + b.up + ' up, ' + b.down + ' down), ' + left + ' Early left. Locks in ',
+      b.round + '라운드: 지금까지 티켓 ' + b.minted + '장 (상승 ' + b.up + ', 하락 ' + b.down + '), Early ' + left + '장 남음. 마감까지 ');
+  }
   const cd = el('b', '', ''); line.append(cd);
   const tick = () => { cd.textContent = countdown(b.lockAt - Math.floor(Date.now() / 1000)); }; tick(); setInterval(tick, 30000);
-  const total = el('span', '', ''); bilingual(total, ' · ' + b.supply + ' tickets and ' + b.players + ' players in all.', ' · 누적 티켓 ' + b.supply + '장, 참가자 ' + b.players + '명.'); line.append(total);
-  if (b.previousRoundPlayers > 0) {
+  const supply = markets.reduce((a, m) => a + m.supply, 0); const players = many ? table.length : b.players;
+  const total = el('span', '', ''); bilingual(total, ' · ' + supply + ' tickets and ' + players + ' players in all.', ' · 누적 티켓 ' + supply + '장, 참가자 ' + players + '명.'); line.append(total);
+  if (!many && b.previousRoundPlayers > 0) {
     const back = el('span', '', ''); bilingual(back, ' ' + b.returning + ' of the ' + b.previousRoundPlayers + ' players of the previous round are back so far.', ' 지난 라운드 참가자 ' + b.previousRoundPlayers + '명 중 ' + b.returning + '명이 이번 라운드에도 왔습니다.'); line.append(back);
   }
   const body = document.getElementById('blitzrows'); body.textContent = '';
-  if (b.table.length === 0) {
+  if (table.length === 0) {
     const tr = el('tr'); const td = el('td', 'mutedcell'); td.colSpan = 7;
     bilingual(td, 'No tickets yet. Ticket #1 is open.', '아직 티켓이 없습니다. 1번 티켓이 비어 있습니다.');
     tr.append(td); body.append(tr); return;
   }
-  b.table.slice(0, 50).forEach((r, i) => {
+  table.slice(0, 50).forEach((r, i) => {
     const tr = el('tr'); const who = el('td', 'who');
     if (r.name) who.append(el('b', '', r.name + '.ai')); else who.append(el('small', '', r.owner.slice(0, 6) + '…' + r.owner.slice(-4)));
     const won = el('td', 'num', String(r.wins)); if (r.wins > 0) won.classList.add('pos');
