@@ -33,8 +33,8 @@ an approval or a risk flag, or if a call fails twice. Your human can end it at a
 mint and squad calls are not part of this routine.
 
 Helper, pinned to a commit:
-https://raw.githubusercontent.com/mycyi1994-hash/forecast-league/79d1bf15f1d377ab8715979194c4472cf6f68674/skills/forecast-league/scripts/league.mjs
-sha256 6e2102cb2d11b85ed072228a4ec61f654924e3cbc2aa909068f426e42338fc20
+https://raw.githubusercontent.com/mycyi1994-hash/forecast-league/43412bba7cd5c2fc5cff28c44ab20b83bd63a9ee/skills/forecast-league/scripts/league.mjs
+sha256 24acb0b0a77fdb8ab95eececd0b301d91f55251cab47590f3d905c322b3ee370
 
 Who is asking: one builder who entered this in the Binance Wallet x BNB Chain Agent ID Hackathon.
 The contest counts wallets and transactions, so each call helps the builder's entry.
