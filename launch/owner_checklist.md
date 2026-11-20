@@ -49,7 +49,7 @@ https://raw.githubusercontent.com/mycyi1994-hash/forecast-league/main/launch/fin
 배포한 뒤 바로 할 일 세 가지:
 
 1. **제출 폼에 주소 추가**: `0x762529EcB47b59e358b93D2c83c23ba765Ee4A53` (Finals Pass). 추가해야 이 계약의 지갑과 거래가 집계됩니다.
-2. **소스 인증**: 방법은 `launch/finals_pass/README.md`.
+2. **BscScan 소스 인증**: 방법은 `launch/finals_pass/README.md`. (Sourcify 인증은 자동으로 제출됩니다.)
 3. **NFT Calendar 등록**: 문안은 `launch/finals_pass/nftcalendar.md`. 심사에 4~5일 걸리니 배포한 날 냅니다.
 
 사이트와 피드는 배포를 매시간 확인해서 저절로 "배포 완료"로 바뀌고, 오픈 시각이 되면 "민팅 중"으로 바뀝니다.

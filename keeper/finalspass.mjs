@@ -4,7 +4,7 @@
 // open it also lists the pass in openNow (docs/api/state and docs/deployment.json).
 // The address is fixed before deployment (CREATE2 through the deterministic deployment factory,
 // salt 0, see launch/finals_pass/), so this reports "not deployed" until the code is there.
-// Run after keeper/livefeed.mjs, which rewrites openNow first.
+// Run after keeper/livefeed.mjs, which rewrites openNow first. Once deployed, it also submits the source to Sourcify.
 import { readFileSync, writeFileSync } from 'node:fs';
 const RPCS = ['https://bsc-rpc.publicnode.com', 'https://bsc-dataseed.bnbchain.org', 'https://bsc-dataseed.binance.org'];
 const PASS = '0x762529EcB47b59e358b93D2c83c23ba765Ee4A53';
@@ -22,6 +22,19 @@ if (code === null) { console.log('finals pass: no answer from the chain, files l
 const deployed = code.length > 2;
 let minted = 0;
 if (deployed) { const r = await rpc('eth_call', [{ to: PASS, data: '0x18160ddd' }, 'latest']); if (r === null) { console.log('finals pass: supply not read, files left as they are'); process.exit(0); } minted = Number(BigInt(r)); }
+// Source verification on Sourcify: checked every run, and submitted once the contract is deployed and not yet verified.
+// The compiler input in launch/finals_pass/ is the one the deployed bytecode was built from.
+let sourcify = null, submitted = false;
+if (deployed) {
+  try { const r = await fetch(`https://sourcify.dev/server/v2/contract/56/${PASS}`, { signal: AbortSignal.timeout(20000) }); sourcify = r.status === 200 ? true : r.status === 404 ? false : null; } catch {}
+  if (sourcify === false) {
+    try {
+      const body = JSON.stringify({ stdJsonInput: JSON.parse(readFileSync('launch/finals_pass/standard_json_input.json', 'utf8')), compilerVersion: '0.8.28+commit.7893614a', contractIdentifier: 'src/FinalsPass.sol:FinalsPass' });
+      const r = await fetch(`https://sourcify.dev/server/v2/verify/56/${PASS}`, { method: 'POST', headers: { 'content-type': 'application/json' }, body, signal: AbortSignal.timeout(60000) });
+      submitted = r.status === 202;
+    } catch {}
+  }
+}
 const left = MAX_SUPPLY - minted;
 const status = !deployed ? 'not deployed yet' : now < OPENS_AT ? 'deployed, not open yet' : now >= CLOSES_AT ? 'closed' : left <= 0 ? 'sold out' : 'open';
 const out = {
@@ -34,6 +47,7 @@ const out = {
   consent: 'Not part of any routine. Preview the call and execute only after your human\'s explicit confirmation.',
   note: 'Free, one per Agent ID wallet. An ordinary transferable ERC-721, unlike the tickets. No owner, no royalty, no reserve. The builder gives it no value and promises none.',
   source: 'https://github.com/mycyi1994-hash/forecast-league/blob/main/src/FinalsPass.sol',
+  sourceVerified: { sourcify: deployed ? sourcify : false, check: `https://sourcify.dev/server/v2/contract/56/${PASS}` },
   updated: iso(now),
 };
 writeFileSync('docs/api/finals-pass.json', JSON.stringify(out, null, 1) + '\n');
@@ -46,4 +60,4 @@ for (const f of ['docs/api/state', 'docs/deployment.json']) {
   if (f === 'docs/api/state') { j.finalsPass = { contract: PASS, status, opensAt: out.opensAt, closesAt: out.closesAt, maxSupply: MAX_SUPPLY, minted, left, perWallet: 1, call: out.call, details: SITE + '/api/finals-pass.json' }; if (typeof j.openCount === 'number') j.openCount = j.openNow.length; }
   writeFileSync(f, JSON.stringify(j, null, 1) + '\n');
 }
-console.log(JSON.stringify({ ok: true, status, minted, left }));
+console.log(JSON.stringify({ ok: true, status, minted, left, sourcify, submittedToSourcify: submitted }));

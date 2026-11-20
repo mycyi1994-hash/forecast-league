@@ -32,7 +32,7 @@ https://raw.githubusercontent.com/mycyi1994-hash/forecast-league/main/launch/fin
 ## 배포 뒤 할 일
 
 1. **제출 폼에 주소 추가**: `0x762529EcB47b59e358b93D2c83c23ba765Ee4A53` (Finals Pass). 추가해야 이 계약의 지갑과 거래가 집계됩니다.
-2. **소스 인증**: BscScan → Verify → "Solidity (Standard-Json-Input)" → 컴파일러 0.8.28 → `standard_json_input.json` 올리기 → 생성자 인자는 `constructor_args.txt` 내용(앞의 `0x` 빼고). Sourcify에도 같은 파일로 인증합니다.
+2. **소스 인증**: Sourcify 인증은 배포를 감지하면 자동으로 제출됩니다(`keeper/finalspass.mjs`, 매시간). BscScan은 직접 해야 합니다: BscScan → Verify → "Solidity (Standard-Json-Input)" → 컴파일러 0.8.28 → `standard_json_input.json` 올리기 → 생성자 인자는 `constructor_args.txt` 내용(앞의 `0x` 빼고).
 3. **NFT Calendar 등록**: `nftcalendar.md`의 문안을 https://nftcalendar.io/events/community/add/ 에 넣습니다. 심사에 4~5일 걸리니 배포한 날 바로 냅니다.
 
 ## 파일
