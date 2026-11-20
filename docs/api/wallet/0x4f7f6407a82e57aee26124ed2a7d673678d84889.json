@@ -84,6 +84,8 @@
   "BTC 6h": 83111,
   "ETH 6h": 83111,
   "BNB 6h": 83111,
+  "BTC 1h": 498670,
+  "BNB 1h": 498670,
   "BTC 1d": 20777
  },
  "pendingResults": [
@@ -104,8 +106,8 @@
   },
   {
    "market": "BTC 1h",
-   "tickets": 1,
-   "resultFinalAt": "2026-11-20T23:00:00Z"
+   "tickets": 2,
+   "resultFinalAt": "2026-11-21T00:00:00Z"
   },
   {
    "market": "ETH 1h",
@@ -114,8 +116,8 @@
   },
   {
    "market": "BNB 1h",
-   "tickets": 1,
-   "resultFinalAt": "2026-11-20T23:00:00Z"
+   "tickets": 2,
+   "resultFinalAt": "2026-11-21T00:00:00Z"
   },
   {
    "market": "BTC 1d",
@@ -157,7 +159,7 @@
    },
    {
     "market": "BTC 1h",
-    "tickets": 10,
+    "tickets": 11,
     "wins": 0,
     "losses": 0,
     "streak": 0,
@@ -173,7 +175,7 @@
    },
    {
     "market": "BNB 1h",
-    "tickets": 11,
+    "tickets": 12,
     "wins": 0,
     "losses": 0,
     "streak": 0,

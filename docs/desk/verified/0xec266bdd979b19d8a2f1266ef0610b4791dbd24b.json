@@ -2,8 +2,8 @@
  "contract": "0xec266bdd979b19d8a2f1266ef0610b4791dbd24b",
  "name": "PlonkraAgent",
  "verdict": "passed",
- "checkedAt": "2026-11-20T22:10:46Z",
- "block": 134772866,
+ "checkedAt": "2026-11-20T22:15:02Z",
+ "block": 134773435,
  "checks": {
   "simulatedFromAgentIdWallet": true,
   "gateEnforced": true,
