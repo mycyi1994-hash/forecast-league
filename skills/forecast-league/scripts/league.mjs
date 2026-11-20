@@ -516,7 +516,7 @@ const HONOR_NAMES = ['SEASON ONE', 'CARD HOLDER', 'FIRST WIN', 'FIVE WINS', 'STR
 // One run of the league: what to send now, what is waiting, when to come back and what to tell your human.
 // Default scope: claims on every market you hold tickets in, new tickets in the three 6h markets, daily extras.
 // --full also takes tickets in the hourly and daily markets (only with your human's yes for that).
-async function cmdAll(args) {
+async function buildAll(args) {
   const address = args.address === true ? undefined : args.address;
   if (!address) fail('Give --address <your wallet>.');
   const full = Boolean(args.full);
@@ -579,7 +579,9 @@ async function cmdAll(args) {
   lines.push(decided ? `Record: ${wins} won, ${losses} lost${unlocked.length ? '; ready to claim: ' + unlocked.join(', ') : ''}.` : 'No decided ticket in your record yet: results count only after a claim() once the round is final.');
   if (next) lines.push(`I need to run again at ${next.at.slice(11, 16)} UTC (${next.why}). Should I do this every 6 hours until 9 Dec? At most 14 value-0 calls per run, gas under $0.02 each. Say stop anytime.`);
   lines.push(`Record: ${record}`);
-  console.log(JSON.stringify({
+  const winsTotal = wins; const streakNow = bestStreak;
+  const shareLine = decided ? `Forecast League on BNB Chain: ${wins} won / ${losses} lost (${Math.round((100 * wins) / decided)}%), current best streak ${streakNow}. Record: ${record}` : `Playing Forecast League on BNB Chain (free Agent ID rounds, settled by Chainlink). Record: ${record}`;
+  return ({
     ok: true, binanceChainId: String(CONFIG.chainId), address, scope: full ? 'full' : 'default (6h markets + daily extras)',
     // Send these in order with `baw contract-call preview` and `execute`, exactly as they are, within your human's limits.
     calls,
@@ -592,7 +594,72 @@ async function cmdAll(args) {
     reportToHuman: lines.join('\n'),
     routineLine,
     markets,
+    shareLine,
     note: 'Every call sends value 0. Skipping any of them costs nothing. Preview each one and act on your human\'s yes.',
+  });
+}
+async function cmdAll(args) { console.log(JSON.stringify(await buildAll(args), null, 2)); }
+
+
+
+// ---------------------------------------------------------------- Agent ID Mint Desk
+const DESK = SITE + '/desk/projects.json';
+async function rawCall(from, to, data) {
+  const res = await rpcRaw('eth_call', [{ ...(from ? { from } : {}), to, data, value: '0x0' }, 'latest']);
+  return res;
+}
+async function rpcRaw(method, params) {
+  for (const url of CONFIG.rpcs || [CONFIG.rpc]) {
+    try { const r = await (await fetch(url, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ jsonrpc: '2.0', id: 1, method, params }) })).json();
+      if (r.result !== undefined) return { ok: true, v: r.result }; if (r.error) return { ok: false, e: r.error }; } catch {}
+  }
+  return { ok: false, e: { message: 'rpc unavailable' } };
+}
+const revertText = (e) => { const d = typeof e?.data === 'string' ? e.data : e?.data?.data; if (d && d.startsWith('0x08c379a0')) { try { const l = parseInt(d.slice(74, 138), 16); return Buffer.from(d.slice(138, 138 + l * 2), 'hex').toString('utf8'); } catch {} } return (e?.message || 'reverted').replace(/^execution reverted:?\s*/, '') || 'reverted'; };
+async function loadDesk() { try { return await (await fetch(DESK, { signal: AbortSignal.timeout(30000) })).json(); } catch { return null; } }
+
+// check: one contract, simulated from your own wallet.
+async function cmdCheck(args) {
+  const to = (args._[1] || args.contract || '').toLowerCase();
+  if (!/^0x[0-9a-f]{40}$/.test(to)) fail('Give the contract: node league.mjs check 0x… [--address <your wallet>] [--data 0x…]');
+  const from = args.address === true ? undefined : args.address;
+  const desk = await loadDesk(); const listed = desk?.projects?.find((p) => p.contract === to);
+  const data = args.data && args.data !== true ? args.data : listed?.mint?.inputData || '0x1249c58b';
+  const [code, sim, plain, own, impl] = await Promise.all([rpcRaw('eth_getCode', [to, 'latest']), rawCall(from, to, data), rawCall('0x000000000000000000000000000000000000dEaD', to, data), rawCall(undefined, to, '0x8da5cb5b'), rpcRaw('eth_getStorageAt', [to, '0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc', 'latest'])]);
+  let sourcify = null; try { const r = await fetch(`https://sourcify.dev/server/v2/contract/56/${to}`, { signal: AbortSignal.timeout(15000) }); sourcify = r.status === 200 ? true : r.status === 404 ? false : null; } catch {}
+  const owner = own.ok && own.v?.length >= 66 && !/^0x0*$/.test(own.v) ? '0x' + own.v.slice(-40) : null;
+  const warnings = [];
+  if (!code.ok || code.v === '0x') warnings.push('no contract code');
+  if (!sim.ok) warnings.push(`value-0 simulation ${from ? 'from your wallet ' : ''}reverts: ${revertText(sim.e)}`);
+  if (plain.ok) warnings.push('a wallet without Agent ID can call it too (gate not enforced for this call)');
+  if (impl.ok && !/^0x0*$/.test(impl.v)) warnings.push('upgradeable proxy: rules can change');
+  if (owner) warnings.push(`has an owner (${owner}) with admin powers`);
+  if (sourcify === false) warnings.push('source not verified on Sourcify');
+  console.log(JSON.stringify({ ok: true, contract: to, inputData: data, simulatedFrom: from || 'no sender', verdict: sim.ok && !warnings.length ? 'passed' : sim.ok ? 'callable_with_warnings' : 'would_fail', warnings,
+    desk: listed ? { status: listed.status, rank: listed.rank, checkedAt: listed.checkedAt } : 'not listed on the desk', note: 'Simulation at one block, not an audit. Preview in your own wallet before sending; skip on any value, outgoing token, approval or risk flag.' }, null, 2));
+}
+
+// daily: your Forecast League to-do plus every desk mint that passed all checks and still simulates from your wallet.
+async function cmdDaily(args) {
+  const address = args.address === true ? undefined : args.address;
+  if (!address) fail('Give --address <your wallet>.');
+  const league = await buildAll(args);
+  const desk = await loadDesk();
+  const picks = (desk?.projects || []).filter((p) => p.status === 'free_live' && !p.warnings.length && !p.builder).slice(0, Number(args.limit) || 30);
+  const live = [];
+  for (let i = 0; i < picks.length; i += 6) {
+    const part = await Promise.all(picks.slice(i, i + 6).map(async (p) => ({ p, r: await rawCall(address, p.contract, p.mint.inputData) })));
+    for (const { p, r } of part) if (r.ok) live.push({ to: p.contract, value: '0', inputData: p.mint.inputData, what: `${p.name}: free Agent ID mint (desk rank ${p.rank}, all checks passed)` });
+  }
+  const leagueCalls = league.calls; const all = [...leagueCalls, ...live];
+  console.log(JSON.stringify({
+    ok: true, binanceChainId: '56', address,
+    calls: all, counts: { forecastLeague: leagueCalls.length, otherCheckedMints: live.length, deskCheckedAt: desk?.updated || null },
+    next: league.next, waiting: league.waiting, unlocked: league.unlocked, progress: league.progress, health: league.health,
+    routineLine: `Every hour until 9 Dec 2026: node league.mjs daily --address ${address}; preview each listed value-0 call and send it within my owner's limits.`,
+    shareLine: `${league.shareLine} · Today: ${all.length} free calls checked by Agent ID Mint Desk (${SITE}/desk/).`,
+    reportToHuman: `${all.length} free value-0 calls today: ${leagueCalls.length} Forecast League, ${live.length} other Agent ID mints that passed the desk checks and simulate from this wallet.\n${league.reportToHuman}`,
+    note: 'Order: your Forecast League claims and tickets (time-bound), then other checked mints by desk rank (daily rotation, no project pinned). Simulations are heuristics, not an audit; preview each call and skip any that asks for value, approvals or moves tokens out.',
   }, null, 2));
 }
 
@@ -614,12 +681,16 @@ if (isMain) {
     else if (command === 'encode-squad') await cmdEncodeSquad(args);
     else if (command === 'blitz') await cmdBlitz(args);
     else if (command === 'all') await cmdAll(args);
+    else if (command === 'check') await cmdCheck(args);
+    else if (command === 'daily') await cmdDaily(args);
     else if (command === 'status') await cmdStatus(args);
     else {
       console.log(
         [
           'Usage:',
           '  node league.mjs all --address 0xYourAgenticWallet [--full]  (this run: calls, next time, report for your human)',
+          '  node league.mjs daily --address 0xYourAgenticWallet          (today: league + every free Agent ID mint that passed the desk checks)',
+          '  node league.mjs check 0xContract [--address 0xYourAgenticWallet]  (simulate one mint from your wallet)',
           '  node league.mjs status [--address 0xYourAgenticWallet]',
           '  node league.mjs encode [--btc <price>] [--eth <price>] [--bnb <price>] --show-name yes|no',
           '  node league.mjs encode-mint [--address 0xYourAgenticWallet]',
