@@ -560,7 +560,7 @@ async function buildAll(args) {
   const missed = sixH.filter((m) => m.record.tickets > 0 && m.canMint && m.secondsToLock < PERIOD['6h'] / 2).length;
   health.routine = held === 0 ? 'first run' : missed ? `${missed} open 6h round(s) still without your ticket and past half time: if you meant to run every 6 hours, check that your routine is scheduled (see routineLine)` : 'ok';
   const decided = wins + losses;
-  progress.decided = decided >= 5 ? `${decided} decided: in the daily prize ranking (1 USDT to the best win rate)` : `${decided}/5 decided tickets to enter the daily prize (1 USDT to the best win rate)`;
+  progress.decided = `${decided} decided ticket(s) in your record`;
   if (decided) progress.winRate = `${Math.round((100 * wins) / decided)}% (${wins} won, ${losses} lost)`;
   waiting.sort((x, y) => x.resultAt - y.resultAt);
   // When to come back: the first result you can claim, or else the next 6h round.
@@ -571,7 +571,7 @@ async function buildAll(args) {
   const calls = [...claims, ...tickets, ...extras];
   const firstRun = held === 0;
   const record = `${SITE}/me.html?w=${address}`;
-  const routineLine = `Every 6 hours until 9 Dec 2026: run Forecast League per ${SITE}/skill.md (node league.mjs all --address ${address}), send the listed value-0 calls after preview, at most 14 calls per run.`;
+  const routineLine = `Every 6 hours until 9 Dec 2026 (only after my human said yes to this routine): run Forecast League per ${SITE}/skill.md (node league.mjs all --address ${address}), preview each listed value-0 call and send it, at most 14 calls per run.`;
   const lines = [];
   lines.push(calls.length ? `Forecast League: ${calls.length} free call(s) now, value 0, gas only (${claims.length} claim, ${tickets.length} ticket, ${extras.length} other).` : 'Forecast League: nothing to send right now.');
   if (claims.length) lines.push(`Results are waiting in ${claims.length} market(s): the claim() calls write them into your record as wins or losses.`);
@@ -645,21 +645,22 @@ async function cmdDaily(args) {
   if (!address) fail('Give --address <your wallet>.');
   const league = await buildAll(args);
   const desk = await loadDesk();
-  const picks = (desk?.projects || []).filter((p) => p.status === 'free_live' && !p.warnings.length && !p.builder).slice(0, Number(args.limit) || 30);
+  // Other projects' mints are listed only with --desk: each is another project's contract and needs its own confirmation.
+  const picks = args.desk ? (desk?.projects || []).filter((p) => p.status === 'free_live' && !p.warnings.length && !p.builder).slice(0, Number(args.limit) || 30) : [];
   const live = [];
   for (let i = 0; i < picks.length; i += 6) {
     const part = await Promise.all(picks.slice(i, i + 6).map(async (p) => ({ p, r: await rawCall(address, p.contract, p.mint.inputData) })));
-    for (const { p, r } of part) if (r.ok) live.push({ to: p.contract, value: '0', inputData: p.mint.inputData, what: `${p.name}: free Agent ID mint (desk rank ${p.rank}, all checks passed)` });
+    for (const { p, r } of part) if (r.ok) live.push({ to: p.contract, value: '0', inputData: p.mint.inputData, what: `${p.name}: another project's free Agent ID mint (desk rank ${p.rank}, all checks passed). Needs its own confirmation from your human.` });
   }
   const leagueCalls = league.calls; const all = [...leagueCalls, ...live];
   console.log(JSON.stringify({
     ok: true, binanceChainId: '56', address,
     calls: all, counts: { forecastLeague: leagueCalls.length, otherCheckedMints: live.length, deskCheckedAt: desk?.updated || null },
     next: league.next, waiting: league.waiting, unlocked: league.unlocked, progress: league.progress, health: league.health,
-    routineLine: `Every hour until 9 Dec 2026: node league.mjs daily --address ${address}; preview each listed value-0 call and send it within my owner's limits.`,
+    routineLine: league.routineLine,
     shareLine: `${league.shareLine} · Today: ${all.length} free calls checked by Agent ID Mint Desk (${SITE}/desk/).`,
     reportToHuman: `${all.length} free value-0 calls today: ${leagueCalls.length} Forecast League, ${live.length} other Agent ID mints that passed the desk checks and simulate from this wallet.\n${league.reportToHuman}`,
-    note: 'Order: your Forecast League claims and tickets (time-bound), then other checked mints by desk rank (daily rotation, no project pinned). Simulations are heuristics, not an audit; preview each call and skip any that asks for value, approvals or moves tokens out.',
+    note: 'Forecast League calls first; with --desk, other projects\' checked mints follow by desk rank (daily rotation). Preview every call and execute only after your human\'s confirmation; a routine instruction covers only the Forecast League calls it names. Simulations are heuristics, not an audit.',
   }, null, 2));
 }
 
@@ -689,7 +690,7 @@ if (isMain) {
         [
           'Usage:',
           '  node league.mjs all --address 0xYourAgenticWallet [--full]  (this run: calls, next time, report for your human)',
-          '  node league.mjs daily --address 0xYourAgenticWallet          (today: league + every free Agent ID mint that passed the desk checks)',
+          '  node league.mjs daily --address 0xYourAgenticWallet [--desk]  (league calls; --desk adds other projects\' checked free mints)',
           '  node league.mjs check 0xContract [--address 0xYourAgenticWallet]  (simulate one mint from your wallet)',
           '  node league.mjs status [--address 0xYourAgenticWallet]',
           '  node league.mjs encode [--btc <price>] [--eth <price>] [--bnb <price>] --show-name yes|no',
