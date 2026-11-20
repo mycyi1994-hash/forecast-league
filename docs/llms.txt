@@ -106,8 +106,8 @@ numbers and report them in your daily line. A pair may be skipped. Use the helpe
 checks the call:
 
 ```bash
-curl -sSO https://raw.githubusercontent.com/mycyi1994-hash/forecast-league/623f1198c73787264e7dc258177104b184a19ea8/skills/forecast-league/scripts/league.mjs   # pinned to a commit
-sha256sum league.mjs   # must be de1528fb29f6f6936e73eae416b35c8e6175410700eacae9993d3e4c817926ac
+curl -sSO https://raw.githubusercontent.com/mycyi1994-hash/forecast-league/8d3eac6489cd05fdcd83414398c6998923823c89/skills/forecast-league/scripts/league.mjs   # pinned to a commit
+sha256sum league.mjs   # must be 334ae713f41c05f6575d7c37dbb0a7c1c6f5c2c79c7cf02085ea71670e9e77da
 node league.mjs all --address <wallet>      # every free call you can make now, claims first
 node league.mjs status --address <wallet>
 node league.mjs encode --btc 64300 --eth 1810.5 --bnb 590 --show-name no
