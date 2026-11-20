@@ -36,18 +36,23 @@ Thank you.
 the skill previews every call and executes only after the human's explicit confirmation, as the official Binance Agentic Wallet skill requires (a routine runs only after the human confirmed that exact routine, with its calls and limits read out)
 ```
 
-## 3. 파이널 패스 결정 (11월 23일까지)
+## 3. 파이널 패스 배포 (오늘~11월 23일, 거래 한 번)
 
-계약 초안은 있고 아직 배포하지 않았습니다(`src/FinalsPass.sol`). 지금 초안과 권장안이 다릅니다.
+계약은 완성했고 테스트를 통과했습니다. 사양은 2,000장 한정, 지갑당 1장, Agent ID만 있으면 민팅, 양도 가능, 11월 26일 21:00(한국시간) 오픈, 12월 8일 17:00 마감입니다. 주소는 미리 정해져 있습니다: `0x9Df6ba1868d2C149FdA5FE67491f67C07C31e6B5`
 
-| 항목 | 지금 초안 | 권장 | 이유 |
-|---|---|---|---|
-| 수량 | 5,000장 | 2,000장 | 1,000장 한정이 389지갑, 2,000장 한정이 398지갑을 모았습니다. 5,000장이면 "절반 소진" 신호가 안 납니다 |
-| 자격 | 카드 보유자만 | Agent ID만 | 봇과 목록 사이트는 민팅을 미리 실행해 보고 실패하면 건너뜁니다. 단, 1번 답이 "새 계약은 안 센다"면 카드 보유자만으로 둡니다 |
-| 양도 | 불가 | 가능 | 상위 4곳이 모두 양도 가능입니다. 양도 불가는 수집가 눈에 받을 이유가 없습니다. "가치를 약속하지 않는다"는 문구는 그대로 둡니다 |
-| 오픈 | 11-26 21:00 (한국시간) | 그대로 | |
+에이전틱 월렛이 연결된 AI에게 아래를 그대로 보냅니다. 비용은 약 0.00013 BNB입니다.
 
-정하실 것 두 가지: **양도 가능하게 할지**, **수량을 2,000장으로 줄일지**. 정해 주시면 계약과 테스트를 고칩니다.
+```
+https://raw.githubusercontent.com/mycyi1994-hash/forecast-league/main/launch/finals_pass/calldata.txt 의 내용 전체를 inputData로 써서, BNB Chain(56)에서 0x4e59b44847b379578588920cA78FbF26c0B4956C 로 value 0 계약 호출을 보내 줘. 먼저 baw contract-call preview 로 미리보기를 보여 주고, 내가 확인하면 실행해. 가스 한도는 300만으로.
+```
+
+배포한 뒤 바로 할 일 세 가지:
+
+1. **제출 폼에 주소 추가**: `0x9Df6ba1868d2C149FdA5FE67491f67C07C31e6B5` (Finals Pass). 추가해야 이 계약의 지갑과 거래가 집계됩니다.
+2. **BscScan 소스 인증**: 방법은 `launch/finals_pass/README.md`. (Sourcify 인증은 자동으로 제출됩니다.)
+3. **NFT Calendar 등록**: 문안은 `launch/finals_pass/nftcalendar.md`. 심사에 4~5일 걸리니 배포한 날 냅니다.
+
+사이트와 피드는 배포를 매시간 확인해서 저절로 "배포 완료"로 바뀌고, 오픈 시각이 되면 "민팅 중"으로 바뀝니다.
 
 ## 4. 커뮤니티 6,000명 (2주, 글 4번)
 
@@ -67,10 +72,13 @@ Forecast League 참가하신 분들, 티켓 결과가 나왔습니다. AI 비서
 
 **파이널 패스 오픈 전날 (11월 25일)**
 ```
-내일(11/26) 밤 9시에 Forecast League 시즌 1 파이널 패스가 열립니다. 한정 수량이고 지갑당 1장, 무료(가스비만)입니다. 12월 8일에 마감합니다.
+내일(11/26) 밤 9시에 Forecast League 시즌 1 파이널 패스가 열립니다. 2,000장 한정, 지갑당 1장, 무료(가스비만)입니다. Agent ID만 있으면 받을 수 있고 12월 8일에 마감합니다.
 
-받는 법은 내일 밤 9시에 이 방에 한 줄로 올리겠습니다. 미리 준비하실 분: https://mycyi1994-hash.github.io/forecast-league/ko/
-금전 가치나 보상을 약속하지 않는 기념 패스입니다.
+밤 9시가 되면 AI 비서에게 이 한 줄을 보내세요.
+"https://mycyi1994-hash.github.io/forecast-league/skill.md 를 읽고 내 Binance Agentic Wallet으로 Forecast League 파이널 패스를 받아 줘. 보내기 전에 미리보기를 보여 주고 내 확인을 받아."
+
+미리 준비하실 분: https://mycyi1994-hash.github.io/forecast-league/ko/
+가치나 보상을 약속하지 않는 기념 패스입니다.
 ```
 
 **마감 3일 전 (12월 5일)**
@@ -127,13 +135,19 @@ https://mycyi1994-hash.github.io/forecast-league/ko/
 #BNBChain #AgentID #BinanceWallet
 ```
 
-## 7. 파이널 패스 배포 뒤 (5분)
+## 7. 패스 오픈 당일 (11월 26일 밤 9시)
 
-NFT Calendar에 등록합니다. Agent ID 무료 민팅이 이미 여럿 올라 있고 등록은 무료입니다. 심사에 4~5일 걸리므로 배포 당일에 냅니다.
+커뮤니티 방, 스퀘어, X에 아래를 올립니다.
 
-https://nftcalendar.io/events/community/add/ (설명 120단어 이상, 이미지 1MB 이하, 연락 이메일 필요)
+```
+Forecast League 파이널 패스가 열렸습니다. 2,000장 한정, 지갑당 1장, 무료(가스비만). Agent ID만 있으면 됩니다.
 
-설명 문안은 패스 사양이 정해지면 드리겠습니다.
+AI 비서에게 보낼 한 줄 👇
+"https://mycyi1994-hash.github.io/forecast-league/skill.md 를 읽고 내 Binance Agentic Wallet으로 Forecast League 파이널 패스를 받아 줘. 보내기 전에 미리보기를 보여 주고 내 확인을 받아."
+
+남은 수량: https://mycyi1994-hash.github.io/forecast-league/#pass
+해커톤 참가작이고, 가치나 보상을 약속하지 않습니다.
+```
 
 ## 8. 선택 (각 2~5분)
 
