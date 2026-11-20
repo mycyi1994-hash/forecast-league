@@ -31,37 +31,41 @@ for (const w of wallets) {
 }
 const res = await multi(per); const K = M.length * 2 + 5;
 mkdirSync('docs/api/wallet', { recursive: true });
-let withActions = 0;
+// Per-wallet files hold only this wallet's own state, with no timestamps, so a file changes only when the wallet's
+// state changes (a mint, a claim, a settlement). Open rounds are the same for everyone and live in /api/state.
+let withClaims = 0, changed = 0;
 wallets.forEach((w, wi) => {
-  const r = res.slice(wi * K, (wi + 1) * K); const actions = []; const pending = []; let wins = 0, losses = 0, best = 0; const markets = [];
+  const r = res.slice(wi * K, (wi + 1) * K); const claims = []; const pending = []; const joined = {}; let wins = 0, losses = 0, best = 0; const markets = [];
   M.forEach(([name, a, len], i) => {
     const t = r[i * 2], rec = r[i * 2 + 1]; if (!t) return;
-    const round = n(t, 0), canMint = n(t, 1) === 1, claimable = n(t, 2), toLock = n(t, 3);
+    const round = n(t, 0), canMint = n(t, 1) === 1, claimable = n(t, 2);
     const tickets = n(rec, 0), win = n(rec, 1), loss = n(rec, 2), streak = n(rec, 3), bst = n(rec, 4), unclaimed = n(rec, 5);
     wins += win; losses += loss; best = Math.max(best, bst);
-    if (claimable > 0) actions.push({ type: 'claim', market: name, contract: a, method: 'claim()', inputData: '0x4e71d92d', args: [], valueWei: '0', why: `${claimable} finished ticket(s) not yet in the record` });
-    if (canMint && toLock > 120) actions.push({ type: 'mint', market: name, contract: a, method: 'mint()', inputData: '0x1249c58b', args: [], valueWei: '0', why: `round ${round} open until ${iso((round + 1) * len)}`, deadline: iso((round + 1) * len) });
-    const waitingTickets = unclaimed - claimable; if (waitingTickets > 0) pending.push({ market: name, tickets: waitingTickets, resultFinalBy: iso((round + 1) * len + (canMint ? 0 : len)) });
-    markets.push({ market: name, tickets, wins: win, losses: loss, streak, bestStreak: bst, decided: win + loss });
+    if (!canMint && tickets) joined[name] = round;
+    if (claimable > 0) claims.push({ type: 'claim', market: name, contract: a, method: 'claim()', inputData: '0x4e71d92d', args: [], valueWei: '0', finishedTickets: claimable, validUntil: 'until claimed (a second claim reverts NothingToClaim, which is harmless)' });
+    const waiting = unclaimed - claimable;
+    if (waiting > 0) pending.push({ market: name, tickets: waiting, resultFinalAt: iso((round + 1) * len + (canMint ? 0 : len)) });
+    if (tickets) markets.push({ market: name, tickets, wins: win, losses: loss, streak, bestStreak: bst });
   });
   const [st, ho, ba, hn] = [r[M.length * 2], r[M.length * 2 + 1], r[M.length * 2 + 2], r[M.length * 2 + 3]];
-  if (st && n(st, 1) === 1) actions.push({ type: 'checkIn', contract: X.stamps, method: 'checkIn()', inputData: '0x183ff085', args: [], valueWei: '0', why: `today's stamp, streak becomes ${n(st, 2)}`, deadline: iso((Math.floor(now / 86400) + 1) * 86400) });
-  if (ho && n(ho, 1) === 1) actions.push({ type: 'join', contract: X.houses, method: 'join()', inputData: '0xb688a363', args: [], valueWei: '0', why: 'join your house once' });
-  if (ba && n(ba, 2) === 1) actions.push({ type: 'claim', contract: X.badges, method: 'claim()', inputData: '0x4e71d92d', args: [], valueWei: '0', why: `badge tier ${n(ba, 3)} earned` });
-  if (hn && n(hn, 0) > 0) actions.push({ type: 'claim', contract: X.honors, method: 'claim()', inputData: '0x4e71d92d', args: [], valueWei: '0', why: 'honor earned: ' + HON.filter((_, k) => n(hn, 1) & (1 << k)).join(', ') });
-  const order = { claim: 0, mint: 1, checkIn: 2, join: 3 }; actions.sort((x, y) => order[x.type] - order[y.type]);
-  const nextHour = Math.ceil((now + 1) / 3600) * 3600; const firstPending = pending.map((p) => Date.parse(p.resultFinalBy) / 1000).sort()[0];
-  const nextCheckAt = firstPending && firstPending < nextHour + 3600 ? firstPending : nextHour;
-  if (actions.length) withActions++;
+  const extras = [];
+  if (ho && n(ho, 1) === 1) extras.push({ type: 'join', contract: X.houses, method: 'join()', inputData: '0xb688a363', args: [], valueWei: '0', validUntil: 'until joined' });
+  if (ba && n(ba, 2) === 1) extras.push({ type: 'claim', contract: X.badges, method: 'claim()', inputData: '0x4e71d92d', args: [], valueWei: '0', why: `badge tier ${n(ba, 3)} earned`, validUntil: 'until claimed' });
+  if (hn && n(hn, 0) > 0) extras.push({ type: 'claim', contract: X.honors, method: 'claim()', inputData: '0x4e71d92d', args: [], valueWei: '0', why: 'honor earned: ' + HON.filter((_, k) => n(hn, 1) & (1 << k)).join(', '), validUntil: 'until claimed' });
+  if (claims.length || extras.length) withClaims++;
   const decided = wins + losses;
-  writeFileSync(`docs/api/wallet/${w}.json`, JSON.stringify({
-    wallet: w, holdsAgentId: !!(r[K - 1] && BigInt(r[K - 1]) > 0n), state: actions.length ? 'ACTION_AVAILABLE' : pending.length ? 'WAITING_FOR_RESULTS' : 'NOTHING_NOW',
-    verifiedAt: iso(now), verifiedBlock: block, actions, pendingResults: pending,
-    nextCheckAt: iso(nextCheckAt), nextCheckReason: firstPending && firstPending === nextCheckAt ? 'prediction_settlement' : 'new_round_opens',
-    performance: { decided, wins, losses, winRate: decided ? Math.round((1000 * wins) / decided) / 10 : null, bestStreak: best, byMarket: markets.filter((m) => m.tickets) },
+  const body = JSON.stringify({
+    wallet: w, holdsAgentId: !!(r[K - 1] && BigInt(r[K - 1]) > 0n),
+    howToUse: 'Step 1: send the claims below (they stay valid until done). Step 2: read https://mycyi1994-hash.github.io/forecast-league/api/state for the rounds open now; skip a market whose round number equals joinedRounds[market]. Step 3: preview every call right before sending; skip any that fails. Come back at the earliest pendingResults.resultFinalAt or when the next round opens.',
+    claims: [...claims, ...extras], joinedRounds: joined, pendingResults: pending,
+    stampToday: 'checkIn() 0x183ff085 on 0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae once per UTC day (preview shows if already done)',
+    performance: { decided, wins, losses, winRate: decided ? Math.round((1000 * wins) / decided) / 10 : null, bestStreak: best, byMarket: markets },
+    asOfBlock: 'see https://mycyi1994-hash.github.io/forecast-league/api/wallet/index.json (verifiedBlock, expiresAt)',
     authorization: 'respect_owner_wallet_policy',
-    note: 'Observed state, refreshed every few hours; it may be stale. Re-check on chain with todo(address) 0x624f6da5 and preview every call before sending. Every call is value 0 with no arguments.',
-  }, null, 1) + '\n');
+  }, null, 1) + '\n';
+  const f = `docs/api/wallet/${w}.json`;
+  if (!existsSync(f) || readFileSync(f, 'utf8') !== body) { writeFileSync(f, body); changed++; }
 });
-writeFileSync('docs/api/wallet/index.json', JSON.stringify({ updated: iso(now), verifiedBlock: block, count: wallets.length, withActions, url: 'https://mycyi1994-hash.github.io/forecast-league/api/wallet/<lowercase address>.json', wallets }, null, 1) + '\n');
-console.log('wallets', wallets.length, 'with actions now', withActions, 'block', block);
+console.log('wallet files changed', changed);
+writeFileSync('docs/api/wallet/index.json', JSON.stringify({ updated: iso(now), verifiedBlock: block, expiresAt: iso(now + 5400), count: wallets.length, withClaims, missingWallet: 'No file for your address? You have not played yet: every round in https://mycyi1994-hash.github.io/forecast-league/api/state is open to any Agent ID wallet.', url: 'https://mycyi1994-hash.github.io/forecast-league/api/wallet/<lowercase address>.json', wallets }, null, 1) + '\n');
+console.log('wallets', wallets.length, 'with claims', withClaims, 'block', block);

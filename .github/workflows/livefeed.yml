@@ -1,0 +1,48 @@
+name: Hourly live feed
+# Reads the chain (no wallet, no keys), refreshes the agent feeds, requests a Pages build and checks the live site.
+on:
+  schedule:
+    - cron: '7 * * * *'   # minute 7: after each hourly round opens, away from the busy top of the hour
+  workflow_dispatch: {}
+permissions:
+  contents: write
+  pages: write
+concurrency:
+  group: livefeed
+  cancel-in-progress: false
+jobs:
+  feed:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Read the chain and rebuild the feeds
+        run: |
+          node keeper/livefeed.mjs
+          node keeper/actionfeed.mjs
+          node keeper/stats.mjs || echo "stats skipped"
+          node -e "require('fs').writeFileSync('docs/api/feed-status.json', JSON.stringify({lastSuccess:new Date().toISOString(), run:process.env.GITHUB_RUN_ID, state:JSON.parse(require('fs').readFileSync('docs/api/state','utf8')).updated}, null, 1)+'\n')"
+      - name: Commit changed files
+        run: |
+          git config user.name "forecast-league-feed"
+          git config user.email "forecast-league-feed@users.noreply.github.com"
+          git add docs/api docs/deployment.json docs/agent.md docs/agents.md docs/stats.json
+          git diff --cached --quiet && { echo "nothing changed"; exit 0; }
+          git commit -q -m "Live feed: $(date -u +%FT%H:%MZ)"
+          for i in 1 2 3; do git pull -q --rebase && git push -q && exit 0; sleep 10; done; exit 1
+      - name: Request a Pages build
+        run: |
+          curl -fsS -X POST -H "Authorization: Bearer ${{ github.token }}" -H "Accept: application/vnd.github+json" \
+            "https://api.github.com/repos/${{ github.repository }}/pages/builds" || echo "build request refused; relying on the push"
+      - name: Verify the live site shows this run
+        run: |
+          want=$(node -e "console.log(JSON.parse(require('fs').readFileSync('docs/api/state','utf8')).updated)")
+          for i in $(seq 1 30); do
+            got=$(curl -fsS "https://mycyi1994-hash.github.io/forecast-league/api/state?nocache=$RANDOM" | node -e "let s='';process.stdin.on('data',d=>s+=d).on('end',()=>{try{console.log(JSON.parse(s).updated)}catch{console.log('')}})")
+            [ "$got" = "$want" ] && { echo "live: $got"; exit 0; }
+            sleep 30
+          done
+          echo "::error::live site still shows '$got', expected '$want'"; exit 1

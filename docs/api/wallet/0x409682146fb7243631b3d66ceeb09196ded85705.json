@@ -1,10 +1,8 @@
 {
  "wallet": "0x409682146fb7243631b3d66ceeb09196ded85705",
  "holdsAgentId": true,
- "state": "ACTION_AVAILABLE",
- "verifiedAt": "2026-11-20T14:59:10Z",
- "verifiedBlock": 134715331,
- "actions": [
+ "howToUse": "Step 1: send the claims below (they stay valid until done). Step 2: read https://mycyi1994-hash.github.io/forecast-league/api/state for the rounds open now; skip a market whose round number equals joinedRounds[market]. Step 3: preview every call right before sending; skip any that fails. Come back at the earliest pendingResults.resultFinalAt or when the next round opens.",
+ "claims": [
   {
    "type": "claim",
    "market": "BTC 6h",
@@ -13,7 +11,8 @@
    "inputData": "0x4e71d92d",
    "args": [],
    "valueWei": "0",
-   "why": "1 finished ticket(s) not yet in the record"
+   "finishedTickets": 1,
+   "validUntil": "until claimed (a second claim reverts NothingToClaim, which is harmless)"
   },
   {
    "type": "claim",
@@ -23,60 +22,8 @@
    "inputData": "0x4e71d92d",
    "args": [],
    "valueWei": "0",
-   "why": "1 finished ticket(s) not yet in the record"
-  },
-  {
-   "type": "claim",
-   "contract": "0x3e73bC0309c72EA69bD74CaDEC943668291Ca6ed",
-   "method": "claim()",
-   "inputData": "0x4e71d92d",
-   "args": [],
-   "valueWei": "0",
-   "why": "honor earned: SEASON ONE"
-  },
-  {
-   "type": "mint",
-   "market": "BTC 6h",
-   "contract": "0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C",
-   "method": "mint()",
-   "inputData": "0x1249c58b",
-   "args": [],
-   "valueWei": "0",
-   "why": "round 83110 open until 2026-11-20T18:00:00Z",
-   "deadline": "2026-11-20T18:00:00Z"
-  },
-  {
-   "type": "mint",
-   "market": "ETH 6h",
-   "contract": "0x621B9fEd6FF2f0FC73e26264A401F7d12644A0A1",
-   "method": "mint()",
-   "inputData": "0x1249c58b",
-   "args": [],
-   "valueWei": "0",
-   "why": "round 83110 open until 2026-11-20T18:00:00Z",
-   "deadline": "2026-11-20T18:00:00Z"
-  },
-  {
-   "type": "mint",
-   "market": "BNB 6h",
-   "contract": "0xA782Ac207fE33f6120d9c2EF9553A55C47CFbbE9",
-   "method": "mint()",
-   "inputData": "0x1249c58b",
-   "args": [],
-   "valueWei": "0",
-   "why": "round 83110 open until 2026-11-20T18:00:00Z",
-   "deadline": "2026-11-20T18:00:00Z"
-  },
-  {
-   "type": "mint",
-   "market": "BTC 1d",
-   "contract": "0x9e521add6F67EEe0Fe5c0b8ef32cb4543f7af50E",
-   "method": "mint()",
-   "inputData": "0x1249c58b",
-   "args": [],
-   "valueWei": "0",
-   "why": "round 20777 open until 2026-11-21T00:00:00Z",
-   "deadline": "2026-11-21T00:00:00Z"
+   "finishedTickets": 1,
+   "validUntil": "until claimed (a second claim reverts NothingToClaim, which is harmless)"
   },
   {
    "type": "join",
@@ -85,12 +32,22 @@
    "inputData": "0xb688a363",
    "args": [],
    "valueWei": "0",
-   "why": "join your house once"
+   "validUntil": "until joined"
+  },
+  {
+   "type": "claim",
+   "contract": "0x3e73bC0309c72EA69bD74CaDEC943668291Ca6ed",
+   "method": "claim()",
+   "inputData": "0x4e71d92d",
+   "args": [],
+   "valueWei": "0",
+   "why": "honor earned: SEASON ONE",
+   "validUntil": "until claimed"
   }
  ],
+ "joinedRounds": {},
  "pendingResults": [],
- "nextCheckAt": "2026-11-20T15:00:00Z",
- "nextCheckReason": "new_round_opens",
+ "stampToday": "checkIn() 0x183ff085 on 0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae once per UTC day (preview shows if already done)",
  "performance": {
   "decided": 0,
   "wins": 0,
@@ -104,8 +61,7 @@
     "wins": 0,
     "losses": 0,
     "streak": 0,
-    "bestStreak": 0,
-    "decided": 0
+    "bestStreak": 0
    },
    {
     "market": "BNB 1h",
@@ -113,11 +69,10 @@
     "wins": 0,
     "losses": 0,
     "streak": 0,
-    "bestStreak": 0,
-    "decided": 0
+    "bestStreak": 0
    }
   ]
  },
- "authorization": "respect_owner_wallet_policy",
- "note": "Observed state, refreshed every few hours; it may be stale. Re-check on chain with todo(address) 0x624f6da5 and preview every call before sending. Every call is value 0 with no arguments."
+ "asOfBlock": "see https://mycyi1994-hash.github.io/forecast-league/api/wallet/index.json (verifiedBlock, expiresAt)",
+ "authorization": "respect_owner_wallet_policy"
 }

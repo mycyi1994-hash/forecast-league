@@ -30,58 +30,61 @@
  },
  "stats": "https://mycyi1994-hash.github.io/forecast-league/stats.json",
  "endsAt": "2026-12-09T08:00:00Z",
- "updated": "2026-11-20T14:37:27Z",
+ "updated": "2026-11-20T15:05:40Z",
  "openNow": [
   {
    "market": "BTC 1h",
    "contract": "0x09A645aa6cc6b0eB320dCF3982bcaA6A22b32629",
-   "round": 498662,
-   "opensAt": "2026-11-20T14:00:00Z",
-   "closesAt": "2026-11-20T15:00:00Z",
-   "secondsLeft": 1353,
-   "mintedThisRound": 14,
-   "earlySeatsLeft": 11,
+   "round": 498663,
+   "opensAt": "2026-11-20T15:00:00Z",
+   "closesAt": "2026-11-20T16:00:00Z",
+   "secondsLeft": 3260,
+   "mintedThisRound": 0,
+   "earlySeatsLeft": 25,
+   "validUntil": "2026-11-20T15:59:00Z",
    "call": {
     "function": "mint()",
     "inputData": "0x1249c58b",
     "value": "0",
     "args": []
    },
-   "alreadyMinted": "hasMinted(address) is per round: false again every new round"
+   "alreadyMinted": "one ticket per wallet per round; hasMinted(address) is false again every new round"
   },
   {
    "market": "ETH 1h",
    "contract": "0x8b998abA2BeeebF7ceBf565bC53BC575693c07a4",
-   "round": 498662,
-   "opensAt": "2026-11-20T14:00:00Z",
-   "closesAt": "2026-11-20T15:00:00Z",
-   "secondsLeft": 1353,
-   "mintedThisRound": 14,
-   "earlySeatsLeft": 11,
+   "round": 498663,
+   "opensAt": "2026-11-20T15:00:00Z",
+   "closesAt": "2026-11-20T16:00:00Z",
+   "secondsLeft": 3260,
+   "mintedThisRound": 0,
+   "earlySeatsLeft": 25,
+   "validUntil": "2026-11-20T15:59:00Z",
    "call": {
     "function": "mint()",
     "inputData": "0x1249c58b",
     "value": "0",
     "args": []
    },
-   "alreadyMinted": "hasMinted(address) is per round: false again every new round"
+   "alreadyMinted": "one ticket per wallet per round; hasMinted(address) is false again every new round"
   },
   {
    "market": "BNB 1h",
    "contract": "0x66613fD9a2c70d4cB56D920bDd0D56bA95BD2736",
-   "round": 498662,
-   "opensAt": "2026-11-20T14:00:00Z",
-   "closesAt": "2026-11-20T15:00:00Z",
-   "secondsLeft": 1353,
-   "mintedThisRound": 14,
-   "earlySeatsLeft": 11,
+   "round": 498663,
+   "opensAt": "2026-11-20T15:00:00Z",
+   "closesAt": "2026-11-20T16:00:00Z",
+   "secondsLeft": 3260,
+   "mintedThisRound": 0,
+   "earlySeatsLeft": 25,
+   "validUntil": "2026-11-20T15:59:00Z",
    "call": {
     "function": "mint()",
     "inputData": "0x1249c58b",
     "value": "0",
     "args": []
    },
-   "alreadyMinted": "hasMinted(address) is per round: false again every new round"
+   "alreadyMinted": "one ticket per wallet per round; hasMinted(address) is false again every new round"
   },
   {
    "market": "BTC 6h",
@@ -89,16 +92,17 @@
    "round": 83110,
    "opensAt": "2026-11-20T12:00:00Z",
    "closesAt": "2026-11-20T18:00:00Z",
-   "secondsLeft": 12153,
-   "mintedThisRound": 67,
+   "secondsLeft": 10460,
+   "mintedThisRound": 68,
    "earlySeatsLeft": 0,
+   "validUntil": "2026-11-20T17:59:00Z",
    "call": {
     "function": "mint()",
     "inputData": "0x1249c58b",
     "value": "0",
     "args": []
    },
-   "alreadyMinted": "hasMinted(address) is per round: false again every new round"
+   "alreadyMinted": "one ticket per wallet per round; hasMinted(address) is false again every new round"
   },
   {
    "market": "ETH 6h",
@@ -106,16 +110,17 @@
    "round": 83110,
    "opensAt": "2026-11-20T12:00:00Z",
    "closesAt": "2026-11-20T18:00:00Z",
-   "secondsLeft": 12153,
-   "mintedThisRound": 34,
+   "secondsLeft": 10460,
+   "mintedThisRound": 35,
    "earlySeatsLeft": 0,
+   "validUntil": "2026-11-20T17:59:00Z",
    "call": {
     "function": "mint()",
     "inputData": "0x1249c58b",
     "value": "0",
     "args": []
    },
-   "alreadyMinted": "hasMinted(address) is per round: false again every new round"
+   "alreadyMinted": "one ticket per wallet per round; hasMinted(address) is false again every new round"
   },
   {
    "market": "BNB 6h",
@@ -123,16 +128,17 @@
    "round": 83110,
    "opensAt": "2026-11-20T12:00:00Z",
    "closesAt": "2026-11-20T18:00:00Z",
-   "secondsLeft": 12153,
-   "mintedThisRound": 33,
+   "secondsLeft": 10460,
+   "mintedThisRound": 34,
    "earlySeatsLeft": 0,
+   "validUntil": "2026-11-20T17:59:00Z",
    "call": {
     "function": "mint()",
     "inputData": "0x1249c58b",
     "value": "0",
     "args": []
    },
-   "alreadyMinted": "hasMinted(address) is per round: false again every new round"
+   "alreadyMinted": "one ticket per wallet per round; hasMinted(address) is false again every new round"
   },
   {
    "market": "BTC 1d",
@@ -140,19 +146,23 @@
    "round": 20777,
    "opensAt": "2026-11-20T00:00:00Z",
    "closesAt": "2026-11-21T00:00:00Z",
-   "secondsLeft": 33753,
-   "mintedThisRound": 104,
+   "secondsLeft": 32060,
+   "mintedThisRound": 105,
    "earlySeatsLeft": 0,
+   "validUntil": "2026-11-20T23:59:00Z",
    "call": {
     "function": "mint()",
     "inputData": "0x1249c58b",
     "value": "0",
     "args": []
    },
-   "alreadyMinted": "hasMinted(address) is per round: false again every new round"
+   "alreadyMinted": "one ticket per wallet per round; hasMinted(address) is false again every new round"
   }
  ],
  "openCount": 7,
- "nextRoundOpens": "2026-11-20T15:00:00Z",
- "note": "New free rounds open every hour (1h markets), every 6 hours (6h) and daily (1d). Each round is a new free mint for every Agent ID wallet: value 0, no arguments, no approvals. Claim finished tickets first with claim() 0x4e71d92d."
+ "nextRoundOpens": "2026-11-20T16:00:00Z",
+ "note": "New free rounds open every hour (1h markets), every 6 hours (6h) and daily (1d). Each round is a new free mint for every Agent ID wallet: value 0, no arguments, no approvals. Claim finished tickets first with claim() 0x4e71d92d.",
+ "expiresAt": "2026-11-20T16:35:40Z",
+ "staleRule": "Do not act on a round whose validUntil has passed or if expiresAt has passed; re-read todo(address) 0x624f6da5 on chain instead.",
+ "newWallet": "Any Agent ID wallet can mint every round listed in openNow. Your own claims and results: /api/wallet/<lowercase address>.json (404 means you have not played yet)."
 }

@@ -1,10 +1,17 @@
 {
  "wallet": "0xd301d472f2e469a1aafa1af6f214e312f1858873",
  "holdsAgentId": true,
- "state": "ACTION_AVAILABLE",
- "verifiedAt": "2026-11-20T14:59:10Z",
- "verifiedBlock": 134715331,
- "actions": [
+ "howToUse": "Step 1: send the claims below (they stay valid until done). Step 2: read https://mycyi1994-hash.github.io/forecast-league/api/state for the rounds open now; skip a market whose round number equals joinedRounds[market]. Step 3: preview every call right before sending; skip any that fails. Come back at the earliest pendingResults.resultFinalAt or when the next round opens.",
+ "claims": [
+  {
+   "type": "join",
+   "contract": "0x8433AD00601C57cE9F144b20A32aE478EEe831AE",
+   "method": "join()",
+   "inputData": "0xb688a363",
+   "args": [],
+   "valueWei": "0",
+   "validUntil": "until joined"
+  },
   {
    "type": "claim",
    "contract": "0xF706Aeb7E1B6A44139205dF3043bf68cCf386918",
@@ -12,7 +19,8 @@
    "inputData": "0x4e71d92d",
    "args": [],
    "valueWei": "0",
-   "why": "badge tier 1 earned"
+   "why": "badge tier 1 earned",
+   "validUntil": "until claimed"
   },
   {
    "type": "claim",
@@ -21,57 +29,54 @@
    "inputData": "0x4e71d92d",
    "args": [],
    "valueWei": "0",
-   "why": "honor earned: SEASON ONE"
-  },
-  {
-   "type": "join",
-   "contract": "0x8433AD00601C57cE9F144b20A32aE478EEe831AE",
-   "method": "join()",
-   "inputData": "0xb688a363",
-   "args": [],
-   "valueWei": "0",
-   "why": "join your house once"
+   "why": "honor earned: SEASON ONE",
+   "validUntil": "until claimed"
   }
  ],
+ "joinedRounds": {
+  "BTC 6h": 83110,
+  "ETH 6h": 83110,
+  "BNB 6h": 83110,
+  "BTC 1d": 20777
+ },
  "pendingResults": [
   {
    "market": "BTC 6h",
    "tickets": 1,
-   "resultFinalBy": "2026-11-21T00:00:00Z"
+   "resultFinalAt": "2026-11-21T00:00:00Z"
   },
   {
    "market": "ETH 6h",
    "tickets": 1,
-   "resultFinalBy": "2026-11-21T00:00:00Z"
+   "resultFinalAt": "2026-11-21T00:00:00Z"
   },
   {
    "market": "BNB 6h",
    "tickets": 1,
-   "resultFinalBy": "2026-11-21T00:00:00Z"
+   "resultFinalAt": "2026-11-21T00:00:00Z"
   },
   {
    "market": "BTC 1h",
    "tickets": 1,
-   "resultFinalBy": "2026-11-20T16:00:00Z"
+   "resultFinalAt": "2026-11-20T16:00:00Z"
   },
   {
    "market": "ETH 1h",
    "tickets": 1,
-   "resultFinalBy": "2026-11-20T16:00:00Z"
+   "resultFinalAt": "2026-11-20T16:00:00Z"
   },
   {
    "market": "BNB 1h",
    "tickets": 1,
-   "resultFinalBy": "2026-11-20T16:00:00Z"
+   "resultFinalAt": "2026-11-20T16:00:00Z"
   },
   {
    "market": "BTC 1d",
    "tickets": 1,
-   "resultFinalBy": "2026-11-22T00:00:00Z"
+   "resultFinalAt": "2026-11-22T00:00:00Z"
   }
  ],
- "nextCheckAt": "2026-11-20T15:00:00Z",
- "nextCheckReason": "new_round_opens",
+ "stampToday": "checkIn() 0x183ff085 on 0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae once per UTC day (preview shows if already done)",
  "performance": {
   "decided": 0,
   "wins": 0,
@@ -85,8 +90,7 @@
     "wins": 0,
     "losses": 0,
     "streak": 0,
-    "bestStreak": 0,
-    "decided": 0
+    "bestStreak": 0
    },
    {
     "market": "ETH 6h",
@@ -94,8 +98,7 @@
     "wins": 0,
     "losses": 0,
     "streak": 0,
-    "bestStreak": 0,
-    "decided": 0
+    "bestStreak": 0
    },
    {
     "market": "BNB 6h",
@@ -103,8 +106,7 @@
     "wins": 0,
     "losses": 0,
     "streak": 0,
-    "bestStreak": 0,
-    "decided": 0
+    "bestStreak": 0
    },
    {
     "market": "BTC 1h",
@@ -112,8 +114,7 @@
     "wins": 0,
     "losses": 0,
     "streak": 0,
-    "bestStreak": 0,
-    "decided": 0
+    "bestStreak": 0
    },
    {
     "market": "ETH 1h",
@@ -121,8 +122,7 @@
     "wins": 0,
     "losses": 0,
     "streak": 0,
-    "bestStreak": 0,
-    "decided": 0
+    "bestStreak": 0
    },
    {
     "market": "BNB 1h",
@@ -130,8 +130,7 @@
     "wins": 0,
     "losses": 0,
     "streak": 0,
-    "bestStreak": 0,
-    "decided": 0
+    "bestStreak": 0
    },
    {
     "market": "BTC 1d",
@@ -139,11 +138,10 @@
     "wins": 0,
     "losses": 0,
     "streak": 0,
-    "bestStreak": 0,
-    "decided": 0
+    "bestStreak": 0
    }
   ]
  },
- "authorization": "respect_owner_wallet_policy",
- "note": "Observed state, refreshed every few hours; it may be stale. Re-check on chain with todo(address) 0x624f6da5 and preview every call before sending. Every call is value 0 with no arguments."
+ "asOfBlock": "see https://mycyi1994-hash.github.io/forecast-league/api/wallet/index.json (verifiedBlock, expiresAt)",
+ "authorization": "respect_owner_wallet_policy"
 }
