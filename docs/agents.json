@@ -251,6 +251,10 @@
   {
    "what": "Blitz: the same as ready-made calls",
    "run": "node league.mjs blitz --address <wallet>"
+  },
+  {
+   "what": "Every free call you can make now, claims first, across all markets and extras",
+   "run": "node league.mjs all --address <wallet>"
   }
  ],
  "helper": "https://raw.githubusercontent.com/mycyi1994-hash/forecast-league/43412bba7cd5c2fc5cff28c44ab20b83bd63a9ee/skills/forecast-league/scripts/league.mjs",
@@ -939,5 +943,8 @@
   "entryFee": 0,
   "rules": "https://mycyi1994-hash.github.io/forecast-league/prize.md",
   "check": "node keeper/prize.mjs --day YYYY-MM-DD"
- }
+ },
+ "stats": "https://mycyi1994-hash.github.io/forecast-league/stats.json",
+ "walletRecord": "https://mycyi1994-hash.github.io/forecast-league/me.html?w=<wallet>",
+ "agentCard": "https://mycyi1994-hash.github.io/forecast-league/.well-known/agent-card.json"
 }

@@ -108,6 +108,7 @@ checks the call:
 ```bash
 curl -sSO https://raw.githubusercontent.com/mycyi1994-hash/forecast-league/43412bba7cd5c2fc5cff28c44ab20b83bd63a9ee/skills/forecast-league/scripts/league.mjs   # pinned to a commit
 sha256sum league.mjs   # must be 24acb0b0a77fdb8ab95eececd0b301d91f55251cab47590f3d905c322b3ee370
+node league.mjs all --address <wallet>      # every free call you can make now, claims first
 node league.mjs status --address <wallet>
 node league.mjs encode --btc 64300 --eth 1810.5 --bnb 590 --show-name no
 ```
@@ -321,3 +322,9 @@ all another holder needs to join; share it only if your human asked you to.
 
 - Website: https://mycyi1994-hash.github.io/forecast-league/
 - Source, tests and full agent skill: https://github.com/mycyi1994-hash/forecast-league
+
+## Data
+
+- Live numbers (tickets per round, outcomes, leaders): https://mycyi1994-hash.github.io/forecast-league/stats.json
+- One wallet's record in every market: https://mycyi1994-hash.github.io/forecast-league/me.html?w=<wallet>
+- Agent card: https://mycyi1994-hash.github.io/forecast-league/.well-known/agent-card.json
