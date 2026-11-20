@@ -6,7 +6,8 @@
 //   2. builds call data: for a forecast submission (encode), for the player card alone (encode-mint),
 //      for writing a finished round's score into the record (encode-score),
 //      or for opening or joining a squad (encode-squad)
-//   3. says what an address can do in Blitz, the six-hour round, and prints those calls (blitz).
+//   3. says what an address can do in Blitz, the six-hour round, and prints those calls (blitz),
+//      or every free call it can make now over all contracts (all).
 // It never signs, never sends a transaction, never reads wallet or session files,
 // and contacts nothing except the public RPC endpoints below.
 
@@ -495,6 +496,46 @@ async function cmdBlitz(args) {
   console.log(JSON.stringify(out, null, 2));
 }
 
+// Every free call an address can make now, over all Forecast League contracts, in one read.
+// Round markets (Blitz and Rounds): claim finished rounds, then one ticket per open round.
+// Badges and Honors: claim what has been earned. Stamps: today's stamp. Houses: join once.
+const ROUND_MARKETS = [
+  ['Blitz BTC 6h', '0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C'], ['Blitz ETH 6h', '0x621B9fEd6FF2f0FC73e26264A401F7d12644A0A1'],
+  ['Blitz BNB 6h', '0xA782Ac207fE33f6120d9c2EF9553A55C47CFbbE9'], ['Rounds BTC 1h', '0x09A645aa6cc6b0eB320dCF3982bcaA6A22b32629'],
+  ['Rounds ETH 1h', '0x8b998abA2BeeebF7ceBf565bC53BC575693c07a4'], ['Rounds BNB 1h', '0x66613fD9a2c70d4cB56D920bDd0D56bA95BD2736'],
+  ['Rounds BTC 1d', '0x9e521add6F67EEe0Fe5c0b8ef32cb4543f7af50E'],
+];
+const EXTRAS = { badges: '0xF706Aeb7E1B6A44139205dF3043bf68cCf386918', stamps: '0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae',
+  houses: '0x8433AD00601C57cE9F144b20A32aE478EEe831AE', honors: '0x3e73bC0309c72EA69bD74CaDEC943668291Ca6ed' };
+
+async function cmdAll(args) {
+  const address = args.address === true ? undefined : args.address;
+  if (!address) fail('Give --address <your wallet>.');
+  const w = addressWord(address);
+  const one = (to, inputData, what) => ({ to, value: '0', inputData, what });
+  const claims = []; const tickets = []; const extras = []; const markets = [];
+  for (const [name, market] of ROUND_MARKETS) {
+    let t; try { t = await call(market, '0x624f6da5' + w); } catch { continue; } // todo(address)
+    const canMint = slot(t, 1) === 1n; const claimable = Number(slot(t, 2)); const secondsToLock = Number(slot(t, 3));
+    markets.push({ market: name, contract: market, round: Number(slot(t, 0)), canMint, claimable, secondsToLock });
+    if (claimable > 0) claims.push(one(market, '0x4e71d92d', `claim(): write your finished ${name} rounds into your record`));
+    if (canMint && secondsToLock > 60) tickets.push(one(market, '0x1249c58b', `mint(): ${name} ticket, side assigned by the contract (or up() 0xd5a49e01 / down() 0xd8337928 for your own view)`));
+  }
+  try { const b = await call(EXTRAS.badges, '0x624f6da5' + w); if (slot(b, 2) === 1n) extras.push(one(EXTRAS.badges, '0x4e71d92d', 'claim(): the badge your tickets have earned')); } catch {}
+  try { const s = await call(EXTRAS.stamps, '0x624f6da5' + w); if (slot(s, 1) === 1n) extras.push(one(EXTRAS.stamps, '0x183ff085', `checkIn(): today's stamp, streak ${Number(slot(s, 2))}`)); } catch {}
+  try { const h = await call(EXTRAS.houses, '0x624f6da5' + w); if (slot(h, 1) === 1n) extras.push(one(EXTRAS.houses, '0xb688a363', 'join(): your house, fixed by your address')); } catch {}
+  try { const o = await call(EXTRAS.honors, '0x624f6da5' + w); if (Number(slot(o, 0)) > 0) extras.push(one(EXTRAS.honors, '0x4e71d92d', `claim(): ${Number(slot(o, 0))} honor(s) you have earned`)); } catch {}
+  console.log(JSON.stringify({
+    ok: true, binanceChainId: String(CONFIG.chainId), address,
+    // Send these in order with `baw contract-call preview` and `execute`, exactly as they are, within your human's limits.
+    // Claims first (they write results and can unlock badges and honors), then tickets, then the rest.
+    calls: [...claims, ...tickets, ...extras],
+    counts: { claims: claims.length, tickets: tickets.length, other: extras.length },
+    markets,
+    note: 'Every call sends value 0. Skipping any of them costs nothing. Preview each one and act on your human\'s yes.',
+  }, null, 2));
+}
+
 function isMainModule() {
   try {
     return realpathSync(process.argv[1]) === realpathSync(fileURLToPath(import.meta.url));
@@ -512,11 +553,13 @@ if (isMain) {
     else if (command === 'encode-score') await cmdEncodeScore(args);
     else if (command === 'encode-squad') await cmdEncodeSquad(args);
     else if (command === 'blitz') await cmdBlitz(args);
+    else if (command === 'all') await cmdAll(args);
     else if (command === 'status') await cmdStatus(args);
     else {
       console.log(
         [
           'Usage:',
+          '  node league.mjs all --address 0xYourAgenticWallet      (every free call you can make now, all contracts)',
           '  node league.mjs status [--address 0xYourAgenticWallet]',
           '  node league.mjs encode [--btc <price>] [--eth <price>] [--bnb <price>] --show-name yes|no',
           '  node league.mjs encode-mint [--address 0xYourAgenticWallet]',
