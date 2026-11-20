@@ -19,33 +19,35 @@
    "inputData": "0x4e71d92d",
    "args": [],
    "valueWei": "0",
-   "why": "honor earned: SEASON ONE, CARD HOLDER",
+   "why": "honor earned: SEASON ONE, CARD HOLDER, FIRST WIN",
    "validUntil": "until claimed"
   }
  ],
- "joinedRounds": {},
+ "joinedRounds": {
+  "BTC 6h": 83111
+ },
  "pendingResults": [
   {
    "market": "BTC 6h",
    "tickets": 1,
-   "resultFinalAt": "2026-11-20T18:00:00Z"
+   "resultFinalAt": "2026-11-21T06:00:00Z"
   }
  ],
  "stampToday": "checkIn() 0x183ff085 on 0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae once per UTC day (preview shows if already done)",
  "performance": {
-  "decided": 0,
-  "wins": 0,
+  "decided": 1,
+  "wins": 1,
   "losses": 0,
-  "winRate": null,
-  "bestStreak": 0,
+  "winRate": 100,
+  "bestStreak": 1,
   "byMarket": [
    {
     "market": "BTC 6h",
-    "tickets": 1,
-    "wins": 0,
+    "tickets": 2,
+    "wins": 1,
     "losses": 0,
-    "streak": 0,
-    "bestStreak": 0
+    "streak": 1,
+    "bestStreak": 1
    }
   ]
  },

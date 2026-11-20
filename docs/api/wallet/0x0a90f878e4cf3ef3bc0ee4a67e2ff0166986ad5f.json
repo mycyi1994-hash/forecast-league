@@ -16,6 +16,17 @@
   },
   {
    "type": "claim",
+   "market": "ETH 6h",
+   "contract": "0x621B9fEd6FF2f0FC73e26264A401F7d12644A0A1",
+   "method": "claim()",
+   "inputData": "0x4e71d92d",
+   "args": [],
+   "valueWei": "0",
+   "finishedTickets": 1,
+   "validUntil": "until claimed (a second claim reverts NothingToClaim, which is harmless)"
+  },
+  {
+   "type": "claim",
    "market": "BTC 1h",
    "contract": "0x09A645aa6cc6b0eB320dCF3982bcaA6A22b32629",
    "method": "claim()",
@@ -30,11 +41,6 @@
   "BTC 1d": 20777
  },
  "pendingResults": [
-  {
-   "market": "ETH 6h",
-   "tickets": 1,
-   "resultFinalAt": "2026-11-20T18:00:00Z"
-  },
   {
    "market": "BTC 1d",
    "tickets": 1,

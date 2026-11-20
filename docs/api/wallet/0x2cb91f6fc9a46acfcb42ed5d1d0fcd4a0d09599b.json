@@ -16,21 +16,37 @@
   },
   {
    "type": "claim",
-   "contract": "0x3e73bC0309c72EA69bD74CaDEC943668291Ca6ed",
+   "market": "ETH 6h",
+   "contract": "0x621B9fEd6FF2f0FC73e26264A401F7d12644A0A1",
    "method": "claim()",
    "inputData": "0x4e71d92d",
    "args": [],
    "valueWei": "0",
-   "why": "honor earned: SEASON ONE, CARD HOLDER",
+   "finishedTickets": 1,
+   "validUntil": "until claimed (a second claim reverts NothingToClaim, which is harmless)"
+  },
+  {
+   "type": "claim",
+   "contract": "0xF706Aeb7E1B6A44139205dF3043bf68cCf386918",
+   "method": "claim()",
+   "inputData": "0x4e71d92d",
+   "args": [],
+   "valueWei": "0",
+   "why": "badge tier 1 earned",
    "validUntil": "until claimed"
   }
  ],
  "joinedRounds": {},
  "pendingResults": [
   {
-   "market": "ETH 6h",
+   "market": "BNB 6h",
    "tickets": 1,
-   "resultFinalAt": "2026-11-20T18:00:00Z"
+   "resultFinalAt": "2026-11-21T00:00:00Z"
+  },
+  {
+   "market": "BNB 1h",
+   "tickets": 1,
+   "resultFinalAt": "2026-11-20T19:00:00Z"
   }
  ],
  "stampToday": "checkIn() 0x183ff085 on 0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae once per UTC day (preview shows if already done)",
@@ -51,6 +67,22 @@
    },
    {
     "market": "ETH 6h",
+    "tickets": 1,
+    "wins": 0,
+    "losses": 0,
+    "streak": 0,
+    "bestStreak": 0
+   },
+   {
+    "market": "BNB 6h",
+    "tickets": 1,
+    "wins": 0,
+    "losses": 0,
+    "streak": 0,
+    "bestStreak": 0
+   },
+   {
+    "market": "BNB 1h",
     "tickets": 1,
     "wins": 0,
     "losses": 0,
