@@ -11,6 +11,11 @@
   const BLITZ_ETH = '0x621B9fEd6FF2f0FC73e26264A401F7d12644A0A1';
   const BLITZ_BNB = '0xA782Ac207fE33f6120d9c2EF9553A55C47CFbbE9';
   const MARKETS = [{ pair: 'BTC', address: BLITZ }, { pair: 'ETH', address: BLITZ_ETH }, { pair: 'BNB', address: BLITZ_BNB }];
+  // Rounds markets (the same ticket code with hourly and daily rounds): counted in the leaderboard.
+  const ROUND_MARKETS = [
+    { pair: 'BTC 1h', address: '0x09A645aa6cc6b0eB320dCF3982bcaA6A22b32629' }, { pair: 'ETH 1h', address: '0x8b998abA2BeeebF7ceBf565bC53BC575693c07a4' },
+    { pair: 'BNB 1h', address: '0x66613fD9a2c70d4cB56D920bDd0D56bA95BD2736' }, { pair: 'BTC 1d', address: '0x9e521add6F67EEe0Fe5c0b8ef32cb4543f7af50E' },
+  ];
   const MULTICALL = '0xcA11bde05977b3631167028862bE2a173976CA11';
   const RPCS = ['https://bsc-rpc.publicnode.com', 'https://bsc-dataseed.bnbchain.org', 'https://bsc-dataseed.binance.org'];
   const SEL = {
@@ -178,10 +183,12 @@
     // One entry per open market; `blitz` stays the BTC market for older readers.
     const blitzMarkets = [];
     for (const m of MARKETS) if (m.address) blitzMarkets.push({ pair: m.pair, ...(await loadBlitz(rows, m.address)) });
+    const roundMarkets = [];
+    for (const m of ROUND_MARKETS) { try { roundMarkets.push({ pair: m.pair, ...(await loadBlitz(rows, m.address)) }); } catch (e) {} }
     const blitz = blitzMarkets.length ? blitzMarkets[0] : null;
     // Players across all markets: tickets, wins and losses added up, streaks as the best of the markets.
     const merged = new Map();
-    blitzMarkets.forEach((m) => m.table.forEach((r) => {
+    [...blitzMarkets, ...roundMarkets].forEach((m) => m.table.forEach((r) => {
       const k = r.owner.toLowerCase(); const a = merged.get(k);
       if (!a) merged.set(k, { ...r });
       else { a.tickets += r.tickets; a.wins += r.wins; a.losses += r.losses; a.unclaimed += r.unclaimed; a.streak = Math.max(a.streak, r.streak); a.best = Math.max(a.best, r.best); }
