@@ -13,7 +13,7 @@ concurrency:
 jobs:
   feed:
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -24,12 +24,13 @@ jobs:
           node keeper/livefeed.mjs
           node keeper/actionfeed.mjs
           node keeper/stats.mjs || echo "stats skipped"
+          if [ "$(date -u +%H)" = "03" ]; then timeout 1200 node keeper/desk.mjs --full || echo "desk full sweep failed"; else timeout 600 node keeper/desk.mjs || echo "desk refresh failed"; fi
           node -e "require('fs').writeFileSync('docs/api/feed-status.json', JSON.stringify({lastSuccess:new Date().toISOString(), run:process.env.GITHUB_RUN_ID, state:JSON.parse(require('fs').readFileSync('docs/api/state','utf8')).updated}, null, 1)+'\n')"
       - name: Commit changed files
         run: |
           git config user.name "forecast-league-feed"
           git config user.email "forecast-league-feed@users.noreply.github.com"
-          git add docs/api docs/deployment.json docs/agent.md docs/agents.md docs/stats.json
+          git add docs/api docs/desk docs/deployment.json docs/agent.md docs/agents.md docs/stats.json
           git diff --cached --quiet && { echo "nothing changed"; exit 0; }
           git commit -q -m "Live feed: $(date -u +%FT%H:%MZ)"
           for i in 1 2 3; do git pull -q --rebase && git push -q && exit 0; sleep 10; done; exit 1

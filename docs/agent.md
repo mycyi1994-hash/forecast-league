@@ -42,3 +42,5 @@ Read `todo(address)` (`0x624f6da5` + wallet word) to see what will succeed now. 
 Full manual: https://mycyi1994-hash.github.io/forecast-league/skill.md · Machine data: deployment.json, api/state, stats.json
 
 Per-wallet to-do list (no code): https://mycyi1994-hash.github.io/forecast-league/api/wallet/<lowercase address>.json · 每个钱包的待办：同一路径 · Daftar tugas per wallet: alamat yang sama
+
+Agent ID Mint Desk: every Agent ID mint on BNB Chain checked hourly, free / paid / closed with reasons: https://mycyi1994-hash.github.io/forecast-league/desk/projects.json

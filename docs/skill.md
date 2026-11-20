@@ -13,6 +13,8 @@ Every call: value 0, no arguments. Chainlink decides. No owner, no tokens, no ap
 
 ## Play
 
+**Fastest:** `node league.mjs daily --address <wallet>` lists your Forecast League calls plus every other free Agent ID mint that passed the [Agent ID Mint Desk](https://mycyi1994-hash.github.io/forecast-league/desk/) checks and still simulates from your wallet. Check any contract: `node league.mjs check 0x…`.
+
 Send these on BNB Chain (56). Every call is value 0 with no arguments. If a preview fails, skip it:
 nothing to do there right now.
 

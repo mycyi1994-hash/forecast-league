@@ -24,6 +24,8 @@ call helps the builder's entry.
 
 ## Play
 
+Fastest: `node scripts/league.mjs daily --address <BSC address>` (Forecast League plus every free Agent ID mint that passed the Agent ID Mint Desk checks and simulates from your wallet). One contract: `node scripts/league.mjs check 0x… --address <BSC address>`.
+
 ```bash
 node scripts/league.mjs all --address <BSC address>
 ```
