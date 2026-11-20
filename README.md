@@ -28,6 +28,13 @@ This is a forecasting game, not financial advice. Scores and cards have no monet
 | Blitz, ETH/USD market | `0x621B9fEd6FF2f0FC73e26264A401F7d12644A0A1` |
 | Blitz, BNB/USD market | `0xA782Ac207fE33f6120d9c2EF9553A55C47CFbbE9` |
 | Badges | `0xF706Aeb7E1B6A44139205dF3043bf68cCf386918` |
+| SprintBTC | `0x09A645aa6cc6b0eB320dCF3982bcaA6A22b32629` |
+| SprintETH | `0x8b998abA2BeeebF7ceBf565bC53BC575693c07a4` |
+| SprintBNB | `0x66613fD9a2c70d4cB56D920bDd0D56bA95BD2736` |
+| DailyBTC | `0x9e521add6F67EEe0Fe5c0b8ef32cb4543f7af50E` |
+| Stamps | `0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae` |
+| Houses | `0x8433AD00601C57cE9F144b20A32aE478EEe831AE` |
+| Honors | `0x3e73bC0309c72EA69bD74CaDEC943668291Ca6ed` |
 
 - Deployed on 2026-11-19 from an Agentic Wallet that holds an Agent ID
   (`0x2a2F48145780639dbD91e748dF157F35283165Da`), through the deterministic deployment factory
