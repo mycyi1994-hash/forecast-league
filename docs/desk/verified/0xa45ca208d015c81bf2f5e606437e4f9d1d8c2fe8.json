@@ -2,8 +2,8 @@
  "contract": "0xa45ca208d015c81bf2f5e606437e4f9d1d8c2fe8",
  "name": "FairMint Agent",
  "verdict": "passed",
- "checkedAt": "2026-11-20T18:27:33Z",
- "block": 134743106,
+ "checkedAt": "2026-11-20T19:13:23Z",
+ "block": 134749217,
  "checks": {
   "simulatedFromAgentIdWallet": true,
   "gateEnforced": true,
