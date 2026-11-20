@@ -1,4 +1,4 @@
-# Hackathon submission text (draft, to paste into the form)
+# Hackathon submission text (submitted; the owner confirmed on 20 Nov 2026 that the form lists all 14 contract addresses)
 
 **Project name**: Forecast League
 
