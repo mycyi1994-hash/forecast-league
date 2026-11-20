@@ -77,10 +77,7 @@
    "validUntil": "until claimed"
   }
  ],
- "joinedRounds": {
-  "BTC 1h": 498669,
-  "ETH 1h": 498669
- },
+ "joinedRounds": {},
  "pendingResults": [
   {
    "market": "BTC 1h",
