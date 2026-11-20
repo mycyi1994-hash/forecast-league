@@ -174,8 +174,8 @@ def main():
         'timing': 'A round takes tickets for six hours and locks when the next one opens; its result exists six hours after the lock.',
         'earlyMark': 'The first 25 tickets of a round are marked Early; the mark only gives rounds a busy start and helps mint radars notice the project.',
         'radarReads': 'owner() is the zero address, price() and mintPrice() are 0, maxSupply() is the largest number (no cap); totalMinted() and hasMinted(address) answer truthfully.',
-        'gasUsd': {'ticket': 0.005, 'firstTicketOfAWallet': 0.008, 'claim': 0.002, 'firstClaimOfAnUnsettledRound': 0.012, 'atGwei': '0.05 to 0.075'},
-        'gasUnits': {'ticket': 126000, 'firstTicketOfAWallet': 217000, 'firstClaimOfAnUnsettledRound': 300000},
+        'gasUsd': {'ticket': 0.005, 'firstTicketOfAWallet': 0.006, 'claim': 0.002, 'firstClaimOfAnUnsettledRound': 0.012, 'atGwei': '0.05 to 0.075'},
+        'gasUnits': {'ticket': 126000, 'firstTicketOfAWallet': 165000, 'firstClaimOfAnUnsettledRound': 300000},
     }
     (ROOT / 'docs' / 'agents.json').write_text(json.dumps(agents, indent=1) + '\n')
 

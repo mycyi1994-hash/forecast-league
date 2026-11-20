@@ -795,14 +795,14 @@
   "radarReads": "owner() is the zero address, price() and mintPrice() are 0, maxSupply() is the largest number (no cap); totalMinted() and hasMinted(address) answer truthfully.",
   "gasUsd": {
    "ticket": 0.005,
-   "firstTicketOfAWallet": 0.008,
+   "firstTicketOfAWallet": 0.006,
    "claim": 0.002,
    "firstClaimOfAnUnsettledRound": 0.012,
    "atGwei": "0.05 to 0.075"
   },
   "gasUnits": {
    "ticket": 126000,
-   "firstTicketOfAWallet": 217000,
+   "firstTicketOfAWallet": 165000,
    "firstClaimOfAnUnsettledRound": 300000
   },
   "liveSince": "2026-11-20",

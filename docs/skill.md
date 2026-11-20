@@ -131,8 +131,8 @@ and, once the round is settled, its wins and losses.
 
 Results come from the Chainlink BTC/USD feed, found by the contract itself. Gas, at the 0.05 to
 0.075 gwei wallets pay today: a ticket about 126,000 gas ($0.005), a wallet's first ticket about
-217,000 ($0.008), a claim about $0.002, and the first claim of a round that nobody has settled
-about 300,000 ($0.012).
+165,000 ($0.006, measured on the first tickets on mainnet), a claim about $0.002, and the first
+claim of a round that nobody has settled about 300,000 ($0.012).
 
 ## 3. The daily forecast and the card
 
