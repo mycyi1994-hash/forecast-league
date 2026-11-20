@@ -23,8 +23,8 @@ const FEEDS = [
 ];
 const BLITZ = '0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C'; // Blitz, BTC/USD market
 // Blitz markets: the same contract code, one per Chainlink feed. An empty address is a market that is not open.
-const BLITZ_ETH = '';
-const BLITZ_BNB = '';
+const BLITZ_ETH = '0x621B9fEd6FF2f0FC73e26264A401F7d12644A0A1';
+const BLITZ_BNB = '0xA782Ac207fE33f6120d9c2EF9553A55C47CFbbE9';
 const MARKETS = [['BTC', BLITZ], ['ETH', BLITZ_ETH], ['BNB', BLITZ_BNB]].filter(([, a]) => a && !/^0x0+$/.test(a));
 const RPC = process.env.LEAGUE_RPC || 'https://bsc-rpc.publicnode.com';
 const HORIZON = 21600;

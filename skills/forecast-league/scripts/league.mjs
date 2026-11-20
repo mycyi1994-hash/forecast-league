@@ -24,8 +24,8 @@ const CONFIG = {
   // Blitz, the six-hour round.
   blitz: '0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C',
   // Further Blitz markets: the same contract code with another Chainlink feed. Empty means not open.
-  blitzEth: '',
-  blitzBnb: '',
+  blitzEth: '0x621B9fEd6FF2f0FC73e26264A401F7d12644A0A1',
+  blitzBnb: '0xA782Ac207fE33f6120d9c2EF9553A55C47CFbbE9',
   agentId: '0x60b9262456de011f7d15a54cdd8c48baaa8b022f',
   feeds: {
     btc: '0x264990fbd0A4796A3E3d8E37C4d5F87a3aCa5Ebf',

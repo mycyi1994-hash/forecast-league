@@ -8,8 +8,8 @@
   const SQUADS = '0x1eAeEE5BA7582858b266920E79938203E92120D0';
   const BLITZ = '0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C'; // Blitz, BTC/USD market
   // Blitz markets: the same contract code, one per Chainlink feed. An empty address is a market that is not open.
-  const BLITZ_ETH = '';
-  const BLITZ_BNB = '';
+  const BLITZ_ETH = '0x621B9fEd6FF2f0FC73e26264A401F7d12644A0A1';
+  const BLITZ_BNB = '0xA782Ac207fE33f6120d9c2EF9553A55C47CFbbE9';
   const MARKETS = [{ pair: 'BTC', address: BLITZ }, { pair: 'ETH', address: BLITZ_ETH }, { pair: 'BNB', address: BLITZ_BNB }];
   const MULTICALL = '0xcA11bde05977b3631167028862bE2a173976CA11';
   const RPCS = ['https://bsc-rpc.publicnode.com', 'https://bsc-dataseed.bnbchain.org', 'https://bsc-dataseed.binance.org'];
