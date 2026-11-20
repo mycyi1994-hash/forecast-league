@@ -246,8 +246,12 @@ async function cmdEvidence() {
     const finished = [...byRound.keys()].filter((r) => r <= current - 2).sort((a, b) => b - a).slice(0, 40);
     const results = await multicall(finished.map((r) => ({ to: BLITZ, data: '0xcdd20022' + word(r) }))); // resultOf(uint32)
     const outcomes = results.map((x) => (x ? Number(slot(x, 2)) : 0));
+    const cardHolders = new Set(d.rows.map((r) => (r.owner || '').toLowerCase()));
+    const allTicketHolders = new Set([...byRound.values()].flatMap((set) => [...set]));
+    // Wallets that used any of the contracts: card holders plus ticket holders without a card.
+    out.walletsAcrossContracts = cardHolders.size + [...allTicketHolders].filter((h) => !cardHolders.has(h)).length;
     out.blitz = {
-      tickets: supply, currentRound: current, last12Rounds: rounds.slice(Math.max(0, rounds.findIndex((r) => r.tickets > 0))),
+      tickets: supply, currentRound: current, ticketHoldersWithoutACard: [...allTicketHolders].filter((h) => !cardHolders.has(h)).length, last12Rounds: rounds.slice(Math.max(0, rounds.findIndex((r) => r.tickets > 0))),
       outsideWalletsInEightOfLast12Rounds: [...count.values()].filter((n) => n >= 8).length,
       outsideWalletsWithATicketAndAClaim: recs.filter((x) => x && slot(x, 0) - slot(x, 5) > 0n).length,
       finishedRoundsWithTickets: finished.length, settled: outcomes.filter((o) => o !== 0).length,
