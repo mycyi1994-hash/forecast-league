@@ -930,5 +930,14 @@
    },
    "todo": "0x624f6da5 + wallet as a 32-byte word"
   }
- ]
+ ],
+ "prize": {
+  "what": "1 USDT a day to the wallet with the most winning tickets of the UTC day, over all round markets",
+  "from": "2026-11-21",
+  "to": "2026-12-09",
+  "paidBy": "the builder, by hand, from their own wallet",
+  "entryFee": 0,
+  "rules": "https://mycyi1994-hash.github.io/forecast-league/prize.md",
+  "check": "node keeper/prize.mjs --day YYYY-MM-DD"
+ }
 }
