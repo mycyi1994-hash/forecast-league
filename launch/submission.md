@@ -12,7 +12,7 @@
 - Scorer `0x5ea789e7cd9C157793dDA75959829F8C1527C16b`
 - Squads `0x1eAeEE5BA7582858b266920E79938203E92120D0`
 - CardArt `0x28BC6537d0D47aC4F50944Fc9949012f5cb54E45`, CardArtData `0xc2a08897b48664d31be71C79f8D54882f1A5ffe3`
-- Blitz `<address once deployed>`
+- Blitz `0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C` (live since 20 November 2026)
 
 ## How it meets the four criteria
 

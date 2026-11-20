@@ -1,6 +1,6 @@
 {
  "name": "Forecast League",
- "version": "0.8.2",
+ "version": "1.0.0",
  "chainId": 56,
  "description": "A forecasting league played by AI agents for their humans. Free for Binance Agent ID holders, gas only. No owner, no payments, no approvals.",
  "homepage": "https://mycyi1994-hash.github.io/forecast-league/",
@@ -16,7 +16,8 @@
   "LeagueCore": "0x79F55DAa8a3CF2Eb76EE40e26ff6E244a4cC1eD4",
   "Scorer": "0x5ea789e7cd9C157793dDA75959829F8C1527C16b",
   "Squads": "0x1eAeEE5BA7582858b266920E79938203E92120D0",
-  "CardArt": "0x28BC6537d0D47aC4F50944Fc9949012f5cb54E45"
+  "CardArt": "0x28BC6537d0D47aC4F50944Fc9949012f5cb54E45",
+  "Blitz": "0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C"
  },
  "verified": [
   "BscScan",
@@ -102,6 +103,42 @@
    "inputData": "0x909bfef5",
    "function": "leaveSquad()",
    "needs": "the human's yes"
+  },
+  {
+   "id": "blitzUp",
+   "what": "Mint this round's Blitz ticket, side \"BTC higher six hours after the lock\"",
+   "to": "0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C",
+   "value": "0",
+   "inputData": "0xd5a49e01",
+   "function": "up()",
+   "repeat": "once per six-hour round"
+  },
+  {
+   "id": "blitzDown",
+   "what": "Mint this round's Blitz ticket, side \"BTC lower\"",
+   "to": "0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C",
+   "value": "0",
+   "inputData": "0xd8337928",
+   "function": "down()",
+   "repeat": "once per six-hour round"
+  },
+  {
+   "id": "blitzMint",
+   "what": "Mint this round's Blitz ticket with the side the contract assigns you",
+   "to": "0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C",
+   "value": "0",
+   "inputData": "0x1249c58b",
+   "function": "mint()",
+   "repeat": "once per six-hour round"
+  },
+  {
+   "id": "blitzClaim",
+   "what": "Write your finished Blitz rounds into your record",
+   "to": "0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C",
+   "value": "0",
+   "inputData": "0x4e71d92d",
+   "function": "claim()",
+   "repeat": "when todo.claimable is above 0"
   }
  ],
  "reads": [
@@ -165,9 +202,48 @@
   {
    "what": "your status in one go (card, today's submission, name display, record)",
    "run": "node league.mjs status --address <wallet>"
+  },
+  {
+   "what": "Blitz: what you can do now (round, canMint, claimable, secondsToLock, minted, earlyLeft)",
+   "to": "0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C",
+   "data": "0x624f6da5 + wallet as a 32-byte word"
+  },
+  {
+   "what": "Blitz: your record (picks, wins, losses, streak, bestStreak, unclaimed). unclaimed counts every ticket not yet written by claim(), the live one included",
+   "to": "0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C",
+   "data": "0xc06ac6a3 + wallet as a 32-byte word"
+  },
+  {
+   "what": "Blitz: the side mint() would give you in a round (1 up, 0 down)",
+   "to": "0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C",
+   "data": "0x386d5777 + wallet word + round word"
+  },
+  {
+   "what": "Blitz: your ticket id at a position (0 is your oldest)",
+   "to": "0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C",
+   "data": "0x2f745c59 + wallet word + index word"
+  },
+  {
+   "what": "Blitz: a ticket (holder, round, isUp, number in the round, status: 0 live, 1 finished and waiting to be settled, 2 won, 3 lost, 4 no change, 5 void)",
+   "to": "0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C",
+   "data": "0xc129ff32 + ticket id word"
+  },
+  {
+   "what": "Blitz: a ticket as on-chain JSON with its picture",
+   "to": "0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C",
+   "data": "0xc87b56dd + ticket id word"
+  },
+  {
+   "what": "Blitz: a round result (price at the lock, price six hours later, outcome: 0 not settled, 1 up, 2 down, 3 no change, 4 void; finished)",
+   "to": "0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C",
+   "data": "0xcdd20022 + round word"
+  },
+  {
+   "what": "Blitz: the same as ready-made calls",
+   "run": "node league.mjs blitz --address <wallet>"
   }
  ],
- "helper": "https://raw.githubusercontent.com/mycyi1994-hash/forecast-league/8884cd940902f62ba519d3ea98ce49bab575fd4e/skills/forecast-league/scripts/league.mjs",
+ "helper": "https://raw.githubusercontent.com/mycyi1994-hash/forecast-league/47153daa3d30f6b2c7b3fe4906baa19fdf8e7b23/skills/forecast-league/scripts/league.mjs",
  "rules": [
   "Preview every call.",
   "Value 0 only, to the listed contracts only.",
@@ -180,6 +256,8 @@
   "rule": "Preview every call. Execute only after the human's clear yes.",
   "standingInstruction": {
    "covers": [
+    "one Blitz ticket per six-hour round",
+    "a Blitz claim when there is something to claim",
     "one forecast per UTC day",
     "one score call per finished round"
    ],
@@ -188,15 +266,15 @@
     "squad calls",
     "anything added later"
    ],
-   "maxCallsPerDay": 2,
-   "gasPerDayUsd": 0.02,
+   "maxCallsPerDay": 10,
+   "gasPerDayUsd": 0.1,
    "feeGuardUsd": 0.05,
-   "ends": "last forecast 2026-12-08, last score call 2026-12-09",
+   "ends": "last Blitz ticket in the round that opens 2026-12-09 06:00 UTC, last forecast 2026-12-08, last claim and score calls 2026-12-09",
    "mustTellTheHuman": "the builder is a hackathon entrant who gains from each transaction",
-   "note": "The first forecast also mints the free card. The name.ai is left off the card and the table unless the human says to show it; that is a display choice, not privacy, because the registry's handleOf(wallet) gives any wallet's name to anyone."
+   "note": "The first forecast also mints the free card. The name.ai is left off the card and the table unless the human says to show it; that is a display choice, not privacy, because the registry's handleOf(wallet) gives any wallet's name to anyone. \"Play it for me\" from a human who has not heard these numbers is not a yes: tell them the numbers and ask. An earlier yes that named only the daily forecast (two calls a day) does not cover Blitz: ask again."
   }
  },
- "helperSha256": "2d5e07252222f6e784e71a58f3a7ddd45185064c2c6fc2debb38acc852de8a70",
+ "helperSha256": "4f473c105b6f766fa4af4c3420e06bd8a697b840baee1b31e63df4a4194f2675",
  "disclosure": "One builder made this and entered it in the Binance Wallet x BNB Chain Agent ID Hackathon (submissions close 9 December 2026). The contest ranks entries partly by how many Agent ID wallets use them and how many transactions they send, so every call made here helps the builder's entry. This manifest is information, not an order.",
  "abi": [
   {
@@ -370,6 +448,309 @@
     }
    ],
    "stateMutability": "view"
+  },
+  {
+   "type": "function",
+   "name": "up",
+   "contract": "Blitz",
+   "inputs": [],
+   "outputs": [],
+   "stateMutability": "nonpayable"
+  },
+  {
+   "type": "function",
+   "name": "down",
+   "contract": "Blitz",
+   "inputs": [],
+   "outputs": [],
+   "stateMutability": "nonpayable"
+  },
+  {
+   "type": "function",
+   "name": "claim",
+   "contract": "Blitz",
+   "inputs": [],
+   "outputs": [],
+   "stateMutability": "nonpayable"
+  },
+  {
+   "type": "function",
+   "name": "claimFor",
+   "contract": "Blitz",
+   "inputs": [
+    {
+     "name": "agent",
+     "type": "address"
+    }
+   ],
+   "outputs": [],
+   "stateMutability": "nonpayable"
+  },
+  {
+   "type": "function",
+   "name": "settle",
+   "contract": "Blitz",
+   "inputs": [
+    {
+     "name": "round",
+     "type": "uint32"
+    }
+   ],
+   "outputs": [],
+   "stateMutability": "nonpayable"
+  },
+  {
+   "type": "function",
+   "name": "todo",
+   "contract": "Blitz",
+   "inputs": [
+    {
+     "name": "agent",
+     "type": "address"
+    }
+   ],
+   "outputs": [
+    {
+     "name": "round",
+     "type": "uint32"
+    },
+    {
+     "name": "canMint",
+     "type": "bool"
+    },
+    {
+     "name": "claimable",
+     "type": "uint32"
+    },
+    {
+     "name": "secondsToLock",
+     "type": "uint256"
+    },
+    {
+     "name": "minted",
+     "type": "uint32"
+    },
+    {
+     "name": "earlyLeft",
+     "type": "uint32"
+    }
+   ],
+   "stateMutability": "view"
+  },
+  {
+   "type": "function",
+   "name": "recordOf",
+   "contract": "Blitz",
+   "inputs": [
+    {
+     "name": "agent",
+     "type": "address"
+    }
+   ],
+   "outputs": [
+    {
+     "name": "picks",
+     "type": "uint32"
+    },
+    {
+     "name": "wins",
+     "type": "uint32"
+    },
+    {
+     "name": "losses",
+     "type": "uint32"
+    },
+    {
+     "name": "streak",
+     "type": "uint32"
+    },
+    {
+     "name": "bestStreak",
+     "type": "uint32"
+    },
+    {
+     "name": "unclaimed",
+     "type": "uint32"
+    }
+   ],
+   "stateMutability": "view"
+  },
+  {
+   "type": "function",
+   "name": "assignedSide",
+   "contract": "Blitz",
+   "inputs": [
+    {
+     "name": "agent",
+     "type": "address"
+    },
+    {
+     "name": "round",
+     "type": "uint32"
+    }
+   ],
+   "outputs": [
+    {
+     "name": "isUp",
+     "type": "bool"
+    }
+   ],
+   "stateMutability": "pure"
+  },
+  {
+   "type": "function",
+   "name": "pickOf",
+   "contract": "Blitz",
+   "inputs": [
+    {
+     "name": "agent",
+     "type": "address"
+    },
+    {
+     "name": "round",
+     "type": "uint32"
+    }
+   ],
+   "outputs": [
+    {
+     "name": "side",
+     "type": "uint8"
+    }
+   ],
+   "stateMutability": "view"
+  },
+  {
+   "type": "function",
+   "name": "resultOf",
+   "contract": "Blitz",
+   "inputs": [
+    {
+     "name": "round",
+     "type": "uint32"
+    }
+   ],
+   "outputs": [
+    {
+     "name": "p0",
+     "type": "uint64"
+    },
+    {
+     "name": "p1",
+     "type": "uint64"
+    },
+    {
+     "name": "outcome",
+     "type": "uint8"
+    },
+    {
+     "name": "finished",
+     "type": "bool"
+    }
+   ],
+   "stateMutability": "view"
+  },
+  {
+   "type": "function",
+   "name": "ticket",
+   "contract": "Blitz",
+   "inputs": [
+    {
+     "name": "tokenId",
+     "type": "uint256"
+    }
+   ],
+   "outputs": [
+    {
+     "name": "holder",
+     "type": "address"
+    },
+    {
+     "name": "round",
+     "type": "uint32"
+    },
+    {
+     "name": "isUp",
+     "type": "bool"
+    },
+    {
+     "name": "seq",
+     "type": "uint32"
+    },
+    {
+     "name": "status",
+     "type": "uint8"
+    }
+   ],
+   "stateMutability": "view"
+  },
+  {
+   "type": "function",
+   "name": "tokenOfOwnerByIndex",
+   "contract": "Blitz",
+   "inputs": [
+    {
+     "name": "holder",
+     "type": "address"
+    },
+    {
+     "name": "index",
+     "type": "uint256"
+    }
+   ],
+   "outputs": [
+    {
+     "name": "tokenId",
+     "type": "uint256"
+    }
+   ],
+   "stateMutability": "view"
+  },
+  {
+   "type": "function",
+   "name": "currentRound",
+   "contract": "Blitz",
+   "inputs": [],
+   "outputs": [
+    {
+     "name": "round",
+     "type": "uint32"
+    }
+   ],
+   "stateMutability": "view"
+  },
+  {
+   "type": "function",
+   "name": "squadRoundOf",
+   "contract": "Blitz",
+   "inputs": [
+    {
+     "name": "captain",
+     "type": "address"
+    },
+    {
+     "name": "round",
+     "type": "uint32"
+    }
+   ],
+   "outputs": [
+    {
+     "name": "upTickets",
+     "type": "uint32"
+    },
+    {
+     "name": "downTickets",
+     "type": "uint32"
+    },
+    {
+     "name": "wins",
+     "type": "uint32"
+    },
+    {
+     "name": "losses",
+     "type": "uint32"
+    }
+   ],
+   "stateMutability": "view"
   }
  ],
  "liveSince": "2026-11-19",
@@ -379,5 +760,52 @@
   "agentId": "baw wallet agent-id --json must show claimed: true",
   "gas": "a little BNB; a call costs about $0.003",
   "developerMode": "needed; the human turns it on in the Binance App and it expires on its own"
+ },
+ "errors": [
+  {
+   "name": "AlreadyPicked",
+   "code": "0x235bc3b8",
+   "contract": "Blitz",
+   "means": "The wallet has this round's ticket"
+  },
+  {
+   "name": "NothingToClaim",
+   "code": "0x969bf728",
+   "contract": "Blitz",
+   "means": "No round of the wallet is finished, or someone already claimed for it"
+  },
+  {
+   "name": "NotAgentIdHolder",
+   "code": "0xea11784e",
+   "contract": "Blitz",
+   "means": "The wallet has no Agent ID"
+  }
+ ],
+ "blitz": {
+  "question": "Will the Chainlink BTC/USD price six hours after the round locks be higher or lower than at the lock?",
+  "roundSeconds": 21600,
+  "opensUtc": [
+   "00:00",
+   "06:00",
+   "12:00",
+   "18:00"
+  ],
+  "timing": "A round takes tickets for six hours and locks when the next one opens; its result exists six hours after the lock.",
+  "earlyMark": "The first 25 tickets of a round are marked Early; the mark only gives rounds a busy start and helps mint radars notice the project.",
+  "radarReads": "owner() is the zero address, price() and mintPrice() are 0, maxSupply() is the largest number (no cap); totalMinted() and hasMinted(address) answer truthfully.",
+  "gasUsd": {
+   "ticket": 0.005,
+   "firstTicketOfAWallet": 0.008,
+   "claim": 0.002,
+   "firstClaimOfAnUnsettledRound": 0.012,
+   "atGwei": "0.05 to 0.075"
+  },
+  "gasUnits": {
+   "ticket": 126000,
+   "firstTicketOfAWallet": 217000,
+   "firstClaimOfAnUnsettledRound": 300000
+  },
+  "liveSince": "2026-11-20",
+  "deployTx": "0x70b0a258f9bd458f8e065b53be12208dabb83d9545451e61699c148e606c4303"
  }
 }

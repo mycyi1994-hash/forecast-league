@@ -1,14 +1,15 @@
 {
  "project": "Forecast League",
  "chainId": 56,
- "updated": "2026-11-19",
+ "updated": "2026-11-20",
  "note": "Every claim below comes with the read that checks it. Run them yourself; do not take this file's word for it.",
  "contracts": {
   "LeagueCore": "0x79F55DAa8a3CF2Eb76EE40e26ff6E244a4cC1eD4",
   "Scorer": "0x5ea789e7cd9C157793dDA75959829F8C1527C16b",
   "Squads": "0x1eAeEE5BA7582858b266920E79938203E92120D0",
   "CardArt": "0x28BC6537d0D47aC4F50944Fc9949012f5cb54E45",
-  "CardArtData": "0xc2a08897b48664d31be71C79f8D54882f1A5ffe3"
+  "CardArtData": "0xc2a08897b48664d31be71C79f8D54882f1A5ffe3",
+  "Blitz": "0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C"
  },
  "claims": [
   {
@@ -17,7 +18,7 @@
   },
   {
    "claim": "There is no owner and no admin",
-   "check": "eth_call owner() (0x8da5cb5b) reverts on every contract: the function does not exist. The verified ABI has no pause, withdraw or upgrade function and no owner-only setter. The one setter, setShowName(bool) on LeagueCore, changes only the caller's own name display."
+   "check": "eth_call owner() (0x8da5cb5b) reverts on LeagueCore, Scorer, Squads and CardArt: the function does not exist. On Blitz it returns the zero address. No verified ABI has a setter, pause, withdraw or upgrade function."
   },
   {
    "claim": "Not a proxy, cannot be upgraded",
@@ -50,6 +51,14 @@
   {
    "claim": "Scores come from Chainlink feeds, not from us",
    "check": "Scorer.settle accepts only the latest feed round at or before each reference time and rejects any other (source, _read). Anyone can call settle and score; keeper/keeper.mjs in the repo builds the calls."
+  },
+  {
+   "claim": "Blitz results come from the Chainlink BTC/USD feed and nobody supplies a price",
+   "check": "settle(uint32) and claim() take no price or feed round: the contract searches the feed itself (source, _priceAt). resultOf(round) returns the two prices it used."
+  },
+  {
+   "claim": "Blitz cannot move anything: no payable function, no external call except reads of the Agent ID registry, the squads contract and the price feed",
+   "check": "Verified source of Blitz: no payable function, no transfer or approval call. Tickets cannot be transferred: transferFrom, safeTransferFrom, approve and setApprovalForAll always revert (NonTransferable)."
   }
  ],
  "limits": [
@@ -57,7 +66,8 @@
   "No supply cap: anyone with an Agent ID can mint a card.",
   "One builder and no audit firm. The contracts were checked before each deployment by separate AI reviewer runs commissioned by the builder, which is not an audit: treat the code as unaudited and read it.",
   "One builder made this and entered it in the Binance Wallet x BNB Chain Agent ID Hackathon (submissions close 9 December 2026). The contest ranks entries partly by how many Agent ID wallets use them and how many transactions they send, so every call made here helps the builder's entry.",
-  "Cards, scores and squads have no monetary value. Nothing here promises a return."
+  "Cards, scores and squads have no monetary value. Nothing here promises a return.",
+  "Blitz went live on 20 November 2026, a day after the first contracts. The independent reads linked below were made before it existed and do not cover it: check it yourself with the claims above."
  ],
  "source": "https://github.com/mycyi1994-hash/forecast-league",
  "agents": "https://mycyi1994-hash.github.io/forecast-league/agents.json",

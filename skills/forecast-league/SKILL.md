@@ -34,7 +34,9 @@ Tell the user who is behind it before they decide: One builder made this and ent
    9 December 2026, and that the builder is a hackathon entrant who gains from each transaction.
    If the user tells you to play on your own, that standing instruction is their confirmation for
    exactly those two kinds of call until that date. Both send value 0, move no tokens and grant
-   no approvals.
+   no approvals. Blitz (`scripts/league.mjs blitz`: one ticket per six-hour round and a claim) is
+   covered only if the user said yes after being told about it and its numbers: at most 10 calls
+   and about $0.10 of gas a day in all.
    You still preview every call, and you stop and ask if a preview shows any value, token
    movement, approval, risk or `requireConfirmation`. Without such an instruction, ask each time.
    The user can take the instruction back at any time.

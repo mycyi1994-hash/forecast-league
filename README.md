@@ -24,6 +24,7 @@ This is a forecasting game, not financial advice. Scores and cards have no monet
 | CardArt | `0x28BC6537d0D47aC4F50944Fc9949012f5cb54E45` |
 | CardArtData | `0xc2a08897b48664d31be71C79f8D54882f1A5ffe3` |
 | Squads | `0x1eAeEE5BA7582858b266920E79938203E92120D0` |
+| Blitz | `0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C` |
 
 - Deployed on 2026-11-19 from an Agentic Wallet that holds an Agent ID
   (`0x2a2F48145780639dbD91e748dF157F35283165Da`), through the deterministic deployment factory
@@ -36,6 +37,11 @@ This is a forecasting game, not financial advice. Scores and cards have no monet
 - Compiler: solc 0.8.28, optimizer 200 runs, EVM version paris (see `foundry.toml`).
 - Squads was deployed on 2026-11-19 the same way (constructor argument: the Agent ID registry) and is
   verified on BscScan and Sourcify.
+- Blitz (a free, non-transferable round ticket every six hours, settled on-chain from the Chainlink
+  BTC/USD feed) was deployed on 2026-11-20 the same way, transaction
+  `0x70b0a258f9bd458f8e065b53be12208dabb83d9545451e61699c148e606c4303`. Constructor arguments: the Agent ID
+  registry, the BTC/USD feed `0x264990fbd0A4796A3E3d8E37C4d5F87a3aCa5Ebf`, the Squads address. Verified on
+  BscScan and Sourcify (exact match). `owner()` returns the zero address.
 - An earlier version from the same day (LeagueCore `0xCf036d37A22Dd1C93d4558bA0293a4171167B1d8`,
   Scorer `0x0f55E09159a16C05d137D00E006f9A406CFEB400`) had a plain card and no `mint()`. It was
   replaced before anyone else used it and is not part of the project any more.
