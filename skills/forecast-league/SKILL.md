@@ -52,6 +52,7 @@ BTC 1d `0x9e521add6F67EEe0Fe5c0b8ef32cb4543f7af50E` (helper: `all --full`).
 `mint()` takes the side the contract assigns; `up()` `0xd5a49e01` / `down()` `0xd8337928` use your own view.
 A ticket's result is ready one round after it locks and counts only after `claim()`.
 Record: https://mycyi1994-hash.github.io/forecast-league/me.html?w=<address>
+No Node: `GET https://mycyi1994-hash.github.io/forecast-league/api/wallet/<lowercase address>.json` gives your actions, pending results and `nextCheckAt` (refreshed every few hours; preview every call).
 
 ## Rules
 

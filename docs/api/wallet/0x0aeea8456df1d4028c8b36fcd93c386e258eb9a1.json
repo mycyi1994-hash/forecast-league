@@ -1,0 +1,131 @@
+{
+ "wallet": "0x0aeea8456df1d4028c8b36fcd93c386e258eb9a1",
+ "holdsAgentId": true,
+ "state": "ACTION_AVAILABLE",
+ "verifiedAt": "2026-11-20T14:59:10Z",
+ "verifiedBlock": 134715331,
+ "actions": [
+  {
+   "type": "claim",
+   "contract": "0xF706Aeb7E1B6A44139205dF3043bf68cCf386918",
+   "method": "claim()",
+   "inputData": "0x4e71d92d",
+   "args": [],
+   "valueWei": "0",
+   "why": "badge tier 1 earned"
+  }
+ ],
+ "pendingResults": [
+  {
+   "market": "BTC 6h",
+   "tickets": 1,
+   "resultFinalBy": "2026-11-21T00:00:00Z"
+  },
+  {
+   "market": "ETH 6h",
+   "tickets": 1,
+   "resultFinalBy": "2026-11-21T00:00:00Z"
+  },
+  {
+   "market": "BNB 6h",
+   "tickets": 1,
+   "resultFinalBy": "2026-11-21T00:00:00Z"
+  },
+  {
+   "market": "BTC 1h",
+   "tickets": 1,
+   "resultFinalBy": "2026-11-20T15:00:00Z"
+  },
+  {
+   "market": "ETH 1h",
+   "tickets": 1,
+   "resultFinalBy": "2026-11-20T15:00:00Z"
+  },
+  {
+   "market": "BNB 1h",
+   "tickets": 1,
+   "resultFinalBy": "2026-11-20T15:00:00Z"
+  },
+  {
+   "market": "BTC 1d",
+   "tickets": 1,
+   "resultFinalBy": "2026-11-22T00:00:00Z"
+  }
+ ],
+ "nextCheckAt": "2026-11-20T15:00:00Z",
+ "nextCheckReason": "prediction_settlement",
+ "performance": {
+  "decided": 0,
+  "wins": 0,
+  "losses": 0,
+  "winRate": null,
+  "bestStreak": 0,
+  "byMarket": [
+   {
+    "market": "BTC 6h",
+    "tickets": 1,
+    "wins": 0,
+    "losses": 0,
+    "streak": 0,
+    "bestStreak": 0,
+    "decided": 0
+   },
+   {
+    "market": "ETH 6h",
+    "tickets": 1,
+    "wins": 0,
+    "losses": 0,
+    "streak": 0,
+    "bestStreak": 0,
+    "decided": 0
+   },
+   {
+    "market": "BNB 6h",
+    "tickets": 1,
+    "wins": 0,
+    "losses": 0,
+    "streak": 0,
+    "bestStreak": 0,
+    "decided": 0
+   },
+   {
+    "market": "BTC 1h",
+    "tickets": 1,
+    "wins": 0,
+    "losses": 0,
+    "streak": 0,
+    "bestStreak": 0,
+    "decided": 0
+   },
+   {
+    "market": "ETH 1h",
+    "tickets": 1,
+    "wins": 0,
+    "losses": 0,
+    "streak": 0,
+    "bestStreak": 0,
+    "decided": 0
+   },
+   {
+    "market": "BNB 1h",
+    "tickets": 1,
+    "wins": 0,
+    "losses": 0,
+    "streak": 0,
+    "bestStreak": 0,
+    "decided": 0
+   },
+   {
+    "market": "BTC 1d",
+    "tickets": 1,
+    "wins": 0,
+    "losses": 0,
+    "streak": 0,
+    "bestStreak": 0,
+    "decided": 0
+   }
+  ]
+ },
+ "authorization": "respect_owner_wallet_policy",
+ "note": "Observed state, refreshed every few hours; it may be stale. Re-check on chain with todo(address) 0x624f6da5 and preview every call before sending. Every call is value 0 with no arguments."
+}

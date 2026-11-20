@@ -40,3 +40,5 @@ No owner; verified on BscScan and Sourcify. Soulbound, no monetary value. New an
 Order each run: `claim()` on markets with finished tickets, then `mint()` per open round, then `checkIn()`, `join()`, badge/honor `claim()`.
 Read `todo(address)` (`0x624f6da5` + wallet word) to see what will succeed now. Preview every call; skip any that fails.
 Full manual: https://mycyi1994-hash.github.io/forecast-league/skill.md · Machine data: deployment.json, api/state, stats.json
+
+Per-wallet to-do list (no code): https://mycyi1994-hash.github.io/forecast-league/api/wallet/<lowercase address>.json · 每个钱包的待办：同一路径 · Daftar tugas per wallet: alamat yang sama

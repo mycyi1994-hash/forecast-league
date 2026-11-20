@@ -946,5 +946,6 @@
  },
  "stats": "https://mycyi1994-hash.github.io/forecast-league/stats.json",
  "walletRecord": "https://mycyi1994-hash.github.io/forecast-league/me.html?w=<wallet>",
- "agentCard": "https://mycyi1994-hash.github.io/forecast-league/.well-known/agent-card.json"
+ "agentCard": "https://mycyi1994-hash.github.io/forecast-league/.well-known/agent-card.json",
+ "walletFeed": "https://mycyi1994-hash.github.io/forecast-league/api/wallet/<lowercase address>.json"
 }
