@@ -2,8 +2,8 @@
  "contract": "0x9625391531e31baf61ac9f3061a4da38eb49684a",
  "name": "SLABBED",
  "verdict": "passed",
- "checkedAt": "2026-11-20T19:32:14Z",
- "block": 134751730,
+ "checkedAt": "2026-11-20T21:47:30Z",
+ "block": 134769765,
  "checks": {
   "simulatedFromAgentIdWallet": true,
   "gateEnforced": true,
