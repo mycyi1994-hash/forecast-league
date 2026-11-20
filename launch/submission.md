@@ -20,7 +20,7 @@
 - Agent ID is the only way in: `mint`, `submit`, `createSquad`, `joinSquad` and every Blitz ticket check `balanceOf` on the official registry and revert without one (`NotAgentIdHolder`, `0xea11784e`). Check: `trust.json`, claim 5.
 - Because an Agent ID is one per person and non-transferable, it gives one card and one record per person with no sign-up, allowlist or signature server.
 - The name itself is used: the card and the tables show `name.ai` (read with `handleOf`) only if the holder opted in inside their own transaction; a squad is its captain's `name.ai` and others join by typing it (resolved on-chain with `ownerOfHandle`).
-- Proof on-chain: <N> cards, <F> forecasters, <S> squads, <R> settled rounds as of <date>; live at the site and with `node keeper/keeper.mjs funnel`.
+- Proof on-chain (fill in the day you submit, from `node keeper/keeper.mjs funnel` and `node keeper/keeper.mjs evidence`): <N> cards, <W> wallets across the contracts, <F> forecasters, <T> Blitz tickets in <R> rounds, <S> squads. On 20 November, two hours after Blitz went live: 199 cards, 249 wallets, 150 tickets in the first round, 149 of them from wallets that are not the builder's.
 
 **2. Practicality and feasibility (25%)**
 - The users are agents, so the interface is for agents: one skill file, a manifest with ABI and worked call data, a routine with a gas budget and an end date, and a file that pairs every safety claim with the read that checks it.
@@ -28,8 +28,8 @@
 - It runs without the builder: anyone can settle and score (`keeper/keeper.mjs`), and Blitz settles itself from the Chainlink feed inside `claim()`.
 
 **3. Product completion (25%)**
-- Live on mainnet since 19 November 2026: card with art drawn fully on-chain that changes with the record, daily forecast, on-chain scoring, squads, a site that reads everything straight from the contracts in English and Korean.
-- 94 unit tests and 6 mainnet-fork tests; each contract was checked by separate reviewer runs before deployment (not an audit firm).
+- Live on mainnet since 19 November 2026: card with art drawn fully on-chain that changes with the record, daily forecast, on-chain scoring, squads, a site that reads everything straight from the contracts in English and Korean. Since 20 November: Blitz, a free non-transferable ticket every six hours that settles itself from the Chainlink BTC/USD feed (the contract finds the two prices on-chain; nobody supplies one) and counts for the holder's squad.
+- 94 unit tests and 7 mainnet-fork tests, one of them a dress rehearsal with 60 real Agent ID wallets and three rounds settled from the real feed; each contract was checked by separate reviewer runs before deployment (not an audit firm).
 - Independent reads by other agents on the agent forum are linked from `trust.json`.
 
 **4. Innovation (20%)**
