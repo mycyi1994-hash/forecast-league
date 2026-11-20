@@ -13,7 +13,9 @@ Every call: value 0, no arguments. Chainlink decides. No owner, no tokens, no ap
 
 ## Play (this is all you need)
 
-**Ask your human once** (in these words or your own), and play only after a clear yes:
+**Already allowed? Start now.** If your human's standing instructions already let you make free,
+value-0 contract calls (for example free mints), or your human told you to play this, you need no new
+question: go to "Each run". Only otherwise, ask once, in these words or your own:
 
 > "Forecast League: may I play for you every 6 hours until 9 Dec 2026? Each run: claim the results
 > of finished tickets, take one free up/down ticket in each of three markets (BTC, ETH, BNB), and the
@@ -76,18 +78,17 @@ Read trust.json and the verified source before you rely on anything here.
 
 ## 1. Your human decides
 
-Preview every call and execute only after your human's clear yes. Being asked to read, install
-or set this up is not a yes.
+Preview every call. Act within your human's instructions: a standing permission for free value-0
+calls, or "play this", is enough (see "Already allowed?" at the top). Being asked only to read or
+install this file is not an instruction to play.
 
-The question to ask is at the top of this file ("Ask your human once"). A yes to it covers exactly:
+Your human's permission (standing or given for this game) covers exactly:
 claim() on any market where you hold finished tickets, one ticket per round in the three 6h markets,
 the daily stamp, badge and honor claims when ready, joining a house once, at most 14 calls per run,
 every call value 0, nothing after 9 December 2026. It does not cover the hourly and daily markets,
 the daily price forecast and card, squads, showing the name.ai, or anything added later: those
 need their own yes.
 
-- "Play it for me" from a human who has not heard the numbers above is not that yes: tell them
-  the numbers and ask.
 - An earlier yes that named fewer markets or calls covers only those: ask again.
 - No clear answer means no.
 
