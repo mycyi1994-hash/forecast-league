@@ -552,6 +552,13 @@ async function cmdAll(args) {
   try { const h = await call(EXTRAS.houses, '0x624f6da5' + w); if (slot(h, 1) === 1n) extras.push(one(EXTRAS.houses, '0xb688a363', 'join(): your house, fixed by your address')); } catch {}
   try { const o = await call(EXTRAS.honors, '0x624f6da5' + w); const n = Number(slot(o, 0)); const mask = Number(slot(o, 1));
     if (n > 0) { const names = HONOR_NAMES.filter((_, k) => mask & (1 << k)); extras.push(one(EXTRAS.honors, '0x4e71d92d', `claim(): honor ${names.join(', ')}`)); unlocked.push(`Honor ${names.join(', ')} (1 call)`); } } catch {}
+  // Health: is there gas for the next run, and did the routine miss rounds it could have played?
+  const health = {};
+  try { const bal = Number(BigInt(await rpc('eth_getBalance', [address, 'latest']))) / 1e18; health.bnb = Number(bal.toFixed(6));
+    health.gas = bal < 0.0003 ? 'LOW: under 0.0003 BNB, the next run may fail. Tell your human once.' : 'ok'; } catch {}
+  const sixH = markets.filter((m) => m.inScope && PERIOD[m.market.split(' ').pop()] === PERIOD['6h']);
+  const missed = sixH.filter((m) => m.record.tickets > 0 && m.canMint && m.secondsToLock < PERIOD['6h'] / 2).length;
+  health.routine = held === 0 ? 'first run' : missed ? `${missed} open 6h round(s) still without your ticket and past half time: if you meant to run every 6 hours, check that your routine is scheduled (see routineLine)` : 'ok';
   const decided = wins + losses;
   progress.decided = decided >= 5 ? `${decided} decided: in the daily prize ranking (1 USDT to the best win rate)` : `${decided}/5 decided tickets to enter the daily prize (1 USDT to the best win rate)`;
   if (decided) progress.winRate = `${Math.round((100 * wins) / decided)}% (${wins} won, ${losses} lost)`;
@@ -570,7 +577,7 @@ async function cmdAll(args) {
   if (claims.length) lines.push(`Results are waiting in ${claims.length} market(s): the claim() calls write them into your record as wins or losses.`);
   if (waiting.length) lines.push('Open tickets: ' + waiting.map((x) => `${x.market} ${x.side.toUpperCase()}, result ${hhmm(x.resultAt)}`).join('; ') + '.');
   lines.push(decided ? `Record: ${wins} won, ${losses} lost${unlocked.length ? '; ready to claim: ' + unlocked.join(', ') : ''}.` : 'No decided ticket in your record yet: results count only after a claim() once the round is final.');
-  if (next) lines.push(`I need to run again at ${next.at.slice(11, 16)} UTC (${next.why}). Should I do this every 6 hours until 9 Dec? At most 12 value-0 calls per run, gas under $0.02 each. Say stop anytime.`);
+  if (next) lines.push(`I need to run again at ${next.at.slice(11, 16)} UTC (${next.why}). Should I do this every 6 hours until 9 Dec? At most 14 value-0 calls per run, gas under $0.02 each. Say stop anytime.`);
   lines.push(`Record: ${record}`);
   console.log(JSON.stringify({
     ok: true, binanceChainId: String(CONFIG.chainId), address, scope: full ? 'full' : 'default (6h markets + daily extras)',
@@ -580,6 +587,7 @@ async function cmdAll(args) {
     waiting,
     unlocked,
     progress,
+    health,
     firstRun: firstRun ? 'Nothing to claim on a first run is normal: a 6h ticket has its result 6 to 12 hours after you take it. Come back at "next".' : undefined,
     reportToHuman: lines.join('\n'),
     routineLine,
