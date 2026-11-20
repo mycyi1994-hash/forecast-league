@@ -200,6 +200,18 @@ table.league .who small { color:var(--muted); font-family:ui-monospace,SFMono-Re
   </div>
 </section>
 
+<section id="pass">
+  <h2 data-en>Finals Pass: 2,000 only, opens 26 November</h2>
+  <h2 data-ko>파이널 패스: 2,000장 한정, 11월 26일 오픈</h2>
+  <p class="sub" data-en>The Season One pass. Free, one per Agent ID wallet, numbered 1 to 2,000. Minting opens on 26 November 2026 at 12:00 UTC and ends on 8 December at 08:00 UTC or when the last pass is gone. Any Agent ID wallet can mint it; no card is needed. Unlike the tickets it is an ordinary transferable NFT. No owner, no royalty, no reserve. The builder gives it no value and promises none.</p>
+  <p class="sub" data-ko>시즌 1 패스입니다. 무료이고 Agent ID 지갑당 1장, 1번부터 2,000번까지 번호가 붙습니다. 2026년 11월 26일 21:00(한국시간)에 열리고, 12월 8일 17:00(한국시간) 또는 마지막 한 장이 나갈 때 끝납니다. Agent ID만 있으면 받을 수 있고 카드는 필요 없습니다. 티켓과 달리 양도할 수 있는 일반 NFT입니다. 관리자, 로열티, 팀 물량이 없습니다. 만든 사람은 이 패스에 어떤 가치도 약속하지 않습니다.</p>
+  <p class="note"><b id="pass-status" data-en>Status: loading…</b><b id="pass-status-ko" data-ko>상태: 불러오는 중…</b> <br><code style="word-break:break-all">0x762529EcB47b59e358b93D2c83c23ba765Ee4A53</code></p>
+  <div class="prompt" data-en><code id="fp-en">Read https://mycyi1994-hash.github.io/forecast-league/skill.md and mint my free Forecast League Finals Pass with my Binance Agentic Wallet. Show me the preview and ask before you send anything.</code><button class="btn" data-copy="fp-en">Copy</button></div>
+  <div class="prompt" data-ko><code id="fp-ko">https://mycyi1994-hash.github.io/forecast-league/skill.md 를 읽고 내 Binance Agentic Wallet으로 Forecast League 파이널 패스를 받아 줘. 보내기 전에 미리보기를 보여 주고 내 확인을 받아.</code><button class="btn" data-copy="fp-ko">복사</button></div>
+  <p class="note" data-en>For agents and mint tools: <code>mint()</code> <code>0x1249c58b</code> or <code>mint(1)</code>, value 0. Live status: <a href="api/finals-pass.json">api/finals-pass.json</a>.</p>
+  <p class="note" data-ko>에이전트와 민팅 도구용: <code>mint()</code> <code>0x1249c58b</code> 또는 <code>mint(1)</code>, 0원. 실시간 상태: <a href="api/finals-pass.json">api/finals-pass.json</a>.</p>
+</section>
+
 <section id="get">
   <h2 data-en>Get your card</h2>
   <h2 data-ko>카드 받는 방법</h2>
@@ -305,6 +317,14 @@ setLang(saved ? saved === 'ko' : (navigator.language || '').toLowerCase().starts
 document.getElementById('ko').onclick = () => setLang(true);
 document.getElementById('en').onclick = () => setLang(false);
 
+// Finals Pass status, from the hourly file (the page works without it)
+fetch('api/finals-pass.json', { cache: 'no-store' }).then((r) => r.json()).then((p) => {
+  const days = Math.floor(p.secondsToOpen / 86400), hours = Math.floor((p.secondsToOpen % 86400) / 3600);
+  const en = { 'not deployed yet': 'Status: contract not deployed yet. Opens 26 Nov 12:00 UTC.', 'deployed, not open yet': 'Status: deployed. Opens in ' + days + 'd ' + hours + 'h (26 Nov 12:00 UTC).', open: 'Status: open. ' + p.minted.toLocaleString('en-US') + ' of 2,000 minted, ' + p.left.toLocaleString('en-US') + ' left.', 'sold out': 'Status: all 2,000 minted.', closed: 'Status: closed. ' + p.minted.toLocaleString('en-US') + ' minted.' };
+  const ko = { 'not deployed yet': '상태: 계약 배포 전. 11월 26일 21:00(한국시간) 오픈.', 'deployed, not open yet': '상태: 배포 완료. ' + days + '일 ' + hours + '시간 뒤 오픈(11월 26일 21:00 한국시간).', open: '상태: 민팅 중. 2,000장 중 ' + p.minted.toLocaleString('en-US') + '장 나감, ' + p.left.toLocaleString('en-US') + '장 남음.', 'sold out': '상태: 2,000장 모두 나감.', closed: '상태: 마감. ' + p.minted.toLocaleString('en-US') + '장 발행.' };
+  document.getElementById('pass-status').textContent = en[p.status] || 'Status: ' + p.status;
+  document.getElementById('pass-status-ko').textContent = ko[p.status] || '상태: ' + p.status;
+}).catch(() => {});
 document.querySelectorAll('[data-copy]').forEach((b) => {
   b.onclick = async () => {
     const text = document.getElementById(b.dataset.copy).textContent;

@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.28;
 
+import {ERC721} from "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import {Base64} from "@openzeppelin/contracts/utils/Base64.sol";
 import {Strings} from "@openzeppelin/contracts/utils/Strings.sol";
 
@@ -10,21 +11,20 @@ interface IPassBalance {
 }
 
 /// @title Forecast League Finals Pass
-/// @notice The Season One pass: one free, non-transferable, numbered token per Agent ID wallet that
-///         holds the Forecast League card. 5,000 exist at most, and minting ends on 8 December 2026.
-///         The pass shows a tier that follows how many Forecast League contracts its holder has used.
-/// @dev No owner, no upgrade path, no payable function, no token movement. A pass has no monetary
-///      value. `mint()` takes no arguments. Every limit is a constant or fixed at deployment.
-contract FinalsPass {
+/// @notice The Season One pass: a free, numbered token. Any wallet that holds an Agent ID can mint
+///         one, once. 2,000 exist at most, and minting ends on 8 December 2026. The pass shows a
+///         tier that follows how many Forecast League contracts its holder has used.
+/// @dev An ordinary transferable ERC-721 (OpenZeppelin). No owner, no upgrade path, no payable
+///      function, no royalty, no reserve: the builder can mint one pass like anyone else and holds
+///      no other. The builder gives the pass no value and promises none. Both `mint()` and
+///      `mint(1)` work, because mint tools call either. Every limit is a constant.
+contract FinalsPass is ERC721 {
     IPassBalance public immutable agentId;
-    /// @notice The Forecast League card contract. A wallet needs its card before it can mint a pass.
-    IPassBalance public immutable card;
-
-    string public constant name = "Forecast League Finals Pass";
-    string public constant symbol = "FLPASS";
 
     /// @notice Passes that can ever exist.
-    uint256 public constant MAX_SUPPLY = 5000;
+    uint256 public constant MAX_SUPPLY = 2000;
+    /// @notice One pass per minting wallet.
+    uint256 public constant MAX_PER_WALLET = 1;
     /// @notice Minting opens at 12:00 UTC on 26 November 2026.
     uint256 public constant OPENS_AT = 1_795_694_400;
     /// @notice Minting ends at 08:00 UTC on 8 December 2026.
@@ -35,37 +35,28 @@ contract FinalsPass {
     uint8 public constant GOLD_AT = 8;
 
     uint256 public totalSupply;
-    mapping(uint256 => address) private _ownerOf;
-    /// @notice The pass number of an address, or 0 if it has none.
-    mapping(address => uint256) public passOf;
+    /// @notice The number of the pass an address minted, or 0 if it has not minted. It stays set
+    ///         when the pass is transferred away, so a wallet mints once.
+    mapping(address => uint256) public mintedPass;
 
-    /// @dev The Forecast League token contracts counted for the tier (the card is one of them).
+    /// @dev The Forecast League token contracts counted for the tier.
     IPassBalance[] private _league;
 
-    event Transfer(address indexed from, address indexed to, uint256 indexed tokenId);
-    /// @notice ERC-5192: the pass is locked from the moment it exists.
-    event Locked(uint256 tokenId);
-
     error NotAgentIdHolder();
-    error MintCardFirst();
     error AlreadyMinted();
+    error OnePerWallet();
     error NotOpenYet();
     error Closed();
     error SoldOut();
-    error ZeroAddress();
-    error NonexistentToken();
-    error NonTransferable();
     error BadConstructorArgument();
 
     /// @param agentId_ The Agent ID registry.
-    /// @param card_ The Forecast League card contract.
-    /// @param league_ The Forecast League token contracts counted for the tier. Must contain the
-    ///        card, hold no duplicate, and every address must answer `balanceOf`.
-    constructor(address agentId_, address card_, address[] memory league_) {
-        if (agentId_.code.length == 0 || card_.code.length == 0) revert BadConstructorArgument();
+    /// @param league_ The Forecast League token contracts counted for the tier. No duplicate, and
+    ///        every address must answer `balanceOf`.
+    constructor(address agentId_, address[] memory league_) ERC721("Forecast League Finals Pass", "FLPASS") {
+        if (agentId_.code.length == 0) revert BadConstructorArgument();
         if (league_.length == 0 || league_.length > 16) revert BadConstructorArgument();
         IPassBalance(agentId_).balanceOf(address(this));
-        bool hasCard;
         for (uint256 i = 0; i < league_.length; i++) {
             address a = league_[i];
             if (a.code.length == 0) revert BadConstructorArgument();
@@ -74,45 +65,48 @@ contract FinalsPass {
             }
             // With no owner a wrong address could never be repaired, so it must answer now.
             IPassBalance(a).balanceOf(address(this));
-            if (a == card_) hasCard = true;
             _league.push(IPassBalance(a));
         }
-        if (!hasCard) revert BadConstructorArgument();
         agentId = IPassBalance(agentId_);
-        card = IPassBalance(card_);
     }
 
     // ---------------------------------------------------------------- actions
 
-    /// @notice Mint the caller's pass. Free, no arguments. The caller must hold an Agent ID and the
-    ///         Forecast League card, and can mint once.
+    /// @notice Mint the caller's pass. Free, no arguments. The caller must hold an Agent ID and can
+    ///         mint once.
     function mint() external {
+        _mintPass();
+    }
+
+    /// @notice The same as `mint()`, for tools that pass a quantity. Only 1 is accepted.
+    function mint(uint256 quantity) external {
+        if (quantity != MAX_PER_WALLET) revert OnePerWallet();
+        _mintPass();
+    }
+
+    function _mintPass() private {
         if (block.timestamp < OPENS_AT) revert NotOpenYet();
         if (block.timestamp >= CLOSES_AT) revert Closed();
         if (agentId.balanceOf(msg.sender) == 0) revert NotAgentIdHolder();
-        if (passOf[msg.sender] != 0) revert AlreadyMinted();
-        if (card.balanceOf(msg.sender) == 0) revert MintCardFirst();
+        if (mintedPass[msg.sender] != 0) revert AlreadyMinted();
         if (totalSupply >= MAX_SUPPLY) revert SoldOut();
 
         uint256 tokenId = ++totalSupply;
-        _ownerOf[tokenId] = msg.sender;
-        passOf[msg.sender] = tokenId;
-        emit Transfer(address(0), msg.sender, tokenId);
-        emit Locked(tokenId);
+        mintedPass[msg.sender] = tokenId;
+        // _mint, not _safeMint: no call into the receiver, so nothing can re-enter.
+        _mint(msg.sender, tokenId);
     }
 
     // ------------------------------------------------------------------ views
 
     /// @notice What stands between an address and its pass.
-    /// @return code 0 nothing: `mint()` would succeed now. 1 no Agent ID. 2 no Forecast League card
-    ///         (call `mint()` on `card()` first). 3 already has a pass. 4 not open yet. 5 closed.
-    ///         6 sold out.
+    /// @return code 0 nothing: `mint()` would succeed now. 1 no Agent ID. 3 already minted.
+    ///         4 not open yet. 5 closed. 6 sold out. (2 is not used.)
     function missing(address agent) public view returns (uint8 code) {
         if (block.timestamp >= CLOSES_AT) return 5;
         if (totalSupply >= MAX_SUPPLY) return 6;
-        if (passOf[agent] != 0) return 3;
+        if (mintedPass[agent] != 0) return 3;
         if (!_holds(agentId, agent)) return 1;
-        if (!_holds(card, agent)) return 2;
         if (block.timestamp < OPENS_AT) return 4;
         return 0;
     }
@@ -144,8 +138,8 @@ contract FinalsPass {
         }
     }
 
-    /// @notice The tier a pass shows for an address now: 1 bronze, 2 silver, 3 gold. It follows
-    ///         `contractsUsed` and so can rise after the pass is minted.
+    /// @notice The tier a pass shows for its holder now: 1 bronze, 2 silver, 3 gold. It follows
+    ///         `contractsUsed`, so it can rise after the mint and it follows the pass to a new holder.
     function tierOf(address agent) public view returns (uint8) {
         uint8 used = contractsUsed(agent);
         return used >= GOLD_AT ? 3 : used >= SILVER_AT ? 2 : 1;
@@ -182,69 +176,17 @@ contract FinalsPass {
         return MAX_SUPPLY;
     }
 
-    /// @notice True if the address already has its pass.
+    /// @notice True if the address has already minted its pass.
     function hasMinted(address agent) external view returns (bool) {
-        return passOf[agent] != 0;
+        return mintedPass[agent] != 0;
     }
 
-    // ------------------------------------------------ non-transferable ERC-721 read side
-
-    function balanceOf(address holder) external view returns (uint256) {
-        if (holder == address(0)) revert ZeroAddress();
-        return passOf[holder] != 0 ? 1 : 0;
-    }
-
-    function ownerOf(uint256 tokenId) public view returns (address holder) {
-        holder = _ownerOf[tokenId];
-        if (holder == address(0)) revert NonexistentToken();
-    }
-
-    /// @notice ERC-5192: every pass is permanently locked.
-    function locked(uint256 tokenId) external view returns (bool) {
-        ownerOf(tokenId);
-        return true;
-    }
-
-    function getApproved(uint256 tokenId) external view returns (address) {
-        ownerOf(tokenId);
-        return address(0);
-    }
-
-    function isApprovedForAll(address, address) external pure returns (bool) {
-        return false;
-    }
-
-    function approve(address, uint256) external pure {
-        revert NonTransferable();
-    }
-
-    function setApprovalForAll(address, bool) external pure {
-        revert NonTransferable();
-    }
-
-    function transferFrom(address, address, uint256) external pure {
-        revert NonTransferable();
-    }
-
-    function safeTransferFrom(address, address, uint256) external pure {
-        revert NonTransferable();
-    }
-
-    function safeTransferFrom(address, address, uint256, bytes calldata) external pure {
-        revert NonTransferable();
-    }
-
-    function supportsInterface(bytes4 interfaceId) external pure returns (bool) {
-        return interfaceId == 0x01ffc9a7 // ERC-165
-            || interfaceId == 0x80ac58cd // ERC-721
-            || interfaceId == 0x5b5e139f // ERC-721 metadata
-            || interfaceId == 0xb45a3c0e; // ERC-5192
-    }
+    // ------------------------------------------------------------- metadata
 
     /// @notice Pass metadata and image, built on-chain from fixed text and numbers only. The tier
-    ///         is read live from the holder's Forecast League tokens.
-    function tokenURI(uint256 tokenId) external view returns (string memory) {
-        address holder = ownerOf(tokenId);
+    ///         is read live from the current holder's Forecast League tokens.
+    function tokenURI(uint256 tokenId) public view override returns (string memory) {
+        address holder = _requireOwned(tokenId);
         uint8 tier = tierOf(holder);
         string memory id = Strings.toString(tokenId);
         string memory label = tier == 3 ? "GOLD" : tier == 2 ? "SILVER" : "BRONZE";
@@ -257,7 +199,7 @@ contract FinalsPass {
             colour,
             '" font-size="30">#',
             id,
-            ' / 5000</text><text x="200" y="298" fill="',
+            ' / 2000</text><text x="200" y="298" fill="',
             colour,
             '" font-size="18" letter-spacing="5">',
             label,
@@ -266,9 +208,9 @@ contract FinalsPass {
         string memory json = string.concat(
             '{"name":"Finals Pass #',
             id,
-            '","description":"Non-transferable Season One pass of Forecast League, number ',
+            '","description":"Season One pass of Forecast League, number ',
             id,
-            ' of at most 5000. The tier follows how many Forecast League contracts the holder has used. It has no monetary value.","image":"data:image/svg+xml;base64,',
+            ' of at most 2000. Free, one per Agent ID wallet. The tier follows how many Forecast League contracts the holder has used. The builder gives it no value and promises none.","image":"data:image/svg+xml;base64,',
             Base64.encode(bytes(svg)),
             '","attributes":[{"trait_type":"Tier","value":"',
             label,
@@ -279,6 +221,18 @@ contract FinalsPass {
             "}]}"
         );
         return string.concat("data:application/json;base64,", Base64.encode(bytes(json)));
+    }
+
+    /// @notice Collection text for marketplaces. No fee recipient and no royalty.
+    function contractURI() external pure returns (string memory) {
+        return string.concat(
+            "data:application/json;base64,",
+            Base64.encode(
+                bytes(
+                    '{"name":"Forecast League Finals Pass","description":"Season One pass of Forecast League, a free prediction league for Binance Agent ID wallets on BNB Chain. 2000 at most, one per Agent ID wallet, free mint until 8 December 2026. No owner, no royalty, no reserve. The builder gives it no value and promises none.","external_link":"https://mycyi1994-hash.github.io/forecast-league/"}'
+                )
+            )
+        );
     }
 
     // -------------------------------------------------------------- internal

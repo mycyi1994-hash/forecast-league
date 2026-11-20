@@ -8,13 +8,13 @@ import {FinalsPass} from "../../src/FinalsPass.sol";
 contract FinalsPassForkTest is Test {
     address constant REGISTRY = 0x60B9262456dE011F7d15a54CdD8c48bAaa8B022F;
     address constant CARD = 0x79F55DAa8a3CF2Eb76EE40e26ff6E244a4cC1eD4;
+    // Agent ID wallets seen on chain: one holds the Forecast League card, one holds tickets only.
     address constant CARD_HOLDER = 0xE6FB57b0459B9Ba51cC6F46a08AcaBaAb5EE5476;
     address constant TICKET_ONLY = 0xd792F7baa1bDDfaBA0A51A4dE0E6f35Cf7275780;
     FinalsPass pass;
 
-    function setUp() public {
-        vm.createSelectFork("bsc");
-        address[] memory l = new address[](12);
+    function _league() internal pure returns (address[] memory l) {
+        l = new address[](12);
         l[0] = CARD;
         l[1] = 0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C;
         l[2] = 0x621B9fEd6FF2f0FC73e26264A401F7d12644A0A1;
@@ -27,7 +27,11 @@ contract FinalsPassForkTest is Test {
         l[9] = 0x8433AD00601C57cE9F144b20A32aE478EEe831AE;
         l[10] = 0xF706Aeb7E1B6A44139205dF3043bf68cCf386918;
         l[11] = 0x3e73bC0309c72EA69bD74CaDEC943668291Ca6ed;
-        pass = new FinalsPass(REGISTRY, CARD, l);
+    }
+
+    function setUp() public {
+        vm.createSelectFork("bsc");
+        pass = new FinalsPass(REGISTRY, _league());
     }
 
     function test_fork_closedBeforeOpening() public {
@@ -39,29 +43,34 @@ contract FinalsPassForkTest is Test {
         }
     }
 
-    function test_fork_cardHolderMintsAfterOpening() public {
+    function test_fork_agentIdWalletMintsAfterOpening() public {
         vm.warp(pass.OPENS_AT() + 1);
         assertEq(pass.missing(CARD_HOLDER), 0);
         vm.prank(CARD_HOLDER);
         pass.mint();
-        assertEq(pass.passOf(CARD_HOLDER), 1);
+        assertEq(pass.mintedPass(CARD_HOLDER), 1);
+        assertEq(pass.ownerOf(1), CARD_HOLDER);
         assertGe(pass.contractsUsed(CARD_HOLDER), 1);
         assertGt(bytes(pass.tokenURI(1)).length, 200);
     }
 
-    function test_fork_ticketHolderWithoutCardIsSentToTheCard() public {
+    function test_fork_walletWithoutTheCardMintsToo() public {
         vm.warp(pass.OPENS_AT() + 1);
-        assertEq(pass.missing(TICKET_ONLY), 2);
+        assertEq(pass.missing(TICKET_ONLY), 0);
         vm.prank(TICKET_ONLY);
-        vm.expectRevert(FinalsPass.MintCardFirst.selector);
+        pass.mint(1);
+        assertEq(pass.ownerOf(1), TICKET_ONLY);
+    }
+
+    function test_fork_passMovesBetweenWallets() public {
+        vm.warp(pass.OPENS_AT() + 1);
+        vm.prank(CARD_HOLDER);
         pass.mint();
-        // the card contract's own zero-argument mint, then the pass
-        vm.prank(TICKET_ONLY);
-        (bool ok,) = CARD.call(abi.encodeWithSignature("mint()"));
-        assertTrue(ok);
-        vm.prank(TICKET_ONLY);
-        pass.mint();
-        assertEq(pass.passOf(TICKET_ONLY), 1);
+        vm.prank(CARD_HOLDER);
+        pass.transferFrom(CARD_HOLDER, TICKET_ONLY, 1);
+        assertEq(pass.ownerOf(1), TICKET_ONLY);
+        assertTrue(pass.hasMinted(CARD_HOLDER));
+        assertFalse(pass.hasMinted(TICKET_ONLY));
     }
 
     function test_fork_walletWithoutAgentIdIsRejected() public {
@@ -71,5 +80,12 @@ contract FinalsPassForkTest is Test {
         vm.prank(nobody);
         vm.expectRevert(FinalsPass.NotAgentIdHolder.selector);
         pass.mint();
+    }
+
+    function test_fork_everyLeagueContractAnswers() public view {
+        assertEq(pass.leagueSize(), 12);
+        for (uint256 i = 0; i < 12; i++) {
+            assertEq(pass.leagueAt(i), _league()[i]);
+        }
     }
 }

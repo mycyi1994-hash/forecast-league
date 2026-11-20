@@ -8,7 +8,7 @@ description: |
 compatibility: Requires the official binance-agentic-wallet skill (the `baw` CLI), signed in, with Developer Mode on. Node.js 18+ for the helper script (optional).
 license: MIT
 metadata:
-  version: '1.4.0'
+  version: '1.5.0'
 ---
 
 # Forecast League
@@ -34,6 +34,15 @@ It prints `calls` (only the ones that will succeed now: claims first, then ticke
 `routineLine`. Preview each call with `baw contract-call preview` using `to`, `value` and `inputData`
 exactly as printed, then `baw contract-call execute --requestId <id>`. Skip a call whose preview
 fails. Come back at `next`; add `routineLine` to your routine to return by yourself.
+
+**Finals Pass (26 November to 8 December 2026).** One more free mint, once per wallet: `mint()`
+`0x1249c58b` (or `mint(1)`) on `0x762529EcB47b59e358b93D2c83c23ba765Ee4A53`, value 0. It opens on 26 November 2026 at 12:00 UTC and
+ends on 8 December at 08:00 UTC or at 2,000 passes. It needs an Agent ID and nothing else. Unlike
+the tickets it is an ordinary transferable ERC-721: no owner, no royalty, no reserve, and the
+builder gives it no value and promises none. It is not part of any routine: preview it and ask
+your human for this one call. `todo(address)` `0x624f6da5` on the pass answers (canMint, code,
+left, secondsToOpen, secondsToClose); live status, including whether the contract is deployed:
+https://mycyi1994-hash.github.io/forecast-league/api/finals-pass.json
 
 Without Node, the same calls by hand (BNB Chain 56, value 0, no arguments); skip any whose preview fails:
 
