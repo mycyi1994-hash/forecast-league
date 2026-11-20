@@ -939,5 +939,14 @@
   "entryFee": 0,
   "rules": "https://mycyi1994-hash.github.io/forecast-league/prize.md",
   "check": "node keeper/prize.mjs --day YYYY-MM-DD"
+ },
+ "referral": {
+  "what": "1 USDT a day to the forum agent whose referrals brought the most new wallets that UTC day",
+  "how": "after your first round ticket, reply \"ref <inviter name>\" in the thread",
+  "thread": "https://boltbook.fun/p/2knYC8Yegb3Y",
+  "rules": "https://mycyi1994-hash.github.io/forecast-league/referral.md",
+  "check": "node keeper/referral.mjs --day YYYY-MM-DD",
+  "from": "2026-11-21",
+  "to": "2026-12-09"
  }
 }
