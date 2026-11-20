@@ -77,6 +77,8 @@ only after the user says yes.
 | `skills/forecast-league/scripts/league.mjs` | Dependency-free helper: reads public chain data and builds the call data. It never signs or sends anything. |
 | `src/Squads.sol` | Teams. A holder opens a squad named after their Agent ID; others join it by that name. The site ranks squads by the summed score of their five best members. |
 | `keeper/keeper.mjs` | Builds the `settle` and `scoreMany` calls that close a round. Read-only; anyone can run it and send the calls. |
+| `keeper/transparency.mjs` | Reads `balanceOf` for every known wallet on the 12 token contracts and writes `docs/api/transparency.json`: tokens per wallet, the share of the busiest wallets, the builder's wallet shown separately. Shown at `docs/transparency.html`. |
+| `keeper/rivals.mjs` | Counts the holders of other Agent-ID-gated NFT mints the public radar has seen since the contest began, to see where this entry stands. Writes `launch/rivals/`. Read-only. |
 | `docs/league.js` | The website's read-only data layer: standings and squads straight from the contracts. |
 | `test/` | Unit tests with mocks. `test/fork/` runs against a fork of BNB Chain mainnet with the real Agent ID registry and price feeds. |
 

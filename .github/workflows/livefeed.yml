@@ -6,7 +6,7 @@ on:
   workflow_dispatch: {}
   push:
     branches: [main]
-    paths: ['.github/workflows/livefeed.yml', 'keeper/livefeed.mjs', 'keeper/actionfeed.mjs', 'keeper/desk.mjs']
+    paths: ['.github/workflows/livefeed.yml', 'keeper/livefeed.mjs', 'keeper/actionfeed.mjs', 'keeper/desk.mjs', 'keeper/transparency.mjs', 'keeper/rivals.mjs']
 permissions:
   contents: write
   pages: write
@@ -27,6 +27,9 @@ jobs:
           node keeper/livefeed.mjs
           node keeper/actionfeed.mjs
           node keeper/stats.mjs || echo "stats skipped"
+          node keeper/transparency.mjs || echo "transparency skipped"
+          # Once per UTC day, on the first run that finds no row for today (a skipped schedule does not lose the day).
+          if ! grep -q "\"$(date -u +%F)\"" launch/rivals/history.json 2>/dev/null; then timeout 1500 node keeper/rivals.mjs || echo "rivals skipped"; fi
           if [ "$(date -u +%H)" = "03" ]; then timeout 1200 node keeper/desk.mjs --full || echo "desk full sweep failed"; else timeout 600 node keeper/desk.mjs || echo "desk refresh failed"; fi
           node -e "require('fs').writeFileSync('docs/api/feed-status.json', JSON.stringify({lastSuccess:new Date().toISOString(), run:process.env.GITHUB_RUN_ID, state:JSON.parse(require('fs').readFileSync('docs/api/state','utf8')).updated}, null, 1)+'\n')"
       - name: Commit changed files
@@ -34,6 +37,7 @@ jobs:
           git config user.name "forecast-league-feed"
           git config user.email "forecast-league-feed@users.noreply.github.com"
           git add docs/api docs/desk docs/deployment.json docs/agent.md docs/agents.md docs/stats.json
+          [ -d launch/rivals ] && git add launch/rivals || true
           git diff --cached --quiet && { echo "nothing changed"; exit 0; }
           git commit -q -m "Live feed: $(date -u +%FT%H:%MZ)"
           for i in 1 2 3; do git pull -q --rebase && git push -q && exit 0; sleep 10; done; exit 1
