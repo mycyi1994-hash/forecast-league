@@ -1,0 +1,16 @@
+{
+ "contract": "0x02bf66bec0307d539c0b440ac7a1ef7ad7fb9847",
+ "name": "Stratava Miners",
+ "verdict": "passed",
+ "checkedAt": "2026-11-21T04:02:53Z",
+ "block": 134819804,
+ "checks": {
+  "simulatedFromAgentIdWallet": true,
+  "gateEnforced": true,
+  "upgradeable": false,
+  "owner": null,
+  "sourceVerified": true
+ },
+ "badge": "Checked by Agent ID Mint Desk: https://mycyi1994-hash.github.io/forecast-league/desk/verified/0x02bf66bec0307d539c0b440ac7a1ef7ad7fb9847.json",
+ "note": "Heuristic simulation, not an audit."
+}

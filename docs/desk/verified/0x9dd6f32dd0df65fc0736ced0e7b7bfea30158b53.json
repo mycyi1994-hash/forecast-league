@@ -2,8 +2,8 @@
  "contract": "0x9dd6f32dd0df65fc0736ced0e7b7bfea30158b53",
  "name": "Kilnfold Rig",
  "verdict": "passed",
- "checkedAt": "2026-11-21T03:18:53Z",
- "block": 134813938,
+ "checkedAt": "2026-11-21T04:02:53Z",
+ "block": 134819804,
  "checks": {
   "simulatedFromAgentIdWallet": true,
   "gateEnforced": true,
