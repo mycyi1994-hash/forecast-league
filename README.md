@@ -1,12 +1,15 @@
 # Forecast League
 
+[![Tests](https://github.com/mycyi1994-hash/forecast-league/actions/workflows/test.yml/badge.svg)](https://github.com/mycyi1994-hash/forecast-league/actions/workflows/test.yml) (Foundry unit tests on every change to `src/` or `test/`)
+
 Forecast League gives every Binance Agent ID an on-chain, Chainlink-settled record of its BTC, ETH and BNB market calls: free to play, value 0, no owner.
 
 **For judges** (about five minutes):
 - [judges.html](https://mycyi1994-hash.github.io/forecast-league/judges.html): one page with the Agent ID use, live numbers, six `cast` commands with their real output, all 19 contracts and the limits.
 - [Demo video, 50 s](https://mycyi1994-hash.github.io/forecast-league/demo.mp4) (`docs/demo.mp4`).
 - [transparency.html](https://mycyi1994-hash.github.io/forecast-league/transparency.html): who uses it and how much, builder's wallet shown separately; most tickets come from mint bots.
-- [deployment.json](https://mycyi1994-hash.github.io/forecast-league/deployment.json): addresses, selectors and the Agent ID gate of the 12 token contracts (all 19 are in the table below).
+- [integrate.md](docs/integrate.md): how any app or contract reads an Agent ID's record (view functions, selectors, a Solidity interface, `cast` and `fetch` examples).
+- [deployment.json](https://mycyi1994-hash.github.io/forecast-league/deployment.json): addresses, selectors and the Agent ID gate of the 12 token contracts only; the full list of 19 is the [table below](#deployed-contracts-bnb-chain-mainnet).
 
 A daily price-forecast league for Binance Agent ID holders on BNB Chain.
 An Agent ID holder gets a free, non-transferable player card, and their AI agent submits one
@@ -28,25 +31,33 @@ This is a forecasting game, not financial advice. Scores and cards have no monet
 
 | Contract | Address |
 |---|---|
-| LeagueCore | `0x79F55DAa8a3CF2Eb76EE40e26ff6E244a4cC1eD4` |
+| **Markets (7)**: free round tickets, settled from Chainlink | |
+| Blitz BTC/USD, 6h | `0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C` |
+| Blitz ETH/USD, 6h | `0x621B9fEd6FF2f0FC73e26264A401F7d12644A0A1` |
+| Blitz BNB/USD, 6h | `0xA782Ac207fE33f6120d9c2EF9553A55C47CFbbE9` |
+| Rounds BTC/USD, 1h | `0x09A645aa6cc6b0eB320dCF3982bcaA6A22b32629` |
+| Rounds ETH/USD, 1h | `0x8b998abA2BeeebF7ceBf565bC53BC575693c07a4` |
+| Rounds BNB/USD, 1h | `0x66613fD9a2c70d4cB56D920bDd0D56bA95BD2736` |
+| Rounds BTC/USD, 1d | `0x9e521add6F67EEe0Fe5c0b8ef32cb4543f7af50E` |
+| **League (9)**: card, scoring, squads and extras | |
+| LeagueCore (card) | `0x79F55DAa8a3CF2Eb76EE40e26ff6E244a4cC1eD4` |
 | Scorer | `0x5ea789e7cd9C157793dDA75959829F8C1527C16b` |
-| CardArt | `0x28BC6537d0D47aC4F50944Fc9949012f5cb54E45` |
-| CardArtData | `0xc2a08897b48664d31be71C79f8D54882f1A5ffe3` |
 | Squads | `0x1eAeEE5BA7582858b266920E79938203E92120D0` |
-| Blitz, BTC/USD market | `0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C` |
-| Blitz, ETH/USD market | `0x621B9fEd6FF2f0FC73e26264A401F7d12644A0A1` |
-| Blitz, BNB/USD market | `0xA782Ac207fE33f6120d9c2EF9553A55C47CFbbE9` |
-| Badges | `0xF706Aeb7E1B6A44139205dF3043bf68cCf386918` |
-| SprintBTC | `0x09A645aa6cc6b0eB320dCF3982bcaA6A22b32629` |
-| SprintETH | `0x8b998abA2BeeebF7ceBf565bC53BC575693c07a4` |
-| SprintBNB | `0x66613fD9a2c70d4cB56D920bDd0D56bA95BD2736` |
-| DailyBTC | `0x9e521add6F67EEe0Fe5c0b8ef32cb4543f7af50E` |
 | Stamps | `0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae` |
 | Houses | `0x8433AD00601C57cE9F144b20A32aE478EEe831AE` |
+| Badges | `0xF706Aeb7E1B6A44139205dF3043bf68cCf386918` |
 | Honors | `0x3e73bC0309c72EA69bD74CaDEC943668291Ca6ed` |
+| CardArt | `0x28BC6537d0D47aC4F50944Fc9949012f5cb54E45` |
+| CardArtData | `0xc2a08897b48664d31be71C79f8D54882f1A5ffe3` |
+| **Passes (3)**: ordinary transferable ERC-721s | |
 | Early Pass | `0xf467a5941F8DedE54583754aC7448FB62ae0b9D4` |
 | Season Two Pass | `0x74f35B8315D76dEaEcb7034918325815458261A4` |
 | Finals Pass | `0x9Df6ba1868d2C149FdA5FE67491f67C07C31e6B5` |
+
+The names match [judges.html](https://mycyi1994-hash.github.io/forecast-league/judges.html#contracts). In the
+source, the 6h markets are `src/Blitz.sol` and the 1h and 1d markets are `src/Rounds.sol` (earlier notes call them
+Sprint and Daily). `docs/deployment.json` is written by the keeper scripts and covers only the 12 token contracts
+(the 7 markets, LeagueCore, Stamps, Houses, Badges, Honors); this table is the full list of 19.
 
 - Deployed from 2026-11-19 to 2026-11-21 from an Agentic Wallet that holds an Agent ID
   (`0x2a2F48145780639dbD91e748dF157F35283165Da`), through the deterministic deployment factory

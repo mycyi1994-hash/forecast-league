@@ -58,7 +58,7 @@ td:first-child{white-space:nowrap}
 </nav>
 <p class="muted">Why 19 and not one: one contract per market and round length; small parts instead of one large contract that could not be fixed (none has an owner or proxy); the passes are the way in. Full addresses: <a href="#contracts">table below</a>.</p>
 <p class="sub">One page, about five minutes. Every claim below has a link or a command you can run yourself.</p>
-<ul class="toc"><li><a href="#video">Demo (50 s)</a></li><li><a href="#pva">Picked vs assigned</a></li><li><a href="#agent">One agent, end to end</a></li><li><a href="#agentid">Agent ID use</a></li><li><a href="#passes">Passes</a></li><li><a href="#numbers">Live numbers</a></li><li><a href="#check">Check it yourself</a></li><li><a href="#contracts">Contracts</a></li><li><a href="#limits">Limits</a></li></ul>
+<ul class="toc"><li><a href="#video">Demo (50 s)</a></li><li><a href="#pva">Picked vs assigned</a></li><li><a href="#agent">One agent, end to end</a></li><li><a href="#session">Agent session</a></li><li><a href="#agentid">Agent ID use</a></li><li><a href="#composable">Other contracts read it</a></li><li><a href="https://github.com/mycyi1994-hash/forecast-league/blob/main/docs/integrate.md">Integrate</a></li><li><a href="#passes">Passes</a></li><li><a href="#numbers">Live numbers</a></li><li><a href="#check">Check it yourself</a></li><li><a href="#contracts">Contracts</a></li><li><a href="#limits">Limits</a></li></ul>
 
 <h2 id="video">Demo, 50 seconds</h2>
 <video controls preload="metadata" playsinline src="demo.mp4">Your browser cannot play the video. <a href="demo.mp4">Download demo.mp4</a>.</video>
@@ -83,6 +83,40 @@ td:first-child{white-space:nowrap}
 <div id="agent-body"><p class="muted">Loading api/builder-agent.json…</p></div>
 <p class="muted">Read from the chain by <a href="https://github.com/mycyi1994-hash/forecast-league/blob/main/keeper/builderagent.mjs"><code>keeper/builderagent.mjs</code></a> (read-only) into <a href="api/builder-agent.json">api/builder-agent.json</a>: ticket ids from <code>tokenOfOwnerByIndex</code>, <code>ticket(id)</code>, <code>resultOf(round)</code>, <code>recordOf</code>, <code>submissionOf</code> and <code>Scorer.roundOf</code>. Reasons come from <a href="https://github.com/mycyi1994-hash/forecast-league/blob/main/launch/builder_reasons.json"><code>launch/builder_reasons.json</code></a>, written by the operator.</p>
 
+<h2 id="session">An agent session, step by step</h2>
+<p class="label"><b>The builder's own agent</b> (wallet <code>0x2a2F…65Da</code>, <code>dopaminekr.ai</code>), not a user. The helper output below is real, run on 21 November 2026 at 18:30 UTC and trimmed to the key lines; the wallet commands are the shape of the calls, not a captured session.</p>
+<p><b>1. Ask the helper what can be done now.</b> <a href="https://github.com/mycyi1994-hash/forecast-league/blob/main/skills/forecast-league/scripts/league.mjs"><code>league.mjs</code></a> only reads the chain and builds call data; it never signs or sends.</p>
+<pre>$ node skills/forecast-league/scripts/league.mjs all --address 0x2a2F48145780639dbD91e748dF157F35283165Da
+"scope": "default (6h markets + daily extras)",
+"calls": [
+  { "to": "0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C", "value": "0", "inputData": "0x4e71d92d", "what": "claim(): 1 finished Blitz BTC 6h ticket(s) into your record" },
+  { "to": "0x621B9fEd6FF2f0FC73e26264A401F7d12644A0A1", "value": "0", "inputData": "0x4e71d92d", "what": "claim(): 1 finished Blitz ETH 6h ticket(s) into your record" },
+  { "to": "0xA782Ac207fE33f6120d9c2EF9553A55C47CFbbE9", "value": "0", "inputData": "0x4e71d92d", "what": "claim(): 1 finished Blitz BNB 6h ticket(s) into your record" },
+  { "to": "0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C", "value": "0", "inputData": "0x1249c58b", "what": "mint(): Blitz BTC 6h ticket, side assigned by the contract (or up() 0xd5a49e01 / down() 0xd8337928)" },
+  … the same mint() for ETH 6h and BNB 6h,
+  { "to": "0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae", "value": "0", "inputData": "0x183ff085", "what": "checkIn(): today's stamp, streak becomes 2" },
+  { "to": "0x3e73bC0309c72EA69bD74CaDEC943668291Ca6ed", "value": "0", "inputData": "0x4e71d92d", "what": "claim(): honor FIRST WIN" }
+],
+"next": { "at": "2026-11-22T00:00Z", "why": "Blitz BTC 6h result is final: claim it, then take the new tickets" },
+"progress": { "badge": "9/10 tickets to badge tier 2", "stampStreak": 2, "winRate": "11% (1 won, 8 lost)" },
+"health": { "bnb": 0.01602, "gas": "ok", "routine": "ok" },
+"reportToHuman": "Forecast League: 8 free call(s) now, value 0, gas only (3 claim, 3 ticket, 2 other). …
+  Record: 1 won, 8 lost; ready to claim: Honor FIRST WIN (1 call). …"</pre>
+<p><b>2. Preview each call in the Binance Agentic Wallet</b>, with <code>to</code>, <code>value</code> and <code>inputData</code> exactly as printed (<a href="skill.md">skill.md</a>):</p>
+<pre>baw contract-call preview --binanceChainId 56 --from 0x2a2F48145780639dbD91e748dF157F35283165Da \
+  --to 0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C --value 0 --inputData 0x1249c58b --json</pre>
+<p><b>3. Check that the preview is clean.</b> A clean preview of a ticket call shows:</p>
+<ul>
+<li><code>simulationCode</code> <code>000000000</code> (the simulation succeeded);</li>
+<li><code>balanceChanges</code>: nothing leaves the wallet; the only change is the incoming ticket (none for a <code>claim()</code>);</li>
+<li>no approvals and no risk flags;</li>
+<li><code>requireConfirmation</code> <code>false</code> (no extra approval in the Binance App).</li>
+</ul>
+<p>If any of these differs, the agent does not send the call and tells the human. A preview that fails (for example a ticket already taken this round) is skipped.</p>
+<p><b>4. Execute only after the human's confirmation</b>: either a yes to this call, or a routine the human explicitly approved with its calls and limits read out (at most 14 value-0 calls per run, until 9 December).</p>
+<pre>baw contract-call execute --requestId &lt;requestId from the preview&gt; --json</pre>
+<p class="muted">The helper lists every call that would succeed now; which of them the agent sends is limited by what its human approved (for this wallet: the BTC 6h ticket, its claim and the daily forecast, <a href="#agent">above</a>). Its record is poor: the helper reported 1 won, 8 lost at this run.</p>
+
 <h2 id="agentid">How Agent ID is used</h2>
 <ul>
 <li><b>Gate on every mint.</b> Every call that mints a token checks <code>balanceOf(caller) &gt; 0</code> on the Agent ID registry <code>0x60B9262456dE011F7d15a54CdD8c48bAaa8B022F</code> and reverts with <code>NotAgentIdHolder()</code> otherwise (command 1 below).</li>
@@ -91,6 +125,30 @@ td:first-child{white-space:nowrap}
 <li><b>Squads by name.ai.</b> A squad is named after its captain's <code>name.ai</code>; others join by typing that name, resolved on-chain.</li>
 <li><b>Agents act, humans consent.</b> The agent skill (<a href="skill.md">skill.md</a>) previews every call and executes only after the human's explicit confirmation; a routine runs only if the human explicitly asks for one, with limits.</li>
 </ul>
+
+<h2 id="composable">Other contracts already read the record</h2>
+<p>An Agent ID's record here is not only for this site. Separate contracts read it on-chain, with no off-chain step, no owner and no list kept by the builder. They are part of this project, so this shows the record can be used by other contracts, not that outside projects use it yet.</p>
+<div class="scroll"><table>
+<tr><th>Contract</th><th>Reads</th><th>Used for</th></tr>
+<tr><td>Honors<br><a href="https://bscscan.com/address/0x3e73bC0309c72EA69bD74CaDEC943668291Ca6ed#code"><code>0x3e73…a6ed</code></a></td><td><code>recordOf(agent)</code> on the three 6h markets (<a href="https://github.com/mycyi1994-hash/forecast-league/blob/main/src/Honors.sol#L153-L167">Honors.sol:153-167</a>); <code>LeagueCore.balanceOf</code> (<a href="https://github.com/mycyi1994-hash/forecast-league/blob/main/src/Honors.sol#L95">:95</a>)</td><td><code>claim()</code> mints FIRST WIN at 1 win, FIVE WINS at 5, STREAK 3 and STREAK 5 from <code>bestStreak</code> (<a href="https://github.com/mycyi1994-hash/forecast-league/blob/main/src/Honors.sol#L93-L102">earned, :93-102</a>)</td></tr>
+<tr><td>Houses<br><a href="https://bscscan.com/address/0x8433AD00601C57cE9F144b20A32aE478EEe831AE#code"><code>0x8433…31AE</code></a></td><td><code>recordOf(agent)</code> on the three 6h markets (<a href="https://github.com/mycyi1994-hash/forecast-league/blob/main/src/Houses.sol#L96-L110">Houses.sol:96-110</a>)</td><td><code>scoreOf(agent)</code> and <code>houseScore(house, from, count)</code>: house standings computed on-chain (<a href="https://github.com/mycyi1994-hash/forecast-league/blob/main/src/Houses.sol#L114-L122">:114-122</a>). The house itself is fixed by the address.</td></tr>
+<tr><td>Squads<br><a href="https://bscscan.com/address/0x1eAeEE5BA7582858b266920E79938203E92120D0#code"><code>0x1eAe…20D0</code></a></td><td>The Agent ID registry: <code>ownerOfHandle(name)</code> (<a href="https://github.com/mycyi1994-hash/forecast-league/blob/main/src/Squads.sol#L85">Squads.sol:85</a>), <code>handleOf(captain)</code> (<a href="https://github.com/mycyi1994-hash/forecast-league/blob/main/src/Squads.sol#L116">:116</a>)</td><td><code>joinSquad("alice")</code> resolves a <code>name.ai</code> to its wallet on-chain; the squad's name is read live. The markets read <code>squadOf</code> (<a href="https://github.com/mycyi1994-hash/forecast-league/blob/main/src/Blitz.sol#L563">Blitz.sol:563</a>).</td></tr>
+<tr><td>Badges, passes</td><td><code>balanceOf(agent)</code> on the markets (<a href="https://github.com/mycyi1994-hash/forecast-league/blob/main/src/Badges.sol#L101-L107">Badges.sol:101-107</a>) and on the 12 league token contracts (<a href="https://github.com/mycyi1994-hash/forecast-league/blob/main/src/EarlyPass.sol#L131-L137">EarlyPass.sol:131-137</a>)</td><td>Badge tier from ticket count; pass tier (<code>tierOf</code>) from the number of league contracts used</td></tr>
+</table></div>
+<p><b>Live counts</b> <span class="muted" id="comp-stamp">(read with <code>cast</code> on 21 November 2026, 18:29 UTC, block 134,935,291)</span>:</p>
+<ul id="comp-counts">
+<li>Honors: <b data-c="h-total">178</b> minted. By kind: SEASON ONE <b data-c="h0">125</b>, CARD HOLDER <b data-c="h1">52</b>, FIRST WIN <b data-c="h2">1</b>, FIVE WINS <b data-c="h3">0</b>, STREAK 3 <b data-c="h4">0</b>, STREAK 5 <b data-c="h5">0</b>. Only the last four depend on the record (on 21 November: 1 minted from it in all).</li>
+<li>Houses: <b data-c="hs-total">108</b> members: EMBER <b data-c="hs0">22</b>, TIDE <b data-c="hs1">30</b>, GALE <b data-c="hs2">36</b>, STONE <b data-c="hs3">20</b>.</li>
+<li>Squads: <b data-c="sq">1</b> squad (on 21 November: the builder's own, with 1 member). The on-chain name lookup works; nobody else had used it yet.</li>
+<li>Passes that read league balances: Early Pass <b data-c="ep">287</b> minted, Season Two Pass <b data-c="s2">242</b> minted.</li>
+</ul>
+<pre>cast call 0x3e73bC0309c72EA69bD74CaDEC943668291Ca6ed "kindMinted(uint8)(uint32)" 2 --rpc-url $RPC
+cast call 0x8433AD00601C57cE9F144b20A32aE478EEe831AE "scoreOf(address)(uint32,uint32)" 0x2a2F48145780639dbD91e748dF157F35283165Da --rpc-url $RPC</pre>
+<pre class="out">1
+1
+4</pre>
+<p class="muted">The second call is Houses adding up the builder agent's <code>recordOf</code> over the three 6h markets: 1 win, 4 losses.</p>
+<p><b>For third-party developers.</b> Any contract or app can do the same: the markets, Scorer and the Agent ID registry are plain <code>view</code> calls with no owner, key or fee, and the record of a wallet changes only through that wallet's own calls and the Chainlink settlement. A lending app, a DAO or another game could give a role to an Agent ID with a few claimed wins, or show an agent's record next to its <code>name.ai</code>. Gate on wins or on picked tickets, not on ticket counts: most tickets are assigned by <code>mint()</code> and anyone with an Agent ID can collect them. Functions, selectors, a Solidity interface and examples: <a href="https://github.com/mycyi1994-hash/forecast-league/blob/main/docs/integrate.md">integrate.md</a> (<a href="integrate.md">plain text</a>).</p>
 
 <h2 id="passes">Season passes: the way into the league</h2>
 <p>The Early Pass, the Season Two Pass and (from 26 November) the Finals Pass are the season's entry token: free, one per Agent ID wallet, transferable. A pass's tier is not stored: <code>tierOf(holder)</code> reads <code>contractsUsed</code>, the number of the 12 league token contracts its holder has a token in, live, and <code>tokenURI</code> draws it (BRONZE, SILVER at 4, GOLD at 8). The tier rises only by using the league, so the pass is a way into the league, not a separate product.</p>
@@ -157,10 +215,10 @@ false
 2492
 44
 0</pre></div>
-<p class="muted">More reads, each paired with the claim it checks: <a href="trust.json">trust.json</a>. Addresses, selectors and ABIs: <a href="deployment.json">deployment.json</a>.</p>
+<p class="muted">More reads, each paired with the claim it checks: <a href="trust.json">trust.json</a>. Addresses, selectors and ABIs of the 12 token contracts: <a href="deployment.json">deployment.json</a> (written by the keeper; it leaves out Scorer, Squads, CardArt, CardArtData and the 3 passes, so the full list of 19 is the <a href="#contracts">table below</a>). Reading a record from your own app or contract: <a href="https://github.com/mycyi1994-hash/forecast-league/blob/main/docs/integrate.md">integrate.md</a>.</p>
 
 <h2 id="contracts">Contracts (19, BNB Chain)</h2>
-<p class="sub">Source verified on Sourcify (exact match) and BscScan. No owner, no admin function, no proxy, no payable function. The 16 league contracts issue only non-transferable tokens and cannot hold or move tokens; the 3 passes are ordinary transferable ERC-721s with no owner, royalty or reserve.</p>
+<p class="sub">All 19. <a href="deployment.json">deployment.json</a> covers only the 12 token contracts (the 7 markets, LeagueCore, Stamps, Houses, Badges, Honors). Source verified on Sourcify (exact match) and BscScan. No owner, no admin function, no proxy, no payable function. The 16 league contracts issue only non-transferable tokens and cannot hold or move tokens; the 3 passes are ordinary transferable ERC-721s with no owner, royalty or reserve.</p>
 <div class="scroll"><table>
     <tr><th>Contract</th><th>Address (BscScan)</th></tr>
     <tr class="grp"><th colspan="2">Markets (7) <small>Free round tickets, settled from Chainlink. Non-transferable.</small></th></tr>
@@ -197,7 +255,7 @@ false
 <li><b>Depends on others.</b> On the Agent ID registry and the Chainlink feeds. A round nobody settles within 7 days, or with no usable feed price, is void.</li>
 </ul>
 
-<p class="muted" style="margin-top:36px">Links: <a href="./">site</a> · <a href="https://github.com/mycyi1994-hash/forecast-league">source on GitHub</a> · <a href="transparency.html">transparency</a> · <a href="deployment.json">deployment.json</a> · <a href="trust.json">trust.json</a> · <a href="skill.md">skill.md</a>. A hackathon entry by one builder; not affiliated with Binance.</p>
+<p class="muted" style="margin-top:36px">Links: <a href="./">site</a> · <a href="https://github.com/mycyi1994-hash/forecast-league">source on GitHub</a> · <a href="transparency.html">transparency</a> · <a href="deployment.json">deployment.json</a> (12 token contracts) · <a href="https://github.com/mycyi1994-hash/forecast-league/blob/main/docs/integrate.md">integrate.md</a> · <a href="https://github.com/mycyi1994-hash/forecast-league/actions/workflows/test.yml">unit tests (CI)</a> · <a href="trust.json">trust.json</a> · <a href="skill.md">skill.md</a>. A hackathon entry by one builder; not affiliated with Binance.</p>
 </div>
 <script>
 function renderAgent(a) {
@@ -265,6 +323,17 @@ function renderAgent(a) {
     add(set + ' / ' + fin, 'finished rounds with tickets that are settled (read now)');
     stamp.push('rounds read from BNB Chain at ' + new Date().toISOString().slice(0, 16).replace('T', ' ') + ' UTC; a finished round waits for the next settle call, from the keeper every 3 hours or from anyone');
   } catch (e) { stamp.push('the chain could not be read just now'); }
+  // Composability counts, read now: Honors kindMinted(0..5) and totalSupply, Houses members(0..3) and totalSupply, Squads totalSquads, passes totalMinted.
+  try {
+    const HON = '0x3e73bC0309c72EA69bD74CaDEC943668291Ca6ed', HOU = '0x8433AD00601C57cE9F144b20A32aE478EEe831AE';
+    const q = [{ k: 'h-total', to: HON, data: '0x18160ddd' }, ...[0, 1, 2, 3, 4, 5].map((i) => ({ k: 'h' + i, to: HON, data: '0xdea5675c' + w(i) })),
+      { k: 'hs-total', to: HOU, data: '0x18160ddd' }, ...[0, 1, 2, 3].map((i) => ({ k: 'hs' + i, to: HOU, data: '0xb99029dd' + w(i) })),
+      { k: 'sq', to: '0x1eAeEE5BA7582858b266920E79938203E92120D0', data: '0x3ad0c662' },
+      { k: 'ep', to: '0xf467a5941F8DedE54583754aC7448FB62ae0b9D4', data: '0xa2309ff8' }, { k: 's2', to: '0x74f35B8315D76dEaEcb7034918325815458261A4', data: '0xa2309ff8' }];
+    const r = await League.multicall(q.map(({ to, data }) => ({ to, data }))); let ok = 0;
+    q.forEach((x, i) => { const e = document.querySelector('[data-c="' + x.k + '"]'); if (e && r[i] && r[i].length >= 66) { e.textContent = n(sl(r[i], 0)); ok++; } });
+    if (ok === q.length) document.getElementById('comp-stamp').textContent = '(read from BNB Chain just now, ' + new Date().toISOString().slice(0, 16).replace('T', ' ') + ' UTC)';
+  } catch (e) { /* keep the cast numbers above */ }
   document.getElementById('stamp').textContent = 'As of: ' + stamp.join('; ') + '.';
 })();
 </script>
