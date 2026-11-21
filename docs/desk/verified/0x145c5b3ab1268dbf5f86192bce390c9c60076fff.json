@@ -1,0 +1,16 @@
+{
+ "contract": "0x145c5b3ab1268dbf5f86192bce390c9c60076fff",
+ "name": "Voltrune Rigs",
+ "verdict": "passed",
+ "checkedAt": "2026-11-21T06:13:16Z",
+ "block": 134837183,
+ "checks": {
+  "simulatedFromAgentIdWallet": true,
+  "gateEnforced": true,
+  "upgradeable": false,
+  "owner": null,
+  "sourceVerified": true
+ },
+ "badge": "Checked by Agent ID Mint Desk: https://mycyi1994-hash.github.io/forecast-league/desk/verified/0x145c5b3ab1268dbf5f86192bce390c9c60076fff.json",
+ "note": "Heuristic simulation, not an audit."
+}

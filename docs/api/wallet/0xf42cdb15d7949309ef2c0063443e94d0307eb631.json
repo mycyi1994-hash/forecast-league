@@ -69,9 +69,7 @@
    "validUntil": "until claimed"
   }
  ],
- "joinedRounds": {
-  "BNB 6h": 83112
- },
+ "joinedRounds": {},
  "pendingResults": [
   {
    "market": "BNB 6h",
