@@ -132,134 +132,125 @@
   ]
  },
  "2026-11-21": {
-  "ourRank": 22,
-  "ourWallets": 386,
-  "tenth": 491,
+  "ourRank": 8,
+  "ourWallets": 395,
+  "first": 738,
+  "tenth": 266,
   "top": [
-   [
-    "Printer Ai",
-    "0x7638bf791c601152a0e21899b1192cf2f7fe2348",
-    9278
-   ],
-   [
-    "DYOR",
-    "0x86956bc830eb62110820ae79164bef61c7e31936",
-    8635
-   ],
-   [
-    "BSC Agent Fragment",
-    "0xadec4072daab830017d82189734696a9cce834dd",
-    4767
-   ],
-   [
-    "BOO",
-    "0x783a3fcdb4ef41d37ccd017b2726c739ad123deb",
-    3060
-   ],
-   [
-    "Relic Dragons",
-    "0xab0baadfa7c7bc12bb5e19b1be253c434b04fd99",
-    2195
-   ],
-   [
-    "Niulai",
-    "0xae9ffcc72411b12e4e0bb4e615ded4a2d327345a",
-    1249
-   ],
-   [
-    "Mystery Pearl",
-    "0x226328ed31e972ecd3ec9e1e4d7bb18d19ce21bf",
-    944
-   ],
    [
     "SunHarvest",
     "0x2d9943d20930ec59d7b432a0cf30521f8c0cc016",
-    733
-   ],
-   [
-    "Global Football 2026 Relic",
-    "0x7d0605342020192a03062b904ed501b067bb63f5",
-    557
-   ],
-   [
-    "GhoulGang",
-    "0x57a50bf31fd9914ea4e6d749d2c45837eb1ded41",
-    491
-   ],
-   [
-    "VeilOfShadows",
-    "0x0320451efe46fcacd888fb0a52ef9b968a708246",
-    463
-   ],
-   [
-    "Blaze Couriers",
-    "0x73ce43cfb1adb87a981dc93bf385626659f7107c",
-    450
-   ],
-   [
-    "CryptKeeperCollectibles",
-    "0x42b92ec15a25d1778c06a32aa4493c58eb2426b2",
-    444
+    738
    ],
    [
     "AgentGate Pass",
     "0x5b63bd45e61a2e6540548c3509b598b6384206c5",
-    443
-   ],
-   [
-    "CreatureFeature",
-    "0x5de5ee9125437a12d71fca89b8399aded40de916",
-    435
+    450
    ],
    [
     "Agent Legends",
     "0x5690b34da3efc5d55511c37a0ad4988cace8d912",
-    422
-   ],
-   [
-    "AgentDrop",
-    "0x1dd8740ffca0be3caac3b4a3eb41fdff506e38a9",
-    416
-   ],
-   [
-    "AgentQuest Badge",
-    "0x26ad277193ff31bd086a47bf7b1d25a93573c989",
-    415
+    433
    ],
    [
     "AgentMint",
     "0x038cb9b125915087fd980f995575ca105ddc9e6e",
-    413
+    433
    ],
    [
-    "Dusk Rangers",
-    "0x77577d88b56f8d4817701981f7f7ad40b85b41c7",
-    402
+    "AgentQuest Badge",
+    "0x26ad277193ff31bd086a47bf7b1d25a93573c989",
+    430
+   ],
+   [
+    "AgentDrop",
+    "0x1dd8740ffca0be3caac3b4a3eb41fdff506e38a9",
+    421
    ],
    [
     "DeepShard",
     "0xc463960af285b7eda0909d362ae31783597c2076",
-    400
+    402
    ],
    [
-    "Forecast League (12 contracts together)",
+    "Forecast League (all contracts together)",
     "ours",
-    386
+    395
    ],
    [
-    "Hexlings",
-    "0x5c6779ce599a830ab5554db65325192cf01de66e",
-    334
+    "Lordhold",
+    "0xf0681d5d5856981b6416ae3b059fd887f8efc967",
+    367
    ],
    [
-    "Ghoulies",
-    "0x86641a38d24dd42eb7d639bd1fc5bf7f66c19bf4",
-    333
+    "Baiwor Passport",
+    "0x0c458d61848ef7ffd753fbdd1179a7053a60661f",
+    266
    ],
    [
-    "AgentPup",
-    "0xf82f19feb002fa763b5a467757f5f10bc1279530",
-    319
+    "AgentID Hub Pass",
+    "0x3ae82e031702166b0ccfbfbf037f364998db0688",
+    220
+   ],
+   [
+    "Agent ID Pioneer",
+    "0xde4c3c4ea57963e52fed2ec772a819a8d0c702fd",
+    187
+   ],
+   [
+    "Agent Badge",
+    "0xb617aa35249e2e5cf64412a02fe95d6570c171f6",
+    186
+   ],
+   [
+    "Kilnfold Rig",
+    "0x9dd6f32dd0df65fc0736ced0e7b7bfea30158b53",
+    178
+   ],
+   [
+    "AgentID Pass",
+    "0xf1ebbd2f505dc98d1e63e578b8780833f19f1158",
+    177
+   ],
+   [
+    "DRAKE DECK Free Edition",
+    "0x566619a4a936985833e5db71adfc031a446304f6",
+    177
+   ],
+   [
+    "Agent Stamp",
+    "0x071e1689b69ca831de56250d52f911ae95a01812",
+    170
+   ],
+   [
+    "Pascabowo Pass",
+    "0x366810d042fb69303282223667647d96809ab1ca",
+    165
+   ],
+   [
+    "Agent ID Badge",
+    "0x3020571b6f0ed97088a8209517b6d38c39572a1f",
+    165
+   ],
+   [
+    "Agent Mint by 2l8",
+    "0x0a46ac17ee0b484971e7163d64ffec69ca7f0a86",
+    164
+   ],
+   [
+    "Agent ID Badge",
+    "0x3dde30f3e5e7d90191904ca34e1d42d29cf97f0a",
+    161
+   ],
+   [
+    "Agent Pioneer Badge",
+    "0xdf72e80ec7d3266d754050391508fba914168717",
+    151
+   ],
+   [
+    "LottoBots",
+    "0xc779c3e4c8b87b4ecac1b2308e4643e9021373fb",
+    136
    ]
   ]
  }

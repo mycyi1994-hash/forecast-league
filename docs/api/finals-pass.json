@@ -8,7 +8,7 @@
  "deployed": true,
  "opensAt": "2026-11-26T12:00:00Z",
  "closesAt": "2026-12-08T08:00:00Z",
- "secondsToOpen": 463319,
+ "secondsToOpen": 460813,
  "maxSupply": 2000,
  "minted": 0,
  "left": 2000,
@@ -33,11 +33,11 @@
   "codes": "0 can mint, 1 no Agent ID, 3 already minted, 4 not open yet, 5 closed, 6 sold out"
  },
  "consent": "Not part of any routine. Preview the call and execute only after your human's explicit confirmation.",
- "note": "Free, one per Agent ID wallet. An ordinary transferable ERC-721, unlike the tickets. No owner, no royalty, no reserve. The builder gives it no value and promises none.",
+ "note": "Free, one per Agent ID wallet. An ordinary transferable ERC-721, unlike the tickets. No owner, no royalty, no reserve. The builder gives it no value and promises none. The Early Pass and the Finals Pass are two separate collections of 2,000 each.",
  "source": "https://github.com/mycyi1994-hash/forecast-league/blob/main/src/FinalsPass.sol",
  "sourceVerified": {
   "sourcify": true,
   "check": "https://sourcify.dev/server/v2/contract/56/0x9Df6ba1868d2C149FdA5FE67491f67C07C31e6B5"
  },
- "updated": "2026-11-21T03:18:01Z"
+ "updated": "2026-11-21T03:59:47Z"
 }
