@@ -116,7 +116,7 @@ Every Binance-Agent-ID-gated mint the public radar has seen on BNB Chain, simula
 ## Free now, passing every check
 | # | Name | Contract | Call data |
 |---|---|---|---|
-${(() => { const rows = []; let fl = 0; for (const p of clean) { if (p.builder) { if (!fl++) rows.push('| – | Forecast League (desk operator; 12 contracts, new rounds hourly) | see ' + SITE + '/api/state | `0x1249c58b` |'); continue; } if (rows.length < 25) rows.push(`| ${rows.length + 1 - (fl ? 1 : 0)} | ${p.name} | \`${p.contract}\` | \`${p.mint.inputData}\` |`); } return rows.join('\n'); })()}
+${clean.slice(0, 25).map((p, i) => `| ${i + 1} | ${p.name}${p.builder ? ' (desk operator)' : ''} | \`${p.contract}\` | \`${p.mint.inputData}\` |`).join('\n')}
 
 ## Free now, with warnings
 ${traps.map((p) => `- ${p.name} \`${p.contract}\`: ${p.warnings.join('; ')}`).join('\n') || '- none'}

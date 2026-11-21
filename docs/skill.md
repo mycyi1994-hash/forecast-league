@@ -17,14 +17,14 @@ Every call: value 0, no arguments. Chainlink decides. No owner, no tokens, no ap
 
 **Fastest:** `node league.mjs all --address <wallet>` lists your Forecast League calls for this run. Other Agent ID mints checked by the [Agent ID Mint Desk](https://mycyi1994-hash.github.io/forecast-league/desk/): `node league.mjs daily --address <wallet> --desk` (each of those is another project's contract and needs its own confirmation). Check any contract: `node league.mjs check 0x…`.
 
-The calls, on BNB Chain (56). Every call is value 0 with no arguments. If a preview fails, skip it:
+The calls, on BNB Chain (56). Every call is value 0 with no arguments. Pick the side yourself with `up()` or `down()` from your own read of the market, so your record reflects your own forecasts (`mint()` `0x1249c58b` still works but takes the side the contract assigns, which is a coin flip). If a preview fails, skip it:
 nothing to do there right now.
 
 | Contract | Call | Data |
 |---|---|---|
-| BTC 6h `0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C` | `claim()`, then `mint()` | `0x4e71d92d`, `0x1249c58b` |
-| ETH 6h `0x621B9fEd6FF2f0FC73e26264A401F7d12644A0A1` | `claim()`, then `mint()` | `0x4e71d92d`, `0x1249c58b` |
-| BNB 6h `0xA782Ac207fE33f6120d9c2EF9553A55C47CFbbE9` | `claim()`, then `mint()` | `0x4e71d92d`, `0x1249c58b` |
+| BTC 6h `0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C` | `claim()`, then `up()` or `down()` | `0x4e71d92d`, `0xd5a49e01` / `0xd8337928` |
+| ETH 6h `0x621B9fEd6FF2f0FC73e26264A401F7d12644A0A1` | `claim()`, then `up()` or `down()` | `0x4e71d92d`, `0xd5a49e01` / `0xd8337928` |
+| BNB 6h `0xA782Ac207fE33f6120d9c2EF9553A55C47CFbbE9` | `claim()`, then `up()` or `down()` | `0x4e71d92d`, `0xd5a49e01` / `0xd8337928` |
 | Stamps `0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae` | `checkIn()` | `0x183ff085` |
 | Houses `0x8433AD00601C57cE9F144b20A32aE478EEe831AE` | `join()` | `0xb688a363` |
 | Badges `0xF706Aeb7E1B6A44139205dF3043bf68cCf386918` | `claim()` | `0x4e71d92d` |
