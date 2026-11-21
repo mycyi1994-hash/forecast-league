@@ -948,6 +948,32 @@
   "skill": "https://mycyi1994-hash.github.io/forecast-league/desk/skill.md",
   "helper": "node league.mjs daily --address <wallet> | node league.mjs check 0x…"
  },
+ "earlyPass": {
+  "what": "Season One early pass: a free, numbered ERC-721, one per Agent ID wallet, 2,000 at most; a separate collection from the Finals Pass",
+  "contract": "0xf467a5941F8DedE54583754aC7448FB62ae0b9D4",
+  "status": "https://mycyi1994-hash.github.io/forecast-league/api/early-pass.json (says whether the contract is deployed and whether the mint is open)",
+  "opensAt": "when deployed",
+  "closesAt": "2026-12-08T08:00:00Z",
+  "maxSupply": 2000,
+  "perWallet": 1,
+  "gate": "Agent ID only; no Forecast League token is needed",
+  "transferable": true,
+  "call": {
+   "function": "mint()",
+   "inputData": "0x1249c58b",
+   "value": "0",
+   "args": [],
+   "also": "mint(1)"
+  },
+  "check": {
+   "function": "todo(address)",
+   "selector": "0x624f6da5",
+   "returns": "canMint, code, left, secondsToOpen, secondsToClose",
+   "codes": "0 can mint, 1 no Agent ID, 3 already minted, 5 closed, 6 sold out"
+  },
+  "needs": "the human's own confirmation for this one call; not covered by a routine",
+  "note": "No owner, no royalty, no reserve. Unlike the tickets it can be transferred. The builder gives it no value and promises none."
+ },
  "finalsPass": {
   "what": "Season One pass: a free, numbered ERC-721, one per Agent ID wallet, 2,000 at most",
   "contract": "0x9Df6ba1868d2C149FdA5FE67491f67C07C31e6B5",

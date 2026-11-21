@@ -1,13 +1,29 @@
 # 사장님 할 일 (2026-11-21 기준)
 
-지금 위치: 지갑 374개, 대회 기간에 나온 Agent ID 전용 민팅 가운데 20위. 10위는 463개, 1위는 9,278개입니다. 순위는 `launch/rivals/latest.md`에 매일 갱신됩니다.
+지금 위치: 지갑 395개. 대회 기간에 배포된 Agent ID 민팅 가운데 8위이고, 1위는 738개, 2~7위는 402~450개입니다. 보유 지갑 2,000~9,000개짜리 계약들은 대회 2~3주 전에 배포된 것이라 순위에서 뺐습니다. 순위는 `launch/rivals/latest.md`에 매일 갱신됩니다.
 
 사이트: https://mycyi1994-hash.github.io/forecast-league/
-한국어 5분 안내: https://mycyi1994-hash.github.io/forecast-league/ko/
 
-순서대로 하시면 됩니다. 1~3번이 오늘 할 일입니다.
+0번이 가장 급합니다. 나머지는 순서대로 하시면 됩니다.
 
 ---
+
+## 0. 얼리 패스 배포 (지금, 거래 한 번)
+
+파이널 패스는 배포됐지만 11월 26일에야 열립니다. 대회 기간에 민팅이 잘된 계약은 모두 "한정 수량 + 양도 가능 + 지금 열려 있음"이었고, 우리 계약 12개는 한도가 없고 양도 불가라 무료 민팅 레이더(AgenticMint)에 하나도 실리지 않았습니다. 얼리 패스는 배포하는 순간부터 민팅되는 한정 2,000장 패스입니다.
+
+에이전틱 월렛이 연결된 AI에게 아래를 그대로 보냅니다. 비용은 약 0.00022 BNB입니다.
+
+```
+https://raw.githubusercontent.com/mycyi1994-hash/forecast-league/main/launch/early_pass/calldata.txt 의 내용 전체를 inputData로 써서, BNB Chain(56)에서 0x4e59b44847b379578588920cA78FbF26c0B4956C 로 value 0 계약 호출을 보내 줘. 먼저 baw contract-call preview 로 미리보기를 보여 주고, 내가 확인하면 실행해. 가스 한도는 300만으로.
+```
+
+배포한 뒤 **제출 폼에 주소 두 개를 추가**합니다. 추가해야 이 계약들의 지갑과 거래가 집계됩니다.
+
+- 얼리 패스 `0xf467a5941F8DedE54583754aC7448FB62ae0b9D4`
+- 파이널 패스 `0x9Df6ba1868d2C149FdA5FE67491f67C07C31e6B5` (11월 21일 배포 완료, 소스 인증 완료)
+
+사이트, 피드, Sourcify 소스 인증은 배포를 감지해 저절로 처리됩니다.
 
 ## 1. 주최 측에 질문 보내기 (오늘, 3분)
 
@@ -36,27 +52,17 @@ Thank you.
 the skill previews every call and executes only after the human's explicit confirmation, as the official Binance Agentic Wallet skill requires (a routine runs only after the human confirmed that exact routine, with its calls and limits read out)
 ```
 
-## 3. 파이널 패스 배포 (오늘~11월 23일, 거래 한 번)
+## 3. 파이널 패스 (배포 완료, 11월 26일 21:00 오픈)
 
-계약은 완성했고 테스트를 통과했습니다. 사양은 2,000장 한정, 지갑당 1장, Agent ID만 있으면 민팅, 양도 가능, 11월 26일 21:00(한국시간) 오픈, 12월 8일 17:00 마감입니다. 주소는 미리 정해져 있습니다: `0x9Df6ba1868d2C149FdA5FE67491f67C07C31e6B5`
+`0x9Df6ba1868d2C149FdA5FE67491f67C07C31e6B5` 에 배포됐고 Sourcify 소스 인증도 끝났습니다. 11월 26일 21:00(한국시간)에 저절로 열립니다. 남은 일:
 
-에이전틱 월렛이 연결된 AI에게 아래를 그대로 보냅니다. 비용은 약 0.00013 BNB입니다.
+1. 제출 폼에 주소 추가 (0번과 함께).
+2. BscScan 소스 인증: 방법은 `launch/finals_pass/README.md`.
+3. NFT Calendar 등록: 문안은 `launch/finals_pass/nftcalendar.md`. 심사에 4~5일 걸리니 오늘 내면 오픈 날짜에 맞습니다.
 
-```
-https://raw.githubusercontent.com/mycyi1994-hash/forecast-league/main/launch/finals_pass/calldata.txt 의 내용 전체를 inputData로 써서, BNB Chain(56)에서 0x4e59b44847b379578588920cA78FbF26c0B4956C 로 value 0 계약 호출을 보내 줘. 먼저 baw contract-call preview 로 미리보기를 보여 주고, 내가 확인하면 실행해. 가스 한도는 300만으로.
-```
+## 4. 커뮤니티 공지 (선택, 가능할 때만)
 
-배포한 뒤 바로 할 일 세 가지:
-
-1. **제출 폼에 주소 추가**: `0x9Df6ba1868d2C149FdA5FE67491f67C07C31e6B5` (Finals Pass). 추가해야 이 계약의 지갑과 거래가 집계됩니다.
-2. **BscScan 소스 인증**: 방법은 `launch/finals_pass/README.md`. (Sourcify 인증은 자동으로 제출됩니다.)
-3. **NFT Calendar 등록**: 문안은 `launch/finals_pass/nftcalendar.md`. 심사에 4~5일 걸리니 배포한 날 냅니다.
-
-사이트와 피드는 배포를 매시간 확인해서 저절로 "배포 완료"로 바뀌고, 오픈 시각이 되면 "민팅 중"으로 바뀝니다.
-
-## 4. 커뮤니티 6,000명 (2주, 글 4번)
-
-가장 큰 지렛대입니다. 다른 팀은 이 사람들에게 닿지 못합니다. 10명 중 1명만 와도 지갑이 지금의 2.5배가 되고 7위권입니다.
+커뮤니티를 쓰기 어렵다고 하셔서 필수에서 뺐습니다. 나중에 쓸 수 있게 문안만 남겨 둡니다.
 
 **1일차 공지**: `launch/community_notice_ko.md` 그대로.
 

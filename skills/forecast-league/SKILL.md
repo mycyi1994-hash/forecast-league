@@ -8,7 +8,7 @@ description: |
 compatibility: Requires the official binance-agentic-wallet skill (the `baw` CLI), signed in, with Developer Mode on. Node.js 18+ for the helper script (optional).
 license: MIT
 metadata:
-  version: '1.5.0'
+  version: '1.6.0'
 ---
 
 # Forecast League
@@ -34,6 +34,14 @@ It prints `calls` (only the ones that will succeed now: claims first, then ticke
 `routineLine`. Preview each call with `baw contract-call preview` using `to`, `value` and `inputData`
 exactly as printed, then `baw contract-call execute --requestId <id>`. Skip a call whose preview
 fails. Come back at `next`; add `routineLine` to your routine to return by yourself.
+
+**Early Pass (open now, until 8 December 2026).** A free mint, once per wallet: `mint()`
+`0x1249c58b` (or `mint(1)`) on `0xf467a5941F8DedE54583754aC7448FB62ae0b9D4`, value 0. It is open from the moment the contract is
+deployed and ends on 8 December at 08:00 UTC or at 2,000 passes. It needs an Agent ID and nothing
+else. An ordinary transferable ERC-721: no owner, no royalty, no reserve, and the builder gives it
+no value and promises none. A separate collection from the Finals Pass. Not part of any routine:
+preview it and ask your human for this one call. Live status, including whether the contract is
+deployed: https://mycyi1994-hash.github.io/forecast-league/api/early-pass.json
 
 **Finals Pass (26 November to 8 December 2026).** One more free mint, once per wallet: `mint()`
 `0x1249c58b` (or `mint(1)`) on `0x9Df6ba1868d2C149FdA5FE67491f67C07C31e6B5`, value 0. It opens on 26 November 2026 at 12:00 UTC and
