@@ -73,6 +73,16 @@
  "joinedRounds": {},
  "pendingResults": [
   {
+   "market": "ETH 1h",
+   "tickets": 1,
+   "resultFinalAt": "2026-11-21T18:00:00Z"
+  },
+  {
+   "market": "BNB 1h",
+   "tickets": 1,
+   "resultFinalAt": "2026-11-21T18:00:00Z"
+  },
+  {
    "market": "BTC 1d",
    "tickets": 1,
    "resultFinalAt": "2026-11-22T00:00:00Z"
@@ -120,7 +130,7 @@
    },
    {
     "market": "ETH 1h",
-    "tickets": 3,
+    "tickets": 4,
     "wins": 0,
     "losses": 0,
     "streak": 0,
@@ -128,7 +138,7 @@
    },
    {
     "market": "BNB 1h",
-    "tickets": 4,
+    "tickets": 5,
     "wins": 0,
     "losses": 0,
     "streak": 0,
