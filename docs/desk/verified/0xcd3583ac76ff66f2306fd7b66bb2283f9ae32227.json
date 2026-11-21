@@ -2,8 +2,8 @@
  "contract": "0xcd3583ac76ff66f2306fd7b66bb2283f9ae32227",
  "name": "AgentStreak",
  "verdict": "passed",
- "checkedAt": "2026-11-21T04:02:53Z",
- "block": 134819804,
+ "checkedAt": "2026-11-21T05:14:54Z",
+ "block": 134829403,
  "checks": {
   "simulatedFromAgentIdWallet": true,
   "gateEnforced": true,

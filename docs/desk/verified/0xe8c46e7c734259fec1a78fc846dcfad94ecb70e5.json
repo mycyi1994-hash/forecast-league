@@ -2,8 +2,8 @@
  "contract": "0xe8c46e7c734259fec1a78fc846dcfad94ecb70e5",
  "name": "Tigora",
  "verdict": "passed",
- "checkedAt": "2026-11-21T04:02:53Z",
- "block": 134819804,
+ "checkedAt": "2026-11-21T05:14:54Z",
+ "block": 134829403,
  "checks": {
   "simulatedFromAgentIdWallet": true,
   "gateEnforced": true,

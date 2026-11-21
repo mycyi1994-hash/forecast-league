@@ -2,8 +2,8 @@
  "contract": "0xba5dd9f1ee470fdf39ef7a82cf09b2c44a917bc8",
  "name": "Dead Man's Doubloons",
  "verdict": "passed",
- "checkedAt": "2026-11-21T04:02:53Z",
- "block": 134819804,
+ "checkedAt": "2026-11-21T05:14:54Z",
+ "block": 134829403,
  "checks": {
   "simulatedFromAgentIdWallet": true,
   "gateEnforced": true,

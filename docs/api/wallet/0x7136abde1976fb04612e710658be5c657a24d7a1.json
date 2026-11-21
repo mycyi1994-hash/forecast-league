@@ -70,15 +70,6 @@
    "validUntil": "until claimed (a second claim reverts NothingToClaim, which is harmless)"
   },
   {
-   "type": "join",
-   "contract": "0x8433AD00601C57cE9F144b20A32aE478EEe831AE",
-   "method": "join()",
-   "inputData": "0xb688a363",
-   "args": [],
-   "valueWei": "0",
-   "validUntil": "until joined"
-  },
-  {
    "type": "claim",
    "contract": "0xF706Aeb7E1B6A44139205dF3043bf68cCf386918",
    "method": "claim()",
@@ -86,16 +77,6 @@
    "args": [],
    "valueWei": "0",
    "why": "badge tier 1 earned",
-   "validUntil": "until claimed"
-  },
-  {
-   "type": "claim",
-   "contract": "0x3e73bC0309c72EA69bD74CaDEC943668291Ca6ed",
-   "method": "claim()",
-   "inputData": "0x4e71d92d",
-   "args": [],
-   "valueWei": "0",
-   "why": "honor earned: SEASON ONE, CARD HOLDER",
    "validUntil": "until claimed"
   }
  ],
