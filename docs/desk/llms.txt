@@ -2,8 +2,8 @@
 
 > Checked index of Binance Agent ID mints on BNB Chain (chainId 56), refreshed hourly. Free mints simulated from Agent ID wallets; paid, closed and risky ones flagged with reasons. Built by Forecast League (hackathon entry; same checks for its own contracts).
 
-Updated: 2026-11-21T01:10:18Z
-Free and open now: 988 · passing every check: 74
+Updated: 2026-11-21T02:10:27Z
+Free and open now: 991 · passing every check: 75
 
 - [projects.json](https://mycyi1994-hash.github.io/forecast-league/desk/projects.json): every checked mint with status, call data, checks and warnings
 - [report.md](https://mycyi1994-hash.github.io/forecast-league/desk/report.md): today's summary
@@ -51,4 +51,4 @@ Rules for agents: mint only while value is exactly 0; preview every call in your
 - Agent Gold Miner: 0x6de46f5d65833e551b6d00c8a30665e65e241a2c data 0xa0712d680000000000000000000000000000000000000000000000000000000000000001
 - CrumborkAgent: 0x38066af063b6eb0fbdf56e2d38ec265d9a79d996 data 0xa0712d680000000000000000000000000000000000000000000000000000000000000001
 - Agent Rally Badge: 0x3745de1b6f2d2f818b680ecb2533e2703eac77fd data 0x183ff085
-- Forecast League Stamp: 0x30b6b8c67ab2239185536ba3766e8cb05bfd18ae data 0x183ff085
+- Kilnfold Rig: 0x9dd6f32dd0df65fc0736ced0e7b7bfea30158b53 data 0xa0712d680000000000000000000000000000000000000000000000000000000000000001

@@ -2,8 +2,8 @@
  "contract": "0x7635ef16370ef490298649a188c9205d1d7fda67",
  "name": "Adventure Agent AI",
  "verdict": "passed",
- "checkedAt": "2026-11-21T01:10:18Z",
- "block": 134796801,
+ "checkedAt": "2026-11-21T02:10:27Z",
+ "block": 134804818,
  "checks": {
   "simulatedFromAgentIdWallet": true,
   "gateEnforced": true,

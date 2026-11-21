@@ -2,8 +2,8 @@
  "contract": "0x2d15595d2e6efb1c1ebf938cd7fd0f57d11c6b86",
  "name": "相信币安",
  "verdict": "passed",
- "checkedAt": "2026-11-21T01:10:18Z",
- "block": 134796801,
+ "checkedAt": "2026-11-21T02:10:27Z",
+ "block": 134804818,
  "checks": {
   "simulatedFromAgentIdWallet": true,
   "gateEnforced": true,
