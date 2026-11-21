@@ -2,40 +2,77 @@
  "wallet": "0x228f5b19bf082341b02a342df71e3fb2ee1a7062",
  "holdsAgentId": true,
  "howToUse": "Step 1: send the claims below (they stay valid until done). Step 2: read https://mycyi1994-hash.github.io/forecast-league/api/state for the rounds open now; skip a market whose round number equals joinedRounds[market]. Step 3: preview every call right before sending; skip any that fails. Come back at the earliest pendingResults.resultFinalAt or when the next round opens.",
- "claims": [],
+ "claims": [
+  {
+   "type": "claim",
+   "market": "BTC 1h",
+   "contract": "0x09A645aa6cc6b0eB320dCF3982bcaA6A22b32629",
+   "method": "claim()",
+   "inputData": "0x4e71d92d",
+   "args": [],
+   "valueWei": "0",
+   "finishedTickets": 1,
+   "validUntil": "until claimed (a second claim reverts NothingToClaim, which is harmless)"
+  },
+  {
+   "type": "claim",
+   "market": "ETH 1h",
+   "contract": "0x8b998abA2BeeebF7ceBf565bC53BC575693c07a4",
+   "method": "claim()",
+   "inputData": "0x4e71d92d",
+   "args": [],
+   "valueWei": "0",
+   "finishedTickets": 1,
+   "validUntil": "until claimed (a second claim reverts NothingToClaim, which is harmless)"
+  },
+  {
+   "type": "claim",
+   "market": "BNB 1h",
+   "contract": "0x66613fD9a2c70d4cB56D920bDd0D56bA95BD2736",
+   "method": "claim()",
+   "inputData": "0x4e71d92d",
+   "args": [],
+   "valueWei": "0",
+   "finishedTickets": 1,
+   "validUntil": "until claimed (a second claim reverts NothingToClaim, which is harmless)"
+  }
+ ],
  "joinedRounds": {
+  "BTC 6h": 83114,
+  "ETH 6h": 83114,
+  "BNB 6h": 83114,
   "BTC 1d": 20778
  },
  "pendingResults": [
   {
    "market": "BTC 6h",
-   "tickets": 1,
-   "resultFinalAt": "2026-11-21T18:00:00Z"
+   "tickets": 2,
+   "resultFinalAt": "2026-11-22T00:00:00Z"
   },
   {
    "market": "ETH 6h",
-   "tickets": 1,
-   "resultFinalAt": "2026-11-21T18:00:00Z"
+   "tickets": 2,
+   "resultFinalAt": "2026-11-22T00:00:00Z"
   },
   {
    "market": "BNB 6h",
-   "tickets": 1,
-   "resultFinalAt": "2026-11-21T18:00:00Z"
+   "tickets": 2,
+   "resultFinalAt": "2026-11-22T00:00:00Z"
   },
   {
    "market": "BTC 1h",
    "tickets": 1,
-   "resultFinalAt": "2026-11-21T13:00:00Z"
+   "resultFinalAt": "2026-11-21T15:00:00Z"
   },
   {
    "market": "ETH 1h",
    "tickets": 1,
-   "resultFinalAt": "2026-11-21T13:00:00Z"
+   "resultFinalAt": "2026-11-21T15:00:00Z"
   },
   {
    "market": "BNB 1h",
    "tickets": 1,
-   "resultFinalAt": "2026-11-21T13:00:00Z"
+   "resultFinalAt": "2026-11-21T15:00:00Z"
   },
   {
    "market": "BTC 1d",
@@ -53,7 +90,7 @@
   "byMarket": [
    {
     "market": "BTC 6h",
-    "tickets": 1,
+    "tickets": 2,
     "wins": 0,
     "losses": 0,
     "streak": 0,
@@ -61,7 +98,7 @@
    },
    {
     "market": "ETH 6h",
-    "tickets": 1,
+    "tickets": 2,
     "wins": 0,
     "losses": 0,
     "streak": 0,
@@ -69,7 +106,7 @@
    },
    {
     "market": "BNB 6h",
-    "tickets": 1,
+    "tickets": 2,
     "wins": 0,
     "losses": 0,
     "streak": 0,
@@ -77,7 +114,7 @@
    },
    {
     "market": "BTC 1h",
-    "tickets": 1,
+    "tickets": 2,
     "wins": 0,
     "losses": 0,
     "streak": 0,
@@ -85,7 +122,7 @@
    },
    {
     "market": "ETH 1h",
-    "tickets": 1,
+    "tickets": 2,
     "wins": 0,
     "losses": 0,
     "streak": 0,
@@ -93,7 +130,7 @@
    },
    {
     "market": "BNB 1h",
-    "tickets": 1,
+    "tickets": 2,
     "wins": 0,
     "losses": 0,
     "streak": 0,
