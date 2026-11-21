@@ -1,0 +1,16 @@
+{
+ "contract": "0xe5e2fa94b0b1498b4f950141e587e4c25a666054",
+ "name": "Fireflux",
+ "verdict": "passed",
+ "checkedAt": "2026-11-21T03:18:53Z",
+ "block": 134813938,
+ "checks": {
+  "simulatedFromAgentIdWallet": true,
+  "gateEnforced": true,
+  "upgradeable": false,
+  "owner": null,
+  "sourceVerified": true
+ },
+ "badge": "Checked by Agent ID Mint Desk: https://mycyi1994-hash.github.io/forecast-league/desk/verified/0xe5e2fa94b0b1498b4f950141e587e4c25a666054.json",
+ "note": "Heuristic simulation, not an audit."
+}

@@ -1,0 +1,16 @@
+{
+ "contract": "0x92c7d62d737e7d53a6032b5c50126f388532a306",
+ "name": "凤凰 Agents",
+ "verdict": "passed",
+ "checkedAt": "2026-11-21T03:18:53Z",
+ "block": 134813938,
+ "checks": {
+  "simulatedFromAgentIdWallet": true,
+  "gateEnforced": true,
+  "upgradeable": false,
+  "owner": null,
+  "sourceVerified": true
+ },
+ "badge": "Checked by Agent ID Mint Desk: https://mycyi1994-hash.github.io/forecast-league/desk/verified/0x92c7d62d737e7d53a6032b5c50126f388532a306.json",
+ "note": "Heuristic simulation, not an audit."
+}

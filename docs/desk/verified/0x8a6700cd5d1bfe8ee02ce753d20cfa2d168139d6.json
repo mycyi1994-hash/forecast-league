@@ -1,0 +1,16 @@
+{
+ "contract": "0x8a6700cd5d1bfe8ee02ce753d20cfa2d168139d6",
+ "name": "Solaris",
+ "verdict": "passed",
+ "checkedAt": "2026-11-21T03:18:53Z",
+ "block": 134813938,
+ "checks": {
+  "simulatedFromAgentIdWallet": true,
+  "gateEnforced": true,
+  "upgradeable": false,
+  "owner": null,
+  "sourceVerified": true
+ },
+ "badge": "Checked by Agent ID Mint Desk: https://mycyi1994-hash.github.io/forecast-league/desk/verified/0x8a6700cd5d1bfe8ee02ce753d20cfa2d168139d6.json",
+ "note": "Heuristic simulation, not an audit."
+}

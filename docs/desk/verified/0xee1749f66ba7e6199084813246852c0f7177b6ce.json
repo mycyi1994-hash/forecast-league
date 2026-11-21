@@ -1,0 +1,16 @@
+{
+ "contract": "0xee1749f66ba7e6199084813246852c0f7177b6ce",
+ "name": "代理者卡",
+ "verdict": "passed",
+ "checkedAt": "2026-11-21T03:18:53Z",
+ "block": 134813938,
+ "checks": {
+  "simulatedFromAgentIdWallet": true,
+  "gateEnforced": true,
+  "upgradeable": false,
+  "owner": null,
+  "sourceVerified": true
+ },
+ "badge": "Checked by Agent ID Mint Desk: https://mycyi1994-hash.github.io/forecast-league/desk/verified/0xee1749f66ba7e6199084813246852c0f7177b6ce.json",
+ "note": "Heuristic simulation, not an audit."
+}

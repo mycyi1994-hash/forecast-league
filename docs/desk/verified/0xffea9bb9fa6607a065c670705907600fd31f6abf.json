@@ -1,0 +1,16 @@
+{
+ "contract": "0xffea9bb9fa6607a065c670705907600fd31f6abf",
+ "name": "Agent Coin Flip",
+ "verdict": "passed",
+ "checkedAt": "2026-11-21T03:18:53Z",
+ "block": 134813938,
+ "checks": {
+  "simulatedFromAgentIdWallet": true,
+  "gateEnforced": true,
+  "upgradeable": false,
+  "owner": null,
+  "sourceVerified": true
+ },
+ "badge": "Checked by Agent ID Mint Desk: https://mycyi1994-hash.github.io/forecast-league/desk/verified/0xffea9bb9fa6607a065c670705907600fd31f6abf.json",
+ "note": "Heuristic simulation, not an audit."
+}

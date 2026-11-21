@@ -1,0 +1,16 @@
+{
+ "contract": "0xade253c6de4392f1bf51570200a7803f4f74e899",
+ "name": "MistBoxAgent",
+ "verdict": "passed",
+ "checkedAt": "2026-11-21T03:18:53Z",
+ "block": 134813938,
+ "checks": {
+  "simulatedFromAgentIdWallet": true,
+  "gateEnforced": true,
+  "upgradeable": false,
+  "owner": null,
+  "sourceVerified": true
+ },
+ "badge": "Checked by Agent ID Mint Desk: https://mycyi1994-hash.github.io/forecast-league/desk/verified/0xade253c6de4392f1bf51570200a7803f4f74e899.json",
+ "note": "Heuristic simulation, not an audit."
+}

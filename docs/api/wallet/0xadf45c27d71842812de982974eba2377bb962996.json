@@ -24,7 +24,13 @@
   }
  ],
  "joinedRounds": {},
- "pendingResults": [],
+ "pendingResults": [
+  {
+   "market": "ETH 1h",
+   "tickets": 1,
+   "resultFinalAt": "2026-11-21T04:00:00Z"
+  }
+ ],
  "stampToday": "checkIn() 0x183ff085 on 0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae once per UTC day (preview shows if already done)",
  "performance": {
   "decided": 0,
@@ -32,7 +38,16 @@
   "losses": 0,
   "winRate": null,
   "bestStreak": 0,
-  "byMarket": []
+  "byMarket": [
+   {
+    "market": "ETH 1h",
+    "tickets": 1,
+    "wins": 0,
+    "losses": 0,
+    "streak": 0,
+    "bestStreak": 0
+   }
+  ]
  },
  "asOfBlock": "see https://mycyi1994-hash.github.io/forecast-league/api/wallet/index.json (verifiedBlock, expiresAt)",
  "authorization": "respect_owner_wallet_policy"

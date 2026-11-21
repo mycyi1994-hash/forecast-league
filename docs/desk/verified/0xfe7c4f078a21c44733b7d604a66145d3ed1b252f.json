@@ -1,0 +1,16 @@
+{
+ "contract": "0xfe7c4f078a21c44733b7d604a66145d3ed1b252f",
+ "name": "Dandelio",
+ "verdict": "passed",
+ "checkedAt": "2026-11-21T03:18:53Z",
+ "block": 134813938,
+ "checks": {
+  "simulatedFromAgentIdWallet": true,
+  "gateEnforced": true,
+  "upgradeable": false,
+  "owner": null,
+  "sourceVerified": true
+ },
+ "badge": "Checked by Agent ID Mint Desk: https://mycyi1994-hash.github.io/forecast-league/desk/verified/0xfe7c4f078a21c44733b7d604a66145d3ed1b252f.json",
+ "note": "Heuristic simulation, not an audit."
+}

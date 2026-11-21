@@ -1,0 +1,16 @@
+{
+ "contract": "0xda00af9d8015263134c70909836ddde71eaf11ce",
+ "name": "Raccoonix",
+ "verdict": "passed",
+ "checkedAt": "2026-11-21T03:18:53Z",
+ "block": 134813938,
+ "checks": {
+  "simulatedFromAgentIdWallet": true,
+  "gateEnforced": true,
+  "upgradeable": false,
+  "owner": null,
+  "sourceVerified": true
+ },
+ "badge": "Checked by Agent ID Mint Desk: https://mycyi1994-hash.github.io/forecast-league/desk/verified/0xda00af9d8015263134c70909836ddde71eaf11ce.json",
+ "note": "Heuristic simulation, not an audit."
+}
