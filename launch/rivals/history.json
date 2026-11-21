@@ -130,5 +130,137 @@
     216
    ]
   ]
+ },
+ "2026-11-21": {
+  "ourRank": 22,
+  "ourWallets": 386,
+  "tenth": 491,
+  "top": [
+   [
+    "Printer Ai",
+    "0x7638bf791c601152a0e21899b1192cf2f7fe2348",
+    9278
+   ],
+   [
+    "DYOR",
+    "0x86956bc830eb62110820ae79164bef61c7e31936",
+    8635
+   ],
+   [
+    "BSC Agent Fragment",
+    "0xadec4072daab830017d82189734696a9cce834dd",
+    4767
+   ],
+   [
+    "BOO",
+    "0x783a3fcdb4ef41d37ccd017b2726c739ad123deb",
+    3060
+   ],
+   [
+    "Relic Dragons",
+    "0xab0baadfa7c7bc12bb5e19b1be253c434b04fd99",
+    2195
+   ],
+   [
+    "Niulai",
+    "0xae9ffcc72411b12e4e0bb4e615ded4a2d327345a",
+    1249
+   ],
+   [
+    "Mystery Pearl",
+    "0x226328ed31e972ecd3ec9e1e4d7bb18d19ce21bf",
+    944
+   ],
+   [
+    "SunHarvest",
+    "0x2d9943d20930ec59d7b432a0cf30521f8c0cc016",
+    733
+   ],
+   [
+    "Global Football 2026 Relic",
+    "0x7d0605342020192a03062b904ed501b067bb63f5",
+    557
+   ],
+   [
+    "GhoulGang",
+    "0x57a50bf31fd9914ea4e6d749d2c45837eb1ded41",
+    491
+   ],
+   [
+    "VeilOfShadows",
+    "0x0320451efe46fcacd888fb0a52ef9b968a708246",
+    463
+   ],
+   [
+    "Blaze Couriers",
+    "0x73ce43cfb1adb87a981dc93bf385626659f7107c",
+    450
+   ],
+   [
+    "CryptKeeperCollectibles",
+    "0x42b92ec15a25d1778c06a32aa4493c58eb2426b2",
+    444
+   ],
+   [
+    "AgentGate Pass",
+    "0x5b63bd45e61a2e6540548c3509b598b6384206c5",
+    443
+   ],
+   [
+    "CreatureFeature",
+    "0x5de5ee9125437a12d71fca89b8399aded40de916",
+    435
+   ],
+   [
+    "Agent Legends",
+    "0x5690b34da3efc5d55511c37a0ad4988cace8d912",
+    422
+   ],
+   [
+    "AgentDrop",
+    "0x1dd8740ffca0be3caac3b4a3eb41fdff506e38a9",
+    416
+   ],
+   [
+    "AgentQuest Badge",
+    "0x26ad277193ff31bd086a47bf7b1d25a93573c989",
+    415
+   ],
+   [
+    "AgentMint",
+    "0x038cb9b125915087fd980f995575ca105ddc9e6e",
+    413
+   ],
+   [
+    "Dusk Rangers",
+    "0x77577d88b56f8d4817701981f7f7ad40b85b41c7",
+    402
+   ],
+   [
+    "DeepShard",
+    "0xc463960af285b7eda0909d362ae31783597c2076",
+    400
+   ],
+   [
+    "Forecast League (12 contracts together)",
+    "ours",
+    386
+   ],
+   [
+    "Hexlings",
+    "0x5c6779ce599a830ab5554db65325192cf01de66e",
+    334
+   ],
+   [
+    "Ghoulies",
+    "0x86641a38d24dd42eb7d639bd1fc5bf7f66c19bf4",
+    333
+   ],
+   [
+    "AgentPup",
+    "0xf82f19feb002fa763b5a467757f5f10bc1279530",
+    319
+   ]
+  ]
  }
 }

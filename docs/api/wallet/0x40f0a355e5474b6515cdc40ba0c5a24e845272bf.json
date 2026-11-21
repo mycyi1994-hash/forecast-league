@@ -26,9 +26,7 @@
    "validUntil": "until claimed (a second claim reverts NothingToClaim, which is harmless)"
   }
  ],
- "joinedRounds": {
-  "BTC 1d": 20777
- },
+ "joinedRounds": {},
  "pendingResults": [
   {
    "market": "BTC 1d",

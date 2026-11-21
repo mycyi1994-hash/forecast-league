@@ -27,6 +27,17 @@
   },
   {
    "type": "claim",
+   "market": "BNB 6h",
+   "contract": "0xA782Ac207fE33f6120d9c2EF9553A55C47CFbbE9",
+   "method": "claim()",
+   "inputData": "0x4e71d92d",
+   "args": [],
+   "valueWei": "0",
+   "finishedTickets": 1,
+   "validUntil": "until claimed (a second claim reverts NothingToClaim, which is harmless)"
+  },
+  {
+   "type": "claim",
    "market": "BTC 1h",
    "contract": "0x09A645aa6cc6b0eB320dCF3982bcaA6A22b32629",
    "method": "claim()",
@@ -57,23 +68,9 @@
    "valueWei": "0",
    "finishedTickets": 2,
    "validUntil": "until claimed (a second claim reverts NothingToClaim, which is harmless)"
-  },
-  {
-   "type": "claim",
-   "contract": "0xF706Aeb7E1B6A44139205dF3043bf68cCf386918",
-   "method": "claim()",
-   "inputData": "0x4e71d92d",
-   "args": [],
-   "valueWei": "0",
-   "why": "badge tier 1 earned",
-   "validUntil": "until claimed"
   }
  ],
- "joinedRounds": {
-  "ETH 6h": 83111,
-  "BNB 6h": 83111,
-  "BTC 1d": 20777
- },
+ "joinedRounds": {},
  "pendingResults": [
   {
    "market": "ETH 6h",
@@ -82,8 +79,13 @@
   },
   {
    "market": "BNB 6h",
-   "tickets": 2,
+   "tickets": 1,
    "resultFinalAt": "2026-11-21T06:00:00Z"
+  },
+  {
+   "market": "ETH 1h",
+   "tickets": 1,
+   "resultFinalAt": "2026-11-21T01:00:00Z"
   },
   {
    "market": "BTC 1d",
@@ -133,7 +135,7 @@
    },
    {
     "market": "ETH 1h",
-    "tickets": 1,
+    "tickets": 2,
     "wins": 0,
     "losses": 0,
     "streak": 0,

@@ -1,12 +1,12 @@
 {
- "updated": "2026-11-20T19:09:05Z",
+ "updated": "2026-11-21T00:14:11Z",
  "since": "2026-11-18 08:00 UTC",
- "candidates": 168,
- "counted": 36,
+ "candidates": 172,
+ "counted": 41,
  "minSupply": 150,
- "ourRank": 20,
- "ourWallets": 374,
- "tenth": 463,
+ "ourRank": 22,
+ "ourWallets": 386,
+ "tenth": 491,
  "caveats": [
   "Holders now, not minters: transfers and airdrops change it.",
   "Only mint-type contracts the public radar marks as Agent-ID-gated; check-in or game entries without a token are missing.",
@@ -77,8 +77,8 @@
   {
    "name": "Niulai",
    "contract": "0xae9ffcc72411b12e4e0bb4e615ded4a2d327345a",
-   "holders": 1247,
-   "supply": 1270,
+   "holders": 1249,
+   "supply": 1272,
    "cap": 4444,
    "firstSeen": "2026-11-20 09:44:05",
    "price": "⭐ FREE",
@@ -87,28 +87,40 @@
    "rank": 6
   },
   {
+   "name": "Mystery Pearl",
+   "contract": "0x226328ed31e972ecd3ec9e1e4d7bb18d19ce21bf",
+   "holders": 944,
+   "supply": 1542,
+   "cap": 50000,
+   "firstSeen": "2026-11-20 22:49:20",
+   "price": "⭐ FREE",
+   "largestHolder": 2,
+   "unread": 0,
+   "rank": 7
+  },
+  {
    "name": "SunHarvest",
    "contract": "0x2d9943d20930ec59d7b432a0cf30521f8c0cc016",
-   "holders": 726,
-   "supply": 756,
+   "holders": 733,
+   "supply": 763,
    "cap": 8888,
    "firstSeen": "2026-11-19 02:52:46",
    "price": "TBD",
    "largestHolder": 11,
    "unread": 0,
-   "rank": 7
+   "rank": 8
   },
   {
    "name": "Global Football 2026 Relic",
    "contract": "0x7d0605342020192a03062b904ed501b067bb63f5",
-   "holders": 556,
-   "supply": 556,
+   "holders": 557,
+   "supply": 557,
    "cap": 2026,
    "firstSeen": "2026-11-20 13:30:38",
    "price": "⭐ FREE",
    "largestHolder": 1,
    "unread": 0,
-   "rank": 8
+   "rank": 9
   },
   {
    "name": "GhoulGang",
@@ -120,7 +132,7 @@
    "price": "⭐ FREE",
    "largestHolder": 15,
    "unread": 0,
-   "rank": 9
+   "rank": 10
   },
   {
    "name": "VeilOfShadows",
@@ -132,7 +144,7 @@
    "price": "⭐ FREE",
    "largestHolder": 15,
    "unread": 0,
-   "rank": 10
+   "rank": 11
   },
   {
    "name": "Blaze Couriers",
@@ -144,7 +156,7 @@
    "price": "⭐ FREE",
    "largestHolder": 2,
    "unread": 0,
-   "rank": 11
+   "rank": 12
   },
   {
    "name": "CryptKeeperCollectibles",
@@ -156,7 +168,19 @@
    "price": "⭐ FREE",
    "largestHolder": 15,
    "unread": 0,
-   "rank": 12
+   "rank": 13
+  },
+  {
+   "name": "AgentGate Pass",
+   "contract": "0x5b63bd45e61a2e6540548c3509b598b6384206c5",
+   "holders": 443,
+   "supply": 443,
+   "cap": 1000,
+   "firstSeen": "2026-11-18 11:37:38",
+   "price": "⭐ FREE",
+   "largestHolder": 1,
+   "unread": 0,
+   "rank": 14
   },
   {
    "name": "CreatureFeature",
@@ -168,84 +192,84 @@
    "price": "⭐ FREE",
    "largestHolder": 15,
    "unread": 0,
-   "rank": 13
-  },
-  {
-   "name": "AgentGate Pass",
-   "contract": "0x5b63bd45e61a2e6540548c3509b598b6384206c5",
-   "holders": 431,
-   "supply": 431,
-   "cap": 1000,
-   "firstSeen": "2026-11-18 11:37:38",
-   "price": "⭐ FREE",
-   "largestHolder": 1,
-   "unread": 0,
-   "rank": 14
+   "rank": 15
   },
   {
    "name": "Agent Legends",
    "contract": "0x5690b34da3efc5d55511c37a0ad4988cace8d912",
-   "holders": 409,
-   "supply": 458,
+   "holders": 422,
+   "supply": 471,
    "cap": 2000,
    "firstSeen": "2026-11-20 05:17:30",
    "price": "TBD",
    "largestHolder": 50,
    "unread": 0,
-   "rank": 15
+   "rank": 16
   },
   {
    "name": "AgentDrop",
    "contract": "0x1dd8740ffca0be3caac3b4a3eb41fdff506e38a9",
-   "holders": 408,
-   "supply": 408,
+   "holders": 416,
+   "supply": 416,
    "cap": null,
    "firstSeen": "2026-11-18 11:51:13",
-   "price": "⭐ FREE",
-   "largestHolder": 1,
-   "unread": 0,
-   "rank": 16
-  },
-  {
-   "name": "AgentMint",
-   "contract": "0x038cb9b125915087fd980f995575ca105ddc9e6e",
-   "holders": 401,
-   "supply": 401,
-   "cap": 1000,
-   "firstSeen": "2026-11-19 08:59:57",
    "price": "⭐ FREE",
    "largestHolder": 1,
    "unread": 0,
    "rank": 17
   },
   {
-   "name": "DeepShard",
-   "contract": "0xc463960af285b7eda0909d362ae31783597c2076",
-   "holders": 400,
-   "supply": 545,
-   "cap": 3333,
-   "firstSeen": "2026-11-18 17:32:15",
-   "price": "⭐ FREE",
-   "largestHolder": 2,
-   "unread": 0,
-   "rank": 18
-  },
-  {
    "name": "AgentQuest Badge",
    "contract": "0x26ad277193ff31bd086a47bf7b1d25a93573c989",
-   "holders": 400,
-   "supply": 852,
+   "holders": 415,
+   "supply": 875,
    "cap": null,
    "firstSeen": "2026-11-18 13:56:53",
    "price": "TBD",
    "largestHolder": 4,
    "unread": 0,
+   "rank": 18
+  },
+  {
+   "name": "AgentMint",
+   "contract": "0x038cb9b125915087fd980f995575ca105ddc9e6e",
+   "holders": 413,
+   "supply": 413,
+   "cap": 1000,
+   "firstSeen": "2026-11-19 08:59:57",
+   "price": "⭐ FREE",
+   "largestHolder": 1,
+   "unread": 0,
    "rank": 19
+  },
+  {
+   "name": "Dusk Rangers",
+   "contract": "0x77577d88b56f8d4817701981f7f7ad40b85b41c7",
+   "holders": 402,
+   "supply": 405,
+   "cap": 20000,
+   "firstSeen": "2026-11-20 21:48:49",
+   "price": "⭐ FREE",
+   "largestHolder": 2,
+   "unread": 0,
+   "rank": 20
+  },
+  {
+   "name": "DeepShard",
+   "contract": "0xc463960af285b7eda0909d362ae31783597c2076",
+   "holders": 400,
+   "supply": 546,
+   "cap": 3333,
+   "firstSeen": "2026-11-18 17:32:15",
+   "price": "⭐ FREE",
+   "largestHolder": 2,
+   "unread": 0,
+   "rank": 21
   },
   {
    "name": "Forecast League (12 contracts together)",
    "contract": "ours",
-   "holders": 374,
+   "holders": 386,
    "supply": null,
    "cap": null,
    "firstSeen": "2026-11-19",
@@ -253,7 +277,7 @@
    "largestHolder": null,
    "unread": 0,
    "ours": true,
-   "rank": 20
+   "rank": 22
   },
   {
    "name": "Hexlings",
@@ -265,7 +289,19 @@
    "price": "⭐ FREE",
    "largestHolder": 1,
    "unread": 0,
-   "rank": 21
+   "rank": 23
+  },
+  {
+   "name": "Ghoulies",
+   "contract": "0x86641a38d24dd42eb7d639bd1fc5bf7f66c19bf4",
+   "holders": 333,
+   "supply": 333,
+   "cap": 1545,
+   "firstSeen": "2026-11-20 23:16:18",
+   "price": "⭐ FREE",
+   "largestHolder": 1,
+   "unread": 0,
+   "rank": 24
   },
   {
    "name": "AgentPup",
@@ -277,19 +313,19 @@
    "price": "⭐ FREE",
    "largestHolder": 1,
    "unread": 0,
-   "rank": 22
+   "rank": 25
   },
   {
    "name": "Baiwor Passport",
    "contract": "0x0c458d61848ef7ffd753fbdd1179a7053a60661f",
-   "holders": 263,
-   "supply": 263,
+   "holders": 264,
+   "supply": 264,
    "cap": null,
    "firstSeen": "2026-11-18 16:33:32",
    "price": "⭐ FREE",
    "largestHolder": 1,
    "unread": 0,
-   "rank": 23
+   "rank": 26
   },
   {
    "name": "Agent Pioneer Badge",
@@ -301,79 +337,115 @@
    "price": "⭐ FREE",
    "largestHolder": 1,
    "unread": 0,
-   "rank": 24
+   "rank": 27
   },
   {
    "name": "AgentID Hub Pass",
    "contract": "0x3ae82e031702166b0ccfbfbf037f364998db0688",
-   "holders": 216,
-   "supply": 216,
+   "holders": 219,
+   "supply": 219,
    "cap": null,
    "firstSeen": "2026-11-18 15:42:44",
-   "price": "⭐ FREE",
-   "largestHolder": 1,
-   "unread": 0,
-   "rank": 25
-  },
-  {
-   "name": "Agent Badge",
-   "contract": "0xb617aa35249e2e5cf64412a02fe95d6570c171f6",
-   "holders": 182,
-   "supply": 182,
-   "cap": 1000,
-   "firstSeen": "2026-11-18 12:26:00",
-   "price": "⭐ FREE",
-   "largestHolder": 1,
-   "unread": 0,
-   "rank": 26
-  },
-  {
-   "name": "Agent ID Pioneer",
-   "contract": "0xde4c3c4ea57963e52fed2ec772a819a8d0c702fd",
-   "holders": 176,
-   "supply": 176,
-   "cap": 10000,
-   "firstSeen": "2026-11-18 11:59:30",
-   "price": "⭐ FREE",
-   "largestHolder": 1,
-   "unread": 0,
-   "rank": 27
-  },
-  {
-   "name": "DRAKE DECK Free Edition",
-   "contract": "0x566619a4a936985833e5db71adfc031a446304f6",
-   "holders": 174,
-   "supply": 174,
-   "cap": 1000,
-   "firstSeen": "2026-11-18 12:06:18",
    "price": "⭐ FREE",
    "largestHolder": 1,
    "unread": 0,
    "rank": 28
   },
   {
-   "name": "Agent Stamp",
-   "contract": "0x071e1689b69ca831de56250d52f911ae95a01812",
-   "holders": 167,
-   "supply": 198,
-   "cap": null,
-   "firstSeen": "2026-11-18 15:06:47",
+   "name": "Agent Badge",
+   "contract": "0xb617aa35249e2e5cf64412a02fe95d6570c171f6",
+   "holders": 186,
+   "supply": 186,
+   "cap": 1000,
+   "firstSeen": "2026-11-18 12:26:00",
    "price": "⭐ FREE",
-   "largestHolder": 3,
+   "largestHolder": 1,
    "unread": 0,
    "rank": 29
   },
   {
+   "name": "Agent ID Pioneer",
+   "contract": "0xde4c3c4ea57963e52fed2ec772a819a8d0c702fd",
+   "holders": 186,
+   "supply": 186,
+   "cap": 10000,
+   "firstSeen": "2026-11-18 11:59:30",
+   "price": "⭐ FREE",
+   "largestHolder": 1,
+   "unread": 0,
+   "rank": 30
+  },
+  {
+   "name": "DRAKE DECK Free Edition",
+   "contract": "0x566619a4a936985833e5db71adfc031a446304f6",
+   "holders": 177,
+   "supply": 177,
+   "cap": 1000,
+   "firstSeen": "2026-11-18 12:06:18",
+   "price": "⭐ FREE",
+   "largestHolder": 1,
+   "unread": 0,
+   "rank": 31
+  },
+  {
+   "name": "AgentID Pass",
+   "contract": "0xf1ebbd2f505dc98d1e63e578b8780833f19f1158",
+   "holders": 173,
+   "supply": 173,
+   "cap": 10000,
+   "firstSeen": "2026-11-19 06:45:44",
+   "price": "TBD",
+   "largestHolder": 1,
+   "unread": 0,
+   "rank": 32
+  },
+  {
+   "name": "Agent Stamp",
+   "contract": "0x071e1689b69ca831de56250d52f911ae95a01812",
+   "holders": 168,
+   "supply": 202,
+   "cap": null,
+   "firstSeen": "2026-11-18 15:06:47",
+   "price": "⭐ FREE",
+   "largestHolder": 4,
+   "unread": 0,
+   "rank": 33
+  },
+  {
+   "name": "Pascabowo Pass",
+   "contract": "0x366810d042fb69303282223667647d96809ab1ca",
+   "holders": 164,
+   "supply": 164,
+   "cap": 1000,
+   "firstSeen": "2026-11-19 08:26:18",
+   "price": "⭐ FREE",
+   "largestHolder": 1,
+   "unread": 0,
+   "rank": 34
+  },
+  {
+   "name": "Agent ID Badge",
+   "contract": "0x3020571b6f0ed97088a8209517b6d38c39572a1f",
+   "holders": 164,
+   "supply": 164,
+   "cap": 10000,
+   "firstSeen": "2026-11-18 13:32:15",
+   "price": "⭐ FREE",
+   "largestHolder": 1,
+   "unread": 0,
+   "rank": 35
+  },
+  {
    "name": "Agent Mint by 2l8",
    "contract": "0x0a46ac17ee0b484971e7163d64ffec69ca7f0a86",
-   "holders": 163,
-   "supply": 163,
+   "holders": 164,
+   "supply": 164,
    "cap": 10000,
    "firstSeen": "2026-11-18 12:24:48",
    "price": "⭐ FREE",
    "largestHolder": 1,
    "unread": 0,
-   "rank": 30
+   "rank": 36
   },
   {
    "name": "CobwebCastle",
@@ -385,43 +457,31 @@
    "price": "⭐ FREE",
    "largestHolder": 15,
    "unread": 0,
-   "rank": 31
-  },
-  {
-   "name": "Agent ID Badge",
-   "contract": "0x3020571b6f0ed97088a8209517b6d38c39572a1f",
-   "holders": 162,
-   "supply": 162,
-   "cap": 10000,
-   "firstSeen": "2026-11-18 13:32:15",
-   "price": "⭐ FREE",
-   "largestHolder": 1,
-   "unread": 0,
-   "rank": 32
+   "rank": 37
   },
   {
    "name": "Agent ID Badge",
    "contract": "0x3dde30f3e5e7d90191904ca34e1d42d29cf97f0a",
-   "holders": 159,
-   "supply": 159,
+   "holders": 160,
+   "supply": 160,
    "cap": null,
    "firstSeen": "2026-11-18 16:09:55",
    "price": "⭐ FREE",
    "largestHolder": 1,
    "unread": 0,
-   "rank": 33
+   "rank": 38
   },
   {
-   "name": "Pascabowo Pass",
-   "contract": "0x366810d042fb69303282223667647d96809ab1ca",
-   "holders": 158,
-   "supply": 158,
-   "cap": 1000,
-   "firstSeen": "2026-11-19 08:26:18",
+   "name": "Agent Pioneer Badge",
+   "contract": "0xdf72e80ec7d3266d754050391508fba914168717",
+   "holders": 150,
+   "supply": 150,
+   "cap": 10000,
+   "firstSeen": "2026-11-18 18:30:23",
    "price": "⭐ FREE",
    "largestHolder": 1,
    "unread": 0,
-   "rank": 34
+   "rank": 39
   },
   {
    "name": "LottoBots",
@@ -433,7 +493,7 @@
    "price": "TBD",
    "largestHolder": 2,
    "unread": 0,
-   "rank": 35
+   "rank": 40
   }
  ]
 }

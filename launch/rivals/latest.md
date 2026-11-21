@@ -1,8 +1,8 @@
-# 경쟁 순위 (2026-11-20 19:09:05 UTC)
+# 경쟁 순위 (2026-11-21 00:14:11 UTC)
 
-우리: **20위**, 지갑 374개. 10위는 463개.
+우리: **22위**, 지갑 386개. 10위는 491개.
 
-대회 시작(2026-11-18 08:00 UTC) 이후 레이더에 잡힌 Agent ID 전용 NFT 중 발행량 150개 이상인 36개의 보유 지갑을 직접 셌습니다.
+대회 시작(2026-11-18 08:00 UTC) 이후 레이더에 잡힌 Agent ID 전용 NFT 중 발행량 150개 이상인 41개의 보유 지갑을 직접 셌습니다.
 
 | 순위 | 이름 | 보유 지갑 | 발행 | 한도 | 레이더 첫 발견 | 계약 |
 |---|---|---|---|---|---|---|
@@ -11,36 +11,41 @@
 | 3 | BSC Agent Fragment | 4767 | 4958 | 5000 | 11-18 11:10 | `0xadec4072daab830017d82189734696a9cce834dd` |
 | 4 | BOO | 3060 | 3110 | 3110 | 11-18 11:13 | `0x783a3fcdb4ef41d37ccd017b2726c739ad123deb` |
 | 5 | Relic Dragons | 2195 | 2222 | 2222 | 11-18 11:06 | `0xab0baadfa7c7bc12bb5e19b1be253c434b04fd99` |
-| 6 | Niulai | 1247 | 1270 | 4444 | 11-20 09:44 | `0xae9ffcc72411b12e4e0bb4e615ded4a2d327345a` |
-| 7 | SunHarvest | 726 | 756 | 8888 | 11-19 02:52 | `0x2d9943d20930ec59d7b432a0cf30521f8c0cc016` |
-| 8 | Global Football 2026 Relic | 556 | 556 | 2026 | 11-20 13:30 | `0x7d0605342020192a03062b904ed501b067bb63f5` |
-| 9 | GhoulGang | 491 | 519 | 1345 | 11-19 17:35 | `0x57a50bf31fd9914ea4e6d749d2c45837eb1ded41` |
-| 10 | VeilOfShadows | 463 | 477 | 1250 | 11-19 00:08 | `0x0320451efe46fcacd888fb0a52ef9b968a708246` |
-| 11 | Blaze Couriers | 450 | 452 | 20000 | 11-20 12:29 | `0x73ce43cfb1adb87a981dc93bf385626659f7107c` |
-| 12 | CryptKeeperCollectibles | 444 | 458 | 1550 | 11-19 09:18 | `0x42b92ec15a25d1778c06a32aa4493c58eb2426b2` |
-| 13 | CreatureFeature | 435 | 463 | 1010 | 11-19 04:04 | `0x5de5ee9125437a12d71fca89b8399aded40de916` |
-| 14 | AgentGate Pass | 431 | 431 | 1000 | 11-18 11:37 | `0x5b63bd45e61a2e6540548c3509b598b6384206c5` |
-| 15 | Agent Legends | 409 | 458 | 2000 | 11-20 05:17 | `0x5690b34da3efc5d55511c37a0ad4988cace8d912` |
-| 16 | AgentDrop | 408 | 408 |  | 11-18 11:51 | `0x1dd8740ffca0be3caac3b4a3eb41fdff506e38a9` |
-| 17 | AgentMint | 401 | 401 | 1000 | 11-19 08:59 | `0x038cb9b125915087fd980f995575ca105ddc9e6e` |
-| 18 | DeepShard | 400 | 545 | 3333 | 11-18 17:32 | `0xc463960af285b7eda0909d362ae31783597c2076` |
-| 19 | AgentQuest Badge | 400 | 852 |  | 11-18 13:56 | `0x26ad277193ff31bd086a47bf7b1d25a93573c989` |
-| 20 | **Forecast League (12 contracts together)** | 374 |  |  | 11-19 |  |
-| 21 | Hexlings | 334 | 334 | 1535 | 11-19 18:04 | `0x5c6779ce599a830ab5554db65325192cf01de66e` |
-| 22 | AgentPup | 319 | 319 | 1000 | 11-20 09:31 | `0xf82f19feb002fa763b5a467757f5f10bc1279530` |
-| 23 | Baiwor Passport | 263 | 263 |  | 11-18 16:33 | `0x0c458d61848ef7ffd753fbdd1179a7053a60661f` |
-| 24 | Agent Pioneer Badge | 220 | 220 | 1000 | 11-18 09:28 | `0xfe4e0b3ab48bb988793f42ac90bec42da706958d` |
-| 25 | AgentID Hub Pass | 216 | 216 |  | 11-18 15:42 | `0x3ae82e031702166b0ccfbfbf037f364998db0688` |
-| 26 | Agent Badge | 182 | 182 | 1000 | 11-18 12:26 | `0xb617aa35249e2e5cf64412a02fe95d6570c171f6` |
-| 27 | Agent ID Pioneer | 176 | 176 | 10000 | 11-18 11:59 | `0xde4c3c4ea57963e52fed2ec772a819a8d0c702fd` |
-| 28 | DRAKE DECK Free Edition | 174 | 174 | 1000 | 11-18 12:06 | `0x566619a4a936985833e5db71adfc031a446304f6` |
-| 29 | Agent Stamp | 167 | 198 |  | 11-18 15:06 | `0x071e1689b69ca831de56250d52f911ae95a01812` |
-| 30 | Agent Mint by 2l8 | 163 | 163 | 10000 | 11-18 12:24 | `0x0a46ac17ee0b484971e7163d64ffec69ca7f0a86` |
-| 31 | CobwebCastle | 163 | 177 | 545 | 11-18 09:40 | `0x2a6d0f3243c765c8709790c6fa2d70a9c0e5474c` |
-| 32 | Agent ID Badge | 162 | 162 | 10000 | 11-18 13:32 | `0x3020571b6f0ed97088a8209517b6d38c39572a1f` |
-| 33 | Agent ID Badge | 159 | 159 |  | 11-18 16:09 | `0x3dde30f3e5e7d90191904ca34e1d42d29cf97f0a` |
-| 34 | Pascabowo Pass | 158 | 158 | 1000 | 11-19 08:26 | `0x366810d042fb69303282223667647d96809ab1ca` |
-| 35 | LottoBots | 136 | 196 | 5000 | 11-18 12:15 | `0xc779c3e4c8b87b4ecac1b2308e4643e9021373fb` |
+| 6 | Niulai | 1249 | 1272 | 4444 | 11-20 09:44 | `0xae9ffcc72411b12e4e0bb4e615ded4a2d327345a` |
+| 7 | Mystery Pearl | 944 | 1542 | 50000 | 11-20 22:49 | `0x226328ed31e972ecd3ec9e1e4d7bb18d19ce21bf` |
+| 8 | SunHarvest | 733 | 763 | 8888 | 11-19 02:52 | `0x2d9943d20930ec59d7b432a0cf30521f8c0cc016` |
+| 9 | Global Football 2026 Relic | 557 | 557 | 2026 | 11-20 13:30 | `0x7d0605342020192a03062b904ed501b067bb63f5` |
+| 10 | GhoulGang | 491 | 519 | 1345 | 11-19 17:35 | `0x57a50bf31fd9914ea4e6d749d2c45837eb1ded41` |
+| 11 | VeilOfShadows | 463 | 477 | 1250 | 11-19 00:08 | `0x0320451efe46fcacd888fb0a52ef9b968a708246` |
+| 12 | Blaze Couriers | 450 | 452 | 20000 | 11-20 12:29 | `0x73ce43cfb1adb87a981dc93bf385626659f7107c` |
+| 13 | CryptKeeperCollectibles | 444 | 458 | 1550 | 11-19 09:18 | `0x42b92ec15a25d1778c06a32aa4493c58eb2426b2` |
+| 14 | AgentGate Pass | 443 | 443 | 1000 | 11-18 11:37 | `0x5b63bd45e61a2e6540548c3509b598b6384206c5` |
+| 15 | CreatureFeature | 435 | 463 | 1010 | 11-19 04:04 | `0x5de5ee9125437a12d71fca89b8399aded40de916` |
+| 16 | Agent Legends | 422 | 471 | 2000 | 11-20 05:17 | `0x5690b34da3efc5d55511c37a0ad4988cace8d912` |
+| 17 | AgentDrop | 416 | 416 |  | 11-18 11:51 | `0x1dd8740ffca0be3caac3b4a3eb41fdff506e38a9` |
+| 18 | AgentQuest Badge | 415 | 875 |  | 11-18 13:56 | `0x26ad277193ff31bd086a47bf7b1d25a93573c989` |
+| 19 | AgentMint | 413 | 413 | 1000 | 11-19 08:59 | `0x038cb9b125915087fd980f995575ca105ddc9e6e` |
+| 20 | Dusk Rangers | 402 | 405 | 20000 | 11-20 21:48 | `0x77577d88b56f8d4817701981f7f7ad40b85b41c7` |
+| 21 | DeepShard | 400 | 546 | 3333 | 11-18 17:32 | `0xc463960af285b7eda0909d362ae31783597c2076` |
+| 22 | **Forecast League (12 contracts together)** | 386 |  |  | 11-19 |  |
+| 23 | Hexlings | 334 | 334 | 1535 | 11-19 18:04 | `0x5c6779ce599a830ab5554db65325192cf01de66e` |
+| 24 | Ghoulies | 333 | 333 | 1545 | 11-20 23:16 | `0x86641a38d24dd42eb7d639bd1fc5bf7f66c19bf4` |
+| 25 | AgentPup | 319 | 319 | 1000 | 11-20 09:31 | `0xf82f19feb002fa763b5a467757f5f10bc1279530` |
+| 26 | Baiwor Passport | 264 | 264 |  | 11-18 16:33 | `0x0c458d61848ef7ffd753fbdd1179a7053a60661f` |
+| 27 | Agent Pioneer Badge | 220 | 220 | 1000 | 11-18 09:28 | `0xfe4e0b3ab48bb988793f42ac90bec42da706958d` |
+| 28 | AgentID Hub Pass | 219 | 219 |  | 11-18 15:42 | `0x3ae82e031702166b0ccfbfbf037f364998db0688` |
+| 29 | Agent Badge | 186 | 186 | 1000 | 11-18 12:26 | `0xb617aa35249e2e5cf64412a02fe95d6570c171f6` |
+| 30 | Agent ID Pioneer | 186 | 186 | 10000 | 11-18 11:59 | `0xde4c3c4ea57963e52fed2ec772a819a8d0c702fd` |
+| 31 | DRAKE DECK Free Edition | 177 | 177 | 1000 | 11-18 12:06 | `0x566619a4a936985833e5db71adfc031a446304f6` |
+| 32 | AgentID Pass | 173 | 173 | 10000 | 11-19 06:45 | `0xf1ebbd2f505dc98d1e63e578b8780833f19f1158` |
+| 33 | Agent Stamp | 168 | 202 |  | 11-18 15:06 | `0x071e1689b69ca831de56250d52f911ae95a01812` |
+| 34 | Pascabowo Pass | 164 | 164 | 1000 | 11-19 08:26 | `0x366810d042fb69303282223667647d96809ab1ca` |
+| 35 | Agent ID Badge | 164 | 164 | 10000 | 11-18 13:32 | `0x3020571b6f0ed97088a8209517b6d38c39572a1f` |
+| 36 | Agent Mint by 2l8 | 164 | 164 | 10000 | 11-18 12:24 | `0x0a46ac17ee0b484971e7163d64ffec69ca7f0a86` |
+| 37 | CobwebCastle | 163 | 177 | 545 | 11-18 09:40 | `0x2a6d0f3243c765c8709790c6fa2d70a9c0e5474c` |
+| 38 | Agent ID Badge | 160 | 160 |  | 11-18 16:09 | `0x3dde30f3e5e7d90191904ca34e1d42d29cf97f0a` |
+| 39 | Agent Pioneer Badge | 150 | 150 | 10000 | 11-18 18:30 | `0xdf72e80ec7d3266d754050391508fba914168717` |
+| 40 | LottoBots | 136 | 196 | 5000 | 11-18 12:15 | `0xc779c3e4c8b87b4ecac1b2308e4643e9021373fb` |
 
 주의:
 - 지금 토큰을 들고 있는 지갑 수입니다. 민팅한 지갑 수와 다를 수 있습니다(양도, 팀 배포).
