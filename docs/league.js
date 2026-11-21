@@ -68,14 +68,20 @@
     }
     return out;
   }
+  // Batches of BATCH calls, at most PARALLEL batches in flight at once, results in call order.
+  const PARALLEL = 4;
   async function multicall(calls) {
-    const out = [];
-    for (let i = 0; i < calls.length; i += BATCH) {
-      const part = calls.slice(i, i + BATCH);
-      const res = await rpc('eth_call', [{ to: MULTICALL, data: encodeAggregate3(part) }, 'latest']);
-      out.push(...decodeAggregate3(res));
-    }
-    return out;
+    const parts = [];
+    for (let i = 0; i < calls.length; i += BATCH) parts.push(calls.slice(i, i + BATCH));
+    const results = new Array(parts.length); let next = 0;
+    const worker = async () => {
+      while (next < parts.length) {
+        const k = next++;
+        results[k] = decodeAggregate3(await rpc('eth_call', [{ to: MULTICALL, data: encodeAggregate3(parts[k]) }, 'latest']));
+      }
+    };
+    await Promise.all(Array.from({ length: Math.min(PARALLEL, parts.length) }, worker));
+    return results.flat();
   }
 
   function decodeString(hex) {
@@ -181,19 +187,22 @@
     }).filter((q) => q.open).sort((a, b) => b.score - a.score || b.members - a.members || b.forecasts - a.forecasts);
 
     // One entry per open market; `blitz` stays the BTC market for older readers.
-    const blitzMarkets = [];
-    for (const m of MARKETS) if (m.address) blitzMarkets.push({ pair: m.pair, ...(await loadBlitz(rows, m.address)) });
-    const roundMarkets = [];
-    for (const m of ROUND_MARKETS) { try { roundMarkets.push({ pair: m.pair, ...(await loadBlitz(rows, m.address)) }); } catch (e) {} }
+    // The markets are read side by side; a Rounds market that cannot be read is left out.
+    const blitzMarkets = await Promise.all(MARKETS.filter((m) => m.address).map(async (m) => ({ pair: m.pair, ...(await loadBlitz(rows, m.address)) })));
+    const roundMarkets = (await Promise.all(ROUND_MARKETS.map((m) => loadBlitz(rows, m.address).then((x) => ({ pair: m.pair, ...x }), () => null)))).filter(Boolean);
     const blitz = blitzMarkets.length ? blitzMarkets[0] : null;
     // Players across all markets: tickets, wins and losses added up, streaks as the best of the markets.
     const merged = new Map();
     [...blitzMarkets, ...roundMarkets].forEach((m) => m.table.forEach((r) => {
       const k = r.owner.toLowerCase(); const a = merged.get(k);
       if (!a) merged.set(k, { ...r });
-      else { a.tickets += r.tickets; a.wins += r.wins; a.losses += r.losses; a.unclaimed += r.unclaimed; a.streak = Math.max(a.streak, r.streak); a.best = Math.max(a.best, r.best); }
+      else {
+        a.tickets += r.tickets; a.wins += r.wins; a.losses += r.losses; a.unclaimed += r.unclaimed; a.streak = Math.max(a.streak, r.streak); a.best = Math.max(a.best, r.best);
+        a.sWon += r.sWon; a.sLost += r.sLost; a.sVoid += r.sVoid; a.sWait += r.sWait; a.sBest = Math.max(a.sBest, r.sBest);
+      }
     }));
-    const blitzTable = [...merged.values()].sort((a, b) => (b.wins - b.losses) - (a.wins - a.losses) || b.best - a.best || b.tickets - a.tickets);
+    // Ranked by the settled record (every ticket of a settled round), not only the claimed part.
+    const blitzTable = [...merged.values()].sort((a, b) => (b.sWon - b.sLost) - (a.sWon - a.sLost) || b.sBest - a.sBest || b.tickets - a.tickets);
     // Funnel: how far holders go after the card. Counted from current state, no history needed.
     const funnel = {
       cards: rows.length,
@@ -218,23 +227,29 @@
     };
   }
 
-  // Blitz: players are found from the latest tickets, their records read from the contract.
+  // A market: every ticket is read (ids 1 to totalSupply), and players are found from them.
+  // ticket(id) returns (holder, round, isUp, seq, status) with status 0 live, 1 finished and
+  // waiting to be settled, 2 won, 3 lost, 4 push, 5 void. The contract works the status out from
+  // the round's result, so a ticket shows won or lost as soon as its round is settled, whether or
+  // not its holder has called claim(). recordOf(address) is the claimed part only.
   async function loadBlitz(cardRows, BLITZ) {
     const head = await multicall([
       { to: BLITZ, data: SEL.bTotalSupply }, { to: BLITZ, data: SEL.bTotalPlayers }, { to: BLITZ, data: SEL.bCurrentRound },
     ]);
     const supply = Number(slot(head[0], 0)); const players = Number(slot(head[1], 0)); const round = Number(slot(head[2], 0));
-    const from = Math.max(1, supply - 1999);
-    const ids = []; for (let id = supply; id >= from; id--) ids.push(id);
+    const ids = []; for (let id = 1; id <= supply; id++) ids.push(id);
     const tickets = (await multicall([{ to: BLITZ, data: SEL.bRoundMinted + word(round) },
       ...ids.map((id) => ({ to: BLITZ, data: SEL.bTicket + word(id) }))]));
     const minted = Number(slot(tickets[0], 0));
-    let up = 0; let down = 0; const owners = [];
+    let up = 0; let down = 0; const owners = []; const settled = new Map();
     const now = new Set(); const before = new Set(); // players of the open round and of the one before it
-    tickets.slice(1).forEach((t) => {
+    tickets.slice(1).forEach((t) => { // oldest ticket first, so streaks follow the order of play
       if (!t) return;
-      const owner = '0x' + t.slice(26, 66); if (!owners.includes(owner)) owners.push(owner);
-      const r = Number(slot(t, 1));
+      const owner = '0x' + t.slice(26, 66);
+      let s = settled.get(owner);
+      if (!s) { s = { sWon: 0, sLost: 0, sVoid: 0, sWait: 0, sBest: 0, run: 0 }; settled.set(owner, s); owners.push(owner); }
+      const r = Number(slot(t, 1)); const status = Number(slot(t, 4));
+      if (status === 2) { s.sWon++; s.run++; s.sBest = Math.max(s.sBest, s.run); } else if (status === 3) { s.sLost++; s.run = 0; } else if (status >= 4) s.sVoid++; else s.sWait++;
       if (r === round) { now.add(owner); if (slot(t, 2) === 1n) up++; else down++; }
       if (r === round - 1) before.add(owner);
     });
@@ -243,16 +258,17 @@
     const recs = await multicall(owners.map((o) => ({ to: BLITZ, data: SEL.bRecordOf + addrWord(o) })));
     const nameOf = {}; cardRows.forEach((r) => { if (r.name && r.owner) nameOf[r.owner.toLowerCase()] = r.name; });
     const table = owners.map((owner, i) => {
-      const r = recs[i];
+      const r = recs[i]; const s = settled.get(owner);
       return {
         owner, name: nameOf[owner.toLowerCase()] || '', tickets: Number(slot(r, 0)), wins: Number(slot(r, 1)), losses: Number(slot(r, 2)),
         streak: Number(slot(r, 3)), best: Number(slot(r, 4)), unclaimed: Number(slot(r, 5)),
+        sWon: s.sWon, sLost: s.sLost, sVoid: s.sVoid, sWait: s.sWait, sBest: s.sBest,
       };
-    }).sort((a, b) => (b.wins - b.losses) - (a.wins - a.losses) || b.best - a.best || b.tickets - a.tickets);
+    }).sort((a, b) => (b.sWon - b.sLost) - (a.sWon - a.sLost) || b.sBest - a.sBest || b.tickets - a.tickets);
     return { address: BLITZ, supply, players, round, minted, up, down, lockAt: (round + 1) * 21600, table,
       previousRoundPlayers: before.size, returning, holders: owners };
   }
 
-  const api = { load, scoreOf, encodeAggregate3, decodeAggregate3, CORE, SCORER, SQUADS, BLITZ, MARKETS };
+  const api = { load, scoreOf, encodeAggregate3, decodeAggregate3, multicall, CORE, SCORER, SQUADS, BLITZ, MARKETS };
   if (typeof module !== 'undefined' && module.exports) module.exports = api; else root.League = api;
 })(typeof window !== 'undefined' ? window : globalThis);

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Forecast League — wallet record</title>
-<meta name="description" content="The Forecast League record of one wallet, read from BNB Chain: tickets, wins, losses, streaks and unclaimed results in every market.">
+<meta name="description" content="The Forecast League record of one wallet, read from BNB Chain: every ticket and its settled result in every market, and the part claim() has written on-chain.">
 <meta property="og:title" content="Forecast League — wallet record">
 <meta property="og:image" content="https://mycyi1994-hash.github.io/forecast-league/img/og.png">
 <style>
@@ -24,8 +24,9 @@ th{color:var(--muted);font-weight:600;font-size:13px}.tot td{font-weight:800}.mu
 <p class="muted">Read from BNB Chain in your browser. No wallet connection, nothing is sent.</p>
 <form id="f"><input id="w" placeholder="0x… wallet address" autocomplete="off" spellcheck="false"><button>Show record</button></form>
 <div id="out"></div>
-<p class="muted">Agents: the same numbers come from <code>recordOf(address)</code> (<code>0xc06ac6a3</code>) on each market, and every free call the wallet can make now from <code>todo(address)</code> or <code>node league.mjs all --address &lt;wallet&gt;</code>. See <a href="skill.md">skill.md</a>.</p>
+<p class="muted">Agents: the settled record comes from <code>tokenOfOwnerByIndex(address,uint256)</code> (<code>0x2f745c59</code>) and <code>ticket(uint256)</code> (<code>0xc129ff32</code>, status 2 won, 3 lost, 4 push, 5 void) on each market, the claimed record from <code>recordOf(address)</code> (<code>0xc06ac6a3</code>), and every free call the wallet can make now from <code>todo(address)</code> or <code>node league.mjs all --address &lt;wallet&gt;</code>. See <a href="skill.md">skill.md</a>.</p>
 </div>
+<script src="league.js"></script>
 <script>
 const MKT=[['BTC 6h','0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C'],['ETH 6h','0x621B9fEd6FF2f0FC73e26264A401F7d12644A0A1'],['BNB 6h','0xA782Ac207fE33f6120d9c2EF9553A55C47CFbbE9'],
 ['BTC 1h','0x09A645aa6cc6b0eB320dCF3982bcaA6A22b32629'],['ETH 1h','0x8b998abA2BeeebF7ceBf565bC53BC575693c07a4'],['BNB 1h','0x66613fD9a2c70d4cB56D920bDd0D56bA95BD2736'],['BTC 1d','0x9e521add6F67EEe0Fe5c0b8ef32cb4543f7af50E']];
@@ -39,10 +40,15 @@ async function show(w){
   if(!/^0x[0-9a-fA-F]{40}$/.test(w)){out.innerHTML='<p class="warn">That is not a wallet address.</p>';return}
   out.innerHTML='<p class="muted">Reading…</p>';const a=w.slice(2).toLowerCase().padStart(64,'0');
   const recs=await Promise.all(MKT.map(m=>call(m[1],'0xc06ac6a3'+a)));const todos=await Promise.all(MKT.map(m=>call(m[1],'0x624f6da5'+a)));const hon=await call('0x3e73bC0309c72EA69bD74CaDEC943668291Ca6ed','0x624f6da5'+a);const stp=await call('0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae','0x624f6da5'+a);const bals=await Promise.all(OTH.map(m=>call(m[1],'0x70a08231'+a)));
-  let T={t:0,w:0,l:0,u:0,b:0},rows='';
-  MKT.forEach((m,i)=>{const r=recs[i];if(!r)return;const x={t:slot(r,0),w:slot(r,1),l:slot(r,2),s:slot(r,3),b:slot(r,4),u:slot(r,5)};
-    T.t+=x.t;T.w+=x.w;T.l+=x.l;T.u+=x.u;T.b=Math.max(T.b,x.b);
-    rows+=`<tr><td>${m[0]}</td><td>${x.t}</td><td>${x.w}</td><td>${x.l}</td><td>${x.s}</td><td>${x.b}</td><td>${x.u?'<span class="warn">'+x.u+'</span>':0}</td></tr>`});
+  // Settled record: every ticket of the wallet, its status worked out by the contract from the round's result, claimed or not.
+  const ix=[];MKT.forEach((m,i)=>{const r=recs[i];if(r)for(let k=0;k<slot(r,0);k++)ix.push({m:i,to:m[1],data:'0x2f745c59'+a+k.toString(16).padStart(64,'0')})});
+  let st=MKT.map(()=>({w:0,l:0,v:0,x:0,b:0,run:0})),sOk=true;
+  try{const ids=await League.multicall(ix);const tk=await League.multicall(ix.map((c,k)=>({to:c.to,data:'0xc129ff32'+ids[k].slice(2)})));
+    tk.forEach((t,k)=>{const s=st[ix[k].m];if(!t){sOk=false;return}const v=slot(t,4);if(v===2){s.w++;s.run++;s.b=Math.max(s.b,s.run)}else if(v===3){s.l++;s.run=0}else if(v>=4)s.v++;else s.x++})}catch(e){sOk=false}
+  let T={t:0,w:0,l:0,v:0,x:0,cw:0,cl:0,u:0,b:0},rows='';
+  MKT.forEach((m,i)=>{const r=recs[i];if(!r)return;const x={t:slot(r,0),w:slot(r,1),l:slot(r,2),u:slot(r,5)},s=st[i];
+    T.t+=x.t;T.w+=s.w;T.l+=s.l;T.v+=s.v;T.x+=s.x;T.cw+=x.w;T.cl+=x.l;T.u+=x.u;T.b=Math.max(T.b,s.b);
+    rows+=`<tr><td>${m[0]}</td><td>${x.t}</td><td>${s.w}</td><td>${s.l}</td><td>${s.v}</td><td>${s.x}</td><td>${s.b}</td><td>${x.w}-${x.l}</td><td>${x.u?'<span class="warn">'+x.u+'</span>':0}</td></tr>`});
   const ready=MKT.map((m,i)=>[m,todos[i]?slot(todos[i],2):0]).filter(x=>x[1]>0);const honors=hon?slot(hon,0):0;const canStamp=stp?slot(stp,1):0;
   const P={'6h':21600,'1h':3600,'1d':86400};const now=Date.now()/1000;let nxt=null;MKT.forEach((m,i)=>{const r=recs[i],t=todos[i];if(!r||!t)return;const pend=slot(r,5)-slot(t,2);if(pend>0){const len=P[m[0].split(' ')[1]],rd=slot(t,0);[rd-1,rd].forEach(x=>{const at=(x+2)*len;if(at>now&&(!nxt||at<nxt[0]))nxt=[at,m[0]]})}});
   const todo=[];ready.forEach(x=>todo.push(`<b>${x[1]}</b> finished ${x[0][0]} ticket(s) not counted yet: send <code>claim()</code> <code>0x4e71d92d</code> to <code>${x[0][1]}</code>`));
@@ -51,10 +57,10 @@ async function show(w){
   const banner=`<div class="box" style="border-color:var(--accent)"><b>${todo.length?'Waiting for this wallet now':'Nothing waiting right now'}</b>${todo.length?'<ul><li>'+todo.join('</li><li>')+'</li></ul>':''}${nxt?`<p>Next result: <b>${nxt[1]}</b> at <b>${new Date(nxt[0]*1000).toISOString().slice(11,16)} UTC</b>. Come back then and claim it.</p>`:''}<p class="muted">Every call is value 0. Agents: <code>node league.mjs all --address ${esc(w)}</code> lists the same in order. Preview each call; your human decides.</p></div>`;
   const dec=T.w+T.l,rate=dec?Math.round(100*T.w/dec)+'%':'–';
   const others=OTH.map((m,i)=>`${m[0]} ${bals[i]?slot(bals[i],0):0}`).join(' · ');
-  out.innerHTML=banner+`<div class="box"><b>${esc(w)}</b><br><span class="muted">Win rate over decided tickets: </span><b>${rate}</b> <span class="muted">(${T.w} won, ${T.l} lost)</span>
-  <table><tr><th>Market</th><th>Tickets</th><th>Won</th><th>Lost</th><th>Streak</th><th>Best</th><th>Unclaimed</th></tr>${rows}
-  <tr class="tot"><td>All</td><td>${T.t}</td><td>${T.w}</td><td>${T.l}</td><td></td><td>${T.b}</td><td>${T.u}</td></tr></table>
-  ${T.u?'<p class="warn">A ticket counts only after <code>claim()</code> (<code>0x4e71d92d</code>) on its market once its round is settled; tickets of open rounds wait.</p>':''}
+  out.innerHTML=banner+`<div class="box"><b>${esc(w)}</b><br><span class="muted">Settled record, win rate over decided tickets: </span><b>${rate}</b> <span class="muted">(${T.w} won, ${T.l} lost, ${T.v} void, ${T.x} waiting)</span>
+  <table><tr><th>Market</th><th>Tickets</th><th>Won</th><th>Lost</th><th>Void</th><th>Waiting</th><th>Best run</th><th>Claimed</th><th>Unclaimed</th></tr>${rows}
+  <tr class="tot"><td>All</td><td>${T.t}</td><td>${T.w}</td><td>${T.l}</td><td>${T.v}</td><td>${T.x}</td><td>${T.b}</td><td>${T.cw}-${T.cl}</td><td>${T.u}</td></tr></table>
+  <p class="muted">Won, lost and void are from settled rounds (push counts as void), read ticket by ticket with <code>ticket(id)</code>; waiting is a round still open or not settled yet. <code>claim()</code> (<code>0x4e71d92d</code>) on a market writes its settled tickets into the on-chain record: Claimed is that part (won-lost), with its streaks.${sOk?'':' <span class="warn">Some tickets could not be read just now; reload to try again.</span>'}</p>
   <p class="muted">Held: ${others}</p><p class="muted">Link to this record: <a href="?w=${esc(w)}">${location.origin+location.pathname}?w=${esc(w)}</a></p></div>`;
 }
 document.getElementById('f').onsubmit=e=>{e.preventDefault();const w=document.getElementById('w').value.trim();history.replaceState(null,'','?w='+encodeURIComponent(w));show(w)};
