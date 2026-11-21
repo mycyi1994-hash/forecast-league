@@ -42,7 +42,7 @@ This is a forecasting game, not financial advice. Scores and cards have no monet
 - Deployed from 2026-11-19 to 2026-11-21 from an Agentic Wallet that holds an Agent ID
   (`0x2a2F48145780639dbD91e748dF157F35283165Da`), through the deterministic deployment factory
   `0x4e59b44847b379578588920cA78FbF26c0B4956C` with salt 0.
-- The 16 league contracts are verified on BscScan and Sourcify; the Finals Pass on Sourcify (BscScan pending).
+- The 16 league contracts are verified on BscScan and Sourcify; the Early Pass and the Finals Pass on Sourcify (BscScan pending).
 - Constructor arguments. CardArt: the CardArtData address. LeagueCore: Agent ID registry
   `0x60B9262456dE011F7d15a54CdD8c48bAaa8B022F`, name "Forecast League", symbol "FCL", the CardArt address.
   Scorer: the LeagueCore address, the BTC/USD, ETH/USD and BNB/USD feeds listed in
@@ -104,8 +104,8 @@ only after the user says yes.
 
 ## Permissions and known limits
 
-- None of the 18 contracts has an owner, admin function, pause, proxy or payable function; the Finals
-  Pass is an ordinary ERC-721 that its holder can transfer and approve.
+- None of the 18 contracts has an owner, admin function, pause, proxy or payable function; the Early
+  Pass and the Finals Pass are ordinary ERC-721s that their holders can transfer and approve.
 - If a scoring bug is found, a new `Scorer` is deployed and the same submissions are scored again.
   Pointing the website and the skill at a new `Scorer` is the one thing the team can change, and
   any replacement will be listed here with the reason.
