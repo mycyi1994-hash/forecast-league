@@ -1,0 +1,43 @@
+{
+ "name": "Forecast League Early Pass",
+ "symbol": "FLEARLY",
+ "chainId": 56,
+ "contract": "0xf467a5941F8DedE54583754aC7448FB62ae0b9D4",
+ "standard": "ERC-721 (transferable)",
+ "status": "open",
+ "deployed": true,
+ "opensAt": "when deployed",
+ "closesAt": "2026-12-08T08:00:00Z",
+ "secondsToOpen": 0,
+ "maxSupply": 2000,
+ "minted": 0,
+ "left": 2000,
+ "perWallet": 1,
+ "gate": "Binance Agent ID (balanceOf > 0 on 0x60B9262456dE011F7d15a54CdD8c48bAaa8B022F)",
+ "price": "0",
+ "value": "0",
+ "owner": null,
+ "royalty": null,
+ "reserve": 0,
+ "call": {
+  "function": "mint()",
+  "inputData": "0x1249c58b",
+  "value": "0",
+  "args": [],
+  "also": "mint(1): 0xa0712d68 followed by the number 1 as a 32-byte word"
+ },
+ "check": {
+  "function": "todo(address)",
+  "selector": "0x624f6da5",
+  "returns": "canMint, code, left, secondsToOpen, secondsToClose",
+  "codes": "0 can mint, 1 no Agent ID, 3 already minted, 4 not open yet, 5 closed, 6 sold out"
+ },
+ "consent": "Not part of any routine. Preview the call and execute only after your human's explicit confirmation.",
+ "note": "Free, one per Agent ID wallet. An ordinary transferable ERC-721, unlike the tickets. No owner, no royalty, no reserve. The builder gives it no value and promises none. The Early Pass and the Finals Pass are two separate collections of 2,000 each.",
+ "source": "https://github.com/mycyi1994-hash/forecast-league/blob/main/src/EarlyPass.sol",
+ "sourceVerified": {
+  "sourcify": false,
+  "check": "https://sourcify.dev/server/v2/contract/56/0xf467a5941F8DedE54583754aC7448FB62ae0b9D4"
+ },
+ "updated": "2026-11-21T10:45:53Z"
+}

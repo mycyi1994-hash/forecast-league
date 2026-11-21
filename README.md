@@ -36,6 +36,7 @@ This is a forecasting game, not financial advice. Scores and cards have no monet
 | Stamps | `0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae` |
 | Houses | `0x8433AD00601C57cE9F144b20A32aE478EEe831AE` |
 | Honors | `0x3e73bC0309c72EA69bD74CaDEC943668291Ca6ed` |
+| Early Pass | `0xf467a5941F8DedE54583754aC7448FB62ae0b9D4` |
 | Finals Pass | `0x9Df6ba1868d2C149FdA5FE67491f67C07C31e6B5` |
 
 - Deployed from 2026-11-19 to 2026-11-21 from an Agentic Wallet that holds an Agent ID
@@ -79,7 +80,7 @@ only after the user says yes.
 | `skills/forecast-league/scripts/league.mjs` | Dependency-free helper: reads public chain data and builds the call data. It never signs or sends anything. |
 | `src/Squads.sol` | Teams. A holder opens a squad named after their Agent ID; others join it by that name. The site ranks squads by the summed score of their five best members. |
 | `keeper/keeper.mjs` | Builds the `settle` and `scoreMany` calls that close a round. Read-only; anyone can run it and send the calls. |
-| `src/EarlyPass.sol` | A prepared early pass (the Finals Pass without an opening time). Not deployed and not planned; nothing on the site or in the agent files refers to it. |
+| `src/EarlyPass.sol` | The Season One early pass: the same contract as the Finals Pass without an opening time, so it can be minted from the moment it is deployed. Free, numbered, transferable ERC-721 (OpenZeppelin), one per Agent ID wallet, 2,000 at most, `mint()` or `mint(1)`, until 8 December 2026 08:00 UTC. No owner, no royalty, no reserve; the builder gives it no value and promises none. Not deployed yet: it will be at `0xf467a5941F8DedE54583754aC7448FB62ae0b9D4` (deterministic deployment factory, salt 0); `launch/early_pass/` has the call data. |
 | `src/FinalsPass.sol` | The Season One pass: a free, numbered, transferable ERC-721 (OpenZeppelin). One per Agent ID wallet, 2,000 at most, `mint()` or `mint(1)`, open from 26 November 2026 12:00 UTC to 8 December 08:00 UTC. No owner, no royalty, no reserve; the builder gives it no value and promises none. Deployed on 21 November 2026 at `0x9Df6ba1868d2C149FdA5FE67491f67C07C31e6B5` (deterministic deployment factory, salt 0, transaction `0xac4180448ec608454d8ad397c473c3ad95d8e34cb4c4150fe6738aa9ea1498e6`), verified on Sourcify (exact match). `keeper/finalspass.mjs` reports the state of both passes in `docs/api/early-pass.json` and `docs/api/finals-pass.json`. |
 | `keeper/transparency.mjs` | Reads `balanceOf` for every known wallet on the 12 token contracts and writes `docs/api/transparency.json`: tokens per wallet, the share of the busiest wallets, the builder's wallet shown separately. Shown at `docs/transparency.html`. |
 | `keeper/rivals.mjs` | Counts the holders of other Agent-ID-gated NFT mints the public radar has seen since the contest began, to see where this entry stands. Writes `launch/rivals/`. Read-only. |
@@ -103,7 +104,7 @@ only after the user says yes.
 
 ## Permissions and known limits
 
-- None of the 17 contracts has an owner, admin function, pause, proxy or payable function; the Finals
+- None of the 18 contracts has an owner, admin function, pause, proxy or payable function; the Finals
   Pass is an ordinary ERC-721 that its holder can transfer and approve.
 - If a scoring bug is found, a new `Scorer` is deployed and the same submissions are scored again.
   Pointing the website and the skill at a new `Scorer` is the one thing the team can change, and

@@ -528,6 +528,24 @@
     "args": []
    },
    "alreadyMinted": "one ticket per wallet per round; hasMinted(address) is false again every new round"
+  },
+  {
+   "market": "Early Pass",
+   "contract": "0xf467a5941F8DedE54583754aC7448FB62ae0b9D4",
+   "opensAt": "when deployed",
+   "closesAt": "2026-12-08T08:00:00Z",
+   "secondsLeft": 1458847,
+   "minted": 0,
+   "left": 2000,
+   "validUntil": "2026-11-21T12:15:53Z",
+   "call": {
+    "function": "mint()",
+    "inputData": "0x1249c58b",
+    "value": "0",
+    "args": []
+   },
+   "alreadyMinted": "one pass per wallet for the whole season; hasMinted(address) stays true",
+   "consent": "needs its own confirmation; not part of a routine"
   }
  ]
 }

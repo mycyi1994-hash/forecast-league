@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 // Status of the two Season One passes for agents and mint scanners. Read-only (eth_getCode, eth_call).
-//   Early Pass (src/EarlyPass.sol) is not deployed and not planned; it is left out of every feed.
+//   Early Pass:  open from the moment it is deployed, until 8 December 2026.
 //   Finals Pass: deployed on 21 November 2026, opens on 26 November 12:00 UTC, until 8 December.
-// Writes docs/api/finals-pass.json and the finalsPass part of
+// Writes docs/api/early-pass.json, docs/api/finals-pass.json and the earlyPass / finalsPass parts of
 // docs/api/state; while a mint is open it also lists that pass in openNow (docs/api/state and
 // docs/deployment.json). Addresses are fixed before deployment (CREATE2 through the deterministic
 // deployment factory, salt 0, see launch/early_pass/ and launch/finals_pass/), so a pass reads
@@ -13,6 +13,7 @@ const RPCS = ['https://bsc-rpc.publicnode.com', 'https://bsc-dataseed.bnbchain.o
 const CLOSES_AT = 1796716800, MAX_SUPPLY = 2000;
 const SITE = 'https://mycyi1994-hash.github.io/forecast-league';
 const PASSES = [
+  { key: 'earlyPass', file: 'early-pass.json', market: 'Early Pass', name: 'Forecast League Early Pass', symbol: 'FLEARLY', address: '0xf467a5941F8DedE54583754aC7448FB62ae0b9D4', opensAt: null, dir: 'launch/early_pass', id: 'src/EarlyPass.sol:EarlyPass', src: 'src/EarlyPass.sol' },
   { key: 'finalsPass', file: 'finals-pass.json', market: 'Finals Pass', name: 'Forecast League Finals Pass', symbol: 'FLPASS', address: '0x9Df6ba1868d2C149FdA5FE67491f67C07C31e6B5', opensAt: 1795694400, dir: 'launch/finals_pass', id: 'src/FinalsPass.sol:FinalsPass', src: 'src/FinalsPass.sol' },
 ];
 async function rpc(method, params) {
@@ -68,7 +69,6 @@ for (const f of ['docs/api/state', 'docs/deployment.json']) {
       call: { function: 'mint()', inputData: '0x1249c58b', value: '0', args: [] }, alreadyMinted: 'one pass per wallet for the whole season; hasMinted(address) stays true', consent: 'needs its own confirmation; not part of a routine' });
     if (f === 'docs/api/state') j[P.key] = { contract: P.address, status, opensAt: out.opensAt, closesAt: out.closesAt, maxSupply: MAX_SUPPLY, minted, left, perWallet: 1, call: out.call, details: `${SITE}/api/${P.file}` };
   }
-  if (f === 'docs/api/state') { delete j.earlyPass; j.openNow = (j.openNow || []).filter((r) => r.market !== 'Early Pass'); }
   if (f === 'docs/api/state' && typeof j.openCount === 'number') j.openCount = j.openNow.length;
   writeFileSync(f, JSON.stringify(j, null, 1) + '\n');
 }

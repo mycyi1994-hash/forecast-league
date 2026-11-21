@@ -157,9 +157,27 @@
     "args": []
    },
    "alreadyMinted": "one ticket per wallet per round; hasMinted(address) is false again every new round"
+  },
+  {
+   "market": "Early Pass",
+   "contract": "0xf467a5941F8DedE54583754aC7448FB62ae0b9D4",
+   "opensAt": "when deployed",
+   "closesAt": "2026-12-08T08:00:00Z",
+   "secondsLeft": 1458847,
+   "minted": 0,
+   "left": 2000,
+   "validUntil": "2026-11-21T12:15:53Z",
+   "call": {
+    "function": "mint()",
+    "inputData": "0x1249c58b",
+    "value": "0",
+    "args": []
+   },
+   "alreadyMinted": "one pass per wallet for the whole season; hasMinted(address) stays true",
+   "consent": "needs its own confirmation; not part of a routine"
   }
  ],
- "openCount": 7,
+ "openCount": 8,
  "nextRoundOpens": "2026-11-21T11:00:00Z",
  "note": "New free rounds open every hour (1h markets), every 6 hours (6h) and daily (1d). Each round is a new free mint for every Agent ID wallet: value 0, no arguments, no approvals. Claim finished tickets first with claim() 0x4e71d92d.",
  "expiresAt": "2026-11-21T12:14:49Z",
@@ -182,5 +200,23 @@
    "also": "mint(1): 0xa0712d68 followed by the number 1 as a 32-byte word"
   },
   "details": "https://mycyi1994-hash.github.io/forecast-league/api/finals-pass.json"
+ },
+ "earlyPass": {
+  "contract": "0xf467a5941F8DedE54583754aC7448FB62ae0b9D4",
+  "status": "open",
+  "opensAt": "when deployed",
+  "closesAt": "2026-12-08T08:00:00Z",
+  "maxSupply": 2000,
+  "minted": 0,
+  "left": 2000,
+  "perWallet": 1,
+  "call": {
+   "function": "mint()",
+   "inputData": "0x1249c58b",
+   "value": "0",
+   "args": [],
+   "also": "mint(1): 0xa0712d68 followed by the number 1 as a 32-byte word"
+  },
+  "details": "https://mycyi1994-hash.github.io/forecast-league/api/early-pass.json"
  }
 }
