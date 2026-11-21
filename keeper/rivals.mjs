@@ -28,10 +28,10 @@ async function rpc(method, params) {
 const pool = async (items, n, fn) => { const out = new Array(items.length); let i = 0; await Promise.all(Array.from({ length: n }, async () => { while (i < items.length) { const k = i++; out[k] = await fn(items[k], k); } })); return out; };
 
 // 1. Gated NFT contracts the radar has seen since the submission period began.
-const cand = new Map();
+const cand = new Map(); let radarFailed = false;
 for (let off = 0; ; off += 150) {
   let d = null; for (let a = 0; a < 3 && !d; a++) { try { d = await (await fetch(RADAR + off, { signal: AbortSignal.timeout(90000) })).json(); } catch { await new Promise((s) => setTimeout(s, 4000)); } }
-  if (!d) break;
+  if (!d) { radarFailed = true; break; }
   for (const p of d.projects || []) {
     const mt = typeof p.mint_terms === 'object' && p.mint_terms ? p.mint_terms : {};
     if (mt.gate !== 'agent_id' || !/ERC-721/.test(p.standard || '') || (p.detected_at || '') < SINCE) continue;
@@ -41,11 +41,14 @@ for (let off = 0; ; off += 150) {
 }
 const ours = new Set(['0x79f55daa8a3cf2eb76ee40e26ff6e244a4cc1ed4', '0x2fadb6739a076b236fbd44e19f64ab158ccfba2c', '0x621b9fed6ff2f0fc73e26264a401f7d12644a0a1', '0xa782ac207fe33f6120d9c2ef9553a55c47cfbbe9', '0x09a645aa6cc6b0eb320dcf3982bcaa6a22b32629', '0x8b998aba2beeebf7cebf565bc53bc575693c07a4', '0x66613fd9a2c70d4cb56d920bdd0d56ba95bd2736', '0x9e521add6f67eee0fe5c0b8ef32cb4543f7af50e', '0x30b6b8c67ab2239185536ba3766e8cb05bfd18ae', '0x8433ad00601c57ce9f144b20a32ae478eee831ae', '0xf706aeb7e1b6a44139205df3043bf68ccf386918', '0x3e73bc0309c72ea69bd74cadec943668291ca6ed', '0xf467a5941f8dede54583754ac7448fb62ae0b9d4', '0x9df6ba1868d2c149fda5fe67491f67c07c31e6b5']);
 const list = [...cand.values()].filter((p) => !ours.has(p.contract));
+// No ranking without the radar: a failed or empty read would otherwise record us as first. Nothing is written; the next run tries again.
+if (radarFailed || list.length === 0) { console.log(JSON.stringify({ ok: false, reason: radarFailed ? 'radar fetch failed' : 'radar returned no contracts', recorded: false })); process.exit(1); }
 
 // 2. Supply, then holders.
 // Some contracts have no totalSupply(); for those the radar's minted count sets where to start looking.
 await pool(list, 6, async (p) => { const r = await rpc('eth_call', [{ to: p.contract, data: '0x18160ddd' }, 'latest']); const onChain = r && r.length >= 66 && BigInt(r.slice(0, 66)) <= 10n ** 9n ? Number(BigInt(r.slice(0, 66))) : 0; p.supply = onChain || p.radarMinted; });
 const big = list.filter((p) => p.supply >= MIN_SUPPLY && p.supply <= MAX_SUPPLY);
+if (big.length === 0) { console.log(JSON.stringify({ ok: false, reason: 'no supply read for any contract', recorded: false })); process.exit(1); }
 await pool(big, 2, async (p) => {
   const owners = new Map(); let seen = 0, failed = 0;
   // Token ids are read in blocks of 200 from 0, and past the reported supply for as long as a block still finds tokens.
@@ -74,23 +77,25 @@ await pool(big, 4, async (p) => {
   } catch {}
 });
 
-// 3. Our own number: wallets known to the action feed (every holder of a Forecast League token).
-const mine = existsSync('docs/api/wallet/index.json') ? JSON.parse(readFileSync('docs/api/wallet/index.json', 'utf8')).wallets.length : 0;
+// 3. Our own number: wallets known to the action feed (every holder of a Forecast League token), which is the
+// union over our 12 token contracts, while every other row is one contract. The builder's own wallet is left out.
+const BUILDER = '0x2a2f48145780639dbd91e748df157f35283165da';
+const mine = existsSync('docs/api/wallet/index.json') ? JSON.parse(readFileSync('docs/api/wallet/index.json', 'utf8')).wallets.filter((w) => String(w).toLowerCase() !== BUILDER).length : 0;
 const all = big.filter((p) => p.holders >= 50).map((p) => ({ name: p.name, contract: p.contract, holders: p.holders, supply: p.supply, cap: p.cap, firstSeen: p.firstSeen, price: p.price, largestHolder: p.largestHolder, unread: p.unread, when: p.when, deployedAt: p.deployedAt || null }));
-const table = [...all.filter((r) => r.when === 'in contest'), { name: 'Forecast League (all contracts together)', contract: 'ours', holders: mine, supply: null, cap: null, firstSeen: '2026-11-19', price: 'free', largestHolder: null, unread: 0, ours: true, when: 'in contest', deployedAt: '2026-11-19' }].sort((a, b) => b.holders - a.holders);
+const table = [...all.filter((r) => r.when === 'in contest'), { name: 'Forecast League (union of 12 contracts)', contract: 'ours', holders: mine, supply: null, cap: null, firstSeen: '2026-11-19', price: 'free', largestHolder: null, unread: 0, ours: true, when: 'in contest', deployedAt: '2026-11-19' }].sort((a, b) => b.holders - a.holders);
 table.forEach((r, i) => (r.rank = i + 1));
 const before = all.filter((r) => r.when === 'before contest').sort((a, b) => b.holders - a.holders);
 const unknown = all.filter((r) => r.when === 'unknown').sort((a, b) => b.holders - a.holders);
 const me = table.find((r) => r.ours); const now = new Date().toISOString().replace(/\.\d+Z$/, 'Z'); const day = now.slice(0, 10);
 mkdirSync('launch/rivals', { recursive: true });
-const out = { updated: now, since: SINCE + ' UTC', candidates: list.length, counted: big.length, minSupply: MIN_SUPPLY, ourRank: me.rank, ourWallets: mine, tenth: table[9] ? table[9].holders : null, caveats: ['Ranked: only contracts whose deployment block (from Sourcify) is after the contest began.', 'Holders now, not minters: transfers and airdrops change it.', 'Only mint-type contracts the public radar marks as Agent-ID-gated; check-in or game entries without a token are missing.', 'Nothing here says which contracts were entered in the hackathon.', 'First-seen is when the radar noticed the contract, which can be weeks later than its launch.'], table, deployedBeforeContest: before, deploymentTimeUnknown: unknown };
+const out = { updated: now, since: SINCE + ' UTC', candidates: list.length, counted: big.length, minSupply: MIN_SUPPLY, ourRank: me.rank, ourWallets: mine, ourWalletsNote: 'union of 12 contracts, builder wallet excluded', tenth: table[9] ? table[9].holders : null, caveats: ['Our figure is the union of wallets over our 12 token contracts, without the builder wallet; every other row is one contract.', 'Ranked: only contracts whose deployment block (from Sourcify) is after the contest began.', 'Holders now, not minters: transfers and airdrops change it.', 'Only mint-type contracts the public radar marks as Agent-ID-gated; check-in or game entries without a token are missing.', 'Nothing here says which contracts were entered in the hackathon.', 'First-seen is when the radar noticed the contract, which can be weeks later than its launch.'], table, deployedBeforeContest: before, deploymentTimeUnknown: unknown };
 writeFileSync('launch/rivals/latest.json', JSON.stringify(out, null, 1) + '\n');
 const hist = existsSync('launch/rivals/history.json') ? JSON.parse(readFileSync('launch/rivals/history.json', 'utf8')) : {};
 hist[day] = { ourRank: me.rank, ourWallets: mine, first: table[0].holders, tenth: out.tenth, top: table.slice(0, 25).map((r) => [r.name, r.contract, r.holders]) };
 writeFileSync('launch/rivals/history.json', JSON.stringify(hist, null, 1) + '\n');
 const line = (r) => `| ${r.rank ?? ''} | ${r.ours ? '**' + r.name + '**' : r.name.replace(/\|/g, '/')} | ${r.holders}${r.unread ? ' 이상' : ''} | ${r.supply ?? ''} | ${r.cap ?? ''} | ${r.deployedAt || '모름'} | ${r.ours ? '' : '`' + r.contract + '`'} |`;
 const head = ['| 순위 | 이름 | 보유 지갑 | 발행 | 한도 | 배포 시각 (UTC) | 계약 |', '|---|---|---|---|---|---|---|'];
-const md = [`# 경쟁 순위 (${now.replace('T', ' ').replace('Z', ' UTC')})`, '', `우리: 대회 기간에 배포된 계약 중 **${me.rank}위**, 지갑 ${mine}개. 1위 ${table[0].holders}개, 10위 ${out.tenth ?? '없음'}개.`, '',
+const md = [`# 경쟁 순위 (${now.replace('T', ' ').replace('Z', ' UTC')})`, '', `우리: 대회 기간에 배포된 계약 중 **${me.rank}위**, 지갑 ${mine}개(계약 12개 합집합, 만든 사람 지갑 제외). 1위 ${table[0].holders}개, 10위 ${out.tenth ?? '없음'}개.`, '',
   `레이더에 잡힌 Agent ID 전용 NFT 중 발행량 ${MIN_SUPPLY}개 이상인 ${big.length}개의 보유 지갑을 직접 세고, 배포 시각을 Sourcify에서 읽어 대회 시작(${SINCE} UTC) 이후에 배포된 것만 순위에 넣었습니다.`, '',
   '## 대회 기간에 배포된 계약', '', ...head, ...table.slice(0, 40).map(line), '',
   '## 대회 전에 배포된 계약 (순위에서 제외)', '', '보유 지갑이 많지만 대부분 대회 전에 민팅된 것입니다.', '', ...head, ...before.slice(0, 20).map(line), '',
