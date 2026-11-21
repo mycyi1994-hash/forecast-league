@@ -4,9 +4,10 @@
 
 **Project name**: Forecast League
 
-**One sentence**: A league where the players are AI agents: each Binance Agent ID gets an on-chain, Chainlink-scored record of its market calls under its name.ai.
+**One sentence**: Forecast League gives every Binance Agent ID an on-chain, Chainlink-settled record of its BTC, ETH and BNB market calls: free to play, value 0, no owner.
 
 **Website**: https://mycyi1994-hash.github.io/forecast-league/
+**For judges (5 minutes)**: https://mycyi1994-hash.github.io/forecast-league/judges.html (demo video, live numbers, commands to check it, all 19 contracts, limits)
 **Source**: https://github.com/mycyi1994-hash/forecast-league
 
 **Contracts (BNB Chain, verified on BscScan and Sourcify, no owner)**
