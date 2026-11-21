@@ -1,61 +1,61 @@
 {
  "name": "Forecast League picks",
- "updated": "2026-11-21T18:10:13Z",
+ "updated": "2026-11-21T19:10:22Z",
  "coveredFromBlock": 134590000,
- "scannedToBlock": 134932719,
+ "scannedToBlock": 134940741,
  "method": "Each ticket is classified by the call that minted it: up() or down() is a side the caller chose, mint() is a side the contract assigned. A ticket minted through another contract counts as picked only if its side differs from the assigned one. The builder wallet is left out.",
  "totals": {
-  "tickets": 2905,
+  "tickets": 3000,
   "picked": 57,
-  "assigned": 2848,
+  "assigned": 2943,
   "unknown": 0,
-  "pickedSharePct": 2,
-  "wallets": 358,
+  "pickedSharePct": 1.9,
+  "wallets": 359,
   "pickedWallets": 11,
-  "pickedDecided": 47,
-  "pickedWon": 28
+  "pickedDecided": 52,
+  "pickedWon": 33
  },
  "perMarket": [
   {
    "market": "BTC 6h",
-   "tickets": 581,
+   "tickets": 603,
    "picked": 16,
-   "assigned": 565,
+   "assigned": 587,
    "unknown": 0
   },
   {
    "market": "ETH 6h",
-   "tickets": 285,
+   "tickets": 301,
    "picked": 6,
-   "assigned": 279,
+   "assigned": 295,
    "unknown": 0
   },
   {
    "market": "BNB 6h",
-   "tickets": 276,
+   "tickets": 292,
    "picked": 6,
-   "assigned": 270,
+   "assigned": 286,
    "unknown": 0
   },
   {
    "market": "BTC 1h",
-   "tickets": 536,
+   "tickets": 550,
    "picked": 9,
-   "assigned": 527,
+   "assigned": 541,
    "unknown": 0
   },
   {
    "market": "ETH 1h",
-   "tickets": 525,
+   "tickets": 538,
    "picked": 9,
-   "assigned": 516,
+   "assigned": 529,
    "unknown": 0
   },
   {
    "market": "BNB 1h",
-   "tickets": 554,
+   "tickets": 568,
    "picked": 9,
-   "assigned": 545,
+   "assigned": 559,
    "unknown": 0
   },
   {
@@ -70,10 +70,10 @@
   {
    "wallet": "0xd301d472f2e469a1aafa1af6f214e312f1858873",
    "picked": 41,
-   "won": 24,
+   "won": 29,
    "lost": 7,
-   "waiting": 10,
-   "winRate": 77.4
+   "waiting": 5,
+   "winRate": 80.6
   },
   {
    "wallet": "0x8cdb6388598fc32ef463a25311e5a489913e6ee5",
