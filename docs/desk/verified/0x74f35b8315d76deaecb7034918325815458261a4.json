@@ -1,0 +1,16 @@
+{
+ "contract": "0x74f35b8315d76deaecb7034918325815458261a4",
+ "name": "Forecast League Season Two Pass",
+ "verdict": "passed",
+ "checkedAt": "2026-11-21T11:50:16Z",
+ "block": 134882101,
+ "checks": {
+  "simulatedFromAgentIdWallet": true,
+  "gateEnforced": true,
+  "upgradeable": false,
+  "owner": null,
+  "sourceVerified": true
+ },
+ "badge": "Checked by Agent ID Mint Desk: https://mycyi1994-hash.github.io/forecast-league/desk/verified/0x74f35b8315d76deaecb7034918325815458261a4.json",
+ "note": "Heuristic simulation, not an audit."
+}

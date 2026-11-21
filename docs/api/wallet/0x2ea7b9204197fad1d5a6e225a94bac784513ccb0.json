@@ -46,14 +46,30 @@
    "valueWei": "0",
    "finishedTickets": 1,
    "validUntil": "until claimed (a second claim reverts NothingToClaim, which is harmless)"
+  },
+  {
+   "type": "claim",
+   "contract": "0xF706Aeb7E1B6A44139205dF3043bf68cCf386918",
+   "method": "claim()",
+   "inputData": "0x4e71d92d",
+   "args": [],
+   "valueWei": "0",
+   "why": "badge tier 1 earned",
+   "validUntil": "until claimed"
   }
  ],
  "joinedRounds": {
-  "BTC 6h": 83113
+  "BTC 6h": 83113,
+  "ETH 6h": 83113
  },
  "pendingResults": [
   {
    "market": "BTC 6h",
+   "tickets": 1,
+   "resultFinalAt": "2026-11-21T18:00:00Z"
+  },
+  {
+   "market": "ETH 6h",
    "tickets": 1,
    "resultFinalAt": "2026-11-21T18:00:00Z"
   },
@@ -73,6 +89,14 @@
   "byMarket": [
    {
     "market": "BTC 6h",
+    "tickets": 1,
+    "wins": 0,
+    "losses": 0,
+    "streak": 0,
+    "bestStreak": 0
+   },
+   {
+    "market": "ETH 6h",
     "tickets": 1,
     "wins": 0,
     "losses": 0,
