@@ -2,8 +2,8 @@
  "contract": "0xe8b5e3ca9f4f51366f9f4860ed70b8e929e80470",
  "name": "QuonkersAgent",
  "verdict": "passed",
- "checkedAt": "2026-11-21T15:10:33Z",
- "block": 134908784,
+ "checkedAt": "2026-11-21T16:13:30Z",
+ "block": 134917169,
  "checks": {
   "simulatedFromAgentIdWallet": true,
   "gateEnforced": true,

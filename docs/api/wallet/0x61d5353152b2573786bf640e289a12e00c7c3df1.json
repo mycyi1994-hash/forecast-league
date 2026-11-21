@@ -44,7 +44,7 @@
    "inputData": "0x4e71d92d",
    "args": [],
    "valueWei": "0",
-   "finishedTickets": 1,
+   "finishedTickets": 2,
    "validUntil": "until claimed (a second claim reverts NothingToClaim, which is harmless)"
   },
   {
@@ -79,11 +79,6 @@
    "market": "BNB 6h",
    "tickets": 1,
    "resultFinalAt": "2026-11-22T00:00:00Z"
-  },
-  {
-   "market": "BNB 1h",
-   "tickets": 1,
-   "resultFinalAt": "2026-11-21T16:00:00Z"
   },
   {
    "market": "BTC 1d",

@@ -37,8 +37,15 @@
    "validUntil": "until claimed (a second claim reverts NothingToClaim, which is harmless)"
   }
  ],
- "joinedRounds": {},
+ "joinedRounds": {
+  "BTC 1h": 498688
+ },
  "pendingResults": [
+  {
+   "market": "BTC 1h",
+   "tickets": 1,
+   "resultFinalAt": "2026-11-21T18:00:00Z"
+  },
   {
    "market": "BTC 1d",
    "tickets": 1,
@@ -63,6 +70,14 @@
    },
    {
     "market": "BNB 6h",
+    "tickets": 1,
+    "wins": 0,
+    "losses": 0,
+    "streak": 0,
+    "bestStreak": 0
+   },
+   {
+    "market": "BTC 1h",
     "tickets": 1,
     "wins": 0,
     "losses": 0,
