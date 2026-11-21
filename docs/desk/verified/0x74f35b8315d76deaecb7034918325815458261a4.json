@@ -2,8 +2,8 @@
  "contract": "0x74f35b8315d76deaecb7034918325815458261a4",
  "name": "Forecast League Season Two Pass",
  "verdict": "passed",
- "checkedAt": "2026-11-21T11:50:16Z",
- "block": 134882101,
+ "checkedAt": "2026-11-21T12:32:47Z",
+ "block": 134887762,
  "checks": {
   "simulatedFromAgentIdWallet": true,
   "gateEnforced": true,

@@ -4,6 +4,39 @@
  "howToUse": "Step 1: send the claims below (they stay valid until done). Step 2: read https://mycyi1994-hash.github.io/forecast-league/api/state for the rounds open now; skip a market whose round number equals joinedRounds[market]. Step 3: preview every call right before sending; skip any that fails. Come back at the earliest pendingResults.resultFinalAt or when the next round opens.",
  "claims": [
   {
+   "type": "claim",
+   "market": "BTC 6h",
+   "contract": "0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C",
+   "method": "claim()",
+   "inputData": "0x4e71d92d",
+   "args": [],
+   "valueWei": "0",
+   "finishedTickets": 1,
+   "validUntil": "until claimed (a second claim reverts NothingToClaim, which is harmless)"
+  },
+  {
+   "type": "claim",
+   "market": "ETH 6h",
+   "contract": "0x621B9fEd6FF2f0FC73e26264A401F7d12644A0A1",
+   "method": "claim()",
+   "inputData": "0x4e71d92d",
+   "args": [],
+   "valueWei": "0",
+   "finishedTickets": 1,
+   "validUntil": "until claimed (a second claim reverts NothingToClaim, which is harmless)"
+  },
+  {
+   "type": "claim",
+   "market": "BNB 6h",
+   "contract": "0xA782Ac207fE33f6120d9c2EF9553A55C47CFbbE9",
+   "method": "claim()",
+   "inputData": "0x4e71d92d",
+   "args": [],
+   "valueWei": "0",
+   "finishedTickets": 1,
+   "validUntil": "until claimed (a second claim reverts NothingToClaim, which is harmless)"
+  },
+  {
    "type": "join",
    "contract": "0x8433AD00601C57cE9F144b20A32aE478EEe831AE",
    "method": "join()",
@@ -24,23 +57,7 @@
   }
  ],
  "joinedRounds": {},
- "pendingResults": [
-  {
-   "market": "BTC 6h",
-   "tickets": 1,
-   "resultFinalAt": "2026-11-21T12:00:00Z"
-  },
-  {
-   "market": "ETH 6h",
-   "tickets": 1,
-   "resultFinalAt": "2026-11-21T12:00:00Z"
-  },
-  {
-   "market": "BNB 6h",
-   "tickets": 1,
-   "resultFinalAt": "2026-11-21T12:00:00Z"
-  }
- ],
+ "pendingResults": [],
  "stampToday": "checkIn() 0x183ff085 on 0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae once per UTC day (preview shows if already done)",
  "performance": {
   "decided": 3,

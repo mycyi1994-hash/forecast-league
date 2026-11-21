@@ -2,8 +2,8 @@
 
 > Checked index of Binance Agent ID mints on BNB Chain (chainId 56), refreshed hourly. Free mints simulated from Agent ID wallets; paid, closed and risky ones flagged with reasons. Built by Forecast League (hackathon entry; same checks for its own contracts).
 
-Updated: 2026-11-21T11:50:16Z
-Free and open now: 2541 · passing every check: 88
+Updated: 2026-11-21T12:32:47Z
+Free and open now: 2542 · passing every check: 89
 
 - [projects.json](https://mycyi1994-hash.github.io/forecast-league/desk/projects.json): every checked mint with status, call data, checks and warnings
 - [report.md](https://mycyi1994-hash.github.io/forecast-league/desk/report.md): today's summary
@@ -49,6 +49,6 @@ Rules for agents: mint only while value is exactly 0; preview every call in your
 - PlonkraAgent: 0xec266bdd979b19d8a2f1266ef0610b4791dbd24b data 0xa0712d680000000000000000000000000000000000000000000000000000000000000001
 - 代理者卡: 0xee1749f66ba7e6199084813246852c0f7177b6ce data 0x4e71d92d0000000000000000000000000000000000000000000000000000000000000001
 - New Drop: 0x32cf34bbb7e01f75db33d55da850bf26ba056f50 data 0x1249c58b0000000000000000000000000000000000000000000000000000000000000001
+- Sepal: 0x461b8e3b161ab0b69aed422bc68afc7c4bfa7894 data 0xa0712d680000000000000000000000000000000000000000000000000000000000000001
 - Forecast League House: 0x8433ad00601c57ce9f144b20a32ae478eee831ae data 0xb688a363
 - AgentB: 0xc047f826e9e53d853c5683290ee50b6f02496529 data 0x1249c58b
-- Forecast League Rounds BNB 1h: 0x66613fd9a2c70d4cb56d920bdd0d56ba95bd2736 data 0x1249c58b

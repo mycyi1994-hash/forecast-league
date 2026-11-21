@@ -4,12 +4,6 @@
  "howToUse": "Step 1: send the claims below (they stay valid until done). Step 2: read https://mycyi1994-hash.github.io/forecast-league/api/state for the rounds open now; skip a market whose round number equals joinedRounds[market]. Step 3: preview every call right before sending; skip any that fails. Come back at the earliest pendingResults.resultFinalAt or when the next round opens.",
  "claims": [],
  "joinedRounds": {
-  "BTC 6h": 83113,
-  "ETH 6h": 83113,
-  "BNB 6h": 83113,
-  "BTC 1h": 498683,
-  "ETH 1h": 498683,
-  "BNB 1h": 498683,
   "BTC 1d": 20778
  },
  "pendingResults": [

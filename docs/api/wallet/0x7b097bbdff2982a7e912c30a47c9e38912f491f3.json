@@ -4,6 +4,28 @@
  "howToUse": "Step 1: send the claims below (they stay valid until done). Step 2: read https://mycyi1994-hash.github.io/forecast-league/api/state for the rounds open now; skip a market whose round number equals joinedRounds[market]. Step 3: preview every call right before sending; skip any that fails. Come back at the earliest pendingResults.resultFinalAt or when the next round opens.",
  "claims": [
   {
+   "type": "claim",
+   "market": "ETH 6h",
+   "contract": "0x621B9fEd6FF2f0FC73e26264A401F7d12644A0A1",
+   "method": "claim()",
+   "inputData": "0x4e71d92d",
+   "args": [],
+   "valueWei": "0",
+   "finishedTickets": 1,
+   "validUntil": "until claimed (a second claim reverts NothingToClaim, which is harmless)"
+  },
+  {
+   "type": "claim",
+   "market": "BNB 6h",
+   "contract": "0xA782Ac207fE33f6120d9c2EF9553A55C47CFbbE9",
+   "method": "claim()",
+   "inputData": "0x4e71d92d",
+   "args": [],
+   "valueWei": "0",
+   "finishedTickets": 1,
+   "validUntil": "until claimed (a second claim reverts NothingToClaim, which is harmless)"
+  },
+  {
    "type": "join",
    "contract": "0x8433AD00601C57cE9F144b20A32aE478EEe831AE",
    "method": "join()",
@@ -27,16 +49,6 @@
   "BTC 1d": 20778
  },
  "pendingResults": [
-  {
-   "market": "ETH 6h",
-   "tickets": 1,
-   "resultFinalAt": "2026-11-21T12:00:00Z"
-  },
-  {
-   "market": "BNB 6h",
-   "tickets": 1,
-   "resultFinalAt": "2026-11-21T12:00:00Z"
-  },
   {
    "market": "BTC 1d",
    "tickets": 1,
