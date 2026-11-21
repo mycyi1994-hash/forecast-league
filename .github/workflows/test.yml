@@ -1,0 +1,33 @@
+name: Tests
+# Runs the Foundry unit tests (test/, mocks only). The mainnet-fork tests in test/fork/ are left out by the
+# default profile in foundry.toml; run them with FOUNDRY_PROFILE=fork forge test.
+on:
+  push:
+    paths: ['src/**', 'test/**', 'art/**', 'foundry.toml', 'remappings.txt', 'package.json', 'package-lock.json', '.github/workflows/test.yml']
+  pull_request:
+    paths: ['src/**', 'test/**', 'art/**', 'foundry.toml', 'remappings.txt', 'package.json', 'package-lock.json', '.github/workflows/test.yml']
+  workflow_dispatch: {}
+permissions:
+  contents: read
+jobs:
+  forge-test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      # @openzeppelin/contracts 5.1.0 comes from node_modules (remappings.txt).
+      - name: Install npm dependencies
+        run: npm ci --no-audit --no-fund
+      # forge-std is not committed (lib/ is in .gitignore); fetch the version the tests were written against.
+      - name: Fetch forge-std v1.9.7
+        run: git clone -q --depth 1 --branch v1.9.7 https://github.com/foundry-rs/forge-std lib/forge-std
+      - uses: foundry-rs/foundry-toolchain@v1
+        with:
+          version: v1.7.1
+      - name: Unit tests
+        run: |
+          forge --version
+          forge test
