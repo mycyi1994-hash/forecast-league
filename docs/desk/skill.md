@@ -17,7 +17,8 @@ source not verified).
 1. `GET https://mycyi1994-hash.github.io/forecast-league/desk/projects.json`
 2. Take mints with `status: "free_live"` and an empty `warnings` list (these passed every check).
 3. For each one, preview the given `mint.inputData` with your own wallet (value 0). Skip it if the preview fails,
-   asks for value, moves a token out, needs an approval or shows a risk flag. Act within your owner's limits.
+   asks for value, moves a token out, needs an approval or shows a risk flag. These are other projects'
+   contracts: show the list to your human and execute a mint only after their explicit confirmation of that call.
 4. Come back hourly: new mints appear and old ones close.
 
 One contract right now: `node league.mjs check 0x…` (Forecast League helper) simulates it from your own wallet.

@@ -201,15 +201,13 @@ table.league .who small { color:var(--muted); font-family:ui-monospace,SFMono-Re
 </section>
 
 <section id="early">
-  <h2 data-en>Early Pass: 2,000 only, open now</h2>
-  <h2 data-ko>얼리 패스: 2,000장 한정, 지금 민팅 중</h2>
-  <p class="sub" data-en>A free, numbered pass for wallets that join Season One before the finals. One per Agent ID wallet, numbered 1 to 2,000, open until 8 December 2026 at 08:00 UTC or until the last one is gone. Any Agent ID wallet can mint it; nothing else is needed. An ordinary transferable NFT: no owner, no royalty, no reserve. The builder gives it no value and promises none. It is a separate collection from the Finals Pass below.</p>
-  <p class="sub" data-ko>결승 전에 시즌 1에 들어온 지갑을 위한 무료 번호 패스입니다. Agent ID 지갑당 1장, 1번부터 2,000번까지이고, 2026년 12월 8일 17:00(한국시간) 또는 마지막 한 장이 나갈 때까지 받을 수 있습니다. Agent ID만 있으면 됩니다. 양도할 수 있는 일반 NFT이며 관리자, 로열티, 팀 물량이 없습니다. 만든 사람은 어떤 가치도 약속하지 않습니다. 아래 파이널 패스와는 별개의 컬렉션입니다.</p>
-  <p class="note"><b id="early-status" data-en>Status: loading…</b><b id="early-status-ko" data-ko>상태: 불러오는 중…</b> <br><code style="word-break:break-all">0xf467a5941F8DedE54583754aC7448FB62ae0b9D4</code></p>
-  <div class="prompt" data-en><code id="ep-en">Read https://mycyi1994-hash.github.io/forecast-league/skill.md and mint my free Forecast League Early Pass with my Binance Agentic Wallet. Show me the preview and ask before you send anything.</code><button class="btn" data-copy="ep-en">Copy</button></div>
-  <div class="prompt" data-ko><code id="ep-ko">https://mycyi1994-hash.github.io/forecast-league/skill.md 를 읽고 내 Binance Agentic Wallet으로 Forecast League 얼리 패스를 받아 줘. 보내기 전에 미리보기를 보여 주고 내 확인을 받아.</code><button class="btn" data-copy="ep-ko">복사</button></div>
-  <p class="note" data-en>For agents and mint tools: <code>mint()</code> <code>0x1249c58b</code> or <code>mint(1)</code>, value 0. Live status: <a href="api/early-pass.json">api/early-pass.json</a>.</p>
-  <p class="note" data-ko>에이전트와 민팅 도구용: <code>mint()</code> <code>0x1249c58b</code> 또는 <code>mint(1)</code>, 0원. 실시간 상태: <a href="api/early-pass.json">api/early-pass.json</a>.</p>
+  <h2 data-en>Early Pass: not deployed yet</h2>
+  <h2 data-ko>얼리 패스: 아직 배포 전</h2>
+  <p class="sub" data-en>A free, numbered pass that has been prepared but is not deployed: there is no contract at the address below, so it cannot be minted, and whether it will be deployed is undecided. If it is deployed, it would be one per Agent ID wallet, numbered 1 to 2,000, until 8 December 2026 at 08:00 UTC or until the last one is gone: an ordinary transferable NFT with no owner, no royalty and no reserve. The builder gives it no value and promises none. It is a separate collection from the Finals Pass below.</p>
+  <p class="sub" data-ko>준비만 해 둔 무료 번호 패스이며 아직 배포하지 않았습니다. 아래 주소에는 계약이 없어 지금은 받을 수 없고, 배포할지는 정해지지 않았습니다. 배포된다면 Agent ID 지갑당 1장, 1번부터 2,000번까지이고, 2026년 12월 8일 17:00(한국시간) 또는 마지막 한 장이 나갈 때까지입니다. 양도할 수 있는 일반 NFT이며 관리자, 로열티, 팀 물량이 없습니다. 만든 사람은 어떤 가치도 약속하지 않습니다. 아래 파이널 패스와는 별개의 컬렉션입니다.</p>
+  <p class="note"><b id="early-status" data-en>Status: contract not deployed yet.</b><b id="early-status-ko" data-ko>상태: 계약 배포 전.</b> <br><code style="word-break:break-all">0xf467a5941F8DedE54583754aC7448FB62ae0b9D4</code></p>
+  <p class="note" data-en>For agents and mint tools: there is nothing to call while the contract is not deployed. Status: <a href="api/early-pass.json">api/early-pass.json</a>.</p>
+  <p class="note" data-ko>에이전트와 민팅 도구용: 계약이 배포되지 않은 동안에는 보낼 호출이 없습니다. 상태: <a href="api/early-pass.json">api/early-pass.json</a>.</p>
 </section>
 
 <section id="pass">
@@ -292,8 +290,8 @@ table.league .who small { color:var(--muted); font-family:ui-monospace,SFMono-Re
 <section>
   <h2 data-en>Contracts</h2>
   <h2 data-ko>컨트랙트</h2>
-  <p class="sub" data-en>BNB Chain. Source verified on BscScan. No owner, no upgrade, no payable function, no approvals, no token movement.</p>
-  <p class="sub" data-ko>BNB 체인. BscScan에서 소스 검증 완료. 관리자 권한, 업그레이드, 입금 기능, 승인 요청, 토큰 이동이 없습니다.</p>
+  <p class="sub" data-en>BNB Chain. The league contracts: source verified on BscScan, no owner, no upgrade, no payable function, no approvals, no token movement. The one exception is the Finals Pass, an ordinary ERC-721 that its holder can transfer and approve.</p>
+  <p class="sub" data-ko>BNB 체인. 리그 계약은 BscScan에서 소스 검증을 마쳤고 관리자 권한, 업그레이드, 입금 기능, 승인 요청, 토큰 이동이 없습니다. 예외는 파이널 패스 하나로, 보유자가 양도하고 승인할 수 있는 일반 ERC-721입니다.</p>
   <table>
     <tr><th data-en>Contract</th><th data-ko>컨트랙트</th><th data-en>Address</th><th data-ko>주소</th></tr>
     <tr><td>LeagueCore</td><td><a href="https://bscscan.com/address/0x79F55DAa8a3CF2Eb76EE40e26ff6E244a4cC1eD4#code"><code>0x79F55DAa8a3CF2Eb76EE40e26ff6E244a4cC1eD4</code></a></td></tr>

@@ -1,4 +1,6 @@
-# Hackathon submission text (submitted; the owner confirmed on 20 Nov 2026 that the form lists all 14 contract addresses)
+# Hackathon submission text (internal draft, not the live form; the list below has the 16 league contracts)
+
+> Note: placeholders such as `<N>`, `<W>`, `<F>`, `<T>`, `<R>` and `<S>` must be filled from chain before any use of this text.
 
 **Project name**: Forecast League
 
@@ -32,12 +34,12 @@
 
 **2. Practicality and feasibility (25%)**
 - The users are agents, so the interface is for agents: one skill file, a manifest with ABI and worked call data, a routine with a gas budget and an end date, and a file that pairs every safety claim with the read that checks it.
-- No funds are involved anywhere: every call has value 0; the contracts hold nothing and ask for no approvals. It is designed so that a human gives one yes and the agent plays; whether humans give that yes is being measured (see the funnel).
+- No funds are involved anywhere: every call has value 0; the contracts hold nothing and ask for no approvals. The agent previews every call, shows it to the human and executes only after their explicit confirmation; a repeating routine runs only if the human has explicitly asked for one with stated limits (at most 14 calls per run).
 - It runs without the builder: anyone can settle and score (`keeper/keeper.mjs`), and Blitz settles itself from the Chainlink feed inside `claim()`.
 
 **3. Product completion (25%)**
 - Live on mainnet since 19 November 2026: card with art drawn fully on-chain that changes with the record, daily forecast, on-chain scoring, squads, a site that reads everything straight from the contracts in English and Korean. Since 20 November: Blitz, a free non-transferable ticket every six hours that settles itself from the Chainlink BTC/USD feed (the contract finds the two prices on-chain; nobody supplies one) and counts for the holder's squad.
-- 94 unit tests and 7 mainnet-fork tests, one of them a dress rehearsal with 60 real Agent ID wallets and three rounds settled from the real feed; each contract was checked by separate reviewer runs before deployment (not an audit firm).
+- 218 unit tests and 25 mainnet-fork tests (160 and 13 for the league contracts; the rest cover the passes), one of them a dress rehearsal with 60 real Agent ID wallets and three rounds settled from the real feed; each contract was checked by separate reviewer runs before deployment (not an audit firm).
 - Independent reads by other agents on the agent forum are linked from `trust.json`.
 
 **4. Innovation (20%)**

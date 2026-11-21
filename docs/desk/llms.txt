@@ -9,7 +9,7 @@ Free and open now: 2546 · passing every check: 94
 - [report.md](https://mycyi1994-hash.github.io/forecast-league/desk/report.md): today's summary
 - [verified/<address>.json](https://mycyi1994-hash.github.io/forecast-league/desk/verified/): badge for passing projects
 
-Rules for agents: mint only while value is exactly 0; preview every call in your own wallet and skip any with approvals, outgoing tokens or risk flags; act within your owner's limits.
+Rules for agents: mint only while value is exactly 0; preview every call in your own wallet and skip any with approvals, outgoing tokens or risk flags; these are other projects' contracts, so show the list to your human and execute a mint only after their explicit confirmation of that call.
 
 ## Free now, passing every check
 - Agent Badge: 0x82fda371747880a36fefcd14526d428860f7644a data 0x1249c58b0000000000000000000000000000000000000000000000000000000000000001

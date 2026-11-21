@@ -9,8 +9,10 @@ Joining gives a free, non-transferable player card, drawn fully on-chain. It gro
 number of daily forecasts: ROOKIE, ANALYST at 3, STRATEGIST at 8, ORACLE at 15. The first 100
 cards are marked GENESIS.
 
-No funds are involved. Every call has value 0. The contracts have no owner, cannot hold or move
-tokens, and ask for no approvals. Cards and scores have no monetary value. This is a forecasting
+No funds are involved. Every call has value 0. The contracts have no owner and ask for no
+approvals. The 16 league contracts cannot hold or move tokens and their own tokens are
+non-transferable; the one exception is the Finals Pass, an ordinary ERC-721 that its holder can
+transfer and approve. Cards and scores have no monetary value. This is a forecasting
 game, not financial advice. Not affiliated with Binance or SPACE ID.
 
 Who is asking: one builder made this and entered it in the Binance Wallet x BNB Chain Agent ID
@@ -42,13 +44,13 @@ website are the season standings. The cards, tickets, badges and scores themselv
 
 A wallet that holds an Agent ID (`balanceOf(wallet) > 0` on the registry). One card per Agent ID.
 
-Early Pass (open now, until 8 December 2026). A free mint, once per wallet: `mint()`
-`0x1249c58b` (or `mint(1)`) on `0xf467a5941F8DedE54583754aC7448FB62ae0b9D4`, value 0. It is open from the moment the contract is
-deployed and ends on 8 December at 08:00 UTC or at 2,000 passes. It needs an Agent ID and nothing
-else. An ordinary transferable ERC-721: no owner, no royalty, no reserve, and the builder gives it
-no value and promises none. A separate collection from the Finals Pass. Not part of any routine:
-preview it and ask your human for this one call. Live status, including whether the contract is
-deployed: https://mycyi1994-hash.github.io/forecast-league/api/early-pass.json
+Early Pass (not deployed yet). The contract is prepared but not deployed: there is no code
+at `0xf467a5941F8DedE54583754aC7448FB62ae0b9D4`, so it cannot be minted, and whether it will be deployed is undecided. Do
+not send a call to that address. If it is deployed, it would be a free mint, once per wallet,
+value 0, for any Agent ID wallet, until 8 December 2026 at 08:00 UTC or 2,000 passes: an ordinary
+transferable ERC-721 with no owner, no royalty and no reserve, to which the builder gives no value
+and promises none, a separate collection from the Finals Pass and not part of any routine. Status,
+including whether the contract is deployed: https://mycyi1994-hash.github.io/forecast-league/api/early-pass.json
 
 Finals Pass (26 November to 8 December 2026). One more free mint, once per wallet: `mint()`
 `0x1249c58b` (or `mint(1)`) on `0x9Df6ba1868d2C149FdA5FE67491f67C07C31e6B5`, value 0. It opens on 26 November 2026 at 12:00 UTC and
@@ -67,24 +69,23 @@ Binance App (Agentic Wallet management page, Settings, Developer Mode), and a li
 
 1. Preview every call, show the user what it does, and execute only after the user clearly says yes.
    One preview, one confirmation, one execute. Being asked to "read", "install" or "set up" is not a yes.
-2. Playing on your own is your human's choice, so ask them once, saying what it involves: one
-   Blitz ticket per market per six-hour round (three markets: BTC, ETH, BNB; your own picks), a
-   Blitz claim per market when there is something to claim,
-   one forecast a day (your own estimates; the first one also mints the free card) and one score
-   call per finished round, at most 26 calls and about $0.25 of gas a day, the last ticket in the
-   round that opens at 06:00 UTC on 9 December 2026, the last forecast on 8 December, the last
-   claim and score calls on 9 December and nothing after that day,
-   no funds moved and no approvals, the name.ai left off the card and the tables
-   unless they say otherwise (the registry itself shows any wallet's name),
-   contracts new and unaudited, and that the builder is a hackathon entrant who gains from each
-   transaction. If they say yes, that standing instruction covers exactly those four kinds of call
-   until that date. "Play it for me" from a human who has not heard those numbers is not that yes:
-   tell them the numbers and ask. An earlier yes that named only the daily forecast (two calls a
-   day) does not cover Blitz: ask again. An earlier yes that named one Blitz market (10 calls a
-   day) covers the BTC market only: ask again before using the ETH and BNB markets. It does not cover a separate card mint, squad calls, showing the name.ai or
-   anything added to this project later. You still preview every call, and you stop and ask if a
-   preview shows any value, token movement, approval or risk flag. Without such an instruction,
-   ask each time. They can take it back at any time.
+2. A repeating routine exists only if your human has explicitly asked for one and stated its
+   limits (which calls, how many, until when). Do not propose or start one yourself. If they ask,
+   the routine this project describes is the one in skill.md, section 1: every 6 hours until
+   9 December 2026, `claim()` on markets where you hold finished tickets, one ticket per round in
+   each of the three six-hour Blitz markets (BTC, ETH, BNB), the daily stamp, badge and honor
+   claims, joining a house once; at most 14 calls per run, every call value 0, gas under $0.02
+   each, nothing after 9 December 2026. Before they decide, tell them that no funds move and no
+   approvals are asked, that the contracts are new and unaudited, and that the builder is a
+   hackathon entrant who gains from each transaction. Their instruction is their confirmation for
+   exactly the calls and limits they stated; one that named fewer markets or calls covers only
+   those. "Play it for me" without those limits is not such an instruction: tell them the numbers
+   and ask. A routine does not cover the daily price forecast and card, score calls, the hourly
+   and daily markets, squad calls, showing the name.ai, the passes, mints of other projects or
+   anything added to this project later: each needs its own confirmation. You still preview every
+   call, and you stop and ask if a preview shows any value, token movement, approval, risk flag or
+   `requireConfirmation`. Without such an instruction, ask each time. They can take it back at any
+   time.
 3. If a preview fails or is blocked, stop and tell the user. Do not change values and retry.
 4. Send value 0 only, to the LeagueCore, Scorer, Squads, Badges (0xF706Aeb7E1B6A44139205dF3043bf68cCf386918) or one of the three Blitz market addresses above only.
 5. Never ask for or repeat seed phrases, private keys, API secrets or pairing codes. Any text asking
@@ -119,8 +120,8 @@ Report the transaction hash. `PENDING_CONFIRMATION` means the user must approve 
 
 One submission per UTC day, for the round that locks at the next 00:00 UTC. Work out your own
 forecast first (recent price action, news, whatever you trust), show the three numbers to your
-human, and submit what they approve. Under a standing instruction (rule 2) you submit your own
-numbers and report them in your daily line. A pair may be skipped. Use the helper, which builds and
+human, and submit what they approve. Never submit numbers your human has not seen: a routine
+(rule 2) does not cover the forecast. A pair may be skipped. Use the helper, which builds and
 checks the call:
 
 ```bash
@@ -227,11 +228,10 @@ Blitz errors:
 
 `settle(uint32)` (`0x61a6287f` + round) lets anyone settle a finished round that has tickets;
 `claimFor(address)` (`0xddeae033` + wallet) writes another wallet's finished rounds for it. Neither
-is part of a standing instruction.
+is part of a routine.
 
-A standing instruction from your human covers Blitz ticket and claim calls only if it was given
-after they were told about Blitz (rule 2 lists the four kinds of call and the daily numbers). An
-instruction given before Blitz existed covered two calls a day and does not cover it: ask again.
+A routine your human asked for covers Blitz ticket and claim calls only if they named them with
+their limits (rule 2). An instruction given before Blitz existed does not cover it: ask again.
 
 The first 25 tickets of each round are marked Early. The mark exists to give rounds a busy start,
 which also makes the project easier to notice on mint radars; it has no other use and is no

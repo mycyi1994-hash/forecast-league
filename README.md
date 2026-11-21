@@ -12,7 +12,8 @@ Built for the Binance Wallet x BNB Chain **Agent ID Hackathon** (November to Dec
 Free mint for Agent ID holders: `mint()` on `0x79F55DAa8a3CF2Eb76EE40e26ff6E244a4cC1eD4` (BNB Chain),
 value 0, one card per Agent ID, no owner, source verified on BscScan and Sourcify.
 
-No funds are involved: every call has value 0 and the contracts cannot hold or move tokens.
+No funds are involved: every call has value 0. The 16 league contracts cannot hold or move tokens
+and their own tokens are non-transferable; the Finals Pass is an ordinary ERC-721 that its holder can transfer.
 This is a forecasting game, not financial advice. Scores and cards have no monetary value.
 
 ## Deployed contracts (BNB Chain mainnet)
@@ -35,11 +36,12 @@ This is a forecasting game, not financial advice. Scores and cards have no monet
 | Stamps | `0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae` |
 | Houses | `0x8433AD00601C57cE9F144b20A32aE478EEe831AE` |
 | Honors | `0x3e73bC0309c72EA69bD74CaDEC943668291Ca6ed` |
+| Finals Pass | `0x9Df6ba1868d2C149FdA5FE67491f67C07C31e6B5` |
 
-- Deployed on 2026-11-19 from an Agentic Wallet that holds an Agent ID
+- Deployed from 2026-11-19 to 2026-11-21 from an Agentic Wallet that holds an Agent ID
   (`0x2a2F48145780639dbD91e748dF157F35283165Da`), through the deterministic deployment factory
   `0x4e59b44847b379578588920cA78FbF26c0B4956C` with salt 0.
-- Source is verified on BscScan and on Sourcify for all four.
+- The 16 league contracts are verified on BscScan and Sourcify; the Finals Pass on Sourcify (BscScan pending).
 - Constructor arguments. CardArt: the CardArtData address. LeagueCore: Agent ID registry
   `0x60B9262456dE011F7d15a54CdD8c48bAaa8B022F`, name "Forecast League", symbol "FCL", the CardArt address.
   Scorer: the LeagueCore address, the BTC/USD, ETH/USD and BNB/USD feeds listed in
@@ -77,7 +79,7 @@ only after the user says yes.
 | `skills/forecast-league/scripts/league.mjs` | Dependency-free helper: reads public chain data and builds the call data. It never signs or sends anything. |
 | `src/Squads.sol` | Teams. A holder opens a squad named after their Agent ID; others join it by that name. The site ranks squads by the summed score of their five best members. |
 | `keeper/keeper.mjs` | Builds the `settle` and `scoreMany` calls that close a round. Read-only; anyone can run it and send the calls. |
-| `src/EarlyPass.sol` | The Season One early pass: the same contract as the Finals Pass without an opening time, so it can be minted from the moment it is deployed. Free, numbered, transferable ERC-721 (OpenZeppelin), one per Agent ID wallet, 2,000 at most, `mint()` or `mint(1)`, until 8 December 2026 08:00 UTC. No owner, no royalty, no reserve; the builder gives it no value and promises none. Not deployed yet: it will be at `0xf467a5941F8DedE54583754aC7448FB62ae0b9D4` (deterministic deployment factory, salt 0); `launch/early_pass/` has the call data. |
+| `src/EarlyPass.sol` | The Season One early pass: the same contract as the Finals Pass without an opening time, so it could be minted from the moment it is deployed. Free, numbered, transferable ERC-721 (OpenZeppelin), one per Agent ID wallet, 2,000 at most, `mint()` or `mint(1)`, until 8 December 2026 08:00 UTC. No owner, no royalty, no reserve; the builder gives it no value and promises none. Not deployed, and whether it will be is undecided: its address would be `0xf467a5941F8DedE54583754aC7448FB62ae0b9D4` (deterministic deployment factory, salt 0); `launch/early_pass/` has the call data. |
 | `src/FinalsPass.sol` | The Season One pass: a free, numbered, transferable ERC-721 (OpenZeppelin). One per Agent ID wallet, 2,000 at most, `mint()` or `mint(1)`, open from 26 November 2026 12:00 UTC to 8 December 08:00 UTC. No owner, no royalty, no reserve; the builder gives it no value and promises none. Deployed on 21 November 2026 at `0x9Df6ba1868d2C149FdA5FE67491f67C07C31e6B5` (deterministic deployment factory, salt 0, transaction `0xac4180448ec608454d8ad397c473c3ad95d8e34cb4c4150fe6738aa9ea1498e6`), verified on Sourcify (exact match). `keeper/finalspass.mjs` reports the state of both passes in `docs/api/early-pass.json` and `docs/api/finals-pass.json`. |
 | `keeper/transparency.mjs` | Reads `balanceOf` for every known wallet on the 12 token contracts and writes `docs/api/transparency.json`: tokens per wallet, the share of the busiest wallets, the builder's wallet shown separately. Shown at `docs/transparency.html`. |
 | `keeper/rivals.mjs` | Counts the holders of other Agent-ID-gated NFT mints the public radar has seen since the contest began, to see where this entry stands. Writes `launch/rivals/`. Read-only. |
@@ -87,7 +89,7 @@ only after the user says yes.
 ## How Agent ID is used
 
 - Only addresses holding an Agent ID (`balanceOf > 0` on the official registry) can submit.
-- Agent ID is one per person and non-transferable, so one card and one record per person.
+- One card and one record per Agent ID.
 - The card and leaderboard show the holder's `name.ai` (read with `handleOf`) only if the holder
   agreed to it in their own `submit` transaction. It can be switched off with `setShowName(false)`.
 
@@ -101,7 +103,8 @@ only after the user says yes.
 
 ## Permissions and known limits
 
-- Neither contract has an owner, an admin function, a pause, a proxy or a payable function.
+- None of the 17 contracts has an owner, admin function, pause, proxy or payable function; the Finals
+  Pass is an ordinary ERC-721 that its holder can transfer and approve.
 - If a scoring bug is found, a new `Scorer` is deployed and the same submissions are scored again.
   Pointing the website and the skill at a new `Scorer` is the one thing the team can change, and
   any replacement will be listed here with the reason.
@@ -115,7 +118,7 @@ only after the user says yes.
 - The contracts depend on the Agent ID registry and on three Chainlink-style price feeds. If a
   feed stops answering or restricts read access, its rounds become void.
 - Forecasts are public as soon as they are submitted, so a late submitter can copy an earlier one.
-- Six-hour price moves are mostly chance. The record is a public, one-per-person history, not proof of skill.
+- Six-hour price moves are mostly chance. The record is a public history, one per Agent ID, not proof of skill.
 
 ## Test
 
