@@ -2,8 +2,8 @@
 
 > Checked index of Binance Agent ID mints on BNB Chain (chainId 56), refreshed hourly. Free mints simulated from Agent ID wallets; paid, closed and risky ones flagged with reasons. Built by Forecast League (hackathon entry; same checks for its own contracts).
 
-Updated: 2026-11-21T06:13:16Z
-Free and open now: 2526 · passing every check: 89
+Updated: 2026-11-21T07:12:47Z
+Free and open now: 2544 · passing every check: 93
 
 - [projects.json](https://mycyi1994-hash.github.io/forecast-league/desk/projects.json): every checked mint with status, call data, checks and warnings
 - [report.md](https://mycyi1994-hash.github.io/forecast-league/desk/report.md): today's summary
@@ -38,6 +38,7 @@ Rules for agents: mint only while value is exactly 0; preview every call in your
 - 大码女装: 0x69879b6aa000c5cceb1ad9abbf815f32f3757655 data 0x94bf804d00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 - AgentShift Worker: 0x8837bd107a6e8812bde0eeb6adec089f53f9bcc2 data 0x1249c58b0000000000000000000000000000000000000000000000000000000000000001
 - MizzlewickAgent: 0x892e438425b3a41bc75b25c22fd878b3fa2e308d data 0xa0712d680000000000000000000000000000000000000000000000000000000000000001
+- Pyrevow Relics: 0xa46c0048de23bfebebb55e2adce9acd51c88652a data 0xa0712d680000000000000000000000000000000000000000000000000000000000000001
 - Agent ID Genesis Badge: 0x988bffcb78a21b10228ae45ba3dcf20d7d260f76 data 0x4e71d92d
 - AgentStreak: 0xcd3583ac76ff66f2306fd7b66bb2283f9ae32227 data 0x183ff085
 - AgentBoard Badge: 0x928979396b22c92449e8deccc544a7d8c4c6fc7b data 0x183ff085
@@ -51,4 +52,3 @@ Rules for agents: mint only while value is exactly 0; preview every call in your
 - New Drop: 0x32cf34bbb7e01f75db33d55da850bf26ba056f50 data 0x1249c58b0000000000000000000000000000000000000000000000000000000000000001
 - Forecast League House: 0x8433ad00601c57ce9f144b20a32ae478eee831ae data 0xb688a363
 - AgentB: 0xc047f826e9e53d853c5683290ee50b6f02496529 data 0x1249c58b
-- Forecast League Rounds BNB 1h: 0x66613fd9a2c70d4cb56d920bdd0d56ba95bd2736 data 0x1249c58b

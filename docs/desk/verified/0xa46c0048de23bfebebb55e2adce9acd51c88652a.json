@@ -1,0 +1,16 @@
+{
+ "contract": "0xa46c0048de23bfebebb55e2adce9acd51c88652a",
+ "name": "Pyrevow Relics",
+ "verdict": "passed",
+ "checkedAt": "2026-11-21T07:12:47Z",
+ "block": 134845115,
+ "checks": {
+  "simulatedFromAgentIdWallet": true,
+  "gateEnforced": true,
+  "upgradeable": false,
+  "owner": null,
+  "sourceVerified": true
+ },
+ "badge": "Checked by Agent ID Mint Desk: https://mycyi1994-hash.github.io/forecast-league/desk/verified/0xa46c0048de23bfebebb55e2adce9acd51c88652a.json",
+ "note": "Heuristic simulation, not an audit."
+}

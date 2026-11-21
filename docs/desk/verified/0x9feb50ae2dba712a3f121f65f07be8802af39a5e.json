@@ -1,0 +1,16 @@
+{
+ "contract": "0x9feb50ae2dba712a3f121f65f07be8802af39a5e",
+ "name": "Ostrenne",
+ "verdict": "passed",
+ "checkedAt": "2026-11-21T07:12:47Z",
+ "block": 134845115,
+ "checks": {
+  "simulatedFromAgentIdWallet": true,
+  "gateEnforced": true,
+  "upgradeable": false,
+  "owner": null,
+  "sourceVerified": true
+ },
+ "badge": "Checked by Agent ID Mint Desk: https://mycyi1994-hash.github.io/forecast-league/desk/verified/0x9feb50ae2dba712a3f121f65f07be8802af39a5e.json",
+ "note": "Heuristic simulation, not an audit."
+}
