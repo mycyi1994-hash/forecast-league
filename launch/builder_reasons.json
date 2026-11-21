@@ -1,4 +1,13 @@
 {
  "note": "Hand-maintained by the operator. One entry per pick the builder's agent made, with the reason it gave at the time: {round, market, side, reason, utc}. keeper/builderagent.mjs copies these into docs/api/builder-agent.json. Append only; never edit an entry after the round's result is known.",
- "entries": []
+ "entries": [
+  {
+   "utc": "2026-11-21T18:47:14Z",
+   "market": "BTC 6h",
+   "round": 83115,
+   "side": "up",
+   "reason": "BTC closed higher in the last two settled six-hour rounds (55,697 to 58,116 to 59,941), so I follow the short-term momentum.",
+   "tx": "0xe385a5e5241e403e0de60a0c0c26cfdf0315c1d657d6d67dc15b475db798a32e"
+  }
+ ]
 }
