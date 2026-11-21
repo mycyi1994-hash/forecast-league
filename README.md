@@ -1,5 +1,13 @@
 # Forecast League
 
+Forecast League gives every Binance Agent ID an on-chain, Chainlink-settled record of its BTC, ETH and BNB market calls: free to play, value 0, no owner.
+
+**For judges** (about five minutes):
+- [judges.html](https://mycyi1994-hash.github.io/forecast-league/judges.html): one page with the Agent ID use, live numbers, six `cast` commands with their real output, all 19 contracts and the limits.
+- [Demo video, 50 s](https://mycyi1994-hash.github.io/forecast-league/demo.mp4) (`docs/demo.mp4`).
+- [transparency.html](https://mycyi1994-hash.github.io/forecast-league/transparency.html): who uses it and how much, builder's wallet shown separately; most tickets come from mint bots.
+- [deployment.json](https://mycyi1994-hash.github.io/forecast-league/deployment.json): addresses, selectors and the Agent ID gate of the 12 token contracts (all 19 are in the table below).
+
 A daily price-forecast league for Binance Agent ID holders on BNB Chain.
 An Agent ID holder gets a free, non-transferable player card, and their AI agent submits one
 set of BTC / ETH / BNB forecasts per UTC day. The card is drawn entirely on-chain and grows
@@ -43,7 +51,7 @@ This is a forecasting game, not financial advice. Scores and cards have no monet
 - Deployed from 2026-11-19 to 2026-11-21 from an Agentic Wallet that holds an Agent ID
   (`0x2a2F48145780639dbD91e748dF157F35283165Da`), through the deterministic deployment factory
   `0x4e59b44847b379578588920cA78FbF26c0B4956C` with salt 0.
-- All 18 contracts are verified on BscScan and Sourcify: the 16 league contracts, the Early Pass and the Finals Pass.
+- All 19 contracts are verified on BscScan and Sourcify: the 16 league contracts, the Early Pass, the Season Two Pass and the Finals Pass.
 - Constructor arguments. CardArt: the CardArtData address. LeagueCore: Agent ID registry
   `0x60B9262456dE011F7d15a54CdD8c48bAaa8B022F`, name "Forecast League", symbol "FCL", the CardArt address.
   Scorer: the LeagueCore address, the BTC/USD, ETH/USD and BNB/USD feeds listed in
@@ -81,7 +89,7 @@ only after the user says yes.
 | `skills/forecast-league/scripts/league.mjs` | Dependency-free helper: reads public chain data and builds the call data. It never signs or sends anything. |
 | `src/Squads.sol` | Teams. A holder opens a squad named after their Agent ID; others join it by that name. The site ranks squads by the summed score of their five best members. |
 | `keeper/keeper.mjs` | Builds the `settle` and `scoreMany` calls that close a round. Read-only; anyone can run it and send the calls. |
-| `src/EarlyPass.sol` | The Season One early pass: the same contract as the Finals Pass without an opening time, so it can be minted from the moment it is deployed. Free, numbered, transferable ERC-721 (OpenZeppelin), one per Agent ID wallet, 2,000 at most, `mint()` or `mint(1)`, until 8 December 2026 08:00 UTC. No owner, no royalty, no reserve; the builder gives it no value and promises none. Not deployed yet: it will be at `0xf467a5941F8DedE54583754aC7448FB62ae0b9D4` (deterministic deployment factory, salt 0); `launch/early_pass/` has the call data. |
+| `src/EarlyPass.sol` | The Season One early pass: the same contract as the Finals Pass without an opening time, so it can be minted from the moment it is deployed. Free, numbered, transferable ERC-721 (OpenZeppelin), one per Agent ID wallet, 2,000 at most, `mint()` or `mint(1)`, until 8 December 2026 08:00 UTC. No owner, no royalty, no reserve; the builder gives it no value and promises none. Deployed at `0xf467a5941F8DedE54583754aC7448FB62ae0b9D4` (deterministic deployment factory, salt 0) and open; `launch/early_pass/` has the call data. |
 | `src/FinalsPass.sol` | The Season One pass: a free, numbered, transferable ERC-721 (OpenZeppelin). One per Agent ID wallet, 2,000 at most, `mint()` or `mint(1)`, open from 26 November 2026 12:00 UTC to 8 December 08:00 UTC. No owner, no royalty, no reserve; the builder gives it no value and promises none. Deployed on 21 November 2026 at `0x9Df6ba1868d2C149FdA5FE67491f67C07C31e6B5` (deterministic deployment factory, salt 0, transaction `0xac4180448ec608454d8ad397c473c3ad95d8e34cb4c4150fe6738aa9ea1498e6`), verified on Sourcify (exact match). `keeper/finalspass.mjs` reports the state of both passes in `docs/api/early-pass.json` and `docs/api/finals-pass.json`. |
 | `keeper/transparency.mjs` | Reads `balanceOf` for every known wallet on the 12 token contracts and writes `docs/api/transparency.json`: tokens per wallet, the share of the busiest wallets, the builder's wallet shown separately. Shown at `docs/transparency.html`. |
 | `keeper/rivals.mjs` | Counts the holders of other Agent-ID-gated NFT mints the public radar has seen since the contest began, to see where this entry stands. Writes `launch/rivals/`. Read-only. |
