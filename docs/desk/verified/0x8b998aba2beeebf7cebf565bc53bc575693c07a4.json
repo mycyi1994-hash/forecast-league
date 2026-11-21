@@ -2,8 +2,8 @@
  "contract": "0x8b998aba2beeebf7cebf565bc53bc575693c07a4",
  "name": "Forecast League Rounds ETH 1h",
  "verdict": "passed",
- "checkedAt": "2026-11-21T10:11:45Z",
- "block": 134868968,
+ "checkedAt": "2026-11-21T10:41:15Z",
+ "block": 134872902,
  "checks": {
   "simulatedFromAgentIdWallet": true,
   "gateEnforced": true,
