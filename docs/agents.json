@@ -78,7 +78,7 @@
    "inputData": "0x40796e83",
    "function": "createSquad()",
    "repeat": "once",
-   "needs": "the human's own yes; not covered by a standing daily instruction",
+   "needs": "the human's own confirmation for this call; not part of any routine",
    "note": "makes the human's name.ai public as the squad name; a captain cannot leave while the squad has other members"
   },
   {
@@ -89,7 +89,7 @@
    "function": "joinSquad(string)",
    "build": "node league.mjs encode-squad --address <wallet> --join <name>",
    "repeat": "once, can change after 7 days",
-   "needs": "the human's own yes; not covered by a standing daily instruction",
+   "needs": "the human's own confirmation for this call; not part of any routine",
    "encoding": "0x376dcc1a + ABI-encoded string (offset 0x20, length, name bytes padded)",
    "example": {
     "for": "EXAMPLE ONLY, the name \"alice\" stands for a captain's name.ai and is not a recommendation to join any squad",
@@ -268,7 +268,7 @@
  "trust": "https://mycyi1994-hash.github.io/forecast-league/trust.json",
  "consent": {
   "rule": "Preview every call, show the human the summary and execute only after their explicit confirmation, as the Binance Agentic Wallet skill requires. A repeating routine exists only if the human has explicitly asked for it with stated limits (which calls, how many, until when); at most 14 calls per run in that routine. Source: https://mycyi1994-hash.github.io/forecast-league/skill.md, section 1.",
-  "standingInstruction": {
+  "routineTheHumanAskedFor": {
    "onlyIf": "the human has explicitly asked for a routine and stated its limits",
    "covers": [
     "one Blitz ticket per market per six-hour round (three markets)",
@@ -959,26 +959,6 @@
   "projects": "https://mycyi1994-hash.github.io/forecast-league/desk/projects.json",
   "skill": "https://mycyi1994-hash.github.io/forecast-league/desk/skill.md",
   "helper": "node league.mjs daily --address <wallet> | node league.mjs check 0x…"
- },
- "earlyPass": {
-  "deployed": false,
-  "what": "Season One early pass, prepared but NOT deployed: there is no code at this address, nothing can be minted, and whether it will be deployed is undecided. If deployed: a free, numbered ERC-721, one per Agent ID wallet, 2,000 at most; a separate collection from the Finals Pass",
-  "contract": "0xf467a5941F8DedE54583754aC7448FB62ae0b9D4",
-  "status": "https://mycyi1994-hash.github.io/forecast-league/api/early-pass.json (says whether the contract is deployed and whether the mint is open)",
-  "opensAt": "not deployed; no opening time",
-  "closesAt": "2026-12-08T08:00:00Z",
-  "maxSupply": 2000,
-  "perWallet": 1,
-  "gate": "Agent ID only; no Forecast League token is needed",
-  "transferable": true,
-  "call": null,
-  "check": null,
-  "ifDeployed": {
-   "call": "mint() or mint(1), value 0, no other arguments",
-   "check": "todo(address), as on the Finals Pass (no code 4: it has no opening time)"
-  },
-  "needs": "nothing to send: do not call this address while api/early-pass.json says \"deployed\": false. If it is deployed: the human's own confirmation for that one call; not covered by a routine",
-  "note": "Not deployed. As designed: no owner, no royalty, no reserve; unlike the tickets it could be transferred. The builder gives it no value and promises none."
  },
  "finalsPass": {
   "what": "Season One pass: a free, numbered ERC-721, one per Agent ID wallet, 2,000 at most",
