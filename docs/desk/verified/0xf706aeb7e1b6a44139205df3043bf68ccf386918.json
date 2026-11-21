@@ -2,8 +2,8 @@
  "contract": "0xf706aeb7e1b6a44139205df3043bf68ccf386918",
  "name": "Forecast League Badge",
  "verdict": "passed",
- "checkedAt": "2026-11-21T14:10:47Z",
- "block": 134900819,
+ "checkedAt": "2026-11-21T15:10:33Z",
+ "block": 134908784,
  "checks": {
   "simulatedFromAgentIdWallet": true,
   "gateEnforced": true,
