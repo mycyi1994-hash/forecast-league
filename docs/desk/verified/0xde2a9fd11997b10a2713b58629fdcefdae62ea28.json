@@ -1,0 +1,16 @@
+{
+ "contract": "0xde2a9fd11997b10a2713b58629fdcefdae62ea28",
+ "name": "CharMasks Veiled Mask",
+ "verdict": "passed",
+ "checkedAt": "2026-11-21T22:11:38Z",
+ "block": 134964909,
+ "checks": {
+  "simulatedFromAgentIdWallet": true,
+  "gateEnforced": true,
+  "upgradeable": false,
+  "owner": null,
+  "sourceVerified": true
+ },
+ "badge": "Checked by Agent ID Mint Desk: https://mycyi1994-hash.github.io/forecast-league/desk/verified/0xde2a9fd11997b10a2713b58629fdcefdae62ea28.json",
+ "note": "Heuristic simulation, not an audit."
+}

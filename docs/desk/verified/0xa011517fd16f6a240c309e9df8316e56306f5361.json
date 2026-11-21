@@ -2,8 +2,8 @@
  "contract": "0xa011517fd16f6a240c309e9df8316e56306f5361",
  "name": "AgentStreak Badge",
  "verdict": "passed",
- "checkedAt": "2026-11-21T21:10:09Z",
- "block": 134956711,
+ "checkedAt": "2026-11-21T22:11:38Z",
+ "block": 134964909,
  "checks": {
   "simulatedFromAgentIdWallet": true,
   "gateEnforced": true,

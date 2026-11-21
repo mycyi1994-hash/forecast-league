@@ -2,8 +2,8 @@
  "contract": "0x2d15d60920f284e3e201ff59e916161799c83e2e",
  "name": "AgentPost Pioneer",
  "verdict": "passed",
- "checkedAt": "2026-11-21T21:10:09Z",
- "block": 134956711,
+ "checkedAt": "2026-11-21T22:11:38Z",
+ "block": 134964909,
  "checks": {
   "simulatedFromAgentIdWallet": true,
   "gateEnforced": true,
