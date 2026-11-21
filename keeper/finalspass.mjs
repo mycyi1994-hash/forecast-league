@@ -72,4 +72,13 @@ for (const f of ['docs/api/state', 'docs/deployment.json']) {
   if (f === 'docs/api/state' && typeof j.openCount === 'number') j.openCount = j.openNow.length;
   writeFileSync(f, JSON.stringify(j, null, 1) + '\n');
 }
+// agent.md / agents.md: one line per open pass inside the live block, right after the rounds table.
+for (const f of ['docs/agent.md', 'docs/agents.md']) {
+  let md; try { md = readFileSync(f, 'utf8'); } catch { continue; }
+  md = md.replace(/\nAlso open, limited: [^\n]*\n/g, '\n');
+  const lines = done.filter(({ status }) => status === 'open').map(({ P, minted, left }) =>
+    `Also open, limited: ${P.market} \`${P.address}\`, a free numbered pass, 2,000 only, one per Agent ID wallet, \`mint()\` \`0x1249c58b\`, value 0, no arguments. ${minted} minted, ${left} left. Closes ${iso(CLOSES_AT)}. Needs its own confirmation.`);
+  if (lines.length && md.includes('<!-- /live -->')) md = md.replace('<!-- /live -->', `${lines.join('\n')}\n<!-- /live -->`);
+  writeFileSync(f, md);
+}
 console.log(JSON.stringify({ ok: true, passes: done.map(({ P, status, minted, left, sourcify, submitted }) => ({ pass: P.market, status, minted, left, sourcify, submittedToSourcify: submitted })) }));
