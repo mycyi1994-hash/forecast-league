@@ -2,8 +2,8 @@
  "contract": "0x05d16222738a09bfe49470fac6cd5959522889f2",
  "name": "Aetheris",
  "verdict": "passed",
- "checkedAt": "2026-11-21T07:12:47Z",
- "block": 134845115,
+ "checkedAt": "2026-11-21T08:10:35Z",
+ "block": 134852820,
  "checks": {
   "simulatedFromAgentIdWallet": true,
   "gateEnforced": true,
