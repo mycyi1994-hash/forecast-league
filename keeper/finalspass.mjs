@@ -14,6 +14,7 @@ const CLOSES_AT = 1796716800, MAX_SUPPLY = 2000;
 const SITE = 'https://mycyi1994-hash.github.io/forecast-league';
 const PASSES = [
   { key: 'earlyPass', file: 'early-pass.json', market: 'Early Pass', name: 'Forecast League Early Pass', symbol: 'FLEARLY', address: '0xf467a5941F8DedE54583754aC7448FB62ae0b9D4', opensAt: null, dir: 'launch/early_pass', id: 'src/EarlyPass.sol:EarlyPass', src: 'src/EarlyPass.sol' },
+  { key: 'seasonTwoPass', file: 'season-two-pass.json', market: 'Season Two Pass', name: 'Forecast League Season Two Pass', symbol: 'FLS2', address: '0x74f35B8315D76dEaEcb7034918325815458261A4', opensAt: null, dir: 'launch/season2_pass', id: 'src/SeasonTwoPass.sol:SeasonTwoPass', src: 'src/SeasonTwoPass.sol' },
   { key: 'finalsPass', file: 'finals-pass.json', market: 'Finals Pass', name: 'Forecast League Finals Pass', symbol: 'FLPASS', address: '0x9Df6ba1868d2C149FdA5FE67491f67C07C31e6B5', opensAt: 1795694400, dir: 'launch/finals_pass', id: 'src/FinalsPass.sol:FinalsPass', src: 'src/FinalsPass.sol' },
 ];
 async function rpc(method, params) {

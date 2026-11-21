@@ -37,6 +37,7 @@ This is a forecasting game, not financial advice. Scores and cards have no monet
 | Houses | `0x8433AD00601C57cE9F144b20A32aE478EEe831AE` |
 | Honors | `0x3e73bC0309c72EA69bD74CaDEC943668291Ca6ed` |
 | Early Pass | `0xf467a5941F8DedE54583754aC7448FB62ae0b9D4` |
+| Season Two Pass | `0x74f35B8315D76dEaEcb7034918325815458261A4` |
 | Finals Pass | `0x9Df6ba1868d2C149FdA5FE67491f67C07C31e6B5` |
 
 - Deployed from 2026-11-19 to 2026-11-21 from an Agentic Wallet that holds an Agent ID
@@ -104,8 +105,8 @@ only after the user says yes.
 
 ## Permissions and known limits
 
-- None of the 18 contracts has an owner, admin function, pause, proxy or payable function; the Early
-  Pass and the Finals Pass are ordinary ERC-721s that their holders can transfer and approve.
+- None of the 19 contracts has an owner, admin function, pause, proxy or payable function; the Early
+  Pass, the Finals Pass and the Season Two Pass are ordinary ERC-721s that their holders can transfer and approve.
 - If a scoring bug is found, a new `Scorer` is deployed and the same submissions are scored again.
   Pointing the website and the skill at a new `Scorer` is the one thing the team can change, and
   any replacement will be listed here with the reason.

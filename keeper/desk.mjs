@@ -52,7 +52,7 @@ const OURS = { '0x2fadb6739a076b236fbd44e19f64ab158ccfba2c': 'Forecast League Bl
 const OUR_CALL = { '0x30b6b8c67ab2239185536ba3766e8cb05bfd18ae': '0x183ff085', '0x8433ad00601c57ce9f144b20a32ae478eee831ae': '0xb688a363', '0x3e73bc0309c72ea69bd74cadec943668291ca6ed': '0x4e71d92d', '0xf706aeb7e1b6a44139205df3043bf68ccf386918': '0x4e71d92d' };
 for (const [c, name] of Object.entries(OURS)) { const old = cand.get(c) || {}; cand.set(c, { ...old, name, symbol: 'FL', contract: c, standard: 'ERC-721 (soulbound)', calldata: OUR_CALL[c] || '0x1249c58b', valueWei: '0', maxSupply: null, firstSeen: old.firstSeen || '2026-11-19', ours: true }); }
 // The two passes are ordinary transferable ERC-721s with a 2,000 cap; listed under the same checks.
-const OUR_PASSES = { '0xf467a5941f8dede54583754ac7448fb62ae0b9d4': 'Forecast League Early Pass', '0x9df6ba1868d2c149fda5fe67491f67c07c31e6b5': 'Forecast League Finals Pass' };
+const OUR_PASSES = { '0xf467a5941f8dede54583754ac7448fb62ae0b9d4': 'Forecast League Early Pass', '0x9df6ba1868d2c149fda5fe67491f67c07c31e6b5': 'Forecast League Finals Pass', '0x74f35b8315d76deaecb7034918325815458261a4': 'Forecast League Season Two Pass' };
 for (const [c, name] of Object.entries(OUR_PASSES)) { const old = cand.get(c) || {}; cand.set(c, { ...old, name, symbol: 'FL', contract: c, standard: 'ERC-721 (transferable)', calldata: '0x1249c58b', valueWei: '0', maxSupply: 2000, firstSeen: old.firstSeen || '2026-11-21', ours: true }); }
 
 // 2. Simulating wallets: Agent ID holders from our known list. A wallet may already have minted, so up to 3 are tried.
