@@ -1,54 +1,72 @@
-# Hackathon submission text (internal draft, not the live form; the list below has the 16 league contracts)
+# Hackathon submission text (final draft)
 
-> Note: placeholders such as `<N>`, `<W>`, `<F>`, `<T>`, `<P>`, `<R>` and `<S>` must be filled from chain before any use of this text.
+Fill on submission day, then delete this block. [Brackets: 21 Nov 18:10 UTC values.]
 
-**Project name**: Forecast League
+| Placeholder | Where to read it |
+|---|---|
+| `{{AS_OF}}` | `updated` in `docs/api/transparency.json` |
+| `{{WALLETS}}`, `{{TOKENS}}` | `wallets`, `tokens` in `docs/api/transparency.json` [421, 3,660] |
+| `{{TOP10}}` | `concentration.top10SharePct` in `docs/api/transparency.json` [32.9%] |
+| `{{TICKETS}}`, `{{PICKED}}`, `{{PICKED_PCT}}`, `{{PICKED_WALLETS}}` | `totals` in `docs/api/picks.json` [2,905; 57; 2%; 11 of 358] |
+| `{{BUILDER}}` | `summary.all` in `docs/api/builder-agent.json` (`node keeper/builderagent.mjs`) [1 won, 10 lost, 3 waiting of 14] |
+| `{{UNIT_TESTS}}` | `forge test` summary line [276 passed] |
 
-**One sentence**: Forecast League gives every Binance Agent ID an on-chain, Chainlink-settled record of its BTC, ETH and BNB market calls: free to play, value 0, no owner.
+---
 
-**What the usage is, plainly**: most tickets are assigned, not predicted. A ticket minted with `mint()` gets the side the contract assigns, and mint bots make almost all of them (2,800 of 2,857 tickets, 21 Nov 2026 17:11 UTC, `api/picks.json`); only 57 tickets from 11 wallets were picked with `up()` or `down()`. We count the two apart from the 4-byte selector of each mint transaction (`keeper/picks.mjs`): the assigned track is participation, the picked track is the part that is a forecast. Refresh these numbers from `api/picks.json` the day you submit.
+**Forecast League** gives every Binance Agent ID an on-chain, Chainlink-settled record of its BTC, ETH and BNB market calls: free to play, value 0, no owner.
 
-**Website**: https://mycyi1994-hash.github.io/forecast-league/
-**For judges (5 minutes)**: https://mycyi1994-hash.github.io/forecast-league/judges.html (contract map, picked vs assigned, one agent end to end, passes, demo video, live numbers, commands to check it, all 19 contracts, limits)
-**Source**: https://github.com/mycyi1994-hash/forecast-league
+**Problem:** an AI agent's market calls leave no record anyone can check.
+**Answer:** free round tickets (hourly, 6-hourly, daily) and a daily price forecast, gated by Agent ID and settled from Chainlink on-chain.
+**Result:** one public record per Agent ID wallet that any app or contract can read.
 
-**Contracts (BNB Chain, verified on BscScan and Sourcify, no owner)**
-- LeagueCore `0x79F55DAa8a3CF2Eb76EE40e26ff6E244a4cC1eD4`
-- Scorer `0x5ea789e7cd9C157793dDA75959829F8C1527C16b`
-- Squads `0x1eAeEE5BA7582858b266920E79938203E92120D0`
-- CardArt `0x28BC6537d0D47aC4F50944Fc9949012f5cb54E45`, CardArtData `0xc2a08897b48664d31be71C79f8D54882f1A5ffe3`
-- Blitz BTC/USD `0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C`, ETH/USD `0x621B9fEd6FF2f0FC73e26264A401F7d12644A0A1`, BNB/USD `0xA782Ac207fE33f6120d9c2EF9553A55C47CFbbE9` (live since 20 November 2026)
-- Badges `0xF706Aeb7E1B6A44139205dF3043bf68cCf386918` (live since 20 November 2026)
-- SprintBTC `0x09A645aa6cc6b0eB320dCF3982bcaA6A22b32629`
-- SprintETH `0x8b998abA2BeeebF7ceBf565bC53BC575693c07a4`
-- SprintBNB `0x66613fD9a2c70d4cB56D920bDd0D56bA95BD2736`
-- DailyBTC `0x9e521add6F67EEe0Fe5c0b8ef32cb4543f7af50E`
-- Stamps `0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae`
-- Houses `0x8433AD00601C57cE9F144b20A32aE478EEe831AE`
-- Honors `0x3e73bC0309c72EA69bD74CaDEC943668291Ca6ed`
+Site: https://mycyi1994-hash.github.io/forecast-league/ · For judges (5 min): https://mycyi1994-hash.github.io/forecast-league/judges.html · Source: https://github.com/mycyi1994-hash/forecast-league
 
-## How it meets the four criteria
+## Agent ID application depth
 
-**1. Agent ID application depth (30%)**
-- Agent ID is the only way in: `mint`, `submit`, `createSquad`, `joinSquad` and every Blitz ticket check `balanceOf` on the official registry and revert without one (`NotAgentIdHolder`, `0xea11784e`). Check: `trust.json`, claim 5.
-- Because an Agent ID is one per person and non-transferable, it gives one card and one record per person with no sign-up, allowlist or signature server.
-- The name itself is used: the card and the tables show `name.ai` (read with `handleOf`) only if the holder opted in inside their own transaction; a squad is its captain's `name.ai` and others join by typing it (resolved on-chain with `ownerOfHandle`).
-- Proof on-chain (fill in the day you submit, from `node keeper/keeper.mjs funnel` and `node keeper/keeper.mjs evidence`): <N> cards, <W> wallets across the contracts, <F> forecasters, <T> round tickets in <R> rounds (<P> of them picked with up()/down(), the rest assigned by mint(); from `api/picks.json`), <S> squads. On 20 November, two hours after Blitz went live: 199 cards, 249 wallets, 150 tickets in the first round, 149 of them from wallets that are not the builder's.
+- Every mint checks `balanceOf > 0` on the Agent ID registry and reverts `NotAgentIdHolder()` otherwise; one ticket per Agent ID wallet per round. Check: `judges.html#check`, command 1.
+- `name.ai` is used on-chain: squads are joined by typing a captain's name, resolved with `ownerOfHandle` (`src/Squads.sol#L85`); cards show `handleOf` only after the holder opts in. Check: `judges.html#agentid`.
+- Other contracts already read the record on-chain: Honors mints from `recordOf` (`src/Honors.sol#L153-L167`), Houses scores members from it (`src/Houses.sol#L96-L110`), passes take their tier from league balances. Live counts: `judges.html#composable`.
+- Anyone can build on it: view functions, verified selectors, a Solidity interface, `cast` and `fetch` examples in `docs/integrate.md`.
+- The agent reads its next free call in one view: `todo(address)`. Check: `judges.html#check`, command 6.
 
-**2. Practicality and feasibility (25%)**
-- The users are agents, so the interface is for agents: one skill file, a manifest with ABI and worked call data, a routine with a gas budget and an end date, and a file that pairs every safety claim with the read that checks it.
-- No funds are involved anywhere: every call has value 0; the contracts hold nothing and ask for no approvals. The agent previews every call, shows it to the human and executes only after their explicit confirmation; a repeating routine runs only if the human has explicitly asked for one with stated limits (at most 14 calls per run).
-- The passes are the way in, not a separate product: the Early, Season Two and Finals Passes are the season's free entry token, and a pass's tier (BRONZE, SILVER at 4, GOLD at 8) is read live from how many of the 12 league token contracts its holder uses (`tierOf`, drawn by `tokenURI`). Measured on 21 Nov 2026 (builder left out): of 351 wallets that minted a pass, 211 were already playing; of the 140 that met us through a pass, 5 (3.6%) have used the league since. So far the pass has converted few new players.
-- One agent, end to end (the builder's own, excluded from all usage numbers; an example, not evidence of adoption): under its human's standing approval it takes one BTC 6h ticket per round, claims, and sends one daily BTC/ETH/BNB forecast. Its full record, unfiltered, is on `judges.html#agent` and in `api/builder-agent.json` (`keeper/builderagent.mjs`); on 21 Nov it stood at 1 won, 10 lost, 3 waiting over 14 tickets, and -600 over 2 scored forecast days.
-- It runs without the builder: anyone can settle and score (`keeper/keeper.mjs`), and Blitz settles itself from the Chainlink feed inside `claim()`.
+## Practicality and feasibility
 
-**3. Product completion (25%)**
-- Live on mainnet since 19 November 2026: card with art drawn fully on-chain that changes with the record, daily forecast, on-chain scoring, squads, a site that reads everything straight from the contracts in English and Korean. Since 20 November: Blitz, a free non-transferable ticket every six hours that settles itself from the Chainlink BTC/USD feed (the contract finds the two prices on-chain; nobody supplies one) and counts for the holder's squad.
-- 218 unit tests and 25 mainnet-fork tests (160 and 13 for the league contracts; the rest cover the passes), one of them a dress rehearsal with 60 real Agent ID wallets and three rounds settled from the real feed; each contract was checked by separate reviewer runs before deployment (not an audit firm).
-- Independent reads by other agents on the agent forum are linked from `trust.json`.
+- Agents are the users: a skill file and a dependency-free helper that prints only calls that will succeed now. A real run of the builder's agent: `judges.html#session`.
+- Consent stays with the human: preview every call in the Binance Agentic Wallet, send nothing with value, approvals or `requireConfirmation`, execute only after the human's confirmation. Rules: `docs/skill.md`.
+- No funds anywhere: value 0, no payable function, no approvals, no owner. Check: `judges.html#check`, command 2.
+- It runs without the builder: `settle`, `claim` and `claimFor` are open to anyone; the price comes from the Chainlink feed inside the contract. Check: `judges.html#check`, command 3.
+- Usage is public, weaknesses included: {{WALLETS}} Agent ID wallets hold {{TOKENS}} tokens (builder excluded, {{AS_OF}}): `transparency.html`.
 
-**4. Innovation (20%)**
-- It treats the Agent ID as the identity of a competitor, not as a pass: a public record of an agent's calls, one per Agent ID, scored by an oracle rather than by us. A short record proves little: six-hour moves are mostly chance, and the README says so.
-- Every repeated action is designed for an agent to take without a human typing numbers (zero-argument calls, one read that says what can be done next), with consent kept with the human.
+## Product completion
 
-**Safety red lines**: no web QR or pairing-code login and no stored sessions (the site has no wallet connection); the skill previews every call and executes only after the human's explicit confirmation, as the official Binance Agentic Wallet skill requires (a routine runs only after the human confirmed that exact routine, with its calls and limits read out); no approvals or transfers; open source; no owner permissions; no return promises; the project and domain do not use the names of the organisers; no credentials are collected; the name lookup is used only for joining a squad by its public name.
+- 19 contracts live on BNB Chain since 19 to 21 November, all verified on BscScan and Sourcify. List: `judges.html#contracts`.
+- {{UNIT_TESTS}} Foundry unit tests run in CI on every change to `src/` or `test/`; mainnet-fork tests in `test/fork/` with the real registry and feeds. Badge: README; workflow: `.github/workflows/test.yml`.
+- Settled results read live from the chain for every finished round. Check: `judges.html#numbers`.
+- Bilingual site reading the contracts directly, an hourly public feed and a 50-second demo: `docs/demo.mp4`.
+- One agent end to end, every ticket and forecast shown, good or bad: `judges.html#agent`.
+
+## Innovation
+
+- The Agent ID is treated as the identity of a competitor with a checkable track record, scored by an oracle rather than by the builder. Check: `judges.html#what`.
+- Picked and assigned tickets are counted apart from each transaction's selector, so participation is never sold as skill: {{PICKED}} of {{TICKETS}} tickets ({{PICKED_PCT}}) were picked. Check: `judges.html#pva`, `api/picks.json`, `keeper/picks.mjs`.
+- A pass whose tier is never stored: `tierOf` reads, at view time, how many league contracts its holder uses. Check: `judges.html#passes`.
+
+## Honest limits
+
+- **Mostly assigned, mostly bots.** Only {{PICKED_PCT}} of tickets were picked with `up()`/`down()`, by {{PICKED_WALLETS}} wallets; the rest are `mint()` coin flips from mint bots. A record here mostly shows attendance.
+- **Concentrated.** The 10 busiest wallets hold {{TOP10}} of tokens. `transparency.html`.
+- **Value 0.** No prize, reward or token. A 1 USDT/day prize was announced on 20 November and cancelled before it started; it was never paid.
+- **Passes did not bring many players.** Of 140 wallets that met the league through a pass, 5 (3.6%) used a league contract afterwards (21 Nov 17:46 UTC). `judges.html#passes`.
+- **The builder's own agent does badly:** {{BUILDER}}; its daily forecasts total -600 over 2 scored days. `judges.html#agent`.
+- **Composability is internal so far.** The contracts that read the record are this project's; no outside project uses it yet. Squads has one squad, the builder's.
+- **Unaudited and unfixable in place.** Tests and separate reviewer runs, no audit firm; no owner or proxy, so a fix is a new contract.
+
+## Contracts (19, BNB Chain)
+
+On the form: the 16 league contracts. Add the 3 passes before sending (see `launch/owner_checklist.md`, item 0), and check that the form shows all 19.
+
+- Markets: Blitz 6h BTC `0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C`, ETH `0x621B9fEd6FF2f0FC73e26264A401F7d12644A0A1`, BNB `0xA782Ac207fE33f6120d9c2EF9553A55C47CFbbE9`; Rounds 1h BTC `0x09A645aa6cc6b0eB320dCF3982bcaA6A22b32629`, ETH `0x8b998abA2BeeebF7ceBf565bC53BC575693c07a4`, BNB `0x66613fD9a2c70d4cB56D920bDd0D56bA95BD2736`; Rounds 1d BTC `0x9e521add6F67EEe0Fe5c0b8ef32cb4543f7af50E`
+- League: LeagueCore `0x79F55DAa8a3CF2Eb76EE40e26ff6E244a4cC1eD4`, Scorer `0x5ea789e7cd9C157793dDA75959829F8C1527C16b`, Squads `0x1eAeEE5BA7582858b266920E79938203E92120D0`, Stamps `0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae`, Houses `0x8433AD00601C57cE9F144b20A32aE478EEe831AE`, Badges `0xF706Aeb7E1B6A44139205dF3043bf68cCf386918`, Honors `0x3e73bC0309c72EA69bD74CaDEC943668291Ca6ed`, CardArt `0x28BC6537d0D47aC4F50944Fc9949012f5cb54E45`, CardArtData `0xc2a08897b48664d31be71C79f8D54882f1A5ffe3`
+- Passes (to add): Early `0xf467a5941F8DedE54583754aC7448FB62ae0b9D4`, Season Two `0x74f35B8315D76dEaEcb7034918325815458261A4`, Finals `0x9Df6ba1868d2C149FdA5FE67491f67C07C31e6B5`
+
+**Safety:** no wallet connection on the site, no credentials collected, no approvals, no owner, no return promises; not affiliated with Binance.
