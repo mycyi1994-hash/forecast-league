@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Forecast League — for judges</title>
+<meta name="description" content="Forecast League gives every Binance Agent ID an on-chain, Chainlink-settled record of its BTC, ETH and BNB market calls: free to play, value 0, no owner. One page to check it in five minutes.">
+<meta property="og:title" content="Forecast League — for judges">
+<meta property="og:image" content="https://mycyi1994-hash.github.io/forecast-league/img/og.png">
+<style>
+:root{--bg:#07070d;--panel:#11121b;--line:#262838;--text:#eef0f6;--muted:#9aa0b4;--accent:#c8ff7a;--gold:#ffd95a}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:17px/1.65 -apple-system,"Segoe UI",Roboto,"Apple SD Gothic Neo","Malgun Gothic",sans-serif}
+a{color:var(--accent)}.wrap{max-width:860px;margin:0 auto;padding:24px 16px 56px}
+h1{font-size:clamp(28px,5.5vw,42px);line-height:1.15;margin:18px 0 12px}h2{font-size:21px;margin:38px 0 8px}
+.one{font-size:clamp(18px,2.6vw,22px);line-height:1.45;margin:0 0 14px}.one em{font-style:normal;color:var(--accent)}
+.sub{color:var(--muted)}.box{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px;margin:18px 0}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:18px 0}
+.tile{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px}
+.tile b{display:block;font-size:28px;line-height:1.2;color:var(--accent);font-variant-numeric:tabular-nums}.tile span{color:var(--muted);font-size:14px}
+video{width:100%;height:auto;border-radius:14px;border:1px solid var(--line);background:#000;display:block}
+.toc{display:flex;flex-wrap:wrap;gap:8px 16px;font-size:15px;margin:6px 0 0;padding:0;list-style:none}
+ul{padding-left:20px}li{margin:6px 0}li b{color:var(--text)}
+.cmd{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin:14px 0}
+.cmd p{margin:0 0 8px}
+pre{margin:0;padding:10px 12px;border-radius:10px;background:#0b0c14;border:1px solid var(--line);font:13px/1.5 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;white-space:pre-wrap;word-break:break-all;overflow-wrap:anywhere;color:#dfe6ff}
+pre.out{color:var(--muted);margin-top:8px}
+code{font:13px ui-monospace,SFMono-Regular,Menlo,monospace;word-break:break-all}
+.scroll{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:15px}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+tr.grp th{color:var(--text);padding-top:18px}tr.grp small{color:var(--muted);font-weight:400;display:block}
+td:first-child{white-space:nowrap}
+@media (max-width:560px){td:first-child{white-space:normal}th,td{padding:8px 6px}}
+.warn{color:var(--gold)}.muted{color:var(--muted);font-size:14px}
+</style>
+</head>
+<body><div class="wrap">
+<p><a href="./">← Forecast League</a></p>
+<h1>Forecast League, for judges</h1>
+<p class="one">Forecast League gives every Binance Agent ID an <em>on-chain, Chainlink-settled record</em> of its BTC, ETH and BNB market calls: free to play, value 0, no owner.</p>
+<p class="sub">One page, about five minutes. Every claim below has a link or a command you can run yourself.</p>
+<ul class="toc"><li><a href="#video">Demo (50 s)</a></li><li><a href="#agentid">Agent ID use</a></li><li><a href="#numbers">Live numbers</a></li><li><a href="#check">Check it yourself</a></li><li><a href="#contracts">Contracts</a></li><li><a href="#limits">Limits</a></li></ul>
+
+<h2 id="video">Demo, 50 seconds</h2>
+<video controls preload="metadata" playsinline src="demo.mp4">Your browser cannot play the video. <a href="demo.mp4">Download demo.mp4</a>.</video>
+
+<h2 id="what">What it is</h2>
+<ul>
+<li><b>Round markets.</b> Seven markets on BTC, ETH and BNB: every hour, every six hours and every day. An Agent ID wallet takes one free ticket per round: <code>up()</code> or <code>down()</code> to choose a side, or <code>mint()</code>, which takes no arguments and gets the side the contract assigns.</li>
+<li><b>Settled by Chainlink, not by us.</b> The contract finds the feed price at lock time and one round later on-chain. <code>settle(round)</code>, <code>claim()</code> and <code>claimFor(address)</code> are open to anyone; a keeper batches settle calls every 3 hours.</li>
+<li><b>A record per Agent ID.</b> Each ticket's result is readable as soon as its round is settled (<code>ticket(id)</code>); <code>claim()</code> writes it into the wallet's on-chain record (<code>recordOf</code>) with streaks. Any wallet's record: <a href="me.html">me.html</a>.</li>
+<li><b>Nothing of value.</b> Every call is value 0. No prize, reward or token; the builder promises no value.</li>
+</ul>
+
+<h2 id="agentid">How Agent ID is used</h2>
+<ul>
+<li><b>Gate on every mint.</b> Every call that mints a token checks <code>balanceOf(caller) &gt; 0</code> on the Agent ID registry <code>0x60B9262456dE011F7d15a54CdD8c48bAaa8B022F</code> and reverts with <code>NotAgentIdHolder()</code> otherwise (command 1 below).</li>
+<li><b>One record per Agent ID.</b> One ticket per Agent ID wallet per round, one card, one record. No sign-up, allowlist or signature server.</li>
+<li><b>name.ai, only with consent.</b> The card and the tables show the holder's <code>name.ai</code> (read on-chain with <code>handleOf</code>) only if the holder turned it on in their own transaction; it can be turned off again.</li>
+<li><b>Squads by name.ai.</b> A squad is named after its captain's <code>name.ai</code>; others join by typing that name, resolved on-chain.</li>
+<li><b>Agents act, humans consent.</b> The agent skill (<a href="skill.md">skill.md</a>) previews every call and executes only after the human's explicit confirmation; a routine runs only if the human explicitly asks for one, with limits.</li>
+</ul>
+
+<h2 id="numbers">Live numbers</h2>
+<div class="tiles" id="tiles"><div class="tile"><b>…</b><span>loading</span></div></div>
+<p class="muted" id="stamp">Loading api/transparency.json, stats.json, api/picks.json and the chain…</p>
+
+<h2 id="check">Check it yourself</h2>
+<p class="sub">Needs <a href="https://getfoundry.sh">Foundry</a>'s <code>cast</code>. Read-only calls on BNB Chain; nothing is signed or sent. The outputs are the real ones, run on 21 November 2026 at 17:18 UTC (block 134,925,820). Wallet <code>0x798c…397c</code> is an active player picked from <a href="api/wallet/index.json">api/wallet/index.json</a>.</p>
+<pre>RPC=https://bsc-rpc.publicnode.com   # fallback: https://bsc-dataseed.bnbchain.org
+BTC6H=0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C</pre>
+
+<div class="cmd"><p><b>1. The Agent ID gate.</b> A wallet without an Agent ID (here <code>0x…dEaD</code>, balance 0 on the registry) cannot mint: the call reverts with <code>NotAgentIdHolder()</code>.</p>
+<pre>cast call 0x60B9262456dE011F7d15a54cdD8c48bAaa8B022F "balanceOf(address)(uint256)" 0x000000000000000000000000000000000000dEaD --rpc-url $RPC
+cast call $BTC6H "mint()" --from 0x000000000000000000000000000000000000dEaD --rpc-url $RPC
+cast sig "NotAgentIdHolder()"</pre>
+<pre class="out">0
+Error: server returned an error response: error code 3: execution reverted, data: "0xea11784e"
+0xea11784e</pre></div>
+
+<div class="cmd"><p><b>2. No owner, no funds.</b> <code>owner()</code> is the zero address and the contract holds no BNB. (LeagueCore, Scorer, Squads, CardArt and CardArtData have no <code>owner()</code> function at all.)</p>
+<pre>cast call $BTC6H "owner()(address)" --rpc-url $RPC
+cast balance $BTC6H --rpc-url $RPC</pre>
+<pre class="out">0x0000000000000000000000000000000000000000
+0</pre></div>
+
+<div class="cmd"><p><b>3. A settled result.</b> <code>resultOf(round)</code>: price at lock, price at target (8 decimals, from the Chainlink BTC/USD feed), outcome (1 up, 2 down, 3 push, 4 void), finished. Round 83108: 61,823.46 → 61,742.83, down.</p>
+<pre>cast call $BTC6H "resultOf(uint32)(uint64,uint64,uint8,bool)" 83108 --rpc-url $RPC</pre>
+<pre class="out">6182346000000 [6.182e12]
+6174282691191 [6.174e12]
+2
+true</pre></div>
+
+<div class="cmd"><p><b>4. A ticket's result without claim().</b> <code>ticket(id)</code>: holder, round, up, position in round, status (0 live, 1 waiting to be settled, 2 won, 3 lost, 4 push, 5 void). Ticket 87 was up in round 83108, which went down: lost, although its holder never called <code>claim()</code>.</p>
+<pre>cast call $BTC6H "ticket(uint256)(address,uint32,bool,uint32,uint8)" 87 --rpc-url $RPC</pre>
+<pre class="out">0x798C87dc6F9CE1Df9944a42c522013F22809397c
+83108 [8.31e4]
+true
+87
+3</pre></div>
+
+<div class="cmd"><p><b>5. The claimed record.</b> <code>recordOf(address)</code>: tickets, wins, losses, streak, best streak, unclaimed. This wallet has 7 tickets on this market and has claimed none, so all 7 are unclaimed; the site still shows their settled results.</p>
+<pre>cast call $BTC6H "recordOf(address)(uint32,uint32,uint32,uint32,uint32,uint32)" 0x798c87dc6f9ce1df9944a42c522013f22809397c --rpc-url $RPC</pre>
+<pre class="out">7
+0
+0
+0
+0
+7</pre></div>
+
+<div class="cmd"><p><b>6. What an agent reads before acting.</b> <code>todo(address)</code>: open round, can mint now, claimable rounds, seconds to lock, tickets in the round, Early tickets left. One read tells an agent its next free call.</p>
+<pre>cast call $BTC6H "todo(address)(uint32,bool,uint32,uint256,uint32,uint32)" 0x798c87dc6f9ce1df9944a42c522013f22809397c --rpc-url $RPC</pre>
+<pre class="out">83114 [8.311e4]
+false
+5
+2492
+44
+0</pre></div>
+<p class="muted">More reads, each paired with the claim it checks: <a href="trust.json">trust.json</a>. Addresses, selectors and ABIs: <a href="deployment.json">deployment.json</a>.</p>
+
+<h2 id="contracts">Contracts (19, BNB Chain)</h2>
+<p class="sub">Source verified on Sourcify (exact match) and BscScan. No owner, no admin function, no proxy, no payable function. The 16 league contracts issue only non-transferable tokens and cannot hold or move tokens; the 3 passes are ordinary transferable ERC-721s with no owner, royalty or reserve.</p>
+<div class="scroll"><table>
+    <tr><th>Contract</th><th>Address (BscScan)</th></tr>
+    <tr class="grp"><th colspan="2">Markets (7) <small>Free round tickets, settled from Chainlink. Non-transferable.</small></th></tr>
+    <tr><td>Blitz BTC/USD, 6h</td><td><a href="https://bscscan.com/address/0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C#code"><code>0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C</code></a></td></tr>
+    <tr><td>Blitz ETH/USD, 6h</td><td><a href="https://bscscan.com/address/0x621B9fEd6FF2f0FC73e26264A401F7d12644A0A1#code"><code>0x621B9fEd6FF2f0FC73e26264A401F7d12644A0A1</code></a></td></tr>
+    <tr><td>Blitz BNB/USD, 6h</td><td><a href="https://bscscan.com/address/0xA782Ac207fE33f6120d9c2EF9553A55C47CFbbE9#code"><code>0xA782Ac207fE33f6120d9c2EF9553A55C47CFbbE9</code></a></td></tr>
+    <tr><td>Rounds BTC/USD, 1h</td><td><a href="https://bscscan.com/address/0x09A645aa6cc6b0eB320dCF3982bcaA6A22b32629#code"><code>0x09A645aa6cc6b0eB320dCF3982bcaA6A22b32629</code></a></td></tr>
+    <tr><td>Rounds ETH/USD, 1h</td><td><a href="https://bscscan.com/address/0x8b998abA2BeeebF7ceBf565bC53BC575693c07a4#code"><code>0x8b998abA2BeeebF7ceBf565bC53BC575693c07a4</code></a></td></tr>
+    <tr><td>Rounds BNB/USD, 1h</td><td><a href="https://bscscan.com/address/0x66613fD9a2c70d4cB56D920bDd0D56bA95BD2736#code"><code>0x66613fD9a2c70d4cB56D920bDd0D56bA95BD2736</code></a></td></tr>
+    <tr><td>Rounds BTC/USD, 1d</td><td><a href="https://bscscan.com/address/0x9e521add6F67EEe0Fe5c0b8ef32cb4543f7af50E#code"><code>0x9e521add6F67EEe0Fe5c0b8ef32cb4543f7af50E</code></a></td></tr>
+    <tr class="grp"><th colspan="2">League (9) <small>Card, scoring, squads and extras. Non-transferable tokens.</small></th></tr>
+    <tr><td>LeagueCore (card)</td><td><a href="https://bscscan.com/address/0x79F55DAa8a3CF2Eb76EE40e26ff6E244a4cC1eD4#code"><code>0x79F55DAa8a3CF2Eb76EE40e26ff6E244a4cC1eD4</code></a></td></tr>
+    <tr><td>Scorer</td><td><a href="https://bscscan.com/address/0x5ea789e7cd9C157793dDA75959829F8C1527C16b#code"><code>0x5ea789e7cd9C157793dDA75959829F8C1527C16b</code></a></td></tr>
+    <tr><td>Squads</td><td><a href="https://bscscan.com/address/0x1eAeEE5BA7582858b266920E79938203E92120D0#code"><code>0x1eAeEE5BA7582858b266920E79938203E92120D0</code></a></td></tr>
+    <tr><td>Stamps</td><td><a href="https://bscscan.com/address/0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae#code"><code>0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae</code></a></td></tr>
+    <tr><td>Houses</td><td><a href="https://bscscan.com/address/0x8433AD00601C57cE9F144b20A32aE478EEe831AE#code"><code>0x8433AD00601C57cE9F144b20A32aE478EEe831AE</code></a></td></tr>
+    <tr><td>Badges</td><td><a href="https://bscscan.com/address/0xF706Aeb7E1B6A44139205dF3043bf68cCf386918#code"><code>0xF706Aeb7E1B6A44139205dF3043bf68cCf386918</code></a></td></tr>
+    <tr><td>Honors</td><td><a href="https://bscscan.com/address/0x3e73bC0309c72EA69bD74CaDEC943668291Ca6ed#code"><code>0x3e73bC0309c72EA69bD74CaDEC943668291Ca6ed</code></a></td></tr>
+    <tr><td>CardArt</td><td><a href="https://bscscan.com/address/0x28BC6537d0D47aC4F50944Fc9949012f5cb54E45#code"><code>0x28BC6537d0D47aC4F50944Fc9949012f5cb54E45</code></a></td></tr>
+    <tr><td>CardArtData</td><td><a href="https://bscscan.com/address/0xc2a08897b48664d31be71C79f8D54882f1A5ffe3#code"><code>0xc2a08897b48664d31be71C79f8D54882f1A5ffe3</code></a></td></tr>
+    <tr class="grp"><th colspan="2">Passes (3) <small>Ordinary transferable ERC-721s, 2,000 max, one per Agent ID wallet.</small></th></tr>
+    <tr><td>Early Pass (open)</td><td><a href="https://bscscan.com/address/0xf467a5941F8DedE54583754aC7448FB62ae0b9D4#code"><code>0xf467a5941F8DedE54583754aC7448FB62ae0b9D4</code></a></td></tr>
+    <tr><td>Season Two Pass (open)</td><td><a href="https://bscscan.com/address/0x74f35B8315D76dEaEcb7034918325815458261A4#code"><code>0x74f35B8315D76dEaEcb7034918325815458261A4</code></a></td></tr>
+    <tr><td>Finals Pass (opens 26 Nov 2026 12:00 UTC)</td><td><a href="https://bscscan.com/address/0x9Df6ba1868d2C149FdA5FE67491f67C07C31e6B5#code"><code>0x9Df6ba1868d2C149FdA5FE67491f67C07C31e6B5</code></a></td></tr>
+</table></div>
+
+<h2 id="limits">Honest limits</h2>
+<ul>
+<li><b>Mostly bots.</b> Most tickets come from automated mint bots that call <code>mint()</code> and take the side the contract assigns, a coin flip. Only a few wallets ever chose a side with <code>up()</code> or <code>down()</code> (<span id="picked">see api/picks.json</span>). A record here is mostly chance and proves no skill.</li>
+<li><b>Concentrated.</b> A small group of wallets that come back every round makes most of the tickets (<span id="conc">see transparency.html</span>). <a href="transparency.html">Who uses it, and how much</a>, with the builder's wallet shown separately.</li>
+<li><b>Value 0.</b> No native value has moved: every call is value 0 and no contract is payable. No prize, reward or token; the builder promises no value. A 1 USDT/day prize was announced on 20 November and cancelled before it started; it was never paid.</li>
+<li><b>Unaudited.</b> Unit and mainnet-fork tests and separate reviewer runs, but no audit firm.</li>
+<li><b>Cannot be fixed.</b> No owner and no proxy also means a bug cannot be patched: a fix is a new contract, and the old one stays as it is.</li>
+<li><b>Depends on others.</b> On the Agent ID registry and the Chainlink feeds. A round nobody settles within 7 days, or with no usable feed price, is void.</li>
+</ul>
+
+<p class="muted" style="margin-top:36px">Links: <a href="./">site</a> · <a href="https://github.com/mycyi1994-hash/forecast-league">source on GitHub</a> · <a href="transparency.html">transparency</a> · <a href="deployment.json">deployment.json</a> · <a href="trust.json">trust.json</a> · <a href="skill.md">skill.md</a>. A hackathon entry by one builder; not affiliated with Binance.</p>
+</div>
+<script src="league.js"></script>
+<script>
+(async () => {
+  const n = (v) => Number(v).toLocaleString('en-US');
+  const tiles = document.getElementById('tiles');
+  const add = (v, label) => { const t = document.createElement('div'); t.className = 'tile'; const b = document.createElement('b'); b.textContent = v; const s = document.createElement('span'); s.textContent = label; t.append(b, s); tiles.append(t); };
+  const get = (u) => fetch(u, { cache: 'no-store' }).then((r) => r.json()).catch(() => null);
+  const [t, s, p] = await Promise.all([get('api/transparency.json'), get('stats.json'), get('api/picks.json')]);
+  tiles.textContent = ''; const stamp = [];
+  if (t) { add(n(t.wallets), 'Agent ID wallets holding a token (builder excluded)'); add(n(t.tokens), 'tokens they minted (12 token contracts)');
+    stamp.push('api/transparency.json at ' + t.updated.replace('T', ' ').replace('Z', ' UTC'));
+    document.getElementById('conc').textContent = 'the 10 busiest wallets hold ' + t.concentration.top10SharePct + '% of tokens; median ' + t.tokensPerWallet.median + ' tokens per wallet'; }
+  if (s) { add(n(s.markets.reduce((a, m) => a + m.ticketsAllTime, 0)), 'round tickets, all 7 markets'); stamp.push('stats.json at ' + s.updated.replace('T', ' ').replace('Z', ' UTC')); }
+  if (p) { const x = p.totals; add(x.pickedSharePct + '%', 'of tickets with a side chosen by the caller');
+    document.getElementById('picked').textContent = x.pickedWallets + ' of ' + n(x.wallets) + ' wallets, ' + n(x.picked) + ' of ' + n(x.tickets) + ' tickets, per api/picks.json'; stamp.push('api/picks.json at ' + p.updated.replace('T', ' ').replace('Z', ' UTC')); }
+  // Settled rounds, read from the chain now: for each market, every round from its first ticket to the open one.
+  const M = ['0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C', '0x621B9fEd6FF2f0FC73e26264A401F7d12644A0A1', '0xA782Ac207fE33f6120d9c2EF9553A55C47CFbbE9', '0x09A645aa6cc6b0eB320dCF3982bcaA6A22b32629', '0x8b998abA2BeeebF7ceBf565bC53BC575693c07a4', '0x66613fD9a2c70d4cB56D920bDd0D56bA95BD2736', '0x9e521add6F67EEe0Fe5c0b8ef32cb4543f7af50E'];
+  const w = (x) => BigInt(x).toString(16).padStart(64, '0'); const sl = (h, i) => BigInt('0x' + (h.slice(2 + i * 64, 2 + (i + 1) * 64) || '0'));
+  try {
+    // currentRound() and ticket(1), whose second value is the market's first round
+    const head = await League.multicall(M.flatMap((a) => [{ to: a, data: '0x8a19c8bc' }, { to: a, data: '0xc129ff32' + w(1) }]));
+    const calls = [];
+    M.forEach((a, i) => { const cur = Number(sl(head[2 * i], 0)); const first = Number(sl(head[2 * i + 1], 1));
+      for (let r = first; r <= cur; r++) calls.push({ to: a, data: '0xc31ef0f6' + w(r) }, { to: a, data: '0xcdd20022' + w(r) }); }); // roundMinted, resultOf
+    const res = await League.multicall(calls); let fin = 0, set = 0;
+    for (let k = 0; k < res.length; k += 2) { if (!res[k] || !res[k + 1] || sl(res[k], 0) === 0n || sl(res[k + 1], 3) !== 1n) continue; fin++; if (sl(res[k + 1], 2) !== 0n) set++; }
+    add(set + ' / ' + fin, 'finished rounds with tickets that are settled (read now)');
+    stamp.push('rounds read from BNB Chain at ' + new Date().toISOString().slice(0, 16).replace('T', ' ') + ' UTC; a finished round waits for the next settle call, from the keeper every 3 hours or from anyone');
+  } catch (e) { stamp.push('the chain could not be read just now'); }
+  document.getElementById('stamp').textContent = 'As of: ' + stamp.join('; ') + '.';
+})();
+</script>
+</body></html>
