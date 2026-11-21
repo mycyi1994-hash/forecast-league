@@ -6,7 +6,7 @@ on:
   workflow_dispatch: {}
   push:
     branches: [main]
-    paths: ['.github/workflows/livefeed.yml', 'keeper/livefeed.mjs', 'keeper/actionfeed.mjs', 'keeper/desk.mjs', 'keeper/transparency.mjs', 'keeper/rivals.mjs', 'keeper/finalspass.mjs', 'keeper/tick']
+    paths: ['.github/workflows/livefeed.yml', 'keeper/livefeed.mjs', 'keeper/actionfeed.mjs', 'keeper/desk.mjs', 'keeper/transparency.mjs', 'keeper/rivals.mjs', 'keeper/finalspass.mjs', 'keeper/picks.mjs', 'keeper/tick']
 permissions:
   contents: write
   pages: write
@@ -29,6 +29,7 @@ jobs:
           node keeper/stats.mjs || echo "stats skipped"
           node keeper/finalspass.mjs || echo "finals pass skipped"
           node keeper/transparency.mjs || echo "transparency skipped"
+          timeout 900 node keeper/picks.mjs || echo "picks skipped"
           # Once per UTC day, on the first run that finds no row for today (a skipped schedule does not lose the day).
           if ! grep -q "\"$(date -u +%F)\"" launch/rivals/history.json 2>/dev/null; then timeout 1500 node keeper/rivals.mjs || echo "rivals skipped"; fi
           if [ "$(date -u +%H)" = "03" ]; then timeout 1200 node keeper/desk.mjs --full || echo "desk full sweep failed"; else timeout 600 node keeper/desk.mjs || echo "desk refresh failed"; fi
