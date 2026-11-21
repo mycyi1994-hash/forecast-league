@@ -167,7 +167,7 @@
  "newWallet": "Any Agent ID wallet can mint every round listed in openNow. Your own claims and results: /api/wallet/<lowercase address>.json (404 means you have not played yet).",
  "finalsPass": {
   "contract": "0x9Df6ba1868d2C149FdA5FE67491f67C07C31e6B5",
-  "status": "not deployed yet",
+  "status": "deployed, not open yet",
   "opensAt": "2026-11-26T12:00:00Z",
   "closesAt": "2026-12-08T08:00:00Z",
   "maxSupply": 2000,
