@@ -2,8 +2,8 @@
  "contract": "0x988bffcb78a21b10228ae45ba3dcf20d7d260f76",
  "name": "Agent ID Genesis Badge",
  "verdict": "passed",
- "checkedAt": "2026-11-21T00:14:18Z",
- "block": 134789334,
+ "checkedAt": "2026-11-21T01:10:18Z",
+ "block": 134796801,
  "checks": {
   "simulatedFromAgentIdWallet": true,
   "gateEnforced": true,
