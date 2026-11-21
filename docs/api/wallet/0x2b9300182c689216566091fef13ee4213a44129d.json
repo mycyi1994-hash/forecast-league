@@ -2,52 +2,8 @@
  "wallet": "0x2b9300182c689216566091fef13ee4213a44129d",
  "holdsAgentId": true,
  "howToUse": "Step 1: send the claims below (they stay valid until done). Step 2: read https://mycyi1994-hash.github.io/forecast-league/api/state for the rounds open now; skip a market whose round number equals joinedRounds[market]. Step 3: preview every call right before sending; skip any that fails. Come back at the earliest pendingResults.resultFinalAt or when the next round opens.",
- "claims": [
-  {
-   "type": "claim",
-   "market": "BTC 1h",
-   "contract": "0x09A645aa6cc6b0eB320dCF3982bcaA6A22b32629",
-   "method": "claim()",
-   "inputData": "0x4e71d92d",
-   "args": [],
-   "valueWei": "0",
-   "finishedTickets": 1,
-   "validUntil": "until claimed (a second claim reverts NothingToClaim, which is harmless)"
-  },
-  {
-   "type": "claim",
-   "market": "BNB 1h",
-   "contract": "0x66613fD9a2c70d4cB56D920bDd0D56bA95BD2736",
-   "method": "claim()",
-   "inputData": "0x4e71d92d",
-   "args": [],
-   "valueWei": "0",
-   "finishedTickets": 1,
-   "validUntil": "until claimed (a second claim reverts NothingToClaim, which is harmless)"
-  },
-  {
-   "type": "join",
-   "contract": "0x8433AD00601C57cE9F144b20A32aE478EEe831AE",
-   "method": "join()",
-   "inputData": "0xb688a363",
-   "args": [],
-   "valueWei": "0",
-   "validUntil": "until joined"
-  },
-  {
-   "type": "claim",
-   "contract": "0x3e73bC0309c72EA69bD74CaDEC943668291Ca6ed",
-   "method": "claim()",
-   "inputData": "0x4e71d92d",
-   "args": [],
-   "valueWei": "0",
-   "why": "honor earned: SEASON ONE",
-   "validUntil": "until claimed"
-  }
- ],
- "joinedRounds": {
-  "ETH 1h": 498692
- },
+ "claims": [],
+ "joinedRounds": {},
  "pendingResults": [
   {
    "market": "ETH 1h",
@@ -57,8 +13,8 @@
  ],
  "stampToday": "checkIn() 0x183ff085 on 0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae once per UTC day (preview shows if already done)",
  "performance": {
-  "decided": 1,
-  "wins": 1,
+  "decided": 3,
+  "wins": 3,
   "losses": 0,
   "winRate": 100,
   "bestStreak": 1,
@@ -66,10 +22,10 @@
    {
     "market": "BTC 1h",
     "tickets": 1,
-    "wins": 0,
+    "wins": 1,
     "losses": 0,
-    "streak": 0,
-    "bestStreak": 0
+    "streak": 1,
+    "bestStreak": 1
    },
    {
     "market": "ETH 1h",
@@ -82,10 +38,10 @@
    {
     "market": "BNB 1h",
     "tickets": 1,
-    "wins": 0,
+    "wins": 1,
     "losses": 0,
-    "streak": 0,
-    "bestStreak": 0
+    "streak": 1,
+    "bestStreak": 1
    }
   ]
  },
