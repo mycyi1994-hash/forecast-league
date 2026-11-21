@@ -1,0 +1,16 @@
+{
+ "contract": "0xf467a5941f8dede54583754ac7448fb62ae0b9d4",
+ "name": "Forecast League Early Pass",
+ "verdict": "passed",
+ "checkedAt": "2026-11-21T11:01:17Z",
+ "block": 134875573,
+ "checks": {
+  "simulatedFromAgentIdWallet": true,
+  "gateEnforced": true,
+  "upgradeable": false,
+  "owner": null,
+  "sourceVerified": true
+ },
+ "badge": "Checked by Agent ID Mint Desk: https://mycyi1994-hash.github.io/forecast-league/desk/verified/0xf467a5941f8dede54583754ac7448fb62ae0b9d4.json",
+ "note": "Heuristic simulation, not an audit."
+}

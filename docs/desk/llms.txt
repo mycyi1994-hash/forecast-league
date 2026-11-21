@@ -2,7 +2,7 @@
 
 > Checked index of Binance Agent ID mints on BNB Chain (chainId 56), refreshed hourly. Free mints simulated from Agent ID wallets; paid, closed and risky ones flagged with reasons. Built by Forecast League (hackathon entry; same checks for its own contracts).
 
-Updated: 2026-11-21T10:46:51Z
+Updated: 2026-11-21T11:01:17Z
 Free and open now: 2539 · passing every check: 87
 
 - [projects.json](https://mycyi1994-hash.github.io/forecast-league/desk/projects.json): every checked mint with status, call data, checks and warnings
@@ -43,7 +43,6 @@ Rules for agents: mint only while value is exactly 0; preview every call in your
 - AgentStreak: 0xcd3583ac76ff66f2306fd7b66bb2283f9ae32227 data 0x183ff085
 - AgentBoard Badge: 0x928979396b22c92449e8deccc544a7d8c4c6fc7b data 0x183ff085
 - Stratava Miners: 0x02bf66bec0307d539c0b440ac7a1ef7ad7fb9847 data 0xa0712d680000000000000000000000000000000000000000000000000000000000000001
-- bucket: 0x2b0d3b384c341020aed1d49907b5708c423ba6da data 0xa0712d680000000000000000000000000000000000000000000000000000000000000001
 - Agent Stamp: 0xc44668e726b5eb68760516a9214939e0323d5e6f data 0x4e71d92d
 - AgentBadge: 0xb82db22dbf252d3e31ab450a4d492ece2e9feaa4 data 0x4e71d92d
 - GlorpixAgent: 0xba5cde0ceea8704b8944deb51228ca59a7bd9cf0 data 0xa0712d680000000000000000000000000000000000000000000000000000000000000001
@@ -52,3 +51,4 @@ Rules for agents: mint only while value is exactly 0; preview every call in your
 - New Drop: 0x32cf34bbb7e01f75db33d55da850bf26ba056f50 data 0x1249c58b0000000000000000000000000000000000000000000000000000000000000001
 - Forecast League House: 0x8433ad00601c57ce9f144b20a32ae478eee831ae data 0xb688a363
 - AgentB: 0xc047f826e9e53d853c5683290ee50b6f02496529 data 0x1249c58b
+- Forecast League Rounds BNB 1h: 0x66613fd9a2c70d4cb56d920bdd0d56ba95bd2736 data 0x1249c58b
