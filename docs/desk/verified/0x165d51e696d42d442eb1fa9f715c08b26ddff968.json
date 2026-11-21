@@ -2,8 +2,8 @@
  "contract": "0x165d51e696d42d442eb1fa9f715c08b26ddff968",
  "name": "Proof of Habit Join Pass",
  "verdict": "passed",
- "checkedAt": "2026-11-21T08:10:35Z",
- "block": 134852820,
+ "checkedAt": "2026-11-21T09:12:01Z",
+ "block": 134861004,
  "checks": {
   "simulatedFromAgentIdWallet": true,
   "gateEnforced": true,
