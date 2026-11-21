@@ -2,8 +2,8 @@
  "contract": "0x8837bd107a6e8812bde0eeb6adec089f53f9bcc2",
  "name": "AgentShift Worker",
  "verdict": "passed",
- "checkedAt": "2026-11-21T10:45:01Z",
- "block": 134873403,
+ "checkedAt": "2026-11-21T10:46:51Z",
+ "block": 134873649,
  "checks": {
   "simulatedFromAgentIdWallet": true,
   "gateEnforced": true,

@@ -36,8 +36,8 @@
  "note": "Free, one per Agent ID wallet. An ordinary transferable ERC-721, unlike the tickets. No owner, no royalty, no reserve. The builder gives it no value and promises none. The Early Pass and the Finals Pass are two separate collections of 2,000 each.",
  "source": "https://github.com/mycyi1994-hash/forecast-league/blob/main/src/EarlyPass.sol",
  "sourceVerified": {
-  "sourcify": false,
+  "sourcify": true,
   "check": "https://sourcify.dev/server/v2/contract/56/0xf467a5941F8DedE54583754aC7448FB62ae0b9D4"
  },
- "updated": "2026-11-21T10:45:53Z"
+ "updated": "2026-11-21T10:46:32Z"
 }
