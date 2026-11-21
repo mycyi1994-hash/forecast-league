@@ -1,13 +1,15 @@
 # Hackathon submission text (internal draft, not the live form; the list below has the 16 league contracts)
 
-> Note: placeholders such as `<N>`, `<W>`, `<F>`, `<T>`, `<R>` and `<S>` must be filled from chain before any use of this text.
+> Note: placeholders such as `<N>`, `<W>`, `<F>`, `<T>`, `<P>`, `<R>` and `<S>` must be filled from chain before any use of this text.
 
 **Project name**: Forecast League
 
 **One sentence**: Forecast League gives every Binance Agent ID an on-chain, Chainlink-settled record of its BTC, ETH and BNB market calls: free to play, value 0, no owner.
 
+**What the usage is, plainly**: most tickets are assigned, not predicted. A ticket minted with `mint()` gets the side the contract assigns, and mint bots make almost all of them (2,800 of 2,857 tickets, 21 Nov 2026 17:11 UTC, `api/picks.json`); only 57 tickets from 11 wallets were picked with `up()` or `down()`. We count the two apart from the 4-byte selector of each mint transaction (`keeper/picks.mjs`): the assigned track is participation, the picked track is the part that is a forecast. Refresh these numbers from `api/picks.json` the day you submit.
+
 **Website**: https://mycyi1994-hash.github.io/forecast-league/
-**For judges (5 minutes)**: https://mycyi1994-hash.github.io/forecast-league/judges.html (demo video, live numbers, commands to check it, all 19 contracts, limits)
+**For judges (5 minutes)**: https://mycyi1994-hash.github.io/forecast-league/judges.html (contract map, picked vs assigned, one agent end to end, passes, demo video, live numbers, commands to check it, all 19 contracts, limits)
 **Source**: https://github.com/mycyi1994-hash/forecast-league
 
 **Contracts (BNB Chain, verified on BscScan and Sourcify, no owner)**
@@ -31,11 +33,13 @@
 - Agent ID is the only way in: `mint`, `submit`, `createSquad`, `joinSquad` and every Blitz ticket check `balanceOf` on the official registry and revert without one (`NotAgentIdHolder`, `0xea11784e`). Check: `trust.json`, claim 5.
 - Because an Agent ID is one per person and non-transferable, it gives one card and one record per person with no sign-up, allowlist or signature server.
 - The name itself is used: the card and the tables show `name.ai` (read with `handleOf`) only if the holder opted in inside their own transaction; a squad is its captain's `name.ai` and others join by typing it (resolved on-chain with `ownerOfHandle`).
-- Proof on-chain (fill in the day you submit, from `node keeper/keeper.mjs funnel` and `node keeper/keeper.mjs evidence`): <N> cards, <W> wallets across the contracts, <F> forecasters, <T> Blitz tickets in <R> rounds, <S> squads. On 20 November, two hours after Blitz went live: 199 cards, 249 wallets, 150 tickets in the first round, 149 of them from wallets that are not the builder's.
+- Proof on-chain (fill in the day you submit, from `node keeper/keeper.mjs funnel` and `node keeper/keeper.mjs evidence`): <N> cards, <W> wallets across the contracts, <F> forecasters, <T> round tickets in <R> rounds (<P> of them picked with up()/down(), the rest assigned by mint(); from `api/picks.json`), <S> squads. On 20 November, two hours after Blitz went live: 199 cards, 249 wallets, 150 tickets in the first round, 149 of them from wallets that are not the builder's.
 
 **2. Practicality and feasibility (25%)**
 - The users are agents, so the interface is for agents: one skill file, a manifest with ABI and worked call data, a routine with a gas budget and an end date, and a file that pairs every safety claim with the read that checks it.
 - No funds are involved anywhere: every call has value 0; the contracts hold nothing and ask for no approvals. The agent previews every call, shows it to the human and executes only after their explicit confirmation; a repeating routine runs only if the human has explicitly asked for one with stated limits (at most 14 calls per run).
+- The passes are the way in, not a separate product: the Early, Season Two and Finals Passes are the season's free entry token, and a pass's tier (BRONZE, SILVER at 4, GOLD at 8) is read live from how many of the 12 league token contracts its holder uses (`tierOf`, drawn by `tokenURI`). Measured on 21 Nov 2026 (builder left out): of 351 wallets that minted a pass, 211 were already playing; of the 140 that met us through a pass, 5 (3.6%) have used the league since. So far the pass has converted few new players.
+- One agent, end to end (the builder's own, excluded from all usage numbers; an example, not evidence of adoption): under its human's standing approval it takes one BTC 6h ticket per round, claims, and sends one daily BTC/ETH/BNB forecast. Its full record, unfiltered, is on `judges.html#agent` and in `api/builder-agent.json` (`keeper/builderagent.mjs`); on 21 Nov it stood at 1 won, 10 lost, 3 waiting over 14 tickets, and -600 over 2 scored forecast days.
 - It runs without the builder: anyone can settle and score (`keeper/keeper.mjs`), and Blitz settles itself from the Chainlink feed inside `claim()`.
 
 **3. Product completion (25%)**

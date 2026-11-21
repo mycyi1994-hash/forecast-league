@@ -1,0 +1,4 @@
+{
+ "note": "Hand-maintained by the operator. One entry per pick the builder's agent made, with the reason it gave at the time: {round, market, side, reason, utc}. keeper/builderagent.mjs copies these into docs/api/builder-agent.json. Append only; never edit an entry after the round's result is known.",
+ "entries": []
+}

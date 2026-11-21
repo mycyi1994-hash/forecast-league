@@ -134,8 +134,8 @@ table.league .who small { color:var(--muted); font-family:ui-monospace,SFMono-Re
 <section id="leaders" hidden>
   <h2 data-en>Leaders</h2>
   <h2 data-ko>리더보드</h2>
-  <p class="sub" data-en>Settled record over all markets (6-hour, hourly, daily): every ticket of a settled round, read from <code>ticket(id)</code> on the contracts, whether or not its holder has called <code>claim()</code>. <code>claim()</code> writes it into the on-chain record (<code>recordOf</code>). Most tickets come from mint bots that take the side the contract assigns, so a record here is mostly chance.</p>
-  <p class="sub" data-ko>모든 판(6시간, 1시간, 하루)의 정산된 전적입니다. 정산된 라운드의 티켓을 계약의 <code>ticket(id)</code>로 읽어 셉니다. <code>claim()</code>을 했는지와 상관없이 보이고, <code>claim()</code>을 하면 온체인 기록(<code>recordOf</code>)에 적힙니다. 티켓 대부분은 계약이 정해 준 방향을 받는 자동 민트 봇에서 나오므로, 여기 전적은 대부분 운입니다.</p>
+  <p class="sub" data-en>Settled record over all markets (6-hour, hourly, daily): every ticket of a settled round, read from <code>ticket(id)</code> on the contracts, whether or not its holder has called <code>claim()</code>. <code>claim()</code> writes it into the on-chain record (<code>recordOf</code>). Most tickets come from mint bots that take the side the contract assigns (<a href="judges.html#pva">picked vs assigned, counted</a>), so a record here is mostly chance.</p>
+  <p class="sub" data-ko>모든 판(6시간, 1시간, 하루)의 정산된 전적입니다. 정산된 라운드의 티켓을 계약의 <code>ticket(id)</code>로 읽어 셉니다. <code>claim()</code>을 했는지와 상관없이 보이고, <code>claim()</code>을 하면 온체인 기록(<code>recordOf</code>)에 적힙니다. 티켓 대부분은 계약이 정해 준 방향을 받는 자동 민트 봇에서 나오므로(<a href="judges.html#pva">직접 고른 티켓과 배정 티켓 집계</a>), 여기 전적은 대부분 운입니다.</p>
   <div class="leadgrid">
     <div class="leadcard"><div class="leadh" data-en>Best win rate (5+ decided)</div><div class="leadh" data-ko>적중률 (5장 이상)</div><ol id="lead-rate"></ol></div>
     <div class="leadcard"><div class="leadh" data-en>Longest streak (settled)</div><div class="leadh" data-ko>최장 연승 (정산 기준)</div><ol id="lead-streak"></ol></div>
