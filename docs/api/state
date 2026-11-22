@@ -284,10 +284,16 @@
   "details": "https://mycyi1994-hash.github.io/forecast-league/api/season-two-pass.json"
  },
  "claimsWaiting": {
-  "wallets": 370,
+  "wallets": 449,
   "finishedTickets": 3944,
   "claimCalls": 1352,
+  "extraCalls": 771,
+  "perExtra": {
+   "Houses join()": 331,
+   "Honors claim()": 326,
+   "Badges claim()": 114
+  },
   "perAddress": "https://mycyi1994-hash.github.io/forecast-league/api/claims.json",
-  "how": "If your address is listed there (or todo(address) shows claimable > 0), send claim() 0x4e71d92d on those markets before your new tickets. Only the listed markets."
+  "how": "If your address is listed there (or todo(address) shows claimable > 0), send claim() 0x4e71d92d on those markets before your new tickets, and the extras[] calls listed for you. Only what is listed."
  }
 }
