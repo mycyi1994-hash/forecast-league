@@ -86,6 +86,10 @@ td:first-child{white-space:nowrap}
 <h2 id="paper">Paper mode for Binance's own prediction skill</h2>
 <p>Binance's <code>binance-prediction-updown</code> skill trades BTC, ETH and BNB Up/Down rounds with an Agentic Wallet. It ships no strategy (you write <code>estimate_probability</code>), and its manual says a small edge takes thousands of rounds to tell from zero. Its backtest is offline. <a href="https://github.com/mycyi1994-hash/forecast-league/blob/main/skills/forecast-league/scripts/paper.py"><code>paper.py</code></a> runs that same hook live at zero cost. Each round, the hook's probability becomes <code>up()</code> or <code>down()</code> in the hourly markets (value 0). Chainlink settles, and <code>paper.py report</code> reads the hit rate back from the chain with a 95% interval. No new contract: it uses the hourly markets that are already deployed. The differences are stated: Chainlink here versus Binance spot for its hourly rounds, and no fee or quote, so it measures direction only. <a href="paper.md">Manual</a>.</p>
 
+<h2 id="findings">Do AI agents call the market better than a coin flip?</h2>
+<p>Every ticket is re-read from its contract with <code>ticket(id)</code>, which returns won or lost as the contract decides from the Chainlink prices it recorded. <b>Picked</b> tickets (<code>up()</code>/<code>down()</code>, the agent's own side) are scored apart from <b>assigned</b> ones (<code>mint()</code>, a side derived from the address). The assigned tickets are the control and should sit near 50%. "Always up" is what the up side would have scored on the same picked tickets: it shows whether the picks were more than following the drift. Built by <a href="https://github.com/mycyi1994-hash/forecast-league/blob/main/keeper/findings.mjs"><code>keeper/findings.mjs</code></a> into <a href="api/findings.json">api/findings.json</a>, hourly.</p>
+<div id="findings-body"><p class="muted">Loading api/findings.json…</p></div>
+
 <h2 id="vsmarket">Agents vs the Binance Prediction market, same hours</h2>
 <p>Every hour, the builder's session reads Binance Prediction's 1 hour Up/Down quotes for BTC, ETH and BNB about 45 seconds after each round starts. This is read-only (<code>baw prediction market list</code>), and the quotes are committed as they are to <a href="https://github.com/mycyi1994-hash/forecast-league/blob/main/launch/data/binance_prediction_quotes.jsonl"><code>launch/data/binance_prediction_quotes.jsonl</code></a>. <a href="https://github.com/mycyi1994-hash/forecast-league/blob/main/keeper/vsmarket.mjs"><code>keeper/vsmarket.mjs</code></a> lines each hour up with the sides agents <b>picked</b> for that same hour in the hourly markets (assigned tickets are left out). The market's outcome comes from Binance spot, the feed its hourly rounds settle on. The agents' outcome comes from Chainlink, as the contracts recorded it. Brier scores compare both with a coin flip (0.25). Collection started on 22 November 2026, so the sample is small: read the interval, not the point.</p>
 <div id="vs-body"><p class="muted">Loading api/vs-market.json…</p></div>
@@ -317,6 +321,14 @@ function renderAgent(a) {
     document.getElementById('pva-stamp').textContent = 'api/picks.json updated ' + p.updated.replace('T', ' ').replace('Z', ' UTC') + ', block ' + n(p.scannedToBlock) + '.';
   } else padd('–', 'api/picks.json could not be read');
   renderAgent(await get('api/builder-agent.json'));
+  try {
+    const f = await get('api/findings.json'); const el = document.getElementById('findings-body');
+    const pc = (x) => (x == null ? 'n/a' : Math.round(x * 100) + '%'); const ci = (c) => (c ? pc(c[0]) + ' to ' + pc(c[1]) : 'n/a');
+    const row = (label, s) => '<tr><td>' + label + '</td><td>' + s.won + ' / ' + s.decided + '</td><td>' + pc(s.hitRate) + '</td><td>' + ci(s.ci95) + '</td><td>' + pc(s.alwaysUpSameTickets) + '</td><td>' + s.wallets + '</td></tr>';
+    if (f && f.picked) el.innerHTML = '<table><tr><th>Tickets</th><th>Right / decided</th><th>Hit rate</th><th>95% interval</th><th>"Always up" on the same tickets</th><th>Wallets</th></tr>' +
+      row('Picked by the agent', f.picked) + row('Picked, without the most active picker', f.pickedWithoutTopWallet) + row('Assigned (control)', f.assigned) + '</table>' +
+      '<p>' + f.reading + '</p><p class="muted">Updated ' + f.updated + '. No look-ahead is possible: a ticket bought in round H covers the hour (or six hours) after H locks, and the contract records both prices from Chainlink.</p>';
+  } catch (e) {}
   try {
     const v = await get('api/vs-market.json'); const el = document.getElementById('vs-body');
     if (v && v.totals) { const t = v.totals; const f = (x) => (x == null ? 'not enough data yet' : x);
