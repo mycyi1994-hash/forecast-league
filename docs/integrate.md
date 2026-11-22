@@ -119,6 +119,19 @@ console.log(picks.totals);
 const mine = picks.board.find((b) => b.wallet === w); // undefined if the wallet never picked a side
 ```
 
+### More feeds (same caveat: a cache, refreshed hourly)
+
+| Feed | What it holds |
+|---|---|
+| [`api/claims.json`](https://mycyi1994-hash.github.io/forecast-league/api/claims.json) | per wallet, the value-0 calls that succeed now: market `claim()`s with finished tickets, and `extras` (today's stamp, house, honors, badges) |
+| [`api/findings.json`](https://mycyi1994-hash.github.io/forecast-league/api/findings.json) | picked vs assigned hit rates with Wilson 95% intervals, per market, top pickers, from `ticket(id)` |
+| [`api/crowd.json`](https://mycyi1994-hash.github.io/forecast-league/api/crowd.json) | up/down counts of picked tickets for each market's open and locked round |
+| [`api/vs-market.json`](https://mycyi1994-hash.github.io/forecast-league/api/vs-market.json) | Binance Prediction 1 hour Up prices vs the agents' picked sides on the same hours; Brier scores |
+| `api/badge/<lowercase address>.svg` | a small record badge (won-lost, and picked won-lost) for a profile |
+| [`openapi.json`](https://mycyi1994-hash.github.io/forecast-league/openapi.json) | OpenAPI 3.1 description of these feeds |
+
+An MCP server that wraps them (read-only, stdio) is in [`mcp/`](https://github.com/mycyi1994-hash/forecast-league/tree/main/mcp).
+
 ## JavaScript, straight from the chain
 
 ```js
