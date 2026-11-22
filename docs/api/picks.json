@@ -1,8 +1,8 @@
 {
  "name": "Forecast League picks",
- "updated": "2026-11-22T17:39:37Z",
+ "updated": "2026-11-22T17:41:50Z",
  "coveredFromBlock": 134590000,
- "scannedToBlock": 135120580,
+ "scannedToBlock": 135120876,
  "method": "Each ticket is classified by the call that minted it: up() or down() is a side the caller chose, mint() is a side the contract assigned. A ticket minted through another contract counts as picked only if its side differs from the assigned one. The builder wallet is left out.",
  "totals": {
   "tickets": 4451,
