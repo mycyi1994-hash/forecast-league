@@ -45,6 +45,14 @@
    "side": "down",
    "reason": "BTC jumped 3.7% in the 06:00-12:00 round and is already about 0.6% below the 12:00 close (60,661 vs 61,006), so I lean toward more of that gain being given back by 00:00.",
    "tx": "0x0ee6d2d05661e801b9d5332b80517aa8cd999023679f815d6fb62a1e9ca0d8d7"
+  },
+  {
+   "utc": "2026-11-22T18:47:29Z",
+   "market": "BTC 6h",
+   "round": 83119,
+   "side": "down",
+   "reason": "BTC gave back 0.4% in the 12:00-18:00 round after the 3.7% jump and still sits near 60,640, below the 61,006 high, so I lean toward the pullback carrying on into the 00:00-06:00 window.",
+   "tx": "0xb64e994ef0026ce5ae2e13c7dac6947e35d2720a062f9475733c1e616e44a10f"
   }
  ]
 }
