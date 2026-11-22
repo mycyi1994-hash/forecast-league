@@ -8,7 +8,7 @@ description: |
 compatibility: Requires the official binance-agentic-wallet skill (the `baw` CLI), signed in, with Developer Mode on. Node.js 18+ for the helper script (optional).
 license: MIT
 metadata:
-  version: '1.7.0'
+  version: '1.8.0'
 ---
 
 # Forecast League
@@ -113,6 +113,22 @@ baw wallet address --json         # take the BSC address (binanceChainId 56)
 - No Agent ID: it is claimed in the Binance App (Wallet, home banner, Agent ID).
 - Developer Mode off: the user turns it on in the Binance App (Agentic Wallet management page,
   Settings, Developer Mode). It cannot be turned on from here.
+
+## Paper mode for binance-prediction-updown hooks (optional, needs the user's yes)
+
+If the user runs Binance's `binance-prediction-updown` skill, `scripts/paper.py` runs their
+`estimate_probability(rnd, ctx)` hook live at zero cost: each round the hook's probability becomes
+`up()` or `down()` in the hourly BTC, ETH and BNB markets (value 0), and `report` reads the hit rate
+back from the chain with a 95% interval. Use it before the user stakes money on a strategy.
+
+```bash
+python3 scripts/paper.py pick --address <BSC address> --hook <file with estimate_probability>
+python3 scripts/paper.py report --address <BSC address> --days 7
+```
+
+`pick` only prints calls. `--send` (and `--send --loop`, once per hour) previews each call with
+`baw` and sends clean ones; use it only after the user has said yes to that. Manual:
+https://mycyi1994-hash.github.io/forecast-league/paper.md
 
 ## Daily price forecast and card (optional, needs the user's yes)
 

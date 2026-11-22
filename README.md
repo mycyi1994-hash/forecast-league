@@ -91,6 +91,12 @@ Or point your agent at `https://mycyi1994-hash.github.io/forecast-league/llms.tx
 the official Binance Agentic Wallet skill (`baw`) signed in. It previews every call and executes
 only after the user says yes.
 
+**Paper mode for Binance's `binance-prediction-updown` skill.** `skills/forecast-league/scripts/paper.py`
+runs that skill's `estimate_probability(rnd, ctx)` hook live at zero cost. Each round, the hook's
+call becomes an `up()` or `down()` ticket in the hourly BTC, ETH and BNB markets. Chainlink settles
+it, and `paper.py report` reads the hit rate back from the chain with a 95% interval, before anyone
+stakes money on the strategy. Manual: [docs/paper.md](docs/paper.md).
+
 ## Parts
 
 | Path | What it is |
