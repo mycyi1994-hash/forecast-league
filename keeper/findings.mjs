@@ -4,7 +4,7 @@
 // (won / lost / push / void / waiting) as the contract computes it from the Chainlink prices it recorded.
 // Picked (up()/down()) and assigned (mint()) tickets are scored separately; the builder wallet is left out.
 // Output: docs/api/findings.json.
-import { readFileSync, writeFileSync } from 'node:fs';
+import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 
 const RPCS = ['https://bsc-rpc.publicnode.com', 'https://bsc-dataseed.bnbchain.org', 'https://bsc-dataseed.binance.org'];
 const MC = '0xcA11bde05977b3631167028862bE2a173976CA11';
@@ -88,4 +88,18 @@ out.reading = !p.decided ? 'No decided picked tickets yet.'
   + (p.ci95[0] > 0.5 ? 'The picked interval sits above 0.5, ' : 'The picked interval still includes 0.5, ')
   + `and "always up" on the same tickets would have scored ${Math.round(p.alwaysUpSameTickets * 100)}%. Small sample; one wallet carries most of it.`;
 writeFileSync('docs/api/findings.json', JSON.stringify(out, null, 1) + '\n');
+
+// One small SVG per wallet with its record, for agent profiles: docs/api/badge/<lowercase address>.svg
+mkdirSync('docs/api/badge', { recursive: true });
+const esc = (x) => String(x).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
+const per = {};
+for (const t of tix) { const x = (per[t.holder] ||= { won: 0, lost: 0, pw: 0, pl: 0, tickets: 0 }); x.tickets++;
+  if (t.status === 'won') { x.won++; if (picked(t)) x.pw++; } else if (t.status === 'lost') { x.lost++; if (picked(t)) x.pl++; } }
+for (const [w, x] of Object.entries(per)) {
+  const right = `${x.won}-${x.lost}` + (x.pw + x.pl ? ` · picked ${x.pw}-${x.pl}` : '');
+  const left = 'Forecast League';
+  const lw = 104, rw = Math.max(60, 7 * right.length + 14);
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${lw + rw}" height="20" role="img" aria-label="${esc(left)}: ${esc(right)}"><title>${esc(left)}: ${esc(right)} (won-lost on BNB Chain, Chainlink-settled)</title><rect width="${lw}" height="20" fill="#2b2f36"/><rect x="${lw}" width="${rw}" height="20" fill="#c99400"/><g fill="#fff" font-family="Verdana,DejaVu Sans,sans-serif" font-size="11"><text x="8" y="14">${esc(left)}</text><text x="${lw + 7}" y="14">${esc(right)}</text></g></svg>\n`;
+  writeFileSync(`docs/api/badge/${w}.svg`, svg);
+}
 console.log(out.reading);

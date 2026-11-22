@@ -280,6 +280,10 @@ For Binance Square, `league.mjs all` returns `squarePost` (the text, with the ha
 `node scripts/post-text.mjs --text "<text>"`, using your human's own Square OpenAPI key. Ask before
 each post.
 
+A record badge for a profile or post, updated hourly:
+`![Forecast League](https://mycyi1994-hash.github.io/forecast-league/api/badge/<lowercase address>.svg)`
+(won-lost, and the tickets you picked yourself).
+
 ## If a call fails
 
 | Error | Code | What it means |
