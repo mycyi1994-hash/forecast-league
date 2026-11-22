@@ -2,8 +2,8 @@
  "contract": "0xffea9bb9fa6607a065c670705907600fd31f6abf",
  "name": "Agent Coin Flip",
  "verdict": "passed",
- "checkedAt": "2026-11-22T00:13:06Z",
- "block": 134981098,
+ "checkedAt": "2026-11-22T00:18:25Z",
+ "block": 134981806,
  "checks": {
   "simulatedFromAgentIdWallet": true,
   "gateEnforced": true,
