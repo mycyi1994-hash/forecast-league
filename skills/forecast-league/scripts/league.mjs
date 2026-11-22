@@ -618,7 +618,7 @@ async function buildAll(args) {
   const now = Math.floor(Date.now() / 1000);
   const one = (to, inputData, what) => ({ to, value: '0', inputData, what });
   const claims = []; const tickets = []; const extras = []; const markets = []; const waiting = []; const picks = [];
-  let wins = 0; let losses = 0; let held = 0; let bestStreak = 0; let nextOpen = null;
+  let wins = 0; let losses = 0; let held = 0; let bestStreak = 0; let bestEver = 0; let nextOpen = null;
   let prices = {}; try { prices = await currentPrices(); } catch {}
   const sixRounds = new Map(); // 6h round number -> held a ticket in at least one 6h market
   for (const [name, market] of ROUND_MARKETS) {
@@ -627,7 +627,7 @@ async function buildAll(args) {
     let t; let r; try { [t, r] = await Promise.all([call(market, '0x624f6da5' + w), call(market, '0xc06ac6a3' + w)]); } catch { continue; }
     const round = Number(slot(t, 0)); const canMint = slot(t, 1) === 1n; const claimable = Number(slot(t, 2)); const secondsToLock = Number(slot(t, 3));
     const rec = { tickets: Number(slot(r, 0)), wins: Number(slot(r, 1)), losses: Number(slot(r, 2)), streak: Number(slot(r, 3)), best: Number(slot(r, 4)), unclaimed: Number(slot(r, 5)) };
-    wins += rec.wins; losses += rec.losses; held += rec.tickets; bestStreak = Math.max(bestStreak, rec.streak);
+    wins += rec.wins; losses += rec.losses; held += rec.tickets; bestStreak = Math.max(bestStreak, rec.streak); bestEver = Math.max(bestEver, rec.best);
     // Tickets of this round and the one before: their result times are what to come back for.
     // For 6h markets, look back further: the play streak counts consecutive 6h rounds with a ticket.
     const back = len === PERIOD['6h'] ? 12 : 1;
@@ -714,7 +714,7 @@ async function buildAll(args) {
   if (hourlyOffer) lines.push('Optional: I could also take the hourly BTC, ETH and BNB tickets (up to 72 more value-0 calls a day, under $0.01 gas each). Only if you say yes; you can set a daily limit.');
   lines.push(`Record: ${record}`);
   const winsTotal = wins; const streakNow = bestStreak;
-  const shareLine = decided ? `Forecast League on BNB Chain: ${wins} won / ${losses} lost (${Math.round((100 * wins) / decided)}%), current best streak ${streakNow}. Record: ${record}` : `Playing Forecast League on BNB Chain (free Agent ID rounds, settled by Chainlink). Record: ${record}`;
+  const shareLine = decided ? `Forecast League on BNB Chain: ${wins} won / ${losses} lost (${Math.round((100 * wins) / decided)}%), current streak ${streakNow}, best ${bestEver}. Record: ${record}` : `Playing Forecast League on BNB Chain (free Agent ID rounds, settled by Chainlink). Record: ${record}`;
   return ({
     ok: true, binanceChainId: String(CONFIG.chainId), address, scope: full ? 'full' : 'default (6h markets + daily extras)',
     // Send these in order with `baw contract-call preview` and `execute`, exactly as they are, within your human's limits.
@@ -739,8 +739,10 @@ async function buildAll(args) {
       ask: 'Optional, ask before each post: share this record on Binance Square?',
       text: `${shareLine} Free up/down rounds for Binance Agent ID wallets, value 0, settled by Chainlink (a hackathon entry; no prize, no reward). #AgentID #BNBChain`,
       how: 'With the official square-post skill (binance/binance-skills-hub, skills/binance/square-post), from its folder: node scripts/post-text.mjs --text "<text>". Only after your human said yes to this post.',
+      badge: `${SITE}/api/badge/${address.toLowerCase()}.svg`,
     } : undefined,
     note: 'Every call sends value 0. Skipping any of them costs nothing. Preview each one and act on your human\'s yes.',
+    noCodeList: `${SITE}/api/claims.json (the calls that succeed now for this address, refreshed hourly)`,
   });
 }
 async function cmdAll(args) {

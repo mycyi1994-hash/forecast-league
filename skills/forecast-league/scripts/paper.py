@@ -317,11 +317,13 @@ def main():
     ap.add_argument("--hook", help="file with estimate_probability(rnd, ctx), e.g. binance-prediction-updown/scripts/updown.py")
     ap.add_argument("--config", default=os.path.expanduser(os.path.join(os.environ.get("UPDOWN_HOME", "~/.local/updown"), "config.json")),
                     help="the daemon's config.json; its policy section is passed to the hook verbatim")
-    ap.add_argument("--markets", default="btc-1h,eth-1h,bnb-1h", help=f"comma list from: {', '.join(MARKETS)}")
+    ap.add_argument("--markets", default="btc-1h,eth-1h,bnb-1h", help=f"comma list from: {', '.join(MARKETS)}, or all")
     ap.add_argument("--send", action="store_true", help="preview with baw and send clean calls (needs your human's yes)")
     ap.add_argument("--loop", action="store_true", help="with --send: run once per hour until $FL_PAPER_HOME/STOP exists")
     ap.add_argument("--days", type=float, default=7)
     a = ap.parse_args()
+    if a.markets.strip() == "all":
+        a.markets = ",".join(MARKETS)
     if a.command == "report":
         print(json.dumps(report(a), indent=1))
         return
