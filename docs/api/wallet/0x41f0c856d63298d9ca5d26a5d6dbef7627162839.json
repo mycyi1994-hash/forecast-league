@@ -1,0 +1,141 @@
+{
+ "wallet": "0x41f0c856d63298d9ca5d26a5d6dbef7627162839",
+ "holdsAgentId": true,
+ "howToUse": "Step 1: send the claims below (they stay valid until done). Step 2: read https://mycyi1994-hash.github.io/forecast-league/api/state for the rounds open now; skip a market whose round number equals joinedRounds[market]. Step 3: preview every call right before sending; skip any that fails. Come back at the earliest pendingResults.resultFinalAt or when the next round opens.",
+ "claims": [
+  {
+   "type": "claim",
+   "contract": "0xF706Aeb7E1B6A44139205dF3043bf68cCf386918",
+   "method": "claim()",
+   "inputData": "0x4e71d92d",
+   "args": [],
+   "valueWei": "0",
+   "why": "badge tier 1 earned",
+   "validUntil": "until claimed"
+  },
+  {
+   "type": "claim",
+   "contract": "0x3e73bC0309c72EA69bD74CaDEC943668291Ca6ed",
+   "method": "claim()",
+   "inputData": "0x4e71d92d",
+   "args": [],
+   "valueWei": "0",
+   "why": "honor earned: CARD HOLDER",
+   "validUntil": "until claimed"
+  }
+ ],
+ "joinedRounds": {
+  "BTC 6h": 83118,
+  "ETH 6h": 83118,
+  "BNB 6h": 83118,
+  "BTC 1h": 498711,
+  "ETH 1h": 498711,
+  "BNB 1h": 498711,
+  "BTC 1d": 20779
+ },
+ "pendingResults": [
+  {
+   "market": "BTC 6h",
+   "tickets": 1,
+   "resultFinalAt": "2026-11-23T00:00:00Z"
+  },
+  {
+   "market": "ETH 6h",
+   "tickets": 1,
+   "resultFinalAt": "2026-11-23T00:00:00Z"
+  },
+  {
+   "market": "BNB 6h",
+   "tickets": 1,
+   "resultFinalAt": "2026-11-23T00:00:00Z"
+  },
+  {
+   "market": "BTC 1h",
+   "tickets": 1,
+   "resultFinalAt": "2026-11-22T17:00:00Z"
+  },
+  {
+   "market": "ETH 1h",
+   "tickets": 1,
+   "resultFinalAt": "2026-11-22T17:00:00Z"
+  },
+  {
+   "market": "BNB 1h",
+   "tickets": 1,
+   "resultFinalAt": "2026-11-22T17:00:00Z"
+  },
+  {
+   "market": "BTC 1d",
+   "tickets": 1,
+   "resultFinalAt": "2026-11-24T00:00:00Z"
+  }
+ ],
+ "stampToday": "checkIn() 0x183ff085 on 0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae once per UTC day (preview shows if already done)",
+ "performance": {
+  "decided": 0,
+  "wins": 0,
+  "losses": 0,
+  "winRate": null,
+  "bestStreak": 0,
+  "byMarket": [
+   {
+    "market": "BTC 6h",
+    "tickets": 1,
+    "wins": 0,
+    "losses": 0,
+    "streak": 0,
+    "bestStreak": 0
+   },
+   {
+    "market": "ETH 6h",
+    "tickets": 1,
+    "wins": 0,
+    "losses": 0,
+    "streak": 0,
+    "bestStreak": 0
+   },
+   {
+    "market": "BNB 6h",
+    "tickets": 1,
+    "wins": 0,
+    "losses": 0,
+    "streak": 0,
+    "bestStreak": 0
+   },
+   {
+    "market": "BTC 1h",
+    "tickets": 1,
+    "wins": 0,
+    "losses": 0,
+    "streak": 0,
+    "bestStreak": 0
+   },
+   {
+    "market": "ETH 1h",
+    "tickets": 1,
+    "wins": 0,
+    "losses": 0,
+    "streak": 0,
+    "bestStreak": 0
+   },
+   {
+    "market": "BNB 1h",
+    "tickets": 1,
+    "wins": 0,
+    "losses": 0,
+    "streak": 0,
+    "bestStreak": 0
+   },
+   {
+    "market": "BTC 1d",
+    "tickets": 1,
+    "wins": 0,
+    "losses": 0,
+    "streak": 0,
+    "bestStreak": 0
+   }
+  ]
+ },
+ "asOfBlock": "see https://mycyi1994-hash.github.io/forecast-league/api/wallet/index.json (verifiedBlock, expiresAt)",
+ "authorization": "respect_owner_wallet_policy"
+}
