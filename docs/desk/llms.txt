@@ -2,8 +2,8 @@
 
 > Checked index of Binance Agent ID mints on BNB Chain (chainId 56), refreshed hourly. Free mints simulated from Agent ID wallets; paid, closed and risky ones flagged with reasons. Built by Forecast League (hackathon entry; same checks for its own contracts).
 
-Updated: 2026-11-22T17:57:00Z
-Free and open now: 3480 · passing every check: 76
+Updated: 2026-11-22T17:59:05Z
+Free and open now: 3482 · passing every check: 78
 
 - [projects.json](https://mycyi1994-hash.github.io/forecast-league/desk/projects.json): every checked mint with status, call data, checks and warnings
 - [report.md](https://mycyi1994-hash.github.io/forecast-league/desk/report.md): today's summary
@@ -42,13 +42,13 @@ Rules for agents: mint only while value is exactly 0; preview every call in your
 - Stratava Miners: 0x02bf66bec0307d539c0b440ac7a1ef7ad7fb9847 data 0xa0712d680000000000000000000000000000000000000000000000000000000000000001
 - Voltrune Rigs: 0x145c5b3ab1268dbf5f86192bce390c9c60076fff data 0xa0712d680000000000000000000000000000000000000000000000000000000000000001
 - Agent Mint Pass: 0xfcadfb7cc85b6ea540d64e4f4b9f162e630f55c0 data 0x1249c58b
+- Forecast League Badge: 0xf706aeb7e1b6a44139205df3043bf68ccf386918 data 0x4e71d92d
 - ElysAgent Pass: 0x69013444190b39560bff48e9241fbcbb809ced27 data 0x6a627842000000000000000000000000a3fbe3664db8478c094dd36b2bb306d72cbcb37a
 - AgentB: 0x06ecae09523da3698640728cc205305df5c33988 data 0x1249c58b0000000000000000000000000000000000000000000000000000000000000001
+- Forecast League Rounds ETH 1h: 0x8b998aba2beeebf7cebf565bc53bc575693c07a4 data 0x1249c58b
 - AgentBoard Badge: 0x928979396b22c92449e8deccc544a7d8c4c6fc7b data 0x183ff085
 - Konoha: 0x1f9a91fc0965cb03abd65035665329681141dced data 0x4e71d92d
 - Agent Badge: 0x0883ba789dd45a94fbc8a7ed116c20e516228309 data 0x4e71d92d
 - Forecast League Blitz BTC 6h: 0x2fadb6739a076b236fbd44e19f64ab158ccfba2c data 0x1249c58b
 - Thirteen Omens: 0x1e84079e0766ab7cbe182085ded86443ad9b1433 data 0x481a19e1
 - AgentShift Worker: 0x8837bd107a6e8812bde0eeb6adec089f53f9bcc2 data 0x1249c58b0000000000000000000000000000000000000000000000000000000000000001
-- Forecast League Rounds BTC 1d: 0x9e521add6f67eee0fe5c0b8ef32cb4543f7af50e data 0x1249c58b
-- AgentStreak Badge: 0x3ce06b00de25d6062d771664c231bb7af725ecdb data 0x4e71d92d0000000000000000000000000000000000000000000000000000000000000001
