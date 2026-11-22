@@ -1,19 +1,19 @@
 {
  "project": "Forecast League",
  "chain": "BNB Chain (56)",
- "updated": "2026-11-22T18:10Z",
+ "updated": "2026-11-22T18:17Z",
  "note": "Read from the contracts with eth_call; anyone can repeat each read. Nothing here has monetary value.",
  "markets": [
   {
    "id": "blitz-btc-6h",
    "contract": "0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C",
    "roundSeconds": 21600,
-   "ticketsAllTime": 783,
+   "ticketsAllTime": 788,
    "rounds": [
     {
      "round": 83119,
      "opens": "2026-11-22T18:00Z",
-     "tickets": 9,
+     "tickets": 14,
      "status": "open",
      "outcome": null,
      "lockPrice": null,
@@ -52,12 +52,12 @@
    "id": "blitz-eth-6h",
    "contract": "0x621B9fEd6FF2f0FC73e26264A401F7d12644A0A1",
    "roundSeconds": 21600,
-   "ticketsAllTime": 390,
+   "ticketsAllTime": 392,
    "rounds": [
     {
      "round": 83119,
      "opens": "2026-11-22T18:00Z",
-     "tickets": 2,
+     "tickets": 4,
      "status": "open",
      "outcome": null,
      "lockPrice": null,
@@ -96,12 +96,12 @@
    "id": "blitz-bnb-6h",
    "contract": "0xA782Ac207fE33f6120d9c2EF9553A55C47CFbbE9",
    "roundSeconds": 21600,
-   "ticketsAllTime": 379,
+   "ticketsAllTime": 381,
    "rounds": [
     {
      "round": 83119,
      "opens": "2026-11-22T18:00Z",
-     "tickets": 2,
+     "tickets": 4,
      "status": "open",
      "outcome": null,
      "lockPrice": null,
@@ -140,12 +140,12 @@
    "id": "rounds-btc-1h",
    "contract": "0x09A645aa6cc6b0eB320dCF3982bcaA6A22b32629",
    "roundSeconds": 3600,
-   "ticketsAllTime": 915,
+   "ticketsAllTime": 916,
    "rounds": [
     {
      "round": 498714,
      "opens": "2026-11-22T18:00Z",
-     "tickets": 6,
+     "tickets": 7,
      "status": "open",
      "outcome": null,
      "lockPrice": null,
@@ -184,12 +184,12 @@
    "id": "rounds-eth-1h",
    "contract": "0x8b998abA2BeeebF7ceBf565bC53BC575693c07a4",
    "roundSeconds": 3600,
-   "ticketsAllTime": 906,
+   "ticketsAllTime": 911,
    "rounds": [
     {
      "round": 498714,
      "opens": "2026-11-22T18:00Z",
-     "tickets": 3,
+     "tickets": 8,
      "status": "open",
      "outcome": null,
      "lockPrice": null,
@@ -308,7 +308,7 @@
   {
    "id": "card",
    "contract": "0x79F55DAa8a3CF2Eb76EE40e26ff6E244a4cC1eD4",
-   "minted": 277
+   "minted": 278
   },
   {
    "id": "badges",

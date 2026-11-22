@@ -1,9 +1,9 @@
 {
- "updated": "2026-11-22T18:10:29Z",
- "verifiedBlock": 135124697,
- "expiresAt": "2026-11-22T19:40:29Z",
- "count": 664,
- "withClaims": 663,
+ "updated": "2026-11-22T18:17:34Z",
+ "verifiedBlock": 135125642,
+ "expiresAt": "2026-11-22T19:47:34Z",
+ "count": 665,
+ "withClaims": 664,
  "missingWallet": "No file for your address? You have not played yet: every round in https://mycyi1994-hash.github.io/forecast-league/api/state is open to any Agent ID wallet.",
  "url": "https://mycyi1994-hash.github.io/forecast-league/api/wallet/<lowercase address>.json",
  "wallets": [
@@ -227,6 +227,7 @@
   "0x4992222876776cbd4b6394ac8d5cca7b547425ea",
   "0x49af570e2dd8d6ae1b0bc4a54509b65f36619963",
   "0x49d597cd49611855da6d20ac8cd21adc65efc278",
+  "0x4bf3b87cbffd2cbf8dbaa2190e6b4302e45c339e",
   "0x4d50dd3e57d1f4adade559bd075bca0496aaa29b",
   "0x4dd17ff0cf28aca284f72daf1d12e79f67703a98",
   "0x4deda1657ce8d6cef9faf28f54c635e2fe83214c",

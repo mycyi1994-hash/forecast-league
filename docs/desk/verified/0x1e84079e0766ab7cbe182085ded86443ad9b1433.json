@@ -2,8 +2,8 @@
  "contract": "0x1e84079e0766ab7cbe182085ded86443ad9b1433",
  "name": "Thirteen Omens",
  "verdict": "passed",
- "checkedAt": "2026-11-22T18:11:12Z",
- "block": 135124793,
+ "checkedAt": "2026-11-22T18:18:01Z",
+ "block": 135125702,
  "checks": {
   "simulatedFromAgentIdWallet": true,
   "gateEnforced": true,
