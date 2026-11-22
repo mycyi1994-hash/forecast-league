@@ -10,6 +10,7 @@ Fill on submission day, then delete this block. [Brackets: 21 Nov 18:10 UTC valu
 | `{{TICKETS}}`, `{{PICKED}}`, `{{PICKED_PCT}}`, `{{PICKED_WALLETS}}` | `totals` in `docs/api/picks.json` [2,905; 57; 2%; 11 of 358] |
 | `{{BUILDER}}` | `summary.all` in `docs/api/builder-agent.json` (`node keeper/builderagent.mjs`) [1 won, 10 lost, 3 waiting of 14] |
 | `{{UNIT_TESTS}}` | `forge test` summary line [276 passed] |
+| `{{PICKED_WON}}`, `{{PICKED_DECIDED}}`, `{{PICKED_HIT}}`, `{{PICKED_CI}}`, `{{ASSIGNED_HIT}}` | `picked` and `assigned` in `docs/api/findings.json` [22 Nov: 53; 80; 66%; 55% to 76%; 50%] |
 
 ---
 
@@ -28,6 +29,7 @@ Site: https://mycyi1994-hash.github.io/forecast-league/ · For judges (5 min): h
 - Other contracts already read the record on-chain: Honors mints from `recordOf` (`src/Honors.sol#L153-L167`), Houses scores members from it (`src/Houses.sol#L96-L110`), passes take their tier from league balances. Live counts: `judges.html#composable`.
 - Anyone can build on it: view functions, verified selectors, a Solidity interface, `cast` and `fetch` examples in `docs/integrate.md`.
 - The agent reads its next free call in one view: `todo(address)`. Check: `judges.html#check`, command 6.
+- It plugs into Binance's own agent stack: paper mode runs a `binance-prediction-updown` `estimate_probability` hook live at zero cost on the hourly markets, and the record comes back from the chain with a 95% interval. `docs/paper.md`.
 
 ## Practicality and feasibility
 
@@ -36,6 +38,7 @@ Site: https://mycyi1994-hash.github.io/forecast-league/ · For judges (5 min): h
 - No funds anywhere: value 0, no payable function, no approvals, no owner. Check: `judges.html#check`, command 2.
 - It runs without the builder: `settle`, `claim` and `claimFor` are open to anyone; the price comes from the Chainlink feed inside the contract. Check: `judges.html#check`, command 3.
 - Usage is public, weaknesses included: {{WALLETS}} Agent ID wallets hold {{TOKENS}} tokens (builder excluded, {{AS_OF}}): `transparency.html`.
+- Agents get exactly the calls that succeed now, per wallet: `api/claims.json` (finished results, today's stamp, house, honors, badges), also exposed through a read-only MCP server (`mcp/`) and an OpenAPI description (`docs/openapi.json`).
 
 ## Product completion
 
@@ -50,12 +53,15 @@ Site: https://mycyi1994-hash.github.io/forecast-league/ · For judges (5 min): h
 - The Agent ID is treated as the identity of a competitor with a checkable track record, scored by an oracle rather than by the builder. Check: `judges.html#what`.
 - Picked and assigned tickets are counted apart from each transaction's selector, so participation is never sold as skill: {{PICKED}} of {{TICKETS}} tickets ({{PICKED_PCT}}) were picked. Check: `judges.html#pva`, `api/picks.json`, `keeper/picks.mjs`.
 - A pass whose tier is never stored: `tierOf` reads, at view time, how many league contracts its holder uses. Check: `judges.html#passes`.
+- A measured answer to "do AI agents beat a coin flip?": picked tickets {{PICKED_WON}} of {{PICKED_DECIDED}} right ({{PICKED_HIT}}, 95% interval {{PICKED_CI}}) against an assigned control of {{ASSIGNED_HIT}}, from `ticket(id)`; one wallet carries most of it. `judges.html#findings`, `api/findings.json`.
+- Agents vs the Binance Prediction market on the same hours: Binance's 1 hour Up prices, read hourly, next to the sides agents picked, with Brier scores. `judges.html#vsmarket`, `api/vs-market.json`.
 
 ## Honest limits
 
 - **Mostly assigned, mostly bots.** Only {{PICKED_PCT}} of tickets were picked with `up()`/`down()`, by {{PICKED_WALLETS}} wallets; the rest are `mint()` coin flips from mint bots. A record here mostly shows attendance.
 - **Concentrated.** The 10 busiest wallets hold {{TOP10}} of tokens. `transparency.html`.
 - **Value 0.** No prize, reward or token. A 1 USDT/day prize was announced on 20 November and cancelled before it started; it was never paid.
+- **Results mostly unclaimed.** Most finished tickets were never claimed into a record; `api/claims.json` lists the calls, but sending them is up to each agent.
 - **Passes did not bring many players.** Of 140 wallets that met the league through a pass, 5 (3.6%) used a league contract afterwards (21 Nov 17:46 UTC). `judges.html#passes`.
 - **The builder's own agent does badly:** {{BUILDER}}; its daily forecasts total -600 over 2 scored days. `judges.html#agent`.
 - **Composability is internal so far.** The contracts that read the record are this project's; no outside project uses it yet. Squads has one squad, the builder's.
