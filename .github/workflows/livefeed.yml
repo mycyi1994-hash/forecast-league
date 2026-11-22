@@ -36,7 +36,7 @@ jobs:
           # Once per UTC day, on the first run that finds no row for today (a skipped schedule does not lose the day).
           if ! grep -q "\"$(date -u +%F)\"" launch/rivals/history.json 2>/dev/null; then timeout 1500 node keeper/rivals.mjs || echo "rivals skipped"; fi
           if [ "$(date -u +%H)" = "03" ]; then timeout 1200 node keeper/desk.mjs --full || echo "desk full sweep failed"; else timeout 600 node keeper/desk.mjs || echo "desk refresh failed"; fi
-          node -e "require('fs').writeFileSync('docs/api/feed-status.json', JSON.stringify({lastSuccess:new Date().toISOString(), run:process.env.GITHUB_RUN_ID, state:JSON.parse(require('fs').readFileSync('docs/api/state','utf8')).updated}, null, 1)+'\n')"
+          node -e "require('fs').writeFileSync('docs/api/feed-status.json', JSON.stringify({lastSuccess:new Date().toISOString(), run:process.env.GITHUB_RUN_ID, state:JSON.parse(require('fs').readFileSync('docs/api/state','utf8')).updated, ...Object.fromEntries(['claims','findings','crowd','vs-market','picks'].map((k)=>{try{return [k, JSON.parse(require('fs').readFileSync('docs/api/'+k+'.json','utf8')).updated]}catch(e){return [k,null]}}))}, null, 1)+'\n')"
       - name: Commit changed files
         run: |
           git config user.name "forecast-league-feed"
