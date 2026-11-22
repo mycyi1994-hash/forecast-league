@@ -24,7 +24,7 @@ for (const [name, addr, len] of M) {
   const minted = num(await call(addr, '0xc31ef0f6' + word(round))) ?? 0;
   const closesAt = (round + 1) * len; if (closesAt - now < 120) continue;
   open.push({ market: name, contract: addr, round, opensAt: iso(round * len), closesAt: iso(closesAt), secondsLeft: closesAt - now, mintedThisRound: minted,
-    earlySeatsLeft: Math.max(0, 25 - minted), validUntil: iso(closesAt - 60), call: { function: 'mint()', inputData: '0x1249c58b', value: '0', args: [] }, alreadyMinted: 'one ticket per wallet per round; hasMinted(address) is false again every new round' });
+    earlySeatsLeft: Math.max(0, 25 - minted), validUntil: iso(closesAt - 60), call: { function: 'up() or down(): pick the side yourself', up: '0xd5a49e01', down: '0xd8337928', inputData: '0x1249c58b', value: '0', args: [], note: 'Agents: decide the side and send up() 0xd5a49e01 or down() 0xd8337928. inputData is mint(), which takes a side the contract assigns from your address, for tools that cannot choose.' }, question: `Will ${name.split(' ')[0]}/USD be higher at ${iso((round + 2) * len).slice(11, 16)} UTC than at the lock, ${iso(closesAt).slice(11, 16)} UTC?`, alreadyMinted: 'one ticket per wallet per round; hasMinted(address) is false again every new round' });
 }
 const updated = iso(now);
 const state = JSON.parse(readFileSync('docs/api/state', 'utf8'));

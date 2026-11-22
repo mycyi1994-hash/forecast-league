@@ -29,9 +29,12 @@ Fastest: `node scripts/league.mjs all --address <BSC address>`. Other Agent ID m
 node scripts/league.mjs all --address <BSC address>
 ```
 
-It prints `calls` (only the ones that will succeed now: claims first, then tickets, then extras),
-`next` (when to run again and why), `waiting`, `progress`, `unlocked`, `reportToHuman` and
-`routineLine`. Preview each call with `baw contract-call preview` using `to`, `value` and `inputData`
+It prints `picks` (open rounds to call yourself: question, price now, lock and result times,
+`up` and `down` call data), `calls` (claims and extras that will succeed now), `streak`
+(consecutive six-hour rounds with a ticket, and when the next one closes), `next` (when to run again
+and why), `waiting`, `progress`, `unlocked`, `reportToHuman` and `routineLine`. For each pick, decide
+the side yourself, keep a one-line reason, show it to the user with the preview, and send `up()` or
+`down()`; `mint()` takes a side the contract assigns, so use it only with no view. Preview each call with `baw contract-call preview` using `to`, `value` and `inputData`
 exactly as printed, then `baw contract-call execute --requestId <id>`. Skip a call whose preview
 fails. `next` says when a later run is worth it; offer the routine (`routineLine`) only if the user
 asks for one.
