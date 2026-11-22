@@ -2,8 +2,8 @@
  "contract": "0x2b0d3b384c341020aed1d49907b5708c423ba6da",
  "name": "bucket",
  "verdict": "passed",
- "checkedAt": "2026-11-22T06:10:47Z",
- "block": 135028773,
+ "checkedAt": "2026-11-22T07:11:13Z",
+ "block": 135036829,
  "checks": {
   "simulatedFromAgentIdWallet": true,
   "gateEnforced": true,

@@ -57,15 +57,6 @@
    "valueWei": "0",
    "finishedTickets": 1,
    "validUntil": "until claimed (a second claim reverts NothingToClaim, which is harmless)"
-  },
-  {
-   "type": "join",
-   "contract": "0x8433AD00601C57cE9F144b20A32aE478EEe831AE",
-   "method": "join()",
-   "inputData": "0xb688a363",
-   "args": [],
-   "valueWei": "0",
-   "validUntil": "until joined"
   }
  ],
  "joinedRounds": {},

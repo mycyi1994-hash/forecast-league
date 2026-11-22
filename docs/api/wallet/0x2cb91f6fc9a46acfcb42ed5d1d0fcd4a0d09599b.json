@@ -81,9 +81,7 @@
    "validUntil": "until claimed (a second claim reverts NothingToClaim, which is harmless)"
   }
  ],
- "joinedRounds": {
-  "ETH 1h": 498702
- },
+ "joinedRounds": {},
  "pendingResults": [
   {
    "market": "ETH 1h",
