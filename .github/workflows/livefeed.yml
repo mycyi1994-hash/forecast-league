@@ -41,11 +41,11 @@ jobs:
         run: |
           git config user.name "forecast-league-feed"
           git config user.email "forecast-league-feed@users.noreply.github.com"
-          git add docs/api docs/desk docs/deployment.json docs/agent.md docs/agents.md docs/stats.json
+          git add docs/api docs/desk docs/deployment.json docs/.well-known docs/agent.md docs/agents.md docs/stats.json
           [ -d launch/rivals ] && git add launch/rivals || true
           git diff --cached --quiet && { echo "nothing changed"; exit 0; }
           git commit -q -m "Live feed: $(date -u +%FT%H:%MZ)"
-          for i in 1 2 3; do git pull -q --rebase -X theirs || { git rebase --abort 2>/dev/null; git pull -q --rebase -X theirs; } ; git push -q && exit 0; sleep 10; done; exit 1
+          for i in 1 2 3; do git pull -q --rebase --autostash -X theirs || { git rebase --abort 2>/dev/null; git pull -q --rebase --autostash -X theirs; } ; git push -q && exit 0; sleep 10; done; exit 1
       - name: Request a Pages build
         run: |
           curl -fsS -X POST -H "Authorization: Bearer ${{ github.token }}" -H "Accept: application/vnd.github+json" \
