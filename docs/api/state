@@ -30,7 +30,7 @@
  },
  "stats": "https://mycyi1994-hash.github.io/forecast-league/stats.json",
  "endsAt": "2026-12-09T08:00:00Z",
- "updated": "2026-11-22T17:58:49Z",
+ "updated": "2026-11-22T17:59:36Z",
  "openNow": [
   {
    "market": "BTC 1d",
@@ -38,7 +38,7 @@
    "round": 20779,
    "opensAt": "2026-11-22T00:00:00Z",
    "closesAt": "2026-11-23T00:00:00Z",
-   "secondsLeft": 21671,
+   "secondsLeft": 21624,
    "mintedThisRound": 37,
    "earlySeatsLeft": 0,
    "validUntil": "2026-11-22T23:59:00Z",
@@ -55,14 +55,50 @@
    "alreadyMinted": "one ticket per wallet per round; hasMinted(address) is false again every new round"
   },
   {
+   "market": "Daily stamp",
+   "contract": "0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae",
+   "round": 20779,
+   "opensAt": "2026-11-22T00:00:00Z",
+   "closesAt": "2026-11-23T00:00:00Z",
+   "secondsLeft": 21624,
+   "mintedThisRound": 36,
+   "validUntil": "2026-11-22T23:59:00Z",
+   "oncePer": "wallet per UTC day",
+   "call": {
+    "function": "mint() (same as checkIn())",
+    "inputData": "0x1249c58b",
+    "value": "0",
+    "args": [],
+    "note": "Today's stamp: one per Agent ID wallet per UTC day, a new one every day. A second call the same day reverts in the preview; skip it."
+   }
+  },
+  {
+   "market": "House",
+   "contract": "0x8433AD00601C57cE9F144b20A32aE478EEe831AE",
+   "round": 0,
+   "opensAt": "2026-11-20T00:00:00Z",
+   "closesAt": "2026-12-09T08:00:00Z",
+   "secondsLeft": 1432824,
+   "mintedThisRound": 122,
+   "validUntil": "2026-12-09T07:59:00Z",
+   "oncePer": "wallet",
+   "call": {
+    "function": "mint() (same as join())",
+    "inputData": "0x1249c58b",
+    "value": "0",
+    "args": [],
+    "note": "Join the house fixed by your address: once per Agent ID wallet. If you already joined, the preview reverts; skip it."
+   }
+  },
+  {
    "market": "Early Pass",
    "contract": "0xf467a5941F8DedE54583754aC7448FB62ae0b9D4",
    "opensAt": "when deployed",
    "closesAt": "2026-12-08T08:00:00Z",
-   "secondsLeft": 1346464,
+   "secondsLeft": 1346423,
    "minted": 432,
    "left": 1568,
-   "validUntil": "2026-11-22T19:28:56Z",
+   "validUntil": "2026-11-22T19:29:37Z",
    "call": {
     "function": "mint()",
     "inputData": "0x1249c58b",
@@ -77,10 +113,10 @@
    "contract": "0x74f35B8315D76dEaEcb7034918325815458261A4",
    "opensAt": "when deployed",
    "closesAt": "2026-12-08T08:00:00Z",
-   "secondsLeft": 1346464,
+   "secondsLeft": 1346423,
    "minted": 335,
    "left": 1665,
-   "validUntil": "2026-11-22T19:28:56Z",
+   "validUntil": "2026-11-22T19:29:37Z",
    "call": {
     "function": "mint()",
     "inputData": "0x1249c58b",
@@ -91,10 +127,10 @@
    "consent": "needs its own confirmation; not part of a routine"
   }
  ],
- "openCount": 3,
+ "openCount": 5,
  "nextRoundOpens": "2026-11-22T18:00:00Z",
  "note": "New free rounds open every hour (1h markets), every 6 hours (6h) and daily (1d). Each round is a new free mint for every Agent ID wallet: value 0, no arguments, no approvals. Claim finished tickets first with claim() 0x4e71d92d.",
- "expiresAt": "2026-11-22T19:28:49Z",
+ "expiresAt": "2026-11-22T19:29:36Z",
  "staleRule": "Do not act on a round whose validUntil has passed or if expiresAt has passed; re-read todo(address) 0x624f6da5 on chain instead.",
  "newWallet": "Any Agent ID wallet can mint every round listed in openNow. Your own claims and results: /api/wallet/<lowercase address>.json (404 means you have not played yet).",
  "finalsPass": {
