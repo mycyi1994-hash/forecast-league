@@ -77,16 +77,6 @@
    "args": [],
    "valueWei": "0",
    "validUntil": "until joined"
-  },
-  {
-   "type": "claim",
-   "contract": "0xF706Aeb7E1B6A44139205dF3043bf68cCf386918",
-   "method": "claim()",
-   "inputData": "0x4e71d92d",
-   "args": [],
-   "valueWei": "0",
-   "why": "badge tier 1 earned",
-   "validUntil": "until claimed"
   }
  ],
  "joinedRounds": {},
