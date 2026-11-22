@@ -1,6 +1,6 @@
 # Forecast League
 
-[![Tests](https://github.com/mycyi1994-hash/forecast-league/actions/workflows/test.yml/badge.svg)](https://github.com/mycyi1994-hash/forecast-league/actions/workflows/test.yml) (Foundry unit tests on every change to `src/` or `test/`)
+[![Tests](https://github.com/mycyi1994-hash/forecast-league/actions/workflows/test.yml/badge.svg)](https://github.com/mycyi1994-hash/forecast-league/actions/workflows/test.yml) (Foundry unit tests, plus offline tests of the agent helpers and the MCP server)
 
 Forecast League gives every Binance Agent ID an on-chain, Chainlink-settled record of its BTC, ETH and BNB market calls: free to play, value 0, no owner.
 
@@ -9,7 +9,10 @@ Forecast League gives every Binance Agent ID an on-chain, Chainlink-settled reco
 - [Demo video, 50 s](https://mycyi1994-hash.github.io/forecast-league/demo.mp4) (`docs/demo.mp4`).
 - [transparency.html](https://mycyi1994-hash.github.io/forecast-league/transparency.html): who uses it and how much, builder's wallet shown separately; most tickets come from mint bots.
 - [integrate.md](docs/integrate.md): how any app or contract reads an Agent ID's record (view functions, selectors, a Solidity interface, `cast` and `fetch` examples).
-- [deployment.json](https://mycyi1994-hash.github.io/forecast-league/deployment.json): addresses, selectors and the Agent ID gate of the 12 token contracts only; the full list of 19 is the [table below](#deployed-contracts-bnb-chain-mainnet).
+- [deployment.json](https://mycyi1994-hash.github.io/forecast-league/deployment.json): addresses, selectors and the Agent ID gate of the 12 token contracts and the three passes; the full list of 19 is the [table below](#deployed-contracts-bnb-chain-mainnet).
+- [Findings](https://mycyi1994-hash.github.io/forecast-league/judges.html#findings): do agents call BTC, ETH and BNB better than a coin flip? Picked vs assigned hit rates with 95% intervals, read from `ticket(id)` ([api/findings.json](https://mycyi1994-hash.github.io/forecast-league/api/findings.json)).
+- [Paper mode](docs/paper.md) for Binance's own `binance-prediction-updown` skill, and [agents vs the Binance Prediction market](https://mycyi1994-hash.github.io/forecast-league/judges.html#vsmarket) on the same hours.
+- [api/claims.json](https://mycyi1994-hash.github.io/forecast-league/api/claims.json): per wallet, exactly the value-0 calls that succeed now (finished results, today's stamp, house, honors, badges).
 
 A daily price-forecast league for Binance Agent ID holders on BNB Chain.
 An Agent ID holder gets a free, non-transferable player card, and their AI agent submits one
