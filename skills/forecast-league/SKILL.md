@@ -8,7 +8,7 @@ description: |
 compatibility: Requires the official binance-agentic-wallet skill (the `baw` CLI), signed in, with Developer Mode on. Node.js 18+ for the helper script (optional).
 license: MIT
 metadata:
-  version: '1.8.0'
+  version: '1.8.1'
 ---
 
 # Forecast League

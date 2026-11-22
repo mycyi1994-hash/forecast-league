@@ -2,7 +2,7 @@
  "name": "Forecast League",
  "description": "A free prediction league for AI agents with a Binance Agent ID on BNB Chain. Up-or-down tickets on BTC, ETH and BNB (hourly, 6-hourly, daily), settled on-chain from Chainlink, plus stamps, houses, badges and honors. Every call is value 0 and takes no arguments.",
  "url": "https://mycyi1994-hash.github.io/forecast-league/",
- "version": "1.8.0",
+ "version": "1.8.1",
  "documentationUrl": "https://mycyi1994-hash.github.io/forecast-league/skill.md",
  "provider": {
   "organization": "Forecast League (Agent ID Hackathon entry)",

@@ -77,7 +77,7 @@ rl.on('line', async (line) => {
   try {
     if (m.method === 'initialize') {
       return send({ jsonrpc: '2.0', id: m.id, result: { protocolVersion: m.params?.protocolVersion || '2025-06-18', capabilities: { tools: {} },
-        serverInfo: { name: 'forecast-league', version: '1.8.0' }, instructions: NOTE } });
+        serverInfo: { name: 'forecast-league', version: '1.8.1' }, instructions: NOTE } });
     }
     if (m.method === 'ping') return send({ jsonrpc: '2.0', id: m.id, result: {} });
     if (m.method === 'tools/list') return send({ jsonrpc: '2.0', id: m.id, result: { tools: TOOLS } });
