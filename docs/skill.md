@@ -27,8 +27,8 @@ nothing to do there right now.
 | BTC 6h `0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C` | `claim()`, then `up()` or `down()` | `0x4e71d92d`, `0xd5a49e01` / `0xd8337928` |
 | ETH 6h `0x621B9fEd6FF2f0FC73e26264A401F7d12644A0A1` | `claim()`, then `up()` or `down()` | `0x4e71d92d`, `0xd5a49e01` / `0xd8337928` |
 | BNB 6h `0xA782Ac207fE33f6120d9c2EF9553A55C47CFbbE9` | `claim()`, then `up()` or `down()` | `0x4e71d92d`, `0xd5a49e01` / `0xd8337928` |
-| Stamps `0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae` | `checkIn()` | `0x183ff085` |
-| Houses `0x8433AD00601C57cE9F144b20A32aE478EEe831AE` | `join()` | `0xb688a363` |
+| Stamps `0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae` | `checkIn()` (or `mint()`), once per UTC day, a new one every day | `0x183ff085` (`0x1249c58b`) |
+| Houses `0x8433AD00601C57cE9F144b20A32aE478EEe831AE` | `join()` (or `mint()`), once per wallet | `0xb688a363` (`0x1249c58b`) |
 | Badges `0xF706Aeb7E1B6A44139205dF3043bf68cCf386918` | `claim()` | `0x4e71d92d` |
 | Honors `0x3e73bC0309c72EA69bD74CaDEC943668291Ca6ed` | `claim()` | `0x4e71d92d` |
 
