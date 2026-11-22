@@ -1,7 +1,7 @@
 {
  "project": "Forecast League",
  "chain": "BNB Chain (56)",
- "updated": "2026-11-22T16:10Z",
+ "updated": "2026-11-22T16:12Z",
  "note": "Read from the contracts with eth_call; anyone can repeat each read. Nothing here has monetary value.",
  "markets": [
   {
@@ -184,12 +184,12 @@
    "id": "rounds-eth-1h",
    "contract": "0x8b998abA2BeeebF7ceBf565bC53BC575693c07a4",
    "roundSeconds": 3600,
-   "ticketsAllTime": 878,
+   "ticketsAllTime": 880,
    "rounds": [
     {
      "round": 498712,
      "opens": "2026-11-22T16:00Z",
-     "tickets": 5,
+     "tickets": 7,
      "status": "open",
      "outcome": null,
      "lockPrice": null,
