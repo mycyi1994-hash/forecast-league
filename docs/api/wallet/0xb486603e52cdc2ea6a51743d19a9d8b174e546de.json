@@ -2,7 +2,18 @@
  "wallet": "0xb486603e52cdc2ea6a51743d19a9d8b174e546de",
  "holdsAgentId": true,
  "howToUse": "Step 1: send the claims below (they stay valid until done). Step 2: read https://mycyi1994-hash.github.io/forecast-league/api/state for the rounds open now; skip a market whose round number equals joinedRounds[market]. Step 3: preview every call right before sending; skip any that fails. Come back at the earliest pendingResults.resultFinalAt or when the next round opens.",
- "claims": [],
+ "claims": [
+  {
+   "type": "checkIn",
+   "contract": "0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae",
+   "method": "checkIn()",
+   "inputData": "0x183ff085",
+   "args": [],
+   "valueWei": "0",
+   "why": "today's stamp (streak becomes 1)",
+   "validUntil": "until 00:00 UTC; a new one opens every UTC day"
+  }
+ ],
  "joinedRounds": {},
  "pendingResults": [],
  "stampToday": "checkIn() 0x183ff085 on 0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae once per UTC day (preview shows if already done)",

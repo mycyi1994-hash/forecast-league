@@ -7,7 +7,7 @@ import { readFileSync, writeFileSync, readdirSync, existsSync } from 'node:fs';
 const DIR = 'docs/api/wallet';
 const BUILDER = '0x2a2f48145780639dbd91e748df157f35283165da';
 const SITE = 'https://mycyi1994-hash.github.io/forecast-league';
-const EXTRA = { '0x8433ad00601c57ce9f144b20a32ae478eee831ae': 'Houses join()', '0x3e73bc0309c72ea69bd74cadec943668291ca6ed': 'Honors claim()', '0xf706aeb7e1b6a44139205df3043bf68ccf386918': 'Badges claim()' };
+const EXTRA = { '0x30b6b8c67ab2239185536ba3766e8cb05bfd18ae': 'Stamps checkIn()', '0x8433ad00601c57ce9f144b20a32ae478eee831ae': 'Houses join()', '0x3e73bc0309c72ea69bd74cadec943668291ca6ed': 'Honors claim()', '0xf706aeb7e1b6a44139205df3043bf68ccf386918': 'Badges claim()' };
 const perMarket = {}; const perExtra = {}; const wallets = [];
 let tickets = 0;
 for (const f of existsSync(DIR) ? readdirSync(DIR) : []) {
@@ -36,7 +36,7 @@ const out = {
   claimCalls: wallets.reduce((n, w) => n + w.markets.reduce((k, x) => k + Math.ceil(x.finishedTickets / 12), 0), 0),
   extraCalls: Object.values(perExtra).reduce((a, b) => a + b, 0),
   perExtra,
-  how: 'For each market listed under your address: claim() 0x4e71d92d, value 0, no arguments. It writes the finished tickets into your on-chain record as wins or losses (at most 12 per call; call again while more are left). A market not listed for you would revert NothingToClaim, so send only the listed ones. extras[] are one-call items the wallet has earned: join() on Houses, claim() on Honors or Badges, each value 0, each sent once. No prize or reward; the record is the result.',
+  how: 'For each market listed under your address: claim() 0x4e71d92d, value 0, no arguments. It writes the finished tickets into your on-chain record as wins or losses (at most 12 per call; call again while more are left). A market not listed for you would revert NothingToClaim, so send only the listed ones. extras[] are one-call items the wallet can send now: checkIn() on Stamps (once per UTC day), join() on Houses, claim() on Honors or Badges, each value 0. No prize or reward; the record is the result.',
   source: 'docs/api/wallet/<address>.json claims[], built hourly from todo(address) 0x624f6da5 on each market contract.',
   perMarket,
   list: wallets.sort((a, b) => (a.wallet < b.wallet ? -1 : 1)),
@@ -58,7 +58,7 @@ if (existsSync('docs/deployment.json')) {
 for (const f of ['docs/agent.md', 'docs/agents.md']) {
   if (!existsSync(f)) continue;
   const md = readFileSync(f, 'utf8').replace(/\n\*\*Results waiting[^\n]*\n/, '\n');
-  const line = `\n**Results waiting · 结果待领取:** ${out.wallets} Agent ID wallets have ${tickets} finished tickets not yet in their record, and ${out.extraCalls} earned one-call items (house join, honors, badges) not sent. If yours is listed in ${SITE}/api/claims.json, send exactly the calls listed for you (value 0); only those.\n`;
+  const line = `\n**Results waiting · 结果待领取:** ${out.wallets} Agent ID wallets have ${tickets} finished tickets not yet in their record, and ${out.extraCalls} earned one-call items (today's stamp, house join, honors, badges) not sent. If yours is listed in ${SITE}/api/claims.json, send exactly the calls listed for you (value 0); only those.\n`;
   if (md.includes('<!-- /live -->')) writeFileSync(f, md.replace('<!-- /live -->', line.slice(1) + '<!-- /live -->'));
 }
 console.log(JSON.stringify({ ok: true, wallets: out.wallets, finishedTickets: tickets, claimCalls: out.claimCalls }));

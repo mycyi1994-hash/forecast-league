@@ -81,6 +81,16 @@
    "validUntil": "until claimed (a second claim reverts NothingToClaim, which is harmless)"
   },
   {
+   "type": "checkIn",
+   "contract": "0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae",
+   "method": "checkIn()",
+   "inputData": "0x183ff085",
+   "args": [],
+   "valueWei": "0",
+   "why": "today's stamp (streak becomes 1)",
+   "validUntil": "until 00:00 UTC; a new one opens every UTC day"
+  },
+  {
    "type": "claim",
    "contract": "0x3e73bC0309c72EA69bD74CaDEC943668291Ca6ed",
    "method": "claim()",

@@ -595,13 +595,14 @@
   }
  ],
  "claimsWaiting": {
-  "wallets": 449,
+  "wallets": 660,
   "finishedTickets": 3944,
   "claimCalls": 1352,
-  "extraCalls": 771,
+  "extraCalls": 1817,
   "perExtra": {
-   "Houses join()": 331,
-   "Honors claim()": 326,
+   "Stamps checkIn()": 626,
+   "Houses join()": 541,
+   "Honors claim()": 536,
    "Badges claim()": 114
   },
   "perAddress": "https://mycyi1994-hash.github.io/forecast-league/api/claims.json",

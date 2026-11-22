@@ -16,7 +16,9 @@ const X = { stamps: '0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae', houses: '0x843
 const HON = ['SEASON ONE', 'CARD HOLDER', 'FIRST WIN', 'FIVE WINS', 'STREAK 3', 'STREAK 5'];
 // Wallets: every holder of our round markets and extras (ownerOf over each token), plus anything already listed.
 const known = new Set(existsSync('docs/api/wallet/index.json') ? JSON.parse(readFileSync('docs/api/wallet/index.json', 'utf8')).wallets : []);
-for (const a of [...M.map((m) => m[1]), ...Object.values(X), '0x79F55DAa8a3CF2Eb76EE40e26ff6E244a4cC1eD4']) {
+// Pass holders too (Early Pass, Season Two Pass, Finals Pass): they hold an Agent ID and can play every round for free.
+const PASSES = ['0xf467a5941F8DedE54583754aC7448FB62ae0b9D4', '0x74f35B8315D76dEaEcb7034918325815458261A4', '0x9Df6ba1868d2C149FdA5FE67491f67C07C31e6B5'];
+for (const a of [...M.map((m) => m[1]), ...Object.values(X), '0x79F55DAa8a3CF2Eb76EE40e26ff6E244a4cC1eD4', ...PASSES]) {
   const sup = n(await rpc('eth_call', [{ to: a, data: a.startsWith('0x79F5') ? '0xe994c15d' : '0x18160ddd' }, 'latest']), 0);
   const own = await multi(Array.from({ length: sup }, (_, i) => ({ to: a, data: '0x6352211e' + (i + 1).toString(16).padStart(64, '0') })));
   own.forEach((r) => r && known.add('0x' + r.slice(-40).toLowerCase()));
@@ -49,6 +51,7 @@ wallets.forEach((w, wi) => {
   });
   const [st, ho, ba, hn] = [r[M.length * 2], r[M.length * 2 + 1], r[M.length * 2 + 2], r[M.length * 2 + 3]];
   const extras = [];
+  if (st && n(st, 1) === 1) extras.push({ type: 'checkIn', contract: X.stamps, method: 'checkIn()', inputData: '0x183ff085', args: [], valueWei: '0', why: `today's stamp (streak becomes ${n(st, 2)})`, validUntil: 'until 00:00 UTC; a new one opens every UTC day' });
   if (ho && n(ho, 1) === 1) extras.push({ type: 'join', contract: X.houses, method: 'join()', inputData: '0xb688a363', args: [], valueWei: '0', validUntil: 'until joined' });
   if (ba && n(ba, 2) === 1) extras.push({ type: 'claim', contract: X.badges, method: 'claim()', inputData: '0x4e71d92d', args: [], valueWei: '0', why: `badge tier ${n(ba, 3)} earned`, validUntil: 'until claimed' });
   if (hn && n(hn, 0) > 0) extras.push({ type: 'claim', contract: X.honors, method: 'claim()', inputData: '0x4e71d92d', args: [], valueWei: '0', why: 'honor earned: ' + HON.filter((_, k) => n(hn, 1) & (1 << k)).join(', '), validUntil: 'until claimed' });
