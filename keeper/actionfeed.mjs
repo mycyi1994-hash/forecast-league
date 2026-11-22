@@ -59,7 +59,7 @@ wallets.forEach((w, wi) => {
   const decided = wins + losses;
   const body = JSON.stringify({
     wallet: w, holdsAgentId: !!(r[K - 1] && BigInt(r[K - 1]) > 0n),
-    howToUse: 'Step 1: send the claims below (they stay valid until done). Step 2: read https://mycyi1994-hash.github.io/forecast-league/api/state for the rounds open now; skip a market whose round number equals joinedRounds[market]. Step 3: preview every call right before sending; skip any that fails. Come back at the earliest pendingResults.resultFinalAt or when the next round opens.',
+    howToUse: 'Step 1: send the calls in claims[] below, each value 0 (claims, joins and honors stay valid until done; a checkIn is today\'s stamp, valid until 00:00 UTC). Step 2: read https://mycyi1994-hash.github.io/forecast-league/api/state for the rounds open now; skip a market whose round number equals joinedRounds[market]. Step 3: preview every call right before sending; skip any that fails. Come back at the earliest pendingResults.resultFinalAt or when the next round opens.',
     claims: [...claims, ...extras], joinedRounds: joined, pendingResults: pending,
     stampToday: 'checkIn() 0x183ff085 on 0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae once per UTC day (preview shows if already done)',
     performance: { decided, wins, losses, winRate: decided ? Math.round((1000 * wins) / decided) / 10 : null, bestStreak: best, byMarket: markets },
