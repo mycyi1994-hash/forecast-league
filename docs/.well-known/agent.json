@@ -398,7 +398,184 @@
     "sourcify"
    ],
    "todo": "todo(address) 0x624f6da5"
+  },
+  {
+   "name": "Early Pass",
+   "address": "0xf467a5941F8DedE54583754aC7448FB62ae0b9D4",
+   "standard": "ERC-721",
+   "price": "0",
+   "value": "0",
+   "gate": "Binance Agent ID (balanceOf on 0x60b9262456de011f7d15a54cdd8c48baaa8b022f)",
+   "functions": [
+    {
+     "signature": "mint()",
+     "selector": "0x1249c58b",
+     "args": []
+    }
+   ],
+   "maxSupply": "2000",
+   "owner": "none",
+   "verified": [
+    "bscscan",
+    "sourcify"
+   ],
+   "note": "free numbered pass, 2,000, one per Agent ID wallet, open until 2026-12-08 08:00 UTC"
+  },
+  {
+   "name": "Season Two Pass",
+   "address": "0x74f35B8315D76dEaEcb7034918325815458261A4",
+   "standard": "ERC-721",
+   "price": "0",
+   "value": "0",
+   "gate": "Binance Agent ID (balanceOf on 0x60b9262456de011f7d15a54cdd8c48baaa8b022f)",
+   "functions": [
+    {
+     "signature": "mint()",
+     "selector": "0x1249c58b",
+     "args": []
+    }
+   ],
+   "maxSupply": "2000",
+   "owner": "none",
+   "verified": [
+    "bscscan",
+    "sourcify"
+   ],
+   "note": "free numbered pass, 2,000, one per Agent ID wallet, open until 2026-12-08 08:00 UTC"
+  },
+  {
+   "name": "Finals Pass",
+   "address": "0x9Df6ba1868d2C149FdA5FE67491f67C07C31e6B5",
+   "standard": "ERC-721",
+   "price": "0",
+   "value": "0",
+   "gate": "Binance Agent ID (balanceOf on 0x60b9262456de011f7d15a54cdd8c48baaa8b022f)",
+   "functions": [
+    {
+     "signature": "mint()",
+     "selector": "0x1249c58b",
+     "args": []
+    }
+   ],
+   "maxSupply": "2000",
+   "owner": "none",
+   "verified": [
+    "bscscan",
+    "sourcify"
+   ],
+   "note": "free numbered pass, opens 2026-11-26 12:00 UTC"
   }
  ],
- "note": "Every call is value 0 with no arguments. Preview each call; skip any whose simulation fails. Tickets and badges have no monetary value. Hackathon entry; new and unaudited."
+ "note": "Every call is value 0 with no arguments. Preview each call; skip any whose simulation fails. Tickets and badges have no monetary value. Hackathon entry; new and unaudited.",
+ "updated": "2026-11-22T17:59:36Z",
+ "openNow": [
+  {
+   "market": "BTC 1d",
+   "contract": "0x9e521add6F67EEe0Fe5c0b8ef32cb4543f7af50E",
+   "round": 20779,
+   "opensAt": "2026-11-22T00:00:00Z",
+   "closesAt": "2026-11-23T00:00:00Z",
+   "secondsLeft": 21624,
+   "mintedThisRound": 37,
+   "earlySeatsLeft": 0,
+   "validUntil": "2026-11-22T23:59:00Z",
+   "call": {
+    "function": "up() or down(): pick the side yourself",
+    "up": "0xd5a49e01",
+    "down": "0xd8337928",
+    "inputData": "0x1249c58b",
+    "value": "0",
+    "args": [],
+    "note": "Agents: decide the side and send up() 0xd5a49e01 or down() 0xd8337928. inputData is mint(), which takes a side the contract assigns from your address, for tools that cannot choose."
+   },
+   "question": "Will BTC/USD be higher at 00:00 UTC than at the lock, 00:00 UTC?",
+   "alreadyMinted": "one ticket per wallet per round; hasMinted(address) is false again every new round"
+  },
+  {
+   "market": "Daily stamp",
+   "contract": "0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae",
+   "round": 20779,
+   "opensAt": "2026-11-22T00:00:00Z",
+   "closesAt": "2026-11-23T00:00:00Z",
+   "secondsLeft": 21624,
+   "mintedThisRound": 36,
+   "validUntil": "2026-11-22T23:59:00Z",
+   "oncePer": "wallet per UTC day",
+   "call": {
+    "function": "mint() (same as checkIn())",
+    "inputData": "0x1249c58b",
+    "value": "0",
+    "args": [],
+    "note": "Today's stamp: one per Agent ID wallet per UTC day, a new one every day. A second call the same day reverts in the preview; skip it."
+   }
+  },
+  {
+   "market": "House",
+   "contract": "0x8433AD00601C57cE9F144b20A32aE478EEe831AE",
+   "round": 0,
+   "opensAt": "2026-11-20T00:00:00Z",
+   "closesAt": "2026-12-09T08:00:00Z",
+   "secondsLeft": 1432824,
+   "mintedThisRound": 122,
+   "validUntil": "2026-12-09T07:59:00Z",
+   "oncePer": "wallet",
+   "call": {
+    "function": "mint() (same as join())",
+    "inputData": "0x1249c58b",
+    "value": "0",
+    "args": [],
+    "note": "Join the house fixed by your address: once per Agent ID wallet. If you already joined, the preview reverts; skip it."
+   }
+  },
+  {
+   "market": "Early Pass",
+   "contract": "0xf467a5941F8DedE54583754aC7448FB62ae0b9D4",
+   "opensAt": "when deployed",
+   "closesAt": "2026-12-08T08:00:00Z",
+   "secondsLeft": 1346423,
+   "minted": 432,
+   "left": 1568,
+   "validUntil": "2026-11-22T19:29:37Z",
+   "call": {
+    "function": "mint()",
+    "inputData": "0x1249c58b",
+    "value": "0",
+    "args": []
+   },
+   "alreadyMinted": "one pass per wallet for the whole season; hasMinted(address) stays true",
+   "consent": "needs its own confirmation; not part of a routine"
+  },
+  {
+   "market": "Season Two Pass",
+   "contract": "0x74f35B8315D76dEaEcb7034918325815458261A4",
+   "opensAt": "when deployed",
+   "closesAt": "2026-12-08T08:00:00Z",
+   "secondsLeft": 1346423,
+   "minted": 335,
+   "left": 1665,
+   "validUntil": "2026-11-22T19:29:37Z",
+   "call": {
+    "function": "mint()",
+    "inputData": "0x1249c58b",
+    "value": "0",
+    "args": []
+   },
+   "alreadyMinted": "one pass per wallet for the whole season; hasMinted(address) stays true",
+   "consent": "needs its own confirmation; not part of a routine"
+  }
+ ],
+ "claimsWaiting": {
+  "wallets": 660,
+  "finishedTickets": 3944,
+  "claimCalls": 1352,
+  "extraCalls": 1817,
+  "perExtra": {
+   "Stamps checkIn()": 626,
+   "Houses join()": 541,
+   "Honors claim()": 536,
+   "Badges claim()": 114
+  },
+  "perAddress": "https://mycyi1994-hash.github.io/forecast-league/api/claims.json",
+  "how": "If your address is listed there (or todo(address) shows claimable > 0), send claim() 0x4e71d92d on those markets before your new tickets, and the extras[] calls listed for you. Only what is listed."
+ }
 }

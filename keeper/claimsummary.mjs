@@ -54,6 +54,8 @@ if (existsSync('docs/deployment.json')) {
   const d = JSON.parse(readFileSync('docs/deployment.json', 'utf8'));
   d.claimsWaiting = summary;
   writeFileSync('docs/deployment.json', JSON.stringify(d, null, 1) + '\n');
+  // .well-known/agent.json is the same manifest at the path some agent scanners read; keep it identical.
+  if (existsSync('docs/.well-known')) writeFileSync('docs/.well-known/agent.json', JSON.stringify(d, null, 1) + '\n');
 }
 for (const f of ['docs/agent.md', 'docs/agents.md']) {
   if (!existsSync(f)) continue;

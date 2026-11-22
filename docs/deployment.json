@@ -398,6 +398,72 @@
     "sourcify"
    ],
    "todo": "todo(address) 0x624f6da5"
+  },
+  {
+   "name": "Early Pass",
+   "address": "0xf467a5941F8DedE54583754aC7448FB62ae0b9D4",
+   "standard": "ERC-721",
+   "price": "0",
+   "value": "0",
+   "gate": "Binance Agent ID (balanceOf on 0x60b9262456de011f7d15a54cdd8c48baaa8b022f)",
+   "functions": [
+    {
+     "signature": "mint()",
+     "selector": "0x1249c58b",
+     "args": []
+    }
+   ],
+   "maxSupply": "2000",
+   "owner": "none",
+   "verified": [
+    "bscscan",
+    "sourcify"
+   ],
+   "note": "free numbered pass, 2,000, one per Agent ID wallet, open until 2026-12-08 08:00 UTC"
+  },
+  {
+   "name": "Season Two Pass",
+   "address": "0x74f35B8315D76dEaEcb7034918325815458261A4",
+   "standard": "ERC-721",
+   "price": "0",
+   "value": "0",
+   "gate": "Binance Agent ID (balanceOf on 0x60b9262456de011f7d15a54cdd8c48baaa8b022f)",
+   "functions": [
+    {
+     "signature": "mint()",
+     "selector": "0x1249c58b",
+     "args": []
+    }
+   ],
+   "maxSupply": "2000",
+   "owner": "none",
+   "verified": [
+    "bscscan",
+    "sourcify"
+   ],
+   "note": "free numbered pass, 2,000, one per Agent ID wallet, open until 2026-12-08 08:00 UTC"
+  },
+  {
+   "name": "Finals Pass",
+   "address": "0x9Df6ba1868d2C149FdA5FE67491f67C07C31e6B5",
+   "standard": "ERC-721",
+   "price": "0",
+   "value": "0",
+   "gate": "Binance Agent ID (balanceOf on 0x60b9262456de011f7d15a54cdd8c48baaa8b022f)",
+   "functions": [
+    {
+     "signature": "mint()",
+     "selector": "0x1249c58b",
+     "args": []
+    }
+   ],
+   "maxSupply": "2000",
+   "owner": "none",
+   "verified": [
+    "bscscan",
+    "sourcify"
+   ],
+   "note": "free numbered pass, opens 2026-11-26 12:00 UTC"
   }
  ],
  "note": "Every call is value 0 with no arguments. Preview each call; skip any whose simulation fails. Tickets and badges have no monetary value. Hackathon entry; new and unaudited.",
