@@ -1,0 +1,20 @@
+// Offline smoke test of the MCP server: initialize, tools/list, a rejected bad address. No network.
+import { spawn } from 'node:child_process';
+import assert from 'node:assert/strict';
+const p = spawn(process.execPath, [new URL('../mcp/server.mjs', import.meta.url).pathname], { stdio: ['pipe', 'pipe', 'inherit'] });
+const got = new Map(); let buf = '';
+p.stdout.on('data', (d) => { buf += d; let i; while ((i = buf.indexOf('\n')) >= 0) { const m = JSON.parse(buf.slice(0, i)); buf = buf.slice(i + 1); got.set(m.id, m); } });
+const send = (m) => p.stdin.write(JSON.stringify(m) + '\n');
+send({ jsonrpc: '2.0', id: 1, method: 'initialize', params: { protocolVersion: '2025-06-18', capabilities: {}, clientInfo: { name: 't', version: '0' } } });
+send({ jsonrpc: '2.0', method: 'notifications/initialized' });
+send({ jsonrpc: '2.0', id: 2, method: 'tools/list' });
+send({ jsonrpc: '2.0', id: 3, method: 'tools/call', params: { name: 'forecast_league_record', arguments: { address: 'nope' } } });
+send({ jsonrpc: '2.0', id: 4, method: 'nope' });
+const t0 = Date.now();
+while (got.size < 4 && Date.now() - t0 < 10000) await new Promise((r) => setTimeout(r, 50));
+p.kill();
+assert.equal(got.get(1).result.serverInfo.name, 'forecast-league');
+assert.deepEqual(got.get(2).result.tools.map((t) => t.name).sort(), ['forecast_league_findings', 'forecast_league_open_rounds', 'forecast_league_paper_report', 'forecast_league_plan', 'forecast_league_record']);
+assert.equal(got.get(3).result.isError, true);
+assert.equal(got.get(4).error.code, -32601);
+console.log('mcp smoke test ok');

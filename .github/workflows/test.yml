@@ -3,9 +3,9 @@ name: Tests
 # default profile in foundry.toml; run them with FOUNDRY_PROFILE=fork forge test.
 on:
   push:
-    paths: ['src/**', 'test/**', 'art/**', 'foundry.toml', 'remappings.txt', 'package.json', 'package-lock.json', '.github/workflows/test.yml']
+    paths: ['src/**', 'test/**', 'art/**', 'foundry.toml', 'remappings.txt', 'package.json', 'package-lock.json', 'skills/**', 'mcp/**', 'tests/**', '.github/workflows/test.yml']
   pull_request:
-    paths: ['src/**', 'test/**', 'art/**', 'foundry.toml', 'remappings.txt', 'package.json', 'package-lock.json', '.github/workflows/test.yml']
+    paths: ['src/**', 'test/**', 'art/**', 'foundry.toml', 'remappings.txt', 'package.json', 'package-lock.json', 'skills/**', 'mcp/**', 'tests/**', '.github/workflows/test.yml']
   workflow_dispatch: {}
 permissions:
   contents: read
@@ -31,3 +31,20 @@ jobs:
         run: |
           forge --version
           forge test
+  scripts-test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Agent helpers (offline)
+        run: |
+          node --check skills/forecast-league/scripts/league.mjs
+          python3 -m py_compile skills/forecast-league/scripts/paper.py skills/forecast-league/scripts/crowd_hook.py
+          python3 -m unittest discover -s tests/python -v
+          node tests/mcp.test.mjs
