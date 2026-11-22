@@ -2,8 +2,8 @@
  "contract": "0x3e73bc0309c72ea69bd74cadec943668291ca6ed",
  "name": "Forecast League Honor",
  "verdict": "passed",
- "checkedAt": "2026-11-22T00:18:25Z",
- "block": 134981806,
+ "checkedAt": "2026-11-22T01:11:41Z",
+ "block": 134988906,
  "checks": {
   "simulatedFromAgentIdWallet": true,
   "gateEnforced": true,
