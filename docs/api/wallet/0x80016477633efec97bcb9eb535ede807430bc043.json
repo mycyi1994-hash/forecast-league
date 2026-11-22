@@ -13,9 +13,7 @@
    "validUntil": "until joined"
   }
  ],
- "joinedRounds": {
-  "BTC 1d": 20778
- },
+ "joinedRounds": {},
  "pendingResults": [
   {
    "market": "BTC 1d",

@@ -71,6 +71,17 @@
   },
   {
    "type": "claim",
+   "market": "BTC 1d",
+   "contract": "0x9e521add6F67EEe0Fe5c0b8ef32cb4543f7af50E",
+   "method": "claim()",
+   "inputData": "0x4e71d92d",
+   "args": [],
+   "valueWei": "0",
+   "finishedTickets": 1,
+   "validUntil": "until claimed (a second claim reverts NothingToClaim, which is harmless)"
+  },
+  {
+   "type": "claim",
    "contract": "0xF706Aeb7E1B6A44139205dF3043bf68cCf386918",
    "method": "claim()",
    "inputData": "0x4e71d92d",
@@ -80,13 +91,11 @@
    "validUntil": "until claimed"
   }
  ],
- "joinedRounds": {
-  "BTC 1d": 20778
- },
+ "joinedRounds": {},
  "pendingResults": [
   {
    "market": "BTC 1d",
-   "tickets": 2,
+   "tickets": 1,
    "resultFinalAt": "2026-11-23T00:00:00Z"
   }
  ],
