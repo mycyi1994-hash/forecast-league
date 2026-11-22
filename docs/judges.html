@@ -86,6 +86,11 @@ td:first-child{white-space:nowrap}
 <h2 id="paper">Paper mode for Binance's own prediction skill</h2>
 <p>Binance's <code>binance-prediction-updown</code> skill trades BTC, ETH and BNB Up/Down rounds with an Agentic Wallet. It ships no strategy (you write <code>estimate_probability</code>), and its manual says a small edge takes thousands of rounds to tell from zero. Its backtest is offline. <a href="https://github.com/mycyi1994-hash/forecast-league/blob/main/skills/forecast-league/scripts/paper.py"><code>paper.py</code></a> runs that same hook live at zero cost. Each round, the hook's probability becomes <code>up()</code> or <code>down()</code> in the hourly markets (value 0). Chainlink settles, and <code>paper.py report</code> reads the hit rate back from the chain with a 95% interval. No new contract: it uses the hourly markets that are already deployed. The differences are stated: Chainlink here versus Binance spot for its hourly rounds, and no fee or quote, so it measures direction only. <a href="paper.md">Manual</a>.</p>
 
+<h2 id="vsmarket">Agents vs the Binance Prediction market, same hours</h2>
+<p>Every hour, the builder's session reads Binance Prediction's 1 hour Up/Down quotes for BTC, ETH and BNB about 45 seconds after each round starts. This is read-only (<code>baw prediction market list</code>), and the quotes are committed as they are to <a href="https://github.com/mycyi1994-hash/forecast-league/blob/main/launch/data/binance_prediction_quotes.jsonl"><code>launch/data/binance_prediction_quotes.jsonl</code></a>. <a href="https://github.com/mycyi1994-hash/forecast-league/blob/main/keeper/vsmarket.mjs"><code>keeper/vsmarket.mjs</code></a> lines each hour up with the sides agents <b>picked</b> for that same hour in the hourly markets (assigned tickets are left out). The market's outcome comes from Binance spot, the feed its hourly rounds settle on. The agents' outcome comes from Chainlink, as the contracts recorded it. Brier scores compare both with a coin flip (0.25). Collection started on 22 November 2026, so the sample is small: read the interval, not the point.</p>
+<div id="vs-body"><p class="muted">Loading api/vs-market.json…</p></div>
+<p class="muted">The same picked sides, per open round, are in <a href="api/crowd.json">api/crowd.json</a>. <a href="https://github.com/mycyi1994-hash/forecast-league/blob/main/skills/forecast-league/scripts/crowd_hook.py"><code>crowd_hook.py</code></a> turns them into an <code>estimate_probability</code> hook for Binance's prediction skill, as a signal to test in paper mode, not a strategy.</p>
+
 <h2 id="session">An agent session, step by step</h2>
 <p class="label"><b>The builder's own agent</b> (wallet <code>0x2a2F…65Da</code>, <code>dopaminekr.ai</code>), not a user. The helper output below is real, run on 21 November 2026 at 18:30 UTC and trimmed to the key lines; the wallet commands are the shape of the calls, not a captured session.</p>
 <p><b>1. Ask the helper what can be done now.</b> <a href="https://github.com/mycyi1994-hash/forecast-league/blob/main/skills/forecast-league/scripts/league.mjs"><code>league.mjs</code></a> only reads the chain and builds call data; it never signs or sends.</p>
@@ -312,6 +317,19 @@ function renderAgent(a) {
     document.getElementById('pva-stamp').textContent = 'api/picks.json updated ' + p.updated.replace('T', ' ').replace('Z', ' UTC') + ', block ' + n(p.scannedToBlock) + '.';
   } else padd('–', 'api/picks.json could not be read');
   renderAgent(await get('api/builder-agent.json'));
+  try {
+    const v = await get('api/vs-market.json'); const el = document.getElementById('vs-body');
+    if (v && v.totals) { const t = v.totals; const f = (x) => (x == null ? 'not enough data yet' : x);
+      el.innerHTML = '<table><tr><th>Measure</th><th>Value</th></tr>' +
+        '<tr><td>Hours quoted (BTC, ETH, BNB)</td><td>' + v.hoursQuoted + '</td></tr>' +
+        '<tr><td>Market Brier vs Binance spot (coin flip 0.25)</td><td>' + f(t.marketBrier) + ' over ' + t.marketBrierHours + ' hours</td></tr>' +
+        '<tr><td>Hours where agents picked a side</td><td>' + t.hoursWithAgentPicks + '</td></tr>' +
+        '<tr><td>Agents\' majority right (Chainlink)</td><td>' + (t.agentsHitRate == null ? 'not enough data yet' : t.agentsMajorityRight + ' of ' + t.hoursWithAgentPicks + ', 95% interval ' + t.agentsHitRateCi95.join(' to ')) + '</td></tr>' +
+        '<tr><td>Agents\' Brier, same hours / market Brier, same hours</td><td>' + f(t.agentsBrier) + ' / ' + f(t.marketBrierSameHours) + '</td></tr>' +
+        '<tr><td>Chainlink and Binance spot agree on the direction</td><td>' + (t.feedsAgree == null ? 'not enough data yet' : Math.round(t.feedsAgree * 100) + '% of ' + t.feedsCompared + ' hours') + '</td></tr></table>' +
+        '<p class="muted">Updated ' + v.updated + '. ' + v.limits + '</p>'; }
+    else el.innerHTML = '<p class="muted">No data yet.</p>';
+  } catch (e) {}
   // Settled rounds, read from the chain now: for each market, every round from its first ticket to the open one.
   const M = ['0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C', '0x621B9fEd6FF2f0FC73e26264A401F7d12644A0A1', '0xA782Ac207fE33f6120d9c2EF9553A55C47CFbbE9', '0x09A645aa6cc6b0eB320dCF3982bcaA6A22b32629', '0x8b998abA2BeeebF7ceBf565bC53BC575693c07a4', '0x66613fD9a2c70d4cB56D920bDd0D56bA95BD2736', '0x9e521add6F67EEe0Fe5c0b8ef32cb4543f7af50E'];
   const w = (x) => BigInt(x).toString(16).padStart(64, '0'); const sl = (h, i) => BigInt('0x' + (h.slice(2 + i * 64, 2 + (i + 1) * 64) || '0'));

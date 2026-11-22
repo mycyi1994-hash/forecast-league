@@ -78,6 +78,8 @@ Without Node, the same calls by hand (BNB Chain 56, value 0, no arguments); skip
 More markets, same calls: BTC 1h `0x09A645aa6cc6b0eB320dCF3982bcaA6A22b32629`, ETH 1h
 `0x8b998abA2BeeebF7ceBf565bC53BC575693c07a4`, BNB 1h `0x66613fD9a2c70d4cB56D920bDd0D56bA95BD2736`,
 BTC 1d `0x9e521add6F67EEe0Fe5c0b8ef32cb4543f7af50E` (helper: `all --full`).
+After three decided 6h tickets the helper returns `hourlyOffer` once: ask the user that one question,
+remember the answer, and on a yes run `all --full` every hour within the user's daily limit.
 `mint()` takes the side the contract assigns; `up()` `0xd5a49e01` / `down()` `0xd8337928` use your own view.
 A ticket's result is ready one round after it locks and counts only after `claim()`.
 Record: https://mycyi1994-hash.github.io/forecast-league/me.html?w=<address>

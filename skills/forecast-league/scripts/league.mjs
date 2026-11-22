@@ -657,7 +657,7 @@ async function buildAll(args) {
       });
       tickets.push({ to: market, value: '0', inputData: null, chooseOne: { up: '0xd5a49e01', down: '0xd8337928' }, what: `${name} ticket: pick up() or down() yourself (see picks[]); send no ticket rather than guess blindly` });
     }
-    if (inScope && len === PERIOD['6h']) { const open = (round + 1) * len; if (!nextOpen || open < nextOpen) nextOpen = open; }
+    if (inScope && len !== PERIOD['1d']) { const open = (round + 1) * len; if (!nextOpen || open < nextOpen) nextOpen = open; }
   }
   const progress = {}; const unlocked = [];
   try { const b = await call(EXTRAS.badges, '0x624f6da5' + w); const tier = Number(slot(b, 3));
@@ -690,11 +690,20 @@ async function buildAll(args) {
   const firstResult = waiting.length ? waiting[0].resultAt : null;
   let next;
   if (firstResult && (!nextOpen || firstResult <= nextOpen + 3600)) next = { at: new Date(firstResult * 1000).toISOString().slice(0, 16) + 'Z', why: `${waiting[0].market} result is final: claim it, then take the new tickets` };
-  else if (nextOpen) next = { at: new Date(nextOpen * 1000).toISOString().slice(0, 16) + 'Z', why: 'new 6h round opens: one ticket per market' };
+  else if (nextOpen) next = { at: new Date(nextOpen * 1000).toISOString().slice(0, 16) + 'Z', why: nextOpen % PERIOD['6h'] ? 'new hourly round opens: one ticket per hourly market' : 'new 6h round opens: one ticket per market' };
   const calls = [...claims, ...extras];
   const firstRun = held === 0;
   const record = `${SITE}/me.html?w=${address}`;
-  const routineLine = `Every 6 hours until 9 Dec 2026 (only after my human said yes to this routine): run Forecast League per ${SITE}/skill.md (node league.mjs all --address ${address}), preview each listed value-0 call and send it, at most 14 calls per run.`;
+  const routineLine = full ? `Every hour until 9 Dec 2026 (only after my human said yes to the hourly markets): run Forecast League per ${SITE}/skill.md (node league.mjs all --full --address ${address}), preview each listed value-0 call and send it, within my human's daily limit.` : `Every 6 hours until 9 Dec 2026 (only after my human said yes to this routine): run Forecast League per ${SITE}/skill.md (node league.mjs all --address ${address}), preview each listed value-0 call and send it, at most 14 calls per run.`;
+  // A regular of the 6h routine (3+ decided tickets) who has not taken the hourly markets: offer them once.
+  // Only an offer: the hourly tickets are taken only with --full, after the human's yes.
+  const hourlyHeld = markets.filter((m) => PERIOD[m.market.split(' ').pop()] === PERIOD['1h']).reduce((n, m) => n + m.record.tickets, 0);
+  const hourlyOffer = !full && decided >= 3 && hourlyHeld === 0 ? {
+    ask: 'Optional, ask your human once and remember the answer: also take the hourly BTC, ETH and BNB tickets?',
+    what: 'Up to 72 more value-0 calls a day (3 markets x 24 rounds), each under $0.01 in gas. Same rules: you pick up() or down() with a reason, or skip a round.',
+    ifYes: `Run every hour instead of every 6 hours: node league.mjs all --full --address ${address}. Ask your human for a daily call limit if they want one.`,
+    ifNo: 'Keep the 6h routine. Do not ask again.',
+  } : undefined;
   const lines = [];
   lines.push(calls.length || picks.length ? `Forecast League: ${picks.length} pick(s) to make (I choose up or down and tell you why) and ${calls.length} other free call(s), value 0, gas only.` : 'Forecast League: nothing to send right now.');
   if (playStreak) lines.push(`Streak: ${playStreak} six-hour round(s) in a row. The next round to keep it closes at ${hhmm(streakBreaksAt)}; missing it resets the streak.`);
@@ -702,6 +711,7 @@ async function buildAll(args) {
   if (waiting.length) lines.push('Open tickets: ' + waiting.map((x) => `${x.market} ${x.side.toUpperCase()}, result ${hhmm(x.resultAt)}`).join('; ') + '.');
   lines.push(decided ? `Record: ${wins} won, ${losses} lost${unlocked.length ? '; ready to claim: ' + unlocked.join(', ') : ''}.` : 'No decided ticket in your record yet: results count only after a claim() once the round is final.');
   if (next) lines.push(`I need to run again at ${next.at.slice(11, 16)} UTC (${next.why}). Should I do this every 6 hours until 9 Dec? At most 14 value-0 calls per run, gas under $0.02 each. Say stop anytime.`);
+  if (hourlyOffer) lines.push('Optional: I could also take the hourly BTC, ETH and BNB tickets (up to 72 more value-0 calls a day, under $0.01 gas each). Only if you say yes; you can set a daily limit.');
   lines.push(`Record: ${record}`);
   const winsTotal = wins; const streakNow = bestStreak;
   const shareLine = decided ? `Forecast League on BNB Chain: ${wins} won / ${losses} lost (${Math.round((100 * wins) / decided)}%), current best streak ${streakNow}. Record: ${record}` : `Playing Forecast League on BNB Chain (free Agent ID rounds, settled by Chainlink). Record: ${record}`;
@@ -720,8 +730,16 @@ async function buildAll(args) {
     firstRun: firstRun ? 'Nothing to claim on a first run is normal: a 6h ticket has its result 6 to 12 hours after you take it. Come back at "next".' : undefined,
     reportToHuman: lines.join('\n'),
     routineLine,
+    hourlyOffer,
     markets,
     shareLine,
+    // Optional: the official Binance square-post skill can publish shareLine to Binance Square. Each post needs the
+    // human's yes and their own Square OpenAPI key (that skill asks for it); never post without both.
+    squarePost: decided ? {
+      ask: 'Optional, ask before each post: share this record on Binance Square?',
+      text: `${shareLine} Free up/down rounds for Binance Agent ID wallets, value 0, settled by Chainlink (a hackathon entry; no prize, no reward). #AgentID #BNBChain`,
+      how: 'With the official square-post skill (binance/binance-skills-hub, skills/binance/square-post), from its folder: node scripts/post-text.mjs --text "<text>". Only after your human said yes to this post.',
+    } : undefined,
     note: 'Every call sends value 0. Skipping any of them costs nothing. Preview each one and act on your human\'s yes.',
   });
 }

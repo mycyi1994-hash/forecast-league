@@ -1,0 +1,28 @@
+{
+ "name": "Agents vs the Binance Prediction market, same hours",
+ "updated": "2026-11-22T17:05:23Z",
+ "hoursQuoted": 0,
+ "method": [
+  "Window: one clock hour H:00 to H+1:00 UTC, BTC, ETH and BNB.",
+  "Market: Binance Prediction's 1 hour Up/Down round for that hour; marketPUp = Up price / (Up + Down), read once by the builder's session about 45 s after the round starts (read-only, baw prediction market list). Hours without a quote in the first 5 minutes are left out.",
+  "Market outcome: Binance spot 1h candle close vs the round's published start price (the feed those rounds settle on).",
+  "Agents: picked tickets (up() or down()) in the Forecast League hourly market for the same hour (taken during the hour before; builder wallet left out). Agent outcome: Chainlink, as the contract recorded it.",
+  "Brier: mean squared error of a probability for Up against the outcome (0 best; 0.25 for always 0.5). Agents: (up + 1) / (picked + 2)."
+ ],
+ "totals": {
+  "marketBrier": null,
+  "marketBrierHours": 0,
+  "coinFlipBrier": 0.25,
+  "feedsAgree": null,
+  "feedsCompared": 0,
+  "hoursWithAgentPicks": 0,
+  "agentsMajorityRight": 0,
+  "agentsHitRate": null,
+  "agentsHitRateCi95": null,
+  "agentsBrier": null,
+  "marketFavouriteRightSameHours": 0,
+  "marketBrierSameHours": null
+ },
+ "limits": "Small samples: read the interval, not the point. Binance Prediction prices include a fee (feeBps) and an overround, so a quote is not a clean probability. The two feeds can disagree on small moves (feedsAgree).",
+ "hours": []
+}
