@@ -523,8 +523,10 @@ async function buildAll(args) {
   const w = addressWord(address);
   const now = Math.floor(Date.now() / 1000);
   const one = (to, inputData, what) => ({ to, value: '0', inputData, what });
-  const claims = []; const tickets = []; const extras = []; const markets = []; const waiting = [];
+  const claims = []; const tickets = []; const extras = []; const markets = []; const waiting = []; const picks = [];
   let wins = 0; let losses = 0; let held = 0; let bestStreak = 0; let nextOpen = null;
+  let prices = {}; try { prices = await currentPrices(); } catch {}
+  const sixRounds = new Map(); // 6h round number -> held a ticket in at least one 6h market
   for (const [name, market] of ROUND_MARKETS) {
     const len = PERIOD[name.split(' ').pop()];
     const inScope = full || len === PERIOD['6h'];
@@ -533,14 +535,29 @@ async function buildAll(args) {
     const rec = { tickets: Number(slot(r, 0)), wins: Number(slot(r, 1)), losses: Number(slot(r, 2)), streak: Number(slot(r, 3)), best: Number(slot(r, 4)), unclaimed: Number(slot(r, 5)) };
     wins += rec.wins; losses += rec.losses; held += rec.tickets; bestStreak = Math.max(bestStreak, rec.streak);
     // Tickets of this round and the one before: their result times are what to come back for.
-    for (const rr of [round - 1, round]) {
+    // For 6h markets, look back further: the play streak counts consecutive 6h rounds with a ticket.
+    const back = len === PERIOD['6h'] ? 12 : 1;
+    for (let rr = round; rr >= round - back; rr--) {
       let side = 0; try { side = Number(slot(await call(market, '0xc53b35c8' + w + BigInt(rr).toString(16).padStart(64, '0')), 0)); } catch {}
+      if (side && len === PERIOD['6h']) sixRounds.set(rr, true);
       const resultAt = (rr + 2) * len;
-      if (side && resultAt > now) waiting.push({ market: name, side: side === 1 ? 'up' : 'down', resultAt, resultAtUTC: new Date(resultAt * 1000).toISOString().slice(0, 16) + 'Z' });
+      if (side && resultAt > now && rr >= round - 1) waiting.push({ market: name, side: side === 1 ? 'up' : 'down', resultAt, resultAtUTC: new Date(resultAt * 1000).toISOString().slice(0, 16) + 'Z' });
+      if (!side && rr < round && len === PERIOD['6h'] && !sixRounds.has(rr)) { /* keep looking in the other 6h markets */ }
     }
     markets.push({ market: name, contract: market, round, canMint, claimable, secondsToLock, record: rec, inScope });
     if (claimable > 0) claims.push(one(market, '0x4e71d92d', `claim(): ${claimable} finished ${name} ticket(s) into your record`));
-    if (inScope && canMint && secondsToLock > 60) tickets.push(one(market, '0x1249c58b', `mint(): ${name} ticket, side assigned by the contract (or up() 0xd5a49e01 / down() 0xd8337928)`));
+    if (inScope && canMint && secondsToLock > 60) {
+      const pair = name.split(' ')[1]; const feed = prices[pair.toLowerCase()];
+      const lockAt = (round + 1) * len; const resultAt = (round + 2) * len;
+      picks.push({
+        market: name, to: market, value: '0', round,
+        question: `Will ${pair}/USD be higher at ${hhmm(resultAt)} (${new Date(resultAt * 1000).toISOString().slice(0, 10)}) than at the lock, ${hhmm(lockAt)}?`,
+        priceNow: feed !== undefined ? formatPrice(feed) : null, lockAt: new Date(lockAt * 1000).toISOString().slice(0, 16) + 'Z', resultAt: new Date(resultAt * 1000).toISOString().slice(0, 16) + 'Z',
+        up: '0xd5a49e01', down: '0xd8337928',
+        how: 'Decide the side yourself from what you know of the market (recent moves, news, your own model) and keep a one-line reason. Send up() or down(), and show the reason to your human with the preview. mint() (0x1249c58b) takes a side the contract assigns from your address instead; use it only if you have no view.',
+      });
+      tickets.push({ to: market, value: '0', inputData: null, chooseOne: { up: '0xd5a49e01', down: '0xd8337928' }, what: `${name} ticket: pick up() or down() yourself (see picks[]); send no ticket rather than guess blindly` });
+    }
     if (inScope && len === PERIOD['6h']) { const open = (round + 1) * len; if (!nextOpen || open < nextOpen) nextOpen = open; }
   }
   const progress = {}; const unlocked = [];
@@ -559,6 +576,13 @@ async function buildAll(args) {
   const sixH = markets.filter((m) => m.inScope && PERIOD[m.market.split(' ').pop()] === PERIOD['6h']);
   const missed = sixH.filter((m) => m.record.tickets > 0 && m.canMint && m.secondsToLock < PERIOD['6h'] / 2).length;
   health.routine = held === 0 ? 'first run' : missed ? `${missed} open 6h round(s) still without your ticket and past half time: if you meant to run every 6 hours, check that your routine is scheduled (see routineLine)` : 'ok';
+  // Play streak: consecutive 6h rounds, up to now, in which this wallet took at least one 6h ticket.
+  const curSix = Math.floor(now / PERIOD['6h']);
+  let playStreak = 0; let r6 = sixRounds.has(curSix) ? curSix : curSix - 1;
+  while (sixRounds.has(r6)) { playStreak++; r6--; }
+  const streakBreaksAt = (sixRounds.has(curSix) ? curSix + 2 : curSix + 1) * PERIOD['6h'];
+  const streak = { rounds: playStreak, breaksAtUTC: new Date(streakBreaksAt * 1000).toISOString().slice(0, 16) + 'Z',
+    rule: 'Consecutive 6h rounds with at least one 6h ticket. Missing a whole round resets it to 0. Look-back is 12 rounds (3 days).' };
   const decided = wins + losses;
   progress.decided = `${decided} decided ticket(s) in your record`;
   if (decided) progress.winRate = `${Math.round((100 * wins) / decided)}% (${wins} won, ${losses} lost)`;
@@ -568,12 +592,13 @@ async function buildAll(args) {
   let next;
   if (firstResult && (!nextOpen || firstResult <= nextOpen + 3600)) next = { at: new Date(firstResult * 1000).toISOString().slice(0, 16) + 'Z', why: `${waiting[0].market} result is final: claim it, then take the new tickets` };
   else if (nextOpen) next = { at: new Date(nextOpen * 1000).toISOString().slice(0, 16) + 'Z', why: 'new 6h round opens: one ticket per market' };
-  const calls = [...claims, ...tickets, ...extras];
+  const calls = [...claims, ...extras];
   const firstRun = held === 0;
   const record = `${SITE}/me.html?w=${address}`;
   const routineLine = `Every 6 hours until 9 Dec 2026 (only after my human said yes to this routine): run Forecast League per ${SITE}/skill.md (node league.mjs all --address ${address}), preview each listed value-0 call and send it, at most 14 calls per run.`;
   const lines = [];
-  lines.push(calls.length ? `Forecast League: ${calls.length} free call(s) now, value 0, gas only (${claims.length} claim, ${tickets.length} ticket, ${extras.length} other).` : 'Forecast League: nothing to send right now.');
+  lines.push(calls.length || picks.length ? `Forecast League: ${picks.length} pick(s) to make (I choose up or down and tell you why) and ${calls.length} other free call(s), value 0, gas only.` : 'Forecast League: nothing to send right now.');
+  if (playStreak) lines.push(`Streak: ${playStreak} six-hour round(s) in a row. The next round to keep it closes at ${hhmm(streakBreaksAt)}; missing it resets the streak.`);
   if (claims.length) lines.push(`Results are waiting in ${claims.length} market(s): the claim() calls write them into your record as wins or losses.`);
   if (waiting.length) lines.push('Open tickets: ' + waiting.map((x) => `${x.market} ${x.side.toUpperCase()}, result ${hhmm(x.resultAt)}`).join('; ') + '.');
   lines.push(decided ? `Record: ${wins} won, ${losses} lost${unlocked.length ? '; ready to claim: ' + unlocked.join(', ') : ''}.` : 'No decided ticket in your record yet: results count only after a claim() once the round is final.');
@@ -584,8 +609,11 @@ async function buildAll(args) {
   return ({
     ok: true, binanceChainId: String(CONFIG.chainId), address, scope: full ? 'full' : 'default (6h markets + daily extras)',
     // Send these in order with `baw contract-call preview` and `execute`, exactly as they are, within your human's limits.
+    // Picks first: decide each side yourself, then send up() or down(). Then the calls below.
+    picks,
     calls,
     next,
+    streak,
     waiting,
     unlocked,
     progress,
