@@ -7,7 +7,10 @@
 //      for writing a finished round's score into the record (encode-score),
 //      or for opening or joining a squad (encode-squad)
 //   3. says what an address can do in Blitz, the six-hour round, and prints those calls (blitz),
-//      or every free call it can make now over all contracts (all).
+//      or every free call it can make now over all contracts (all). For each open round it lists
+//      up() and down() first, with neutral context (recent settled results, price now, time to lock),
+//      and asks the agent to choose and give its human a one-sentence reason; mint(), the side the
+//      contract assigns, comes last. `--side up|down` prints just that ticket call.
 // It never signs, never sends a transaction, never reads wallet or session files,
 // and contacts nothing except the public RPC endpoints below.
 
@@ -454,10 +457,83 @@ async function cmdEncodeSquad(args) {
   }, null, 2));
 }
 
+// ---------------------------------------------------------------- picking a side
+// The helper never suggests a side. It lists up() and down() first with neutral context, asks the
+// agent to choose and to write one sentence of reasoning for its human, and lists mint() last.
+const TICKET = { up: '0xd5a49e01', down: '0xd8337928', assigned: '0x1249c58b' };
+const RESULT_OF = '0xcdd20022'; // resultOf(uint32) -> (uint64 p0, uint64 p1, uint8 outcome, bool finished)
+const OUTCOME = ['not settled', 'up', 'down', 'push', 'void'];
+const PICK_ASK =
+  'Choose the side yourself: up() or down(). Use the context or anything else you trust; this helper does not suggest a side. ' +
+  'Write one sentence of reasoning for your human and show it with the preview. ' +
+  'mint() is listed last as "assigned side (no view)": the contract picks the side from your address, and it counts as participation, not a forecast.';
+const ASSIGNED_WHAT = 'mint(): assigned side (no view). The contract picks the side from your address and round; counts as participation, not a forecast';
+const isoMin = (t) => new Date(t * 1000).toISOString().slice(0, 16) + 'Z';
+
+/** The last `n` settled rounds of a market before `round`, with the Chainlink prices at lock (start) and target (end). */
+async function lastSettled(market, round, len, n = 3, lookBack = 8) {
+  const rounds = [];
+  for (let rr = round - 2; rr >= Math.max(0, round - 1 - lookBack); rr--) rounds.push(rr);
+  const res = await Promise.all(rounds.map((rr) => call(market, RESULT_OF + word(rr)).then((d) => ({ rr, d }), () => null)));
+  const out = [];
+  for (const x of res) {
+    if (!x || out.length >= n) continue;
+    const outcome = Number(slot(x.d, 2));
+    if (!outcome) continue; // finished but nobody settled it yet
+    const p0 = slot(x.d, 0); const p1 = slot(x.d, 1);
+    out.push({
+      round: x.rr, lockAt: isoMin((x.rr + 1) * len), resultAt: isoMin((x.rr + 2) * len),
+      startPrice: p0 ? formatPrice(p0) : null, endPrice: p1 ? formatPrice(p1) : null, result: OUTCOME[outcome] || String(outcome),
+      changePercent: p0 && p1 ? Number(((Number(p1 - p0) * 100) / Number(p0)).toFixed(3)) : null,
+    });
+  }
+  return out;
+}
+
+/** Neutral context for one open round. */
+async function pickContext(market, round, len, feed, secondsToLock) {
+  let settled = []; try { settled = await lastSettled(market, round, len); } catch {}
+  return {
+    priceNow: feed !== undefined ? formatPrice(feed) : null,
+    secondsToLock,
+    lastSettled: settled,
+    source: 'Chainlink prices (8 decimals) as the contract recorded them: startPrice at the lock, endPrice at the result time. Context only, not a signal.',
+  };
+}
+
+function parseSide(args) {
+  if (args.side === undefined) return undefined;
+  if (args.side !== 'up' && args.side !== 'down') fail('--side must be up or down.');
+  return args.side;
+}
+
+/** --market narrows the picks: a pair (BTC) or a market name ("Blitz BTC 6h"). */
+function marketMatches(args, name) {
+  if (args.market === undefined || args.market === true) return true;
+  const want = String(args.market).toLowerCase();
+  const n = name.toLowerCase();
+  return n === want || n.split(' ').includes(want);
+}
+
+/** --side up|down: just that ticket call for each open round (narrowed by --market). */
+function sideOnly(side, picks, args) {
+  const chosen = picks.filter((p) => marketMatches(args, p.market));
+  const calls = chosen.map((p) => ({ ...p[side], market: p.market, round: p.round, secondsToLock: p.context.secondsToLock }));
+  return {
+    ok: true, binanceChainId: String(CONFIG.chainId), side,
+    // Send these with `baw contract-call preview` and `execute`, exactly as they are. Nothing to send if the list is empty.
+    calls,
+    reasonForHuman: `Before the preview, tell your human in one sentence why you chose ${side}.`,
+    note: calls.length ? 'Every call sends value 0. Preview each one and act on your human\'s yes.' : 'No open round to take a ticket in right now.',
+  };
+}
+
 async function cmdBlitz(args) {
   if (CONFIG.blitz.toLowerCase() === ZERO) fail('Blitz is not deployed yet.');
   const address = args.address === true ? undefined : args.address;
   if (!address) fail('Give --address <your wallet>.');
+  const side = parseSide(args);
+  let prices = {}; try { prices = await currentPrices(); } catch {}
   // One market per Chainlink feed. The first one is BTC/USD; the others exist only if their address is filled in.
   const open = [['BTC', CONFIG.blitz], ['ETH', CONFIG.blitzEth], ['BNB', CONFIG.blitzBnb]].filter(([, a]) => a && a.toLowerCase() !== ZERO);
   const markets = [];
@@ -466,27 +542,44 @@ async function cmdBlitz(args) {
     const r = await call(market, '0xc06ac6a3' + addressWord(address)); // recordOf(address)
     const canMint = slot(t, 1) === 1n; const claimable = Number(slot(t, 2));
     const one = (inputData, what) => ({ to: market, value: '0', inputData, what });
+    const round = Number(slot(t, 0)); const secondsToLock = Number(slot(t, 3)); const len = PERIOD['6h'];
     const calls = [];
+    let pick;
     if (claimable > 0) calls.push(one('0x4e71d92d', `claim(): write your finished ${pair} rounds into your record`));
     if (canMint) {
-      calls.push({ chooseOne: [
-        one('0xd5a49e01', `up(): ticket for "${pair} higher six hours after the lock"`),
-        one('0xd8337928', `down(): ticket for "${pair} lower"`),
-        one('0x1249c58b', 'mint(): ticket with the side the contract assigns you'),
-      ] });
+      // Your choice first (up, down), then the assigned side for an agent with no view.
+      const up = one(TICKET.up, `up(): ticket for "${pair} higher six hours after the lock"`);
+      const down = one(TICKET.down, `down(): ticket for "${pair} lower"`);
+      const assigned = one(TICKET.assigned, ASSIGNED_WHAT);
+      calls.push({ chooseOne: [up, down, assigned] });
+      pick = {
+        market: pair, contract: market, round,
+        question: `Will ${pair}/USD be higher at ${hhmm((round + 2) * len)} (${isoMin((round + 2) * len).slice(0, 10)}) than at the lock, ${hhmm((round + 1) * len)}?`,
+        lockAt: isoMin((round + 1) * len), resultAt: isoMin((round + 2) * len),
+        context: await pickContext(market, round, len, prices[pair.toLowerCase()], secondsToLock),
+        ask: PICK_ASK,
+        up, down,
+        assigned,
+      };
     }
     markets.push({
-      pair, contract: market, round: Number(slot(t, 0)), canMint, claimable, secondsToLock: Number(slot(t, 3)),
+      pair, contract: market, round, canMint, claimable, secondsToLock,
       ticketsThisRound: Number(slot(t, 4)), earlyLeft: Number(slot(t, 5)),
       record: { tickets: Number(slot(r, 0)), wins: Number(slot(r, 1)), losses: Number(slot(r, 2)), streak: Number(slot(r, 3)), bestStreak: Number(slot(r, 4)), unclaimed: Number(slot(r, 5)) },
       calls,
+      ...(pick ? { pick } : {}),
     });
   }
+  const picks = markets.filter((m) => m.pick).map((m) => m.pick);
+  if (side) { console.log(JSON.stringify(sideOnly(side, picks, args), null, 2)); return; }
   const first = markets[0];
   const out = {
     ok: true, binanceChainId: String(CONFIG.chainId), contract: first.contract,
     round: first.round, canMint: first.canMint, claimable: first.claimable, secondsToLock: first.secondsToLock,
     ticketsThisRound: first.ticketsThisRound, earlyLeft: first.earlyLeft, record: first.record,
+    // Picks first: for each open round, choose up() or down() yourself and write one sentence of reasoning for your human.
+    howToPick: PICK_ASK,
+    picks,
     // Send these with `baw contract-call preview` and `execute`, exactly as they are. Nothing to send if the list is empty.
     calls: markets.flatMap((m) => m.calls),
     note: 'Every call sends value 0. One ticket per market per round; rounds open at 00:00, 06:00, 12:00 and 18:00 UTC.',
@@ -519,6 +612,7 @@ const HONOR_NAMES = ['SEASON ONE', 'CARD HOLDER', 'FIRST WIN', 'FIVE WINS', 'STR
 async function buildAll(args) {
   const address = args.address === true ? undefined : args.address;
   if (!address) fail('Give --address <your wallet>.');
+  parseSide(args);
   const full = Boolean(args.full);
   const w = addressWord(address);
   const now = Math.floor(Date.now() / 1000);
@@ -553,8 +647,13 @@ async function buildAll(args) {
         market: name, to: market, value: '0', round,
         question: `Will ${pair}/USD be higher at ${hhmm(resultAt)} (${new Date(resultAt * 1000).toISOString().slice(0, 10)}) than at the lock, ${hhmm(lockAt)}?`,
         priceNow: feed !== undefined ? formatPrice(feed) : null, lockAt: new Date(lockAt * 1000).toISOString().slice(0, 16) + 'Z', resultAt: new Date(resultAt * 1000).toISOString().slice(0, 16) + 'Z',
-        up: '0xd5a49e01', down: '0xd8337928',
+        context: await pickContext(market, round, len, feed, secondsToLock),
+        ask: PICK_ASK,
+        up: TICKET.up, down: TICKET.down,
         how: 'Decide the side yourself from what you know of the market (recent moves, news, your own model) and keep a one-line reason. Send up() or down(), and show the reason to your human with the preview. mint() (0x1249c58b) takes a side the contract assigns from your address instead; use it only if you have no view.',
+        // The same as full calls: your choice first, then the assigned side for an agent with no view.
+        choose: [one(market, TICKET.up, `up(): ticket for "${pair} higher at ${hhmm(resultAt)} than at the lock"`), one(market, TICKET.down, `down(): ticket for "${pair} lower"`)],
+        assigned: one(market, TICKET.assigned, ASSIGNED_WHAT),
       });
       tickets.push({ to: market, value: '0', inputData: null, chooseOne: { up: '0xd5a49e01', down: '0xd8337928' }, what: `${name} ticket: pick up() or down() yourself (see picks[]); send no ticket rather than guess blindly` });
     }
@@ -626,7 +725,17 @@ async function buildAll(args) {
     note: 'Every call sends value 0. Skipping any of them costs nothing. Preview each one and act on your human\'s yes.',
   });
 }
-async function cmdAll(args) { console.log(JSON.stringify(await buildAll(args), null, 2)); }
+async function cmdAll(args) {
+  const side = parseSide(args);
+  const res = await buildAll(args);
+  if (side) {
+    // In `all`, picks[].up and .down hold the selector (unchanged shape); the full calls are in choose[].
+    const picks = res.picks.map((p) => ({ ...p, up: p.choose[0], down: p.choose[1] }));
+    console.log(JSON.stringify(sideOnly(side, picks, args), null, 2));
+    return;
+  }
+  console.log(JSON.stringify(res, null, 2));
+}
 
 
 
@@ -717,7 +826,7 @@ if (isMain) {
       console.log(
         [
           'Usage:',
-          '  node league.mjs all --address 0xYourAgenticWallet [--full]  (this run: calls, next time, report for your human)',
+          '  node league.mjs all --address 0xYourAgenticWallet [--full] [--side up|down [--market BTC]]  (this run: picks, calls, next time, report for your human)',
           '  node league.mjs daily --address 0xYourAgenticWallet [--desk]  (league calls; --desk adds other projects\' checked free mints)',
           '  node league.mjs check 0xContract [--address 0xYourAgenticWallet]  (simulate one mint from your wallet)',
           '  node league.mjs status [--address 0xYourAgenticWallet]',
@@ -725,7 +834,7 @@ if (isMain) {
           '  node league.mjs encode-mint [--address 0xYourAgenticWallet]',
           '  node league.mjs encode-score --address 0xYourAgenticWallet [--epoch <number>]',
           '  node league.mjs encode-squad --address 0xYourAgenticWallet (--create | --join <captain name>)',
-          '  node league.mjs blitz --address 0xYourAgenticWallet',
+          '  node league.mjs blitz --address 0xYourAgenticWallet [--side up|down [--market BTC]]',
         ].join('\n'),
       );
       process.exit(command ? 1 : 0);
