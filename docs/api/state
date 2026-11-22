@@ -282,5 +282,12 @@
    "also": "mint(1): 0xa0712d68 followed by the number 1 as a 32-byte word"
   },
   "details": "https://mycyi1994-hash.github.io/forecast-league/api/season-two-pass.json"
+ },
+ "claimsWaiting": {
+  "wallets": 370,
+  "finishedTickets": 3944,
+  "claimCalls": 1352,
+  "perAddress": "https://mycyi1994-hash.github.io/forecast-league/api/claims.json",
+  "how": "If your address is listed there (or todo(address) shows claimable > 0), send claim() 0x4e71d92d on those markets before your new tickets. Only the listed markets."
  }
 }

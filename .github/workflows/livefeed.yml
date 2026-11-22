@@ -6,7 +6,7 @@ on:
   workflow_dispatch: {}
   push:
     branches: [main]
-    paths: ['.github/workflows/livefeed.yml', 'keeper/livefeed.mjs', 'keeper/actionfeed.mjs', 'keeper/desk.mjs', 'keeper/transparency.mjs', 'keeper/rivals.mjs', 'keeper/finalspass.mjs', 'keeper/picks.mjs', 'keeper/vsmarket.mjs', 'launch/data/binance_prediction_quotes.jsonl', 'keeper/tick']
+    paths: ['.github/workflows/livefeed.yml', 'keeper/livefeed.mjs', 'keeper/actionfeed.mjs', 'keeper/desk.mjs', 'keeper/transparency.mjs', 'keeper/rivals.mjs', 'keeper/finalspass.mjs', 'keeper/picks.mjs', 'keeper/vsmarket.mjs', 'keeper/claimsummary.mjs', 'launch/data/binance_prediction_quotes.jsonl', 'keeper/tick']
 permissions:
   contents: write
   pages: write
@@ -26,6 +26,7 @@ jobs:
         run: |
           node keeper/livefeed.mjs
           node keeper/actionfeed.mjs
+          node keeper/claimsummary.mjs || echo "claims summary skipped"
           node keeper/stats.mjs || echo "stats skipped"
           node keeper/finalspass.mjs || echo "finals pass skipped"
           node keeper/transparency.mjs || echo "transparency skipped"
