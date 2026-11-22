@@ -2,8 +2,8 @@
  "contract": "0xde2a9fd11997b10a2713b58629fdcefdae62ea28",
  "name": "CharMasks Veiled Mask",
  "verdict": "passed",
- "checkedAt": "2026-11-22T13:12:59Z",
- "block": 135085049,
+ "checkedAt": "2026-11-22T14:11:47Z",
+ "block": 135092887,
  "checks": {
   "simulatedFromAgentIdWallet": true,
   "gateEnforced": true,
