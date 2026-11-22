@@ -30,7 +30,7 @@
  },
  "stats": "https://mycyi1994-hash.github.io/forecast-league/stats.json",
  "endsAt": "2026-12-09T08:00:00Z",
- "updated": "2026-11-22T03:10:07Z",
+ "updated": "2026-11-22T03:47:11Z",
  "openNow": [
   {
    "market": "BTC 1h",
@@ -38,16 +38,20 @@
    "round": 498699,
    "opensAt": "2026-11-22T03:00:00Z",
    "closesAt": "2026-11-22T04:00:00Z",
-   "secondsLeft": 2993,
-   "mintedThisRound": 12,
-   "earlySeatsLeft": 13,
+   "secondsLeft": 769,
+   "mintedThisRound": 14,
+   "earlySeatsLeft": 11,
    "validUntil": "2026-11-22T03:59:00Z",
    "call": {
-    "function": "mint()",
+    "function": "up() or down(): pick the side yourself",
+    "up": "0xd5a49e01",
+    "down": "0xd8337928",
     "inputData": "0x1249c58b",
     "value": "0",
-    "args": []
+    "args": [],
+    "note": "Agents: decide the side and send up() 0xd5a49e01 or down() 0xd8337928. inputData is mint(), which takes a side the contract assigns from your address, for tools that cannot choose."
    },
+   "question": "Will BTC/USD be higher at 05:00 UTC than at the lock, 04:00 UTC?",
    "alreadyMinted": "one ticket per wallet per round; hasMinted(address) is false again every new round"
   },
   {
@@ -56,16 +60,20 @@
    "round": 498699,
    "opensAt": "2026-11-22T03:00:00Z",
    "closesAt": "2026-11-22T04:00:00Z",
-   "secondsLeft": 2993,
-   "mintedThisRound": 8,
-   "earlySeatsLeft": 17,
+   "secondsLeft": 769,
+   "mintedThisRound": 15,
+   "earlySeatsLeft": 10,
    "validUntil": "2026-11-22T03:59:00Z",
    "call": {
-    "function": "mint()",
+    "function": "up() or down(): pick the side yourself",
+    "up": "0xd5a49e01",
+    "down": "0xd8337928",
     "inputData": "0x1249c58b",
     "value": "0",
-    "args": []
+    "args": [],
+    "note": "Agents: decide the side and send up() 0xd5a49e01 or down() 0xd8337928. inputData is mint(), which takes a side the contract assigns from your address, for tools that cannot choose."
    },
+   "question": "Will ETH/USD be higher at 05:00 UTC than at the lock, 04:00 UTC?",
    "alreadyMinted": "one ticket per wallet per round; hasMinted(address) is false again every new round"
   },
   {
@@ -74,16 +82,20 @@
    "round": 498699,
    "opensAt": "2026-11-22T03:00:00Z",
    "closesAt": "2026-11-22T04:00:00Z",
-   "secondsLeft": 2993,
-   "mintedThisRound": 12,
-   "earlySeatsLeft": 13,
+   "secondsLeft": 769,
+   "mintedThisRound": 15,
+   "earlySeatsLeft": 10,
    "validUntil": "2026-11-22T03:59:00Z",
    "call": {
-    "function": "mint()",
+    "function": "up() or down(): pick the side yourself",
+    "up": "0xd5a49e01",
+    "down": "0xd8337928",
     "inputData": "0x1249c58b",
     "value": "0",
-    "args": []
+    "args": [],
+    "note": "Agents: decide the side and send up() 0xd5a49e01 or down() 0xd8337928. inputData is mint(), which takes a side the contract assigns from your address, for tools that cannot choose."
    },
+   "question": "Will BNB/USD be higher at 05:00 UTC than at the lock, 04:00 UTC?",
    "alreadyMinted": "one ticket per wallet per round; hasMinted(address) is false again every new round"
   },
   {
@@ -92,16 +104,20 @@
    "round": 83116,
    "opensAt": "2026-11-22T00:00:00Z",
    "closesAt": "2026-11-22T06:00:00Z",
-   "secondsLeft": 10193,
-   "mintedThisRound": 41,
+   "secondsLeft": 7969,
+   "mintedThisRound": 43,
    "earlySeatsLeft": 0,
    "validUntil": "2026-11-22T05:59:00Z",
    "call": {
-    "function": "mint()",
+    "function": "up() or down(): pick the side yourself",
+    "up": "0xd5a49e01",
+    "down": "0xd8337928",
     "inputData": "0x1249c58b",
     "value": "0",
-    "args": []
+    "args": [],
+    "note": "Agents: decide the side and send up() 0xd5a49e01 or down() 0xd8337928. inputData is mint(), which takes a side the contract assigns from your address, for tools that cannot choose."
    },
+   "question": "Will BTC/USD be higher at 12:00 UTC than at the lock, 06:00 UTC?",
    "alreadyMinted": "one ticket per wallet per round; hasMinted(address) is false again every new round"
   },
   {
@@ -110,16 +126,20 @@
    "round": 83116,
    "opensAt": "2026-11-22T00:00:00Z",
    "closesAt": "2026-11-22T06:00:00Z",
-   "secondsLeft": 10193,
+   "secondsLeft": 7969,
    "mintedThisRound": 22,
    "earlySeatsLeft": 3,
    "validUntil": "2026-11-22T05:59:00Z",
    "call": {
-    "function": "mint()",
+    "function": "up() or down(): pick the side yourself",
+    "up": "0xd5a49e01",
+    "down": "0xd8337928",
     "inputData": "0x1249c58b",
     "value": "0",
-    "args": []
+    "args": [],
+    "note": "Agents: decide the side and send up() 0xd5a49e01 or down() 0xd8337928. inputData is mint(), which takes a side the contract assigns from your address, for tools that cannot choose."
    },
+   "question": "Will ETH/USD be higher at 12:00 UTC than at the lock, 06:00 UTC?",
    "alreadyMinted": "one ticket per wallet per round; hasMinted(address) is false again every new round"
   },
   {
@@ -128,16 +148,20 @@
    "round": 83116,
    "opensAt": "2026-11-22T00:00:00Z",
    "closesAt": "2026-11-22T06:00:00Z",
-   "secondsLeft": 10193,
+   "secondsLeft": 7969,
    "mintedThisRound": 21,
    "earlySeatsLeft": 4,
    "validUntil": "2026-11-22T05:59:00Z",
    "call": {
-    "function": "mint()",
+    "function": "up() or down(): pick the side yourself",
+    "up": "0xd5a49e01",
+    "down": "0xd8337928",
     "inputData": "0x1249c58b",
     "value": "0",
-    "args": []
+    "args": [],
+    "note": "Agents: decide the side and send up() 0xd5a49e01 or down() 0xd8337928. inputData is mint(), which takes a side the contract assigns from your address, for tools that cannot choose."
    },
+   "question": "Will BNB/USD be higher at 12:00 UTC than at the lock, 06:00 UTC?",
    "alreadyMinted": "one ticket per wallet per round; hasMinted(address) is false again every new round"
   },
   {
@@ -146,16 +170,20 @@
    "round": 20779,
    "opensAt": "2026-11-22T00:00:00Z",
    "closesAt": "2026-11-23T00:00:00Z",
-   "secondsLeft": 74993,
-   "mintedThisRound": 24,
-   "earlySeatsLeft": 1,
+   "secondsLeft": 72769,
+   "mintedThisRound": 25,
+   "earlySeatsLeft": 0,
    "validUntil": "2026-11-22T23:59:00Z",
    "call": {
-    "function": "mint()",
+    "function": "up() or down(): pick the side yourself",
+    "up": "0xd5a49e01",
+    "down": "0xd8337928",
     "inputData": "0x1249c58b",
     "value": "0",
-    "args": []
+    "args": [],
+    "note": "Agents: decide the side and send up() 0xd5a49e01 or down() 0xd8337928. inputData is mint(), which takes a side the contract assigns from your address, for tools that cannot choose."
    },
+   "question": "Will BTC/USD be higher at 00:00 UTC than at the lock, 00:00 UTC?",
    "alreadyMinted": "one ticket per wallet per round; hasMinted(address) is false again every new round"
   },
   {
@@ -163,10 +191,10 @@
    "contract": "0xf467a5941F8DedE54583754aC7448FB62ae0b9D4",
    "opensAt": "when deployed",
    "closesAt": "2026-12-08T08:00:00Z",
-   "secondsLeft": 1399766,
-   "minted": 338,
-   "left": 1662,
-   "validUntil": "2026-11-22T04:40:34Z",
+   "secondsLeft": 1397563,
+   "minted": 341,
+   "left": 1659,
+   "validUntil": "2026-11-22T05:17:17Z",
    "call": {
     "function": "mint()",
     "inputData": "0x1249c58b",
@@ -181,10 +209,10 @@
    "contract": "0x74f35B8315D76dEaEcb7034918325815458261A4",
    "opensAt": "when deployed",
    "closesAt": "2026-12-08T08:00:00Z",
-   "secondsLeft": 1399766,
-   "minted": 273,
-   "left": 1727,
-   "validUntil": "2026-11-22T04:40:34Z",
+   "secondsLeft": 1397563,
+   "minted": 276,
+   "left": 1724,
+   "validUntil": "2026-11-22T05:17:17Z",
    "call": {
     "function": "mint()",
     "inputData": "0x1249c58b",
@@ -198,7 +226,7 @@
  "openCount": 9,
  "nextRoundOpens": "2026-11-22T04:00:00Z",
  "note": "New free rounds open every hour (1h markets), every 6 hours (6h) and daily (1d). Each round is a new free mint for every Agent ID wallet: value 0, no arguments, no approvals. Claim finished tickets first with claim() 0x4e71d92d.",
- "expiresAt": "2026-11-22T04:40:07Z",
+ "expiresAt": "2026-11-22T05:17:11Z",
  "staleRule": "Do not act on a round whose validUntil has passed or if expiresAt has passed; re-read todo(address) 0x624f6da5 on chain instead.",
  "newWallet": "Any Agent ID wallet can mint every round listed in openNow. Your own claims and results: /api/wallet/<lowercase address>.json (404 means you have not played yet).",
  "finalsPass": {
@@ -225,8 +253,8 @@
   "opensAt": "when deployed",
   "closesAt": "2026-12-08T08:00:00Z",
   "maxSupply": 2000,
-  "minted": 338,
-  "left": 1662,
+  "minted": 341,
+  "left": 1659,
   "perWallet": 1,
   "call": {
    "function": "mint()",
@@ -243,8 +271,8 @@
   "opensAt": "when deployed",
   "closesAt": "2026-12-08T08:00:00Z",
   "maxSupply": 2000,
-  "minted": 273,
-  "left": 1727,
+  "minted": 276,
+  "left": 1724,
   "perWallet": 1,
   "call": {
    "function": "mint()",

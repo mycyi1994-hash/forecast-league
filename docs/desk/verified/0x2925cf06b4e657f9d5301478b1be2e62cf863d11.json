@@ -1,0 +1,16 @@
+{
+ "contract": "0x2925cf06b4e657f9d5301478b1be2e62cf863d11",
+ "name": "Embedrune",
+ "verdict": "passed",
+ "checkedAt": "2026-11-22T03:49:12Z",
+ "block": 135009896,
+ "checks": {
+  "simulatedFromAgentIdWallet": true,
+  "gateEnforced": true,
+  "upgradeable": false,
+  "owner": null,
+  "sourceVerified": true
+ },
+ "badge": "Checked by Agent ID Mint Desk: https://mycyi1994-hash.github.io/forecast-league/desk/verified/0x2925cf06b4e657f9d5301478b1be2e62cf863d11.json",
+ "note": "Heuristic simulation, not an audit."
+}

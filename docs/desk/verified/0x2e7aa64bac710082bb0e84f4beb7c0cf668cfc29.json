@@ -1,0 +1,16 @@
+{
+ "contract": "0x2e7aa64bac710082bb0e84f4beb7c0cf668cfc29",
+ "name": "Macronyx",
+ "verdict": "passed",
+ "checkedAt": "2026-11-22T03:49:12Z",
+ "block": 135009896,
+ "checks": {
+  "simulatedFromAgentIdWallet": true,
+  "gateEnforced": true,
+  "upgradeable": false,
+  "owner": null,
+  "sourceVerified": true
+ },
+ "badge": "Checked by Agent ID Mint Desk: https://mycyi1994-hash.github.io/forecast-league/desk/verified/0x2e7aa64bac710082bb0e84f4beb7c0cf668cfc29.json",
+ "note": "Heuristic simulation, not an audit."
+}

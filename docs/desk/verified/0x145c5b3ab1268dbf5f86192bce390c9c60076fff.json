@@ -2,8 +2,8 @@
  "contract": "0x145c5b3ab1268dbf5f86192bce390c9c60076fff",
  "name": "Voltrune Rigs",
  "verdict": "passed",
- "checkedAt": "2026-11-22T03:11:42Z",
- "block": 135004899,
+ "checkedAt": "2026-11-22T03:49:12Z",
+ "block": 135009896,
  "checks": {
   "simulatedFromAgentIdWallet": true,
   "gateEnforced": true,

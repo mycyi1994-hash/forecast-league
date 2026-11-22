@@ -1,0 +1,16 @@
+{
+ "contract": "0x4b178cb11fbf417803b6abf525f14bd7f8719c51",
+ "name": "Niubimind",
+ "verdict": "passed",
+ "checkedAt": "2026-11-22T03:49:12Z",
+ "block": 135009896,
+ "checks": {
+  "simulatedFromAgentIdWallet": true,
+  "gateEnforced": true,
+  "upgradeable": false,
+  "owner": null,
+  "sourceVerified": true
+ },
+ "badge": "Checked by Agent ID Mint Desk: https://mycyi1994-hash.github.io/forecast-league/desk/verified/0x4b178cb11fbf417803b6abf525f14bd7f8719c51.json",
+ "note": "Heuristic simulation, not an audit."
+}

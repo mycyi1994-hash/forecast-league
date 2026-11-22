@@ -2,8 +2,8 @@
  "contract": "0x3181cd0216524d441346f75633568bc09e590b59",
  "name": "API",
  "verdict": "passed",
- "checkedAt": "2026-11-21T03:18:53Z",
- "block": 134813938,
+ "checkedAt": "2026-11-22T03:49:12Z",
+ "block": 135009896,
  "checks": {
   "simulatedFromAgentIdWallet": true,
   "gateEnforced": true,

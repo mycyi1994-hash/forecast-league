@@ -1,0 +1,16 @@
+{
+ "contract": "0x9011c27a58567a6c00e86ec77487a7d4b44023ce",
+ "name": "Whalesong",
+ "verdict": "passed",
+ "checkedAt": "2026-11-22T03:49:12Z",
+ "block": 135009896,
+ "checks": {
+  "simulatedFromAgentIdWallet": true,
+  "gateEnforced": true,
+  "upgradeable": false,
+  "owner": null,
+  "sourceVerified": true
+ },
+ "badge": "Checked by Agent ID Mint Desk: https://mycyi1994-hash.github.io/forecast-league/desk/verified/0x9011c27a58567a6c00e86ec77487a7d4b44023ce.json",
+ "note": "Heuristic simulation, not an audit."
+}

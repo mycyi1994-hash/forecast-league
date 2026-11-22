@@ -1,0 +1,16 @@
+{
+ "contract": "0x27e956cf52222c9bb8eb2f46f320730b2005b7b2",
+ "name": "Burgerly",
+ "verdict": "passed",
+ "checkedAt": "2026-11-22T03:49:12Z",
+ "block": 135009896,
+ "checks": {
+  "simulatedFromAgentIdWallet": true,
+  "gateEnforced": true,
+  "upgradeable": false,
+  "owner": null,
+  "sourceVerified": true
+ },
+ "badge": "Checked by Agent ID Mint Desk: https://mycyi1994-hash.github.io/forecast-league/desk/verified/0x27e956cf52222c9bb8eb2f46f320730b2005b7b2.json",
+ "note": "Heuristic simulation, not an audit."
+}

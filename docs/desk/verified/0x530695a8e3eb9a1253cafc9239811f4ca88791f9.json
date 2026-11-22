@@ -1,0 +1,16 @@
+{
+ "contract": "0x530695a8e3eb9a1253cafc9239811f4ca88791f9",
+ "name": "Tidalune",
+ "verdict": "passed",
+ "checkedAt": "2026-11-22T03:49:12Z",
+ "block": 135009896,
+ "checks": {
+  "simulatedFromAgentIdWallet": true,
+  "gateEnforced": true,
+  "upgradeable": false,
+  "owner": null,
+  "sourceVerified": true
+ },
+ "badge": "Checked by Agent ID Mint Desk: https://mycyi1994-hash.github.io/forecast-league/desk/verified/0x530695a8e3eb9a1253cafc9239811f4ca88791f9.json",
+ "note": "Heuristic simulation, not an audit."
+}

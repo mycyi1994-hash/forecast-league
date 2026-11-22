@@ -1,0 +1,16 @@
+{
+ "contract": "0x0a8d8c782405092a236897c125e79cede0b155e2",
+ "name": "Golden Bull",
+ "verdict": "passed",
+ "checkedAt": "2026-11-22T03:49:12Z",
+ "block": 135009896,
+ "checks": {
+  "simulatedFromAgentIdWallet": true,
+  "gateEnforced": true,
+  "upgradeable": false,
+  "owner": null,
+  "sourceVerified": true
+ },
+ "badge": "Checked by Agent ID Mint Desk: https://mycyi1994-hash.github.io/forecast-league/desk/verified/0x0a8d8c782405092a236897c125e79cede0b155e2.json",
+ "note": "Heuristic simulation, not an audit."
+}

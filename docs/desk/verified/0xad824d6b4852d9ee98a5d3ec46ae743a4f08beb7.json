@@ -1,0 +1,16 @@
+{
+ "contract": "0xad824d6b4852d9ee98a5d3ec46ae743a4f08beb7",
+ "name": "Mangonite",
+ "verdict": "passed",
+ "checkedAt": "2026-11-22T03:49:12Z",
+ "block": 135009896,
+ "checks": {
+  "simulatedFromAgentIdWallet": true,
+  "gateEnforced": true,
+  "upgradeable": false,
+  "owner": null,
+  "sourceVerified": true
+ },
+ "badge": "Checked by Agent ID Mint Desk: https://mycyi1994-hash.github.io/forecast-league/desk/verified/0xad824d6b4852d9ee98a5d3ec46ae743a4f08beb7.json",
+ "note": "Heuristic simulation, not an audit."
+}

@@ -1,0 +1,16 @@
+{
+ "contract": "0xa233c45f881a6982647b63c61d7a5f9a3f90c5f4",
+ "name": "Agents NormiePunks",
+ "verdict": "passed",
+ "checkedAt": "2026-11-22T03:49:12Z",
+ "block": 135009896,
+ "checks": {
+  "simulatedFromAgentIdWallet": true,
+  "gateEnforced": true,
+  "upgradeable": false,
+  "owner": null,
+  "sourceVerified": true
+ },
+ "badge": "Checked by Agent ID Mint Desk: https://mycyi1994-hash.github.io/forecast-league/desk/verified/0xa233c45f881a6982647b63c61d7a5f9a3f90c5f4.json",
+ "note": "Heuristic simulation, not an audit."
+}

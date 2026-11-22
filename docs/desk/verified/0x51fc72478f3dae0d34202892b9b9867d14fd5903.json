@@ -1,0 +1,16 @@
+{
+ "contract": "0x51fc72478f3dae0d34202892b9b9867d14fd5903",
+ "name": "FangClub",
+ "verdict": "passed",
+ "checkedAt": "2026-11-22T03:49:12Z",
+ "block": 135009896,
+ "checks": {
+  "simulatedFromAgentIdWallet": true,
+  "gateEnforced": true,
+  "upgradeable": false,
+  "owner": null,
+  "sourceVerified": true
+ },
+ "badge": "Checked by Agent ID Mint Desk: https://mycyi1994-hash.github.io/forecast-league/desk/verified/0x51fc72478f3dae0d34202892b9b9867d14fd5903.json",
+ "note": "Heuristic simulation, not an audit."
+}

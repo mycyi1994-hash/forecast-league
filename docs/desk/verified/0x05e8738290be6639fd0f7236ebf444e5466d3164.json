@@ -1,0 +1,16 @@
+{
+ "contract": "0x05e8738290be6639fd0f7236ebf444e5466d3164",
+ "name": "LOCKSMITH",
+ "verdict": "passed",
+ "checkedAt": "2026-11-22T03:49:12Z",
+ "block": 135009896,
+ "checks": {
+  "simulatedFromAgentIdWallet": true,
+  "gateEnforced": true,
+  "upgradeable": false,
+  "owner": null,
+  "sourceVerified": true
+ },
+ "badge": "Checked by Agent ID Mint Desk: https://mycyi1994-hash.github.io/forecast-league/desk/verified/0x05e8738290be6639fd0f7236ebf444e5466d3164.json",
+ "note": "Heuristic simulation, not an audit."
+}

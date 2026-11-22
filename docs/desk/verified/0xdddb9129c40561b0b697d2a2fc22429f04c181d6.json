@@ -2,8 +2,8 @@
  "contract": "0xdddb9129c40561b0b697d2a2fc22429f04c181d6",
  "name": "石狮 Agents",
  "verdict": "passed",
- "checkedAt": "2026-11-21T03:18:53Z",
- "block": 134813938,
+ "checkedAt": "2026-11-22T03:49:12Z",
+ "block": 135009896,
  "checks": {
   "simulatedFromAgentIdWallet": true,
   "gateEnforced": true,

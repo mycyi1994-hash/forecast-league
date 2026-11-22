@@ -1,0 +1,16 @@
+{
+ "contract": "0xc04d69b1cbd831753b05e3dda8bbe29706c2ccfb",
+ "name": "DroidDynasty",
+ "verdict": "passed",
+ "checkedAt": "2026-11-22T03:49:12Z",
+ "block": 135009896,
+ "checks": {
+  "simulatedFromAgentIdWallet": true,
+  "gateEnforced": true,
+  "upgradeable": false,
+  "owner": null,
+  "sourceVerified": true
+ },
+ "badge": "Checked by Agent ID Mint Desk: https://mycyi1994-hash.github.io/forecast-league/desk/verified/0xc04d69b1cbd831753b05e3dda8bbe29706c2ccfb.json",
+ "note": "Heuristic simulation, not an audit."
+}

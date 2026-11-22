@@ -2,8 +2,8 @@
  "contract": "0xc6ee7c22c5bdd919f5775ab38c53bd86c167d56f",
  "name": "Chipbotcore",
  "verdict": "passed",
- "checkedAt": "2026-11-21T03:18:53Z",
- "block": 134813938,
+ "checkedAt": "2026-11-22T03:49:12Z",
+ "block": 135009896,
  "checks": {
   "simulatedFromAgentIdWallet": true,
   "gateEnforced": true,

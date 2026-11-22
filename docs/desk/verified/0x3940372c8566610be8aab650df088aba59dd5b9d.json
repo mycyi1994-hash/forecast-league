@@ -1,0 +1,16 @@
+{
+ "contract": "0x3940372c8566610be8aab650df088aba59dd5b9d",
+ "name": "Cosmogent",
+ "verdict": "passed",
+ "checkedAt": "2026-11-22T03:49:12Z",
+ "block": 135009896,
+ "checks": {
+  "simulatedFromAgentIdWallet": true,
+  "gateEnforced": true,
+  "upgradeable": false,
+  "owner": null,
+  "sourceVerified": true
+ },
+ "badge": "Checked by Agent ID Mint Desk: https://mycyi1994-hash.github.io/forecast-league/desk/verified/0x3940372c8566610be8aab650df088aba59dd5b9d.json",
+ "note": "Heuristic simulation, not an audit."
+}

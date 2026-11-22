@@ -1,0 +1,16 @@
+{
+ "contract": "0x69e2b3df4ecedbf7fc89085707a8cb9163f5e1bc",
+ "name": "Noesyn",
+ "verdict": "passed",
+ "checkedAt": "2026-11-22T03:49:12Z",
+ "block": 135009896,
+ "checks": {
+  "simulatedFromAgentIdWallet": true,
+  "gateEnforced": true,
+  "upgradeable": false,
+  "owner": null,
+  "sourceVerified": true
+ },
+ "badge": "Checked by Agent ID Mint Desk: https://mycyi1994-hash.github.io/forecast-league/desk/verified/0x69e2b3df4ecedbf7fc89085707a8cb9163f5e1bc.json",
+ "note": "Heuristic simulation, not an audit."
+}
