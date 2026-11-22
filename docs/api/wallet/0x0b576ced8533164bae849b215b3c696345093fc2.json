@@ -14,11 +14,7 @@
    "validUntil": "until claimed"
   }
  ],
- "joinedRounds": {
-  "BTC 6h": 83117,
-  "ETH 6h": 83117,
-  "BNB 6h": 83117
- },
+ "joinedRounds": {},
  "pendingResults": [
   {
    "market": "BTC 6h",

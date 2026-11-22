@@ -49,11 +49,14 @@
   }
  ],
  "joinedRounds": {
-  "ETH 6h": 83117,
-  "BNB 6h": 83117,
   "BTC 1d": 20779
  },
  "pendingResults": [
+  {
+   "market": "BTC 6h",
+   "tickets": 1,
+   "resultFinalAt": "2026-11-22T18:00:00Z"
+  },
   {
    "market": "ETH 6h",
    "tickets": 1,
@@ -80,7 +83,7 @@
   "byMarket": [
    {
     "market": "BTC 6h",
-    "tickets": 2,
+    "tickets": 3,
     "wins": 0,
     "losses": 0,
     "streak": 0,
