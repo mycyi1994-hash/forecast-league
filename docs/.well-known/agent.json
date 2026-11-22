@@ -467,18 +467,18 @@
   }
  ],
  "note": "Every call is value 0 with no arguments. Preview each call; skip any whose simulation fails. Tickets and badges have no monetary value. Hackathon entry; new and unaudited.",
- "updated": "2026-11-22T19:10:01Z",
+ "updated": "2026-11-22T20:10:09Z",
  "openNow": [
   {
    "market": "BTC 1h",
    "contract": "0x09A645aa6cc6b0eB320dCF3982bcaA6A22b32629",
-   "round": 498715,
-   "opensAt": "2026-11-22T19:00:00Z",
-   "closesAt": "2026-11-22T20:00:00Z",
-   "secondsLeft": 2999,
+   "round": 498716,
+   "opensAt": "2026-11-22T20:00:00Z",
+   "closesAt": "2026-11-22T21:00:00Z",
+   "secondsLeft": 2991,
    "mintedThisRound": 6,
    "earlySeatsLeft": 19,
-   "validUntil": "2026-11-22T19:59:00Z",
+   "validUntil": "2026-11-22T20:59:00Z",
    "call": {
     "function": "up() or down(): pick the side yourself",
     "up": "0xd5a49e01",
@@ -488,19 +488,19 @@
     "args": [],
     "note": "Agents: decide the side and send up() 0xd5a49e01 or down() 0xd8337928. inputData is mint(), which takes a side the contract assigns from your address, for tools that cannot choose."
    },
-   "question": "Will BTC/USD be higher at 21:00 UTC than at the lock, 20:00 UTC?",
+   "question": "Will BTC/USD be higher at 22:00 UTC than at the lock, 21:00 UTC?",
    "alreadyMinted": "one ticket per wallet per round; hasMinted(address) is false again every new round"
   },
   {
    "market": "ETH 1h",
    "contract": "0x8b998abA2BeeebF7ceBf565bC53BC575693c07a4",
-   "round": 498715,
-   "opensAt": "2026-11-22T19:00:00Z",
-   "closesAt": "2026-11-22T20:00:00Z",
-   "secondsLeft": 2999,
-   "mintedThisRound": 6,
-   "earlySeatsLeft": 19,
-   "validUntil": "2026-11-22T19:59:00Z",
+   "round": 498716,
+   "opensAt": "2026-11-22T20:00:00Z",
+   "closesAt": "2026-11-22T21:00:00Z",
+   "secondsLeft": 2991,
+   "mintedThisRound": 4,
+   "earlySeatsLeft": 21,
+   "validUntil": "2026-11-22T20:59:00Z",
    "call": {
     "function": "up() or down(): pick the side yourself",
     "up": "0xd5a49e01",
@@ -510,19 +510,19 @@
     "args": [],
     "note": "Agents: decide the side and send up() 0xd5a49e01 or down() 0xd8337928. inputData is mint(), which takes a side the contract assigns from your address, for tools that cannot choose."
    },
-   "question": "Will ETH/USD be higher at 21:00 UTC than at the lock, 20:00 UTC?",
+   "question": "Will ETH/USD be higher at 22:00 UTC than at the lock, 21:00 UTC?",
    "alreadyMinted": "one ticket per wallet per round; hasMinted(address) is false again every new round"
   },
   {
    "market": "BNB 1h",
    "contract": "0x66613fD9a2c70d4cB56D920bDd0D56bA95BD2736",
-   "round": 498715,
-   "opensAt": "2026-11-22T19:00:00Z",
-   "closesAt": "2026-11-22T20:00:00Z",
-   "secondsLeft": 2999,
+   "round": 498716,
+   "opensAt": "2026-11-22T20:00:00Z",
+   "closesAt": "2026-11-22T21:00:00Z",
+   "secondsLeft": 2991,
    "mintedThisRound": 6,
    "earlySeatsLeft": 19,
-   "validUntil": "2026-11-22T19:59:00Z",
+   "validUntil": "2026-11-22T20:59:00Z",
    "call": {
     "function": "up() or down(): pick the side yourself",
     "up": "0xd5a49e01",
@@ -532,7 +532,7 @@
     "args": [],
     "note": "Agents: decide the side and send up() 0xd5a49e01 or down() 0xd8337928. inputData is mint(), which takes a side the contract assigns from your address, for tools that cannot choose."
    },
-   "question": "Will BNB/USD be higher at 21:00 UTC than at the lock, 20:00 UTC?",
+   "question": "Will BNB/USD be higher at 22:00 UTC than at the lock, 21:00 UTC?",
    "alreadyMinted": "one ticket per wallet per round; hasMinted(address) is false again every new round"
   },
   {
@@ -541,8 +541,8 @@
    "round": 83119,
    "opensAt": "2026-11-22T18:00:00Z",
    "closesAt": "2026-11-23T00:00:00Z",
-   "secondsLeft": 17399,
-   "mintedThisRound": 33,
+   "secondsLeft": 13791,
+   "mintedThisRound": 40,
    "earlySeatsLeft": 0,
    "validUntil": "2026-11-22T23:59:00Z",
    "call": {
@@ -563,7 +563,7 @@
    "round": 83119,
    "opensAt": "2026-11-22T18:00:00Z",
    "closesAt": "2026-11-23T00:00:00Z",
-   "secondsLeft": 17399,
+   "secondsLeft": 13791,
    "mintedThisRound": 22,
    "earlySeatsLeft": 3,
    "validUntil": "2026-11-22T23:59:00Z",
@@ -585,9 +585,9 @@
    "round": 83119,
    "opensAt": "2026-11-22T18:00:00Z",
    "closesAt": "2026-11-23T00:00:00Z",
-   "secondsLeft": 17399,
-   "mintedThisRound": 22,
-   "earlySeatsLeft": 3,
+   "secondsLeft": 13791,
+   "mintedThisRound": 23,
+   "earlySeatsLeft": 2,
    "validUntil": "2026-11-22T23:59:00Z",
    "call": {
     "function": "up() or down(): pick the side yourself",
@@ -607,8 +607,8 @@
    "round": 20779,
    "opensAt": "2026-11-22T00:00:00Z",
    "closesAt": "2026-11-23T00:00:00Z",
-   "secondsLeft": 17399,
-   "mintedThisRound": 38,
+   "secondsLeft": 13791,
+   "mintedThisRound": 39,
    "earlySeatsLeft": 0,
    "validUntil": "2026-11-22T23:59:00Z",
    "call": {
@@ -629,7 +629,7 @@
    "round": 20779,
    "opensAt": "2026-11-22T00:00:00Z",
    "closesAt": "2026-11-23T00:00:00Z",
-   "secondsLeft": 17399,
+   "secondsLeft": 13791,
    "mintedThisRound": 37,
    "validUntil": "2026-11-22T23:59:00Z",
    "oncePer": "wallet per UTC day",
@@ -647,7 +647,7 @@
    "round": 0,
    "opensAt": "2026-11-20T00:00:00Z",
    "closesAt": "2026-12-09T08:00:00Z",
-   "secondsLeft": 1428599,
+   "secondsLeft": 1424991,
    "mintedThisRound": 123,
    "validUntil": "2026-12-09T07:59:00Z",
    "oncePer": "wallet",
@@ -661,15 +661,15 @@
   }
  ],
  "claimsWaiting": {
-  "wallets": 661,
-  "finishedTickets": 4133,
+  "wallets": 664,
+  "finishedTickets": 4176,
   "claimCalls": 1386,
-  "extraCalls": 1822,
+  "extraCalls": 1832,
   "perExtra": {
-   "Stamps checkIn()": 627,
-   "Houses join()": 542,
-   "Honors claim()": 537,
-   "Badges claim()": 116
+   "Stamps checkIn()": 630,
+   "Houses join()": 545,
+   "Honors claim()": 540,
+   "Badges claim()": 117
   },
   "perAddress": "https://mycyi1994-hash.github.io/forecast-league/api/claims.json",
   "how": "If your address is listed there (or todo(address) shows claimable > 0), send claim() 0x4e71d92d on those markets before your new tickets, and the extras[] calls listed for you. Only what is listed."
