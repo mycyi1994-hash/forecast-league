@@ -1,0 +1,6 @@
+{"snap": 1795374045, "symbol": "BTCUSDT", "timeframe": "daily", "start": 1795366800, "end": 1795453200, "feed": "BINANCE", "startPrice": 61221.07, "up": 0.44, "down": 0.56, "feeBps": 200, "liquidity": 7790.39, "status": "OPEN"}
+{"snap": 1795374045, "symbol": "ETHUSDT", "timeframe": "daily", "start": 1795366800, "end": 1795453200, "feed": "BINANCE", "startPrice": 1722.8, "up": 0.47, "down": 0.53, "feeBps": 200, "liquidity": 1034.41, "status": "OPEN"}
+{"snap": 1795374045, "symbol": "BNBUSDT", "timeframe": "daily", "start": 1795366800, "end": 1795453200, "feed": "BINANCE", "startPrice": 560.23, "up": 0.42, "down": 0.58, "feeBps": 200, "liquidity": 375.78, "status": "OPEN"}
+{"snap": 1795374045, "symbol": "BTCUSDT", "timeframe": "1 hour", "start": 1795374000, "end": 1795377600, "feed": "BINANCE", "startPrice": 60763.84, "up": 0.52, "down": 0.48, "feeBps": 200, "liquidity": 5888.15, "status": "OPEN"}
+{"snap": 1795374045, "symbol": "ETHUSDT", "timeframe": "1 hour", "start": 1795374000, "end": 1795377600, "feed": "BINANCE", "startPrice": 1714.72, "up": 0.52, "down": 0.48, "feeBps": 200, "liquidity": 4090.12, "status": "OPEN"}
+{"snap": 1795374045, "symbol": "BNBUSDT", "timeframe": "1 hour", "start": 1795374000, "end": 1795377600, "feed": "BINANCE", "startPrice": 558.82, "up": 0.52, "down": 0.48, "feeBps": 200, "liquidity": 3676.33, "status": "OPEN"}
