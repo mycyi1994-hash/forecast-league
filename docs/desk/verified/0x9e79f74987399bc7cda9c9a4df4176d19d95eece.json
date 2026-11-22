@@ -2,8 +2,8 @@
  "contract": "0x9e79f74987399bc7cda9c9a4df4176d19d95eece",
  "name": "Jovibub",
  "verdict": "passed",
- "checkedAt": "2026-11-22T03:49:12Z",
- "block": 135009896,
+ "checkedAt": "2026-11-22T05:11:23Z",
+ "block": 135020855,
  "checks": {
   "simulatedFromAgentIdWallet": true,
   "gateEnforced": true,

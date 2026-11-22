@@ -2,8 +2,8 @@
  "contract": "0x86641a38d24dd42eb7d639bd1fc5bf7f66c19bf4",
  "name": "Ghoulies",
  "verdict": "passed",
- "checkedAt": "2026-11-22T03:49:12Z",
- "block": 135009896,
+ "checkedAt": "2026-11-22T05:11:23Z",
+ "block": 135020855,
  "checks": {
   "simulatedFromAgentIdWallet": true,
   "gateEnforced": true,

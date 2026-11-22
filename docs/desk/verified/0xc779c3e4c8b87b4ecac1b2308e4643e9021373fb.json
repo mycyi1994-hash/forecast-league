@@ -2,8 +2,8 @@
  "contract": "0xc779c3e4c8b87b4ecac1b2308e4643e9021373fb",
  "name": "LottoBots",
  "verdict": "passed",
- "checkedAt": "2026-11-22T03:49:12Z",
- "block": 135009896,
+ "checkedAt": "2026-11-22T05:11:23Z",
+ "block": 135020855,
  "checks": {
   "simulatedFromAgentIdWallet": true,
   "gateEnforced": true,

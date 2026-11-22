@@ -2,8 +2,8 @@
  "contract": "0xfc29876fa700bacb0f925e258f61d0387f73cbb8",
  "name": "Halving",
  "verdict": "passed",
- "checkedAt": "2026-11-22T03:49:12Z",
- "block": 135009896,
+ "checkedAt": "2026-11-22T05:11:23Z",
+ "block": 135020855,
  "checks": {
   "simulatedFromAgentIdWallet": true,
   "gateEnforced": true,

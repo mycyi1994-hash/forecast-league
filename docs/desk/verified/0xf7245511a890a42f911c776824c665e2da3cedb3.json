@@ -2,8 +2,8 @@
  "contract": "0xf7245511a890a42f911c776824c665e2da3cedb3",
  "name": "Agent Creatures",
  "verdict": "passed",
- "checkedAt": "2026-11-22T03:49:12Z",
- "block": 135009896,
+ "checkedAt": "2026-11-22T05:11:23Z",
+ "block": 135020855,
  "checks": {
   "simulatedFromAgentIdWallet": true,
   "gateEnforced": true,

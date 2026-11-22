@@ -2,8 +2,8 @@
  "contract": "0xd7fd1e13cbb953b8101e6f844518e57969f6cd64",
  "name": "Crystalis",
  "verdict": "passed",
- "checkedAt": "2026-11-22T03:49:12Z",
- "block": 135009896,
+ "checkedAt": "2026-11-22T05:11:23Z",
+ "block": 135020855,
  "checks": {
   "simulatedFromAgentIdWallet": true,
   "gateEnforced": true,
