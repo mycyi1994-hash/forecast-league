@@ -2,8 +2,8 @@
  "contract": "0x647d90e42a6a3d190b0ca600abf316f1eefb052f",
  "name": "Agent Sigil",
  "verdict": "passed",
- "checkedAt": "2026-11-22T09:10:22Z",
- "block": 135052711,
+ "checkedAt": "2026-11-22T10:11:39Z",
+ "block": 135060878,
  "checks": {
   "simulatedFromAgentIdWallet": true,
   "gateEnforced": true,
