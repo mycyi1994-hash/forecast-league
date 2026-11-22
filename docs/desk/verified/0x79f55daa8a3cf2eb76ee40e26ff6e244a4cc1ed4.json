@@ -2,8 +2,8 @@
  "contract": "0x79f55daa8a3cf2eb76ee40e26ff6e244a4cc1ed4",
  "name": "Forecast League Card",
  "verdict": "passed",
- "checkedAt": "2026-11-22T20:11:09Z",
- "block": 135140786,
+ "checkedAt": "2026-11-22T21:10:28Z",
+ "block": 135148694,
  "checks": {
   "simulatedFromAgentIdWallet": true,
   "gateEnforced": true,
