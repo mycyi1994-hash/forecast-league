@@ -68,8 +68,15 @@
    "validUntil": "until claimed"
   }
  ],
- "joinedRounds": {},
+ "joinedRounds": {
+  "ETH 1h": 498698
+ },
  "pendingResults": [
+  {
+   "market": "ETH 1h",
+   "tickets": 1,
+   "resultFinalAt": "2026-11-22T04:00:00Z"
+  },
   {
    "market": "BTC 1d",
    "tickets": 1,
@@ -110,6 +117,14 @@
    },
    {
     "market": "BTC 1h",
+    "tickets": 1,
+    "wins": 0,
+    "losses": 0,
+    "streak": 0,
+    "bestStreak": 0
+   },
+   {
+    "market": "ETH 1h",
     "tickets": 1,
     "wins": 0,
     "losses": 0,
