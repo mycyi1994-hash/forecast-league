@@ -2,8 +2,8 @@
  "contract": "0x621b9fed6ff2f0fc73e26264a401f7d12644a0a1",
  "name": "Forecast League Blitz ETH 6h",
  "verdict": "passed",
- "checkedAt": "2026-11-22T05:11:23Z",
- "block": 135020855,
+ "checkedAt": "2026-11-22T06:10:47Z",
+ "block": 135028773,
  "checks": {
   "simulatedFromAgentIdWallet": true,
   "gateEnforced": true,

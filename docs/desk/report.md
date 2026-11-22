@@ -1,7 +1,7 @@
-# Agent ID Mint Desk — 2026-11-22T05:11 UTC
+# Agent ID Mint Desk — 2026-11-22T06:10 UTC
 
-Every Binance-Agent-ID-gated mint the public radar has seen on BNB Chain, simulated from real Agent ID wallets at block 135020855.
-**3504 free and open now** · 873 paid · 818 closed or failing · 5346 checked. Heuristics, not an audit; preview every call.
+Every Binance-Agent-ID-gated mint the public radar has seen on BNB Chain, simulated from real Agent ID wallets at block 135028773.
+**3505 free and open now** · 874 paid · 817 closed or failing · 5347 checked. Heuristics, not an audit; preview every call.
 
 ## Free now, passing every check
 | # | Name | Contract | Call data |
@@ -27,10 +27,10 @@ Every Binance-Agent-ID-gated mint the public radar has seen on BNB Chain, simula
 | 19 | Forecast League Rounds BNB 1h (desk operator) | `0x66613fd9a2c70d4cb56d920bdd0d56ba95bd2736` | `0x1249c58b` |
 | 20 | AgentStreak Badge | `0x1c0e0fbe2b29c05a41c3e762ea6394af78c78f27` | `0x183ff085` |
 | 21 | Agent Island | `0x33862343de67e7d8f0664d7a3648e38da9777403` | `0xa0712d680000000000000000000000000000000000000000000000000000000000000001` |
-| 22 | Halving | `0xfc29876fa700bacb0f925e258f61d0387f73cbb8` | `0xa0712d680000000000000000000000000000000000000000000000000000000000000001` |
-| 23 | Pascabowo Pass | `0x366810d042fb69303282223667647d96809ab1ca` | `0x1249c58b` |
-| 24 | AgentWall Badge | `0x484508765eb1b7e6471d745722be747b581638a1` | `0x24c214d3000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000097777773333333334340000000000000000000000000000000000000000000000` |
-| 25 | Forecast League Stamp (desk operator) | `0x30b6b8c67ab2239185536ba3766e8cb05bfd18ae` | `0x183ff085` |
+| 22 | Pascabowo Pass | `0x366810d042fb69303282223667647d96809ab1ca` | `0x1249c58b` |
+| 23 | AgentWall Badge | `0x484508765eb1b7e6471d745722be747b581638a1` | `0x24c214d3000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000097777773333333334340000000000000000000000000000000000000000000000` |
+| 24 | Forecast League Stamp (desk operator) | `0x30b6b8c67ab2239185536ba3766e8cb05bfd18ae` | `0x183ff085` |
+| 25 | STRAWBS: WAKE PROTOCOL | `0x9bed5d806ed91675127f81d1f13c6ab3ef9430cc` | `0x1249c58b` |
 
 ## Free now, with warnings
 - Volt Wardens `0xf46ed98e467fc20709ec2b199882cd116b5c1cf4`: has an owner with admin powers

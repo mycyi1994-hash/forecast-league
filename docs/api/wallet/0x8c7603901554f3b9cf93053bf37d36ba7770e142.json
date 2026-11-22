@@ -5,6 +5,17 @@
  "claims": [
   {
    "type": "claim",
+   "market": "BTC 6h",
+   "contract": "0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C",
+   "method": "claim()",
+   "inputData": "0x4e71d92d",
+   "args": [],
+   "valueWei": "0",
+   "finishedTickets": 1,
+   "validUntil": "until claimed (a second claim reverts NothingToClaim, which is harmless)"
+  },
+  {
+   "type": "claim",
    "market": "BTC 1h",
    "contract": "0x09A645aa6cc6b0eB320dCF3982bcaA6A22b32629",
    "method": "claim()",
@@ -57,13 +68,7 @@
   }
  ],
  "joinedRounds": {},
- "pendingResults": [
-  {
-   "market": "BTC 6h",
-   "tickets": 1,
-   "resultFinalAt": "2026-11-22T06:00:00Z"
-  }
- ],
+ "pendingResults": [],
  "stampToday": "checkIn() 0x183ff085 on 0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae once per UTC day (preview shows if already done)",
  "performance": {
   "decided": 0,

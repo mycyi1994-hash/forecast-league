@@ -3,14 +3,14 @@
  "by": "Forecast League (Binance Agent ID Hackathon entry; it lists its own contracts under the same checks)",
  "url": "https://mycyi1994-hash.github.io/forecast-league/desk/",
  "chainId": 56,
- "updated": "2026-11-22T05:11:23Z",
- "block": 135020855,
+ "updated": "2026-11-22T06:10:47Z",
+ "block": 135028773,
  "method": "Each mint call is simulated with eth_call (value 0) from Agent ID wallets and from a wallet without Agent ID; owner(), the EIP-1967 proxy slot and Sourcify verification are read. Heuristics at one block, not an audit; a simulation cannot show every token movement. Always preview in your own wallet.",
  "counts": {
-  "candidates": 5346,
-  "free_live": 3504,
-  "paid": 873,
-  "closed_or_failing": 818
+  "candidates": 5347,
+  "free_live": 3505,
+  "paid": 874,
+  "closed_or_failing": 817
  },
  "projects": [
   {
@@ -36,7 +36,7 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
    "rank": 2,
@@ -61,7 +61,7 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
    "rank": 3,
@@ -86,7 +86,7 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
    "rank": 4,
@@ -111,7 +111,7 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
    "rank": 5,
@@ -137,7 +137,7 @@
    },
    "warnings": [],
    "builder": "Forecast League (the desk operator; same checks apply)",
-   "checkedAt": "2026-11-22T05:11:23Z"
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
    "rank": 6,
@@ -162,7 +162,7 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
    "rank": 7,
@@ -187,7 +187,7 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
    "rank": 8,
@@ -212,7 +212,7 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
    "rank": 9,
@@ -237,7 +237,7 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
    "rank": 10,
@@ -262,7 +262,7 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
    "rank": 11,
@@ -287,7 +287,7 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
    "rank": 12,
@@ -312,7 +312,7 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
    "rank": 13,
@@ -337,7 +337,7 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
    "rank": 14,
@@ -362,7 +362,7 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
    "rank": 15,
@@ -387,7 +387,7 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
    "rank": 16,
@@ -412,7 +412,7 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
    "rank": 17,
@@ -437,7 +437,7 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
    "rank": 18,
@@ -463,7 +463,7 @@
    },
    "warnings": [],
    "builder": "Forecast League (the desk operator; same checks apply)",
-   "checkedAt": "2026-11-22T05:11:23Z"
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
    "rank": 19,
@@ -489,7 +489,7 @@
    },
    "warnings": [],
    "builder": "Forecast League (the desk operator; same checks apply)",
-   "checkedAt": "2026-11-22T05:11:23Z"
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
    "rank": 20,
@@ -514,7 +514,7 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
    "rank": 21,
@@ -539,35 +539,10 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
    "rank": 22,
-   "name": "Halving",
-   "symbol": "HALVE",
-   "contract": "0xfc29876fa700bacb0f925e258f61d0387f73cbb8",
-   "standard": "BEP-20 Token (18 decimals)",
-   "status": "free_live",
-   "score": 100,
-   "mint": {
-    "inputData": "0xa0712d680000000000000000000000000000000000000000000000000000000000000001",
-    "valueWei": "0",
-    "note": "value must stay 0; preview before sending"
-   },
-   "maxSupply": 100000000000,
-   "firstSeen": "2026-11-08 05:48:14",
-   "checks": {
-    "simulatedFromAgentIdWallet": true,
-    "gateEnforced": true,
-    "upgradeable": false,
-    "owner": null,
-    "sourceVerified": true
-   },
-   "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
-  },
-  {
-   "rank": 23,
    "name": "Pascabowo Pass",
    "symbol": "PPASS",
    "contract": "0x366810d042fb69303282223667647d96809ab1ca",
@@ -589,10 +564,10 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
-   "rank": 24,
+   "rank": 23,
    "name": "AgentWall Badge",
    "symbol": "AWALL",
    "contract": "0x484508765eb1b7e6471d745722be747b581638a1",
@@ -614,10 +589,10 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
-   "rank": 25,
+   "rank": 24,
    "name": "Forecast League Stamp",
    "symbol": "FL",
    "contract": "0x30b6b8c67ab2239185536ba3766e8cb05bfd18ae",
@@ -640,10 +615,10 @@
    },
    "warnings": [],
    "builder": "Forecast League (the desk operator; same checks apply)",
-   "checkedAt": "2026-11-22T05:11:23Z"
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
-   "rank": 26,
+   "rank": 25,
    "name": "STRAWBS: WAKE PROTOCOL",
    "symbol": "STRAWBS",
    "contract": "0x9bed5d806ed91675127f81d1f13c6ab3ef9430cc",
@@ -665,10 +640,10 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
-   "rank": 27,
+   "rank": 26,
    "name": "AgentStreak Badge",
    "symbol": "ASBADGE",
    "contract": "0xc34c1ea7b3a0bea3ae9e473e645d172900e63748",
@@ -690,60 +665,10 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
-   "rank": 28,
-   "name": "Nekomori",
-   "symbol": "NEKOMORI",
-   "contract": "0x2ba58050fdffd4848bf8ac284aa1f8059717aa35",
-   "standard": "ERC-721 (NFT Collection)",
-   "status": "free_live",
-   "score": 100,
-   "mint": {
-    "inputData": "0xa0712d680000000000000000000000000000000000000000000000000000000000000001",
-    "valueWei": "0",
-    "note": "value must stay 0; preview before sending"
-   },
-   "maxSupply": 7777,
-   "firstSeen": "2026-11-12 21:31:09",
-   "checks": {
-    "simulatedFromAgentIdWallet": true,
-    "gateEnforced": true,
-    "upgradeable": false,
-    "owner": null,
-    "sourceVerified": true
-   },
-   "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
-  },
-  {
-   "rank": 29,
-   "name": "Neonjack",
-   "symbol": "NEONJACK",
-   "contract": "0x0e2c4b5c3709c2d80a8f515ef2b6ec8fd9537723",
-   "standard": "ERC-721 (NFT Collection)",
-   "status": "free_live",
-   "score": 100,
-   "mint": {
-    "inputData": "0xa0712d680000000000000000000000000000000000000000000000000000000000000001",
-    "valueWei": "0",
-    "note": "value must stay 0; preview before sending"
-   },
-   "maxSupply": 1193,
-   "firstSeen": "2026-11-04 02:47:20",
-   "checks": {
-    "simulatedFromAgentIdWallet": true,
-    "gateEnforced": true,
-    "upgradeable": false,
-    "owner": null,
-    "sourceVerified": true
-   },
-   "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
-  },
-  {
-   "rank": 30,
+   "rank": 27,
    "name": "AgentPass",
    "symbol": "APASS",
    "contract": "0x2cab70c426f92c0d08aeb7cfe41b27b746feeb09",
@@ -765,10 +690,10 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
-   "rank": 31,
+   "rank": 28,
    "name": "Stratava Miners",
    "symbol": "STVA",
    "contract": "0x02bf66bec0307d539c0b440ac7a1ef7ad7fb9847",
@@ -790,10 +715,10 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
-   "rank": 32,
+   "rank": 29,
    "name": "Voltrune Rigs",
    "symbol": "VTRN",
    "contract": "0x145c5b3ab1268dbf5f86192bce390c9c60076fff",
@@ -815,10 +740,10 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
-   "rank": 33,
+   "rank": 30,
    "name": "Agent Mint Pass",
    "symbol": "AMPASS",
    "contract": "0xfcadfb7cc85b6ea540d64e4f4b9f162e630f55c0",
@@ -840,10 +765,36 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
-   "rank": 34,
+   "rank": 31,
+   "name": "Forecast League Badge",
+   "symbol": "FL",
+   "contract": "0xf706aeb7e1b6a44139205df3043bf68ccf386918",
+   "standard": "ERC-721 (soulbound)",
+   "status": "free_live",
+   "score": 100,
+   "mint": {
+    "inputData": "0x4e71d92d",
+    "valueWei": "0",
+    "note": "value must stay 0; preview before sending"
+   },
+   "maxSupply": null,
+   "firstSeen": "2026-11-20 08:38:48",
+   "checks": {
+    "simulatedFromAgentIdWallet": true,
+    "gateEnforced": true,
+    "upgradeable": false,
+    "owner": null,
+    "sourceVerified": true
+   },
+   "warnings": [],
+   "builder": "Forecast League (the desk operator; same checks apply)",
+   "checkedAt": "2026-11-22T06:10:47Z"
+  },
+  {
+   "rank": 32,
    "name": "ElysAgent Pass",
    "symbol": "EAPASS",
    "contract": "0x69013444190b39560bff48e9241fbcbb809ced27",
@@ -865,10 +816,10 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
-   "rank": 35,
+   "rank": 33,
    "name": "AgentMark Badge",
    "symbol": "AMARK",
    "contract": "0xbc682d5cf1ad8ffae05ba119cf88bd6ede75267c",
@@ -890,10 +841,10 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
-   "rank": 36,
+   "rank": 34,
    "name": "AgentB",
    "symbol": "AGENTB",
    "contract": "0x06ecae09523da3698640728cc205305df5c33988",
@@ -915,10 +866,10 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
-   "rank": 37,
+   "rank": 35,
    "name": "Forecast League Rounds ETH 1h",
    "symbol": "FL",
    "contract": "0x8b998aba2beeebf7cebf565bc53bc575693c07a4",
@@ -941,10 +892,10 @@
    },
    "warnings": [],
    "builder": "Forecast League (the desk operator; same checks apply)",
-   "checkedAt": "2026-11-22T05:11:23Z"
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
-   "rank": 38,
+   "rank": 36,
    "name": "AgentBoard Badge",
    "symbol": "ABBADGE",
    "contract": "0x928979396b22c92449e8deccc544a7d8c4c6fc7b",
@@ -966,35 +917,10 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
-   "rank": 39,
-   "name": "Burgerly",
-   "symbol": "BURGERLY",
-   "contract": "0x27e956cf52222c9bb8eb2f46f320730b2005b7b2",
-   "standard": "ERC-721 (NFT Collection)",
-   "status": "free_live",
-   "score": 100,
-   "mint": {
-    "inputData": "0xa0712d680000000000000000000000000000000000000000000000000000000000000001",
-    "valueWei": "0",
-    "note": "value must stay 0; preview before sending"
-   },
-   "maxSupply": 7777,
-   "firstSeen": "2026-11-04 06:31:25",
-   "checks": {
-    "simulatedFromAgentIdWallet": true,
-    "gateEnforced": true,
-    "upgradeable": false,
-    "owner": null,
-    "sourceVerified": true
-   },
-   "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
-  },
-  {
-   "rank": 40,
+   "rank": 37,
    "name": "Solaris",
    "symbol": "SOLS",
    "contract": "0x8a6700cd5d1bfe8ee02ce753d20cfa2d168139d6",
@@ -1016,10 +942,10 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
-   "rank": 41,
+   "rank": 38,
    "name": "Konoha",
    "symbol": "KNO",
    "contract": "0x1f9a91fc0965cb03abd65035665329681141dced",
@@ -1041,10 +967,10 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
-   "rank": 42,
+   "rank": 39,
    "name": "Aetheris",
    "symbol": "AETH",
    "contract": "0x05d16222738a09bfe49470fac6cd5959522889f2",
@@ -1066,10 +992,10 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
-   "rank": 43,
+   "rank": 40,
    "name": "Agent Badge",
    "symbol": "ABADGE",
    "contract": "0x0883ba789dd45a94fbc8a7ed116c20e516228309",
@@ -1091,10 +1017,10 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
-   "rank": 44,
+   "rank": 41,
    "name": "Forecast League Blitz BTC 6h",
    "symbol": "FL",
    "contract": "0x2fadb6739a076b236fbd44e19f64ab158ccfba2c",
@@ -1117,10 +1043,10 @@
    },
    "warnings": [],
    "builder": "Forecast League (the desk operator; same checks apply)",
-   "checkedAt": "2026-11-22T05:11:23Z"
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
-   "rank": 45,
+   "rank": 42,
    "name": "Thirteen Omens",
    "symbol": "OMEN",
    "contract": "0x1e84079e0766ab7cbe182085ded86443ad9b1433",
@@ -1142,10 +1068,10 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
-   "rank": 46,
+   "rank": 43,
    "name": "AgentShift Worker",
    "symbol": "ASW",
    "contract": "0x8837bd107a6e8812bde0eeb6adec089f53f9bcc2",
@@ -1167,10 +1093,10 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
-   "rank": 47,
+   "rank": 44,
    "name": "New Drop",
    "symbol": "AGP",
    "contract": "0x32cf34bbb7e01f75db33d55da850bf26ba056f50",
@@ -1192,10 +1118,10 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
-   "rank": 48,
+   "rank": 45,
    "name": "Forecast League Rounds BTC 1d",
    "symbol": "FL",
    "contract": "0x9e521add6f67eee0fe5c0b8ef32cb4543f7af50e",
@@ -1218,35 +1144,10 @@
    },
    "warnings": [],
    "builder": "Forecast League (the desk operator; same checks apply)",
-   "checkedAt": "2026-11-22T05:11:23Z"
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
-   "rank": 49,
-   "name": "Swaptide",
-   "symbol": "SWAPTIDE",
-   "contract": "0x8f108fd15b80814584f79862f209f306b2e888fc",
-   "standard": "ERC-721 (NFT Collection)",
-   "status": "free_live",
-   "score": 100,
-   "mint": {
-    "inputData": "0xa0712d680000000000000000000000000000000000000000000000000000000000000001",
-    "valueWei": "0",
-    "note": "value must stay 0; preview before sending"
-   },
-   "maxSupply": 5555,
-   "firstSeen": "2026-11-13 00:37:42",
-   "checks": {
-    "simulatedFromAgentIdWallet": true,
-    "gateEnforced": true,
-    "upgradeable": false,
-    "owner": null,
-    "sourceVerified": true
-   },
-   "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
-  },
-  {
-   "rank": 50,
+   "rank": 46,
    "name": "AgentStreak Badge",
    "symbol": "ASTREAK",
    "contract": "0x3ce06b00de25d6062d771664c231bb7af725ecdb",
@@ -1268,10 +1169,10 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
-   "rank": 51,
+   "rank": 47,
    "name": "AgentPost Pioneer",
    "symbol": "APOST",
    "contract": "0x2d15d60920f284e3e201ff59e916161799c83e2e",
@@ -1293,10 +1194,10 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
-   "rank": 52,
+   "rank": 48,
    "name": "bucket",
    "symbol": "BUCKET",
    "contract": "0x2b0d3b384c341020aed1d49907b5708c423ba6da",
@@ -1318,35 +1219,10 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
-   "rank": 53,
-   "name": "凤凰 Agents",
-   "symbol": "PHOENIX",
-   "contract": "0x92c7d62d737e7d53a6032b5c50126f388532a306",
-   "standard": "ERC-721 (NFT Collection)",
-   "status": "free_live",
-   "score": 100,
-   "mint": {
-    "inputData": "0xa0712d680000000000000000000000000000000000000000000000000000000000000001",
-    "valueWei": "0",
-    "note": "value must stay 0; preview before sending"
-   },
-   "maxSupply": 888,
-   "firstSeen": "2026-11-14 22:51:26",
-   "checks": {
-    "simulatedFromAgentIdWallet": true,
-    "gateEnforced": true,
-    "upgradeable": false,
-    "owner": null,
-    "sourceVerified": true
-   },
-   "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
-  },
-  {
-   "rank": 54,
+   "rank": 49,
    "name": "Daily Drop",
    "symbol": "DROP",
    "contract": "0x921baa34f7a6a59dec4c8ab834c0a8103d259e5b",
@@ -1368,10 +1244,10 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
-   "rank": 55,
+   "rank": 50,
    "name": "Neon Vice",
    "symbol": "VICE",
    "contract": "0x55eefba7263fa518f11a6cdaae4c403b082db3fe",
@@ -1393,35 +1269,10 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
-   "rank": 56,
-   "name": "Elybirds",
-   "symbol": "ELYB",
-   "contract": "0x43621df3f0a215f507ebbe5ecf530714788bf29f",
-   "standard": "ERC-721 (NFT Collection)",
-   "status": "free_live",
-   "score": 100,
-   "mint": {
-    "inputData": "0xa0712d680000000000000000000000000000000000000000000000000000000000000001",
-    "valueWei": "0",
-    "note": "value must stay 0; preview before sending"
-   },
-   "maxSupply": 7777,
-   "firstSeen": "2026-11-13 02:02:06",
-   "checks": {
-    "simulatedFromAgentIdWallet": true,
-    "gateEnforced": true,
-    "upgradeable": false,
-    "owner": null,
-    "sourceVerified": true
-   },
-   "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
-  },
-  {
-   "rank": 57,
+   "rank": 51,
    "name": "Kilnfold Rig",
    "symbol": "KFLD",
    "contract": "0x9dd6f32dd0df65fc0736ced0e7b7bfea30158b53",
@@ -1443,10 +1294,10 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
-   "rank": 58,
+   "rank": 52,
    "name": "4ever Agent Pass",
    "symbol": "AGPASS",
    "contract": "0xcc53dfec4289391ac77cba6b483194c483263a75",
@@ -1468,10 +1319,10 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
-   "rank": 59,
+   "rank": 53,
    "name": "Forecast League Blitz ETH 6h",
    "symbol": "FL",
    "contract": "0x621b9fed6ff2f0fc73e26264a401f7d12644a0a1",
@@ -1494,10 +1345,10 @@
    },
    "warnings": [],
    "builder": "Forecast League (the desk operator; same checks apply)",
-   "checkedAt": "2026-11-22T05:11:23Z"
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
-   "rank": 60,
+   "rank": 54,
    "name": "AgenTera",
    "symbol": "ATERA",
    "contract": "0xc53ee3d1c9c2127108fb45e5e5d9d2a623e3c681",
@@ -1519,10 +1370,10 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
-   "rank": 61,
+   "rank": 55,
    "name": "Agent Badge",
    "symbol": "ABADGE",
    "contract": "0x82fda371747880a36fefcd14526d428860f7644a",
@@ -1544,35 +1395,10 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
-   "rank": 62,
-   "name": "Embedrune",
-   "symbol": "EMRN",
-   "contract": "0x2925cf06b4e657f9d5301478b1be2e62cf863d11",
-   "standard": "ERC-721 (NFT Collection)",
-   "status": "free_live",
-   "score": 100,
-   "mint": {
-    "inputData": "0xa0712d680000000000000000000000000000000000000000000000000000000000000001",
-    "valueWei": "0",
-    "note": "value must stay 0; preview before sending"
-   },
-   "maxSupply": 1769,
-   "firstSeen": "2026-11-03 07:45:37",
-   "checks": {
-    "simulatedFromAgentIdWallet": true,
-    "gateEnforced": true,
-    "upgradeable": false,
-    "owner": null,
-    "sourceVerified": true
-   },
-   "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
-  },
-  {
-   "rank": 63,
+   "rank": 56,
    "name": "代理者卡",
    "symbol": "ADCHAR",
    "contract": "0xee1749f66ba7e6199084813246852c0f7177b6ce",
@@ -1594,85 +1420,10 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
-   "rank": 64,
-   "name": "Coralume",
-   "symbol": "CORALUME",
-   "contract": "0xed775ad0e6bc7214827cc8a4f300f34df7450d8c",
-   "standard": "ERC-721 (NFT Collection)",
-   "status": "free_live",
-   "score": 100,
-   "mint": {
-    "inputData": "0xa0712d680000000000000000000000000000000000000000000000000000000000000001",
-    "valueWei": "0",
-    "note": "value must stay 0; preview before sending"
-   },
-   "maxSupply": 7777,
-   "firstSeen": "2026-11-12 21:30:00",
-   "checks": {
-    "simulatedFromAgentIdWallet": true,
-    "gateEnforced": true,
-    "upgradeable": false,
-    "owner": null,
-    "sourceVerified": true
-   },
-   "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
-  },
-  {
-   "rank": 65,
-   "name": "Bonsaic",
-   "symbol": "BONSAIC",
-   "contract": "0x93045c8c87a5caa7b8a014c8b01054b3d64df566",
-   "standard": "ERC-721 (NFT Collection)",
-   "status": "free_live",
-   "score": 100,
-   "mint": {
-    "inputData": "0xa0712d680000000000000000000000000000000000000000000000000000000000000001",
-    "valueWei": "0",
-    "note": "value must stay 0; preview before sending"
-   },
-   "maxSupply": 7777,
-   "firstSeen": "2026-11-12 21:01:07",
-   "checks": {
-    "simulatedFromAgentIdWallet": true,
-    "gateEnforced": true,
-    "upgradeable": false,
-    "owner": null,
-    "sourceVerified": true
-   },
-   "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
-  },
-  {
-   "rank": 66,
-   "name": "Ghoulies",
-   "symbol": "GHLY",
-   "contract": "0x86641a38d24dd42eb7d639bd1fc5bf7f66c19bf4",
-   "standard": "ERC-721 (NFT Collection)",
-   "status": "free_live",
-   "score": 100,
-   "mint": {
-    "inputData": "0xa0712d680000000000000000000000000000000000000000000000000000000000000001",
-    "valueWei": "0",
-    "note": "value must stay 0; preview before sending"
-   },
-   "maxSupply": 1545,
-   "firstSeen": "2026-11-20 23:16:18",
-   "checks": {
-    "simulatedFromAgentIdWallet": true,
-    "gateEnforced": true,
-    "upgradeable": false,
-    "owner": null,
-    "sourceVerified": true
-   },
-   "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
-  },
-  {
-   "rank": 67,
+   "rank": 57,
    "name": "Agent ID Genesis Badge",
    "symbol": "AIDGB",
    "contract": "0x988bffcb78a21b10228ae45ba3dcf20d7d260f76",
@@ -1694,35 +1445,10 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
-   "rank": 68,
-   "name": "Eco",
-   "symbol": "ECO",
-   "contract": "0xd31b168f7b6f3db39bed89433124595aaa91cff3",
-   "standard": "ERC-721 (NFT Collection)",
-   "status": "free_live",
-   "score": 100,
-   "mint": {
-    "inputData": "0x1249c58b",
-    "valueWei": "0",
-    "note": "value must stay 0; preview before sending"
-   },
-   "maxSupply": 5555,
-   "firstSeen": "2026-11-11 22:55:00",
-   "checks": {
-    "simulatedFromAgentIdWallet": true,
-    "gateEnforced": true,
-    "upgradeable": false,
-    "owner": null,
-    "sourceVerified": true
-   },
-   "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
-  },
-  {
-   "rank": 69,
+   "rank": 58,
    "name": "Viridial Pass",
    "symbol": "VRDL",
    "contract": "0x9a17a906e58c9ddac8e8559b183fe3c69c87aee1",
@@ -1744,35 +1470,10 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
-   "rank": 70,
-   "name": "Geode",
-   "symbol": "GEODE",
-   "contract": "0x8ab5ddc1c73e353dc81bfcfaa368c5bd32ba9698",
-   "standard": "ERC-721 (NFT Collection)",
-   "status": "free_live",
-   "score": 100,
-   "mint": {
-    "inputData": "0xa0712d680000000000000000000000000000000000000000000000000000000000000001",
-    "valueWei": "0",
-    "note": "value must stay 0; preview before sending"
-   },
-   "maxSupply": 50000,
-   "firstSeen": "2026-11-13 06:19:42",
-   "checks": {
-    "simulatedFromAgentIdWallet": true,
-    "gateEnforced": true,
-    "upgradeable": false,
-    "owner": null,
-    "sourceVerified": true
-   },
-   "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
-  },
-  {
-   "rank": 71,
+   "rank": 59,
    "name": "Forecast League Blitz BNB 6h",
    "symbol": "FL",
    "contract": "0xa782ac207fe33f6120d9c2ef9553a55c47cfbbe9",
@@ -1795,35 +1496,10 @@
    },
    "warnings": [],
    "builder": "Forecast League (the desk operator; same checks apply)",
-   "checkedAt": "2026-11-22T05:11:23Z"
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
-   "rank": 72,
-   "name": "Mothveil",
-   "symbol": "MOTHV",
-   "contract": "0x5eefde735917a8a53f6a96fb70122398c1d617a9",
-   "standard": "ERC-721 (NFT Collection)",
-   "status": "free_live",
-   "score": 100,
-   "mint": {
-    "inputData": "0xa0712d680000000000000000000000000000000000000000000000000000000000000001",
-    "valueWei": "0",
-    "note": "value must stay 0; preview before sending"
-   },
-   "maxSupply": 5409,
-   "firstSeen": "2026-11-03 10:38:39",
-   "checks": {
-    "simulatedFromAgentIdWallet": true,
-    "gateEnforced": true,
-    "upgradeable": false,
-    "owner": null,
-    "sourceVerified": true
-   },
-   "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
-  },
-  {
-   "rank": 73,
+   "rank": 60,
    "name": "Forecast League Season Two Pass",
    "symbol": "FL",
    "contract": "0x74f35b8315d76deaecb7034918325815458261a4",
@@ -1846,85 +1522,10 @@
    },
    "warnings": [],
    "builder": "Forecast League (the desk operator; same checks apply)",
-   "checkedAt": "2026-11-22T05:11:23Z"
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
-   "rank": 74,
-   "name": "Pumpkinagent",
-   "symbol": "PUMPKINAGENT",
-   "contract": "0xc9bf67564043573a06685205c4c5296d7d37bc74",
-   "standard": "ERC-721 (NFT Collection)",
-   "status": "free_live",
-   "score": 100,
-   "mint": {
-    "inputData": "0xa0712d680000000000000000000000000000000000000000000000000000000000000001",
-    "valueWei": "0",
-    "note": "value must stay 0; preview before sending"
-   },
-   "maxSupply": 2222,
-   "firstSeen": "2026-11-03 12:33:57",
-   "checks": {
-    "simulatedFromAgentIdWallet": true,
-    "gateEnforced": true,
-    "upgradeable": false,
-    "owner": null,
-    "sourceVerified": true
-   },
-   "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
-  },
-  {
-   "rank": 75,
-   "name": "Tesla Pass",
-   "symbol": "TP",
-   "contract": "0x737c93bdda71716d77eb1599406d0067bbdb4a55",
-   "standard": "ERC-721 (NFT Collection)",
-   "status": "free_live",
-   "score": 100,
-   "mint": {
-    "inputData": "0x1249c58b0000000000000000000000000000000000000000000000000000000000000001",
-    "valueWei": "0",
-    "note": "value must stay 0; preview before sending"
-   },
-   "maxSupply": 777,
-   "firstSeen": "2026-11-07 10:03:46",
-   "checks": {
-    "simulatedFromAgentIdWallet": true,
-    "gateEnforced": true,
-    "upgradeable": false,
-    "owner": null,
-    "sourceVerified": true
-   },
-   "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
-  },
-  {
-   "rank": 76,
-   "name": "LottoBots",
-   "symbol": "LBOT",
-   "contract": "0xc779c3e4c8b87b4ecac1b2308e4643e9021373fb",
-   "standard": "ERC-721 (NFT Collection)",
-   "status": "free_live",
-   "score": 100,
-   "mint": {
-    "inputData": "0x8ab53447",
-    "valueWei": "0",
-    "note": "value must stay 0; preview before sending"
-   },
-   "maxSupply": 5000,
-   "firstSeen": "2026-11-18 12:15:43",
-   "checks": {
-    "simulatedFromAgentIdWallet": true,
-    "gateEnforced": true,
-    "upgradeable": false,
-    "owner": null,
-    "sourceVerified": true
-   },
-   "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
-  },
-  {
-   "rank": 77,
+   "rank": 61,
    "name": "Agent Passport",
    "symbol": "AGPASS",
    "contract": "0x27a8edd097d9ecbb99df3ab6032a9d2994c966d7",
@@ -1946,10 +1547,10 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
-   "rank": 78,
+   "rank": 62,
    "name": "Dead Man's Doubloons",
    "symbol": "DBLN",
    "contract": "0xba5dd9f1ee470fdf39ef7a82cf09b2c44a917bc8",
@@ -1971,35 +1572,10 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
-   "rank": 79,
-   "name": "Popsiq",
-   "symbol": "POPSIQ",
-   "contract": "0x2847981b53e55902f0a849767ae8a6803aab2cd5",
-   "standard": "ERC-721 (NFT Collection)",
-   "status": "free_live",
-   "score": 100,
-   "mint": {
-    "inputData": "0xa0712d680000000000000000000000000000000000000000000000000000000000000001",
-    "valueWei": "0",
-    "note": "value must stay 0; preview before sending"
-   },
-   "maxSupply": 7777,
-   "firstSeen": "2026-11-12 23:28:04",
-   "checks": {
-    "simulatedFromAgentIdWallet": true,
-    "gateEnforced": true,
-    "upgradeable": false,
-    "owner": null,
-    "sourceVerified": true
-   },
-   "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
-  },
-  {
-   "rank": 80,
+   "rank": 63,
    "name": "AgentBadge",
    "symbol": "AGBD",
    "contract": "0x3e04fff2ee685a2697a318c151566213b709820c",
@@ -2021,35 +1597,10 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
-   "rank": 81,
-   "name": "Agent Creatures",
-   "symbol": "ACRE",
-   "contract": "0xf7245511a890a42f911c776824c665e2da3cedb3",
-   "standard": "ERC-721 (NFT Collection)",
-   "status": "free_live",
-   "score": 100,
-   "mint": {
-    "inputData": "0xa0712d680000000000000000000000000000000000000000000000000000000000000001",
-    "valueWei": "0",
-    "note": "value must stay 0; preview before sending"
-   },
-   "maxSupply": 5555,
-   "firstSeen": "2026-11-03 23:15:58",
-   "checks": {
-    "simulatedFromAgentIdWallet": true,
-    "gateEnforced": true,
-    "upgradeable": false,
-    "owner": null,
-    "sourceVerified": true
-   },
-   "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
-  },
-  {
-   "rank": 82,
+   "rank": 64,
    "name": "CrumborkAgent",
    "symbol": "CRBK",
    "contract": "0x38066af063b6eb0fbdf56e2d38ec265d9a79d996",
@@ -2071,10 +1622,10 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
-   "rank": 83,
+   "rank": 65,
    "name": "ONERUB Work Awards",
    "symbol": "RUB",
    "contract": "0x7d7a4b8f27838aca993d6c2c086031301ee33a9c",
@@ -2096,35 +1647,10 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
-   "rank": 84,
-   "name": "Gridfarm",
-   "symbol": "GRIDFM",
-   "contract": "0x66b5a8153f8c17be4fa770e8b38ff5626eb4b9dc",
-   "standard": "ERC-721 (NFT Collection)",
-   "status": "free_live",
-   "score": 100,
-   "mint": {
-    "inputData": "0xa0712d680000000000000000000000000000000000000000000000000000000000000001",
-    "valueWei": "0",
-    "note": "value must stay 0; preview before sending"
-   },
-   "maxSupply": 3333,
-   "firstSeen": "2026-11-03 15:05:43",
-   "checks": {
-    "simulatedFromAgentIdWallet": true,
-    "gateEnforced": true,
-    "upgradeable": false,
-    "owner": null,
-    "sourceVerified": true
-   },
-   "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
-  },
-  {
-   "rank": 85,
+   "rank": 66,
    "name": "Agent Pioneer Badge",
    "symbol": "APB",
    "contract": "0x3ead2fea444399ca004033c7512f2c4c1eb0b7f3",
@@ -2146,35 +1672,10 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
-   "rank": 86,
-   "name": "Shenlong",
-   "symbol": "SHENLONG",
-   "contract": "0xd823a14507af2507a670fac4ed08316db7dca553",
-   "standard": "ERC-721 (NFT Collection)",
-   "status": "free_live",
-   "score": 100,
-   "mint": {
-    "inputData": "0x1249c58b",
-    "valueWei": "0",
-    "note": "value must stay 0; preview before sending"
-   },
-   "maxSupply": 20000,
-   "firstSeen": "2026-11-03 23:24:14",
-   "checks": {
-    "simulatedFromAgentIdWallet": true,
-    "gateEnforced": true,
-    "upgradeable": false,
-    "owner": null,
-    "sourceVerified": true
-   },
-   "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
-  },
-  {
-   "rank": 87,
+   "rank": 67,
    "name": "AgentCheck Badge",
    "symbol": "ACHKB",
    "contract": "0x3bce1dabf3a78041c0b37d7e28e448bdf6bd5192",
@@ -2196,35 +1697,10 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
-   "rank": 88,
-   "name": "Orchestrator",
-   "symbol": "ORCH",
-   "contract": "0x4f99a78a3006451f66000e10b2cd9131c5151b69",
-   "standard": "ERC-721 (NFT Collection)",
-   "status": "free_live",
-   "score": 100,
-   "mint": {
-    "inputData": "0xa0712d680000000000000000000000000000000000000000000000000000000000000001",
-    "valueWei": "0",
-    "note": "value must stay 0; preview before sending"
-   },
-   "maxSupply": 1540,
-   "firstSeen": "2026-11-17 09:56:06",
-   "checks": {
-    "simulatedFromAgentIdWallet": true,
-    "gateEnforced": true,
-    "upgradeable": false,
-    "owner": null,
-    "sourceVerified": true
-   },
-   "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
-  },
-  {
-   "rank": 89,
+   "rank": 68,
    "name": "moodeng",
    "symbol": "MOODENG",
    "contract": "0x05773a6a7539fa4ed7db34216b38b903044de88d",
@@ -2246,10 +1722,10 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
-   "rank": 90,
+   "rank": 69,
    "name": "AgentTip Badge",
    "symbol": "ATBADGE",
    "contract": "0x890471259c3dd28782bcc09e1ae431619d743b30",
@@ -2271,10 +1747,10 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
-   "rank": 91,
+   "rank": 70,
    "name": "New Drop",
    "symbol": "",
    "contract": "0x0299c31212541f2f199496e1c3f2204c1ff78023",
@@ -2296,10 +1772,10 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
-   "rank": 92,
+   "rank": 71,
    "name": "Thank You Binancians",
    "symbol": "TYB",
    "contract": "0xfc3b0ab6fb9e05ab7058117837530b288d749d78",
@@ -2321,10 +1797,10 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
-   "rank": 93,
+   "rank": 72,
    "name": "大码女装",
    "symbol": "大码女装",
    "contract": "0xe9213e18b421dd7f4e39937647f4553bb45f3d65",
@@ -2346,35 +1822,10 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
-   "rank": 94,
-   "name": "Plutofarm",
-   "symbol": "PLUTOFARM",
-   "contract": "0xdb101245a380c54e9ce5508359b1350f5fc31289",
-   "standard": "ERC-721 (NFT Collection)",
-   "status": "free_live",
-   "score": 100,
-   "mint": {
-    "inputData": "0xa0712d680000000000000000000000000000000000000000000000000000000000000001",
-    "valueWei": "0",
-    "note": "value must stay 0; preview before sending"
-   },
-   "maxSupply": 1000,
-   "firstSeen": "2026-11-03 16:58:45",
-   "checks": {
-    "simulatedFromAgentIdWallet": true,
-    "gateEnforced": true,
-    "upgradeable": false,
-    "owner": null,
-    "sourceVerified": true
-   },
-   "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
-  },
-  {
-   "rank": 95,
+   "rank": 73,
    "name": "HobnorbAgent",
    "symbol": "HBNB",
    "contract": "0xab3f2da0b63f5a823510095263789e9e6f26329a",
@@ -2396,10 +1847,10 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
-   "rank": 96,
+   "rank": 74,
    "name": "Epoch",
    "symbol": "EPOCH",
    "contract": "0x0f214ef91aff6cd79d6740f52ec69bf0360dab1a",
@@ -2421,10 +1872,10 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
-   "rank": 97,
+   "rank": 75,
    "name": "大码女装",
    "symbol": "大码女装",
    "contract": "0x69879b6aa000c5cceb1ad9abbf815f32f3757655",
@@ -2446,10 +1897,10 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
-   "rank": 98,
+   "rank": 76,
    "name": "Agent Stamp",
    "symbol": "STAMP",
    "contract": "0x071e1689b69ca831de56250d52f911ae95a01812",
@@ -2471,35 +1922,10 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
-   "rank": 99,
-   "name": "Hackagent",
-   "symbol": "HACKAG",
-   "contract": "0xc13f995d7e2ab6b4267dec8eeb2761464056d07b",
-   "standard": "ERC-721 (NFT Collection)",
-   "status": "free_live",
-   "score": 100,
-   "mint": {
-    "inputData": "0xa0712d680000000000000000000000000000000000000000000000000000000000000001",
-    "valueWei": "0",
-    "note": "value must stay 0; preview before sending"
-   },
-   "maxSupply": 5555,
-   "firstSeen": "2026-11-03 09:24:37",
-   "checks": {
-    "simulatedFromAgentIdWallet": true,
-    "gateEnforced": true,
-    "upgradeable": false,
-    "owner": null,
-    "sourceVerified": true
-   },
-   "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
-  },
-  {
-   "rank": 100,
+   "rank": 77,
    "name": "AgentPass",
    "symbol": "AGP",
    "contract": "0x67a6b7c907cab9becfe81377fd434445089c7c5b",
@@ -2521,10 +1947,10 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
-   "rank": 101,
+   "rank": 78,
    "name": "Forecast League House",
    "symbol": "FL",
    "contract": "0x8433ad00601c57ce9f144b20a32ae478eee831ae",
@@ -2547,10 +1973,10 @@
    },
    "warnings": [],
    "builder": "Forecast League (the desk operator; same checks apply)",
-   "checkedAt": "2026-11-22T05:11:23Z"
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
-   "rank": 102,
+   "rank": 79,
    "name": "杀零猫",
    "symbol": "杀零猫",
    "contract": "0x176bc04d46f9ba02a78163a203ad4e012baa75ae",
@@ -2572,10 +1998,10 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
-   "rank": 103,
+   "rank": 80,
    "name": "WibblezapAgent",
    "symbol": "WBZP",
    "contract": "0x8717fc8751b8ebd6832ea145974aa77d86be9ead",
@@ -2597,35 +2023,10 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
-   "rank": 104,
-   "name": "Apivora",
-   "symbol": "APVR",
-   "contract": "0xb385e16a454f76cd11cd2797300cdebe5d30fe24",
-   "standard": "ERC-721 (NFT Collection)",
-   "status": "free_live",
-   "score": 100,
-   "mint": {
-    "inputData": "0xa0712d680000000000000000000000000000000000000000000000000000000000000001",
-    "valueWei": "0",
-    "note": "value must stay 0; preview before sending"
-   },
-   "maxSupply": 1899,
-   "firstSeen": "2026-11-03 08:02:22",
-   "checks": {
-    "simulatedFromAgentIdWallet": true,
-    "gateEnforced": true,
-    "upgradeable": false,
-    "owner": null,
-    "sourceVerified": true
-   },
-   "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
-  },
-  {
-   "rank": 105,
+   "rank": 81,
    "name": "飞轮币",
    "symbol": "FlyWheel",
    "contract": "0xe4c75b0d134fa0ca3d95fa0a4e0d366e80e84311",
@@ -2647,10 +2048,10 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
-   "rank": 106,
+   "rank": 82,
    "name": "AgentStreak Badge",
    "symbol": "ASB",
    "contract": "0xa011517fd16f6a240c309e9df8316e56306f5361",
@@ -2672,35 +2073,10 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
-   "rank": 107,
-   "name": "Contexa",
-   "symbol": "CNTX",
-   "contract": "0xd0cec431bfb88dff8a3b940f8a4f9c81c68bdbcb",
-   "standard": "ERC-721 (NFT Collection)",
-   "status": "free_live",
-   "score": 100,
-   "mint": {
-    "inputData": "0xa0712d680000000000000000000000000000000000000000000000000000000000000001",
-    "valueWei": "0",
-    "note": "value must stay 0; preview before sending"
-   },
-   "maxSupply": 1798,
-   "firstSeen": "2026-11-03 07:42:16",
-   "checks": {
-    "simulatedFromAgentIdWallet": true,
-    "gateEnforced": true,
-    "upgradeable": false,
-    "owner": null,
-    "sourceVerified": true
-   },
-   "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
-  },
-  {
-   "rank": 108,
+   "rank": 83,
    "name": "Forecast League Early Pass",
    "symbol": "FL",
    "contract": "0xf467a5941f8dede54583754ac7448fb62ae0b9d4",
@@ -2723,60 +2099,10 @@
    },
    "warnings": [],
    "builder": "Forecast League (the desk operator; same checks apply)",
-   "checkedAt": "2026-11-22T05:11:23Z"
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
-   "rank": 109,
-   "name": "Jovibub",
-   "symbol": "JOVIBUB",
-   "contract": "0x9e79f74987399bc7cda9c9a4df4176d19d95eece",
-   "standard": "ERC-721 (NFT Collection)",
-   "status": "free_live",
-   "score": 100,
-   "mint": {
-    "inputData": "0xa0712d680000000000000000000000000000000000000000000000000000000000000001",
-    "valueWei": "0",
-    "note": "value must stay 0; preview before sending"
-   },
-   "maxSupply": 972,
-   "firstSeen": "2026-11-07 19:40:10",
-   "checks": {
-    "simulatedFromAgentIdWallet": true,
-    "gateEnforced": true,
-    "upgradeable": false,
-    "owner": null,
-    "sourceVerified": true
-   },
-   "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
-  },
-  {
-   "rank": 110,
-   "name": "Crystalis",
-   "symbol": "CRYSTALIS",
-   "contract": "0xd7fd1e13cbb953b8101e6f844518e57969f6cd64",
-   "standard": "ERC-721 (NFT Collection)",
-   "status": "free_live",
-   "score": 100,
-   "mint": {
-    "inputData": "0xa0712d680000000000000000000000000000000000000000000000000000000000000001",
-    "valueWei": "0",
-    "note": "value must stay 0; preview before sending"
-   },
-   "maxSupply": 7777,
-   "firstSeen": "2026-11-12 21:30:30",
-   "checks": {
-    "simulatedFromAgentIdWallet": true,
-    "gateEnforced": true,
-    "upgradeable": false,
-    "owner": null,
-    "sourceVerified": true
-   },
-   "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
-  },
-  {
-   "rank": 111,
+   "rank": 84,
    "name": "AgentWall Badge",
    "symbol": "AWALL",
    "contract": "0x8dddb7636f29df69fed21cacc8538a029139f0b9",
@@ -2798,10 +2124,10 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
-   "rank": 112,
+   "rank": 85,
    "name": "AgentPass Badge",
    "symbol": "AGPASS",
    "contract": "0x2dc27a937ea00f5d67ef557a4aefac6b12735225",
@@ -2823,10 +2149,10 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
-   "rank": 113,
+   "rank": 86,
    "name": "GlorpixAgent",
    "symbol": "GLPX",
    "contract": "0xba5cde0ceea8704b8944deb51228ca59a7bd9cf0",
@@ -2848,10 +2174,10 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
-   "rank": 114,
+   "rank": 87,
    "name": "Agent Pioneer Badge",
    "symbol": "APB",
    "contract": "0x77feb51ef3d7d0457d8a94893ae067171c452bf3",
@@ -2873,10 +2199,10 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
-   "rank": 115,
+   "rank": 88,
    "name": "Tigora",
    "symbol": "TIGR",
    "contract": "0xe8c46e7c734259fec1a78fc846dcfad94ecb70e5",
@@ -2898,10 +2224,10 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
-   "rank": 116,
+   "rank": 89,
    "name": "AgentStreak",
    "symbol": "ASTRK",
    "contract": "0xcd3583ac76ff66f2306fd7b66bb2283f9ae32227",
@@ -2923,10 +2249,10 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
-   "rank": 117,
+   "rank": 90,
    "name": "AgentSeal",
    "symbol": "SEAL",
    "contract": "0xb013a27ce9483939dbd64e6c8ec155293692cdec",
@@ -2948,10 +2274,10 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
-   "rank": 118,
+   "rank": 91,
    "name": "代理者卡",
    "symbol": "ADCHAR",
    "contract": "0x74d5639d824b2280e4f7d2a7f0f5db66358c272e",
@@ -2973,10 +2299,10 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
-   "rank": 119,
+   "rank": 92,
    "name": "Sepal",
    "symbol": "SEPL",
    "contract": "0x461b8e3b161ab0b69aed422bc68afc7c4bfa7894",
@@ -2998,60 +2324,10 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
-   "rank": 120,
-   "name": "Agent",
-   "symbol": "AGENT",
-   "contract": "0xa2643b889eeb232708a644f15f70f951773ddef9",
-   "standard": "BEP-20 Token (18 decimals)",
-   "status": "free_live",
-   "score": 100,
-   "mint": {
-    "inputData": "0x1249c58b",
-    "valueWei": "0",
-    "note": "value must stay 0; preview before sending"
-   },
-   "maxSupply": 1000000000,
-   "firstSeen": "2026-11-03 11:56:32",
-   "checks": {
-    "simulatedFromAgentIdWallet": true,
-    "gateEnforced": true,
-    "upgradeable": false,
-    "owner": null,
-    "sourceVerified": true
-   },
-   "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
-  },
-  {
-   "rank": 121,
-   "name": "Funcvix",
-   "symbol": "FNVX",
-   "contract": "0xbfbde67707d00a759e55ee158abfcb3b33f375fd",
-   "standard": "ERC-721 (NFT Collection)",
-   "status": "free_live",
-   "score": 100,
-   "mint": {
-    "inputData": "0xa0712d680000000000000000000000000000000000000000000000000000000000000001",
-    "valueWei": "0",
-    "note": "value must stay 0; preview before sending"
-   },
-   "maxSupply": 1856,
-   "firstSeen": "2026-11-03 07:38:54",
-   "checks": {
-    "simulatedFromAgentIdWallet": true,
-    "gateEnforced": true,
-    "upgradeable": false,
-    "owner": null,
-    "sourceVerified": true
-   },
-   "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
-  },
-  {
-   "rank": 122,
+   "rank": 93,
    "name": "MizzlewickAgent",
    "symbol": "MZWK",
    "contract": "0x892e438425b3a41bc75b25c22fd878b3fa2e308d",
@@ -3073,35 +2349,10 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
-   "rank": 123,
-   "name": "SingularitySquad",
-   "symbol": "SNGL",
-   "contract": "0x2125c400b33634d784ccaad9ff65c15abcddc4d4",
-   "standard": "ERC-721 (NFT Collection)",
-   "status": "free_live",
-   "score": 100,
-   "mint": {
-    "inputData": "0xa0712d680000000000000000000000000000000000000000000000000000000000000001",
-    "valueWei": "0",
-    "note": "value must stay 0; preview before sending"
-   },
-   "maxSupply": 1735,
-   "firstSeen": "2026-11-06 22:49:29",
-   "checks": {
-    "simulatedFromAgentIdWallet": true,
-    "gateEnforced": true,
-    "upgradeable": false,
-    "owner": null,
-    "sourceVerified": true
-   },
-   "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
-  },
-  {
-   "rank": 124,
+   "rank": 94,
    "name": "AgentBadge",
    "symbol": "AGB",
    "contract": "0xb82db22dbf252d3e31ab450a4d492ece2e9feaa4",
@@ -3123,10 +2374,10 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
-   "rank": 125,
+   "rank": 95,
    "name": "AgentGate Badge",
    "symbol": "AGATE",
    "contract": "0x84dc4a6972ae91946f7c852c3bbe7bc09f0f0b0e",
@@ -3148,10 +2399,10 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
-   "rank": 126,
+   "rank": 96,
    "name": "AgentMint Pass",
    "symbol": "AMP",
    "contract": "0xb0ba38b0524d5f17ae2dc13da155815706a64fba",
@@ -3173,10 +2424,10 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
-   "rank": 127,
+   "rank": 97,
    "name": "Meme Agent",
    "symbol": "MEME",
    "contract": "0xaa92e410f6f255db624fe181e8e5fd5a39a0f3ab",
@@ -3198,10 +2449,10 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
-   "rank": 128,
+   "rank": 98,
    "name": "代理者卡",
    "symbol": "ADCHAR",
    "contract": "0x6e8b05c2dd1c625d839f33f60b837d9af25e6044",
@@ -3223,35 +2474,10 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
-   "rank": 129,
-   "name": "Hourglas",
-   "symbol": "HOURGLAS",
-   "contract": "0xc2027f9407ea355eed5845bb5e653aeed671f212",
-   "standard": "ERC-721 (NFT Collection)",
-   "status": "free_live",
-   "score": 100,
-   "mint": {
-    "inputData": "0xa0712d680000000000000000000000000000000000000000000000000000000000000001",
-    "valueWei": "0",
-    "note": "value must stay 0; preview before sending"
-   },
-   "maxSupply": 7777,
-   "firstSeen": "2026-11-08 07:56:19",
-   "checks": {
-    "simulatedFromAgentIdWallet": true,
-    "gateEnforced": true,
-    "upgradeable": false,
-    "owner": null,
-    "sourceVerified": true
-   },
-   "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
-  },
-  {
-   "rank": 130,
+   "rank": 99,
    "name": "Forecast League Card",
    "symbol": "FL",
    "contract": "0x79f55daa8a3cf2eb76ee40e26ff6e244a4cc1ed4",
@@ -3274,10 +2500,10 @@
    },
    "warnings": [],
    "builder": "Forecast League (the desk operator; same checks apply)",
-   "checkedAt": "2026-11-22T05:11:23Z"
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
-   "rank": 131,
+   "rank": 100,
    "name": "YammerjackAgent",
    "symbol": "YMJK",
    "contract": "0x2a71cef7101b8b19c4ab18bed40c3ec5ec87b9b7",
@@ -3299,10 +2525,10 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
-   "rank": 132,
+   "rank": 101,
    "name": "Agent Gold Miner",
    "symbol": "AGM-CARD",
    "contract": "0x6de46f5d65833e551b6d00c8a30665e65e241a2c",
@@ -3324,10 +2550,10 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
-   "rank": 133,
+   "rank": 102,
    "name": "Proof of Habit",
    "symbol": "HABIT",
    "contract": "0x0600af081cf4a79e9dab70d51b78203bb7c26e56",
@@ -3349,35 +2575,10 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
-   "rank": 134,
-   "name": "Shroomlets",
-   "symbol": "SHROOM",
-   "contract": "0xd0624b7ced1b822bca6359302c375d8ef700a7fe",
-   "standard": "ERC-721 (NFT Collection)",
-   "status": "free_live",
-   "score": 100,
-   "mint": {
-    "inputData": "0xa0712d680000000000000000000000000000000000000000000000000000000000000001",
-    "valueWei": "0",
-    "note": "value must stay 0; preview before sending"
-   },
-   "maxSupply": 10000,
-   "firstSeen": "2026-11-03 21:21:41",
-   "checks": {
-    "simulatedFromAgentIdWallet": true,
-    "gateEnforced": true,
-    "upgradeable": false,
-    "owner": null,
-    "sourceVerified": true
-   },
-   "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
-  },
-  {
-   "rank": 135,
+   "rank": 103,
    "name": "SLABBED",
    "symbol": "SLAB",
    "contract": "0x9625391531e31baf61ac9f3061a4da38eb49684a",
@@ -3399,7 +2600,7 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-22T05:11:23Z"
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
    "rank": 308,
@@ -6534,6 +5735,33 @@
    "checkedAt": "2026-11-22T03:49:12Z"
   },
   {
+   "rank": 220,
+   "name": "Halving",
+   "symbol": "HALVE",
+   "contract": "0xfc29876fa700bacb0f925e258f61d0387f73cbb8",
+   "standard": "BEP-20 Token (18 decimals)",
+   "status": "free_live",
+   "score": 90,
+   "mint": {
+    "inputData": "0xa0712d680000000000000000000000000000000000000000000000000000000000000001",
+    "valueWei": "0",
+    "note": "value must stay 0; preview before sending"
+   },
+   "maxSupply": 100000000000,
+   "firstSeen": "2026-11-08 05:48:14",
+   "checks": {
+    "simulatedFromAgentIdWallet": true,
+    "gateEnforced": true,
+    "upgradeable": false,
+    "owner": "0x63e7706708d2a2cf1b176f90a49e7f22f11f9128",
+    "sourceVerified": true
+   },
+   "warnings": [
+    "has an owner with admin powers"
+   ],
+   "checkedAt": "2026-11-22T06:10:47Z"
+  },
+  {
    "rank": 252,
    "name": "Tokenwick",
    "symbol": "TKWK",
@@ -6993,6 +6221,33 @@
    "checkedAt": "2026-11-22T05:11:23Z"
   },
   {
+   "rank": 238,
+   "name": "Nekomori",
+   "symbol": "NEKOMORI",
+   "contract": "0x2ba58050fdffd4848bf8ac284aa1f8059717aa35",
+   "standard": "ERC-721 (NFT Collection)",
+   "status": "free_live",
+   "score": 90,
+   "mint": {
+    "inputData": "0xa0712d680000000000000000000000000000000000000000000000000000000000000001",
+    "valueWei": "0",
+    "note": "value must stay 0; preview before sending"
+   },
+   "maxSupply": 7777,
+   "firstSeen": "2026-11-12 21:31:09",
+   "checks": {
+    "simulatedFromAgentIdWallet": true,
+    "gateEnforced": true,
+    "upgradeable": false,
+    "owner": "0x53043412c4f2436f68e56bb9638ebebb099fb3c1",
+    "sourceVerified": true
+   },
+   "warnings": [
+    "has an owner with admin powers"
+   ],
+   "checkedAt": "2026-11-22T06:10:47Z"
+  },
+  {
    "rank": 391,
    "name": "Oraclix",
    "symbol": "ORLX",
@@ -7018,6 +6273,33 @@
     "has an owner with admin powers"
    ],
    "checkedAt": "2026-11-22T03:49:12Z"
+  },
+  {
+   "rank": 240,
+   "name": "Neonjack",
+   "symbol": "NEONJACK",
+   "contract": "0x0e2c4b5c3709c2d80a8f515ef2b6ec8fd9537723",
+   "standard": "ERC-721 (NFT Collection)",
+   "status": "free_live",
+   "score": 90,
+   "mint": {
+    "inputData": "0xa0712d680000000000000000000000000000000000000000000000000000000000000001",
+    "valueWei": "0",
+    "note": "value must stay 0; preview before sending"
+   },
+   "maxSupply": 1193,
+   "firstSeen": "2026-11-04 02:47:20",
+   "checks": {
+    "simulatedFromAgentIdWallet": true,
+    "gateEnforced": true,
+    "upgradeable": false,
+    "owner": "0x190f1f0caff480e207f42586f9fbe4c691a27066",
+    "sourceVerified": true
+   },
+   "warnings": [
+    "has an owner with admin powers"
+   ],
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
    "rank": 392,
@@ -7587,6 +6869,33 @@
    "checkedAt": "2026-11-22T05:11:23Z"
   },
   {
+   "rank": 262,
+   "name": "Burgerly",
+   "symbol": "BURGERLY",
+   "contract": "0x27e956cf52222c9bb8eb2f46f320730b2005b7b2",
+   "standard": "ERC-721 (NFT Collection)",
+   "status": "free_live",
+   "score": 90,
+   "mint": {
+    "inputData": "0xa0712d680000000000000000000000000000000000000000000000000000000000000001",
+    "valueWei": "0",
+    "note": "value must stay 0; preview before sending"
+   },
+   "maxSupply": 7777,
+   "firstSeen": "2026-11-04 06:31:25",
+   "checks": {
+    "simulatedFromAgentIdWallet": true,
+    "gateEnforced": true,
+    "upgradeable": false,
+    "owner": "0x53043412c4f2436f68e56bb9638ebebb099fb3c1",
+    "sourceVerified": true
+   },
+   "warnings": [
+    "has an owner with admin powers"
+   ],
+   "checkedAt": "2026-11-22T06:10:47Z"
+  },
+  {
    "rank": 405,
    "name": "LUCKY777",
    "symbol": "LUCKY777",
@@ -8100,6 +7409,33 @@
    "checkedAt": "2026-11-22T03:49:12Z"
   },
   {
+   "rank": 282,
+   "name": "Swaptide",
+   "symbol": "SWAPTIDE",
+   "contract": "0x8f108fd15b80814584f79862f209f306b2e888fc",
+   "standard": "ERC-721 (NFT Collection)",
+   "status": "free_live",
+   "score": 90,
+   "mint": {
+    "inputData": "0xa0712d680000000000000000000000000000000000000000000000000000000000000001",
+    "valueWei": "0",
+    "note": "value must stay 0; preview before sending"
+   },
+   "maxSupply": 5555,
+   "firstSeen": "2026-11-13 00:37:42",
+   "checks": {
+    "simulatedFromAgentIdWallet": true,
+    "gateEnforced": true,
+    "upgradeable": false,
+    "owner": "0xa054275580c6d1c9077543907ac5798f2494ecce",
+    "sourceVerified": true
+   },
+   "warnings": [
+    "has an owner with admin powers"
+   ],
+   "checkedAt": "2026-11-22T06:10:47Z"
+  },
+  {
    "rank": 310,
    "name": "Agents GhostPunks",
    "symbol": "GPUNK",
@@ -8422,6 +7758,33 @@
     "has an owner with admin powers"
    ],
    "checkedAt": "2026-11-22T03:49:12Z"
+  },
+  {
+   "rank": 295,
+   "name": "凤凰 Agents",
+   "symbol": "PHOENIX",
+   "contract": "0x92c7d62d737e7d53a6032b5c50126f388532a306",
+   "standard": "ERC-721 (NFT Collection)",
+   "status": "free_live",
+   "score": 90,
+   "mint": {
+    "inputData": "0xa0712d680000000000000000000000000000000000000000000000000000000000000001",
+    "valueWei": "0",
+    "note": "value must stay 0; preview before sending"
+   },
+   "maxSupply": 888,
+   "firstSeen": "2026-11-14 22:51:26",
+   "checks": {
+    "simulatedFromAgentIdWallet": true,
+    "gateEnforced": true,
+    "upgradeable": false,
+    "owner": "0x23f5cdd233925ea83369a495b95f825ed710fbaa",
+    "sourceVerified": true
+   },
+   "warnings": [
+    "has an owner with admin powers"
+   ],
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
    "rank": 424,
@@ -8883,6 +8246,33 @@
    "checkedAt": "2026-11-22T03:49:12Z"
   },
   {
+   "rank": 313,
+   "name": "Elybirds",
+   "symbol": "ELYB",
+   "contract": "0x43621df3f0a215f507ebbe5ecf530714788bf29f",
+   "standard": "ERC-721 (NFT Collection)",
+   "status": "free_live",
+   "score": 90,
+   "mint": {
+    "inputData": "0xa0712d680000000000000000000000000000000000000000000000000000000000000001",
+    "valueWei": "0",
+    "note": "value must stay 0; preview before sending"
+   },
+   "maxSupply": 7777,
+   "firstSeen": "2026-11-13 02:02:06",
+   "checks": {
+    "simulatedFromAgentIdWallet": true,
+    "gateEnforced": true,
+    "upgradeable": false,
+    "owner": "0x07dd0d37dc040869f40cc7950b6a863339afb06c",
+    "sourceVerified": true
+   },
+   "warnings": [
+    "has an owner with admin powers"
+   ],
+   "checkedAt": "2026-11-22T06:10:47Z"
+  },
+  {
    "rank": 339,
    "name": "Candlewick",
    "symbol": "CANDLEWICK",
@@ -8962,6 +8352,33 @@
     "has an owner with admin powers"
    ],
    "checkedAt": "2026-11-22T03:49:12Z"
+  },
+  {
+   "rank": 317,
+   "name": "Embedrune",
+   "symbol": "EMRN",
+   "contract": "0x2925cf06b4e657f9d5301478b1be2e62cf863d11",
+   "standard": "ERC-721 (NFT Collection)",
+   "status": "free_live",
+   "score": 90,
+   "mint": {
+    "inputData": "0xa0712d680000000000000000000000000000000000000000000000000000000000000001",
+    "valueWei": "0",
+    "note": "value must stay 0; preview before sending"
+   },
+   "maxSupply": 1769,
+   "firstSeen": "2026-11-03 07:45:37",
+   "checks": {
+    "simulatedFromAgentIdWallet": true,
+    "gateEnforced": true,
+    "upgradeable": false,
+    "owner": "0x310cea29c4827efc82b1d7ff4c70b7332d236917",
+    "sourceVerified": true
+   },
+   "warnings": [
+    "has an owner with admin powers"
+   ],
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
    "rank": 437,
@@ -9045,6 +8462,33 @@
    "checkedAt": "2026-11-22T05:11:23Z"
   },
   {
+   "rank": 321,
+   "name": "Coralume",
+   "symbol": "CORALUME",
+   "contract": "0xed775ad0e6bc7214827cc8a4f300f34df7450d8c",
+   "standard": "ERC-721 (NFT Collection)",
+   "status": "free_live",
+   "score": 90,
+   "mint": {
+    "inputData": "0xa0712d680000000000000000000000000000000000000000000000000000000000000001",
+    "valueWei": "0",
+    "note": "value must stay 0; preview before sending"
+   },
+   "maxSupply": 7777,
+   "firstSeen": "2026-11-12 21:30:00",
+   "checks": {
+    "simulatedFromAgentIdWallet": true,
+    "gateEnforced": true,
+    "upgradeable": false,
+    "owner": "0x53043412c4f2436f68e56bb9638ebebb099fb3c1",
+    "sourceVerified": true
+   },
+   "warnings": [
+    "has an owner with admin powers"
+   ],
+   "checkedAt": "2026-11-22T06:10:47Z"
+  },
+  {
    "rank": 345,
    "name": "DroidDynasty",
    "symbol": "DROID",
@@ -9124,6 +8568,33 @@
     "has an owner with admin powers"
    ],
    "checkedAt": "2026-11-22T05:11:23Z"
+  },
+  {
+   "rank": 325,
+   "name": "Bonsaic",
+   "symbol": "BONSAIC",
+   "contract": "0x93045c8c87a5caa7b8a014c8b01054b3d64df566",
+   "standard": "ERC-721 (NFT Collection)",
+   "status": "free_live",
+   "score": 90,
+   "mint": {
+    "inputData": "0xa0712d680000000000000000000000000000000000000000000000000000000000000001",
+    "valueWei": "0",
+    "note": "value must stay 0; preview before sending"
+   },
+   "maxSupply": 7777,
+   "firstSeen": "2026-11-12 21:01:07",
+   "checks": {
+    "simulatedFromAgentIdWallet": true,
+    "gateEnforced": true,
+    "upgradeable": false,
+    "owner": "0x53043412c4f2436f68e56bb9638ebebb099fb3c1",
+    "sourceVerified": true
+   },
+   "warnings": [
+    "has an owner with admin powers"
+   ],
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
    "rank": 440,
@@ -9396,6 +8867,33 @@
    "checkedAt": "2026-11-22T05:11:23Z"
   },
   {
+   "rank": 336,
+   "name": "Ghoulies",
+   "symbol": "GHLY",
+   "contract": "0x86641a38d24dd42eb7d639bd1fc5bf7f66c19bf4",
+   "standard": "ERC-721 (NFT Collection)",
+   "status": "free_live",
+   "score": 90,
+   "mint": {
+    "inputData": "0xa0712d680000000000000000000000000000000000000000000000000000000000000001",
+    "valueWei": "0",
+    "note": "value must stay 0; preview before sending"
+   },
+   "maxSupply": 1545,
+   "firstSeen": "2026-11-20 23:16:18",
+   "checks": {
+    "simulatedFromAgentIdWallet": true,
+    "gateEnforced": true,
+    "upgradeable": false,
+    "owner": "0x0fc68e21c3b9d1803b746a0031cbcf4e429d86bc",
+    "sourceVerified": true
+   },
+   "warnings": [
+    "has an owner with admin powers"
+   ],
+   "checkedAt": "2026-11-22T06:10:47Z"
+  },
+  {
    "rank": 358,
    "name": "Zap Zebra",
    "symbol": "ZZEB",
@@ -9583,6 +9081,33 @@
     "has an owner with admin powers"
    ],
    "checkedAt": "2026-11-22T05:11:23Z"
+  },
+  {
+   "rank": 344,
+   "name": "Eco",
+   "symbol": "ECO",
+   "contract": "0xd31b168f7b6f3db39bed89433124595aaa91cff3",
+   "standard": "ERC-721 (NFT Collection)",
+   "status": "free_live",
+   "score": 90,
+   "mint": {
+    "inputData": "0x1249c58b",
+    "valueWei": "0",
+    "note": "value must stay 0; preview before sending"
+   },
+   "maxSupply": 5555,
+   "firstSeen": "2026-11-11 22:55:00",
+   "checks": {
+    "simulatedFromAgentIdWallet": true,
+    "gateEnforced": true,
+    "upgradeable": false,
+    "owner": "0x7f13f050e6fb278d01537b12379b01e8dbadf5f2",
+    "sourceVerified": true
+   },
+   "warnings": [
+    "has an owner with admin powers"
+   ],
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
    "rank": 449,
@@ -9801,6 +9326,33 @@
    "checkedAt": "2026-11-22T03:49:12Z"
   },
   {
+   "rank": 353,
+   "name": "Geode",
+   "symbol": "GEODE",
+   "contract": "0x8ab5ddc1c73e353dc81bfcfaa368c5bd32ba9698",
+   "standard": "ERC-721 (NFT Collection)",
+   "status": "free_live",
+   "score": 90,
+   "mint": {
+    "inputData": "0xa0712d680000000000000000000000000000000000000000000000000000000000000001",
+    "valueWei": "0",
+    "note": "value must stay 0; preview before sending"
+   },
+   "maxSupply": 50000,
+   "firstSeen": "2026-11-13 06:19:42",
+   "checks": {
+    "simulatedFromAgentIdWallet": true,
+    "gateEnforced": true,
+    "upgradeable": false,
+    "owner": "0x7bd068b471e60c24f6f544f77e500a4d8d4f4ee9",
+    "sourceVerified": true
+   },
+   "warnings": [
+    "has an owner with admin powers"
+   ],
+   "checkedAt": "2026-11-22T06:10:47Z"
+  },
+  {
    "rank": 373,
    "name": "Quantobot",
    "symbol": "QUANTOBOT",
@@ -9963,6 +9515,33 @@
    "checkedAt": "2026-11-22T03:49:12Z"
   },
   {
+   "rank": 360,
+   "name": "Mothveil",
+   "symbol": "MOTHV",
+   "contract": "0x5eefde735917a8a53f6a96fb70122398c1d617a9",
+   "standard": "ERC-721 (NFT Collection)",
+   "status": "free_live",
+   "score": 90,
+   "mint": {
+    "inputData": "0xa0712d680000000000000000000000000000000000000000000000000000000000000001",
+    "valueWei": "0",
+    "note": "value must stay 0; preview before sending"
+   },
+   "maxSupply": 5409,
+   "firstSeen": "2026-11-03 10:38:39",
+   "checks": {
+    "simulatedFromAgentIdWallet": true,
+    "gateEnforced": true,
+    "upgradeable": false,
+    "owner": "0xd76d5918fb337667b22fe37ae2055b5542cf8dc9",
+    "sourceVerified": true
+   },
+   "warnings": [
+    "has an owner with admin powers"
+   ],
+   "checkedAt": "2026-11-22T06:10:47Z"
+  },
+  {
    "rank": 379,
    "name": "Draco Coin",
    "symbol": "DRACO",
@@ -10015,6 +9594,60 @@
     "has an owner with admin powers"
    ],
    "checkedAt": "2026-11-22T03:49:12Z"
+  },
+  {
+   "rank": 363,
+   "name": "Pumpkinagent",
+   "symbol": "PUMPKINAGENT",
+   "contract": "0xc9bf67564043573a06685205c4c5296d7d37bc74",
+   "standard": "ERC-721 (NFT Collection)",
+   "status": "free_live",
+   "score": 90,
+   "mint": {
+    "inputData": "0xa0712d680000000000000000000000000000000000000000000000000000000000000001",
+    "valueWei": "0",
+    "note": "value must stay 0; preview before sending"
+   },
+   "maxSupply": 2222,
+   "firstSeen": "2026-11-03 12:33:57",
+   "checks": {
+    "simulatedFromAgentIdWallet": true,
+    "gateEnforced": true,
+    "upgradeable": false,
+    "owner": "0x6f244724f61d8c7fc9af40dd37ff7c82bf2b8f5d",
+    "sourceVerified": true
+   },
+   "warnings": [
+    "has an owner with admin powers"
+   ],
+   "checkedAt": "2026-11-22T06:10:47Z"
+  },
+  {
+   "rank": 364,
+   "name": "Tesla Pass",
+   "symbol": "TP",
+   "contract": "0x737c93bdda71716d77eb1599406d0067bbdb4a55",
+   "standard": "ERC-721 (NFT Collection)",
+   "status": "free_live",
+   "score": 90,
+   "mint": {
+    "inputData": "0x1249c58b0000000000000000000000000000000000000000000000000000000000000001",
+    "valueWei": "0",
+    "note": "value must stay 0; preview before sending"
+   },
+   "maxSupply": 777,
+   "firstSeen": "2026-11-07 10:03:46",
+   "checks": {
+    "simulatedFromAgentIdWallet": true,
+    "gateEnforced": true,
+    "upgradeable": false,
+    "owner": "0x67230d320f714ac82c6ec253d238cfa309fb1b85",
+    "sourceVerified": true
+   },
+   "warnings": [
+    "has an owner with admin powers"
+   ],
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
    "rank": 458,
@@ -10233,6 +9866,33 @@
    "checkedAt": "2026-11-22T03:49:12Z"
   },
   {
+   "rank": 373,
+   "name": "LottoBots",
+   "symbol": "LBOT",
+   "contract": "0xc779c3e4c8b87b4ecac1b2308e4643e9021373fb",
+   "standard": "ERC-721 (NFT Collection)",
+   "status": "free_live",
+   "score": 90,
+   "mint": {
+    "inputData": "0x8ab53447",
+    "valueWei": "0",
+    "note": "value must stay 0; preview before sending"
+   },
+   "maxSupply": 5000,
+   "firstSeen": "2026-11-18 12:15:43",
+   "checks": {
+    "simulatedFromAgentIdWallet": true,
+    "gateEnforced": true,
+    "upgradeable": false,
+    "owner": "0x6d89223bff2de20ed343e13dfd9b9c439154ff91",
+    "sourceVerified": true
+   },
+   "warnings": [
+    "has an owner with admin powers"
+   ],
+   "checkedAt": "2026-11-22T06:10:47Z"
+  },
+  {
    "rank": 463,
    "name": "Hydrabit",
    "symbol": "HYDRABIT",
@@ -10368,6 +10028,33 @@
    "checkedAt": "2026-11-22T03:49:12Z"
   },
   {
+   "rank": 379,
+   "name": "Popsiq",
+   "symbol": "POPSIQ",
+   "contract": "0x2847981b53e55902f0a849767ae8a6803aab2cd5",
+   "standard": "ERC-721 (NFT Collection)",
+   "status": "free_live",
+   "score": 90,
+   "mint": {
+    "inputData": "0xa0712d680000000000000000000000000000000000000000000000000000000000000001",
+    "valueWei": "0",
+    "note": "value must stay 0; preview before sending"
+   },
+   "maxSupply": 7777,
+   "firstSeen": "2026-11-12 23:28:04",
+   "checks": {
+    "simulatedFromAgentIdWallet": true,
+    "gateEnforced": true,
+    "upgradeable": false,
+    "owner": "0x53043412c4f2436f68e56bb9638ebebb099fb3c1",
+    "sourceVerified": true
+   },
+   "warnings": [
+    "has an owner with admin powers"
+   ],
+   "checkedAt": "2026-11-22T06:10:47Z"
+  },
+  {
    "rank": 468,
    "name": "Butterfli",
    "symbol": "BUTTERFLI",
@@ -10476,6 +10163,33 @@
    "checkedAt": "2026-11-22T05:11:23Z"
   },
   {
+   "rank": 384,
+   "name": "Agent Creatures",
+   "symbol": "ACRE",
+   "contract": "0xf7245511a890a42f911c776824c665e2da3cedb3",
+   "standard": "ERC-721 (NFT Collection)",
+   "status": "free_live",
+   "score": 90,
+   "mint": {
+    "inputData": "0xa0712d680000000000000000000000000000000000000000000000000000000000000001",
+    "valueWei": "0",
+    "note": "value must stay 0; preview before sending"
+   },
+   "maxSupply": 5555,
+   "firstSeen": "2026-11-03 23:15:58",
+   "checks": {
+    "simulatedFromAgentIdWallet": true,
+    "gateEnforced": true,
+    "upgradeable": false,
+    "owner": "0x77a0c1114f7e2579afbfd14b36dccf2a347bea19",
+    "sourceVerified": true
+   },
+   "warnings": [
+    "has an owner with admin powers"
+   ],
+   "checkedAt": "2026-11-22T06:10:47Z"
+  },
+  {
    "rank": 398,
    "name": "MARS PLOTS",
    "symbol": "PLOT",
@@ -10557,6 +10271,60 @@
    "checkedAt": "2026-11-22T05:11:23Z"
   },
   {
+   "rank": 388,
+   "name": "Gridfarm",
+   "symbol": "GRIDFM",
+   "contract": "0x66b5a8153f8c17be4fa770e8b38ff5626eb4b9dc",
+   "standard": "ERC-721 (NFT Collection)",
+   "status": "free_live",
+   "score": 90,
+   "mint": {
+    "inputData": "0xa0712d680000000000000000000000000000000000000000000000000000000000000001",
+    "valueWei": "0",
+    "note": "value must stay 0; preview before sending"
+   },
+   "maxSupply": 3333,
+   "firstSeen": "2026-11-03 15:05:43",
+   "checks": {
+    "simulatedFromAgentIdWallet": true,
+    "gateEnforced": true,
+    "upgradeable": false,
+    "owner": "0xd76d5918fb337667b22fe37ae2055b5542cf8dc9",
+    "sourceVerified": true
+   },
+   "warnings": [
+    "has an owner with admin powers"
+   ],
+   "checkedAt": "2026-11-22T06:10:47Z"
+  },
+  {
+   "rank": 389,
+   "name": "Shenlong",
+   "symbol": "SHENLONG",
+   "contract": "0xd823a14507af2507a670fac4ed08316db7dca553",
+   "standard": "ERC-721 (NFT Collection)",
+   "status": "free_live",
+   "score": 90,
+   "mint": {
+    "inputData": "0x1249c58b",
+    "valueWei": "0",
+    "note": "value must stay 0; preview before sending"
+   },
+   "maxSupply": 20000,
+   "firstSeen": "2026-11-03 23:24:14",
+   "checks": {
+    "simulatedFromAgentIdWallet": true,
+    "gateEnforced": true,
+    "upgradeable": false,
+    "owner": "0x66088f823d6001cf96cd5e11f979e7855db3b406",
+    "sourceVerified": true
+   },
+   "warnings": [
+    "has an owner with admin powers"
+   ],
+   "checkedAt": "2026-11-22T06:10:47Z"
+  },
+  {
    "rank": 471,
    "name": "Dunora",
    "symbol": "DUNORA",
@@ -10609,6 +10377,33 @@
     "has an owner with admin powers"
    ],
    "checkedAt": "2026-11-22T03:49:12Z"
+  },
+  {
+   "rank": 392,
+   "name": "Orchestrator",
+   "symbol": "ORCH",
+   "contract": "0x4f99a78a3006451f66000e10b2cd9131c5151b69",
+   "standard": "ERC-721 (NFT Collection)",
+   "status": "free_live",
+   "score": 90,
+   "mint": {
+    "inputData": "0xa0712d680000000000000000000000000000000000000000000000000000000000000001",
+    "valueWei": "0",
+    "note": "value must stay 0; preview before sending"
+   },
+   "maxSupply": 1540,
+   "firstSeen": "2026-11-17 09:56:06",
+   "checks": {
+    "simulatedFromAgentIdWallet": true,
+    "gateEnforced": true,
+    "upgradeable": false,
+    "owner": "0x8a3b31dd69c6ab76b2dda2711b32eaad8646e173",
+    "sourceVerified": true
+   },
+   "warnings": [
+    "has an owner with admin powers"
+   ],
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
    "rank": 473,
@@ -10771,6 +10566,33 @@
     "has an owner with admin powers"
    ],
    "checkedAt": "2026-11-22T03:49:12Z"
+  },
+  {
+   "rank": 399,
+   "name": "Plutofarm",
+   "symbol": "PLUTOFARM",
+   "contract": "0xdb101245a380c54e9ce5508359b1350f5fc31289",
+   "standard": "ERC-721 (NFT Collection)",
+   "status": "free_live",
+   "score": 90,
+   "mint": {
+    "inputData": "0xa0712d680000000000000000000000000000000000000000000000000000000000000001",
+    "valueWei": "0",
+    "note": "value must stay 0; preview before sending"
+   },
+   "maxSupply": 1000,
+   "firstSeen": "2026-11-03 16:58:45",
+   "checks": {
+    "simulatedFromAgentIdWallet": true,
+    "gateEnforced": true,
+    "upgradeable": false,
+    "owner": "0x6f244724f61d8c7fc9af40dd37ff7c82bf2b8f5d",
+    "sourceVerified": true
+   },
+   "warnings": [
+    "has an owner with admin powers"
+   ],
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
    "rank": 477,
@@ -11122,6 +10944,33 @@
     "has an owner with admin powers"
    ],
    "checkedAt": "2026-11-22T03:49:12Z"
+  },
+  {
+   "rank": 413,
+   "name": "Hackagent",
+   "symbol": "HACKAG",
+   "contract": "0xc13f995d7e2ab6b4267dec8eeb2761464056d07b",
+   "standard": "ERC-721 (NFT Collection)",
+   "status": "free_live",
+   "score": 90,
+   "mint": {
+    "inputData": "0xa0712d680000000000000000000000000000000000000000000000000000000000000001",
+    "valueWei": "0",
+    "note": "value must stay 0; preview before sending"
+   },
+   "maxSupply": 5555,
+   "firstSeen": "2026-11-03 09:24:37",
+   "checks": {
+    "simulatedFromAgentIdWallet": true,
+    "gateEnforced": true,
+    "upgradeable": false,
+    "owner": "0xd76d5918fb337667b22fe37ae2055b5542cf8dc9",
+    "sourceVerified": true
+   },
+   "warnings": [
+    "has an owner with admin powers"
+   ],
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
    "rank": 488,
@@ -11610,6 +11459,33 @@
    "checkedAt": "2026-11-22T05:11:23Z"
   },
   {
+   "rank": 432,
+   "name": "Apivora",
+   "symbol": "APVR",
+   "contract": "0xb385e16a454f76cd11cd2797300cdebe5d30fe24",
+   "standard": "ERC-721 (NFT Collection)",
+   "status": "free_live",
+   "score": 90,
+   "mint": {
+    "inputData": "0xa0712d680000000000000000000000000000000000000000000000000000000000000001",
+    "valueWei": "0",
+    "note": "value must stay 0; preview before sending"
+   },
+   "maxSupply": 1899,
+   "firstSeen": "2026-11-03 08:02:22",
+   "checks": {
+    "simulatedFromAgentIdWallet": true,
+    "gateEnforced": true,
+    "upgradeable": false,
+    "owner": "0xfd6f24bc75d0f142134099654949ab789332f43a",
+    "sourceVerified": true
+   },
+   "warnings": [
+    "has an owner with admin powers"
+   ],
+   "checkedAt": "2026-11-22T06:10:47Z"
+  },
+  {
    "rank": 498,
    "name": "Roninagent",
    "symbol": "RONAG",
@@ -11689,6 +11565,33 @@
     "has an owner with admin powers"
    ],
    "checkedAt": "2026-11-22T03:49:12Z"
+  },
+  {
+   "rank": 436,
+   "name": "Contexa",
+   "symbol": "CNTX",
+   "contract": "0xd0cec431bfb88dff8a3b940f8a4f9c81c68bdbcb",
+   "standard": "ERC-721 (NFT Collection)",
+   "status": "free_live",
+   "score": 90,
+   "mint": {
+    "inputData": "0xa0712d680000000000000000000000000000000000000000000000000000000000000001",
+    "valueWei": "0",
+    "note": "value must stay 0; preview before sending"
+   },
+   "maxSupply": 1798,
+   "firstSeen": "2026-11-03 07:42:16",
+   "checks": {
+    "simulatedFromAgentIdWallet": true,
+    "gateEnforced": true,
+    "upgradeable": false,
+    "owner": "0x1e1e3f44acc29c13a5b2569a4dc93f18f2fc65d4",
+    "sourceVerified": true
+   },
+   "warnings": [
+    "has an owner with admin powers"
+   ],
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
    "rank": 500,
@@ -11826,6 +11729,33 @@
    "checkedAt": "2026-11-22T03:49:12Z"
   },
   {
+   "rank": 442,
+   "name": "Jovibub",
+   "symbol": "JOVIBUB",
+   "contract": "0x9e79f74987399bc7cda9c9a4df4176d19d95eece",
+   "standard": "ERC-721 (NFT Collection)",
+   "status": "free_live",
+   "score": 90,
+   "mint": {
+    "inputData": "0xa0712d680000000000000000000000000000000000000000000000000000000000000001",
+    "valueWei": "0",
+    "note": "value must stay 0; preview before sending"
+   },
+   "maxSupply": 972,
+   "firstSeen": "2026-11-07 19:40:10",
+   "checks": {
+    "simulatedFromAgentIdWallet": true,
+    "gateEnforced": true,
+    "upgradeable": false,
+    "owner": "0x190f1f0caff480e207f42586f9fbe4c691a27066",
+    "sourceVerified": true
+   },
+   "warnings": [
+    "has an owner with admin powers"
+   ],
+   "checkedAt": "2026-11-22T06:10:47Z"
+  },
+  {
    "rank": 448,
    "name": "Predictagent",
    "symbol": "PRDICT",
@@ -11905,6 +11835,33 @@
     "has an owner with admin powers"
    ],
    "checkedAt": "2026-11-22T03:49:12Z"
+  },
+  {
+   "rank": 446,
+   "name": "Crystalis",
+   "symbol": "CRYSTALIS",
+   "contract": "0xd7fd1e13cbb953b8101e6f844518e57969f6cd64",
+   "standard": "ERC-721 (NFT Collection)",
+   "status": "free_live",
+   "score": 90,
+   "mint": {
+    "inputData": "0xa0712d680000000000000000000000000000000000000000000000000000000000000001",
+    "valueWei": "0",
+    "note": "value must stay 0; preview before sending"
+   },
+   "maxSupply": 7777,
+   "firstSeen": "2026-11-12 21:30:30",
+   "checks": {
+    "simulatedFromAgentIdWallet": true,
+    "gateEnforced": true,
+    "upgradeable": false,
+    "owner": "0x53043412c4f2436f68e56bb9638ebebb099fb3c1",
+    "sourceVerified": true
+   },
+   "warnings": [
+    "has an owner with admin powers"
+   ],
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
    "rank": 451,
@@ -12987,6 +12944,60 @@
    "checkedAt": "2026-11-22T03:49:12Z"
   },
   {
+   "rank": 487,
+   "name": "Agent",
+   "symbol": "AGENT",
+   "contract": "0xa2643b889eeb232708a644f15f70f951773ddef9",
+   "standard": "BEP-20 Token (18 decimals)",
+   "status": "free_live",
+   "score": 90,
+   "mint": {
+    "inputData": "0x1249c58b",
+    "valueWei": "0",
+    "note": "value must stay 0; preview before sending"
+   },
+   "maxSupply": 1000000000,
+   "firstSeen": "2026-11-03 11:56:32",
+   "checks": {
+    "simulatedFromAgentIdWallet": true,
+    "gateEnforced": true,
+    "upgradeable": false,
+    "owner": "0x40dd3e2ad6fa76d7d3f3c623b97e89e3cfa8d066",
+    "sourceVerified": true
+   },
+   "warnings": [
+    "has an owner with admin powers"
+   ],
+   "checkedAt": "2026-11-22T06:10:47Z"
+  },
+  {
+   "rank": 488,
+   "name": "Funcvix",
+   "symbol": "FNVX",
+   "contract": "0xbfbde67707d00a759e55ee158abfcb3b33f375fd",
+   "standard": "ERC-721 (NFT Collection)",
+   "status": "free_live",
+   "score": 90,
+   "mint": {
+    "inputData": "0xa0712d680000000000000000000000000000000000000000000000000000000000000001",
+    "valueWei": "0",
+    "note": "value must stay 0; preview before sending"
+   },
+   "maxSupply": 1856,
+   "firstSeen": "2026-11-03 07:38:54",
+   "checks": {
+    "simulatedFromAgentIdWallet": true,
+    "gateEnforced": true,
+    "upgradeable": false,
+    "owner": "0xee8d9edfeecfc175a76387a25581c2dc9f5f85f5",
+    "sourceVerified": true
+   },
+   "warnings": [
+    "has an owner with admin powers"
+   ],
+   "checkedAt": "2026-11-22T06:10:47Z"
+  },
+  {
    "rank": 491,
    "name": "Lambdwyn",
    "symbol": "LMDW",
@@ -13120,6 +13131,33 @@
     "has an owner with admin powers"
    ],
    "checkedAt": "2026-11-22T05:11:23Z"
+  },
+  {
+   "rank": 494,
+   "name": "SingularitySquad",
+   "symbol": "SNGL",
+   "contract": "0x2125c400b33634d784ccaad9ff65c15abcddc4d4",
+   "standard": "ERC-721 (NFT Collection)",
+   "status": "free_live",
+   "score": 90,
+   "mint": {
+    "inputData": "0xa0712d680000000000000000000000000000000000000000000000000000000000000001",
+    "valueWei": "0",
+    "note": "value must stay 0; preview before sending"
+   },
+   "maxSupply": 1735,
+   "firstSeen": "2026-11-06 22:49:29",
+   "checks": {
+    "simulatedFromAgentIdWallet": true,
+    "gateEnforced": true,
+    "upgradeable": false,
+    "owner": "0x13ccd87700e30cb49949e378e5d4eb9083afe183",
+    "sourceVerified": true
+   },
+   "warnings": [
+    "has an owner with admin powers"
+   ],
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
    "rank": 496,
@@ -13527,6 +13565,33 @@
    "checkedAt": "2026-11-22T03:49:12Z"
   },
   {
+   "rank": 510,
+   "name": "Hourglas",
+   "symbol": "HOURGLAS",
+   "contract": "0xc2027f9407ea355eed5845bb5e653aeed671f212",
+   "standard": "ERC-721 (NFT Collection)",
+   "status": "free_live",
+   "score": 90,
+   "mint": {
+    "inputData": "0xa0712d680000000000000000000000000000000000000000000000000000000000000001",
+    "valueWei": "0",
+    "note": "value must stay 0; preview before sending"
+   },
+   "maxSupply": 7777,
+   "firstSeen": "2026-11-08 07:56:19",
+   "checks": {
+    "simulatedFromAgentIdWallet": true,
+    "gateEnforced": true,
+    "upgradeable": false,
+    "owner": "0x53043412c4f2436f68e56bb9638ebebb099fb3c1",
+    "sourceVerified": true
+   },
+   "warnings": [
+    "has an owner with admin powers"
+   ],
+   "checkedAt": "2026-11-22T06:10:47Z"
+  },
+  {
    "rank": 511,
    "name": "Stitchvolt",
    "symbol": "STITCH",
@@ -13822,6 +13887,33 @@
     "has an owner with admin powers"
    ],
    "checkedAt": "2026-11-22T05:11:23Z"
+  },
+  {
+   "rank": 522,
+   "name": "Shroomlets",
+   "symbol": "SHROOM",
+   "contract": "0xd0624b7ced1b822bca6359302c375d8ef700a7fe",
+   "standard": "ERC-721 (NFT Collection)",
+   "status": "free_live",
+   "score": 90,
+   "mint": {
+    "inputData": "0xa0712d680000000000000000000000000000000000000000000000000000000000000001",
+    "valueWei": "0",
+    "note": "value must stay 0; preview before sending"
+   },
+   "maxSupply": 10000,
+   "firstSeen": "2026-11-03 21:21:41",
+   "checks": {
+    "simulatedFromAgentIdWallet": true,
+    "gateEnforced": true,
+    "upgradeable": false,
+    "owner": "0x9f1e4d411477778f700868b8f8a2180404636fd4",
+    "sourceVerified": true
+   },
+   "warnings": [
+    "has an owner with admin powers"
+   ],
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
    "rank": 522,
@@ -105830,6 +105922,35 @@
    "checkedAt": "2026-11-22T03:49:12Z"
   },
   {
+   "rank": 3815,
+   "name": "AGENTMINT",
+   "symbol": "AGENTMINT",
+   "contract": "0x701dca18c66cc6ecaf83fcb3a3d7f758a0fb10e2",
+   "standard": "Fair-Mint Contract (Dispenses $AGENTMINT Token)",
+   "status": "paid",
+   "score": 35,
+   "mint": {
+    "inputData": "0x836a10400000000000000000000000000000000000000000000000000000000000000001000000000000000000000000a3fbe3664db8478c094dd36b2bb306d72cbcb37a000000000000000000000000000000000000000000000000000708ccaca7c000",
+    "valueWei": "1800000000000000",
+    "note": "value must stay 0; preview before sending"
+   },
+   "maxSupply": null,
+   "firstSeen": "2026-11-22 05:32:34",
+   "checks": {
+    "simulatedFromAgentIdWallet": false,
+    "gateEnforced": true,
+    "upgradeable": false,
+    "owner": null,
+    "sourceVerified": false
+   },
+   "warnings": [
+    "needs 0.0018 BNB",
+    "simulation from an Agent ID wallet reverts: err: insufficient funds for gas * price + value: address 0xfE6b354cAdF60b03fddB5",
+    "source not verified on Sourcify"
+   ],
+   "checkedAt": "2026-11-22T06:10:47Z"
+  },
+  {
    "rank": 3833,
    "name": "V84",
    "symbol": "V94",
@@ -122758,7 +122879,7 @@
    "checkedAt": "2026-11-22T03:49:12Z"
   },
   {
-   "rank": 4407,
+   "rank": 4409,
    "name": "Forecast League Finals Pass",
    "symbol": "FL",
    "contract": "0x9df6ba1868d2c149fda5fe67491f67c07c31e6b5",
@@ -122783,7 +122904,7 @@
     "simulation from an Agent ID wallet reverts: custom error 0xe6dd1a31"
    ],
    "builder": "Forecast League (the desk operator; same checks apply)",
-   "checkedAt": "2026-11-22T05:11:23Z"
+   "checkedAt": "2026-11-22T06:10:47Z"
   },
   {
    "rank": 4427,
@@ -123378,34 +123499,6 @@
     "simulation from an Agent ID wallet reverts: wrong value"
    ],
    "checkedAt": "2026-11-22T03:49:12Z"
-  },
-  {
-   "rank": 4430,
-   "name": "Forecast League Badge",
-   "symbol": "FL",
-   "contract": "0xf706aeb7e1b6a44139205df3043bf68ccf386918",
-   "standard": "ERC-721 (soulbound)",
-   "status": "closed_or_failing",
-   "score": 50,
-   "mint": {
-    "inputData": "0x4e71d92d",
-    "valueWei": "0",
-    "note": "value must stay 0; preview before sending"
-   },
-   "maxSupply": null,
-   "firstSeen": "2026-11-20 08:38:48",
-   "checks": {
-    "simulatedFromAgentIdWallet": false,
-    "gateEnforced": true,
-    "upgradeable": false,
-    "owner": null,
-    "sourceVerified": true
-   },
-   "warnings": [
-    "simulation from an Agent ID wallet reverts: custom error 0x969bf728"
-   ],
-   "builder": "Forecast League (the desk operator; same checks apply)",
-   "checkedAt": "2026-11-22T05:11:23Z"
   },
   {
    "rank": 4448,
