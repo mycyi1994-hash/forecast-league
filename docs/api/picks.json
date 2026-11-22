@@ -1,61 +1,61 @@
 {
  "name": "Forecast League picks",
- "updated": "2026-11-22T02:10:47Z",
+ "updated": "2026-11-22T03:10:44Z",
  "coveredFromBlock": 134590000,
- "scannedToBlock": 134996774,
+ "scannedToBlock": 135004754,
  "method": "Each ticket is classified by the call that minted it: up() or down() is a side the caller chose, mint() is a side the contract assigned. A ticket minted through another contract counts as picked only if its side differs from the assigned one. The builder wallet is left out.",
  "totals": {
-  "tickets": 3463,
-  "picked": 64,
-  "assigned": 3399,
+  "tickets": 3536,
+  "picked": 67,
+  "assigned": 3469,
   "unknown": 0,
-  "pickedSharePct": 1.8,
-  "wallets": 365,
+  "pickedSharePct": 1.9,
+  "wallets": 368,
   "pickedWallets": 11,
-  "pickedDecided": 56,
-  "pickedWon": 36
+  "pickedDecided": 59,
+  "pickedWon": 37
  },
  "perMarket": [
   {
    "market": "BTC 6h",
-   "tickets": 651,
+   "tickets": 655,
    "picked": 17,
-   "assigned": 634,
+   "assigned": 638,
    "unknown": 0
   },
   {
    "market": "ETH 6h",
-   "tickets": 325,
+   "tickets": 326,
    "picked": 7,
-   "assigned": 318,
+   "assigned": 319,
    "unknown": 0
   },
   {
    "market": "BNB 6h",
-   "tickets": 317,
+   "tickets": 318,
    "picked": 7,
-   "assigned": 310,
+   "assigned": 311,
    "unknown": 0
   },
   {
    "market": "BTC 1h",
-   "tickets": 662,
-   "picked": 10,
-   "assigned": 652,
+   "tickets": 686,
+   "picked": 11,
+   "assigned": 675,
    "unknown": 0
   },
   {
    "market": "ETH 1h",
-   "tickets": 651,
-   "picked": 10,
-   "assigned": 641,
+   "tickets": 672,
+   "picked": 11,
+   "assigned": 661,
    "unknown": 0
   },
   {
    "market": "BNB 1h",
-   "tickets": 682,
-   "picked": 10,
-   "assigned": 672,
+   "tickets": 704,
+   "picked": 11,
+   "assigned": 693,
    "unknown": 0
   },
   {
@@ -69,11 +69,11 @@
  "board": [
   {
    "wallet": "0xd301d472f2e469a1aafa1af6f214e312f1858873",
-   "picked": 48,
-   "won": 32,
-   "lost": 8,
+   "picked": 51,
+   "won": 33,
+   "lost": 10,
    "waiting": 8,
-   "winRate": 80
+   "winRate": 76.7
   },
   {
    "wallet": "0x8cdb6388598fc32ef463a25311e5a489913e6ee5",

@@ -1,0 +1,16 @@
+{
+ "contract": "0x647d90e42a6a3d190b0ca600abf316f1eefb052f",
+ "name": "Agent Sigil",
+ "verdict": "passed",
+ "checkedAt": "2026-11-22T03:11:42Z",
+ "block": 135004899,
+ "checks": {
+  "simulatedFromAgentIdWallet": true,
+  "gateEnforced": true,
+  "upgradeable": false,
+  "owner": null,
+  "sourceVerified": true
+ },
+ "badge": "Checked by Agent ID Mint Desk: https://mycyi1994-hash.github.io/forecast-league/desk/verified/0x647d90e42a6a3d190b0ca600abf316f1eefb052f.json",
+ "note": "Heuristic simulation, not an audit."
+}

@@ -44,7 +44,7 @@
    "inputData": "0x4e71d92d",
    "args": [],
    "valueWei": "0",
-   "finishedTickets": 3,
+   "finishedTickets": 4,
    "validUntil": "until claimed (a second claim reverts NothingToClaim, which is harmless)"
   },
   {
@@ -55,7 +55,7 @@
    "inputData": "0x4e71d92d",
    "args": [],
    "valueWei": "0",
-   "finishedTickets": 3,
+   "finishedTickets": 4,
    "validUntil": "until claimed (a second claim reverts NothingToClaim, which is harmless)"
   },
   {
@@ -87,6 +87,16 @@
    "valueWei": "0",
    "why": "badge tier 1 earned",
    "validUntil": "until claimed"
+  },
+  {
+   "type": "claim",
+   "contract": "0x3e73bC0309c72EA69bD74CaDEC943668291Ca6ed",
+   "method": "claim()",
+   "inputData": "0x4e71d92d",
+   "args": [],
+   "valueWei": "0",
+   "why": "honor earned: CARD HOLDER",
+   "validUntil": "until claimed"
   }
  ],
  "joinedRounds": {
@@ -112,14 +122,9 @@
    "resultFinalAt": "2026-11-22T12:00:00Z"
   },
   {
-   "market": "BTC 1h",
+   "market": "BNB 1h",
    "tickets": 1,
-   "resultFinalAt": "2026-11-22T03:00:00Z"
-  },
-  {
-   "market": "ETH 1h",
-   "tickets": 1,
-   "resultFinalAt": "2026-11-22T03:00:00Z"
+   "resultFinalAt": "2026-11-22T04:00:00Z"
   },
   {
    "market": "BTC 1d",
@@ -177,7 +182,7 @@
    },
    {
     "market": "BNB 1h",
-    "tickets": 3,
+    "tickets": 4,
     "wins": 0,
     "losses": 0,
     "streak": 0,

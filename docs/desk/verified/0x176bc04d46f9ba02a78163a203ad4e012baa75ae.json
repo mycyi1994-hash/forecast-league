@@ -2,8 +2,8 @@
  "contract": "0x176bc04d46f9ba02a78163a203ad4e012baa75ae",
  "name": "杀零猫",
  "verdict": "passed",
- "checkedAt": "2026-11-22T02:12:43Z",
- "block": 134997038,
+ "checkedAt": "2026-11-22T03:11:42Z",
+ "block": 135004899,
  "checks": {
   "simulatedFromAgentIdWallet": true,
   "gateEnforced": true,

@@ -1,0 +1,16 @@
+{
+ "contract": "0x69013444190b39560bff48e9241fbcbb809ced27",
+ "name": "ElysAgent Pass",
+ "verdict": "passed",
+ "checkedAt": "2026-11-22T03:11:42Z",
+ "block": 135004899,
+ "checks": {
+  "simulatedFromAgentIdWallet": true,
+  "gateEnforced": true,
+  "upgradeable": false,
+  "owner": null,
+  "sourceVerified": true
+ },
+ "badge": "Checked by Agent ID Mint Desk: https://mycyi1994-hash.github.io/forecast-league/desk/verified/0x69013444190b39560bff48e9241fbcbb809ced27.json",
+ "note": "Heuristic simulation, not an audit."
+}
