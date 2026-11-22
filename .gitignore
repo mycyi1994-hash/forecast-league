@@ -6,3 +6,4 @@ broadcast/
 lib/
 lib
 .env
+__pycache__/
