@@ -91,9 +91,7 @@
    "validUntil": "until 00:00 UTC; a new one opens every UTC day"
   }
  ],
- "joinedRounds": {
-  "ETH 1h": 498714
- },
+ "joinedRounds": {},
  "pendingResults": [
   {
    "market": "ETH 1h",

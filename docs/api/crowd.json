@@ -1,7 +1,7 @@
 {
  "name": "Forecast League crowd: picked sides per round",
- "updated": "2026-11-22T18:17:43Z",
- "ledgerScannedToBlock": 135125657,
+ "updated": "2026-11-22T19:10:43Z",
+ "ledgerScannedToBlock": 135132715,
  "method": "Picked tickets only (up() or down(); mint() is an assigned side and is left out). The builder wallet is left out. Counts come from the picks ledger, refreshed hourly, so the open round can be missing its latest tickets.",
  "markets": {
   "BTC 6h": [
@@ -10,9 +10,9 @@
     "status": "open",
     "windowStart": "2026-11-23T00:00Z",
     "windowEnd": "2026-11-23T06:00Z",
-    "up": 1,
+    "up": 5,
     "down": 0,
-    "wallets": 1
+    "wallets": 5
    },
    {
     "round": 83118,
@@ -30,9 +30,9 @@
     "status": "open",
     "windowStart": "2026-11-23T00:00Z",
     "windowEnd": "2026-11-23T06:00Z",
-    "up": 1,
+    "up": 5,
     "down": 0,
-    "wallets": 1
+    "wallets": 5
    },
    {
     "round": 83118,
@@ -50,9 +50,9 @@
     "status": "open",
     "windowStart": "2026-11-23T00:00Z",
     "windowEnd": "2026-11-23T06:00Z",
-    "up": 1,
+    "up": 5,
     "down": 0,
-    "wallets": 1
+    "wallets": 5
    },
    {
     "round": 83118,
@@ -66,19 +66,19 @@
   ],
   "BTC 1h": [
    {
-    "round": 498714,
+    "round": 498715,
     "status": "open",
-    "windowStart": "2026-11-22T19:00Z",
-    "windowEnd": "2026-11-22T20:00Z",
+    "windowStart": "2026-11-22T20:00Z",
+    "windowEnd": "2026-11-22T21:00Z",
     "up": 0,
     "down": 0,
     "wallets": 0
    },
    {
-    "round": 498713,
+    "round": 498714,
     "status": "locked",
-    "windowStart": "2026-11-22T18:00Z",
-    "windowEnd": "2026-11-22T19:00Z",
+    "windowStart": "2026-11-22T19:00Z",
+    "windowEnd": "2026-11-22T20:00Z",
     "up": 0,
     "down": 0,
     "wallets": 0
@@ -86,19 +86,19 @@
   ],
   "ETH 1h": [
    {
-    "round": 498714,
+    "round": 498715,
     "status": "open",
-    "windowStart": "2026-11-22T19:00Z",
-    "windowEnd": "2026-11-22T20:00Z",
+    "windowStart": "2026-11-22T20:00Z",
+    "windowEnd": "2026-11-22T21:00Z",
     "up": 0,
     "down": 0,
     "wallets": 0
    },
    {
-    "round": 498713,
+    "round": 498714,
     "status": "locked",
-    "windowStart": "2026-11-22T18:00Z",
-    "windowEnd": "2026-11-22T19:00Z",
+    "windowStart": "2026-11-22T19:00Z",
+    "windowEnd": "2026-11-22T20:00Z",
     "up": 0,
     "down": 0,
     "wallets": 0
@@ -106,19 +106,19 @@
   ],
   "BNB 1h": [
    {
-    "round": 498714,
+    "round": 498715,
     "status": "open",
-    "windowStart": "2026-11-22T19:00Z",
-    "windowEnd": "2026-11-22T20:00Z",
+    "windowStart": "2026-11-22T20:00Z",
+    "windowEnd": "2026-11-22T21:00Z",
     "up": 0,
     "down": 0,
     "wallets": 0
    },
    {
-    "round": 498713,
+    "round": 498714,
     "status": "locked",
-    "windowStart": "2026-11-22T18:00Z",
-    "windowEnd": "2026-11-22T19:00Z",
+    "windowStart": "2026-11-22T19:00Z",
+    "windowEnd": "2026-11-22T20:00Z",
     "up": 0,
     "down": 0,
     "wallets": 0
