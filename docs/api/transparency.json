@@ -1,7 +1,7 @@
 {
  "name": "Forecast League transparency numbers",
- "updated": "2026-11-22T17:58:58Z",
- "block": 135123160,
+ "updated": "2026-11-22T18:00:31Z",
+ "block": 135123362,
  "method": "For every wallet in api/wallet/index.json, balanceOf(wallet) on each of the 12 Forecast League token contracts. The tokens cannot be transferred, so a balance is the number of mints that wallet sent to that contract. Anyone can repeat each read.",
  "notCounted": "Claims, squad calls and the daily price forecast leave no token and are not in these numbers, so real transaction counts are higher.",
  "builderWallet": {
@@ -11,7 +11,7 @@
   "note": "The one wallet the builder uses. It is left out of every number below."
  },
  "wallets": 452,
- "tokens": 5330,
+ "tokens": 5331,
  "tokensPerWallet": {
   "median": 3,
   "mean": 11.8,
@@ -43,7 +43,7 @@
    "range": "10-19",
    "wallets": 74,
    "walletsPct": 16.4,
-   "tokens": 894,
+   "tokens": 895,
    "tokensPct": 16.8
   },
   {
@@ -148,7 +148,7 @@
    "mostByOneWallet": 171
   },
   "sixHour": {
-   "tokens": 1526,
+   "tokens": 1527,
    "wallets": 372,
    "top10SharePct": 20.3,
    "top15SharePct": 28.6,
@@ -190,8 +190,8 @@
    "label": "BTC 6h",
    "contract": "0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C",
    "wallets": 306,
-   "tokens": 763,
-   "top15SharePct": 21.6
+   "tokens": 764,
+   "top15SharePct": 21.7
   },
   {
    "id": "eth-6h",
