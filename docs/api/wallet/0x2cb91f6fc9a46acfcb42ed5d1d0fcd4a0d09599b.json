@@ -91,8 +91,16 @@
    "validUntil": "until 00:00 UTC; a new one opens every UTC day"
   }
  ],
- "joinedRounds": {},
- "pendingResults": [],
+ "joinedRounds": {
+  "ETH 1h": 498714
+ },
+ "pendingResults": [
+  {
+   "market": "ETH 1h",
+   "tickets": 1,
+   "resultFinalAt": "2026-11-22T20:00:00Z"
+  }
+ ],
  "stampToday": "checkIn() 0x183ff085 on 0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae once per UTC day (preview shows if already done)",
  "performance": {
   "decided": 0,
@@ -135,7 +143,7 @@
    },
    {
     "market": "ETH 1h",
-    "tickets": 13,
+    "tickets": 14,
     "wins": 0,
     "losses": 0,
     "streak": 0,
