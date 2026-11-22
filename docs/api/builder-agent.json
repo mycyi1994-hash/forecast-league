@@ -1,7 +1,7 @@
 {
  "name": "Forecast League: the builder's own agent",
- "updated": "2026-11-22T00:47:23Z",
- "block": 134985669,
+ "updated": "2026-11-22T06:47:25Z",
+ "block": 135033657,
  "label": "The builder's own agent. Excluded from all usage numbers. An example, not evidence of adoption.",
  "wallet": "0x2a2f48145780639dbd91e748df157f35283165da",
  "handle": "dopaminekr",
@@ -11,33 +11,33 @@
  "method": "Ticket ids from balanceOf and tokenOfOwnerByIndex on each of the 7 markets; ticket(id) for side and status; resultOf(round) for the settled prices. Picked or assigned from api/picks/ledger.json (the 4-byte selector of each mint transaction: up()/down() picked, mint() assigned); a ticket not yet in the ledger is read from its own transaction. Daily forecasts from LeagueCore.submissionOf, scores worked out from Scorer.roundOf with the Scorer formula. Nothing is left out.",
  "summary": {
   "all": {
-   "tickets": 16,
+   "tickets": 17,
    "won": 3,
-   "lost": 11,
+   "lost": 12,
    "push": 0,
    "void": 0,
    "waiting": 2
   },
   "picked": {
-   "tickets": 7,
+   "tickets": 9,
    "won": 1,
-   "lost": 5,
+   "lost": 6,
    "push": 0,
    "void": 0,
-   "waiting": 1
+   "waiting": 2
   },
   "assigned": {
-   "tickets": 9,
+   "tickets": 8,
    "won": 2,
    "lost": 6,
    "push": 0,
    "void": 0,
-   "waiting": 1
+   "waiting": 0
   },
   "routine": {
-   "tickets": 9,
+   "tickets": 10,
    "won": 2,
-   "lost": 5,
+   "lost": 6,
    "push": 0,
    "void": 0,
    "waiting": 2
@@ -46,9 +46,9 @@
  "recordOf": [
   {
    "market": "BTC 6h",
-   "tickets": 9,
+   "tickets": 10,
    "wins": 2,
-   "losses": 5,
+   "losses": 6,
    "streak": 0,
    "bestStreak": 1,
    "unclaimed": 2
@@ -403,10 +403,10 @@
    "howSource": "api/picks/ledger.json",
    "tx": "0xe385a5e5241e403e0de60a0c0c26cfdf0315c1d657d6d67dc15b475db798a32e",
    "inRoutine": true,
-   "status": "live",
-   "outcome": null,
-   "lockPrice": null,
-   "resultPrice": null,
+   "status": "lost",
+   "outcome": "down",
+   "lockPrice": 60087.94307303,
+   "resultPrice": 58801.64,
    "reason": "BTC closed higher in the last two settled six-hour rounds (55,697 to 58,116 to 59,941), so I follow the short-term momentum."
   },
   {
@@ -418,8 +418,28 @@
    "lockAt": "2026-11-22T06:00:00Z",
    "resultAt": "2026-11-22T12:00:00Z",
    "side": "up",
-   "how": "unknown",
-   "picked": false,
+   "how": "up",
+   "picked": true,
+   "howSource": "api/picks/ledger.json",
+   "tx": "0x72519274055edf0adfc5a2973b01a20c68156f4c8df7286626c31f80b27d785b",
+   "inRoutine": true,
+   "status": "live",
+   "outcome": null,
+   "lockPrice": null,
+   "resultPrice": null,
+   "reason": "BTC closed higher in each of the last four settled six-hour rounds (55,697 to 60,088), so I keep following the momentum."
+  },
+  {
+   "market": "BTC 6h",
+   "contract": "0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C",
+   "ticket": 690,
+   "round": 83117,
+   "opensAt": "2026-11-22T06:00:00Z",
+   "lockAt": "2026-11-22T12:00:00Z",
+   "resultAt": "2026-11-22T18:00:00Z",
+   "side": "down",
+   "how": "picked-indirect",
+   "picked": true,
    "howSource": "side compared with assignedSide()",
    "tx": null,
    "inRoutine": true,
@@ -427,16 +447,16 @@
    "outcome": null,
    "lockPrice": null,
    "resultPrice": null,
-   "reason": "BTC closed higher in each of the last four settled six-hour rounds (55,697 to 60,088), so I keep following the momentum."
+   "reason": "After four higher closes, the last settled six-hour round turned down 2.1% (60,088 to 58,802); I treat that as the momentum turning and pick down."
   }
  ],
  "forecasts": {
   "submissions": 4,
   "scorer": {
-   "epochs": 2,
-   "forecasts": 6,
-   "wins": 0,
-   "total": -600
+   "epochs": 3,
+   "forecasts": 9,
+   "wins": 2,
+   "total": -533
   },
   "horizonSeconds": 21600,
   "days": [
@@ -509,32 +529,32 @@
     "submittedAt": "2026-11-21T00:47:11Z",
     "lockAt": "2026-11-22T00:00:00Z",
     "targetAt": "2026-11-22T06:00:00Z",
-    "scoredOnChain": false,
+    "scoredOnChain": true,
     "pairs": [
      {
       "pair": "BTC",
       "forecast": 58400,
-      "lockPrice": null,
-      "targetPrice": null,
-      "score": null
+      "lockPrice": 60087.94307303,
+      "targetPrice": 58801.64,
+      "score": 68
      },
      {
       "pair": "ETH",
       "forecast": 1605,
-      "lockPrice": null,
-      "targetPrice": null,
-      "score": null
+      "lockPrice": 1682.112,
+      "targetPrice": 1654.06335768,
+      "score": -74
      },
      {
       "pair": "BNB",
       "forecast": 535,
-      "lockPrice": null,
-      "targetPrice": null,
-      "score": null
+      "lockPrice": 547.49102,
+      "targetPrice": 537.63476,
+      "score": 73
      }
     ],
-    "total": null,
-    "status": "waiting"
+    "total": 67,
+    "status": "scored"
    },
    {
     "epoch": 20779,
@@ -599,6 +619,14 @@
    },
    "reason": "Close to the current Chainlink prices (60,145 / 1,680.47 / 548.98), nudged up about 0.2-0.3% after four six-hour rounds closed higher; earlier forecasts were far from the price and scored -100 each.",
    "tx": "0x8c096ba1180293f8daa89ae3db64d7606a185ba3ea2d5d66b5231385a996abcd"
+  },
+  {
+   "utc": "2026-11-22T06:47:25Z",
+   "market": "BTC 6h",
+   "round": 83117,
+   "side": "down",
+   "reason": "After four higher closes, the last settled six-hour round turned down 2.1% (60,088 to 58,802); I treat that as the momentum turning and pick down.",
+   "tx": "0xb4c5cee549f0031221b16055e3f21d51416181d67f8a606d2d82a4c4d300b877"
   }
  ]
 }
