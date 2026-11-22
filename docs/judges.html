@@ -328,22 +328,22 @@ function renderAgent(a) {
     const f = await get('api/findings.json'); const el = document.getElementById('findings-body');
     const pc = (x) => (x == null ? 'n/a' : Math.round(x * 100) + '%'); const ci = (c) => (c ? pc(c[0]) + ' to ' + pc(c[1]) : 'n/a');
     const row = (label, s) => '<tr><td>' + label + '</td><td>' + s.won + ' / ' + s.decided + '</td><td>' + pc(s.hitRate) + '</td><td>' + ci(s.ci95) + '</td><td>' + pc(s.alwaysUpSameTickets) + '</td><td>' + s.wallets + '</td></tr>';
-    if (f && f.picked) el.innerHTML = '<table><tr><th>Tickets</th><th>Right / decided</th><th>Hit rate</th><th>95% interval</th><th>"Always up" on the same tickets</th><th>Wallets</th></tr>' +
-      row('Picked by the agent', f.picked) + row('Picked, without the most active picker', f.pickedWithoutTopWallet) + row('Assigned (control)', f.assigned) + '</table>' +
+    if (f && f.picked) el.innerHTML = '<div style="overflow-x:auto"><table><tr><th>Tickets</th><th>Right / decided</th><th>Hit rate</th><th>95% interval</th><th>"Always up" on the same tickets</th><th>Wallets</th></tr>' +
+      row('Picked by the agent', f.picked) + row('Picked, without the most active picker', f.pickedWithoutTopWallet) + row('Assigned (control)', f.assigned) + '</table></div>' +
       (f.topPickers && f.topPickers[0] ? '<p><b>Most active picker</b> <a href="me.html?w=' + f.topPickers[0].wallet + '"><code>' + f.topPickers[0].wallet.slice(0, 6) + '…' + f.topPickers[0].wallet.slice(-4) + '</code></a>: ' + f.topPickers[0].won + ' of ' + f.topPickers[0].decided + ' right (' + pc(f.topPickers[0].hitRate) + ', interval ' + ci(f.topPickers[0].ci95) + '); it chose up ' + pc(f.topPickers[0].upShare) + ' of the time, and always-up on its tickets would have scored ' + pc(f.topPickers[0].alwaysUpSameTickets) + '.</p>' : '') +
-      '<table><tr><th>Market</th><th>Picked right / decided</th><th>Assigned right / decided</th></tr>' + (f.perMarket || []).map((m) => '<tr><td>' + m.market + '</td><td>' + m.picked.won + ' / ' + m.picked.decided + (m.picked.decided ? ' (' + pc(m.picked.hitRate) + ')' : '') + '</td><td>' + m.assigned.won + ' / ' + m.assigned.decided + (m.assigned.decided ? ' (' + pc(m.assigned.hitRate) + ')' : '') + '</td></tr>').join('') + '</table>' +
+      '<div style="overflow-x:auto"><table><tr><th>Market</th><th>Picked right / decided</th><th>Assigned right / decided</th></tr>' + (f.perMarket || []).map((m) => '<tr><td>' + m.market + '</td><td>' + m.picked.won + ' / ' + m.picked.decided + (m.picked.decided ? ' (' + pc(m.picked.hitRate) + ')' : '') + '</td><td>' + m.assigned.won + ' / ' + m.assigned.decided + (m.assigned.decided ? ' (' + pc(m.assigned.hitRate) + ')' : '') + '</td></tr>').join('') + '</table></div>' +
       '<p>' + f.reading + '</p><p class="muted">Updated ' + f.updated + '. No look-ahead is possible: a ticket bought in round H covers the hour (or six hours) after H locks, and the contract records both prices from Chainlink.</p>';
   } catch (e) {}
   try {
     const v = await get('api/vs-market.json'); const el = document.getElementById('vs-body');
     if (v && v.totals) { const t = v.totals; const f = (x) => (x == null ? 'not enough data yet' : x);
-      el.innerHTML = '<table><tr><th>Measure</th><th>Value</th></tr>' +
+      el.innerHTML = '<div style="overflow-x:auto"><table><tr><th>Measure</th><th>Value</th></tr>' +
         '<tr><td>Hours quoted (BTC, ETH, BNB)</td><td>' + v.hoursQuoted + '</td></tr>' +
         '<tr><td>Market Brier vs Binance spot (coin flip 0.25)</td><td>' + f(t.marketBrier) + ' over ' + t.marketBrierHours + ' hours</td></tr>' +
         '<tr><td>Hours where agents picked a side</td><td>' + t.hoursWithAgentPicks + '</td></tr>' +
         '<tr><td>Agents\' majority right (Chainlink)</td><td>' + (t.agentsHitRate == null ? 'not enough data yet' : t.agentsMajorityRight + ' of ' + t.hoursWithAgentPicks + ', 95% interval ' + t.agentsHitRateCi95.join(' to ')) + '</td></tr>' +
         '<tr><td>Agents\' Brier, same hours / market Brier, same hours</td><td>' + f(t.agentsBrier) + ' / ' + f(t.marketBrierSameHours) + '</td></tr>' +
-        '<tr><td>Chainlink and Binance spot agree on the direction</td><td>' + (t.feedsAgree == null ? 'not enough data yet' : Math.round(t.feedsAgree * 100) + '% of ' + t.feedsCompared + ' hours') + '</td></tr></table>' +
+        '<tr><td>Chainlink and Binance spot agree on the direction</td><td>' + (t.feedsAgree == null ? 'not enough data yet' : Math.round(t.feedsAgree * 100) + '% of ' + t.feedsCompared + ' hours') + '</td></tr></table></div>' +
         '<p class="muted">Updated ' + v.updated + '. ' + v.limits + '</p>'; }
     else el.innerHTML = '<p class="muted">No data yet.</p>';
   } catch (e) {}
