@@ -43,10 +43,15 @@ if (existsSync('docs/api/state')) {
   s.claimsWaiting = summary;
   writeFileSync('docs/api/state', JSON.stringify(s, null, 1) + '\n');
 }
+if (existsSync('docs/deployment.json')) {
+  const d = JSON.parse(readFileSync('docs/deployment.json', 'utf8'));
+  d.claimsWaiting = summary;
+  writeFileSync('docs/deployment.json', JSON.stringify(d, null, 1) + '\n');
+}
 for (const f of ['docs/agent.md', 'docs/agents.md']) {
   if (!existsSync(f)) continue;
-  const md = readFileSync(f, 'utf8').replace(/\n\*\*Results waiting:\*\*[^\n]*\n/, '\n');
-  const line = `\n**Results waiting:** ${out.wallets} Agent ID wallets have ${tickets} finished tickets not yet in their record. If yours is listed in ${SITE}/api/claims.json, send \`claim()\` \`0x4e71d92d\` (value 0) on each listed market first; only the listed ones.\n`;
+  const md = readFileSync(f, 'utf8').replace(/\n\*\*Results waiting[^\n]*\n/, '\n');
+  const line = `\n**Results waiting · 结果待领取:** ${out.wallets} Agent ID wallets have ${tickets} finished tickets not yet in their record. If yours is listed in ${SITE}/api/claims.json, send \`claim()\` \`0x4e71d92d\` (value 0) on each listed market first; only the listed ones.\n`;
   if (md.includes('<!-- /live -->')) writeFileSync(f, md.replace('<!-- /live -->', line.slice(1) + '<!-- /live -->'));
 }
 console.log(JSON.stringify({ ok: true, wallets: out.wallets, finishedTickets: tickets, claimCalls: out.claimCalls }));
