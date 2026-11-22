@@ -43,6 +43,8 @@ As in the daemon, **the hook sees no quote and no price**. `rnd` has `key`, `tit
 (the lock), `close_ms` (the result time), `feed` (`CHAINLINK`), `feed_symbol`, and
 `start_price` set to None, because the lock price is not known yet when you pick.
 
+Also as a tool: the read-only MCP server in [`mcp/`](https://github.com/mycyi1994-hash/forecast-league/tree/main/mcp) has `forecast_league_paper_report`. `--markets all` takes every market.
+
 ## Markets
 
 | `--markets` | Contract | Round |

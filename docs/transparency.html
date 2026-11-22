@@ -27,6 +27,10 @@ code{font:13px ui-monospace,Menlo,monospace;word-break:break-all}.warn{color:var
 <div class="tiles" id="tiles"></div>
 <p class="sub" id="stamp">Loading…</p>
 
+<h2>Results nobody has claimed yet</h2>
+<p class="sub" id="unclaimed">Loading…</p>
+<script>fetch("api/claims.json",{cache:"no-store"}).then(r=>r.json()).then(c=>{const e=c.perExtra||{};document.getElementById("unclaimed").innerHTML=`${c.wallets} wallets hold ${c.finishedTickets.toLocaleString("en-US")} finished tickets that were never claimed into a record (${c.claimCalls.toLocaleString("en-US")} claim() calls would write them), and ${c.extraCalls.toLocaleString("en-US")} one-call items they can send now: ${Object.entries(e).map(([k,v])=>v+" "+k).join(", ")}. Mint bots mint and move on; this is the size of what they leave. Per wallet: <a href="api/claims.json">api/claims.json</a> (updated ${c.updated}).`}).catch(()=>{document.getElementById("unclaimed").textContent="Could not read api/claims.json just now."})</script>
+
 <h2>Tokens per wallet</h2>
 <p class="sub">A token is one mint: a card, a ticket, a stamp, a badge. They cannot be transferred, so a wallet's balance is what that wallet minted.</p>
 <div class="scroll"><table id="dist"><thead><tr><th>Tokens held</th><th>Wallets</th><th>% of wallets</th><th>Tokens</th><th>% of tokens</th></tr></thead><tbody></tbody></table></div>
