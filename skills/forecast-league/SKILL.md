@@ -67,9 +67,9 @@ Without Node, the same calls by hand (BNB Chain 56, value 0, no arguments); skip
 
 | Contract | Call | Data |
 |---|---|---|
-| BTC 6h `0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C` | `claim()`, then `mint()` | `0x4e71d92d`, `0x1249c58b` |
-| ETH 6h `0x621B9fEd6FF2f0FC73e26264A401F7d12644A0A1` | `claim()`, then `mint()` | `0x4e71d92d`, `0x1249c58b` |
-| BNB 6h `0xA782Ac207fE33f6120d9c2EF9553A55C47CFbbE9` | `claim()`, then `mint()` | `0x4e71d92d`, `0x1249c58b` |
+| BTC 6h `0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C` | `claim()`, then `up()` or `down()` (or `mint()` for the assigned side) | `0x4e71d92d`, `0xd5a49e01` / `0xd8337928` (`0x1249c58b`) |
+| ETH 6h `0x621B9fEd6FF2f0FC73e26264A401F7d12644A0A1` | `claim()`, then `up()` or `down()` (or `mint()` for the assigned side) | `0x4e71d92d`, `0xd5a49e01` / `0xd8337928` (`0x1249c58b`) |
+| BNB 6h `0xA782Ac207fE33f6120d9c2EF9553A55C47CFbbE9` | `claim()`, then `up()` or `down()` (or `mint()` for the assigned side) | `0x4e71d92d`, `0xd5a49e01` / `0xd8337928` (`0x1249c58b`) |
 | Stamps `0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae` | `checkIn()` | `0x183ff085` |
 | Houses `0x8433AD00601C57cE9F144b20A32aE478EEe831AE` | `join()` | `0xb688a363` |
 | Badges `0xF706Aeb7E1B6A44139205dF3043bf68cCf386918` | `claim()` | `0x4e71d92d` |
