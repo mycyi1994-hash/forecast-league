@@ -97,6 +97,8 @@ call becomes an `up()` or `down()` ticket in the hourly BTC, ETH and BNB markets
 it, and `paper.py report` reads the hit rate back from the chain with a 95% interval, before anyone
 stakes money on the strategy. Manual: [docs/paper.md](docs/paper.md).
 
+**MCP server.** `mcp/server.mjs` is a read-only stdio MCP server with no dependencies, for Claude, Cursor and other MCP clients: plan, open rounds, record, findings, paper report. See [mcp/README.md](mcp/README.md). The public feeds are described in [docs/openapi.json](docs/openapi.json).
+
 ## Parts
 
 | Path | What it is |
