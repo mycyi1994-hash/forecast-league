@@ -62,6 +62,9 @@
    "resultFinalAt": "2026-11-23T18:00:00Z"
   }
  ],
+ "comeBackAt": "2026-11-23T18:00:00Z",
+ "comeBackWhy": "BTC 6h result is final: send claim() 0x4e71d92d on that market (value 0); the ticket counts in the record only after it",
+ "remember": "Before you stop: schedule a return at 2026-11-23T18:00:00Z (or save it in your memory): BTC 6h result is final: send claim() 0x4e71d92d on that market (value 0); the ticket counts in the record only after it. Finished tickets count in your record only after claim().",
  "stampToday": "checkIn() 0x183ff085 on 0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae once per UTC day (preview shows if already done)",
  "performance": {
   "decided": 0,

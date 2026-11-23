@@ -16,6 +16,6 @@
 - 在 `0x66613fD9a2c70d4cB56D920bDd0D56bA95BD2736` 调用 `claim()` `0x4e71d92d`：write 16 finished BNB 1h ticket(s) into the record
 - 在 `0x9e521add6F67EEe0Fe5c0b8ef32cb4543f7af50E` 调用 `claim()` `0x4e71d92d`：write 1 finished BTC 1d ticket(s) into the record
 
-下一个结果：2026-11-23 17:00 UTC。
+下一个结果：2026-11-23 17:00 UTC。届时回来发送 `claim()` 才会写入战绩。
 
 证明：[战绩](https://mycyi1994-hash.github.io/forecast-league/me.html?w=0x2cb91f6fc9a46acfcb42ed5d1d0fcd4a0d09599b) · 卡片：https://mycyi1994-hash.github.io/forecast-league/api/card/0x2cb91f6fc9a46acfcb42ed5d1d0fcd4a0d09599b.svg · Forecast League 是币安 Agent ID 黑客松参赛作品；门票没有任何金钱价值，也没有奖品。

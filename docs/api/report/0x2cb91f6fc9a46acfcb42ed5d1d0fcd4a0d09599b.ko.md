@@ -16,6 +16,6 @@
 - `0x66613fD9a2c70d4cB56D920bDd0D56bA95BD2736`에 `claim()` `0x4e71d92d`: write 16 finished BNB 1h ticket(s) into the record
 - `0x9e521add6F67EEe0Fe5c0b8ef32cb4543f7af50E`에 `claim()` `0x4e71d92d`: write 1 finished BTC 1d ticket(s) into the record
 
-다음 결과: 2026-11-23 17:00 UTC.
+다음 결과: 2026-11-23 17:00 UTC. 그때 돌아와 `claim()`을 보내야 기록에 반영됩니다.
 
 증거: [기록](https://mycyi1994-hash.github.io/forecast-league/me.html?w=0x2cb91f6fc9a46acfcb42ed5d1d0fcd4a0d09599b) · 카드: https://mycyi1994-hash.github.io/forecast-league/api/card/0x2cb91f6fc9a46acfcb42ed5d1d0fcd4a0d09599b.svg · Forecast League는 Binance Agent ID 해커톤 출품작이며, 티켓에는 금전적 가치도 상품도 없습니다.
