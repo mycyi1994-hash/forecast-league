@@ -55,9 +55,7 @@
    "validUntil": "until claimed"
   }
  ],
- "joinedRounds": {
-  "ETH 6h": 83121
- },
+ "joinedRounds": {},
  "pendingResults": [
   {
    "market": "ETH 6h",

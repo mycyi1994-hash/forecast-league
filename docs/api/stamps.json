@@ -1,6 +1,6 @@
 {
  "name": "Forecast League stamps and Stamp Week",
- "updated": "2026-11-23T11:17:12Z",
+ "updated": "2026-11-23T12:12:36Z",
  "stampWeek": {
   "from": "2026-11-24",
   "to": "2026-11-30",
@@ -9,10 +9,10 @@
   "how": "One stamp per UTC day: mint() 0x1249c58b (or checkIn() 0x183ff085) on Stamps 0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae, value 0, Agent ID wallets only. Stamp all seven days and your run reads 7 on chain. No prize, no reward: the run is the record.",
   "onTrackForSeven": null
  },
- "stampsTotal": 210,
- "wallets": 171,
- "stampedToday": 14,
- "canStampToday": 691,
+ "stampsTotal": 213,
+ "wallets": 174,
+ "stampedToday": 17,
+ "canStampToday": 694,
  "topRuns": [
   {
    "wallet": "0x61d5353152b2573786bf640e289a12e00c7c3df1",
@@ -175,12 +175,28 @@
    "stampedToday": false
   },
   {
+   "wallet": "0x15829a7baa5d714ce88892f9e0dd942465e80626",
+   "stamps": 1,
+   "streak": 1,
+   "bestStreak": 1,
+   "lastDay": 20780,
+   "stampedToday": true
+  },
+  {
    "wallet": "0x1d055d06cd9d7b7e078397ed9b035d0d34a04e70",
    "stamps": 1,
    "streak": 1,
    "bestStreak": 1,
    "lastDay": 20779,
    "stampedToday": false
+  },
+  {
+   "wallet": "0x24bea9c8402f37aba56cd78d701044515e5ca392",
+   "stamps": 1,
+   "streak": 1,
+   "bestStreak": 1,
+   "lastDay": 20780,
+   "stampedToday": true
   },
   {
    "wallet": "0x2bad95bc8791509fff4a0a1902e4df1e0f030a77",
@@ -191,28 +207,12 @@
    "stampedToday": false
   },
   {
-   "wallet": "0x35810b49b01b1c947d927149d1cbb21afe226726",
+   "wallet": "0x34bcb0e77b9ed14dc4da3934668891b70bd257f3",
    "stamps": 1,
    "streak": 1,
    "bestStreak": 1,
-   "lastDay": 20779,
-   "stampedToday": false
-  },
-  {
-   "wallet": "0x41f0c856d63298d9ca5d26a5d6dbef7627162839",
-   "stamps": 1,
-   "streak": 1,
-   "bestStreak": 1,
-   "lastDay": 20779,
-   "stampedToday": false
-  },
-  {
-   "wallet": "0x466ab5d27f802f4c6f3abc23adb82528b149bebc",
-   "stamps": 1,
-   "streak": 1,
-   "bestStreak": 1,
-   "lastDay": 20779,
-   "stampedToday": false
+   "lastDay": 20780,
+   "stampedToday": true
   }
  ],
  "method": "Stamps.recordOf(address) for every wallet in api/wallet/index.json (builder left out). A run counts while the wallet has stamped today or yesterday."
