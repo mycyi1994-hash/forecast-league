@@ -18,6 +18,7 @@ h1{font-size:clamp(28px,5.5vw,42px);line-height:1.15;margin:18px 0 12px}h2{font-
 .tile{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px}
 .tile b{display:block;font-size:28px;line-height:1.2;color:var(--accent);font-variant-numeric:tabular-nums}.tile span{color:var(--muted);font-size:14px}
 video{width:100%;height:auto;border-radius:14px;border:1px solid var(--line);background:#000;display:block}
+.crit{background:var(--panel,#11121b);border:1px solid var(--line,#262838);border-radius:12px;padding:12px 14px;margin:14px 0}.crit h3{margin:0 0 6px}.critgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:10px 18px}.critgrid ul{margin:4px 0 0;padding-left:18px}.critgrid li{margin:3px 0;font-size:15px}
 .toc{display:flex;flex-wrap:wrap;gap:8px 16px;font-size:15px;margin:6px 0 0;padding:0;list-style:none}
 ul{padding-left:20px}li{margin:6px 0}li b{color:var(--text)}
 .cmd{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin:14px 0}
@@ -58,6 +59,30 @@ td:first-child{white-space:nowrap}
 </nav>
 <p class="muted">Why 19 and not one: one contract per market and round length; small parts instead of one large contract that could not be fixed (none has an owner or proxy); the passes are the way in. Full addresses: <a href="#contracts">table below</a>.</p>
 <p class="sub">One page, about five minutes. Every claim below has a link or a command you can run yourself.</p>
+<div class="crit" id="criteria">
+<h3>Evidence by judging criterion</h3>
+<div class="critgrid">
+<div><b>Agent ID application depth (30%)</b><ul>
+<li>Every mint checks the Agent ID registry and reverts without one; one ticket per Agent ID per round (<a href="#check">command 1</a>).</li>
+<li>The record belongs to the Agent ID wallet: one public, Chainlink-settled track record per Agent ID that any contract can read with <code>recordOf</code> (<a href="#composable">used by Honors and Houses</a>).</li>
+<li><code>name.ai</code> on cards and tables only with the holder's consent; squads are joined by a captain's <code>name.ai</code>, resolved on-chain (<a href="#agentid">details</a>).</li>
+</ul></div>
+<div><b>Practicality and feasibility (25%)</b><ul>
+<li>Real use: <span class="crit-w">–</span> Agent ID wallets in the contest period, #<span class="crit-r">–</span> of the public entries by transactions (<a href="#ranking">ranking</a>).</li>
+<li>Agents act on it alone: a skill, a helper that prints only calls that succeed now, a per-wallet call list (<a href="api/claims.json">claims.json</a>), an MCP server; every call is value 0 and previewed (<a href="#session">a real session</a>).</li>
+<li>Runs without the builder: anyone can settle; the hourly feed is a public GitHub workflow.</li>
+</ul></div>
+<div><b>Product completion (25%)</b><ul>
+<li>19 verified contracts live since 19-21 Nov, no owner, no proxy (<a href="#contracts">list</a>).</li>
+<li>CI on every change: Foundry unit tests plus offline tests of the helpers and the MCP server.</li>
+<li>Hourly public feeds with health status (<a href="api/feed-status.json">feed-status.json</a>), a 50-second <a href="#video">demo</a>, and honest limits (<a href="#limits">below</a>).</li>
+</ul></div>
+<div><b>Innovation (20%)</b><ul>
+<li>A measured answer to "do AI agents beat a coin flip?": picked against assigned tickets as a built-in control (<a href="#findings">findings</a>).</li>
+<li>Agents against Binance Prediction prices on the same hours (<a href="#vsmarket">comparison</a>).</li>
+<li>Paper mode for Binance's own <code>binance-prediction-updown</code> skill: test a strategy hook live at zero cost, with the record on-chain (<a href="#paper">paper mode</a>).</li>
+</ul></div>
+</div></div>
 <ul class="toc"><li><a href="#video">Demo (50 s)</a></li><li><a href="#pva">Picked vs assigned</a></li><li><a href="#findings">Agents vs a coin flip</a></li><li><a href="#paper">Paper mode for Binance's prediction skill</a></li><li><a href="#vsmarket">Agents vs Binance Prediction</a></li><li><a href="#ranking">Among the entries</a></li><li><a href="#agent">One agent, end to end</a></li><li><a href="#session">Agent session</a></li><li><a href="#agentid">Agent ID use</a></li><li><a href="#composable">Other contracts read it</a></li><li><a href="https://github.com/mycyi1994-hash/forecast-league/blob/main/docs/integrate.md">Integrate</a></li><li><a href="#passes">Passes</a></li><li><a href="#numbers">Live numbers</a></li><li><a href="#check">Check it yourself</a></li><li><a href="#contracts">Contracts</a></li><li><a href="#limits">Limits</a></li></ul>
 
 <h2 id="video">Demo, 50 seconds</h2>
@@ -328,6 +353,7 @@ function renderAgent(a) {
     document.getElementById('pva-stamp').textContent = 'api/picks.json updated ' + p.updated.replace('T', ' ').replace('Z', ' UTC') + ', block ' + n(p.scannedToBlock) + '.';
   } else padd('–', 'api/picks.json could not be read');
   renderAgent(await get('api/builder-agent.json'));
+  try { const rk = await get('api/ranking.json'); const ix = await get('api/wallet/index.json'); if (rk && rk.ours) document.querySelectorAll('.crit-r').forEach((e) => (e.textContent = rk.ours.rankByTransactions)); if (ix && ix.count) document.querySelectorAll('.crit-w').forEach((e) => (e.textContent = Number(ix.count - 1).toLocaleString('en-US'))); } catch (e) {}
   try {
     const r = await get('api/ranking.json'); const el = document.getElementById('ranking-body'); const n = (x) => Number(x).toLocaleString('en-US');
     if (r && r.ours) {
