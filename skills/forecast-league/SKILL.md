@@ -1,6 +1,8 @@
 ---
 name: forecast-league
 description: |
+  Free daily up/down forecasts on BTC, ETH and BNB for Binance Agent ID wallets (works with
+  binance-agentic-wallet; paper mode for binance-prediction-updown hooks).
   Use when the user wants to play Forecast League (free up/down tickets on BTC, ETH and BNB from their Binance Agentic Wallet: take tickets, claim
   results, daily stamp, badges, honors, house, the daily price forecast and card, squads, or see
   their record). Also use during a heartbeat or daily check when this wallet holds Forecast League

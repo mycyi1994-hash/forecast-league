@@ -87,14 +87,18 @@ const checked = await pool(list, 8, async (p) => {
   if (proxy) reasons.push('upgradeable proxy: rules can change');
   if (hasOwner) reasons.push('has an owner with admin powers');
   if (sourcify === false) reasons.push('source not verified on Sourcify');
-  const status = paid ? 'paid' : sim?.ok ? 'free_live' : 'closed_or_failing';
+  // Our Finals Pass is deployed but opens on 26 Nov 12:00 UTC: before that its mint reverts by design, so it is 'upcoming', not failing.
+  const UPCOMING = { '0x9df6ba1868d2c149fda5fe67491f67c07c31e6b5': '2026-11-26T12:00:00Z' };
+  const opensAt = UPCOMING[String(p.contract).toLowerCase()];
+  const status = paid ? 'paid' : sim?.ok ? 'free_live' : opensAt && Date.parse(opensAt) > Date.now() ? 'upcoming' : 'closed_or_failing';
+  if (status === 'upcoming') { reasons.length = 0; reasons.push(`opens ${opensAt}; mint() reverts until then`); }
   let score = 0; if (status === 'free_live') score = 50; if (!plain.ok) score += 15; if (!proxy) score += 10; if (!hasOwner) score += 10; if (sourcify === true) score += 15;
   return { ...p, status, score, reasons, owner: hasOwner ? owner : null, proxy, sourcify };
 });
 
 // 4. Write outputs.
 mkdirSync('docs/desk/verified', { recursive: true });
-const ord = { free_live: 0, paid: 1, closed_or_failing: 2, no_code: 3 };
+const ord = { free_live: 0, upcoming: 1, paid: 2, closed_or_failing: 3, no_code: 4 };
 // Ties are broken by a daily rotation (hash of address + UTC date), the same for every project, so no one is pinned on top.
 const day = now.slice(0, 10); const rot = (c) => createHash('sha256').update(c + day).digest('hex');
 checked.sort((a, b) => ord[a.status] - ord[b.status] || b.score - a.score || rot(a.contract).localeCompare(rot(b.contract)));
@@ -108,7 +112,7 @@ const BRAND = /binance|币安|幣安|bnb\s*chain|binancian|\bcz\b|changpeng|heyi
 const all = [...fresh, ...carried].filter((p) => !BRAND.test(`${p.name || ''} ${p.symbol || ''}`));
 all.sort((a, b) => ord[a.status] - ord[b.status] || b.score - a.score || rot(a.contract).localeCompare(rot(b.contract)));
 const projects = all.map((p, i) => ({ rank: i + 1, ...p }));
-const counts = { candidates: projects.length, free_live: projects.filter((p) => p.status === 'free_live').length, paid: projects.filter((p) => p.status === 'paid').length, closed_or_failing: projects.filter((p) => p.status === 'closed_or_failing').length };
+const counts = { candidates: projects.length, free_live: projects.filter((p) => p.status === 'free_live').length, upcoming: projects.filter((p) => p.status === 'upcoming').length, paid: projects.filter((p) => p.status === 'paid').length, closed_or_failing: projects.filter((p) => p.status === 'closed_or_failing').length };
 const clean = projects.filter((p) => p.status === 'free_live' && p.warnings.length === 0);
 writeFileSync('docs/desk/projects.json', JSON.stringify({ name: 'Agent ID Mint Desk', by: 'Forecast League (Binance Agent ID Hackathon entry; it lists its own contracts under the same checks)', endorsement: 'Not an endorsement: checks are mechanical (simulation, gate, owner, proxy, source). Projects named after brands are left out. Mint another project only with your human\'s own yes.', url: SITE + '/desk/', chainId: 56, updated: now, block, method: 'Each mint call is simulated with eth_call (value 0) from Agent ID wallets and from a wallet without Agent ID; owner(), the EIP-1967 proxy slot and Sourcify verification are read. Heuristics at one block, not an audit; a simulation cannot show every token movement. Always preview in your own wallet.', counts, projects }, null, 1) + '\n');
 for (const p of clean) writeFileSync(`docs/desk/verified/${p.contract}.json`, JSON.stringify({ contract: p.contract, name: p.name, verdict: 'passed', checkedAt: now, block, checks: p.checks, badge: `Checked by Agent ID Mint Desk: ${SITE}/desk/verified/${p.contract}.json`, note: 'Heuristic simulation, not an audit.' }, null, 1) + '\n');
