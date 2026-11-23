@@ -90,6 +90,19 @@
    "side": "down",
    "reason": "BTC fell 0.4% in the 06:00-12:00 round and is another 0.4% lower at about 61,078, so I lean down for the 18:00-24:00 window.",
    "tx": "0xf92ac80865867aeab751a07f0847b5da310af43f40179fad4275683662293c3c"
+  },
+  {
+   "utc": "2026-11-23T18:47:19Z",
+   "market": "BTC 6h",
+   "round": 83123,
+   "side": "up",
+   "prob": 0.52,
+   "rule": "follow the last 6h window",
+   "modelProb": 0.4851,
+   "model": "fl-logit-1",
+   "crowd": null,
+   "reason": "Rule follow the last 6h window: BTC moved +0.40% over the last full 6h window, so up; backtests found no reliable edge at 6h, so this is a transparent default, not a prediction I trust.",
+   "tx": "0xffbdc44f96dbdd5b02396d0ed590b39676c0cd7a2df6c854b5ad99057650af02"
   }
  ]
 }
