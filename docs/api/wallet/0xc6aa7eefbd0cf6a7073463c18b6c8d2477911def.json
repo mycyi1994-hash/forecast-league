@@ -54,8 +54,16 @@
    "validUntil": "until claimed"
   }
  ],
- "joinedRounds": {},
- "pendingResults": [],
+ "joinedRounds": {
+  "BTC 6h": 83122
+ },
+ "pendingResults": [
+  {
+   "market": "BTC 6h",
+   "tickets": 1,
+   "resultFinalAt": "2026-11-24T00:00:00Z"
+  }
+ ],
  "stampToday": "checkIn() 0x183ff085 on 0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae once per UTC day (preview shows if already done)",
  "performance": {
   "decided": 0,
@@ -66,7 +74,7 @@
   "byMarket": [
    {
     "market": "BTC 6h",
-    "tickets": 13,
+    "tickets": 14,
     "wins": 0,
     "losses": 0,
     "streak": 0,
