@@ -1,0 +1,171 @@
+{
+ "name": "Forecast League builder agent: shadow picks (recorded, not sent)",
+ "updated": "2026-11-23T15:51:23Z",
+ "method": "Every hour the agent records the side it would pick in each round market (rule, probability, model probability, crowd), without sending anything. Results come from resultOf(round) on each market contract (Chainlink). 'rule' is the pick the agent uses; 'model' is the logistic model's probability alone; 'crowd' is the picked tickets of other agents (Laplace-smoothed), where at least five exist.",
+ "since": "2026-11-23T15:50Z",
+ "picks": 6,
+ "scored": 0,
+ "markets": {
+  "BTC 1h": {
+   "rule": {
+    "decided": 0,
+    "right": 0,
+    "hitRate": null,
+    "ci95": null,
+    "brier": null
+   },
+   "model": {
+    "decided": 0,
+    "right": 0,
+    "hitRate": null,
+    "ci95": null,
+    "brier": null
+   },
+   "crowd": {
+    "decided": 0,
+    "right": 0,
+    "hitRate": null,
+    "ci95": null,
+    "brier": null
+   }
+  },
+  "ETH 1h": {
+   "rule": {
+    "decided": 0,
+    "right": 0,
+    "hitRate": null,
+    "ci95": null,
+    "brier": null
+   },
+   "model": {
+    "decided": 0,
+    "right": 0,
+    "hitRate": null,
+    "ci95": null,
+    "brier": null
+   },
+   "crowd": {
+    "decided": 0,
+    "right": 0,
+    "hitRate": null,
+    "ci95": null,
+    "brier": null
+   }
+  },
+  "BNB 1h": {
+   "rule": {
+    "decided": 0,
+    "right": 0,
+    "hitRate": null,
+    "ci95": null,
+    "brier": null
+   },
+   "model": {
+    "decided": 0,
+    "right": 0,
+    "hitRate": null,
+    "ci95": null,
+    "brier": null
+   },
+   "crowd": {
+    "decided": 0,
+    "right": 0,
+    "hitRate": null,
+    "ci95": null,
+    "brier": null
+   }
+  },
+  "BTC 6h": {
+   "rule": {
+    "decided": 0,
+    "right": 0,
+    "hitRate": null,
+    "ci95": null,
+    "brier": null
+   },
+   "model": {
+    "decided": 0,
+    "right": 0,
+    "hitRate": null,
+    "ci95": null,
+    "brier": null
+   },
+   "crowd": {
+    "decided": 0,
+    "right": 0,
+    "hitRate": null,
+    "ci95": null,
+    "brier": null
+   }
+  },
+  "ETH 6h": {
+   "rule": {
+    "decided": 0,
+    "right": 0,
+    "hitRate": null,
+    "ci95": null,
+    "brier": null
+   },
+   "model": {
+    "decided": 0,
+    "right": 0,
+    "hitRate": null,
+    "ci95": null,
+    "brier": null
+   },
+   "crowd": {
+    "decided": 0,
+    "right": 0,
+    "hitRate": null,
+    "ci95": null,
+    "brier": null
+   }
+  },
+  "BNB 6h": {
+   "rule": {
+    "decided": 0,
+    "right": 0,
+    "hitRate": null,
+    "ci95": null,
+    "brier": null
+   },
+   "model": {
+    "decided": 0,
+    "right": 0,
+    "hitRate": null,
+    "ci95": null,
+    "brier": null
+   },
+   "crowd": {
+    "decided": 0,
+    "right": 0,
+    "hitRate": null,
+    "ci95": null,
+    "brier": null
+   }
+  }
+ },
+ "total": {
+  "rule": {
+   "decided": 0,
+   "right": 0,
+   "hitRate": null,
+   "ci95": null,
+   "brier": null
+  },
+  "model": {
+   "decided": 0,
+   "right": 0,
+   "hitRate": null,
+   "ci95": null,
+   "brier": null
+  },
+  "crowd": {
+   "decided": 0,
+   "right": 0,
+   "hitRate": null,
+   "ci95": null,
+   "brier": null
+  }
+ }
+}

@@ -3,9 +3,9 @@ name: Tests
 # default profile in foundry.toml; run them with FOUNDRY_PROFILE=fork forge test.
 on:
   push:
-    paths: ['src/**', 'test/**', 'art/**', 'foundry.toml', 'remappings.txt', 'package.json', 'package-lock.json', 'skills/**', 'mcp/**', 'tests/**', 'keeper/claimsummary.mjs', '.github/workflows/test.yml']
+    paths: ['src/**', 'test/**', 'art/**', 'foundry.toml', 'remappings.txt', 'package.json', 'package-lock.json', 'skills/**', 'mcp/**', 'tests/**', 'agent/**', 'keeper/claimsummary.mjs', '.github/workflows/test.yml']
   pull_request:
-    paths: ['src/**', 'test/**', 'art/**', 'foundry.toml', 'remappings.txt', 'package.json', 'package-lock.json', 'skills/**', 'mcp/**', 'tests/**', 'keeper/claimsummary.mjs', '.github/workflows/test.yml']
+    paths: ['src/**', 'test/**', 'art/**', 'foundry.toml', 'remappings.txt', 'package.json', 'package-lock.json', 'skills/**', 'mcp/**', 'tests/**', 'agent/**', 'keeper/claimsummary.mjs', '.github/workflows/test.yml']
   workflow_dispatch: {}
 permissions:
   contents: read
@@ -45,7 +45,7 @@ jobs:
       - name: Agent helpers (offline)
         run: |
           node --check skills/forecast-league/scripts/league.mjs
-          python3 -m py_compile skills/forecast-league/scripts/paper.py skills/forecast-league/scripts/crowd_hook.py
+          python3 -m py_compile skills/forecast-league/scripts/paper.py skills/forecast-league/scripts/crowd_hook.py skills/forecast-league/scripts/reversal_hook.py agent/*.py
           python3 -m unittest discover -s tests/python -v
           node tests/mcp.test.mjs
           node tests/keeper.test.mjs

@@ -14,6 +14,7 @@ def load(name):
 
 paper = load("paper")
 crowd = load("crowd_hook")
+rev = load("reversal_hook")
 MARKET = "0x09A645aa6cc6b0eB320dCF3982bcaA6A22b32629"
 
 
@@ -87,6 +88,18 @@ class Crowd(unittest.TestCase):
     def test_unknown_timeframe_skips(self):
         ctx = {"cfg": {"timeframe": "5 min", "symbol": "BTCUSDT"}, "policy": {}}
         self.assertIsNone(crowd.estimate_probability({"start_ms": self.start}, ctx))
+
+
+class Reversal(unittest.TestCase):
+    def test_fades_last_hour(self):
+        c = {"cfg": {"timeframe": "1 hour"}, "streak": 2, "streak_dir": 1}
+        self.assertEqual(rev.estimate_probability({}, c), 0.48)
+        c["streak_dir"] = 0
+        self.assertEqual(rev.estimate_probability({}, c), 0.52)
+
+    def test_other_cadences_skip(self):
+        self.assertIsNone(rev.estimate_probability({}, {"cfg": {"timeframe": "6 hour"}, "streak": 2, "streak_dir": 1}))
+        self.assertIsNone(rev.estimate_probability({}, {"cfg": {"timeframe": "1 hour"}, "streak": None, "streak_dir": None}))
 
 
 if __name__ == "__main__":

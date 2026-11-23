@@ -1,0 +1,116 @@
+{
+ "model": "fl-logit-1",
+ "asset": "BNB",
+ "windowHours": 1,
+ "decisionHoursBeforeLock": 0.0,
+ "data": "Binance spot 1h candles (data-api.binance.vision), OKX funding; labels: open at the lock vs close at the window end",
+ "trainWindows": 12189,
+ "testWindows": 5225,
+ "trainFrom": "2024-11-26",
+ "testFrom": "2026-04-19",
+ "testTo": "2026-11-23",
+ "results": [
+  {
+   "name": "model",
+   "decided": 5225,
+   "right": 2667,
+   "hitRate": 0.5104,
+   "ci95": [
+    0.4969,
+    0.524
+   ],
+   "brier": 0.25
+  },
+  {
+   "name": "always up (train base rate)",
+   "decided": 5225,
+   "right": 2663,
+   "hitRate": 0.5097,
+   "ci95": [
+    0.4961,
+    0.5232
+   ],
+   "brier": 0.2499
+  },
+  {
+   "name": "follow the last window",
+   "decided": 5225,
+   "right": 2567,
+   "hitRate": 0.4913,
+   "ci95": [
+    0.4777,
+    0.5048
+   ],
+   "brier": 0.2534
+  },
+  {
+   "name": "fade the last window",
+   "decided": 5225,
+   "right": 2658,
+   "hitRate": 0.5087,
+   "ci95": [
+    0.4952,
+    0.5223
+   ],
+   "brier": 0.2516
+  },
+  {
+   "name": "coin flip",
+   "decided": 0,
+   "right": 0,
+   "hitRate": null,
+   "ci95": null,
+   "brier": 0.25
+  }
+ ],
+ "confidenceBuckets": [
+  {
+   "confidence": "0.50-0.52",
+   "n": 2151,
+   "hitRate": 0.5049,
+   "ci95": [
+    0.4838,
+    0.526
+   ]
+  },
+  {
+   "confidence": "0.52-0.55",
+   "n": 2108,
+   "hitRate": 0.4953,
+   "ci95": [
+    0.4739,
+    0.5166
+   ]
+  },
+  {
+   "confidence": "0.55-1.00",
+   "n": 966,
+   "hitRate": 0.5559,
+   "ci95": [
+    0.5244,
+    0.587
+   ]
+  }
+ ],
+ "weights": {
+  "r1": -0.0048,
+  "r3": -0.0883,
+  "r6": 0.0062,
+  "r12": -0.0119,
+  "r24": -0.0235,
+  "r72": -0.0378,
+  "prevwin": -0.0045,
+  "vol24": -0.0004,
+  "volratio": 0.0291,
+  "z24": 0.0328,
+  "rangepos": -0.0375,
+  "vratio": -0.0132,
+  "eth_rel6": -0.0094,
+  "bnb_rel6": 0.0,
+  "s00": 0.0015,
+  "s06": -0.0167,
+  "s12": -0.0195,
+  "s18": 0.0347,
+  "fund": 0.0
+ }
+}

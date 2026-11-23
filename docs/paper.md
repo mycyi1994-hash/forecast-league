@@ -104,3 +104,11 @@ python3 paper.py pick --address <your wallet> --hook crowd_hook.py --markets btc
 It is a signal to test, not a strategy known to work. The crowd is small, and the feed is
 refreshed hourly. How picked sides and Binance Prediction prices have done on the same hours is in
 [api/vs-market.json](https://mycyi1994-hash.github.io/forecast-league/api/vs-market.json).
+
+## A second hook: the 1-hour reversal
+
+[`reversal_hook.py`](https://github.com/mycyi1994-hash/forecast-league/blob/main/skills/forecast-league/scripts/reversal_hook.py)
+fades the last closed hourly candle (P(up) 0.48 after an up hour, 0.52 after a down hour) and skips other
+cadences. Over two years of BTC, ETH and BNB hourly candles this was right about 51-52% of the time, with
+intervals above 50% ([research](https://mycyi1994-hash.github.io/forecast-league/api/agent/research.json)). Two
+points is less than Binance Prediction's fee plus overround: test it here, do not expect it to pay there.

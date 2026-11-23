@@ -7,3 +7,4 @@ lib/
 lib
 .env
 __pycache__/
+agent/cache/
