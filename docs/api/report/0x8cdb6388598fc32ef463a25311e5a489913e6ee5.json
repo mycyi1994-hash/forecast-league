@@ -39,7 +39,8 @@
  },
  "waitingTickets": 3,
  "nextResultAt": "2026-11-24T00:00Z",
- "verdict": "coinflip",
+ "verdict": "early",
+ "overallAllTickets": "coinflip",
  "todoNow": [
   {
    "call": "Stamps checkIn()",

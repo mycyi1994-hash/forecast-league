@@ -40,6 +40,7 @@
  "waitingTickets": 3,
  "nextResultAt": "2026-11-24T00:00Z",
  "verdict": "early",
+ "overallAllTickets": "early",
  "todoNow": [
   {
    "call": "Stamps checkIn()",

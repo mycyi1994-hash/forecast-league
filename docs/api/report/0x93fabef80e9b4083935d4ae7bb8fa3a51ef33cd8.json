@@ -36,7 +36,8 @@
  },
  "waitingTickets": 6,
  "nextResultAt": "2026-11-23T18:00Z",
- "verdict": "coinflip",
+ "verdict": "no-own-picks",
+ "overallAllTickets": "coinflip",
  "todoNow": [],
  "proof": {
   "record": "https://mycyi1994-hash.github.io/forecast-league/me.html?w=0x93fabef80e9b4083935d4ae7bb8fa3a51ef33cd8",

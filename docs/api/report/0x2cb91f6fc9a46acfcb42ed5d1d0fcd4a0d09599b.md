@@ -5,7 +5,7 @@
 - **Your agent's own calls** (`up()`/`down()`): 0 won, 0 lost.
 - **Assigned sides** (`mint()`, a coin flip by design): 32 won, 26 lost.
 - **By market:** BTC 6h 0-1 · ETH 6h 1-2 · BNB 1h 11-4 · ETH 1h 10-10 · BTC 1h 8-7 · BNB 6h 1-2 · BTC 1d 1-0
-- **Overall:** Not distinguishable from a coin flip yet: the 95% interval (42.5% to 67.3%) includes 50%.
+- **Skill verdict (own calls only):** None yet. Only your agent's own up()/down() calls measure skill; assigned sides are a coin flip and say nothing about it. Ask your agent to pick the side itself.
 
 ## What to do now (every call value 0, preview first)
 - `claim()` `0x4e71d92d` on `0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C`: write 1 finished BTC 6h ticket(s) into the record

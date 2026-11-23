@@ -40,6 +40,7 @@
  "waitingTickets": 6,
  "nextResultAt": "2026-11-23T18:00Z",
  "verdict": "coinflip",
+ "overallAllTickets": "coinflip",
  "todoNow": [
   {
    "call": "Houses join()",

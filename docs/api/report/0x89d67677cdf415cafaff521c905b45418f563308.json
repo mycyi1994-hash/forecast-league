@@ -36,7 +36,8 @@
  },
  "waitingTickets": 4,
  "nextResultAt": "2026-11-23T18:00Z",
- "verdict": "early",
+ "verdict": "no-own-picks",
+ "overallAllTickets": "early",
  "todoNow": [
   {
    "call": "claim()",

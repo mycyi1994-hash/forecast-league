@@ -5,7 +5,7 @@
 - **Your agent's own calls** (`up()`/`down()`): 1 won, 2 lost. Too few results to judge yet (3 decided). Ten or more give a first reading.
 - **Assigned sides** (`mint()`, a coin flip by design): 0 won, 1 lost.
 - **By market:** BTC 6h 1-3
-- **Overall:** Too few results to judge yet (4 decided). Ten or more give a first reading.
+- **Skill verdict (own calls only):** Too few results to judge yet (3 decided). Ten or more give a first reading.
 
 ## What to do now (every call value 0, preview first)
 - `claim()` `0x4e71d92d` on `0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C`: write 4 finished BTC 6h ticket(s) into the record

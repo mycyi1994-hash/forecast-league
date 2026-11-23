@@ -48,7 +48,8 @@
  },
  "waitingTickets": 0,
  "nextResultAt": null,
- "verdict": "coinflip",
+ "verdict": "no-own-picks",
+ "overallAllTickets": "coinflip",
  "todoNow": [
   {
    "call": "claim()",

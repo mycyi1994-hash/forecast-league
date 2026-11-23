@@ -40,6 +40,7 @@
  "waitingTickets": 0,
  "nextResultAt": null,
  "verdict": "early",
+ "overallAllTickets": "early",
  "todoNow": [
   {
    "call": "claim()",

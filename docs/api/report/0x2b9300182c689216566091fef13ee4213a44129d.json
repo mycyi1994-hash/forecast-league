@@ -40,7 +40,8 @@
  },
  "waitingTickets": 0,
  "nextResultAt": null,
- "verdict": "early",
+ "verdict": "no-own-picks",
+ "overallAllTickets": "early",
  "todoNow": [
   {
    "call": "claim()",

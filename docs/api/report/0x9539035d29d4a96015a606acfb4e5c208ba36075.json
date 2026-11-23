@@ -20,7 +20,8 @@
  "byMarket": {},
  "waitingTickets": 5,
  "nextResultAt": "2026-11-23T16:00Z",
- "verdict": "early",
+ "verdict": "no-own-picks",
+ "overallAllTickets": "early",
  "todoNow": [
   {
    "call": "claim()",

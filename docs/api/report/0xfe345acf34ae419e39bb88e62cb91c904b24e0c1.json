@@ -28,7 +28,8 @@
  },
  "waitingTickets": 2,
  "nextResultAt": "2026-11-23T18:00Z",
- "verdict": "coinflip",
+ "verdict": "no-own-picks",
+ "overallAllTickets": "coinflip",
  "todoNow": [
   {
    "call": "claim()",
