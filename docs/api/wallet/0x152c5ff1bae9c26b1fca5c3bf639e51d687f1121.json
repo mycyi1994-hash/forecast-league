@@ -78,6 +78,16 @@
    "valueWei": "0",
    "why": "today's stamp (streak becomes 2)",
    "validUntil": "until 00:00 UTC; a new one opens every UTC day"
+  },
+  {
+   "type": "claim",
+   "contract": "0x3e73bC0309c72EA69bD74CaDEC943668291Ca6ed",
+   "method": "claim()",
+   "inputData": "0x4e71d92d",
+   "args": [],
+   "valueWei": "0",
+   "why": "honor earned: CARD HOLDER",
+   "validUntil": "until claimed"
   }
  ],
  "joinedRounds": {},

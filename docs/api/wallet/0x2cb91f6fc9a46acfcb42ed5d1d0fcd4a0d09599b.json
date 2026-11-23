@@ -91,9 +91,7 @@
    "validUntil": "until 00:00 UTC; a new one opens every UTC day"
   }
  ],
- "joinedRounds": {
-  "BTC 1h": 498721
- },
+ "joinedRounds": {},
  "pendingResults": [
   {
    "market": "BTC 1h",
