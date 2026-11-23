@@ -467,18 +467,18 @@
   }
  ],
  "note": "Every call is value 0 with no arguments. Preview each call; skip any whose simulation fails. Tickets and badges have no monetary value. Hackathon entry; new and unaudited.",
- "updated": "2026-11-23T10:10:00Z",
+ "updated": "2026-11-23T11:11:02Z",
  "openNow": [
   {
    "market": "BTC 1h",
    "contract": "0x09A645aa6cc6b0eB320dCF3982bcaA6A22b32629",
-   "round": 498730,
-   "opensAt": "2026-11-23T10:00:00Z",
-   "closesAt": "2026-11-23T11:00:00Z",
-   "secondsLeft": 3000,
-   "mintedThisRound": 0,
-   "earlySeatsLeft": 25,
-   "validUntil": "2026-11-23T10:59:00Z",
+   "round": 498731,
+   "opensAt": "2026-11-23T11:00:00Z",
+   "closesAt": "2026-11-23T12:00:00Z",
+   "secondsLeft": 2938,
+   "mintedThisRound": 2,
+   "earlySeatsLeft": 23,
+   "validUntil": "2026-11-23T11:59:00Z",
    "call": {
     "function": "up() or down(): pick the side yourself",
     "up": "0xd5a49e01",
@@ -488,19 +488,19 @@
     "args": [],
     "note": "Agents: decide the side and send up() 0xd5a49e01 or down() 0xd8337928. inputData is mint(), which takes a side the contract assigns from your address, for tools that cannot choose."
    },
-   "question": "Will BTC/USD be higher at 12:00 UTC than at the lock, 11:00 UTC?",
+   "question": "Will BTC/USD be higher at 13:00 UTC than at the lock, 12:00 UTC?",
    "alreadyMinted": "one ticket per wallet per round; hasMinted(address) is false again every new round"
   },
   {
    "market": "ETH 1h",
    "contract": "0x8b998abA2BeeebF7ceBf565bC53BC575693c07a4",
-   "round": 498730,
-   "opensAt": "2026-11-23T10:00:00Z",
-   "closesAt": "2026-11-23T11:00:00Z",
-   "secondsLeft": 3000,
-   "mintedThisRound": 0,
-   "earlySeatsLeft": 25,
-   "validUntil": "2026-11-23T10:59:00Z",
+   "round": 498731,
+   "opensAt": "2026-11-23T11:00:00Z",
+   "closesAt": "2026-11-23T12:00:00Z",
+   "secondsLeft": 2938,
+   "mintedThisRound": 2,
+   "earlySeatsLeft": 23,
+   "validUntil": "2026-11-23T11:59:00Z",
    "call": {
     "function": "up() or down(): pick the side yourself",
     "up": "0xd5a49e01",
@@ -510,19 +510,19 @@
     "args": [],
     "note": "Agents: decide the side and send up() 0xd5a49e01 or down() 0xd8337928. inputData is mint(), which takes a side the contract assigns from your address, for tools that cannot choose."
    },
-   "question": "Will ETH/USD be higher at 12:00 UTC than at the lock, 11:00 UTC?",
+   "question": "Will ETH/USD be higher at 13:00 UTC than at the lock, 12:00 UTC?",
    "alreadyMinted": "one ticket per wallet per round; hasMinted(address) is false again every new round"
   },
   {
    "market": "BNB 1h",
    "contract": "0x66613fD9a2c70d4cB56D920bDd0D56bA95BD2736",
-   "round": 498730,
-   "opensAt": "2026-11-23T10:00:00Z",
-   "closesAt": "2026-11-23T11:00:00Z",
-   "secondsLeft": 3000,
-   "mintedThisRound": 3,
-   "earlySeatsLeft": 22,
-   "validUntil": "2026-11-23T10:59:00Z",
+   "round": 498731,
+   "opensAt": "2026-11-23T11:00:00Z",
+   "closesAt": "2026-11-23T12:00:00Z",
+   "secondsLeft": 2938,
+   "mintedThisRound": 5,
+   "earlySeatsLeft": 20,
+   "validUntil": "2026-11-23T11:59:00Z",
    "call": {
     "function": "up() or down(): pick the side yourself",
     "up": "0xd5a49e01",
@@ -532,7 +532,7 @@
     "args": [],
     "note": "Agents: decide the side and send up() 0xd5a49e01 or down() 0xd8337928. inputData is mint(), which takes a side the contract assigns from your address, for tools that cannot choose."
    },
-   "question": "Will BNB/USD be higher at 12:00 UTC than at the lock, 11:00 UTC?",
+   "question": "Will BNB/USD be higher at 13:00 UTC than at the lock, 12:00 UTC?",
    "alreadyMinted": "one ticket per wallet per round; hasMinted(address) is false again every new round"
   },
   {
@@ -541,8 +541,8 @@
    "round": 83121,
    "opensAt": "2026-11-23T06:00:00Z",
    "closesAt": "2026-11-23T12:00:00Z",
-   "secondsLeft": 6600,
-   "mintedThisRound": 48,
+   "secondsLeft": 2938,
+   "mintedThisRound": 51,
    "earlySeatsLeft": 0,
    "validUntil": "2026-11-23T11:59:00Z",
    "call": {
@@ -563,8 +563,8 @@
    "round": 83121,
    "opensAt": "2026-11-23T06:00:00Z",
    "closesAt": "2026-11-23T12:00:00Z",
-   "secondsLeft": 6600,
-   "mintedThisRound": 28,
+   "secondsLeft": 2938,
+   "mintedThisRound": 29,
    "earlySeatsLeft": 0,
    "validUntil": "2026-11-23T11:59:00Z",
    "call": {
@@ -585,8 +585,8 @@
    "round": 83121,
    "opensAt": "2026-11-23T06:00:00Z",
    "closesAt": "2026-11-23T12:00:00Z",
-   "secondsLeft": 6600,
-   "mintedThisRound": 27,
+   "secondsLeft": 2938,
+   "mintedThisRound": 28,
    "earlySeatsLeft": 0,
    "validUntil": "2026-11-23T11:59:00Z",
    "call": {
@@ -607,9 +607,9 @@
    "round": 20780,
    "opensAt": "2026-11-23T00:00:00Z",
    "closesAt": "2026-11-24T00:00:00Z",
-   "secondsLeft": 49800,
-   "mintedThisRound": 17,
-   "earlySeatsLeft": 8,
+   "secondsLeft": 46138,
+   "mintedThisRound": 18,
+   "earlySeatsLeft": 7,
    "validUntil": "2026-11-23T23:59:00Z",
    "call": {
     "function": "up() or down(): pick the side yourself",
@@ -629,8 +629,8 @@
    "round": 20780,
    "opensAt": "2026-11-23T00:00:00Z",
    "closesAt": "2026-11-24T00:00:00Z",
-   "secondsLeft": 49800,
-   "mintedThisRound": 13,
+   "secondsLeft": 46138,
+   "mintedThisRound": 14,
    "validUntil": "2026-11-23T23:59:00Z",
    "oncePer": "wallet per UTC day",
    "call": {
@@ -647,8 +647,8 @@
    "round": 0,
    "opensAt": "2026-11-20T00:00:00Z",
    "closesAt": "2026-12-09T08:00:00Z",
-   "secondsLeft": 1374600,
-   "mintedThisRound": 127,
+   "secondsLeft": 1370938,
+   "mintedThisRound": 128,
    "validUntil": "2026-12-09T07:59:00Z",
    "oncePer": "wallet",
    "call": {
@@ -661,15 +661,15 @@
   }
  ],
  "claimsWaiting": {
-  "wallets": 701,
-  "finishedTickets": 5011,
-  "claimCalls": 1483,
-  "extraCalls": 1969,
+  "wallets": 703,
+  "finishedTickets": 5052,
+  "claimCalls": 1484,
+  "extraCalls": 1974,
   "perExtra": {
-   "Stamps checkIn()": 690,
-   "Houses join()": 577,
-   "Honors claim()": 580,
-   "Badges claim()": 122
+   "Stamps checkIn()": 691,
+   "Houses join()": 578,
+   "Honors claim()": 582,
+   "Badges claim()": 123
   },
   "perAddress": "https://mycyi1994-hash.github.io/forecast-league/api/claims.json",
   "how": "If your address is listed there (or todo(address) shows claimable > 0), send claim() 0x4e71d92d on those markets before your new tickets, and the extras[] calls listed for you. Only what is listed."

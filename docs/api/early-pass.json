@@ -10,8 +10,8 @@
  "closesAt": "2026-12-08T08:00:00Z",
  "secondsToOpen": 0,
  "maxSupply": 2000,
- "minted": 466,
- "left": 1534,
+ "minted": 467,
+ "left": 1533,
  "perWallet": 1,
  "gate": "Binance Agent ID (balanceOf > 0 on 0x60B9262456dE011F7d15a54CdD8c48bAaa8B022F)",
  "price": "0",
@@ -39,5 +39,5 @@
   "sourcify": true,
   "check": "https://sourcify.dev/server/v2/contract/56/0xf467a5941F8DedE54583754aC7448FB62ae0b9D4"
  },
- "updated": "2026-11-23T10:10:07Z"
+ "updated": "2026-11-23T11:11:21Z"
 }
