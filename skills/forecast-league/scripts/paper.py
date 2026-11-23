@@ -165,6 +165,8 @@ def clean(preview, market, ticket):
         return False, "simulation failed"
     if sim.get("authorityChanges") or sim.get("allowanceChanges") or risks.get("riskDetails") or risks.get("riskBehaviors"):
         return False, "approval or risk flag in preview"
+    if d.get("requireConfirmation"):
+        return False, "the wallet asks for the human's confirmation: show it to your human, do not send from here"
     bc = sim.get("balanceChanges") or []
     if ticket:
         ok = len(bc) == 1 and str(bc[0].get("contractAddress", "")).lower() == market.lower() \

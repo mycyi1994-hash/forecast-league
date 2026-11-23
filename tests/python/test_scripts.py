@@ -44,6 +44,11 @@ class Paper(unittest.TestCase):
         self.assertTrue(paper.clean(preview(), MARKET, False)[0])
         self.assertFalse(paper.clean(preview(bc=[{"change": -1}]), MARKET, False)[0])
 
+    def test_clean_rejects_require_confirmation(self):
+        pv = preview()
+        pv["data"]["requireConfirmation"] = True
+        self.assertFalse(paper.clean(pv, MARKET, False)[0])
+
     def test_clean_rejects_failures_approvals_and_risks(self):
         self.assertFalse(paper.clean(preview(code="1"), MARKET, False)[0])
         self.assertFalse(paper.clean(preview(success=False), MARKET, False)[0])

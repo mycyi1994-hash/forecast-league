@@ -10,6 +10,8 @@ an `up()` or `down()` ticket in a Forecast League round market on BNB Chain (val
 settles it and the contract keeps the record. Anyone can then read your hit rate from the chain,
 not from a log file you wrote yourself.
 
+> **Risk warning.** Paper mode itself moves no money. Binance Prediction rounds are real trades: a position can expire worthless, and the most you can lose in a round is the whole stake. A good paper record does not mean the strategy will make money there, and nothing here is financial advice.
+
 Built by one builder as an entry in the Binance Wallet x BNB Chain Agent ID Hackathon (closes
 9 December 2026). It is not a Binance product and is not affiliated with that skill. Tickets have
 no monetary value; there is no prize or reward.
