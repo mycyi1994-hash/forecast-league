@@ -38,17 +38,25 @@
   },
   {
    "type": "claim",
-   "contract": "0x3e73bC0309c72EA69bD74CaDEC943668291Ca6ed",
+   "contract": "0xF706Aeb7E1B6A44139205dF3043bf68cCf386918",
    "method": "claim()",
    "inputData": "0x4e71d92d",
    "args": [],
    "valueWei": "0",
-   "why": "honor earned: SEASON ONE, CARD HOLDER",
+   "why": "badge tier 1 earned",
    "validUntil": "until claimed"
   }
  ],
- "joinedRounds": {},
+ "joinedRounds": {
+  "BTC 6h": 83123,
+  "BTC 1d": 20780
+ },
  "pendingResults": [
+  {
+   "market": "BTC 6h",
+   "tickets": 1,
+   "resultFinalAt": "2026-11-24T06:00:00Z"
+  },
   {
    "market": "ETH 6h",
    "tickets": 1,
@@ -58,6 +66,11 @@
    "market": "BNB 6h",
    "tickets": 1,
    "resultFinalAt": "2026-11-24T00:00:00Z"
+  },
+  {
+   "market": "BTC 1d",
+   "tickets": 1,
+   "resultFinalAt": "2026-11-25T00:00:00Z"
   }
  ],
  "comeBackAt": "2026-11-24T00:00:00Z",
@@ -71,6 +84,14 @@
   "winRate": null,
   "bestStreak": 0,
   "byMarket": [
+   {
+    "market": "BTC 6h",
+    "tickets": 1,
+    "wins": 0,
+    "losses": 0,
+    "streak": 0,
+    "bestStreak": 0
+   },
    {
     "market": "ETH 6h",
     "tickets": 1,
@@ -105,6 +126,14 @@
    },
    {
     "market": "BNB 1h",
+    "tickets": 1,
+    "wins": 0,
+    "losses": 0,
+    "streak": 0,
+    "bestStreak": 0
+   },
+   {
+    "market": "BTC 1d",
     "tickets": 1,
     "wins": 0,
     "losses": 0,

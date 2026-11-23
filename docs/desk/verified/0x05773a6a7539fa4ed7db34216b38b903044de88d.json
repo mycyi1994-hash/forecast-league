@@ -2,8 +2,8 @@
  "contract": "0x05773a6a7539fa4ed7db34216b38b903044de88d",
  "name": "moodeng",
  "verdict": "passed",
- "checkedAt": "2026-11-23T20:10:48Z",
- "block": 135332604,
+ "checkedAt": "2026-11-23T21:12:31Z",
+ "block": 135340829,
  "checks": {
   "simulatedFromAgentIdWallet": true,
   "gateEnforced": true,
