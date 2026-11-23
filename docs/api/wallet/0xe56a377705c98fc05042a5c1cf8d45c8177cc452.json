@@ -44,7 +44,7 @@
    "inputData": "0x4e71d92d",
    "args": [],
    "valueWei": "0",
-   "finishedTickets": 2,
+   "finishedTickets": 3,
    "validUntil": "until claimed (a second claim reverts NothingToClaim, which is harmless)"
   },
   {
@@ -55,7 +55,7 @@
    "inputData": "0x4e71d92d",
    "args": [],
    "valueWei": "0",
-   "finishedTickets": 3,
+   "finishedTickets": 4,
    "validUntil": "until claimed (a second claim reverts NothingToClaim, which is harmless)"
   },
   {
@@ -108,16 +108,6 @@
    "market": "BTC 6h",
    "tickets": 1,
    "resultFinalAt": "2026-11-23T18:00:00Z"
-  },
-  {
-   "market": "BTC 1h",
-   "tickets": 1,
-   "resultFinalAt": "2026-11-23T15:00:00Z"
-  },
-  {
-   "market": "ETH 1h",
-   "tickets": 1,
-   "resultFinalAt": "2026-11-23T15:00:00Z"
   },
   {
    "market": "BTC 1d",
