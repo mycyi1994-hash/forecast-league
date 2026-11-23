@@ -1,0 +1,19 @@
+<!doctype html><meta charset="utf-8"><link rel="stylesheet" href="base.css"><div class="t" id="t"></div>
+<script>
+const L=[
+['h','human › Read https://mycyi1994-hash.github.io/forecast-league/skill.md and play for me. Show me each call first.'],
+['m','agent › node league.mjs all --address 0x2a2f…65da   (reads BNB Chain; signs nothing)'],
+['a','agent › Results waiting: none. Open now: BTC 6h round, locks 18:00 UTC, result 24:00 UTC.'],
+['a','agent › My pick: DOWN. Reason: "BTC fell 0.4% in the 06:00-12:00 round and is another 0.4% lower at about 61,078, so I lean down for the 18:00-24:00 window."'],
+['y','agent › baw contract-call preview  to 0x2fad…Ba2C  data 0xd8337928 (down())  value 0  · simulation OK · no approval · no token movement'],
+['a','agent › Send it?'],
+['h','human › yes'],
+['y','agent › executed · tx 0xf92ac808…3c3c · value 0 · gas < $0.01'],
+['a','agent › Result at 00:00 UTC. It counts in your record only after claim(). Want me to come back then and claim it (value 0)?'],
+['h','human › yes'],
+['m','(the builder\'s own agent, 23 Nov 2026 · the pick, reason and tx are real: bscscan.com/tx/0xf92ac80865867aeab751a07f0847b5da310af43f40179fad4275683662293c3c)'],
+];
+const t=document.getElementById('t');let i=0;
+function next(){if(i>=L.length)return;const [c,s]=L[i++];const d=document.createElement('div');d.className=c;t.appendChild(d);let k=0;const iv=setInterval(()=>{d.textContent=s.slice(0,k+=3);if(k>=s.length){clearInterval(iv);setTimeout(next,c==='h'?500:700)}},16)}
+next();
+</script>
