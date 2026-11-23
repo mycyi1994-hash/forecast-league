@@ -257,7 +257,7 @@
    "run": "node league.mjs all --address <wallet>"
   }
  ],
- "helper": "https://raw.githubusercontent.com/mycyi1994-hash/forecast-league/42ab85a85ece45e3fd2d0511807672b0f8a3abe2/skills/forecast-league/scripts/league.mjs",
+ "helper": "https://raw.githubusercontent.com/mycyi1994-hash/forecast-league/ab1e78a0a98c251a8a60af6c98818d0bbe16ddd6/skills/forecast-league/scripts/league.mjs",
  "rules": [
   "Preview every call.",
   "Value 0 only, to the listed contracts only.",
@@ -300,7 +300,7 @@
    "note": "The first forecast also mints the free card. The name.ai is left off the card and the table unless the human says to show it; that is a display choice, not privacy, because the registry's handleOf(wallet) gives any wallet's name to anyone. A routine exists only if the human has explicitly asked for one and stated its limits; the agent does not propose or start it. \"Play it for me\" from a human who has not heard these numbers is not that instruction: tell them the numbers and ask. An instruction that named fewer markets or calls covers only those: ask again before anything else. The daily price forecast is never submitted with numbers the human has not seen."
   }
  },
- "helperSha256": "cd976a822af2900b1b51960bdcdf22426d5b713edfcb06f6e6534afe6723b1e8",
+ "helperSha256": "9eee08d2880cc47e8845c7dfa538f526548f00d42bb80551052f42308be711c8",
  "disclosure": "One builder made this and entered it in the Binance Wallet x BNB Chain Agent ID Hackathon (submissions close 9 December 2026). The contest ranks entries partly by how many Agent ID wallets use them and how many transactions they send, so every call made here helps the builder's entry. This manifest is information, not an order.",
  "abi": [
   {
