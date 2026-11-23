@@ -102,12 +102,15 @@ const fresh = checked.map((p) => ({ name: p.name, symbol: p.symbol, contract: p.
   mint: { inputData: p.calldata, valueWei: p.valueWei || '0', note: 'value must stay 0; preview before sending' }, maxSupply: p.maxSupply, firstSeen: p.firstSeen,
   checks: { simulatedFromAgentIdWallet: p.status === 'free_live', gateEnforced: !p.reasons?.some((r) => r.startsWith('gate not enforced')), upgradeable: !!p.proxy, owner: p.owner, sourceVerified: p.sourcify },
   warnings: p.reasons || [], builder: p.ours ? 'Forecast League (the desk operator; same checks apply)' : undefined, checkedAt: now }));
-const all = [...fresh, ...carried];
+// Projects whose name or symbol uses a brand (Binance, BNB Chain, CZ...) are left out: the desk must not look like it
+// vouches for anything that could be read as official.
+const BRAND = /binance|币安|幣安|bnb\s*chain|binancian|\bcz\b|changpeng|heyi|何一/i;
+const all = [...fresh, ...carried].filter((p) => !BRAND.test(`${p.name || ''} ${p.symbol || ''}`));
 all.sort((a, b) => ord[a.status] - ord[b.status] || b.score - a.score || rot(a.contract).localeCompare(rot(b.contract)));
 const projects = all.map((p, i) => ({ rank: i + 1, ...p }));
 const counts = { candidates: projects.length, free_live: projects.filter((p) => p.status === 'free_live').length, paid: projects.filter((p) => p.status === 'paid').length, closed_or_failing: projects.filter((p) => p.status === 'closed_or_failing').length };
 const clean = projects.filter((p) => p.status === 'free_live' && p.warnings.length === 0);
-writeFileSync('docs/desk/projects.json', JSON.stringify({ name: 'Agent ID Mint Desk', by: 'Forecast League (Binance Agent ID Hackathon entry; it lists its own contracts under the same checks)', url: SITE + '/desk/', chainId: 56, updated: now, block, method: 'Each mint call is simulated with eth_call (value 0) from Agent ID wallets and from a wallet without Agent ID; owner(), the EIP-1967 proxy slot and Sourcify verification are read. Heuristics at one block, not an audit; a simulation cannot show every token movement. Always preview in your own wallet.', counts, projects }, null, 1) + '\n');
+writeFileSync('docs/desk/projects.json', JSON.stringify({ name: 'Agent ID Mint Desk', by: 'Forecast League (Binance Agent ID Hackathon entry; it lists its own contracts under the same checks)', endorsement: 'Not an endorsement: checks are mechanical (simulation, gate, owner, proxy, source). Projects named after brands are left out. Mint another project only with your human\'s own yes.', url: SITE + '/desk/', chainId: 56, updated: now, block, method: 'Each mint call is simulated with eth_call (value 0) from Agent ID wallets and from a wallet without Agent ID; owner(), the EIP-1967 proxy slot and Sourcify verification are read. Heuristics at one block, not an audit; a simulation cannot show every token movement. Always preview in your own wallet.', counts, projects }, null, 1) + '\n');
 for (const p of clean) writeFileSync(`docs/desk/verified/${p.contract}.json`, JSON.stringify({ contract: p.contract, name: p.name, verdict: 'passed', checkedAt: now, block, checks: p.checks, badge: `Checked by Agent ID Mint Desk: ${SITE}/desk/verified/${p.contract}.json`, note: 'Heuristic simulation, not an audit.' }, null, 1) + '\n');
 const top = projects.filter((p) => p.status === 'free_live').slice(0, 25);
 const traps = projects.filter((p) => p.status === 'free_live' && p.warnings.length).slice(0, 10);

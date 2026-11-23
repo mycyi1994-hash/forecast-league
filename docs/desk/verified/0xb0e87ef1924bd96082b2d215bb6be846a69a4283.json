@@ -2,8 +2,8 @@
  "contract": "0xb0e87ef1924bd96082b2d215bb6be846a69a4283",
  "name": "Agent Proof Daily Badge",
  "verdict": "passed",
- "checkedAt": "2026-11-23T17:19:01Z",
- "block": 135309706,
+ "checkedAt": "2026-11-23T17:21:17Z",
+ "block": 135310007,
  "checks": {
   "simulatedFromAgentIdWallet": true,
   "gateEnforced": true,

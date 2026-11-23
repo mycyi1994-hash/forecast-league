@@ -25,7 +25,7 @@ want to; one ticket per wallet per round.
 
 No code needed: the value-0 calls that succeed now for an address (finished results, today's stamp, house, honors, badges) are listed in https://mycyi1994-hash.github.io/forecast-league/api/claims.json, refreshed hourly. Preview each and send with the user's yes.
 
-Fastest: `node scripts/league.mjs all --address <BSC address>`. Other Agent ID mints checked by the Mint Desk: add them with `daily --address <BSC address> --desk` (other projects' contracts: each needs its own confirmation). One contract: `node scripts/league.mjs check 0x… --address <BSC address>`.
+Fastest: `node scripts/league.mjs all --address <BSC address>`. Check any other contract before your human decides on it: `node scripts/league.mjs check 0x… --address <BSC address>`.
 
 ```bash
 node scripts/league.mjs all --address <BSC address>

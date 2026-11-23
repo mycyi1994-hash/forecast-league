@@ -2,8 +2,8 @@
  "contract": "0x9feb50ae2dba712a3f121f65f07be8802af39a5e",
  "name": "Ostrenne",
  "verdict": "passed",
- "checkedAt": "2026-11-23T17:19:01Z",
- "block": 135309706,
+ "checkedAt": "2026-11-23T17:21:17Z",
+ "block": 135310007,
  "checks": {
   "simulatedFromAgentIdWallet": true,
   "gateEnforced": true,
