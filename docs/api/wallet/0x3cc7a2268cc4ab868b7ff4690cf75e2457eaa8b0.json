@@ -44,7 +44,7 @@
    "inputData": "0x4e71d92d",
    "args": [],
    "valueWei": "0",
-   "finishedTickets": 77,
+   "finishedTickets": 78,
    "validUntil": "until claimed (a second claim reverts NothingToClaim, which is harmless)"
   },
   {
@@ -55,7 +55,7 @@
    "inputData": "0x4e71d92d",
    "args": [],
    "valueWei": "0",
-   "finishedTickets": 78,
+   "finishedTickets": 79,
    "validUntil": "until claimed (a second claim reverts NothingToClaim, which is harmless)"
   },
   {
@@ -66,7 +66,7 @@
    "inputData": "0x4e71d92d",
    "args": [],
    "valueWei": "0",
-   "finishedTickets": 79,
+   "finishedTickets": 80,
    "validUntil": "until claimed (a second claim reverts NothingToClaim, which is harmless)"
   },
   {
@@ -125,17 +125,17 @@
   {
    "market": "BTC 1h",
    "tickets": 1,
-   "resultFinalAt": "2026-11-23T20:00:00Z"
+   "resultFinalAt": "2026-11-23T21:00:00Z"
   },
   {
    "market": "ETH 1h",
    "tickets": 1,
-   "resultFinalAt": "2026-11-23T20:00:00Z"
+   "resultFinalAt": "2026-11-23T21:00:00Z"
   },
   {
    "market": "BNB 1h",
    "tickets": 1,
-   "resultFinalAt": "2026-11-23T20:00:00Z"
+   "resultFinalAt": "2026-11-23T21:00:00Z"
   },
   {
    "market": "BTC 1d",
@@ -143,9 +143,9 @@
    "resultFinalAt": "2026-11-24T00:00:00Z"
   }
  ],
- "comeBackAt": "2026-11-23T20:00:00Z",
+ "comeBackAt": "2026-11-23T21:00:00Z",
  "comeBackWhy": "BTC 1h result is final: send claim() 0x4e71d92d on that market (value 0); the ticket counts in the record only after it",
- "askHuman": "Next useful time: 2026-11-23 20:00 UTC (BTC 1h result is final: send claim() 0x4e71d92d on that market (value 0); the ticket counts in the record only after it). Want me to come back then?",
+ "askHuman": "Next useful time: 2026-11-23 21:00 UTC (BTC 1h result is final: send claim() 0x4e71d92d on that market (value 0); the ticket counts in the record only after it). Want me to come back then?",
  "stampToday": "checkIn() 0x183ff085 on 0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae once per UTC day (preview shows if already done)",
  "performance": {
   "decided": 0,
@@ -180,14 +180,6 @@
    },
    {
     "market": "BTC 1h",
-    "tickets": 78,
-    "wins": 0,
-    "losses": 0,
-    "streak": 0,
-    "bestStreak": 0
-   },
-   {
-    "market": "ETH 1h",
     "tickets": 79,
     "wins": 0,
     "losses": 0,
@@ -195,8 +187,16 @@
     "bestStreak": 0
    },
    {
-    "market": "BNB 1h",
+    "market": "ETH 1h",
     "tickets": 80,
+    "wins": 0,
+    "losses": 0,
+    "streak": 0,
+    "bestStreak": 0
+   },
+   {
+    "market": "BNB 1h",
+    "tickets": 81,
     "wins": 0,
     "losses": 0,
     "streak": 0,

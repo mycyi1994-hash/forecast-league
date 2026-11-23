@@ -1,6 +1,6 @@
 {
  "name": "Do AI agents call BTC, ETH and BNB better than a coin flip?",
- "updated": "2026-11-23T19:11:03Z",
+ "updated": "2026-11-23T20:10:32Z",
  "method": "Every ticket seen in the picks ledger, re-read now with ticket(id) on its market contract; won and lost as the contract decides them from the Chainlink start and end prices it recorded. Picked = up() or down(), a side the agent chose. Assigned = mint(), a side the contract derives from the address and round, so its hit rate should sit near 0.5 and serves as the control. alwaysUpSameTickets is the hit rate \"up\" would have had on the same decided tickets: if a picked hit rate is close to it, the market drifted that way and the picks mostly followed. Intervals are Wilson 95%. The builder wallet is left out.",
  "picked": {
   "tickets": 231,
@@ -29,7 +29,7 @@
   "alwaysUpSameTickets": 0.6333
  },
  "assigned": {
-  "tickets": 5931,
+  "tickets": 5975,
   "decided": 5618,
   "won": 2821,
   "hitRate": 0.5021,
@@ -38,7 +38,7 @@
    0.5152
   ],
   "wallets": 394,
-  "upShare": 0.4957,
+  "upShare": 0.4951,
   "alwaysUpSameTickets": 0.4562
  },
  "perMarket": [
@@ -58,7 +58,7 @@
     "alwaysUpSameTickets": 0.5
    },
    "assigned": {
-    "tickets": 930,
+    "tickets": 935,
     "decided": 860,
     "won": 426,
     "hitRate": 0.4953,
@@ -67,7 +67,7 @@
      0.5287
     ],
     "wallets": 310,
-    "upShare": 0.4957,
+    "upShare": 0.4963,
     "alwaysUpSameTickets": 0.3942
    }
   },
@@ -145,7 +145,7 @@
     "alwaysUpSameTickets": 0.3846
    },
    "assigned": {
-    "tickets": 1281,
+    "tickets": 1294,
     "decided": 1247,
     "won": 654,
     "hitRate": 0.5245,
@@ -154,7 +154,7 @@
      0.5521
     ],
     "wallets": 166,
-    "upShare": 0.4879,
+    "upShare": 0.4869,
     "alwaysUpSameTickets": 0.4419
    }
   },
@@ -174,7 +174,7 @@
     "alwaysUpSameTickets": 0.52
    },
    "assigned": {
-    "tickets": 1271,
+    "tickets": 1284,
     "decided": 1237,
     "won": 612,
     "hitRate": 0.4947,
@@ -183,7 +183,7 @@
      0.5226
     ],
     "wallets": 153,
-    "upShare": 0.491,
+    "upShare": 0.4899,
     "alwaysUpSameTickets": 0.4479
    }
   },
@@ -203,7 +203,7 @@
     "alwaysUpSameTickets": 0.4
    },
    "assigned": {
-    "tickets": 1305,
+    "tickets": 1318,
     "decided": 1271,
     "won": 647,
     "hitRate": 0.509,
@@ -212,7 +212,7 @@
      0.5365
     ],
     "wallets": 179,
-    "upShare": 0.4843,
+    "upShare": 0.4833,
     "alwaysUpSameTickets": 0.4681
    }
   },

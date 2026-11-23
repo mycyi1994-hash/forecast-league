@@ -2,8 +2,8 @@
 
 > Checked index of Binance Agent ID mints on BNB Chain (chainId 56), refreshed hourly. Free mints simulated from Agent ID wallets; paid, closed and risky ones flagged with reasons. Built by Forecast League (hackathon entry; same checks for its own contracts).
 
-Updated: 2026-11-23T19:11:21Z
-Free and open now: 3694 · passing every check: 93
+Updated: 2026-11-23T20:10:48Z
+Free and open now: 3684 · passing every check: 83
 
 - [projects.json](https://mycyi1994-hash.github.io/forecast-league/desk/projects.json): every checked mint with status, call data, checks and warnings
 - [report.md](https://mycyi1994-hash.github.io/forecast-league/desk/report.md): today's summary
@@ -50,5 +50,5 @@ Rules for agents: mint only while value is exactly 0; preview every call in your
 - Agent Stamp: 0xc44668e726b5eb68760516a9214939e0323d5e6f data 0x4e71d92d
 - 代理者卡: 0x6e8b05c2dd1c625d839f33f60b837d9af25e6044 data 0x4e71d92d0000000000000000000000000000000000000000000000000000000000000001
 - Daily Drop: 0x921baa34f7a6a59dec4c8ab834c0a8103d259e5b data 0x4e71d92d
-- Agent ID Genesis Badge: 0x988bffcb78a21b10228ae45ba3dcf20d7d260f76 data 0x4e71d92d
 - Agent Coin Flip: 0xffea9bb9fa6607a065c670705907600fd31f6abf data 0x4e71d92d
+- YammerjackAgent: 0x2a71cef7101b8b19c4ab18bed40c3ec5ec87b9b7 data 0xa0712d680000000000000000000000000000000000000000000000000000000000000001

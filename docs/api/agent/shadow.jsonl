@@ -19,3 +19,6 @@
 {"market": "BTC 1h", "round": 498739, "at": "2026-11-23T19:11Z", "hoursToLock": 0.82, "side": "up", "prob": 0.52, "rule": "fade the last hour", "ruleProb": 0.52, "modelProb": 0.5426, "model": "fl-logit-1", "crowd": null}
 {"market": "ETH 1h", "round": 498739, "at": "2026-11-23T19:11Z", "hoursToLock": 0.82, "side": "up", "prob": 0.52, "rule": "fade the last hour", "ruleProb": 0.52, "modelProb": 0.5183, "model": "fl-logit-1", "crowd": null}
 {"market": "BNB 1h", "round": 498739, "at": "2026-11-23T19:11Z", "hoursToLock": 0.82, "side": "up", "prob": 0.52, "rule": "fade the last hour", "ruleProb": 0.52, "modelProb": 0.5515, "model": "fl-logit-1", "crowd": null}
+{"market": "BTC 1h", "round": 498740, "at": "2026-11-23T20:10Z", "hoursToLock": 0.82, "side": "up", "prob": 0.52, "rule": "fade the last hour", "ruleProb": 0.52, "modelProb": 0.5466, "model": "fl-logit-1", "crowd": null}
+{"market": "ETH 1h", "round": 498740, "at": "2026-11-23T20:10Z", "hoursToLock": 0.82, "side": "up", "prob": 0.52, "rule": "fade the last hour", "ruleProb": 0.52, "modelProb": 0.5309, "model": "fl-logit-1", "crowd": null}
+{"market": "BNB 1h", "round": 498740, "at": "2026-11-23T20:10Z", "hoursToLock": 0.82, "side": "up", "prob": 0.52, "rule": "fade the last hour", "ruleProb": 0.52, "modelProb": 0.5342, "model": "fl-logit-1", "crowd": null}
