@@ -558,6 +558,7 @@ async function cmdBlitz(args) {
         lockAt: isoMin((round + 1) * len), resultAt: isoMin((round + 2) * len),
         context: await pickContext(market, round, len, prices[pair.toLowerCase()], secondsToLock),
         ask: PICK_ASK,
+        afterSending: `Remember this before you stop: the result is final at ${isoMin((round + 2) * len).replace('T', ' ').replace('Z', '')} UTC. Come back then and send claim() 0x4e71d92d on ${market} (value 0); the ticket counts in the record only after that claim. Schedule it or save it in your memory now.`,
         up, down,
         assigned,
       };
@@ -649,6 +650,7 @@ async function buildAll(args) {
         priceNow: feed !== undefined ? formatPrice(feed) : null, lockAt: new Date(lockAt * 1000).toISOString().slice(0, 16) + 'Z', resultAt: new Date(resultAt * 1000).toISOString().slice(0, 16) + 'Z',
         context: await pickContext(market, round, len, feed, secondsToLock),
         ask: PICK_ASK,
+        afterSending: `Remember this before you stop: the result is final at ${new Date(resultAt * 1000).toISOString().slice(0, 16).replace('T', ' ')} UTC. Come back then and send claim() 0x4e71d92d on ${market} (value 0); the ticket counts in the record only after that claim. Schedule it or save it in your memory now.`,
         up: TICKET.up, down: TICKET.down,
         how: 'Decide the side yourself from what you know of the market (recent moves, news, your own model) and keep a one-line reason. Send up() or down(), and show the reason to your human with the preview. mint() (0x1249c58b) takes a side the contract assigns from your address instead; use it only if you have no view.',
         // The same as full calls: your choice first, then the assigned side for an agent with no view.
@@ -722,6 +724,7 @@ async function buildAll(args) {
     picks,
     calls,
     next,
+    remember: next ? `Before you stop: schedule a return at ${next.at} (or save it in your memory). Then run this again: the claim() calls it lists write your finished tickets into your record; unclaimed tickets never count.` : undefined,
     streak,
     waiting,
     unlocked,

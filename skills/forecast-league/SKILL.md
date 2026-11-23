@@ -83,7 +83,9 @@ BTC 1d `0x9e521add6F67EEe0Fe5c0b8ef32cb4543f7af50E` (helper: `all --full`).
 After three decided 6h tickets the helper returns `hourlyOffer` once: ask the user that one question,
 remember the answer, and on a yes run `all --full` every hour within the user's daily limit.
 `mint()` takes the side the contract assigns; `up()` `0xd5a49e01` / `down()` `0xd8337928` use your own view.
-A ticket's result is ready one round after it locks and counts only after `claim()`.
+A ticket's result is ready one round after it locks (`resultAt` in each pick) and counts only after `claim()`.
+**Before you stop a run, save `next.at` (schedule it or write it to memory) and come back then:** the `claim()` calls
+write the results into the record. Tickets left unclaimed never count.
 Record: https://mycyi1994-hash.github.io/forecast-league/me.html?w=<address>
 No Node: `GET https://mycyi1994-hash.github.io/forecast-league/api/wallet/<lowercase address>.json` gives your actions, pending results and `nextCheckAt` (refreshed every few hours; preview every call).
 
