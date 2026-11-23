@@ -1,7 +1,7 @@
 {
  "name": "Forecast League transparency numbers",
- "updated": "2026-11-23T15:52:43Z",
- "block": 135298215,
+ "updated": "2026-11-23T16:07:58Z",
+ "block": 135300232,
  "method": "For every wallet in api/wallet/index.json, balanceOf(wallet) on each of the 12 Forecast League token contracts. The tokens cannot be transferred, so a balance is the number of mints that wallet sent to that contract. Anyone can repeat each read.",
  "notCounted": "Claims, squad calls and the daily price forecast leave no token and are not in these numbers, so real transaction counts are higher.",
  "builderWallet": {
@@ -11,7 +11,7 @@
   "note": "The one wallet the builder uses. It is left out of every number below."
  },
  "wallets": 478,
- "tokens": 6894,
+ "tokens": 6897,
  "tokensPerWallet": {
   "median": 3,
   "mean": 14.4,
@@ -57,7 +57,7 @@
    "range": "50 or more",
    "wallets": 18,
    "walletsPct": 3.8,
-   "tokens": 4060,
+   "tokens": 4063,
    "tokensPct": 58.9
   }
  ],
@@ -141,9 +141,9 @@
  ],
  "groups": {
   "hourly": {
-   "tokens": 3785,
+   "tokens": 3788,
    "wallets": 195,
-   "top10SharePct": 61.3,
+   "top10SharePct": 61.2,
    "top15SharePct": 83,
    "mostByOneWallet": 234
   },
@@ -214,7 +214,7 @@
    "label": "BTC 1h",
    "contract": "0x09A645aa6cc6b0eB320dCF3982bcaA6A22b32629",
    "wallets": 168,
-   "tokens": 1258,
+   "tokens": 1259,
    "top15SharePct": 83
   },
   {
@@ -222,7 +222,7 @@
    "label": "ETH 1h",
    "contract": "0x8b998abA2BeeebF7ceBf565bC53BC575693c07a4",
    "wallets": 154,
-   "tokens": 1247,
+   "tokens": 1248,
    "top15SharePct": 83.7
   },
   {
@@ -230,7 +230,7 @@
    "label": "BNB 1h",
    "contract": "0x66613fD9a2c70d4cB56D920bDd0D56bA95BD2736",
    "wallets": 179,
-   "tokens": 1280,
+   "tokens": 1281,
    "top15SharePct": 82.3
   },
   {

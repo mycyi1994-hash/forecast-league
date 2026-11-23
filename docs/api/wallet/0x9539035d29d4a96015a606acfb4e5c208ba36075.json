@@ -5,6 +5,39 @@
  "claims": [
   {
    "type": "claim",
+   "market": "BTC 1h",
+   "contract": "0x09A645aa6cc6b0eB320dCF3982bcaA6A22b32629",
+   "method": "claim()",
+   "inputData": "0x4e71d92d",
+   "args": [],
+   "valueWei": "0",
+   "finishedTickets": 1,
+   "validUntil": "until claimed (a second claim reverts NothingToClaim, which is harmless)"
+  },
+  {
+   "type": "claim",
+   "market": "ETH 1h",
+   "contract": "0x8b998abA2BeeebF7ceBf565bC53BC575693c07a4",
+   "method": "claim()",
+   "inputData": "0x4e71d92d",
+   "args": [],
+   "valueWei": "0",
+   "finishedTickets": 1,
+   "validUntil": "until claimed (a second claim reverts NothingToClaim, which is harmless)"
+  },
+  {
+   "type": "claim",
+   "market": "BNB 1h",
+   "contract": "0x66613fD9a2c70d4cB56D920bDd0D56bA95BD2736",
+   "method": "claim()",
+   "inputData": "0x4e71d92d",
+   "args": [],
+   "valueWei": "0",
+   "finishedTickets": 1,
+   "validUntil": "until claimed (a second claim reverts NothingToClaim, which is harmless)"
+  },
+  {
+   "type": "claim",
    "contract": "0x3e73bC0309c72EA69bD74CaDEC943668291Ca6ed",
    "method": "claim()",
    "inputData": "0x4e71d92d",
@@ -28,21 +61,6 @@
    "market": "BNB 6h",
    "tickets": 1,
    "resultFinalAt": "2026-11-24T00:00:00Z"
-  },
-  {
-   "market": "BTC 1h",
-   "tickets": 1,
-   "resultFinalAt": "2026-11-23T16:00:00Z"
-  },
-  {
-   "market": "ETH 1h",
-   "tickets": 1,
-   "resultFinalAt": "2026-11-23T16:00:00Z"
-  },
-  {
-   "market": "BNB 1h",
-   "tickets": 1,
-   "resultFinalAt": "2026-11-23T16:00:00Z"
   }
  ],
  "stampToday": "checkIn() 0x183ff085 on 0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae once per UTC day (preview shows if already done)",
