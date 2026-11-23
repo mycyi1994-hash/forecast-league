@@ -2,8 +2,8 @@
  "contract": "0x3ae82e031702166b0ccfbfbf037f364998db0688",
  "name": "AgentID Hub Pass",
  "verdict": "passed",
- "checkedAt": "2026-11-23T17:32:38Z",
- "block": 135311522,
+ "checkedAt": "2026-11-23T17:34:03Z",
+ "block": 135311710,
  "checks": {
   "simulatedFromAgentIdWallet": true,
   "gateEnforced": true,

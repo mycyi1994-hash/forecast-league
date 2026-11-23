@@ -1,7 +1,7 @@
 {
  "name": "Forecast League transparency numbers",
- "updated": "2026-11-23T17:32:18Z",
- "block": 135311469,
+ "updated": "2026-11-23T17:33:44Z",
+ "block": 135311662,
  "method": "For every wallet in api/wallet/index.json, balanceOf(wallet) on each of the 12 Forecast League token contracts. The tokens cannot be transferred, so a balance is the number of mints that wallet sent to that contract. Anyone can repeat each read.",
  "notCounted": "Claims, squad calls and the daily price forecast leave no token and are not in these numbers, so real transaction counts are higher.",
  "builderWallet": {
@@ -11,7 +11,7 @@
   "note": "The one wallet the builder uses. It is left out of every number below."
  },
  "wallets": 478,
- "tokens": 6977,
+ "tokens": 6981,
  "tokensPerWallet": {
   "median": 3,
   "mean": 14.6,
@@ -57,13 +57,13 @@
    "range": "50 or more",
    "wallets": 18,
    "walletsPct": 3.8,
-   "tokens": 4133,
-   "tokensPct": 59.2
+   "tokens": 4137,
+   "tokensPct": 59.3
   }
  ],
  "concentration": {
   "top10SharePct": 41.6,
-  "top15SharePct": 56.2,
+  "top15SharePct": 56.3,
   "top10": [
    {
     "wallet": "0x30588cfbce27269d4e76128c7ed934e270c9c927",
@@ -97,12 +97,12 @@
    },
    {
     "wallet": "0x1d868172d4acf2c38c7ef634d3582235ddbeaa5c",
-    "tokens": 286,
+    "tokens": 287,
     "contractsUsed": 11
    },
    {
     "wallet": "0xc1e079bf391a49bfeffba76071843c7e6a680bc6",
-    "tokens": 286,
+    "tokens": 287,
     "contractsUsed": 11
    },
    {
@@ -112,7 +112,7 @@
    },
    {
     "wallet": "0x4f7f6407a82e57aee26124ed2a7d673678d84889",
-    "tokens": 284,
+    "tokens": 285,
     "contractsUsed": 11
    }
   ]
@@ -141,7 +141,7 @@
  ],
  "groups": {
   "hourly": {
-   "tokens": 3865,
+   "tokens": 3869,
    "wallets": 196,
    "top10SharePct": 61.3,
    "top15SharePct": 83.1,
@@ -230,8 +230,8 @@
    "label": "BNB 1h",
    "contract": "0x66613fD9a2c70d4cB56D920bDd0D56bA95BD2736",
    "wallets": 180,
-   "tokens": 1308,
-   "top15SharePct": 82.3
+   "tokens": 1312,
+   "top15SharePct": 82.4
   },
   {
    "id": "btc-1d",
