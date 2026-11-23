@@ -2,8 +2,8 @@
  "contract": "0xa782ac207fe33f6120d9c2ef9553a55c47cfbbe9",
  "name": "Forecast League Blitz BNB 6h",
  "verdict": "passed",
- "checkedAt": "2026-11-23T03:44:30Z",
- "block": 135201222,
+ "checkedAt": "2026-11-23T04:11:49Z",
+ "block": 135204863,
  "checks": {
   "simulatedFromAgentIdWallet": true,
   "gateEnforced": true,
