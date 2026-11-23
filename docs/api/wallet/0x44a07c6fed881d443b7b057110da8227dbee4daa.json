@@ -11,7 +11,9 @@
    "args": [],
    "valueWei": "0",
    "why": "today's stamp (streak becomes 1)",
-   "validUntil": "until 00:00 UTC; a new one opens every UTC day"
+   "validUntil": "until 00:00 UTC; a new one opens every UTC day",
+   "preview": "baw contract-call preview --binanceChainId 56 --from 0x44a07c6fed881d443b7b057110da8227dbee4daa --to 0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae --value 0 --inputData 0x183ff085 --json",
+   "thenExecute": "baw contract-call execute --requestId <requestId from the preview> --json"
   },
   {
    "type": "join",
@@ -20,7 +22,9 @@
    "inputData": "0xb688a363",
    "args": [],
    "valueWei": "0",
-   "validUntil": "until joined"
+   "validUntil": "until joined",
+   "preview": "baw contract-call preview --binanceChainId 56 --from 0x44a07c6fed881d443b7b057110da8227dbee4daa --to 0x8433AD00601C57cE9F144b20A32aE478EEe831AE --value 0 --inputData 0xb688a363 --json",
+   "thenExecute": "baw contract-call execute --requestId <requestId from the preview> --json"
   },
   {
    "type": "claim",
@@ -30,7 +34,9 @@
    "args": [],
    "valueWei": "0",
    "why": "honor earned: SEASON ONE, CARD HOLDER",
-   "validUntil": "until claimed"
+   "validUntil": "until claimed",
+   "preview": "baw contract-call preview --binanceChainId 56 --from 0x44a07c6fed881d443b7b057110da8227dbee4daa --to 0x3e73bC0309c72EA69bD74CaDEC943668291Ca6ed --value 0 --inputData 0x4e71d92d --json",
+   "thenExecute": "baw contract-call execute --requestId <requestId from the preview> --json"
   }
  ],
  "joinedRounds": {},

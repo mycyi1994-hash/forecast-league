@@ -10,7 +10,9 @@
    "inputData": "0xb688a363",
    "args": [],
    "valueWei": "0",
-   "validUntil": "until joined"
+   "validUntil": "until joined",
+   "preview": "baw contract-call preview --binanceChainId 56 --from 0xb9ca3c3b362847332a451cff32e3a4da3015da24 --to 0x8433AD00601C57cE9F144b20A32aE478EEe831AE --value 0 --inputData 0xb688a363 --json",
+   "thenExecute": "baw contract-call execute --requestId <requestId from the preview> --json"
   },
   {
    "type": "claim",
@@ -20,7 +22,9 @@
    "args": [],
    "valueWei": "0",
    "why": "honor earned: SEASON ONE",
-   "validUntil": "until claimed"
+   "validUntil": "until claimed",
+   "preview": "baw contract-call preview --binanceChainId 56 --from 0xb9ca3c3b362847332a451cff32e3a4da3015da24 --to 0x3e73bC0309c72EA69bD74CaDEC943668291Ca6ed --value 0 --inputData 0x4e71d92d --json",
+   "thenExecute": "baw contract-call execute --requestId <requestId from the preview> --json"
   }
  ],
  "joinedRounds": {},

@@ -12,7 +12,9 @@
    "args": [],
    "valueWei": "0",
    "finishedTickets": 1,
-   "validUntil": "until claimed (a second claim reverts NothingToClaim, which is harmless)"
+   "validUntil": "until claimed (a second claim reverts NothingToClaim, which is harmless)",
+   "preview": "baw contract-call preview --binanceChainId 56 --from 0x54e8e98d4c1a1b796511569d2d075857e6fc611c --to 0x621B9fEd6FF2f0FC73e26264A401F7d12644A0A1 --value 0 --inputData 0x4e71d92d --json",
+   "thenExecute": "baw contract-call execute --requestId <requestId from the preview> --json"
   },
   {
    "type": "claim",
@@ -23,7 +25,9 @@
    "args": [],
    "valueWei": "0",
    "finishedTickets": 1,
-   "validUntil": "until claimed (a second claim reverts NothingToClaim, which is harmless)"
+   "validUntil": "until claimed (a second claim reverts NothingToClaim, which is harmless)",
+   "preview": "baw contract-call preview --binanceChainId 56 --from 0x54e8e98d4c1a1b796511569d2d075857e6fc611c --to 0xA782Ac207fE33f6120d9c2EF9553A55C47CFbbE9 --value 0 --inputData 0x4e71d92d --json",
+   "thenExecute": "baw contract-call execute --requestId <requestId from the preview> --json"
   },
   {
    "type": "claim",
@@ -34,7 +38,9 @@
    "args": [],
    "valueWei": "0",
    "finishedTickets": 1,
-   "validUntil": "until claimed (a second claim reverts NothingToClaim, which is harmless)"
+   "validUntil": "until claimed (a second claim reverts NothingToClaim, which is harmless)",
+   "preview": "baw contract-call preview --binanceChainId 56 --from 0x54e8e98d4c1a1b796511569d2d075857e6fc611c --to 0x09A645aa6cc6b0eB320dCF3982bcaA6A22b32629 --value 0 --inputData 0x4e71d92d --json",
+   "thenExecute": "baw contract-call execute --requestId <requestId from the preview> --json"
   },
   {
    "type": "claim",
@@ -45,7 +51,9 @@
    "args": [],
    "valueWei": "0",
    "finishedTickets": 1,
-   "validUntil": "until claimed (a second claim reverts NothingToClaim, which is harmless)"
+   "validUntil": "until claimed (a second claim reverts NothingToClaim, which is harmless)",
+   "preview": "baw contract-call preview --binanceChainId 56 --from 0x54e8e98d4c1a1b796511569d2d075857e6fc611c --to 0x8b998abA2BeeebF7ceBf565bC53BC575693c07a4 --value 0 --inputData 0x4e71d92d --json",
+   "thenExecute": "baw contract-call execute --requestId <requestId from the preview> --json"
   },
   {
    "type": "claim",
@@ -56,7 +64,9 @@
    "args": [],
    "valueWei": "0",
    "finishedTickets": 1,
-   "validUntil": "until claimed (a second claim reverts NothingToClaim, which is harmless)"
+   "validUntil": "until claimed (a second claim reverts NothingToClaim, which is harmless)",
+   "preview": "baw contract-call preview --binanceChainId 56 --from 0x54e8e98d4c1a1b796511569d2d075857e6fc611c --to 0x66613fD9a2c70d4cB56D920bDd0D56bA95BD2736 --value 0 --inputData 0x4e71d92d --json",
+   "thenExecute": "baw contract-call execute --requestId <requestId from the preview> --json"
   },
   {
    "type": "claim",
@@ -67,7 +77,9 @@
    "args": [],
    "valueWei": "0",
    "finishedTickets": 1,
-   "validUntil": "until claimed (a second claim reverts NothingToClaim, which is harmless)"
+   "validUntil": "until claimed (a second claim reverts NothingToClaim, which is harmless)",
+   "preview": "baw contract-call preview --binanceChainId 56 --from 0x54e8e98d4c1a1b796511569d2d075857e6fc611c --to 0x9e521add6F67EEe0Fe5c0b8ef32cb4543f7af50E --value 0 --inputData 0x4e71d92d --json",
+   "thenExecute": "baw contract-call execute --requestId <requestId from the preview> --json"
   },
   {
    "type": "checkIn",
@@ -77,7 +89,9 @@
    "args": [],
    "valueWei": "0",
    "why": "today's stamp (streak becomes 1)",
-   "validUntil": "until 00:00 UTC; a new one opens every UTC day"
+   "validUntil": "until 00:00 UTC; a new one opens every UTC day",
+   "preview": "baw contract-call preview --binanceChainId 56 --from 0x54e8e98d4c1a1b796511569d2d075857e6fc611c --to 0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae --value 0 --inputData 0x183ff085 --json",
+   "thenExecute": "baw contract-call execute --requestId <requestId from the preview> --json"
   }
  ],
  "joinedRounds": {},

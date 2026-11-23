@@ -12,7 +12,9 @@
    "args": [],
    "valueWei": "0",
    "finishedTickets": 1,
-   "validUntil": "until claimed (a second claim reverts NothingToClaim, which is harmless)"
+   "validUntil": "until claimed (a second claim reverts NothingToClaim, which is harmless)",
+   "preview": "baw contract-call preview --binanceChainId 56 --from 0x15b98e21064de1ea3e661de218f27853daddc9e5 --to 0x09A645aa6cc6b0eB320dCF3982bcaA6A22b32629 --value 0 --inputData 0x4e71d92d --json",
+   "thenExecute": "baw contract-call execute --requestId <requestId from the preview> --json"
   },
   {
    "type": "claim",
@@ -23,7 +25,9 @@
    "args": [],
    "valueWei": "0",
    "finishedTickets": 1,
-   "validUntil": "until claimed (a second claim reverts NothingToClaim, which is harmless)"
+   "validUntil": "until claimed (a second claim reverts NothingToClaim, which is harmless)",
+   "preview": "baw contract-call preview --binanceChainId 56 --from 0x15b98e21064de1ea3e661de218f27853daddc9e5 --to 0x8b998abA2BeeebF7ceBf565bC53BC575693c07a4 --value 0 --inputData 0x4e71d92d --json",
+   "thenExecute": "baw contract-call execute --requestId <requestId from the preview> --json"
   },
   {
    "type": "claim",
@@ -34,7 +38,9 @@
    "args": [],
    "valueWei": "0",
    "finishedTickets": 1,
-   "validUntil": "until claimed (a second claim reverts NothingToClaim, which is harmless)"
+   "validUntil": "until claimed (a second claim reverts NothingToClaim, which is harmless)",
+   "preview": "baw contract-call preview --binanceChainId 56 --from 0x15b98e21064de1ea3e661de218f27853daddc9e5 --to 0x66613fD9a2c70d4cB56D920bDd0D56bA95BD2736 --value 0 --inputData 0x4e71d92d --json",
+   "thenExecute": "baw contract-call execute --requestId <requestId from the preview> --json"
   },
   {
    "type": "join",
@@ -43,7 +49,9 @@
    "inputData": "0xb688a363",
    "args": [],
    "valueWei": "0",
-   "validUntil": "until joined"
+   "validUntil": "until joined",
+   "preview": "baw contract-call preview --binanceChainId 56 --from 0x15b98e21064de1ea3e661de218f27853daddc9e5 --to 0x8433AD00601C57cE9F144b20A32aE478EEe831AE --value 0 --inputData 0xb688a363 --json",
+   "thenExecute": "baw contract-call execute --requestId <requestId from the preview> --json"
   }
  ],
  "joinedRounds": {

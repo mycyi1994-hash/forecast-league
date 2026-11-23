@@ -11,7 +11,9 @@
    "args": [],
    "valueWei": "0",
    "why": "today's stamp (streak becomes 1)",
-   "validUntil": "until 00:00 UTC; a new one opens every UTC day"
+   "validUntil": "until 00:00 UTC; a new one opens every UTC day",
+   "preview": "baw contract-call preview --binanceChainId 56 --from 0xb486603e52cdc2ea6a51743d19a9d8b174e546de --to 0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae --value 0 --inputData 0x183ff085 --json",
+   "thenExecute": "baw contract-call execute --requestId <requestId from the preview> --json"
   }
  ],
  "joinedRounds": {},

@@ -12,7 +12,9 @@
    "args": [],
    "valueWei": "0",
    "finishedTickets": 1,
-   "validUntil": "until claimed (a second claim reverts NothingToClaim, which is harmless)"
+   "validUntil": "until claimed (a second claim reverts NothingToClaim, which is harmless)",
+   "preview": "baw contract-call preview --binanceChainId 56 --from 0x5ce09cba71cb73fb6e6b349ffe1c27f8f3d325b4 --to 0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C --value 0 --inputData 0x4e71d92d --json",
+   "thenExecute": "baw contract-call execute --requestId <requestId from the preview> --json"
   },
   {
    "type": "claim",
@@ -22,7 +24,9 @@
    "args": [],
    "valueWei": "0",
    "why": "honor earned: SEASON ONE, CARD HOLDER",
-   "validUntil": "until claimed"
+   "validUntil": "until claimed",
+   "preview": "baw contract-call preview --binanceChainId 56 --from 0x5ce09cba71cb73fb6e6b349ffe1c27f8f3d325b4 --to 0x3e73bC0309c72EA69bD74CaDEC943668291Ca6ed --value 0 --inputData 0x4e71d92d --json",
+   "thenExecute": "baw contract-call execute --requestId <requestId from the preview> --json"
   }
  ],
  "joinedRounds": {},

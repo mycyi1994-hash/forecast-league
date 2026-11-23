@@ -10,7 +10,9 @@
    "inputData": "0xb688a363",
    "args": [],
    "valueWei": "0",
-   "validUntil": "until joined"
+   "validUntil": "until joined",
+   "preview": "baw contract-call preview --binanceChainId 56 --from 0x917a1da59348bb09b40ec1e77ba35b75efcf4210 --to 0x8433AD00601C57cE9F144b20A32aE478EEe831AE --value 0 --inputData 0xb688a363 --json",
+   "thenExecute": "baw contract-call execute --requestId <requestId from the preview> --json"
   }
  ],
  "joinedRounds": {

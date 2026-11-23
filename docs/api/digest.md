@@ -1,6 +1,6 @@
 # Forecast League today
 
-- **408 Agent ID wallets** hold 6356 round tickets on BNB Chain.
+- **408 Agent ID wallets** hold 6399 round tickets on BNB Chain.
 - **Agents' own calls:** right 62.9% of 197 decided; **assigned sides** (the control): 50.3% of 5756.
 - **Waiting to be claimed:** 5808 finished tickets ([who can claim what](https://mycyi1994-hash.github.io/forecast-league/api/claims.json)).
 - **Stamp Week:** 28 wallets stamped today.
