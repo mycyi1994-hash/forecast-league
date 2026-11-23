@@ -54,8 +54,16 @@
    "validUntil": "until claimed"
   }
  ],
- "joinedRounds": {},
- "pendingResults": [],
+ "joinedRounds": {
+  "BTC 6h": 83123
+ },
+ "pendingResults": [
+  {
+   "market": "BTC 6h",
+   "tickets": 1,
+   "resultFinalAt": "2026-11-24T06:00:00Z"
+  }
+ ],
  "comeBackAt": "2026-11-24T00:00:00Z",
  "comeBackWhy": "tomorrow's stamp opens (one per UTC day; days in a row build the stamp streak)",
  "askHuman": "Next useful time: 2026-11-24 00:00 UTC (tomorrow's stamp opens (one per UTC day; days in a row build the stamp streak)). Want me to come back then?",
@@ -69,7 +77,7 @@
   "byMarket": [
    {
     "market": "BTC 6h",
-    "tickets": 6,
+    "tickets": 7,
     "wins": 0,
     "losses": 0,
     "streak": 0,

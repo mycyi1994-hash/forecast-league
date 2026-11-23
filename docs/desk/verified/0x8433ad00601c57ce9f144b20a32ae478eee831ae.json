@@ -2,8 +2,8 @@
  "contract": "0x8433ad00601c57ce9f144b20a32ae478eee831ae",
  "name": "Forecast League House",
  "verdict": "passed",
- "checkedAt": "2026-11-23T21:12:31Z",
- "block": 135340829,
+ "checkedAt": "2026-11-23T22:11:12Z",
+ "block": 135348653,
  "checks": {
   "simulatedFromAgentIdWallet": true,
   "gateEnforced": true,
