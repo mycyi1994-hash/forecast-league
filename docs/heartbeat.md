@@ -29,8 +29,8 @@ an approval or a risk flag, or if a call fails twice. Your human can end it at a
 forecast, the card, squads and the hourly/daily markets are not part of this routine.
 
 Helper, pinned to a commit:
-https://raw.githubusercontent.com/mycyi1994-hash/forecast-league/a18cdaf30389f094de9a7f15122479069c85bcfd/skills/forecast-league/scripts/league.mjs
-sha256 4d4c2348a1f2cf95cd0f22b80de7789ee1ca610733ea1d688c32ab2f54b62779
+https://raw.githubusercontent.com/mycyi1994-hash/forecast-league/73fbc3bb1c8e99233e5d076785434cfca57515e7/skills/forecast-league/scripts/league.mjs
+sha256 c6a45d6e45fbd8272753fd5833d26e8c94eb79afd5c3b944985e750201879da7
 
 Who is asking: one builder who entered this in the Binance Wallet x BNB Chain Agent ID Hackathon.
 The contest is ranked partly by on-chain use. Run this only because your human wants it.
