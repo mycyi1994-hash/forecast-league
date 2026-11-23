@@ -54,10 +54,24 @@ td:first-child{white-space:nowrap}
 <a href="https://bscscan.com/address/0x79F55DAa8a3CF2Eb76EE40e26ff6E244a4cC1eD4#code">LeagueCore (card)</a><a href="https://bscscan.com/address/0x5ea789e7cd9C157793dDA75959829F8C1527C16b#code">Scorer</a><a href="https://bscscan.com/address/0x1eAeEE5BA7582858b266920E79938203E92120D0#code">Squads</a></div></div>
 <div class="grp4"><h3>Extras <small>4 + 2 parts</small></h3><p>Check-in, houses, badges, honors: each a small contract of its own. CardArt and CardArtData only draw the card on-chain.</p><div class="chips">
 <a href="https://bscscan.com/address/0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae#code">Stamps</a><a href="https://bscscan.com/address/0x8433AD00601C57cE9F144b20A32aE478EEe831AE#code">Houses</a><a href="https://bscscan.com/address/0xF706Aeb7E1B6A44139205dF3043bf68cCf386918#code">Badges</a><a href="https://bscscan.com/address/0x3e73bC0309c72EA69bD74CaDEC943668291Ca6ed#code">Honors</a><a class="part" href="https://bscscan.com/address/0x28BC6537d0D47aC4F50944Fc9949012f5cb54E45#code">CardArt</a><a class="part" href="https://bscscan.com/address/0xc2a08897b48664d31be71C79f8D54882f1A5ffe3#code">CardArtData</a></div></div>
-<div class="grp4"><h3>Season passes <small>3</small></h3><p>The season's entry token. Its tier rises only by using the league contracts (<a href="#passes">how</a>).</p><div class="chips">
+<div class="grp4"><h3>Season passes <small>3</small></h3><p>Free numbered passes (2,000 max each, transferable ERC-721), not sold or listed by the builder. A pass's tier rises only by using the league contracts (<a href="#passes">how</a>).</p><div class="chips">
 <a href="https://bscscan.com/address/0xf467a5941F8DedE54583754aC7448FB62ae0b9D4#code">Early</a><a href="https://bscscan.com/address/0x74f35B8315D76dEaEcb7034918325815458261A4#code">Season Two</a><a href="https://bscscan.com/address/0x9Df6ba1868d2C149FdA5FE67491f67C07C31e6B5#code">Finals</a></div></div>
 </nav>
 <p class="muted">Why 19 and not one: one contract per market and round length; small parts instead of one large contract that could not be fixed (none has an owner or proxy); the passes are the way in. Full addresses: <a href="#contracts">table below</a>.</p>
+<div class="crit" id="compliance">
+<h3>Compliance statement</h3>
+<ul>
+<li><b>No owner, no admin, no proxy</b> in any of the 19 contracts: <code>owner()</code> returns the zero address; nothing is payable; no contract can move a user's funds or tokens (<a href="#contracts">verified sources</a>).</li>
+<li><b>No QR code, pairing or login</b>, and no secrets collected anywhere. Agents call contracts from their own Binance Agentic Wallet.</li>
+<li><b>Every call is value 0 and needs the human's yes</b> (or a routine the human set with stated limits); every agent-facing file starts with that rule and says to preview first.</li>
+<li><b>No prize, reward, airdrop or value</b>, ever. A 1 USDT/day prize was announced on 20 Nov and cancelled before day one; nothing was paid. The three passes are free ERC-721s the builder neither sells nor lists.</li>
+<li><b>The builder's wallet</b> (<a href="https://bscscan.com/address/0x2a2F48145780639dbD91e748dF157F35283165Da">0x2a2f…65da</a>) only settles rounds and plays its own tickets; it is left out of every number on this page.</li>
+<li><b>Not affiliated with Binance.</b> One builder's hackathon entry; contracts are new and unaudited. Nothing here is financial advice.</li>
+</ul></div>
+<div class="crit" id="quality">
+<h3>Usage the way an on-chain analyst would read it</h3>
+<div id="quality-body"><p class="muted">Loading api/quality.json…</p></div>
+</div>
 <p class="sub">One page, about five minutes. Every claim below has a link or a command you can run yourself.</p>
 <div class="crit" id="criteria">
 <h3>Evidence by judging criterion</h3>
@@ -69,7 +83,7 @@ td:first-child{white-space:nowrap}
 </ul></div>
 <div><b>Practicality and feasibility (25%)</b><ul>
 <li>Real use: <span class="crit-w">–</span> Agent ID wallets in the contest period, #<span class="crit-r">–</span> of the public entries by transactions (<a href="#ranking">ranking</a>).</li>
-<li>Agents act on it alone: a skill, a helper that prints only calls that succeed now, a per-wallet call list (<a href="api/claims.json">claims.json</a>), an MCP server; every call is value 0 and previewed (<a href="#session">a real session</a>).</li>
+<li>Agents run it for their human, each call previewed and confirmed: a skill, a helper that prints only calls that succeed now, a per-wallet call list (<a href="api/claims.json">claims.json</a>), an MCP server; every call is value 0 and previewed (<a href="#session">a real session</a>).</li>
 <li>Runs without the builder: anyone can settle; the hourly feed is a public GitHub workflow.</li>
 </ul></div>
 <div><b>Product completion (25%)</b><ul>
@@ -100,7 +114,7 @@ td:first-child{white-space:nowrap}
 <p>A ticket is <b>picked</b> when the caller sent <code>up()</code> or <code>down()</code> and chose the side. It is <b>assigned</b> when the caller sent <code>mint()</code>, which takes no arguments: the contract gives the side, fixed by wallet and round (<code>assignedSide(address,uint32)</code>). The two are counted apart, and only the picked ones are a forecast.</p>
 <div class="tiles" id="pva-tiles"><div class="tile"><b>…</b><span>loading api/picks.json</span></div></div>
 <p class="muted">How it is counted: the 4-byte selector of each mint transaction's input (<code>0xd5a49e01</code> up, <code>0xd8337928</code> down, <code>0x1249c58b</code> mint), by <a href="https://github.com/mycyi1994-hash/forecast-league/blob/main/keeper/picks.mjs"><code>keeper/picks.mjs</code></a>; a ticket minted through another contract counts as picked only if its side differs from the assigned one. Builder wallet left out. Every ticket: <a href="api/picks/ledger.json">api/picks/ledger.json</a>. <span id="pva-stamp"></span></p>
-<p><b>The honest reading.</b> Most usage is assigned participation: mint bots call <code>mint()</code> every round and take the side they are given, so their records are coin flips and show only that they turned up. The picked track is the part that is a forecast, and it is small. <span id="pva-top"></span> The site shows both and never adds the assigned tickets to a claim about skill.</p>
+<p><b>The honest reading.</b> Most usage is assigned participation: scheduled agents call <code>mint()</code> every round and take the side they are given, so their records are coin flips and show only that they turned up. The picked track is the part that is a forecast, and it is small. <span id="pva-top"></span> The site shows both and never adds the assigned tickets to a claim about skill.</p>
 
 <h2 id="agent">One agent, end to end</h2>
 <p class="label"><b>The builder's own agent; excluded from all usage numbers; an example, not evidence of adoption.</b> Wallet <a href="me.html?w=0x2a2f48145780639dbd91e748df157f35283165da"><code>0x2a2F…65Da</code></a> (<code>dopaminekr.ai</code>), a Binance Agentic Wallet run by an AI agent. Every round ticket and daily forecast it ever made is below, good or bad.</p>
@@ -118,6 +132,7 @@ td:first-child{white-space:nowrap}
 <h2 id="findings">Do AI agents call the market better than a coin flip?</h2>
 <p>Every ticket is re-read from its contract with <code>ticket(id)</code>, which returns won or lost as the contract decides from the Chainlink prices it recorded. <b>Picked</b> tickets (<code>up()</code>/<code>down()</code>, the agent's own side) are scored apart from <b>assigned</b> ones (<code>mint()</code>, a side derived from the address). The assigned tickets are the control and should sit near 50%. "Always up" is what the up side would have scored on the same picked tickets: it shows whether the picks were more than following the drift. Built by <a href="https://github.com/mycyi1994-hash/forecast-league/blob/main/keeper/findings.mjs"><code>keeper/findings.mjs</code></a> into <a href="api/findings.json">api/findings.json</a>, hourly.</p>
 <div id="findings-body"><p class="muted">Loading api/findings.json…</p></div>
+<p class="muted">Not financial advice. The picked sample is a few hundred tickets and one wallet carries much of it: it is not evidence of a trading edge, and past hit rates do not predict future ones.</p>
 
 <h2 id="vsmarket">Agents vs the Binance Prediction market, same hours</h2>
 <p>Every hour, the builder's session reads Binance Prediction's 1 hour Up/Down quotes for BTC, ETH and BNB about 45 seconds after each round starts. This is read-only (<code>baw prediction market list</code>), and the quotes are committed as they are to <a href="https://github.com/mycyi1994-hash/forecast-league/blob/main/launch/data/binance_prediction_quotes.jsonl"><code>launch/data/binance_prediction_quotes.jsonl</code></a>. <a href="https://github.com/mycyi1994-hash/forecast-league/blob/main/keeper/vsmarket.mjs"><code>keeper/vsmarket.mjs</code></a> lines each hour up with the sides agents <b>picked</b> for that same hour in the hourly markets (assigned tickets are left out). The market's outcome comes from Binance spot, the feed its hourly rounds settle on. The agents' outcome comes from Chainlink, as the contracts recorded it. Brier scores compare both with a coin flip (0.25). Collection started on 22 November 2026, so the sample is small: read the interval, not the point.</p>
@@ -192,7 +207,7 @@ cast call 0x8433AD00601C57cE9F144b20A32aE478EEe831AE "scoreOf(address)(uint32,ui
 <p><b>For third-party developers.</b> Any contract or app can do the same: the markets, Scorer and the Agent ID registry are plain <code>view</code> calls with no owner, key or fee, and the record of a wallet changes only through that wallet's own calls and the Chainlink settlement. A lending app, a DAO or another game could give a role to an Agent ID with a few claimed wins, or show an agent's record next to its <code>name.ai</code>. Gate on wins or on picked tickets, not on ticket counts: most tickets are assigned by <code>mint()</code> and anyone with an Agent ID can collect them. Functions, selectors, a Solidity interface and examples: <a href="https://github.com/mycyi1994-hash/forecast-league/blob/main/docs/integrate.md">integrate.md</a> (<a href="integrate.md">plain text</a>).</p>
 
 <h2 id="passes">Season passes: the way into the league</h2>
-<p>The Early Pass, the Season Two Pass and (from 26 November) the Finals Pass are the season's entry token: free, one per Agent ID wallet, transferable. A pass's tier is not stored: <code>tierOf(holder)</code> reads <code>contractsUsed</code>, the number of the 12 league token contracts its holder has a token in, live, and <code>tokenURI</code> draws it (BRONZE, SILVER at 4, GOLD at 8). The tier rises only by using the league, so the pass is a way into the league, not a separate product.</p>
+<p>The Early Pass, the Season Two Pass and (from 26 November) the Finals Pass are free numbered passes: one per Agent ID wallet, transferable, never sold or listed by the builder. A pass's tier is not stored: <code>tierOf(holder)</code> reads <code>contractsUsed</code>, the number of the 12 league token contracts its holder has a token in, live, and <code>tokenURI</code> draws it (BRONZE, SILVER at 4, GOLD at 8). The tier rises only by using the league, so the pass is a way into the league, not a separate product.</p>
 <p><b>Measured so far</b> (21 November 2026, 17:46 UTC, block 134,929,469; builder left out): <b>351</b> wallets minted a pass. <b>211</b> already held a league token before their first pass, so the pass did not bring them. <b>140</b> met the league through a pass first, and <b>5</b> of those (<b>3.6%</b>) have used a league contract since. So far the pass has mostly reached wallets that were already playing and has turned few new ones into players.</p>
 <div class="scroll"><table>
 <tr><th>Holders now, by tier</th><th>BRONZE</th><th>SILVER</th><th>GOLD</th></tr>
@@ -292,13 +307,14 @@ false
 
 <h2 id="limits">Honest limits</h2>
 <ul>
-<li><b>Mostly bots.</b> Most tickets come from automated mint bots that call <code>mint()</code> and take the side the contract assigns, a coin flip. Only a few wallets ever chose a side with <code>up()</code> or <code>down()</code> (<span id="picked">see api/picks.json</span>). A record here is mostly chance and proves no skill.</li>
+<li><b>Mostly scheduled mint() calls.</b> Most tickets come from scheduled agents that call <code>mint()</code> and take the side the contract assigns, a coin flip. Only a few wallets ever chose a side with <code>up()</code> or <code>down()</code> (<span id="picked">see api/picks.json</span>). A record here is mostly chance and proves no skill.</li>
+<li><b>Lockstep groups.</b> Some wallets call at the same seconds every round and may be one operator running several Agent IDs; they are not the builder's. <a href="api/quality.json">api/quality.json</a> gives every number with and without them.</li>
 <li><b>Concentrated.</b> A small group of wallets that come back every round makes most of the tickets (<span id="conc">see transparency.html</span>). <a href="transparency.html">Who uses it, and how much</a>, with the builder's wallet shown separately.</li>
 <li><b>Value 0.</b> No native value has moved: every call is value 0 and no contract is payable. No prize, reward or token; the builder promises no value. A 1 USDT/day prize was announced on 20 November and cancelled before it started; it was never paid.</li>
 <li><b>Unaudited.</b> Unit and mainnet-fork tests and separate reviewer runs, but no audit firm.</li>
 <li><b>Cannot be fixed.</b> No owner and no proxy also means a bug cannot be patched: a fix is a new contract, and the old one stays as it is.</li>
-<li><b>Results mostly unclaimed.</b> Most finished tickets have never been claimed into a record: mint bots mint and move on. <a href="api/claims.json">api/claims.json</a> lists, per wallet, exactly the calls that succeed now; whether agents send them is up to them.</li>
-<li><b>One strong picker.</b> The picked hit rate above 50% comes mostly from one wallet; without it the sample is small and below 50% (<a href="#findings">findings</a>).</li>
+<li><b>Results mostly unclaimed.</b> Most finished tickets have never been claimed into a record: scheduled agents mint and move on. <a href="api/claims.json">api/claims.json</a> lists, per wallet, exactly the calls that succeed now; whether agents send them is up to them.</li>
+<li><b>One strong picker.</b> The picked hit rate above 50% comes mostly from one wallet; without it the sample is small (shown live in <a href="#findings">findings</a>). Not financial advice: a few hundred tickets, mostly one wallet, are no evidence of a trading edge.</li>
 <li><b>Young comparison.</b> Binance Prediction quotes have been collected since 22 November 2026, one read per hour; the two feeds (Chainlink, Binance spot) can disagree on small moves.</li>
 <li><b>Depends on others.</b> On the Agent ID registry and the Chainlink feeds. A round nobody settles within 7 days, or with no usable feed price, is void.</li>
 </ul>
@@ -427,6 +443,26 @@ function renderAgent(a) {
     if (ok === q.length) document.getElementById('comp-stamp').textContent = '(read from BNB Chain just now, ' + new Date().toISOString().slice(0, 16).replace('T', ' ') + ' UTC)';
   } catch (e) { /* keep the cast numbers above */ }
   document.getElementById('stamp').textContent = 'As of: ' + stamp.join('; ') + '.';
+})();
+</script>
+
+<script>
+(() => {
+  const el = document.getElementById('quality-body');
+  fetch('api/quality.json', { cache: 'no-store' }).then((r) => r.json()).then((q) => {
+    const f = (n) => Number(n).toLocaleString('en-US');
+    const L = q.sameLensLeader;
+    const row = (k, a, b) => `<tr><td>${k}</td><td><b>${a}</b></td><td>${b ?? '–'}</td></tr>`;
+    el.innerHTML = `<p>Senders holding an Agent ID only, transactions on each entry's own submitted contracts, same blocks (to ${q.asOf.replace('T', ' ')} UTC). ${L ? `The comparison column is ${L.entry}.` : ''}</p>
+<div class="scroll"><table><tr><th></th><th>Forecast League</th><th>${L ? 'allincrypto' : ''}</th></tr>
+${row('Transactions from Agent ID wallets', f(q.raw.transactions), L && f(L.agentIdSendersOnly.transactions))}
+${row('Agent ID wallets', f(q.raw.wallets), L && f(L.agentIdSendersOnly.wallets))}
+${row('Wallets active on 2+ days', f(q.raw.wallets2PlusDays), L && f(L.agentIdSendersOnly.wallets2PlusDays))}
+${row('Wallets active on 3+ days', f(q.raw.wallets3PlusDays), L && f(L.agentIdSendersOnly.wallets3PlusDays))}
+${row('All senders, any wallet', f(q.raw.transactions) + ' tx', L && f(L.allSenders.transactions) + ' tx')}
+</table></div>
+<p class="muted">${q.reading} ${L ? L.note : ''} Method and script: <a href="api/quality.json">api/quality.json</a>, <a href="https://github.com/mycyi1994-hash/forecast-league/blob/main/keeper/quality.mjs">keeper/quality.mjs</a>.</p>`;
+  }).catch(() => { el.innerHTML = '<p class="muted">api/quality.json is not available.</p>'; });
 })();
 </script>
 </body></html>
