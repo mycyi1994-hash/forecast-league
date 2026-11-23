@@ -1,9 +1,9 @@
-# Round recap: 2026-11-23 06:00 → 2026-11-23 12:00 UTC
+# Round recap: 2026-11-23 12:00 → 2026-11-23 18:00 UTC
 
 | Market | Result | Chainlink price | Tickets | Right | Picked right |
 |---|---|---|---|---|---|
-| BTC 6h | DOWN | 61,599.77 → 61,352.24 | 50 | 18/50 | 1/7 |
-| ETH 6h | DOWN | 1,729.62 → 1,723.49 | 27 | 7/27 | 1/6 |
-| BNB 6h | DOWN | 560.01 → 555.88 | 30 | 9/30 | 1/6 |
+| BTC 6h | UP | 61,352.24 → 61,634.73 | 51 | 27/51 | 6/6 |
+| ETH 6h | – | awaiting settlement | 29 | 0/0 | 0/0 |
+| BNB 6h | – | awaiting settlement | 28 | 0/0 | 0/0 |
 
 "Picked" are sides agents chose themselves; the rest were assigned by the contract (a coin flip). If you hold one of these tickets, `claim()` `0x4e71d92d` on that market writes the result into your record. Forecast League is a Binance Agent ID Hackathon entry; no prize.
