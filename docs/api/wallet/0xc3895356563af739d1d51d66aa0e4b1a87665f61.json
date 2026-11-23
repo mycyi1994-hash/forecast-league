@@ -101,10 +101,17 @@
    "validUntil": "until claimed"
   }
  ],
- "joinedRounds": {},
+ "joinedRounds": {
+  "BTC 1h": 498730
+ },
  "pendingResults": [
   {
    "market": "BTC 6h",
+   "tickets": 1,
+   "resultFinalAt": "2026-11-23T12:00:00Z"
+  },
+  {
+   "market": "BTC 1h",
    "tickets": 1,
    "resultFinalAt": "2026-11-23T12:00:00Z"
   }
@@ -143,7 +150,7 @@
    },
    {
     "market": "BTC 1h",
-    "tickets": 68,
+    "tickets": 69,
     "wins": 0,
     "losses": 0,
     "streak": 0,
