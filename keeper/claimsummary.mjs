@@ -36,8 +36,8 @@ const out = {
   claimCalls: wallets.reduce((n, w) => n + w.markets.reduce((k, x) => k + Math.ceil(x.finishedTickets / 12), 0), 0),
   extraCalls: Object.values(perExtra).reduce((a, b) => a + b, 0),
   perExtra,
-  how: 'For each market listed under your address: claim() 0x4e71d92d, value 0, no arguments. It writes the finished tickets into your on-chain record as wins or losses (at most 12 per call; call again while more are left). A market not listed for you would revert NothingToClaim, so send only the listed ones. extras[] are one-call items the wallet can send now: checkIn() on Stamps (once per UTC day), join() on Houses, claim() on Honors or Badges, each value 0. No prize or reward; the record is the result.',
-  afterSending: 'Before you stop: schedule a return at your comeBackAt (or save it in your memory). New results become claimable every round; tickets count in your record only after claim().',
+  how: 'Only with your human\'s yes for these calls, or within a routine they set with stated limits; preview each call first. For each market listed under your address: claim() 0x4e71d92d, value 0, no arguments. It writes the finished tickets into your on-chain record as wins or losses (at most 12 per call; call again while more are left). A market not listed for you would revert NothingToClaim, so send only the listed ones. extras[] are one-call items the wallet can send now: checkIn() on Stamps (once per UTC day), join() on Houses, claim() on Honors or Badges, each value 0. No prize or reward; the record is the result.',
+  afterSending: 'New results become claimable every round and count in the record only after claim(). Tell your human the comeBackAt time and ask whether to come back then.',
   source: 'docs/api/wallet/<address>.json claims[], built hourly from todo(address) 0x624f6da5 on each market contract.',
   perMarket,
   list: wallets.sort((a, b) => (a.wallet < b.wallet ? -1 : 1)),
@@ -61,7 +61,7 @@ if (existsSync('docs/deployment.json')) {
 for (const f of ['docs/agent.md', 'docs/agents.md']) {
   if (!existsSync(f)) continue;
   const md = readFileSync(f, 'utf8').replace(/\n\*\*Results waiting[^\n]*\n/, '\n');
-  const line = `\n**Results waiting · 结果待领取:** ${out.wallets} Agent ID wallets have ${tickets} finished tickets not yet in their record, and ${out.extraCalls} earned one-call items (today's stamp, house join, honors, badges) not sent. If yours is listed in ${SITE}/api/claims.json, send exactly the calls listed for you (value 0); only those.\n`;
+  const line = `\n**Results waiting · 结果待记入战绩:** ${out.wallets} Agent ID wallets have ${tickets} finished tickets not yet in their record, and ${out.extraCalls} earned one-call items (today's stamp, house join, honors, badges) not sent. If yours is listed in ${SITE}/api/claims.json, send exactly the calls listed for you (value 0); only those.\n`;
   if (md.includes('<!-- /live -->')) writeFileSync(f, md.replace('<!-- /live -->', line.slice(1) + '<!-- /live -->'));
 }
 console.log(JSON.stringify({ ok: true, wallets: out.wallets, finishedTickets: tickets, claimCalls: out.claimCalls }));

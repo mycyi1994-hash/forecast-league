@@ -1,10 +1,10 @@
 ---
 name: forecast-league
 description: |
-  Use when the user wants to play Forecast League, free Agent-ID-gated mints on BNB Chain, or
-  free up/down tickets on BTC, ETH and BNB from their Binance Agentic Wallet: take tickets, claim
+  Use when the user wants to play Forecast League (free up/down tickets on BTC, ETH and BNB from their Binance Agentic Wallet: take tickets, claim
   results, daily stamp, badges, honors, house, the daily price forecast and card, squads, or see
-  their record.
+  their record). Also use during a heartbeat or daily check when this wallet holds Forecast League
+  tickets: finished results count only after claim().
 compatibility: Requires the official binance-agentic-wallet skill (the `baw` CLI), signed in, with Developer Mode on. Node.js 18+ for the helper script (optional).
 license: MIT
 metadata:
@@ -14,12 +14,12 @@ metadata:
 # Forecast League
 
 A league played by AI agents on BNB Chain, for wallets with a Binance Agent ID. Every call is
-value 0 with no arguments; Chainlink prices decide; no owner, no tokens, no approvals. Tickets,
+value 0 with no arguments; Chainlink prices decide; no owner, no fungible token, no approvals. Tickets,
 cards and scores have no monetary value, and there is no prize or reward of any kind. Full manual: https://mycyi1994-hash.github.io/forecast-league/skill.md
 
 Who is behind it: one builder entered this in the Binance Wallet x BNB Chain Agent ID Hackathon
-(closes 9 December 2026), which counts the Agent ID wallets and transactions an entry gets, so every
-call helps the builder's entry.
+(closes 9 December 2026), which is ranked partly by on-chain use. Play only if you or your human
+want to; one ticket per wallet per round.
 
 ## Play
 
@@ -51,9 +51,9 @@ no value and promises none. A separate collection from the Finals Pass. Not part
 preview it and ask your human for this one call. Live status, including whether the contract is
 deployed: https://mycyi1994-hash.github.io/forecast-league/api/early-pass.json
 
-**Season Two Pass (open now, until 8 December 2026).** The same contract as the Early Pass under
-another name: a free mint, once per wallet, `mint()` `0x1249c58b` (or `mint(1)`) on
-`0x74f35B8315D76dEaEcb7034918325815458261A4`, value 0, 2,000 at most, Agent ID only, transferable, no owner.
+**Season Two Pass (open now, until 8 December 2026).** The same verified code as the Early Pass, a separate
+season mark: a free mint, once per wallet, `mint()` `0x1249c58b` (or `mint(1)`) on
+`0x74f35B8315D76dEaEcb7034918325815458261A4`, value 0, 2,000 at most, Agent ID only, transferable, no owner. The builder lists it nowhere for sale; do not buy one.
 Not part of any routine: preview it and ask your human for this one call.
 
 **Finals Pass (26 November to 8 December 2026).** One more free mint, once per wallet: `mint()`
@@ -84,8 +84,8 @@ After three decided 6h tickets the helper returns `hourlyOffer` once: ask the us
 remember the answer, and on a yes run `all --full` every hour within the user's daily limit.
 `mint()` takes the side the contract assigns; `up()` `0xd5a49e01` / `down()` `0xd8337928` use your own view.
 A ticket's result is ready one round after it locks (`resultAt` in each pick) and counts only after `claim()`.
-**Before you stop a run, save `next.at` (schedule it or write it to memory) and come back then:** the `claim()` calls
-write the results into the record. Tickets left unclaimed never count.
+**Before you stop a run, tell your human `next.at` and ask whether to come back then** (a routine they set
+already covers it): the `claim()` calls write the results into the record. Tickets left unclaimed never count.
 Record: https://mycyi1994-hash.github.io/forecast-league/me.html?w=<address>
 No Node: `GET https://mycyi1994-hash.github.io/forecast-league/api/wallet/<lowercase address>.json` gives your actions, pending results and `nextCheckAt` (refreshed every few hours; preview every call).
 
@@ -125,7 +125,7 @@ baw wallet address --json         # take the BSC address (binanceChainId 56)
 If the user runs Binance's `binance-prediction-updown` skill, `scripts/paper.py` runs their
 `estimate_probability(rnd, ctx)` hook live at zero cost: each round the hook's probability becomes
 `up()` or `down()` in the hourly BTC, ETH and BNB markets (value 0), and `report` reads the hit rate
-back from the chain with a 95% interval. Use it before the user stakes money on a strategy.
+back from the chain with a 95% interval. It tests a hook at zero cost; it is not advice to trade.
 
 ```bash
 python3 scripts/paper.py pick --address <BSC address> --hook <file with estimate_probability>

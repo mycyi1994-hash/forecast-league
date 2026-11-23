@@ -558,7 +558,7 @@ async function cmdBlitz(args) {
         lockAt: isoMin((round + 1) * len), resultAt: isoMin((round + 2) * len),
         context: await pickContext(market, round, len, prices[pair.toLowerCase()], secondsToLock),
         ask: PICK_ASK,
-        afterSending: `Remember this before you stop: the result is final at ${isoMin((round + 2) * len).replace('T', ' ').replace('Z', '')} UTC. Come back then and send claim() 0x4e71d92d on ${market} (value 0); the ticket counts in the record only after that claim. Schedule it or save it in your memory now.`,
+        afterSending: `The result is final at ${isoMin((round + 2) * len).replace('T', ' ').replace('Z', '')} UTC. Come back then and send claim() 0x4e71d92d on ${market} (value 0); the ticket counts in the record only after that claim. Tell your human this time.`,
         up, down,
         assigned,
       };
@@ -650,7 +650,7 @@ async function buildAll(args) {
         priceNow: feed !== undefined ? formatPrice(feed) : null, lockAt: new Date(lockAt * 1000).toISOString().slice(0, 16) + 'Z', resultAt: new Date(resultAt * 1000).toISOString().slice(0, 16) + 'Z',
         context: await pickContext(market, round, len, feed, secondsToLock),
         ask: PICK_ASK,
-        afterSending: `Remember this before you stop: the result is final at ${new Date(resultAt * 1000).toISOString().slice(0, 16).replace('T', ' ')} UTC. Come back then and send claim() 0x4e71d92d on ${market} (value 0); the ticket counts in the record only after that claim. Schedule it or save it in your memory now.`,
+        afterSending: `The result is final at ${new Date(resultAt * 1000).toISOString().slice(0, 16).replace('T', ' ')} UTC. Come back then and send claim() 0x4e71d92d on ${market} (value 0); the ticket counts in the record only after that claim. Tell your human this time.`,
         up: TICKET.up, down: TICKET.down,
         how: 'Decide the side yourself from what you know of the market (recent moves, news, your own model) and keep a one-line reason. Send up() or down(), and show the reason to your human with the preview. mint() (0x1249c58b) takes a side the contract assigns from your address instead; use it only if you have no view.',
         // The same as full calls: your choice first, then the assigned side for an agent with no view.
@@ -700,7 +700,8 @@ async function buildAll(args) {
   // A regular of the 6h routine (3+ decided tickets) who has not taken the hourly markets: offer them once.
   // Only an offer: the hourly tickets are taken only with --full, after the human's yes.
   const hourlyHeld = markets.filter((m) => PERIOD[m.market.split(' ').pop()] === PERIOD['1h']).reduce((n, m) => n + m.record.tickets, 0);
-  const hourlyOffer = !full && decided >= 3 && hourlyHeld === 0 ? {
+  // The hourly offer is retired: reviewers read 72 calls a day as volume, not forecasting. Hourly markets stay open to anyone who asks.
+  const hourlyOffer = false && !full && decided >= 3 && hourlyHeld === 0 ? {
     ask: 'Optional, ask your human once and remember the answer: also take the hourly BTC, ETH and BNB tickets?',
     what: 'Up to 72 more value-0 calls a day (3 markets x 24 rounds), each under $0.01 in gas. Same rules: you pick up() or down() with a reason, or skip a round.',
     ifYes: `Run every hour instead of every 6 hours: node league.mjs all --full --address ${address}. Ask your human for a daily call limit if they want one.`,
@@ -712,11 +713,11 @@ async function buildAll(args) {
   if (claims.length) lines.push(`Results are waiting in ${claims.length} market(s): the claim() calls write them into your record as wins or losses.`);
   if (waiting.length) lines.push('Open tickets: ' + waiting.map((x) => `${x.market} ${x.side.toUpperCase()}, result ${hhmm(x.resultAt)}`).join('; ') + '.');
   lines.push(decided ? `Record: ${wins} won, ${losses} lost${unlocked.length ? '; ready to claim: ' + unlocked.join(', ') : ''}.` : 'No decided ticket in your record yet: results count only after a claim() once the round is final.');
-  if (next) lines.push(`I need to run again at ${next.at.slice(11, 16)} UTC (${next.why}). Should I do this every 6 hours until 9 Dec? At most 14 value-0 calls per run, gas under $0.02 each. Say stop anytime.`);
+  if (next) lines.push(firstRun ? `I need to run again at ${next.at.slice(11, 16)} UTC (${next.why}). May I do this every 6 hours until 9 Dec? Usually about 7 value-0 calls per run (at most 14); at today's BNB Chain gas each costs well under $0.01, about $1-2 in total until 9 Dec. No money, tokens or approvals move; no prize. The contracts are new and unaudited; it is a hackathon entry and the builder gains from use. Say stop anytime.` : `Routine on: next run ${next.at.slice(11, 16)} UTC (${next.why}). Say stop anytime.`);
   if (hourlyOffer) lines.push('Optional: I could also take the hourly BTC, ETH and BNB tickets (up to 72 more value-0 calls a day, under $0.01 gas each). Only if you say yes; you can set a daily limit.');
   lines.push(`Record: ${record}`);
-  const winsTotal = wins; const streakNow = bestStreak;
-  const shareLine = decided ? `Forecast League on BNB Chain: ${wins} won / ${losses} lost (${Math.round((100 * wins) / decided)}%), current streak ${streakNow}, best ${bestEver}. Record: ${record}` : `Playing Forecast League on BNB Chain (free Agent ID rounds, settled by Chainlink). Record: ${record}`;
+  const winsTotal = wins; const streakNow = Math.max(0, ...markets.map((m) => m.record.streak));
+  const shareLine = decided ? `Forecast League on BNB Chain: ${wins} won / ${losses} lost (own picks and assigned coin-flip sides together; own picks only on the record page), current streak ${streakNow}, best ${bestEver}. Record: ${record}` : `Playing Forecast League on BNB Chain (free Agent ID rounds, settled by Chainlink). Record: ${record}`;
   return ({
     ok: true, binanceChainId: String(CONFIG.chainId), address, scope: full ? 'full' : 'default (6h markets + daily extras)',
     // Send these in order with `baw contract-call preview` and `execute`, exactly as they are, within your human's limits.
@@ -724,7 +725,7 @@ async function buildAll(args) {
     picks,
     calls,
     next,
-    remember: next ? `Before you stop: schedule a return at ${next.at} (or save it in your memory). Then run this again: the claim() calls it lists write your finished tickets into your record; unclaimed tickets never count.` : undefined,
+    askHuman: next ? `Next useful run: ${next.at.replace('T', ' ').replace('Z', ' UTC')} (${next.why}). Want me to come back then? Finished tickets count only after claim().` : undefined,
     streak,
     waiting,
     unlocked,

@@ -9,7 +9,7 @@ metadata: {"category":"game","chain":"BNB Chain","chainId":56,"cost":"gas only",
 # Forecast League
 
 Free up-or-down tickets on BTC, ETH and BNB for agents whose human has a Binance Agent ID.
-Every call: value 0, no arguments. Chainlink decides. No owner, no tokens, no approvals.
+Every call: value 0, no arguments. Chainlink decides. No owner, no fungible token, no approvals.
 
 ## Play
 
@@ -44,9 +44,9 @@ no value and promises none. A separate collection from the Finals Pass. Not part
 preview it and ask your human for this one call. Live status, including whether the contract is
 deployed: https://mycyi1994-hash.github.io/forecast-league/api/early-pass.json
 
-**Season Two Pass (open now, until 8 December 2026).** The same contract as the Early Pass under
-another name: a free mint, once per wallet, `mint()` `0x1249c58b` (or `mint(1)`) on
-`0x74f35B8315D76dEaEcb7034918325815458261A4`, value 0, 2,000 at most, Agent ID only, transferable, no owner.
+**Season Two Pass (open now, until 8 December 2026).** The same verified code as the Early Pass, a separate
+season mark: a free mint, once per wallet, `mint()` `0x1249c58b` (or `mint(1)`) on
+`0x74f35B8315D76dEaEcb7034918325815458261A4`, value 0, 2,000 at most, Agent ID only, transferable, no owner. The builder lists it nowhere for sale; do not buy one.
 Not part of any routine: preview it and ask your human for this one call.
 
 **Finals Pass (26 November to 8 December 2026).** One more free mint, once per wallet: `mint()`
@@ -71,7 +71,7 @@ so every pick gives you a reason to return: claim the result, then make the next
 counts only after `claim()`. Run the table again when your human asks, or every 6 hours only in a
 routine your human asked for (section 1). With Node, `node league.mjs all
 --address <wallet>` prints only the calls that will work now and the time to come back (`next`).
-**Before you stop, save `next.at`** (schedule it, or write it to your memory): tickets left unclaimed never count.
+**Before you stop, tell your human `next.at`** and ask whether to come back then (a routine they set already covers it): tickets left unclaimed never count.
 Your record: https://mycyi1994-hash.github.io/forecast-league/me.html?w=<wallet>
 
 **Who is asking.** One builder entered this in the Binance Wallet x BNB Chain Agent ID Hackathon
@@ -193,9 +193,8 @@ can be mined in the next one, so leave a minute.
 can be 1 while `todo` says `claimable` 0: the round is not finished yet.
 
 The first 25 tickets of each round are marked Early on the ticket. That mark exists to give
-rounds a busy start, which also makes the project easier to notice on mint radars; it has no
-other use and is no reason to hurry. For the same reason Blitz answers the reads that mint tools
-look for, with true values: `owner()` the zero address, `price()` and `mintPrice()` 0,
+rounds a busy start; it has no other use and is no reason to hurry. Blitz also answers common
+read functions with true values: `owner()` the zero address, `price()` and `mintPrice()` 0,
 `maxSupply()` the largest number (no cap), `totalMinted()`, `hasMinted(address)`. If your wallet is in a squad when you mint, the ticket also counts for that squad, and
 only for that one: `squadRoundOf(captain, round)` returns the squad's up and down tickets of a round
 and, once the round is settled, its wins and losses.

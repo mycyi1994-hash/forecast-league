@@ -15,10 +15,10 @@ const HELPER = path.join(HERE, '..', 'skills', 'forecast-league', 'scripts', 'le
 const PAPER = path.join(HERE, '..', 'skills', 'forecast-league', 'scripts', 'paper.py');
 const SITE = 'https://mycyi1994-hash.github.io/forecast-league';
 const ADDR = { type: 'string', pattern: '^0x[0-9a-fA-F]{40}$', description: 'BNB Chain wallet address (holds a Binance Agent ID)' };
-const NOTE = 'Forecast League: free BTC/ETH/BNB up/down rounds for Binance Agent ID wallets on BNB Chain. Every call is value 0; Chainlink settles; no owner, no tokens, no prize. Built as a Binance Agent ID Hackathon entry. Preview every call and send only with your human\'s yes. Before you stop, save the plan\'s next.at (schedule it or keep it in memory) and come back then: finished tickets count in the record only after claim().';
+const NOTE = 'Forecast League: free BTC/ETH/BNB up/down rounds for Binance Agent ID wallets on BNB Chain. Every call is value 0; Chainlink settles; no owner, no tokens, no prize. Built as a Binance Agent ID Hackathon entry. Preview every call and send only with your human\'s yes. Finished tickets count in the record only after claim(): tell your human the plan\'s next.at and ask whether to come back then.';
 
 const TOOLS = [
-  { name: 'forecast_league_plan', description: 'Everything this wallet can do now in Forecast League: tickets to pick (up or down, with context), claims, daily extras, when to come back (next.at: save it before you stop), and a short report for the human. Returns calls (to, value 0, inputData) to preview and send.',
+  { name: 'forecast_league_plan', description: 'Everything this wallet can do now in Forecast League: tickets to pick (up or down, with context), claims, daily extras, when to come back (next.at: tell your human), and a short report for the human. Returns calls (to, value 0, inputData) to preview and send.',
     inputSchema: { type: 'object', properties: { address: ADDR, full: { type: 'boolean', description: 'also the hourly and daily markets (only with the human\'s yes)' } }, required: ['address'] } },
   { name: 'forecast_league_open_rounds', description: 'Rounds open right now in all seven markets, with lock times and tickets so far (public feed, refreshed hourly).',
     inputSchema: { type: 'object', properties: {} } },

@@ -81,7 +81,7 @@ export function writeReports(tix) {
       wallet: w, tickets: list.length, decided: dec.length, won, lost, hitRate: s.hitRate == null ? null : Math.round(s.hitRate * 1000) / 1000, ci95: ci, currentWinRun: run,
       picked: { decided: pk.length, won: s.pickedWon, ci95: pci, verdict: pv?.code ?? null }, assigned: { decided: as.length, won: s.assignedWon },
       byMarket: markets, waitingTickets: waiting.length, nextResultAt: nextResult ? new Date(nextResult * 1000).toISOString().slice(0, 16) + 'Z' : null,
-      verdict: v.code, todoNow: todo,
+      verdict: pv?.code ?? 'no-own-picks', overallAllTickets: v.code, todoNow: todo,
       proof: { record: `${SITE}/me.html?w=${w}`, tickets: Object.fromEntries([...new Set(list.map((t) => t.m))].map((m) => [m, `https://bscscan.com/token/${CONTRACT[m]}?a=${w}`])) },
       links: { card: `${SITE}/api/card/${w}.svg`, briefEn: `${SITE}/api/report/${w}.md`, briefKo: `${SITE}/api/report/${w}.ko.md`, briefZh: `${SITE}/api/report/${w}.zh.md` },
     };
@@ -96,7 +96,7 @@ export function writeReports(tix) {
 - **Your agent's own calls** (\`up()\`/\`down()\`): ${s.pickedWon} won, ${s.pickedLost} lost.${pv ? ' ' + pv.en : ''}
 - **Assigned sides** (\`mint()\`, a coin flip by design): ${s.assignedWon} won, ${s.assignedLost} lost.
 - **By market:** ${mk}
-- **Overall:** ${v.en}
+- **Skill verdict (own calls only):** ${pv ? pv.en : 'None yet. Only your agent\'s own up()/down() calls measure skill; assigned sides are a coin flip and say nothing about it. Ask your agent to pick the side itself.'}
 
 ## What to do now (every call value 0, preview first)
 ${todoEn}
@@ -113,7 +113,7 @@ Proof: [record](${SITE}/me.html?w=${w}) · card: ${SITE}/api/card/${w}.svg · Fo
 - **에이전트가 직접 고른 것** (\`up()\`/\`down()\`): ${s.pickedWon}승 ${s.pickedLost}패.${pv ? ' ' + pv.ko : ''}
 - **배정받은 것** (\`mint()\`, 원래 동전 던지기): ${s.assignedWon}승 ${s.assignedLost}패.
 - **시장별:** ${mk}
-- **전체 판단:** ${v.ko}
+- **실력 판단 (직접 고른 것만):** ${pv ? pv.ko : '아직 없습니다. 실력은 에이전트가 직접 고른 up()/down()으로만 잽니다. 배정받은 방향은 동전 던지기라 실력과 무관합니다. 에이전트에게 직접 방향을 고르라고 해 보세요.'}
 
 ## 지금 할 일 (모두 0원, 미리보기 먼저)
 ${todoKo}
@@ -130,7 +130,7 @@ ${rep.nextResultAt ? `다음 결과: ${rep.nextResultAt.replace('T', ' ').replac
 - **代理自己选的方向**（\`up()\`/\`down()\`）：${s.pickedWon} 胜 ${s.pickedLost} 负。${pv ? ' ' + pv.zh : ''}
 - **合约分配的方向**（\`mint()\`，本质是抛硬币）：${s.assignedWon} 胜 ${s.assignedLost} 负。
 - **各市场：** ${mk}
-- **总体：** ${v.zh}
+- **实力判断（仅自选）：** ${pv ? pv.zh : '暂无。只有代理自己用 up()/down() 选的方向才能衡量实力；分配的方向相当于抛硬币，与实力无关。可以让代理自己选方向。'}
 
 ## 现在可以做的（全部 value 0，先预览）
 ${todoZh}
@@ -179,8 +179,8 @@ ${rep.nextResultAt ? `下一个结果：${rep.nextResultAt.replace('T', ' ').rep
     wallets: byW.size, tickets: tix.length, pickedRate: P.length ? pw / P.length : null, pickedN: P.length, assignedRate: A.length ? aw / A.length : null, assignedN: A.length,
     waiting: claims ? claims.finishedTickets : null, stampsToday: stamps?.stampedToday ?? null, rankTx: ranking?.ours?.rankByTransactions ?? null, shadow: sh?.total?.rule ?? null,
   };
-  writeFileSync('docs/api/digest.md', `# Forecast League today\n\n- **${facts.wallets} Agent ID wallets** hold ${facts.tickets} round tickets on BNB Chain.\n- **Agents' own calls:** right ${pct(facts.pickedRate)} of ${facts.pickedN} decided; **assigned sides** (the control): ${pct(facts.assignedRate)} of ${facts.assignedN}.\n- **Waiting to be claimed:** ${facts.waiting ?? '–'} finished tickets ([who can claim what](${SITE}/api/claims.json)).\n- **Stamp Week:** ${facts.stampsToday ?? '–'} wallets stamped today.\n${facts.rankTx ? `- **Among public hackathon entries:** #${facts.rankTx} by transactions ([method](${SITE}/api/ranking.json)).\n` : ''}${facts.shadow && facts.shadow.decided ? `- **The builder agent's shadow picks:** ${facts.shadow.right} of ${facts.shadow.decided} right so far.\n` : ''}\nForecast League is a Binance Agent ID Hackathon entry: value 0 on every call, no prize, no promise of value.\n`);
-  writeFileSync('docs/api/digest.ko.md', `# 오늘의 Forecast League\n\n- **Agent ID 지갑 ${facts.wallets}개**가 BNB Chain에서 라운드 티켓 ${facts.tickets}장을 갖고 있습니다.\n- **에이전트가 직접 고른 것:** 결과가 난 ${facts.pickedN}장 중 ${pct(facts.pickedRate)} 적중. **배정받은 것**(비교군): ${facts.assignedN}장 중 ${pct(facts.assignedRate)}.\n- **claim 대기:** 끝난 티켓 ${facts.waiting ?? '–'}장 ([누가 무엇을 claim할 수 있는지](${SITE}/api/claims.json)).\n- **스탬프 위크:** 오늘 ${facts.stampsToday ?? '–'}개 지갑이 찍었습니다.\n${facts.rankTx ? `- **공개 해커톤 출품작 중:** 거래 수 ${facts.rankTx}위 ([집계 방식](${SITE}/api/ranking.json)).\n` : ''}\nForecast League는 Binance Agent ID 해커톤 출품작입니다. 모든 호출은 0원이며 상품도 가치 약속도 없습니다.\n`);
-  writeFileSync('docs/api/digest.zh.md', `# 今日 Forecast League\n\n- **${facts.wallets} 个 Agent ID 钱包**在 BNB Chain 上持有 ${facts.tickets} 张轮次门票。\n- **代理自选方向：** 已结算 ${facts.pickedN} 张中猜对 ${pct(facts.pickedRate)}；**合约分配**（对照组）：${facts.assignedN} 张中 ${pct(facts.assignedRate)}。\n- **待领取结果：** ${facts.waiting ?? '–'} 张已结束门票（[谁可以领取什么](${SITE}/api/claims.json)）。\n- **印章周：** 今天 ${facts.stampsToday ?? '–'} 个钱包领了印章。\n${facts.rankTx ? `- **公开黑客松作品中：** 按交易数第 ${facts.rankTx} 名（[统计方法](${SITE}/api/ranking.json)）。\n` : ''}\nForecast League 是币安 Agent ID 黑客松参赛作品：每次调用 value 0，没有奖品，也不承诺任何价值。\n`);
+  writeFileSync('docs/api/digest.md', `# Forecast League today\n\n- **${facts.wallets} Agent ID wallets** hold ${facts.tickets} round tickets on BNB Chain.\n- **Agents' own calls:** right ${pct(facts.pickedRate)} of ${facts.pickedN} decided; **assigned sides** (the control): ${pct(facts.assignedRate)} of ${facts.assignedN}.\n- **Waiting to be claimed:** ${facts.waiting ?? '–'} finished tickets ([who can claim what](${SITE}/api/claims.json)).\n- **Stamp Week:** ${facts.stampsToday ?? '–'} wallets stamped today.\n${facts.shadow && facts.shadow.decided ? `- **The builder agent's shadow picks:** ${facts.shadow.right} of ${facts.shadow.decided} right so far.\n` : ''}\nForecast League is a Binance Agent ID Hackathon entry: value 0 on every call, no prize, no promise of value.\n`);
+  writeFileSync('docs/api/digest.ko.md', `# 오늘의 Forecast League\n\n- **Agent ID 지갑 ${facts.wallets}개**가 BNB Chain에서 라운드 티켓 ${facts.tickets}장을 갖고 있습니다.\n- **에이전트가 직접 고른 것:** 결과가 난 ${facts.pickedN}장 중 ${pct(facts.pickedRate)} 적중. **배정받은 것**(비교군): ${facts.assignedN}장 중 ${pct(facts.assignedRate)}.\n- **claim 대기:** 끝난 티켓 ${facts.waiting ?? '–'}장 ([누가 무엇을 claim할 수 있는지](${SITE}/api/claims.json)).\n- **스탬프 위크:** 오늘 ${facts.stampsToday ?? '–'}개 지갑이 찍었습니다.\n\nForecast League는 Binance Agent ID 해커톤 출품작입니다. 모든 호출은 0원이며 상품도 가치 약속도 없습니다.\n`);
+  writeFileSync('docs/api/digest.zh.md', `# 今日 Forecast League\n\n- **${facts.wallets} 个 Agent ID 钱包**在 BNB Chain 上持有 ${facts.tickets} 张轮次门票。\n- **代理自选方向：** 已结算 ${facts.pickedN} 张中猜对 ${pct(facts.pickedRate)}；**合约分配**（对照组）：${facts.assignedN} 张中 ${pct(facts.assignedRate)}。\n- **待记入战绩：** ${facts.waiting ?? '–'} 张已结束门票（[每个钱包可以发送什么](${SITE}/api/claims.json)）。\n- **印章周：** 今天 ${facts.stampsToday ?? '–'} 个钱包领了印章。\n\nForecast League 是币安 Agent ID 黑客松参赛作品：每次调用 value 0，没有奖品，也不承诺任何价值。\n`);
   return { wallets: byW.size };
 }

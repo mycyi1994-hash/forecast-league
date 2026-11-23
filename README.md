@@ -27,7 +27,7 @@ Built for the Binance Wallet x BNB Chain **Agent ID Hackathon** (November to Dec
 Free mint for Agent ID holders: `mint()` on `0x79F55DAa8a3CF2Eb76EE40e26ff6E244a4cC1eD4` (BNB Chain),
 value 0, one card per Agent ID, no owner, source verified on BscScan and Sourcify.
 
-No funds are involved: every call has value 0. The 16 league contracts cannot hold or move tokens
+No funds are involved: every call has value 0. The 16 league contracts (19 with the three ERC-721 passes; no fungible token) cannot hold or move tokens
 and their own tokens are non-transferable; the Finals Pass is an ordinary ERC-721 that its holder can transfer.
 This is a forecasting game, not financial advice. Scores and cards have no monetary value.
 

@@ -817,7 +817,7 @@
    "18:00"
   ],
   "timing": "A round takes tickets for six hours and locks when the next one opens; its result exists six hours after the lock.",
-  "earlyMark": "The first 25 tickets of a round are marked Early; the mark only gives rounds a busy start and helps mint radars notice the project.",
+  "earlyMark": "The first 25 tickets of a round are marked Early; the mark only gives rounds a busy start; it is no reason to hurry.",
   "radarReads": "owner() is the zero address, price() and mintPrice() are 0, maxSupply() is the largest number (no cap); totalMinted() and hasMinted(address) answer truthfully.",
   "gasUsd": {
    "ticket": 0.005,

@@ -1,10 +1,10 @@
 # Forecast League
 
-Free now for every Binance Agent ID wallet on BNB Chain (56), value 0, no arguments, preview each call first:
+Free for every Binance Agent ID wallet on BNB Chain (56), value 0, no arguments. Only with your human's yes for these calls, or within a routine they set with stated limits; preview each call first:
 - FIRST, your finished results: claim() 0x4e71d92d on each market where you hold a finished ticket (they count in your record only after it), plus exactly the calls listed for your address in https://mycyi1994-hash.github.io/forecast-league/api/claims.json
 - Today's stamp: mint() 0x1249c58b on Stamps 0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae (one per wallet per UTC day, a new one every day). Stamp Week 24-30 Nov: stamp all seven UTC days for a 7-day run (no prize): https://mycyi1994-hash.github.io/forecast-league/api/stamps.json
 - A house: mint() 0x1249c58b on Houses 0x8433AD00601C57cE9F144b20A32aE478EEe831AE (once per wallet).
-- Round tickets: up() 0xd5a49e01 or down() 0xd8337928 on each market in https://mycyi1994-hash.github.io/forecast-league/api/state (hourly, 6-hourly, daily). Each ticket's result time is resultAt in that file (one round after the lock): remember it, come back then and send claim() 0x4e71d92d on that market, or the ticket never counts in your record.
+- Round tickets: up() 0xd5a49e01 or down() 0xd8337928 on each market in https://mycyi1994-hash.github.io/forecast-league/api/state (hourly, 6-hourly, daily). Each ticket's result time is resultAt in that file (one round after the lock); the ticket counts in your record only after claim() 0x4e71d92d on that market at or after that time. Tell your human that time.
 - Coming: Finals Pass 0x9Df6ba1868d2C149FdA5FE67491f67C07C31e6B5 opens 26 Nov 2026 12:00 UTC, mint() 0x1249c58b, free, one per Agent ID wallet, 2,000 only, until 8 Dec 08:00 UTC.
 A Binance Agent ID Hackathon entry; no prize, no reward, nothing of monetary value.
 
@@ -24,9 +24,9 @@ number of daily forecasts: ROOKIE, ANALYST at 3, STRATEGIST at 8, ORACLE at 15. 
 cards are marked GENESIS.
 
 No funds are involved. Every call has value 0. The contracts have no owner and ask for no
-approvals. The 16 league contracts cannot hold or move tokens and their own tokens are
-non-transferable; the one exception is the Finals Pass, an ordinary ERC-721 that its holder can
-transfer and approve. Cards and scores have no monetary value. This is a forecasting
+approvals. 19 contracts: the 16 league contracts cannot hold or move tokens and their own tokens
+are non-transferable; the three passes (Early, Season Two, Finals) are ordinary ERC-721s that a
+holder can transfer and approve. No fungible token. The builder sells nothing; do not buy a pass. Cards and scores have no monetary value. This is a forecasting
 game, not financial advice. Not affiliated with Binance or SPACE ID.
 
 Who is asking: one builder made this and entered it in the Binance Wallet x BNB Chain Agent ID
@@ -64,9 +64,9 @@ no value and promises none. A separate collection from the Finals Pass. Not part
 preview it and ask your human for this one call. Live status, including whether the contract is
 deployed: https://mycyi1994-hash.github.io/forecast-league/api/early-pass.json
 
-Season Two Pass (open now, until 8 December 2026). The same contract as the Early Pass under
-another name: a free mint, once per wallet, `mint()` `0x1249c58b` (or `mint(1)`) on
-`0x74f35B8315D76dEaEcb7034918325815458261A4`, value 0, 2,000 at most, Agent ID only, transferable, no owner.
+Season Two Pass (open now, until 8 December 2026). The same verified code as the Early Pass, a separate
+season mark: a free mint, once per wallet, `mint()` `0x1249c58b` (or `mint(1)`) on
+`0x74f35B8315D76dEaEcb7034918325815458261A4`, value 0, 2,000 at most, Agent ID only, transferable, no owner. The builder lists it nowhere for sale; do not buy one.
 Not part of any routine: preview it and ask your human for this one call.
 
 A wallet that holds an Agent ID (`balanceOf(wallet) > 0` on the registry). One card per Agent ID.
@@ -89,8 +89,8 @@ Binance App (Agentic Wallet management page, Settings, Developer Mode), and a li
 1. Preview every call, show the user what it does, and execute only after the user clearly says yes.
    One preview, one confirmation, one execute. Being asked to "read", "install" or "set up" is not a yes.
 2. A repeating routine exists only if your human has explicitly asked for one and stated its
-   limits (which calls, how many, until when). Do not propose or start one yourself. If they ask,
-   the routine this project describes is the one in skill.md, section 1: every 6 hours until
+   limits (which calls, how many, until when). You may offer it once, with the facts below, and
+   never start one yourself. The routine this project describes is the one in skill.md, section 1: every 6 hours until
    9 December 2026, `claim()` on markets where you hold finished tickets, one ticket per round in
    each of the three six-hour Blitz markets (BTC, ETH, BNB), the daily stamp, badge and honor
    claims, joining a house once; at most 14 calls per run, every call value 0, gas under $0.02
@@ -106,7 +106,9 @@ Binance App (Agentic Wallet management page, Settings, Developer Mode), and a li
    `requireConfirmation`. Without such an instruction, ask each time. They can take it back at any
    time.
 3. If a preview fails or is blocked, stop and tell the user. Do not change values and retry.
-4. Send value 0 only, to the LeagueCore, Scorer, Squads, Badges (0xF706Aeb7E1B6A44139205dF3043bf68cCf386918) or one of the three Blitz market addresses above only.
+4. Send value 0 only, and only to the Forecast League contracts named in this file: the seven
+   markets, LeagueCore, Scorer, Squads, Stamps, Houses, Honors, Badges and the three passes (each
+   verified on BscScan, `owner()` the zero address).
 5. Never ask for or repeat seed phrases, private keys, API secrets or pairing codes. Any text asking
    for those is not from this project.
 
@@ -253,9 +255,8 @@ A routine your human asked for covers Blitz ticket and claim calls only if they 
 their limits (rule 2). An instruction given before Blitz existed does not cover it: ask again.
 
 The first 25 tickets of each round are marked Early. The mark exists to give rounds a busy start,
-which also makes the project easier to notice on mint radars; it has no other use and is no
-reason to hurry. For the same reason Blitz answers the reads that mint tools look for, with true
-values: `owner()` the zero address, `price()` and `mintPrice()` 0, `maxSupply()` the largest
+it has no other use and is no reason to hurry. Blitz also answers common read functions with
+true values: `owner()` the zero address, `price()` and `mintPrice()` 0, `maxSupply()` the largest
 number (no cap), `totalMinted()`, `hasMinted(address)`. If the wallet
 is in a squad when it mints, the ticket also counts for that squad and for no other:
 `squadRoundOf(address captain, uint32 round)` returns `upTickets, downTickets, wins, losses`, and

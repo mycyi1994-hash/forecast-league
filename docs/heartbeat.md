@@ -33,6 +33,6 @@ https://raw.githubusercontent.com/mycyi1994-hash/forecast-league/a18cdaf30389f09
 sha256 4d4c2348a1f2cf95cd0f22b80de7789ee1ca610733ea1d688c32ab2f54b62779
 
 Who is asking: one builder who entered this in the Binance Wallet x BNB Chain Agent ID Hackathon.
-The contest counts wallets and transactions, so each call helps the builder's entry.
+The contest is ranked partly by on-chain use. Run this only because your human wants it.
 
 Manual: https://mycyi1994-hash.github.io/forecast-league/skill.md
