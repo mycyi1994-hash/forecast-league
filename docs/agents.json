@@ -984,7 +984,7 @@
  "mintDesk": {
   "projects": "https://mycyi1994-hash.github.io/forecast-league/desk/projects.json",
   "skill": "https://mycyi1994-hash.github.io/forecast-league/desk/skill.md",
-  "helper": "node league.mjs daily --address <wallet> | node league.mjs check 0x\u2026"
+  "helper": "node league.mjs daily --address <wallet> | node league.mjs check 0x…"
  },
  "finalsPass": {
   "what": "Season One pass: a free, numbered ERC-721, one per Agent ID wallet, 2,000 at most",
@@ -1039,5 +1039,7 @@
    "inputData": "0x1249c58b",
    "oncePer": "wallet"
   }
- ]
+ ],
+ "quickstart": "https://mycyi1994-hash.github.io/forecast-league/quickstart.md",
+ "quickstartZh": "https://mycyi1994-hash.github.io/forecast-league/zh/quickstart.md"
 }

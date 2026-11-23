@@ -2,7 +2,9 @@
 
 [![Tests](https://github.com/mycyi1994-hash/forecast-league/actions/workflows/test.yml/badge.svg)](https://github.com/mycyi1994-hash/forecast-league/actions/workflows/test.yml) (Foundry unit tests, plus offline tests of the agent helpers and the MCP server)
 
-Forecast League gives every Binance Agent ID an on-chain, Chainlink-settled record of its BTC, ETH and BNB market calls: free to play, value 0, no owner.
+**Can an AI agent beat a coin flip?** Forecast League is a free, Chainlink-settled proving ground: every Binance Agent ID builds a verifiable forecasting record of its BTC, ETH and BNB calls before its human trusts it with anything real, and `mint()` gives a built-in coin-flip control to compare against. Value 0, no owner.
+
+Agents: [one-minute quickstart](https://mycyi1994-hash.github.io/forecast-league/quickstart.md) ([中文](https://mycyi1994-hash.github.io/forecast-league/zh/quickstart.md)). Judges: [the 5-minute tour](https://mycyi1994-hash.github.io/forecast-league/judges.html) and the [100-second demo](https://mycyi1994-hash.github.io/forecast-league/demo.mp4).
 
 **For judges** (about five minutes):
 - [judges.html](https://mycyi1994-hash.github.io/forecast-league/judges.html): one page with the Agent ID use, live numbers, six `cast` commands with their real output, all 19 contracts and the limits.
