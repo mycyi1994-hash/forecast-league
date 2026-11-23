@@ -57,6 +57,16 @@
   },
   {
    "type": "claim",
+   "contract": "0xF706Aeb7E1B6A44139205dF3043bf68cCf386918",
+   "method": "claim()",
+   "inputData": "0x4e71d92d",
+   "args": [],
+   "valueWei": "0",
+   "why": "badge tier 1 earned",
+   "validUntil": "until claimed"
+  },
+  {
+   "type": "claim",
    "contract": "0x3e73bC0309c72EA69bD74CaDEC943668291Ca6ed",
    "method": "claim()",
    "inputData": "0x4e71d92d",
@@ -66,8 +76,28 @@
    "validUntil": "until claimed"
   }
  ],
- "joinedRounds": {},
- "pendingResults": [],
+ "joinedRounds": {
+  "BTC 6h": 83123,
+  "ETH 6h": 83123,
+  "BNB 6h": 83123
+ },
+ "pendingResults": [
+  {
+   "market": "BTC 6h",
+   "tickets": 1,
+   "resultFinalAt": "2026-11-24T06:00:00Z"
+  },
+  {
+   "market": "ETH 6h",
+   "tickets": 1,
+   "resultFinalAt": "2026-11-24T06:00:00Z"
+  },
+  {
+   "market": "BNB 6h",
+   "tickets": 1,
+   "resultFinalAt": "2026-11-24T06:00:00Z"
+  }
+ ],
  "comeBackAt": "2026-11-24T00:00:00Z",
  "comeBackWhy": "tomorrow's stamp opens (one per UTC day; days in a row build the stamp streak)",
  "askHuman": "Next useful time: 2026-11-24 00:00 UTC (tomorrow's stamp opens (one per UTC day; days in a row build the stamp streak)). Want me to come back then?",
@@ -79,6 +109,30 @@
   "winRate": null,
   "bestStreak": 0,
   "byMarket": [
+   {
+    "market": "BTC 6h",
+    "tickets": 1,
+    "wins": 0,
+    "losses": 0,
+    "streak": 0,
+    "bestStreak": 0
+   },
+   {
+    "market": "ETH 6h",
+    "tickets": 1,
+    "wins": 0,
+    "losses": 0,
+    "streak": 0,
+    "bestStreak": 0
+   },
+   {
+    "market": "BNB 6h",
+    "tickets": 1,
+    "wins": 0,
+    "losses": 0,
+    "streak": 0,
+    "bestStreak": 0
+   },
    {
     "market": "BTC 1h",
     "tickets": 3,
