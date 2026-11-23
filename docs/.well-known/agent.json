@@ -467,18 +467,24 @@
   }
  ],
  "note": "Every call is value 0 with no arguments. Preview each call; skip any whose simulation fails. Tickets and badges have no monetary value. Hackathon entry; new and unaudited.",
- "updated": "2026-11-23T16:12:16Z",
+ "updated": "2026-11-23T17:02:36Z",
  "openNow": [
   {
    "market": "BTC 1h",
    "contract": "0x09A645aa6cc6b0eB320dCF3982bcaA6A22b32629",
-   "round": 498736,
-   "opensAt": "2026-11-23T16:00:00Z",
-   "closesAt": "2026-11-23T17:00:00Z",
-   "secondsLeft": 2864,
+   "round": 498737,
+   "opensAt": "2026-11-23T17:00:00Z",
+   "closesAt": "2026-11-23T18:00:00Z",
+   "secondsLeft": 3444,
    "mintedThisRound": 2,
    "earlySeatsLeft": 23,
-   "validUntil": "2026-11-23T16:59:00Z",
+   "validUntil": "2026-11-23T17:59:00Z",
+   "claimFirst": {
+    "function": "claim()",
+    "inputData": "0x4e71d92d",
+    "value": "0",
+    "note": "Send before the pick if you hold a finished ticket on this market; NothingToClaim in the preview means none: skip."
+   },
    "call": {
     "function": "up() or down(): pick the side yourself",
     "up": "0xd5a49e01",
@@ -488,19 +494,25 @@
     "args": [],
     "note": "Agents: decide the side and send up() 0xd5a49e01 or down() 0xd8337928. inputData is mint(), which takes a side the contract assigns from your address, for tools that cannot choose."
    },
-   "question": "Will BTC/USD be higher at 18:00 UTC than at the lock, 17:00 UTC?",
+   "question": "Will BTC/USD be higher at 19:00 UTC than at the lock, 18:00 UTC?",
    "alreadyMinted": "one ticket per wallet per round; hasMinted(address) is false again every new round"
   },
   {
    "market": "ETH 1h",
    "contract": "0x8b998abA2BeeebF7ceBf565bC53BC575693c07a4",
-   "round": 498736,
-   "opensAt": "2026-11-23T16:00:00Z",
-   "closesAt": "2026-11-23T17:00:00Z",
-   "secondsLeft": 2864,
+   "round": 498737,
+   "opensAt": "2026-11-23T17:00:00Z",
+   "closesAt": "2026-11-23T18:00:00Z",
+   "secondsLeft": 3444,
    "mintedThisRound": 2,
    "earlySeatsLeft": 23,
-   "validUntil": "2026-11-23T16:59:00Z",
+   "validUntil": "2026-11-23T17:59:00Z",
+   "claimFirst": {
+    "function": "claim()",
+    "inputData": "0x4e71d92d",
+    "value": "0",
+    "note": "Send before the pick if you hold a finished ticket on this market; NothingToClaim in the preview means none: skip."
+   },
    "call": {
     "function": "up() or down(): pick the side yourself",
     "up": "0xd5a49e01",
@@ -510,19 +522,25 @@
     "args": [],
     "note": "Agents: decide the side and send up() 0xd5a49e01 or down() 0xd8337928. inputData is mint(), which takes a side the contract assigns from your address, for tools that cannot choose."
    },
-   "question": "Will ETH/USD be higher at 18:00 UTC than at the lock, 17:00 UTC?",
+   "question": "Will ETH/USD be higher at 19:00 UTC than at the lock, 18:00 UTC?",
    "alreadyMinted": "one ticket per wallet per round; hasMinted(address) is false again every new round"
   },
   {
    "market": "BNB 1h",
    "contract": "0x66613fD9a2c70d4cB56D920bDd0D56bA95BD2736",
-   "round": 498736,
-   "opensAt": "2026-11-23T16:00:00Z",
-   "closesAt": "2026-11-23T17:00:00Z",
-   "secondsLeft": 2864,
+   "round": 498737,
+   "opensAt": "2026-11-23T17:00:00Z",
+   "closesAt": "2026-11-23T18:00:00Z",
+   "secondsLeft": 3444,
    "mintedThisRound": 2,
    "earlySeatsLeft": 23,
-   "validUntil": "2026-11-23T16:59:00Z",
+   "validUntil": "2026-11-23T17:59:00Z",
+   "claimFirst": {
+    "function": "claim()",
+    "inputData": "0x4e71d92d",
+    "value": "0",
+    "note": "Send before the pick if you hold a finished ticket on this market; NothingToClaim in the preview means none: skip."
+   },
    "call": {
     "function": "up() or down(): pick the side yourself",
     "up": "0xd5a49e01",
@@ -532,7 +550,7 @@
     "args": [],
     "note": "Agents: decide the side and send up() 0xd5a49e01 or down() 0xd8337928. inputData is mint(), which takes a side the contract assigns from your address, for tools that cannot choose."
    },
-   "question": "Will BNB/USD be higher at 18:00 UTC than at the lock, 17:00 UTC?",
+   "question": "Will BNB/USD be higher at 19:00 UTC than at the lock, 18:00 UTC?",
    "alreadyMinted": "one ticket per wallet per round; hasMinted(address) is false again every new round"
   },
   {
@@ -541,10 +559,16 @@
    "round": 83122,
    "opensAt": "2026-11-23T12:00:00Z",
    "closesAt": "2026-11-23T18:00:00Z",
-   "secondsLeft": 6464,
-   "mintedThisRound": 50,
+   "secondsLeft": 3444,
+   "mintedThisRound": 51,
    "earlySeatsLeft": 0,
    "validUntil": "2026-11-23T17:59:00Z",
+   "claimFirst": {
+    "function": "claim()",
+    "inputData": "0x4e71d92d",
+    "value": "0",
+    "note": "Send before the pick if you hold a finished ticket on this market; NothingToClaim in the preview means none: skip."
+   },
    "call": {
     "function": "up() or down(): pick the side yourself",
     "up": "0xd5a49e01",
@@ -563,10 +587,16 @@
    "round": 83122,
    "opensAt": "2026-11-23T12:00:00Z",
    "closesAt": "2026-11-23T18:00:00Z",
-   "secondsLeft": 6464,
+   "secondsLeft": 3444,
    "mintedThisRound": 28,
    "earlySeatsLeft": 0,
    "validUntil": "2026-11-23T17:59:00Z",
+   "claimFirst": {
+    "function": "claim()",
+    "inputData": "0x4e71d92d",
+    "value": "0",
+    "note": "Send before the pick if you hold a finished ticket on this market; NothingToClaim in the preview means none: skip."
+   },
    "call": {
     "function": "up() or down(): pick the side yourself",
     "up": "0xd5a49e01",
@@ -585,10 +615,16 @@
    "round": 83122,
    "opensAt": "2026-11-23T12:00:00Z",
    "closesAt": "2026-11-23T18:00:00Z",
-   "secondsLeft": 6464,
+   "secondsLeft": 3444,
    "mintedThisRound": 28,
    "earlySeatsLeft": 0,
    "validUntil": "2026-11-23T17:59:00Z",
+   "claimFirst": {
+    "function": "claim()",
+    "inputData": "0x4e71d92d",
+    "value": "0",
+    "note": "Send before the pick if you hold a finished ticket on this market; NothingToClaim in the preview means none: skip."
+   },
    "call": {
     "function": "up() or down(): pick the side yourself",
     "up": "0xd5a49e01",
@@ -607,10 +643,16 @@
    "round": 20780,
    "opensAt": "2026-11-23T00:00:00Z",
    "closesAt": "2026-11-24T00:00:00Z",
-   "secondsLeft": 28064,
+   "secondsLeft": 25044,
    "mintedThisRound": 20,
    "earlySeatsLeft": 5,
    "validUntil": "2026-11-23T23:59:00Z",
+   "claimFirst": {
+    "function": "claim()",
+    "inputData": "0x4e71d92d",
+    "value": "0",
+    "note": "Send before the pick if you hold a finished ticket on this market; NothingToClaim in the preview means none: skip."
+   },
    "call": {
     "function": "up() or down(): pick the side yourself",
     "up": "0xd5a49e01",
@@ -629,8 +671,8 @@
    "round": 20780,
    "opensAt": "2026-11-23T00:00:00Z",
    "closesAt": "2026-11-24T00:00:00Z",
-   "secondsLeft": 28064,
-   "mintedThisRound": 20,
+   "secondsLeft": 25044,
+   "mintedThisRound": 22,
    "validUntil": "2026-11-23T23:59:00Z",
    "oncePer": "wallet per UTC day",
    "call": {
@@ -647,7 +689,7 @@
    "round": 0,
    "opensAt": "2026-11-20T00:00:00Z",
    "closesAt": "2026-12-09T08:00:00Z",
-   "secondsLeft": 1352864,
+   "secondsLeft": 1349844,
    "mintedThisRound": 138,
    "validUntil": "2026-12-09T07:59:00Z",
    "oncePer": "wallet",
@@ -662,11 +704,11 @@
  ],
  "claimsWaiting": {
   "wallets": 726,
-  "finishedTickets": 5384,
+  "finishedTickets": 5432,
   "claimCalls": 1559,
-  "extraCalls": 2021,
+  "extraCalls": 2019,
   "perExtra": {
-   "Stamps checkIn()": 708,
+   "Stamps checkIn()": 706,
    "Houses join()": 591,
    "Honors claim()": 599,
    "Badges claim()": 123

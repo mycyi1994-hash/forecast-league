@@ -1,6 +1,6 @@
 {
  "wallet": "0x5ce09cba71cb73fb6e6b349ffe1c27f8f3d325b4",
- "tickets": 1,
+ "tickets": 2,
  "decided": 0,
  "won": 0,
  "lost": 0,
@@ -18,16 +18,10 @@
   "won": 0
  },
  "byMarket": {},
- "waitingTickets": 1,
+ "waitingTickets": 2,
  "nextResultAt": "2026-11-23T18:00Z",
  "verdict": "early",
  "todoNow": [
-  {
-   "call": "Stamps checkIn()",
-   "inputData": "0x183ff085",
-   "to": "0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae",
-   "what": "today's stamp (streak becomes 2)"
-  },
   {
    "call": "Honors claim()",
    "inputData": "0x4e71d92d",

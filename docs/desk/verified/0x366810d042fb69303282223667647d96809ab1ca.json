@@ -2,8 +2,8 @@
  "contract": "0x366810d042fb69303282223667647d96809ab1ca",
  "name": "Pascabowo Pass",
  "verdict": "passed",
- "checkedAt": "2026-11-23T16:12:51Z",
- "block": 135300901,
+ "checkedAt": "2026-11-23T17:03:10Z",
+ "block": 135307592,
  "checks": {
   "simulatedFromAgentIdWallet": true,
   "gateEnforced": true,
