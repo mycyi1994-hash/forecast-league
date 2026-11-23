@@ -2,8 +2,8 @@
  "contract": "0xfc3b0ab6fb9e05ab7058117837530b288d749d78",
  "name": "Thank You Binancians",
  "verdict": "passed",
- "checkedAt": "2026-11-23T06:13:26Z",
- "block": 135221076,
+ "checkedAt": "2026-11-23T07:16:09Z",
+ "block": 135229431,
  "checks": {
   "simulatedFromAgentIdWallet": true,
   "gateEnforced": true,
