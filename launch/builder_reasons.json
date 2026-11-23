@@ -74,6 +74,14 @@
    },
    "reason": "Close to the current Chainlink prices (60,988 / 1,713.85 / 558.28), nudged up 0.04-0.2% after the last six-hour round closed 0.6% higher; staying near the price because the score is against no change.",
    "tx": "0xc0b818ba8cd3931adce49f89730b018b7c5caac7d2123170ea987ef27668f976"
+  },
+  {
+   "utc": "2026-11-23T06:48:20Z",
+   "market": "BTC 6h",
+   "round": 83121,
+   "side": "up",
+   "reason": "BTC closed higher in the last two six-hour rounds (+0.6%, +0.8%) and holds about 61,370, so I follow that trend into the 12:00-18:00 window.",
+   "tx": "0x2dd98f743aead42f686bb51643c520edd3b30c112a713710b62499d3352443a2"
   }
  ]
 }
