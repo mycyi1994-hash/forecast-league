@@ -65,16 +65,6 @@
    "args": [],
    "valueWei": "0",
    "validUntil": "until joined"
-  },
-  {
-   "type": "claim",
-   "contract": "0x3e73bC0309c72EA69bD74CaDEC943668291Ca6ed",
-   "method": "claim()",
-   "inputData": "0x4e71d92d",
-   "args": [],
-   "valueWei": "0",
-   "why": "honor earned: SEASON ONE, CARD HOLDER",
-   "validUntil": "until claimed"
   }
  ],
  "joinedRounds": {},

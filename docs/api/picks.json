@@ -1,16 +1,16 @@
 {
  "name": "Forecast League picks",
- "updated": "2026-11-23T13:18:35Z",
+ "updated": "2026-11-23T14:15:51Z",
  "coveredFromBlock": 134590000,
- "scannedToBlock": 135277681,
+ "scannedToBlock": 135285309,
  "method": "Each ticket is classified by the call that minted it: up() or down() is a side the caller chose, mint() is a side the contract assigned. A ticket minted through another contract counts as picked only if its side differs from the assigned one. The builder wallet is left out.",
  "totals": {
-  "tickets": 5780,
-  "picked": 211,
-  "assigned": 5569,
+  "tickets": 5855,
+  "picked": 212,
+  "assigned": 5643,
   "unknown": 0,
-  "pickedSharePct": 3.7,
-  "wallets": 402,
+  "pickedSharePct": 3.6,
+  "wallets": 404,
   "pickedWallets": 19,
   "pickedDecided": 172,
   "pickedWon": 105
@@ -18,51 +18,51 @@
  "perMarket": [
   {
    "market": "BTC 6h",
-   "tickets": 949,
-   "picked": 54,
-   "assigned": 895,
+   "tickets": 955,
+   "picked": 55,
+   "assigned": 900,
    "unknown": 0
   },
   {
    "market": "ETH 6h",
-   "tickets": 490,
+   "tickets": 492,
    "picked": 40,
-   "assigned": 450,
+   "assigned": 452,
    "unknown": 0
   },
   {
    "market": "BNB 6h",
-   "tickets": 482,
+   "tickets": 484,
    "picked": 40,
-   "assigned": 442,
+   "assigned": 444,
    "unknown": 0
   },
   {
    "market": "BTC 1h",
-   "tickets": 1214,
+   "tickets": 1233,
    "picked": 25,
-   "assigned": 1189,
+   "assigned": 1208,
    "unknown": 0
   },
   {
    "market": "ETH 1h",
-   "tickets": 1199,
+   "tickets": 1223,
    "picked": 24,
-   "assigned": 1175,
+   "assigned": 1199,
    "unknown": 0
   },
   {
    "market": "BNB 1h",
-   "tickets": 1237,
+   "tickets": 1258,
    "picked": 24,
-   "assigned": 1213,
+   "assigned": 1234,
    "unknown": 0
   },
   {
    "market": "BTC 1d",
-   "tickets": 209,
+   "tickets": 210,
    "picked": 4,
-   "assigned": 205,
+   "assigned": 206,
    "unknown": 0
   }
  ],
@@ -141,10 +141,10 @@
   },
   {
    "wallet": "0xf637a9378d71b5e32bb94ffcfa4ad0cf5fb6bad5",
-   "picked": 4,
+   "picked": 5,
    "won": 1,
    "lost": 2,
-   "waiting": 1,
+   "waiting": 2,
    "winRate": 33.3
   },
   {

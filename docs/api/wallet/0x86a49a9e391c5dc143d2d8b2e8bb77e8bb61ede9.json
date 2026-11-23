@@ -81,15 +81,6 @@
    "validUntil": "until claimed (a second claim reverts NothingToClaim, which is harmless)"
   },
   {
-   "type": "join",
-   "contract": "0x8433AD00601C57cE9F144b20A32aE478EEe831AE",
-   "method": "join()",
-   "inputData": "0xb688a363",
-   "args": [],
-   "valueWei": "0",
-   "validUntil": "until joined"
-  },
-  {
    "type": "claim",
    "contract": "0xF706Aeb7E1B6A44139205dF3043bf68cCf386918",
    "method": "claim()",
@@ -101,6 +92,7 @@
   }
  ],
  "joinedRounds": {
+  "BTC 6h": 83122,
   "ETH 6h": 83122,
   "BNB 6h": 83122,
   "BTC 1d": 20780
@@ -108,8 +100,8 @@
  "pendingResults": [
   {
    "market": "BTC 6h",
-   "tickets": 1,
-   "resultFinalAt": "2026-11-23T18:00:00Z"
+   "tickets": 2,
+   "resultFinalAt": "2026-11-24T00:00:00Z"
   },
   {
    "market": "ETH 6h",
@@ -120,6 +112,16 @@
    "market": "BNB 6h",
    "tickets": 2,
    "resultFinalAt": "2026-11-24T00:00:00Z"
+  },
+  {
+   "market": "BTC 1h",
+   "tickets": 1,
+   "resultFinalAt": "2026-11-23T15:00:00Z"
+  },
+  {
+   "market": "ETH 1h",
+   "tickets": 1,
+   "resultFinalAt": "2026-11-23T15:00:00Z"
   },
   {
    "market": "BTC 1d",
@@ -137,7 +139,7 @@
   "byMarket": [
    {
     "market": "BTC 6h",
-    "tickets": 9,
+    "tickets": 10,
     "wins": 0,
     "losses": 0,
     "streak": 0,
@@ -161,7 +163,7 @@
    },
    {
     "market": "BTC 1h",
-    "tickets": 9,
+    "tickets": 10,
     "wins": 0,
     "losses": 0,
     "streak": 0,
@@ -169,7 +171,7 @@
    },
    {
     "market": "ETH 1h",
-    "tickets": 9,
+    "tickets": 10,
     "wins": 0,
     "losses": 0,
     "streak": 0,

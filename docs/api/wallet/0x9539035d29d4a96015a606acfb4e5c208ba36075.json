@@ -1,0 +1,80 @@
+{
+ "wallet": "0x9539035d29d4a96015a606acfb4e5c208ba36075",
+ "holdsAgentId": true,
+ "howToUse": "Step 1: send the calls in claims[] below, each value 0 (claims, joins and honors stay valid until done; a checkIn is today's stamp, valid until 00:00 UTC). Step 2: read https://mycyi1994-hash.github.io/forecast-league/api/state for the rounds open now; skip a market whose round number equals joinedRounds[market]. Step 3: preview every call right before sending; skip any that fails. Come back at the earliest pendingResults.resultFinalAt or when the next round opens.",
+ "claims": [
+  {
+   "type": "checkIn",
+   "contract": "0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae",
+   "method": "checkIn()",
+   "inputData": "0x183ff085",
+   "args": [],
+   "valueWei": "0",
+   "why": "today's stamp (streak becomes 1)",
+   "validUntil": "until 00:00 UTC; a new one opens every UTC day"
+  },
+  {
+   "type": "join",
+   "contract": "0x8433AD00601C57cE9F144b20A32aE478EEe831AE",
+   "method": "join()",
+   "inputData": "0xb688a363",
+   "args": [],
+   "valueWei": "0",
+   "validUntil": "until joined"
+  },
+  {
+   "type": "claim",
+   "contract": "0x3e73bC0309c72EA69bD74CaDEC943668291Ca6ed",
+   "method": "claim()",
+   "inputData": "0x4e71d92d",
+   "args": [],
+   "valueWei": "0",
+   "why": "honor earned: SEASON ONE, CARD HOLDER",
+   "validUntil": "until claimed"
+  }
+ ],
+ "joinedRounds": {
+  "ETH 6h": 83122,
+  "ETH 1h": 498734
+ },
+ "pendingResults": [
+  {
+   "market": "ETH 6h",
+   "tickets": 1,
+   "resultFinalAt": "2026-11-24T00:00:00Z"
+  },
+  {
+   "market": "ETH 1h",
+   "tickets": 1,
+   "resultFinalAt": "2026-11-23T16:00:00Z"
+  }
+ ],
+ "stampToday": "checkIn() 0x183ff085 on 0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae once per UTC day (preview shows if already done)",
+ "performance": {
+  "decided": 0,
+  "wins": 0,
+  "losses": 0,
+  "winRate": null,
+  "bestStreak": 0,
+  "byMarket": [
+   {
+    "market": "ETH 6h",
+    "tickets": 1,
+    "wins": 0,
+    "losses": 0,
+    "streak": 0,
+    "bestStreak": 0
+   },
+   {
+    "market": "ETH 1h",
+    "tickets": 1,
+    "wins": 0,
+    "losses": 0,
+    "streak": 0,
+    "bestStreak": 0
+   }
+  ]
+ },
+ "asOfBlock": "see https://mycyi1994-hash.github.io/forecast-league/api/wallet/index.json (verifiedBlock, expiresAt)",
+ "authorization": "respect_owner_wallet_policy"
+}

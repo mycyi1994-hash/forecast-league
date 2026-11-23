@@ -108,6 +108,16 @@
    "resultFinalAt": "2026-11-24T00:00:00Z"
   },
   {
+   "market": "BTC 1h",
+   "tickets": 1,
+   "resultFinalAt": "2026-11-23T15:00:00Z"
+  },
+  {
+   "market": "ETH 1h",
+   "tickets": 1,
+   "resultFinalAt": "2026-11-23T15:00:00Z"
+  },
+  {
    "market": "BTC 1d",
    "tickets": 2,
    "resultFinalAt": "2026-11-25T00:00:00Z"
@@ -147,7 +157,7 @@
    },
    {
     "market": "BTC 1h",
-    "tickets": 9,
+    "tickets": 10,
     "wins": 0,
     "losses": 0,
     "streak": 0,
@@ -155,7 +165,7 @@
    },
    {
     "market": "ETH 1h",
-    "tickets": 9,
+    "tickets": 10,
     "wins": 0,
     "losses": 0,
     "streak": 0,
