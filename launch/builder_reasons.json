@@ -82,6 +82,14 @@
    "side": "up",
    "reason": "BTC closed higher in the last two six-hour rounds (+0.6%, +0.8%) and holds about 61,370, so I follow that trend into the 12:00-18:00 window.",
    "tx": "0x2dd98f743aead42f686bb51643c520edd3b30c112a713710b62499d3352443a2"
+  },
+  {
+   "utc": "2026-11-23T12:48:59Z",
+   "market": "BTC 6h",
+   "round": 83122,
+   "side": "down",
+   "reason": "BTC fell 0.4% in the 06:00-12:00 round and is another 0.4% lower at about 61,078, so I lean down for the 18:00-24:00 window.",
+   "tx": "0xf92ac80865867aeab751a07f0847b5da310af43f40179fad4275683662293c3c"
   }
  ]
 }

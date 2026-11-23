@@ -1,7 +1,7 @@
 {
  "name": "Forecast League: the builder's own agent",
- "updated": "2026-11-23T06:48:28Z",
- "block": 135225742,
+ "updated": "2026-11-23T12:49:06Z",
+ "block": 135273759,
  "label": "The builder's own agent. Excluded from all usage numbers. An example, not evidence of adoption.",
  "wallet": "0x2a2f48145780639dbd91e748df157f35283165da",
  "handle": "dopaminekr",
@@ -11,17 +11,17 @@
  "method": "Ticket ids from balanceOf and tokenOfOwnerByIndex on each of the 7 markets; ticket(id) for side and status; resultOf(round) for the settled prices. Picked or assigned from api/picks/ledger.json (the 4-byte selector of each mint transaction: up()/down() picked, mint() assigned); a ticket not yet in the ledger is read from its own transaction. Daily forecasts from LeagueCore.submissionOf, scores worked out from Scorer.roundOf with the Scorer formula. Nothing is left out.",
  "summary": {
   "all": {
-   "tickets": 21,
+   "tickets": 22,
    "won": 5,
-   "lost": 14,
+   "lost": 15,
    "push": 0,
    "void": 0,
    "waiting": 2
   },
   "picked": {
-   "tickets": 13,
+   "tickets": 14,
    "won": 3,
-   "lost": 8,
+   "lost": 9,
    "push": 0,
    "void": 0,
    "waiting": 2
@@ -35,9 +35,9 @@
    "waiting": 0
   },
   "routine": {
-   "tickets": 14,
+   "tickets": 15,
    "won": 4,
-   "lost": 8,
+   "lost": 9,
    "push": 0,
    "void": 0,
    "waiting": 2
@@ -46,9 +46,9 @@
  "recordOf": [
   {
    "market": "BTC 6h",
-   "tickets": 14,
+   "tickets": 15,
    "wins": 4,
-   "losses": 8,
+   "losses": 9,
    "streak": 0,
    "bestStreak": 2,
    "unclaimed": 2
@@ -503,10 +503,10 @@
    "howSource": "api/picks/ledger.json",
    "tx": "0xd5d870a0bfaf7380adb85c04223887f1019058365de8a4afea8886beb1aa0e92",
    "inRoutine": true,
-   "status": "live",
-   "outcome": null,
-   "lockPrice": null,
-   "resultPrice": null,
+   "status": "lost",
+   "outcome": "down",
+   "lockPrice": 61599.76520134,
+   "resultPrice": 61352.23523997,
    "reason": "BTC recovered 0.6% in the 18:00-00:00 round and holds about 61,045, above its 60,754 lock, so I lean on the rebound carrying into the 06:00-12:00 window."
   },
   {
@@ -518,6 +518,26 @@
    "lockAt": "2026-11-23T12:00:00Z",
    "resultAt": "2026-11-23T18:00:00Z",
    "side": "up",
+   "how": "up",
+   "picked": true,
+   "howSource": "api/picks/ledger.json",
+   "tx": "0x2dd98f743aead42f686bb51643c520edd3b30c112a713710b62499d3352443a2",
+   "inRoutine": true,
+   "status": "live",
+   "outcome": null,
+   "lockPrice": null,
+   "resultPrice": null,
+   "reason": "BTC closed higher in the last two six-hour rounds (+0.6%, +0.8%) and holds about 61,370, so I follow that trend into the 12:00-18:00 window."
+  },
+  {
+   "market": "BTC 6h",
+   "contract": "0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C",
+   "ticket": 962,
+   "round": 83122,
+   "opensAt": "2026-11-23T12:00:00Z",
+   "lockAt": "2026-11-23T18:00:00Z",
+   "resultAt": "2026-11-24T00:00:00Z",
+   "side": "down",
    "how": "picked-indirect",
    "picked": true,
    "howSource": "side compared with assignedSide()",
@@ -527,7 +547,7 @@
    "outcome": null,
    "lockPrice": null,
    "resultPrice": null,
-   "reason": "BTC closed higher in the last two six-hour rounds (+0.6%, +0.8%) and holds about 61,370, so I follow that trend into the 12:00-18:00 window."
+   "reason": "BTC fell 0.4% in the 06:00-12:00 round and is another 0.4% lower at about 61,078, so I lean down for the 18:00-24:00 window."
   }
  ],
  "forecasts": {
@@ -784,6 +804,14 @@
    "side": "up",
    "reason": "BTC closed higher in the last two six-hour rounds (+0.6%, +0.8%) and holds about 61,370, so I follow that trend into the 12:00-18:00 window.",
    "tx": "0x2dd98f743aead42f686bb51643c520edd3b30c112a713710b62499d3352443a2"
+  },
+  {
+   "utc": "2026-11-23T12:48:59Z",
+   "market": "BTC 6h",
+   "round": 83122,
+   "side": "down",
+   "reason": "BTC fell 0.4% in the 06:00-12:00 round and is another 0.4% lower at about 61,078, so I lean down for the 18:00-24:00 window.",
+   "tx": "0xf92ac80865867aeab751a07f0847b5da310af43f40179fad4275683662293c3c"
   }
  ]
 }
