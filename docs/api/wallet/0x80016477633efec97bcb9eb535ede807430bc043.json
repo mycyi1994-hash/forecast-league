@@ -11,7 +11,7 @@
    "inputData": "0x4e71d92d",
    "args": [],
    "valueWei": "0",
-   "finishedTickets": 1,
+   "finishedTickets": 2,
    "validUntil": "until claimed (a second claim reverts NothingToClaim, which is harmless)"
   },
   {
@@ -22,7 +22,7 @@
    "inputData": "0x4e71d92d",
    "args": [],
    "valueWei": "0",
-   "finishedTickets": 1,
+   "finishedTickets": 2,
    "validUntil": "until claimed (a second claim reverts NothingToClaim, which is harmless)"
   },
   {
@@ -33,7 +33,7 @@
    "inputData": "0x4e71d92d",
    "args": [],
    "valueWei": "0",
-   "finishedTickets": 1,
+   "finishedTickets": 2,
    "validUntil": "until claimed (a second claim reverts NothingToClaim, which is harmless)"
   },
   {
@@ -59,6 +59,17 @@
    "validUntil": "until claimed (a second claim reverts NothingToClaim, which is harmless)"
   },
   {
+   "type": "claim",
+   "market": "BTC 1d",
+   "contract": "0x9e521add6F67EEe0Fe5c0b8ef32cb4543f7af50E",
+   "method": "claim()",
+   "inputData": "0x4e71d92d",
+   "args": [],
+   "valueWei": "0",
+   "finishedTickets": 1,
+   "validUntil": "until claimed (a second claim reverts NothingToClaim, which is harmless)"
+  },
+  {
    "type": "checkIn",
    "contract": "0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae",
    "method": "checkIn()",
@@ -76,34 +87,56 @@
    "args": [],
    "valueWei": "0",
    "validUntil": "until joined"
+  },
+  {
+   "type": "claim",
+   "contract": "0xF706Aeb7E1B6A44139205dF3043bf68cCf386918",
+   "method": "claim()",
+   "inputData": "0x4e71d92d",
+   "args": [],
+   "valueWei": "0",
+   "why": "badge tier 2 earned",
+   "validUntil": "until claimed"
   }
  ],
  "joinedRounds": {
-  "BTC 6h": 83119,
-  "ETH 6h": 83119,
-  "BNB 6h": 83119,
-  "BTC 1d": 20779
+  "BTC 6h": 83120,
+  "ETH 6h": 83120,
+  "BNB 6h": 83120,
+  "BTC 1h": 498720,
+  "BNB 1h": 498720,
+  "BTC 1d": 20780
  },
  "pendingResults": [
   {
    "market": "BTC 6h",
    "tickets": 2,
-   "resultFinalAt": "2026-11-23T06:00:00Z"
+   "resultFinalAt": "2026-11-23T12:00:00Z"
   },
   {
    "market": "ETH 6h",
    "tickets": 2,
-   "resultFinalAt": "2026-11-23T06:00:00Z"
+   "resultFinalAt": "2026-11-23T12:00:00Z"
   },
   {
    "market": "BNB 6h",
    "tickets": 2,
-   "resultFinalAt": "2026-11-23T06:00:00Z"
+   "resultFinalAt": "2026-11-23T12:00:00Z"
+  },
+  {
+   "market": "BTC 1h",
+   "tickets": 1,
+   "resultFinalAt": "2026-11-23T02:00:00Z"
+  },
+  {
+   "market": "BNB 1h",
+   "tickets": 1,
+   "resultFinalAt": "2026-11-23T02:00:00Z"
   },
   {
    "market": "BTC 1d",
    "tickets": 2,
-   "resultFinalAt": "2026-11-24T00:00:00Z"
+   "resultFinalAt": "2026-11-25T00:00:00Z"
   }
  ],
  "stampToday": "checkIn() 0x183ff085 on 0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae once per UTC day (preview shows if already done)",
@@ -116,7 +149,7 @@
   "byMarket": [
    {
     "market": "BTC 6h",
-    "tickets": 3,
+    "tickets": 4,
     "wins": 0,
     "losses": 0,
     "streak": 0,
@@ -124,7 +157,7 @@
    },
    {
     "market": "ETH 6h",
-    "tickets": 3,
+    "tickets": 4,
     "wins": 0,
     "losses": 0,
     "streak": 0,
@@ -132,7 +165,7 @@
    },
    {
     "market": "BNB 6h",
-    "tickets": 3,
+    "tickets": 4,
     "wins": 0,
     "losses": 0,
     "streak": 0,
@@ -140,7 +173,7 @@
    },
    {
     "market": "BTC 1h",
-    "tickets": 1,
+    "tickets": 2,
     "wins": 0,
     "losses": 0,
     "streak": 0,
@@ -148,7 +181,7 @@
    },
    {
     "market": "BNB 1h",
-    "tickets": 1,
+    "tickets": 2,
     "wins": 0,
     "losses": 0,
     "streak": 0,
@@ -156,7 +189,7 @@
    },
    {
     "market": "BTC 1d",
-    "tickets": 2,
+    "tickets": 3,
     "wins": 0,
     "losses": 0,
     "streak": 0,

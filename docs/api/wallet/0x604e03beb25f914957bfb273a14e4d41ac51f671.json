@@ -70,24 +70,29 @@
    "validUntil": "until claimed (a second claim reverts NothingToClaim, which is harmless)"
   },
   {
+   "type": "claim",
+   "market": "BTC 1d",
+   "contract": "0x9e521add6F67EEe0Fe5c0b8ef32cb4543f7af50E",
+   "method": "claim()",
+   "inputData": "0x4e71d92d",
+   "args": [],
+   "valueWei": "0",
+   "finishedTickets": 1,
+   "validUntil": "until claimed (a second claim reverts NothingToClaim, which is harmless)"
+  },
+  {
    "type": "checkIn",
    "contract": "0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae",
    "method": "checkIn()",
    "inputData": "0x183ff085",
    "args": [],
    "valueWei": "0",
-   "why": "today's stamp (streak becomes 2)",
+   "why": "today's stamp (streak becomes 1)",
    "validUntil": "until 00:00 UTC; a new one opens every UTC day"
   }
  ],
  "joinedRounds": {},
- "pendingResults": [
-  {
-   "market": "BTC 1d",
-   "tickets": 1,
-   "resultFinalAt": "2026-11-23T00:00:00Z"
-  }
- ],
+ "pendingResults": [],
  "stampToday": "checkIn() 0x183ff085 on 0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae once per UTC day (preview shows if already done)",
  "performance": {
   "decided": 0,

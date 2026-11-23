@@ -8,7 +8,7 @@
  "deployed": true,
  "opensAt": "2026-11-26T12:00:00Z",
  "closesAt": "2026-12-08T08:00:00Z",
- "secondsToOpen": 305400,
+ "secondsToOpen": 301791,
  "maxSupply": 2000,
  "minted": 0,
  "left": 2000,
@@ -39,5 +39,5 @@
   "sourcify": true,
   "check": "https://sourcify.dev/server/v2/contract/56/0x9Df6ba1868d2C149FdA5FE67491f67C07C31e6B5"
  },
- "updated": "2026-11-22T23:10:00Z"
+ "updated": "2026-11-23T00:10:09Z"
 }
