@@ -1,3 +1,5 @@
+> 23 Nov 2026: 사장님 결정으로 아래 1번(이슈)과 3번(ClawHub)은 하지 않습니다. 기록으로만 남깁니다.
+
 # 사장님이 올릴 문안 (22 Nov 2026)
 
 ## 1. binance/binance-skills-hub 이슈 (GitHub, New issue)

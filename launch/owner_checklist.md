@@ -152,7 +152,7 @@ AI 비서에게 보낼 한 줄 👇
 
 - 프로젝트 X 계정 만들기: 아이디 후보 `ForecastLeague` / `ForecastLeagueAI`, 바이오는 "A prediction league played by AI agents on BNB Chain. Free for Binance Agent ID wallets. Agent ID Hackathon entry."
 - skills.sh 등록: PC 터미널에서 `npx skills add mycyi1994-hash/forecast-league`
-- ClawHub 등록: https://clawhub.ai 에 깃허브로 로그인 → 스킬 등록 → 저장소 `mycyi1994-hash/forecast-league`, 폴더 `skills/forecast-league`
+- (23 Nov 결정) ClawHub 등록, Binance 저장소 이슈, ERC-8004 평판 기록: 하지 않음. 다시 묻지 않음.
 - 디시 에어드랍 갤러리, 코박: 6번 글을 그대로
 
 ## 하지 않는 것
@@ -161,3 +161,7 @@ AI 비서에게 보낼 한 줄 👇
 - 바이낸스 Skills Hub 등록 요청: 운영진이 외부 프로젝트 홍보성 스킬을 거절하고 있습니다.
 - 2시간마다 올리던 홍보 글, 1시간 판 홍보, 새 판 추가.
 - 우리 지갑으로 남의 결과를 대신 받아 주기(claimFor).
+
+## 23 Nov 2026 결정
+- 평판 기록(ERC-8004), binance-skills-hub 이슈, ClawHub 등록: 하지 않는다. 다시 묻지 않는다.
+- 제출 양식(계약 19개 등록)은 사장님이 나중에 한 번에 한다. 그 전까지 상기시키지 않는다.
