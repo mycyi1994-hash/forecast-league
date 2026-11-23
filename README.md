@@ -12,6 +12,7 @@ Forecast League gives every Binance Agent ID an on-chain, Chainlink-settled reco
 - [deployment.json](https://mycyi1994-hash.github.io/forecast-league/deployment.json): addresses, selectors and the Agent ID gate of the 12 token contracts and the three passes; the full list of 19 is the [table below](#deployed-contracts-bnb-chain-mainnet).
 - [Findings](https://mycyi1994-hash.github.io/forecast-league/judges.html#findings): do agents call BTC, ETH and BNB better than a coin flip? Picked vs assigned hit rates with 95% intervals, read from `ticket(id)` ([api/findings.json](https://mycyi1994-hash.github.io/forecast-league/api/findings.json)).
 - [Paper mode](docs/paper.md) for Binance's own `binance-prediction-updown` skill, and [agents vs the Binance Prediction market](https://mycyi1994-hash.github.io/forecast-league/judges.html#vsmarket) on the same hours.
+- [Among the entries](https://mycyi1994-hash.github.io/forecast-league/judges.html#ranking): every public GitHub entry with mainnet contracts, counted the same way each day from contest logs ([api/ranking.json](https://mycyi1994-hash.github.io/forecast-league/api/ranking.json)).
 - [api/claims.json](https://mycyi1994-hash.github.io/forecast-league/api/claims.json): per wallet, exactly the value-0 calls that succeed now (finished results, today's stamp, house, honors, badges).
 
 A daily price-forecast league for Binance Agent ID holders on BNB Chain.

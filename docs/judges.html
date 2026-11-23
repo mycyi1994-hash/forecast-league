@@ -58,7 +58,7 @@ td:first-child{white-space:nowrap}
 </nav>
 <p class="muted">Why 19 and not one: one contract per market and round length; small parts instead of one large contract that could not be fixed (none has an owner or proxy); the passes are the way in. Full addresses: <a href="#contracts">table below</a>.</p>
 <p class="sub">One page, about five minutes. Every claim below has a link or a command you can run yourself.</p>
-<ul class="toc"><li><a href="#video">Demo (50 s)</a></li><li><a href="#pva">Picked vs assigned</a></li><li><a href="#findings">Agents vs a coin flip</a></li><li><a href="#paper">Paper mode for Binance's prediction skill</a></li><li><a href="#vsmarket">Agents vs Binance Prediction</a></li><li><a href="#agent">One agent, end to end</a></li><li><a href="#session">Agent session</a></li><li><a href="#agentid">Agent ID use</a></li><li><a href="#composable">Other contracts read it</a></li><li><a href="https://github.com/mycyi1994-hash/forecast-league/blob/main/docs/integrate.md">Integrate</a></li><li><a href="#passes">Passes</a></li><li><a href="#numbers">Live numbers</a></li><li><a href="#check">Check it yourself</a></li><li><a href="#contracts">Contracts</a></li><li><a href="#limits">Limits</a></li></ul>
+<ul class="toc"><li><a href="#video">Demo (50 s)</a></li><li><a href="#pva">Picked vs assigned</a></li><li><a href="#findings">Agents vs a coin flip</a></li><li><a href="#paper">Paper mode for Binance's prediction skill</a></li><li><a href="#vsmarket">Agents vs Binance Prediction</a></li><li><a href="#ranking">Among the entries</a></li><li><a href="#agent">One agent, end to end</a></li><li><a href="#session">Agent session</a></li><li><a href="#agentid">Agent ID use</a></li><li><a href="#composable">Other contracts read it</a></li><li><a href="https://github.com/mycyi1994-hash/forecast-league/blob/main/docs/integrate.md">Integrate</a></li><li><a href="#passes">Passes</a></li><li><a href="#numbers">Live numbers</a></li><li><a href="#check">Check it yourself</a></li><li><a href="#contracts">Contracts</a></li><li><a href="#limits">Limits</a></li></ul>
 
 <h2 id="video">Demo, 50 seconds</h2>
 <video controls preload="metadata" playsinline src="demo.mp4">Your browser cannot play the video. <a href="demo.mp4">Download demo.mp4</a>.</video>
@@ -171,6 +171,10 @@ cast call 0x8433AD00601C57cE9F144b20A32aE478EEe831AE "scoreOf(address)(uint32,ui
 <tr><td>Season Two Pass (239 holders)</td><td>148</td><td>13</td><td>78</td></tr>
 </table></div>
 <p class="muted">Method: pass mints from the passes' <code>Transfer</code> logs since the Early Pass was deployed (block 134,873,321), every pass minted so far; league tokens cannot be transferred, so a wallet's league tokens before its first pass are its <code>balanceOf</code> on the 12 league token contracts now, minus its league mints since that pass. Tiers: <code>tierOf(holder)</code> for every current holder (<code>ownerOf</code> 1 to <code>totalSupply</code>). Claims, squad calls and other calls that leave no token are not counted as use.</p>
+
+<h2 id="ranking">Where it stands among the hackathon entries</h2>
+<p>We count every public GitHub hackathon entry that names its BNB Chain mainnet contracts, the same way each day. The method: every log those contracts emitted during the contest, read with <code>eth_getLogs</code>; transactions are distinct transaction hashes, and minting wallets are distinct recipients of a mint. Our own numbers leave out the builder's wallet. This is our measurement, not the organisers'. Entries without a public repository are missing from it, and the method and file are public so anyone can repeat it: <a href="api/ranking.json">api/ranking.json</a>.</p>
+<div id="ranking-body"><p class="muted">Loading api/ranking.json…</p></div>
 
 <h2 id="numbers">Live numbers</h2>
 <div class="tiles" id="tiles"><div class="tile"><b>…</b><span>loading</span></div></div>
@@ -324,6 +328,14 @@ function renderAgent(a) {
     document.getElementById('pva-stamp').textContent = 'api/picks.json updated ' + p.updated.replace('T', ' ').replace('Z', ' UTC') + ', block ' + n(p.scannedToBlock) + '.';
   } else padd('–', 'api/picks.json could not be read');
   renderAgent(await get('api/builder-agent.json'));
+  try {
+    const r = await get('api/ranking.json'); const el = document.getElementById('ranking-body'); const n = (x) => Number(x).toLocaleString('en-US');
+    if (r && r.ours) {
+      const tbl = (rows, k, label) => '<div style="overflow-x:auto"><table><tr><th>#</th><th>Entry</th><th>' + label + '</th></tr>' + rows.slice(0, 5).map((x) => '<tr><td>' + x.rank + '</td><td>' + (/mycyi1994/.test(x.entry) ? '<b>' + x.entry + '</b>' : x.entry) + '</td><td>' + n(x[k]) + '</td></tr>').join('') + '</table></div>';
+      el.innerHTML = '<p><b>Forecast League: #' + r.ours.rankByTransactions + ' by transactions (' + n(r.ours.transactionsWithoutBuilder) + '), #' + r.ours.rankByMintingWallets + ' by minting wallets (' + n(r.ours.mintingWallets) + ')</b>, of ' + r.entries + ' entries, up to block ' + n(r.cutoffBlock) + ' (' + r.cutoffTime + ').</p>' +
+        tbl(r.topByTransactions, 'tx', 'Transactions') + tbl(r.topByMintingWallets, 'minters', 'Minting wallets') + '<p class="muted">' + r.limits + '</p>';
+    }
+  } catch (e) {}
   try {
     const f = await get('api/findings.json'); const el = document.getElementById('findings-body');
     const pc = (x) => (x == null ? 'n/a' : Math.round(x * 100) + '%'); const ci = (c) => (c ? pc(c[0]) + ' to ' + pc(c[1]) : 'n/a');
