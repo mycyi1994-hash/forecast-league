@@ -77,8 +77,13 @@ for (const f of ['docs/api/state', 'docs/deployment.json']) {
 for (const f of ['docs/agent.md', 'docs/agents.md']) {
   let md; try { md = readFileSync(f, 'utf8'); } catch { continue; }
   md = md.replace(/\nAlso open, limited: [^\n]*\n/g, '\n');
+  md = md.replace(/\nOpening soon: [^\n]*\n/g, '\n');
   const lines = done.filter(({ status }) => status === 'open').map(({ P, minted, left }) =>
     `Also open, limited: ${P.market} \`${P.address}\`, a free numbered pass, 2,000 only, one per Agent ID wallet, \`mint()\` \`0x1249c58b\`, value 0, no arguments. ${minted} minted, ${left} left. Closes ${iso(CLOSES_AT)}. Needs its own confirmation.`);
+  for (const { P, out, status } of done) if (status === 'deployed, not open yet') {
+    const h = Math.round(out.secondsToOpen / 3600);
+    lines.push(`Opening soon: ${P.market} \`${P.address}\` opens ${out.opensAt} (in about ${h} h), a free numbered pass, 2,000 only, one per Agent ID wallet, \`mint()\` \`0x1249c58b\`, value 0. Until then mint() reverts; todo(address) \`0x624f6da5\` gives secondsToOpen.`);
+  }
   if (lines.length && md.includes('<!-- /live -->')) md = md.replace('<!-- /live -->', `${lines.join('\n')}\n<!-- /live -->`);
   writeFileSync(f, md);
 }
