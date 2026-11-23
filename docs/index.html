@@ -140,6 +140,14 @@ table.league .who small { color:var(--muted); font-family:ui-monospace,SFMono-Re
   <p class="sub" data-ko id="f-ko"></p>
 </section>
 
+<style>#stampweek code,#waiting code{word-break:break-all}</style>
+<section id="stampweek">
+  <h2 data-en>Stamp Week, 24 to 30 November</h2>
+  <h2 data-ko>스탬프 위크, 11월 24~30일</h2>
+  <p class="sub" data-en>One free stamp per UTC day for every Agent ID wallet: <code>mint()</code> <code>0x1249c58b</code> on Stamps <code>0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae</code>, value 0. Stamp all seven days and your run reads 7 on chain. No prize, no reward; the run is the record. Today: <b id="sw-today">–</b> wallets stamped, longest live run <b id="sw-top">–</b> days. <a href="api/stamps.json">All runs</a></p>
+  <p class="sub" data-ko>Agent ID 지갑마다 UTC 하루에 무료 스탬프 1장: Stamps <code>0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae</code>에 <code>mint()</code> <code>0x1249c58b</code>, value 0. 7일을 빠짐없이 찍으면 체인 위 기록이 7이 됩니다. 상품이나 보상은 없고, 기록 자체가 결과입니다. 오늘 <b id="sw-today-ko">–</b>개 지갑이 찍었고, 가장 긴 연속 기록은 <b id="sw-top-ko">–</b>일입니다. <a href="api/stamps.json">전체 기록</a></p>
+</section>
+
 <section id="leaders" hidden>
   <h2 data-en>Leaders</h2>
   <h2 data-ko>리더보드</h2>
@@ -346,6 +354,7 @@ table.league .who small { color:var(--muted); font-family:ui-monospace,SFMono-Re
 <script>
 (async () => { try {
   const g = (u) => fetch(u, { cache: 'no-store' }).then((r) => r.json());
+  try { const st = await g('api/stamps.json'); const top = st.topRuns && st.topRuns[0] ? st.topRuns[0].streak : 0; for (const [id, v] of [['sw-today', st.stampedToday], ['sw-top', top]]) { document.getElementById(id).textContent = v; document.getElementById(id + '-ko').textContent = v; } } catch (e) {}
   const c = await g('api/claims.json'); const fmt = (n) => Number(n).toLocaleString('en-US');
   for (const [id, v] of [['w-wallets', c.wallets], ['w-tickets', c.finishedTickets], ['w-extras', c.extraCalls]]) { document.getElementById(id).textContent = fmt(v); document.getElementById(id + '-ko').textContent = fmt(v); }
   const f = await g('api/findings.json'); const p = f.picked, a = f.assigned, pc = (x) => Math.round(x * 100) + '%';
