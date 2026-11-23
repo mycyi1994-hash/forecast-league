@@ -87,24 +87,12 @@
    "args": [],
    "valueWei": "0",
    "validUntil": "until joined"
-  },
-  {
-   "type": "claim",
-   "contract": "0xF706Aeb7E1B6A44139205dF3043bf68cCf386918",
-   "method": "claim()",
-   "inputData": "0x4e71d92d",
-   "args": [],
-   "valueWei": "0",
-   "why": "badge tier 2 earned",
-   "validUntil": "until claimed"
   }
  ],
  "joinedRounds": {
   "BTC 6h": 83120,
   "ETH 6h": 83120,
   "BNB 6h": 83120,
-  "BTC 1h": 498720,
-  "BNB 1h": 498720,
   "BTC 1d": 20780
  },
  "pendingResults": [
