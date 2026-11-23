@@ -2,8 +2,8 @@
  "contract": "0xba5cde0ceea8704b8944deb51228ca59a7bd9cf0",
  "name": "GlorpixAgent",
  "verdict": "passed",
- "checkedAt": "2026-11-23T14:16:12Z",
- "block": 135285365,
+ "checkedAt": "2026-11-23T14:29:38Z",
+ "block": 135287155,
  "checks": {
   "simulatedFromAgentIdWallet": true,
   "gateEnforced": true,

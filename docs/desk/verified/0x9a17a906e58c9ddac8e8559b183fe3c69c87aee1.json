@@ -2,8 +2,8 @@
  "contract": "0x9a17a906e58c9ddac8e8559b183fe3c69c87aee1",
  "name": "Viridial Pass",
  "verdict": "passed",
- "checkedAt": "2026-11-23T14:16:12Z",
- "block": 135285365,
+ "checkedAt": "2026-11-23T14:29:38Z",
+ "block": 135287155,
  "checks": {
   "simulatedFromAgentIdWallet": true,
   "gateEnforced": true,
