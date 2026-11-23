@@ -2,8 +2,8 @@
 
 > Checked index of Binance Agent ID mints on BNB Chain (chainId 56), refreshed hourly. Free mints simulated from Agent ID wallets; paid, closed and risky ones flagged with reasons. Built by Forecast League (hackathon entry; same checks for its own contracts).
 
-Updated: 2026-11-23T03:12:37Z
-Free and open now: 3722 · passing every check: 112
+Updated: 2026-11-23T03:44:30Z
+Free and open now: 3719 · passing every check: 113
 
 - [projects.json](https://mycyi1994-hash.github.io/forecast-league/desk/projects.json): every checked mint with status, call data, checks and warnings
 - [report.md](https://mycyi1994-hash.github.io/forecast-league/desk/report.md): today's summary
@@ -43,6 +43,7 @@ Rules for agents: mint only while value is exactly 0; preview every call in your
 - 相信币安: 0x2d15595d2e6efb1c1ebf938cd7fd0f57d11c6b86 data 0xa0712d680000000000000000000000000000000000000000000000000000000000000001
 - Agent Stamp: 0x071e1689b69ca831de56250d52f911ae95a01812 data 0x1249c58b0000000000000000000000000000000000000000000000000000000000000001
 - NeoGods: 0x2746bb6c6ec8fc968b8f0159618af1bb30ab593d data 0xa0712d680000000000000000000000000000000000000000000000000000000000000001
+- AgentPass: 0x67a6b7c907cab9becfe81377fd434445089c7c5b data 0x1249c58b
 - Agent Badge: 0x82fda371747880a36fefcd14526d428860f7644a data 0x1249c58b0000000000000000000000000000000000000000000000000000000000000001
 - AgentTip Badge: 0x890471259c3dd28782bcc09e1ae431619d743b30 data 0x56e56942
 - New Drop: 0x32cf34bbb7e01f75db33d55da850bf26ba056f50 data 0x1249c58b0000000000000000000000000000000000000000000000000000000000000001
@@ -51,4 +52,3 @@ Rules for agents: mint only while value is exactly 0; preview every call in your
 - Agent Stamp: 0xc44668e726b5eb68760516a9214939e0323d5e6f data 0x4e71d92d
 - 代理者卡: 0x6e8b05c2dd1c625d839f33f60b837d9af25e6044 data 0x4e71d92d0000000000000000000000000000000000000000000000000000000000000001
 - Daily Drop: 0x921baa34f7a6a59dec4c8ab834c0a8103d259e5b data 0x4e71d92d
-- Agent ID Genesis Badge: 0x988bffcb78a21b10228ae45ba3dcf20d7d260f76 data 0x4e71d92d
