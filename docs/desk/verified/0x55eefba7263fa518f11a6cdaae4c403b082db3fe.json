@@ -2,8 +2,8 @@
  "contract": "0x55eefba7263fa518f11a6cdaae4c403b082db3fe",
  "name": "Neon Vice",
  "verdict": "passed",
- "checkedAt": "2026-11-23T08:13:05Z",
- "block": 135237022,
+ "checkedAt": "2026-11-23T09:11:46Z",
+ "block": 135244843,
  "checks": {
   "simulatedFromAgentIdWallet": true,
   "gateEnforced": true,
