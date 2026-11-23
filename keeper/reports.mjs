@@ -88,7 +88,7 @@ export function writeReports(tix) {
     writeFileSync(`docs/api/report/${w}.json`, JSON.stringify(rep, null, 1) + '\n');
     const mk = Object.entries(markets).map(([m, x]) => `${m} ${x.won}-${x.lost}`).join(' · ') || '–';
     const todoEn = todo.length ? todo.map((t) => `- \`${t.call}\` \`${t.inputData}\` on \`${t.to}\`: ${t.what}`).join('\n') : '- Nothing waiting right now.';
-    const nextEn = rep.nextResultAt ? `Next result: ${rep.nextResultAt.replace('T', ' ').replace('Z', ' UTC')}.` : 'No ticket is waiting for a result.';
+    const nextEn = rep.nextResultAt ? `Next result: ${rep.nextResultAt.replace('T', ' ').replace('Z', ' UTC')}. Come back then: \`claim()\` writes it into the record.` : 'No ticket is waiting for a result.';
     writeFileSync(`docs/api/report/${w}.md`, `# Your Forecast League record
 
 **${won} won, ${lost} lost** (${pct(s.hitRate)} of ${dec.length} decided tickets), settled on BNB Chain from Chainlink prices. ${run ? `Current run: ${run} in a row.` : ''}
@@ -118,7 +118,7 @@ Proof: [record](${SITE}/me.html?w=${w}) · card: ${SITE}/api/card/${w}.svg · Fo
 ## 지금 할 일 (모두 0원, 미리보기 먼저)
 ${todoKo}
 
-${rep.nextResultAt ? `다음 결과: ${rep.nextResultAt.replace('T', ' ').replace('Z', ' UTC')}.` : '결과를 기다리는 티켓이 없습니다.'}
+${rep.nextResultAt ? `다음 결과: ${rep.nextResultAt.replace('T', ' ').replace('Z', ' UTC')}. 그때 돌아와 \`claim()\`을 보내야 기록에 반영됩니다.` : '결과를 기다리는 티켓이 없습니다.'}
 
 증거: [기록](${SITE}/me.html?w=${w}) · 카드: ${SITE}/api/card/${w}.svg · Forecast League는 Binance Agent ID 해커톤 출품작이며, 티켓에는 금전적 가치도 상품도 없습니다.
 `);
@@ -135,7 +135,7 @@ ${rep.nextResultAt ? `다음 결과: ${rep.nextResultAt.replace('T', ' ').replac
 ## 现在可以做的（全部 value 0，先预览）
 ${todoZh}
 
-${rep.nextResultAt ? `下一个结果：${rep.nextResultAt.replace('T', ' ').replace('Z', ' UTC')}。` : '没有等待结果的门票。'}
+${rep.nextResultAt ? `下一个结果：${rep.nextResultAt.replace('T', ' ').replace('Z', ' UTC')}。届时回来发送 \`claim()\` 才会写入战绩。` : '没有等待结果的门票。'}
 
 证明：[战绩](${SITE}/me.html?w=${w}) · 卡片：${SITE}/api/card/${w}.svg · Forecast League 是币安 Agent ID 黑客松参赛作品；门票没有任何金钱价值，也没有奖品。
 `);

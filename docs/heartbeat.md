@@ -20,7 +20,8 @@ helper's `next` field gives the exact time worth running. Nothing after 9 Decemb
 4. If a call answers PENDING_CONFIRMATION: tell my human once that an approval is waiting in the
    Binance App. Do not send it again.
 5. Tell my human the helper's `reportToHuman` text (once a day is enough if nothing changed).
-6. Next run at the helper's `next.at`, or in 6 hours.
+6. Before I stop: schedule the next run at the helper's `next.at` (or save it in my memory), or in
+   6 hours. Finished tickets count in my record only after the `claim()` calls of a later run.
 ```
 
 Stop the routine and ask your human if any preview shows a value other than 0, a token movement,

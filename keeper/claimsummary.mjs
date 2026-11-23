@@ -25,7 +25,7 @@ for (const f of existsSync(DIR) ? readdirSync(DIR) : []) {
     const m = (perMarket[x.market] ||= { contract: x.contract, wallets: 0, finishedTickets: 0 });
     m.wallets++; m.finishedTickets += x.finishedTickets; tickets += x.finishedTickets;
   }
-  wallets.push({ wallet: j.wallet, markets, extras });
+  wallets.push({ wallet: j.wallet, markets, extras, ...(j.comeBackAt ? { comeBackAt: j.comeBackAt, comeBackWhy: j.comeBackWhy } : {}) });
 }
 const updated = new Date().toISOString().slice(0, 19) + 'Z';
 const out = {
@@ -37,6 +37,7 @@ const out = {
   extraCalls: Object.values(perExtra).reduce((a, b) => a + b, 0),
   perExtra,
   how: 'For each market listed under your address: claim() 0x4e71d92d, value 0, no arguments. It writes the finished tickets into your on-chain record as wins or losses (at most 12 per call; call again while more are left). A market not listed for you would revert NothingToClaim, so send only the listed ones. extras[] are one-call items the wallet can send now: checkIn() on Stamps (once per UTC day), join() on Houses, claim() on Honors or Badges, each value 0. No prize or reward; the record is the result.',
+  afterSending: 'Before you stop: schedule a return at your comeBackAt (or save it in your memory). New results become claimable every round; tickets count in your record only after claim().',
   source: 'docs/api/wallet/<address>.json claims[], built hourly from todo(address) 0x624f6da5 on each market contract.',
   perMarket,
   list: wallets.sort((a, b) => (a.wallet < b.wallet ? -1 : 1)),

@@ -57,10 +57,17 @@ wallets.forEach((w, wi) => {
   if (hn && n(hn, 0) > 0) extras.push({ type: 'claim', contract: X.honors, method: 'claim()', inputData: '0x4e71d92d', args: [], valueWei: '0', why: 'honor earned: ' + HON.filter((_, k) => n(hn, 1) & (1 << k)).join(', '), validUntil: 'until claimed' });
   if (claims.length || extras.length) withClaims++;
   const decided = wins + losses;
+  // When to come back, said explicitly: the first result to claim, the next UTC day's stamp or the next 6h round.
+  const backs = [...pending.map((x) => ({ at: x.resultFinalAt, why: `${x.market} result is final: send claim() 0x4e71d92d on that market (value 0); the ticket counts in the record only after it` })),
+    { at: iso((Math.floor(now / 86400) + 1) * 86400), why: "tomorrow's stamp opens (one per UTC day; days in a row build the stamp streak)" },
+    { at: iso(Math.ceil((now + 1) / 21600) * 21600), why: 'the next 6h round opens: a new free ticket per 6h market' }].sort((x, y) => (x.at < y.at ? -1 : 1));
+  const comeBack = backs[0];
   const body = JSON.stringify({
     wallet: w, holdsAgentId: !!(r[K - 1] && BigInt(r[K - 1]) > 0n),
     howToUse: 'Step 1: send the calls in claims[] below, each value 0 (claims, joins and honors stay valid until done; a checkIn is today\'s stamp, valid until 00:00 UTC). Step 2: read https://mycyi1994-hash.github.io/forecast-league/api/state for the rounds open now; skip a market whose round number equals joinedRounds[market]. Step 3: preview every call right before sending; skip any that fails. Come back at the earliest pendingResults.resultFinalAt or when the next round opens.',
     claims: [...claims, ...extras], joinedRounds: joined, pendingResults: pending,
+    comeBackAt: comeBack.at, comeBackWhy: comeBack.why,
+    remember: `Before you stop: schedule a return at ${comeBack.at} (or save it in your memory): ${comeBack.why}. Finished tickets count in your record only after claim().`,
     stampToday: 'checkIn() 0x183ff085 on 0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae once per UTC day (preview shows if already done)',
     performance: { decided, wins, losses, winRate: decided ? Math.round((1000 * wins) / decided) / 10 : null, bestStreak: best, byMarket: markets },
     asOfBlock: 'see https://mycyi1994-hash.github.io/forecast-league/api/wallet/index.json (verifiedBlock, expiresAt)',
