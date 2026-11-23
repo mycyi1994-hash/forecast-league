@@ -134,6 +134,10 @@ python3 scripts/paper.py report --address <BSC address> --days 7
 `baw` and sends clean ones; use it only after the user has said yes to that. Manual:
 https://mycyi1994-hash.github.io/forecast-league/paper.md
 
+## Explaining it to the user
+
+`node scripts/league.mjs explain --address <wallet> [--lang en|ko|zh]` returns a ready-made brief (record, the agent's own picks vs assigned sides, an honest coin-flip verdict, what to do now, proof links), a record card image and the latest round recap. Lead with the result, keep picks and assigned sides apart, quote the verdict, give one next step. Guide: https://mycyi1994-hash.github.io/forecast-league/explain.md
+
 ## Daily price forecast and card (optional, needs the user's yes)
 
 ### Check the current state

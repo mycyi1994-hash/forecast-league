@@ -1,0 +1,93 @@
+{
+ "wallet": "0x6c6ac8ffd105f74a154a000bda1a0cbbed2034de",
+ "tickets": 4,
+ "decided": 3,
+ "won": 1,
+ "lost": 2,
+ "hitRate": 0.333,
+ "ci95": [
+  0.061,
+  0.792
+ ],
+ "currentWinRun": 0,
+ "picked": {
+  "decided": 0,
+  "won": 0,
+  "ci95": null,
+  "verdict": null
+ },
+ "assigned": {
+  "decided": 3,
+  "won": 1
+ },
+ "byMarket": {
+  "ETH 1h": {
+   "won": 1,
+   "lost": 0
+  },
+  "BTC 1h": {
+   "won": 0,
+   "lost": 1
+  },
+  "BNB 1h": {
+   "won": 0,
+   "lost": 1
+  }
+ },
+ "waitingTickets": 1,
+ "nextResultAt": "2026-11-24T00:00Z",
+ "verdict": "early",
+ "todoNow": [
+  {
+   "call": "claim()",
+   "inputData": "0x4e71d92d",
+   "to": "0x09A645aa6cc6b0eB320dCF3982bcaA6A22b32629",
+   "what": "write 1 finished BTC 1h ticket(s) into the record"
+  },
+  {
+   "call": "claim()",
+   "inputData": "0x4e71d92d",
+   "to": "0x8b998abA2BeeebF7ceBf565bC53BC575693c07a4",
+   "what": "write 1 finished ETH 1h ticket(s) into the record"
+  },
+  {
+   "call": "claim()",
+   "inputData": "0x4e71d92d",
+   "to": "0x66613fD9a2c70d4cB56D920bDd0D56bA95BD2736",
+   "what": "write 1 finished BNB 1h ticket(s) into the record"
+  },
+  {
+   "call": "Stamps checkIn()",
+   "inputData": "0x183ff085",
+   "to": "0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae",
+   "what": "today's stamp (streak becomes 2)"
+  },
+  {
+   "call": "Houses join()",
+   "inputData": "0xb688a363",
+   "to": "0x8433AD00601C57cE9F144b20A32aE478EEe831AE",
+   "what": "Houses join()"
+  },
+  {
+   "call": "Honors claim()",
+   "inputData": "0x4e71d92d",
+   "to": "0x3e73bC0309c72EA69bD74CaDEC943668291Ca6ed",
+   "what": "honor earned: SEASON ONE"
+  }
+ ],
+ "proof": {
+  "record": "https://mycyi1994-hash.github.io/forecast-league/me.html?w=0x6c6ac8ffd105f74a154a000bda1a0cbbed2034de",
+  "tickets": {
+   "ETH 1h": "https://bscscan.com/token/0x8b998abA2BeeebF7ceBf565bC53BC575693c07a4?a=0x6c6ac8ffd105f74a154a000bda1a0cbbed2034de",
+   "BTC 1h": "https://bscscan.com/token/0x09A645aa6cc6b0eB320dCF3982bcaA6A22b32629?a=0x6c6ac8ffd105f74a154a000bda1a0cbbed2034de",
+   "BNB 1h": "https://bscscan.com/token/0x66613fD9a2c70d4cB56D920bDd0D56bA95BD2736?a=0x6c6ac8ffd105f74a154a000bda1a0cbbed2034de",
+   "BTC 1d": "https://bscscan.com/token/0x9e521add6F67EEe0Fe5c0b8ef32cb4543f7af50E?a=0x6c6ac8ffd105f74a154a000bda1a0cbbed2034de"
+  }
+ },
+ "links": {
+  "card": "https://mycyi1994-hash.github.io/forecast-league/api/card/0x6c6ac8ffd105f74a154a000bda1a0cbbed2034de.svg",
+  "briefEn": "https://mycyi1994-hash.github.io/forecast-league/api/report/0x6c6ac8ffd105f74a154a000bda1a0cbbed2034de.md",
+  "briefKo": "https://mycyi1994-hash.github.io/forecast-league/api/report/0x6c6ac8ffd105f74a154a000bda1a0cbbed2034de.ko.md",
+  "briefZh": "https://mycyi1994-hash.github.io/forecast-league/api/report/0x6c6ac8ffd105f74a154a000bda1a0cbbed2034de.zh.md"
+ }
+}

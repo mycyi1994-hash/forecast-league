@@ -743,6 +743,7 @@ async function buildAll(args) {
     } : undefined,
     note: 'Every call sends value 0. Skipping any of them costs nothing. Preview each one and act on your human\'s yes.',
     noCodeList: `${SITE}/api/claims.json (the calls that succeed now for this address, refreshed hourly)`,
+    forYourHuman: { brief: `${SITE}/api/report/${address.toLowerCase()}.md`, ko: `${SITE}/api/report/${address.toLowerCase()}.ko.md`, zh: `${SITE}/api/report/${address.toLowerCase()}.zh.md`, card: `${SITE}/api/card/${address.toLowerCase()}.svg`, recap: `${SITE}/api/recap/latest.md`, howTo: `${SITE}/explain.md` },
   });
 }
 async function cmdAll(args) {
@@ -829,6 +830,24 @@ function isMainModule() {
   }
 }
 const isMain = isMainModule();
+// A ready-made explanation for your human: the hourly brief for this address (record, picked vs assigned, the
+// honest verdict, what to do now, proof links) plus the latest round recap. Read-only; fetches public files.
+async function cmdExplain(args) {
+  const address = args.address === true ? undefined : args.address;
+  if (!address || !/^0x[0-9a-fA-F]{40}$/.test(address)) fail('Give --address <your wallet>.');
+  const lang = ['ko', 'zh'].includes(args.lang) ? args.lang : 'en';
+  const suffix = lang === 'en' ? '.md' : `.${lang}.md`;
+  const w = address.toLowerCase();
+  const get = async (u) => { try { const r = await fetch(u, { signal: AbortSignal.timeout(20000) }); return r.ok ? r.text() : null; } catch { return null; } };
+  const [brief, recap, json] = await Promise.all([get(`${SITE}/api/report/${w}${suffix}`), get(`${SITE}/api/recap/latest${suffix}`), get(`${SITE}/api/report/${w}.json`)]);
+  console.log(JSON.stringify({
+    ok: true, address, lang,
+    brief: brief || (lang === 'ko' ? '아직 이 주소의 기록이 없습니다. 첫 티켓 후 약 한 시간 안에 생깁니다.' : lang === 'zh' ? '这个地址还没有战绩，第一张门票后约一小时内生成。' : 'No record for this address yet: it appears within about an hour of the first ticket.'),
+    recap, card: `${SITE}/api/card/${w}.svg`, data: json ? JSON.parse(json) : null,
+    howToExplain: `${SITE}/explain.md`,
+  }, null, 2));
+}
+
 if (isMain) {
   const args = parseArgs(process.argv.slice(2));
   const command = args._[0];
@@ -842,6 +861,7 @@ if (isMain) {
     else if (command === 'check') await cmdCheck(args);
     else if (command === 'daily') await cmdDaily(args);
     else if (command === 'status') await cmdStatus(args);
+    else if (command === 'explain') await cmdExplain(args);
     else {
       console.log(
         [
@@ -850,6 +870,7 @@ if (isMain) {
           '  node league.mjs daily --address 0xYourAgenticWallet [--desk]  (league calls; --desk adds other projects\' checked free mints)',
           '  node league.mjs check 0xContract [--address 0xYourAgenticWallet]  (simulate one mint from your wallet)',
           '  node league.mjs status [--address 0xYourAgenticWallet]',
+          '  node league.mjs explain --address 0xYourAgenticWallet [--lang en|ko|zh]  (a ready-made brief for your human, the latest round recap, the record card)',
           '  node league.mjs encode [--btc <price>] [--eth <price>] [--bnb <price>] --show-name yes|no',
           '  node league.mjs encode-mint [--address 0xYourAgenticWallet]',
           '  node league.mjs encode-score --address 0xYourAgenticWallet [--epoch <number>]',

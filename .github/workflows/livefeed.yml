@@ -6,7 +6,7 @@ on:
   workflow_dispatch: {}
   push:
     branches: [main]
-    paths: ['.github/workflows/livefeed.yml', 'keeper/livefeed.mjs', 'keeper/actionfeed.mjs', 'keeper/desk.mjs', 'keeper/transparency.mjs', 'keeper/rivals.mjs', 'keeper/finalspass.mjs', 'keeper/picks.mjs', 'keeper/vsmarket.mjs', 'keeper/claimsummary.mjs', 'keeper/stampboard.mjs', 'keeper/findings.mjs', 'agent/shadow.py', 'agent/review.py', 'agent/pick.py', 'launch/data/binance_prediction_quotes.jsonl', 'keeper/tick']
+    paths: ['.github/workflows/livefeed.yml', 'keeper/livefeed.mjs', 'keeper/actionfeed.mjs', 'keeper/desk.mjs', 'keeper/transparency.mjs', 'keeper/rivals.mjs', 'keeper/finalspass.mjs', 'keeper/picks.mjs', 'keeper/vsmarket.mjs', 'keeper/claimsummary.mjs', 'keeper/stampboard.mjs', 'keeper/findings.mjs', 'keeper/reports.mjs', 'agent/shadow.py', 'agent/review.py', 'agent/pick.py', 'launch/data/binance_prediction_quotes.jsonl', 'keeper/tick']
 permissions:
   contents: write
   pages: write

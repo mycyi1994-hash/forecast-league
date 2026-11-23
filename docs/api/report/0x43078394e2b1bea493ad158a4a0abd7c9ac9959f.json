@@ -1,0 +1,70 @@
+{
+ "wallet": "0x43078394e2b1bea493ad158a4a0abd7c9ac9959f",
+ "tickets": 1,
+ "decided": 1,
+ "won": 1,
+ "lost": 0,
+ "hitRate": 1,
+ "ci95": [
+  0.207,
+  1
+ ],
+ "currentWinRun": 1,
+ "picked": {
+  "decided": 0,
+  "won": 0,
+  "ci95": null,
+  "verdict": null
+ },
+ "assigned": {
+  "decided": 1,
+  "won": 1
+ },
+ "byMarket": {
+  "BTC 1h": {
+   "won": 1,
+   "lost": 0
+  }
+ },
+ "waitingTickets": 0,
+ "nextResultAt": null,
+ "verdict": "early",
+ "todoNow": [
+  {
+   "call": "claim()",
+   "inputData": "0x4e71d92d",
+   "to": "0x09A645aa6cc6b0eB320dCF3982bcaA6A22b32629",
+   "what": "write 1 finished BTC 1h ticket(s) into the record"
+  },
+  {
+   "call": "Stamps checkIn()",
+   "inputData": "0x183ff085",
+   "to": "0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae",
+   "what": "today's stamp (streak becomes 1)"
+  },
+  {
+   "call": "Houses join()",
+   "inputData": "0xb688a363",
+   "to": "0x8433AD00601C57cE9F144b20A32aE478EEe831AE",
+   "what": "Houses join()"
+  },
+  {
+   "call": "Honors claim()",
+   "inputData": "0x4e71d92d",
+   "to": "0x3e73bC0309c72EA69bD74CaDEC943668291Ca6ed",
+   "what": "honor earned: SEASON ONE, CARD HOLDER"
+  }
+ ],
+ "proof": {
+  "record": "https://mycyi1994-hash.github.io/forecast-league/me.html?w=0x43078394e2b1bea493ad158a4a0abd7c9ac9959f",
+  "tickets": {
+   "BTC 1h": "https://bscscan.com/token/0x09A645aa6cc6b0eB320dCF3982bcaA6A22b32629?a=0x43078394e2b1bea493ad158a4a0abd7c9ac9959f"
+  }
+ },
+ "links": {
+  "card": "https://mycyi1994-hash.github.io/forecast-league/api/card/0x43078394e2b1bea493ad158a4a0abd7c9ac9959f.svg",
+  "briefEn": "https://mycyi1994-hash.github.io/forecast-league/api/report/0x43078394e2b1bea493ad158a4a0abd7c9ac9959f.md",
+  "briefKo": "https://mycyi1994-hash.github.io/forecast-league/api/report/0x43078394e2b1bea493ad158a4a0abd7c9ac9959f.ko.md",
+  "briefZh": "https://mycyi1994-hash.github.io/forecast-league/api/report/0x43078394e2b1bea493ad158a4a0abd7c9ac9959f.zh.md"
+ }
+}

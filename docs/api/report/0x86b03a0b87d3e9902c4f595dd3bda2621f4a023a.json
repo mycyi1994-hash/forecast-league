@@ -1,0 +1,91 @@
+{
+ "wallet": "0x86b03a0b87d3e9902c4f595dd3bda2621f4a023a",
+ "tickets": 4,
+ "decided": 4,
+ "won": 2,
+ "lost": 2,
+ "hitRate": 0.5,
+ "ci95": [
+  0.15,
+  0.85
+ ],
+ "currentWinRun": 2,
+ "picked": {
+  "decided": 0,
+  "won": 0,
+  "ci95": null,
+  "verdict": null
+ },
+ "assigned": {
+  "decided": 4,
+  "won": 2
+ },
+ "byMarket": {
+  "BNB 1h": {
+   "won": 0,
+   "lost": 1
+  },
+  "BNB 6h": {
+   "won": 0,
+   "lost": 1
+  },
+  "BTC 1h": {
+   "won": 1,
+   "lost": 0
+  },
+  "BTC 1d": {
+   "won": 1,
+   "lost": 0
+  }
+ },
+ "waitingTickets": 0,
+ "nextResultAt": null,
+ "verdict": "early",
+ "todoNow": [
+  {
+   "call": "claim()",
+   "inputData": "0x4e71d92d",
+   "to": "0xA782Ac207fE33f6120d9c2EF9553A55C47CFbbE9",
+   "what": "write 1 finished BNB 6h ticket(s) into the record"
+  },
+  {
+   "call": "claim()",
+   "inputData": "0x4e71d92d",
+   "to": "0x09A645aa6cc6b0eB320dCF3982bcaA6A22b32629",
+   "what": "write 1 finished BTC 1h ticket(s) into the record"
+  },
+  {
+   "call": "claim()",
+   "inputData": "0x4e71d92d",
+   "to": "0x66613fD9a2c70d4cB56D920bDd0D56bA95BD2736",
+   "what": "write 1 finished BNB 1h ticket(s) into the record"
+  },
+  {
+   "call": "claim()",
+   "inputData": "0x4e71d92d",
+   "to": "0x9e521add6F67EEe0Fe5c0b8ef32cb4543f7af50E",
+   "what": "write 1 finished BTC 1d ticket(s) into the record"
+  },
+  {
+   "call": "Stamps checkIn()",
+   "inputData": "0x183ff085",
+   "to": "0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae",
+   "what": "today's stamp (streak becomes 1)"
+  }
+ ],
+ "proof": {
+  "record": "https://mycyi1994-hash.github.io/forecast-league/me.html?w=0x86b03a0b87d3e9902c4f595dd3bda2621f4a023a",
+  "tickets": {
+   "BNB 1h": "https://bscscan.com/token/0x66613fD9a2c70d4cB56D920bDd0D56bA95BD2736?a=0x86b03a0b87d3e9902c4f595dd3bda2621f4a023a",
+   "BNB 6h": "https://bscscan.com/token/0xA782Ac207fE33f6120d9c2EF9553A55C47CFbbE9?a=0x86b03a0b87d3e9902c4f595dd3bda2621f4a023a",
+   "BTC 1h": "https://bscscan.com/token/0x09A645aa6cc6b0eB320dCF3982bcaA6A22b32629?a=0x86b03a0b87d3e9902c4f595dd3bda2621f4a023a",
+   "BTC 1d": "https://bscscan.com/token/0x9e521add6F67EEe0Fe5c0b8ef32cb4543f7af50E?a=0x86b03a0b87d3e9902c4f595dd3bda2621f4a023a"
+  }
+ },
+ "links": {
+  "card": "https://mycyi1994-hash.github.io/forecast-league/api/card/0x86b03a0b87d3e9902c4f595dd3bda2621f4a023a.svg",
+  "briefEn": "https://mycyi1994-hash.github.io/forecast-league/api/report/0x86b03a0b87d3e9902c4f595dd3bda2621f4a023a.md",
+  "briefKo": "https://mycyi1994-hash.github.io/forecast-league/api/report/0x86b03a0b87d3e9902c4f595dd3bda2621f4a023a.ko.md",
+  "briefZh": "https://mycyi1994-hash.github.io/forecast-league/api/report/0x86b03a0b87d3e9902c4f595dd3bda2621f4a023a.zh.md"
+ }
+}

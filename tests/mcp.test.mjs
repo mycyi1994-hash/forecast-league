@@ -14,7 +14,7 @@ const t0 = Date.now();
 while (got.size < 4 && Date.now() - t0 < 10000) await new Promise((r) => setTimeout(r, 50));
 p.kill();
 assert.equal(got.get(1).result.serverInfo.name, 'forecast-league');
-assert.deepEqual(got.get(2).result.tools.map((t) => t.name).sort(), ['forecast_league_findings', 'forecast_league_open_rounds', 'forecast_league_paper_report', 'forecast_league_plan', 'forecast_league_record']);
+assert.deepEqual(got.get(2).result.tools.map((t) => t.name).sort(), ['forecast_league_explain', 'forecast_league_findings', 'forecast_league_open_rounds', 'forecast_league_paper_report', 'forecast_league_plan', 'forecast_league_record']);
 assert.equal(got.get(3).result.isError, true);
 assert.equal(got.get(4).error.code, -32601);
 console.log('mcp smoke test ok');

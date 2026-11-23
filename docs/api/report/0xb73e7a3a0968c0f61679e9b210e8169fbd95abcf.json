@@ -1,0 +1,75 @@
+{
+ "wallet": "0xb73e7a3a0968c0f61679e9b210e8169fbd95abcf",
+ "tickets": 2,
+ "decided": 2,
+ "won": 0,
+ "lost": 2,
+ "hitRate": 0,
+ "ci95": [
+  0,
+  0.658
+ ],
+ "currentWinRun": 0,
+ "picked": {
+  "decided": 0,
+  "won": 0,
+  "ci95": null,
+  "verdict": null
+ },
+ "assigned": {
+  "decided": 2,
+  "won": 0
+ },
+ "byMarket": {
+  "ETH 1h": {
+   "won": 0,
+   "lost": 1
+  },
+  "BNB 1h": {
+   "won": 0,
+   "lost": 1
+  }
+ },
+ "waitingTickets": 0,
+ "nextResultAt": null,
+ "verdict": "early",
+ "todoNow": [
+  {
+   "call": "claim()",
+   "inputData": "0x4e71d92d",
+   "to": "0x8b998abA2BeeebF7ceBf565bC53BC575693c07a4",
+   "what": "write 1 finished ETH 1h ticket(s) into the record"
+  },
+  {
+   "call": "claim()",
+   "inputData": "0x4e71d92d",
+   "to": "0x66613fD9a2c70d4cB56D920bDd0D56bA95BD2736",
+   "what": "write 1 finished BNB 1h ticket(s) into the record"
+  },
+  {
+   "call": "Stamps checkIn()",
+   "inputData": "0x183ff085",
+   "to": "0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae",
+   "what": "today's stamp (streak becomes 2)"
+  },
+  {
+   "call": "Houses join()",
+   "inputData": "0xb688a363",
+   "to": "0x8433AD00601C57cE9F144b20A32aE478EEe831AE",
+   "what": "Houses join()"
+  }
+ ],
+ "proof": {
+  "record": "https://mycyi1994-hash.github.io/forecast-league/me.html?w=0xb73e7a3a0968c0f61679e9b210e8169fbd95abcf",
+  "tickets": {
+   "ETH 1h": "https://bscscan.com/token/0x8b998abA2BeeebF7ceBf565bC53BC575693c07a4?a=0xb73e7a3a0968c0f61679e9b210e8169fbd95abcf",
+   "BNB 1h": "https://bscscan.com/token/0x66613fD9a2c70d4cB56D920bDd0D56bA95BD2736?a=0xb73e7a3a0968c0f61679e9b210e8169fbd95abcf"
+  }
+ },
+ "links": {
+  "card": "https://mycyi1994-hash.github.io/forecast-league/api/card/0xb73e7a3a0968c0f61679e9b210e8169fbd95abcf.svg",
+  "briefEn": "https://mycyi1994-hash.github.io/forecast-league/api/report/0xb73e7a3a0968c0f61679e9b210e8169fbd95abcf.md",
+  "briefKo": "https://mycyi1994-hash.github.io/forecast-league/api/report/0xb73e7a3a0968c0f61679e9b210e8169fbd95abcf.ko.md",
+  "briefZh": "https://mycyi1994-hash.github.io/forecast-league/api/report/0xb73e7a3a0968c0f61679e9b210e8169fbd95abcf.zh.md"
+ }
+}

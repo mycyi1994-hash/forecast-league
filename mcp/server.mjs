@@ -24,6 +24,8 @@ const TOOLS = [
     inputSchema: { type: 'object', properties: {} } },
   { name: 'forecast_league_record', description: 'A wallet\'s claims waiting, joined rounds and pending results (public per-wallet feed).',
     inputSchema: { type: 'object', properties: { address: ADDR }, required: ['address'] } },
+  { name: 'forecast_league_explain', description: "A ready-made brief to give your human about one wallet: record in plain words, the agent's own picks vs assigned sides, an honest coin-flip verdict with a 95% interval, what to do now, proof links, a record card image and the latest round recap. English, Korean or Chinese.",
+    inputSchema: { type: 'object', properties: { address: ADDR, lang: { type: 'string', enum: ['en', 'ko', 'zh'], default: 'en' } }, required: ['address'] } },
   { name: 'forecast_league_findings', description: 'Do AI agents call the market better than a coin flip? Picked vs assigned hit rates with 95% intervals, read from the contracts.',
     inputSchema: { type: 'object', properties: {} } },
   { name: 'forecast_league_paper_report', description: 'Hit rate of a wallet over recent rounds read from the chain, with a 95% interval (paper mode for binance-prediction-updown hooks). Needs python3.',
@@ -57,6 +59,12 @@ async function callTool(name, a = {}) {
   if (name === 'forecast_league_record') {
     if (!okAddr(a.address)) throw new Error('address must be 0x followed by 40 hex characters');
     return JSON.stringify(await getJson(`${SITE}/api/wallet/${a.address.toLowerCase()}.json`));
+  }
+  if (name === 'forecast_league_explain') {
+    if (!okAddr(a.address)) throw new Error('address must be 0x followed by 40 hex characters');
+    const lang = ['ko', 'zh'].includes(a.lang) ? a.lang : 'en';
+    const r = await run(process.execPath, [HELPER, 'explain', '--address', a.address, '--lang', lang]);
+    return r.out || JSON.stringify({ ok: false, error: r.err.slice(0, 500) });
   }
   if (name === 'forecast_league_findings') return JSON.stringify(await getJson(`${SITE}/api/findings.json`));
   if (name === 'forecast_league_paper_report') {

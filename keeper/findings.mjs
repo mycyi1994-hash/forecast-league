@@ -5,6 +5,7 @@
 // Picked (up()/down()) and assigned (mint()) tickets are scored separately; the builder wallet is left out.
 // Output: docs/api/findings.json.
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
+import { writeReports } from './reports.mjs';
 
 const RPCS = ['https://bsc-rpc.publicnode.com', 'https://bsc-dataseed.bnbchain.org', 'https://bsc-dataseed.binance.org'];
 const MC = '0xcA11bde05977b3631167028862bE2a173976CA11';
@@ -103,3 +104,6 @@ for (const [w, x] of Object.entries(per)) {
   writeFileSync(`docs/api/badge/${w}.svg`, svg);
 }
 console.log(out.reading);
+
+// Human-ready briefs, cards, the round recap and the daily digest (keeper/reports.mjs).
+console.log(JSON.stringify({ reports: writeReports(tix) }));
