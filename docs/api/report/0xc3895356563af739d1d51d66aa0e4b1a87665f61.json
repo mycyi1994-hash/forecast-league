@@ -77,19 +77,19 @@
    "call": "claim()",
    "inputData": "0x4e71d92d",
    "to": "0x09A645aa6cc6b0eB320dCF3982bcaA6A22b32629",
-   "what": "write 94 finished BTC 1h ticket(s) into the record"
+   "what": "write 95 finished BTC 1h ticket(s) into the record"
   },
   {
    "call": "claim()",
    "inputData": "0x4e71d92d",
    "to": "0x8b998abA2BeeebF7ceBf565bC53BC575693c07a4",
-   "what": "write 94 finished ETH 1h ticket(s) into the record"
+   "what": "write 95 finished ETH 1h ticket(s) into the record"
   },
   {
    "call": "claim()",
    "inputData": "0x4e71d92d",
    "to": "0x66613fD9a2c70d4cB56D920bDd0D56bA95BD2736",
-   "what": "write 94 finished BNB 1h ticket(s) into the record"
+   "what": "write 95 finished BNB 1h ticket(s) into the record"
   },
   {
    "call": "claim()",

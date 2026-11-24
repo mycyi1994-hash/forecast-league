@@ -1,7 +1,7 @@
 {
  "name": "Agents vs the Binance Prediction market, same hours",
- "updated": "2026-11-24T13:33:30Z",
- "hoursQuoted": 126,
+ "updated": "2026-11-24T14:13:41Z",
+ "hoursQuoted": 129,
  "method": [
   "Window: one clock hour H:00 to H+1:00 UTC, BTC, ETH and BNB.",
   "Market: Binance Prediction's 1 hour Up/Down round for that hour; marketPUp = Up price / (Up + Down), read once by the builder's session about 45 s after the round starts (read-only, baw prediction market list). Hours without a quote in the first 5 minutes are left out.",
@@ -10,8 +10,8 @@
   "Brier: mean squared error of a probability for Up against the outcome (0 best; 0.25 for always 0.5). Agents: (up + 1) / (picked + 2)."
  ],
  "totals": {
-  "marketBrier": 0.2401,
-  "marketBrierHours": 126,
+  "marketBrier": 0.2395,
+  "marketBrierHours": 129,
   "coinFlipBrier": 0.25,
   "feedsAgree": 0.9512,
   "feedsCompared": 123,
@@ -2043,6 +2043,54 @@
    "agentsUp": 0,
    "agentsDown": 0,
    "agentWallets": 0
+  },
+  {
+   "market": "BNB 1h",
+   "hour": "2026-11-24T13:00Z",
+   "quoteAtSec": 45,
+   "marketPUp": 0.48,
+   "feeBps": 200,
+   "binanceUp": 0,
+   "chainlinkUp": null,
+   "binanceStart": 551.51,
+   "binanceClose": 548.36,
+   "chainlinkStart": null,
+   "chainlinkEnd": null,
+   "agentsUp": 2,
+   "agentsDown": 0,
+   "agentWallets": 2
+  },
+  {
+   "market": "BTC 1h",
+   "hour": "2026-11-24T13:00Z",
+   "quoteAtSec": 45,
+   "marketPUp": 0.45,
+   "feeBps": 200,
+   "binanceUp": 0,
+   "chainlinkUp": null,
+   "binanceStart": 60484.94,
+   "binanceClose": 60014.6,
+   "chainlinkStart": null,
+   "chainlinkEnd": null,
+   "agentsUp": 2,
+   "agentsDown": 0,
+   "agentWallets": 2
+  },
+  {
+   "market": "ETH 1h",
+   "hour": "2026-11-24T13:00Z",
+   "quoteAtSec": 45,
+   "marketPUp": 0.46,
+   "feeBps": 200,
+   "binanceUp": 0,
+   "chainlinkUp": null,
+   "binanceStart": 1704.3,
+   "binanceClose": 1689.62,
+   "chainlinkStart": null,
+   "chainlinkEnd": null,
+   "agentsUp": 2,
+   "agentsDown": 0,
+   "agentWallets": 2
   }
  ]
 }

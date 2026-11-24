@@ -1,7 +1,7 @@
-# Agent ID Mint Desk — 2026-11-24T13:34 UTC
+# Agent ID Mint Desk — 2026-11-24T14:14 UTC
 
-Every Binance-Agent-ID-gated mint the public radar has seen on BNB Chain, simulated from real Agent ID wallets at block 135471649.
-**3678 free and open now** · 866 paid · 678 closed or failing · 5334 checked. Heuristics, not an audit; preview every call.
+Every Binance-Agent-ID-gated mint the public radar has seen on BNB Chain, simulated from real Agent ID wallets at block 135476998.
+**3677 free and open now** · 866 paid · 679 closed or failing · 5334 checked. Heuristics, not an audit; preview every call.
 
 ## Free now, passing every check
 | # | Name | Contract | Call data |
