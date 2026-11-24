@@ -1,0 +1,16 @@
+{
+ "contract": "0x1e84079e0766ab7cbe182085ded86443ad9b1433",
+ "name": "Thirteen Omens",
+ "verdict": "passed",
+ "checkedAt": "2026-11-24T03:11:26Z",
+ "block": 135388673,
+ "checks": {
+  "simulatedFromAgentIdWallet": true,
+  "gateEnforced": true,
+  "upgradeable": false,
+  "owner": null,
+  "sourceVerified": true
+ },
+ "badge": "Checked by Agent ID Mint Desk: https://mycyi1994-hash.github.io/forecast-league/desk/verified/0x1e84079e0766ab7cbe182085ded86443ad9b1433.json",
+ "note": "Heuristic simulation, not an audit."
+}

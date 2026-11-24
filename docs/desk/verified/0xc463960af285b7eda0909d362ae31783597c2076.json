@@ -1,0 +1,16 @@
+{
+ "contract": "0xc463960af285b7eda0909d362ae31783597c2076",
+ "name": "DeepShard",
+ "verdict": "passed",
+ "checkedAt": "2026-11-24T03:11:26Z",
+ "block": 135388673,
+ "checks": {
+  "simulatedFromAgentIdWallet": true,
+  "gateEnforced": true,
+  "upgradeable": false,
+  "owner": null,
+  "sourceVerified": true
+ },
+ "badge": "Checked by Agent ID Mint Desk: https://mycyi1994-hash.github.io/forecast-league/desk/verified/0xc463960af285b7eda0909d362ae31783597c2076.json",
+ "note": "Heuristic simulation, not an audit."
+}
