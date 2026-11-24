@@ -2,8 +2,8 @@
  "contract": "0x0f214ef91aff6cd79d6740f52ec69bf0360dab1a",
  "name": "Epoch",
  "verdict": "passed",
- "checkedAt": "2026-11-24T20:11:01Z",
- "block": 135524562,
+ "checkedAt": "2026-11-24T21:11:23Z",
+ "block": 135532609,
  "checks": {
   "simulatedFromAgentIdWallet": true,
   "gateEnforced": true,

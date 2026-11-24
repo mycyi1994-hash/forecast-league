@@ -2,8 +2,8 @@
  "contract": "0x921baa34f7a6a59dec4c8ab834c0a8103d259e5b",
  "name": "Daily Drop",
  "verdict": "passed",
- "checkedAt": "2026-11-24T20:11:01Z",
- "block": 135524562,
+ "checkedAt": "2026-11-24T21:11:23Z",
+ "block": 135532609,
  "checks": {
   "simulatedFromAgentIdWallet": true,
   "gateEnforced": true,
