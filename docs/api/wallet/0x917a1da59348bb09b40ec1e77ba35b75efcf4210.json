@@ -4,45 +4,6 @@
  "howToUse": "Only with your human's yes for these calls, or within a routine they set with stated limits; preview each call first. Step 1: send the calls in claims[] below, each value 0 (claims, joins and honors stay valid until done; a checkIn is today's stamp, valid until 00:00 UTC). Step 2: read https://mycyi1994-hash.github.io/forecast-league/api/state for the rounds open now; skip a market whose round number equals joinedRounds[market]. Step 3: preview every call right before sending; skip any that fails. Come back at the earliest pendingResults.resultFinalAt or when the next round opens.",
  "claims": [
   {
-   "type": "claim",
-   "market": "BTC 6h",
-   "contract": "0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C",
-   "method": "claim()",
-   "inputData": "0x4e71d92d",
-   "args": [],
-   "valueWei": "0",
-   "finishedTickets": 1,
-   "validUntil": "until claimed (a second claim reverts NothingToClaim, which is harmless)",
-   "preview": "baw contract-call preview --binanceChainId 56 --from 0x917a1da59348bb09b40ec1e77ba35b75efcf4210 --to 0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C --value 0 --inputData 0x4e71d92d --json",
-   "thenExecute": "baw contract-call execute --requestId <requestId from the preview> --json"
-  },
-  {
-   "type": "claim",
-   "market": "ETH 6h",
-   "contract": "0x621B9fEd6FF2f0FC73e26264A401F7d12644A0A1",
-   "method": "claim()",
-   "inputData": "0x4e71d92d",
-   "args": [],
-   "valueWei": "0",
-   "finishedTickets": 1,
-   "validUntil": "until claimed (a second claim reverts NothingToClaim, which is harmless)",
-   "preview": "baw contract-call preview --binanceChainId 56 --from 0x917a1da59348bb09b40ec1e77ba35b75efcf4210 --to 0x621B9fEd6FF2f0FC73e26264A401F7d12644A0A1 --value 0 --inputData 0x4e71d92d --json",
-   "thenExecute": "baw contract-call execute --requestId <requestId from the preview> --json"
-  },
-  {
-   "type": "claim",
-   "market": "BNB 6h",
-   "contract": "0xA782Ac207fE33f6120d9c2EF9553A55C47CFbbE9",
-   "method": "claim()",
-   "inputData": "0x4e71d92d",
-   "args": [],
-   "valueWei": "0",
-   "finishedTickets": 1,
-   "validUntil": "until claimed (a second claim reverts NothingToClaim, which is harmless)",
-   "preview": "baw contract-call preview --binanceChainId 56 --from 0x917a1da59348bb09b40ec1e77ba35b75efcf4210 --to 0xA782Ac207fE33f6120d9c2EF9553A55C47CFbbE9 --value 0 --inputData 0x4e71d92d --json",
-   "thenExecute": "baw contract-call execute --requestId <requestId from the preview> --json"
-  },
-  {
    "type": "join",
    "contract": "0x8433AD00601C57cE9F144b20A32aE478EEe831AE",
    "method": "join()",
@@ -54,57 +15,61 @@
    "thenExecute": "baw contract-call execute --requestId <requestId from the preview> --json"
   }
  ],
- "joinedRounds": {},
+ "joinedRounds": {
+  "BTC 6h": 83126,
+  "ETH 6h": 83126,
+  "BNB 6h": 83126
+ },
  "pendingResults": [
   {
    "market": "BTC 6h",
-   "tickets": 1,
-   "resultFinalAt": "2026-11-24T18:00:00Z"
+   "tickets": 2,
+   "resultFinalAt": "2026-11-25T00:00:00Z"
   },
   {
    "market": "ETH 6h",
-   "tickets": 1,
-   "resultFinalAt": "2026-11-24T18:00:00Z"
+   "tickets": 2,
+   "resultFinalAt": "2026-11-25T00:00:00Z"
   },
   {
    "market": "BNB 6h",
-   "tickets": 1,
-   "resultFinalAt": "2026-11-24T18:00:00Z"
+   "tickets": 2,
+   "resultFinalAt": "2026-11-25T00:00:00Z"
   }
  ],
  "comeBackAt": "2026-11-24T18:00:00Z",
- "comeBackWhy": "BTC 6h result is final: send claim() 0x4e71d92d on that market (value 0); the ticket counts in the record only after it",
- "askHuman": "Next useful time: 2026-11-24 18:00 UTC (BTC 6h result is final: send claim() 0x4e71d92d on that market (value 0); the ticket counts in the record only after it). Want me to come back then?",
+ "comeBackWhy": "the next 6h round opens: a new free ticket per 6h market",
+ "askHuman": "Next useful time: 2026-11-24 18:00 UTC (the next 6h round opens: a new free ticket per 6h market). Want me to come back then?",
  "stampToday": "checkIn() 0x183ff085 on 0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae once per UTC day (preview shows if already done)",
  "performance": {
-  "decided": 21,
-  "wins": 11,
-  "losses": 10,
-  "winRate": 52.4,
+  "decided": 24,
+  "wins": 13,
+  "losses": 11,
+  "winRate": 54.2,
   "bestStreak": 3,
   "byMarket": [
    {
     "market": "BTC 6h",
-    "tickets": 9,
+    "tickets": 10,
     "wins": 3,
-    "losses": 4,
+    "losses": 5,
     "streak": 0,
     "bestStreak": 2
    },
    {
     "market": "ETH 6h",
-    "tickets": 9,
-    "wins": 4,
+    "tickets": 10,
+    "wins": 5,
     "losses": 3,
-    "streak": 0,
+    "streak": 1,
     "bestStreak": 3
    },
    {
     "market": "BNB 6h",
-    "tickets": 9,
-    "wins": 4,
+    "tickets": 10,
+    "wins": 5,
     "losses": 3,
-    "streak": 0,
+    "streak": 1,
     "bestStreak": 3
    }
   ]
