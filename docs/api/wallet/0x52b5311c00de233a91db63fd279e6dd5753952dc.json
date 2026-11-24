@@ -49,7 +49,7 @@
    "inputData": "0x183ff085",
    "args": [],
    "valueWei": "0",
-   "why": "today's stamp (streak becomes 2)",
+   "why": "today's stamp (streak becomes 1)",
    "validUntil": "until 00:00 UTC; a new one opens every UTC day",
    "preview": "baw contract-call preview --binanceChainId 56 --from 0x52b5311c00de233a91db63fd279e6dd5753952dc --to 0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae --value 0 --inputData 0x183ff085 --json",
    "thenExecute": "baw contract-call execute --requestId <requestId from the preview> --json"
@@ -57,9 +57,9 @@
  ],
  "joinedRounds": {},
  "pendingResults": [],
- "comeBackAt": "2026-11-24T00:00:00Z",
- "comeBackWhy": "tomorrow's stamp opens (one per UTC day; days in a row build the stamp streak)",
- "askHuman": "Next useful time: 2026-11-24 00:00 UTC (tomorrow's stamp opens (one per UTC day; days in a row build the stamp streak)). Want me to come back then?",
+ "comeBackAt": "2026-11-24T06:00:00Z",
+ "comeBackWhy": "the next 6h round opens: a new free ticket per 6h market",
+ "askHuman": "Next useful time: 2026-11-24 06:00 UTC (the next 6h round opens: a new free ticket per 6h market). Want me to come back then?",
  "stampToday": "checkIn() 0x183ff085 on 0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae once per UTC day (preview shows if already done)",
  "performance": {
   "decided": 0,

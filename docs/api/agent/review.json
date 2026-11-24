@@ -1,14 +1,14 @@
 {
  "name": "Forecast League builder agent: review of its real picks (BTC 6h)",
- "updated": "2026-11-23T23:45:26Z",
+ "updated": "2026-11-24T00:10:39Z",
  "before": {
   "picks": 8,
-  "decided": 7,
-  "right": 3,
-  "hitRate": 0.4286,
+  "decided": 8,
+  "right": 4,
+  "hitRate": 0.5,
   "ci95": [
-   0.1582,
-   0.7495
+   0.2152,
+   0.7848
   ],
   "brier": null,
   "brierCoinFlip": 0.25,
@@ -26,31 +26,34 @@
  },
  "shadowAllMarkets": {
   "rule": {
-   "decided": 15,
-   "right": 1,
-   "hitRate": 0.0667,
+   "decided": 16,
+   "right": 2,
+   "hitRate": 0.125,
    "ci95": [
-    0.0119,
-    0.2982
+    0.035,
+    0.3602
+   ],
+   "brier": 0.2654
+  },
+  "model": {
+   "decided": 16,
+   "right": 5,
+   "hitRate": 0.3125,
+   "ci95": [
+    0.1416,
+    0.556
    ],
    "brier": 0.2677
   },
-  "model": {
-   "decided": 15,
-   "right": 4,
-   "hitRate": 0.2667,
-   "ci95": [
-    0.109,
-    0.5195
-   ],
-   "brier": 0.2695
-  },
   "crowd": {
-   "decided": 0,
+   "decided": 1,
    "right": 0,
-   "hitRate": null,
-   "ci95": null,
-   "brier": null
+   "hitRate": 0.0,
+   "ci95": [
+    0.0,
+    0.7935
+   ],
+   "brier": 0.4449
   }
  },
  "picks": [
@@ -131,7 +134,7 @@
    "prob": null,
    "rule": null,
    "model": null,
-   "result": null,
+   "result": "down",
    "reason": "BTC fell 0.4% in the 06:00-12:00 round and is another 0.4% lower at about 61,078, so I lean down for the 18:00-24:00 window."
   },
   {

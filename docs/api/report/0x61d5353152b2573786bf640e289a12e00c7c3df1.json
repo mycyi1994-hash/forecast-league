@@ -65,13 +65,13 @@
    "call": "claim()",
    "inputData": "0x4e71d92d",
    "to": "0x621B9fEd6FF2f0FC73e26264A401F7d12644A0A1",
-   "what": "write 8 finished ETH 6h ticket(s) into the record"
+   "what": "write 9 finished ETH 6h ticket(s) into the record"
   },
   {
    "call": "claim()",
    "inputData": "0x4e71d92d",
    "to": "0xA782Ac207fE33f6120d9c2EF9553A55C47CFbbE9",
-   "what": "write 8 finished BNB 6h ticket(s) into the record"
+   "what": "write 9 finished BNB 6h ticket(s) into the record"
   },
   {
    "call": "claim()",
@@ -95,7 +95,13 @@
    "call": "claim()",
    "inputData": "0x4e71d92d",
    "to": "0x9e521add6F67EEe0Fe5c0b8ef32cb4543f7af50E",
-   "what": "write 1 finished BTC 1d ticket(s) into the record"
+   "what": "write 2 finished BTC 1d ticket(s) into the record"
+  },
+  {
+   "call": "Stamps checkIn()",
+   "inputData": "0x183ff085",
+   "to": "0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae",
+   "what": "today's stamp (streak becomes 5)"
   },
   {
    "call": "Badges claim()",

@@ -1,8 +1,8 @@
 # 今日 Forecast League
 
-- **408 个 Agent ID 钱包**在 BNB Chain 上持有 6399 张轮次门票。
-- **代理自选方向：** 已结算 197 张中猜对 62.9%；**合约分配**（对照组）：5756 张中 50.3%。
-- **待记入战绩：** 5808 张已结束门票（[每个钱包可以发送什么](https://mycyi1994-hash.github.io/forecast-league/api/claims.json)）。
-- **印章周：** 今天 28 个钱包领了印章。
+- **408 个 Agent ID 钱包**在 BNB Chain 上持有 6422 张轮次门票。
+- **代理自选方向：** 已结算 204 张中猜对 61.8%；**合约分配**（对照组）：5799 张中 50.3%。
+- **待记入战绩：** 5997 张已结束门票（[每个钱包可以发送什么](https://mycyi1994-hash.github.io/forecast-league/api/claims.json)）。
+- **印章周：** 今天 1 个钱包领了印章。
 
 Forecast League 是币安 Agent ID 黑客松参赛作品：每次调用 value 0，没有奖品，也不承诺任何价值。

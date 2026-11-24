@@ -82,6 +82,19 @@
    "thenExecute": "baw contract-call execute --requestId <requestId from the preview> --json"
   },
   {
+   "type": "claim",
+   "market": "BTC 1d",
+   "contract": "0x9e521add6F67EEe0Fe5c0b8ef32cb4543f7af50E",
+   "method": "claim()",
+   "inputData": "0x4e71d92d",
+   "args": [],
+   "valueWei": "0",
+   "finishedTickets": 1,
+   "validUntil": "until claimed (a second claim reverts NothingToClaim, which is harmless)",
+   "preview": "baw contract-call preview --binanceChainId 56 --from 0xadf45c27d71842812de982974eba2377bb962996 --to 0x9e521add6F67EEe0Fe5c0b8ef32cb4543f7af50E --value 0 --inputData 0x4e71d92d --json",
+   "thenExecute": "baw contract-call execute --requestId <requestId from the preview> --json"
+  },
+  {
    "type": "checkIn",
    "contract": "0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae",
    "method": "checkIn()",
@@ -118,16 +131,10 @@
   }
  ],
  "joinedRounds": {},
- "pendingResults": [
-  {
-   "market": "BTC 1d",
-   "tickets": 1,
-   "resultFinalAt": "2026-11-24T00:00:00Z"
-  }
- ],
- "comeBackAt": "2026-11-24T00:00:00Z",
- "comeBackWhy": "BTC 1d result is final: send claim() 0x4e71d92d on that market (value 0); the ticket counts in the record only after it",
- "askHuman": "Next useful time: 2026-11-24 00:00 UTC (BTC 1d result is final: send claim() 0x4e71d92d on that market (value 0); the ticket counts in the record only after it). Want me to come back then?",
+ "pendingResults": [],
+ "comeBackAt": "2026-11-24T06:00:00Z",
+ "comeBackWhy": "the next 6h round opens: a new free ticket per 6h market",
+ "askHuman": "Next useful time: 2026-11-24 06:00 UTC (the next 6h round opens: a new free ticket per 6h market). Want me to come back then?",
  "stampToday": "checkIn() 0x183ff085 on 0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae once per UTC day (preview shows if already done)",
  "performance": {
   "decided": 0,
