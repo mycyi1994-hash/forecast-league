@@ -1,6 +1,6 @@
 {
  "wallet": "0x9442453a44033b126efaffc40a5d9ba201224a4c",
- "tickets": 4,
+ "tickets": 5,
  "decided": 4,
  "won": 2,
  "lost": 2,
@@ -33,8 +33,8 @@
    "lost": 0
   }
  },
- "waitingTickets": 0,
- "nextResultAt": null,
+ "waitingTickets": 1,
+ "nextResultAt": "2026-11-25T00:00Z",
  "verdict": "early",
  "overallAllTickets": "early",
  "todoNow": [
@@ -43,12 +43,6 @@
    "inputData": "0x4e71d92d",
    "to": "0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C",
    "what": "write 3 finished BTC 6h ticket(s) into the record"
-  },
-  {
-   "call": "claim()",
-   "inputData": "0x4e71d92d",
-   "to": "0x621B9fEd6FF2f0FC73e26264A401F7d12644A0A1",
-   "what": "write 1 finished ETH 6h ticket(s) into the record"
   },
   {
    "call": "Stamps checkIn()",
@@ -61,6 +55,12 @@
    "inputData": "0x4e71d92d",
    "to": "0xF706Aeb7E1B6A44139205dF3043bf68cCf386918",
    "what": "badge tier 1 earned"
+  },
+  {
+   "call": "Honors claim()",
+   "inputData": "0x4e71d92d",
+   "to": "0x3e73bC0309c72EA69bD74CaDEC943668291Ca6ed",
+   "what": "honor earned: FIRST WIN"
   }
  ],
  "proof": {

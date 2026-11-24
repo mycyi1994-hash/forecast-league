@@ -1,15 +1,15 @@
 {
  "wallet": "0x14f395059726c3da2f3e4a1f969c6e61ae844731",
- "tickets": 19,
- "decided": 17,
- "won": 10,
+ "tickets": 20,
+ "decided": 18,
+ "won": 11,
  "lost": 7,
- "hitRate": 0.588,
+ "hitRate": 0.611,
  "ci95": [
-  0.36,
-  0.784
+  0.386,
+  0.797
  ],
- "currentWinRun": 4,
+ "currentWinRun": 5,
  "picked": {
   "decided": 0,
   "won": 0,
@@ -17,26 +17,20 @@
   "verdict": null
  },
  "assigned": {
-  "decided": 17,
-  "won": 10
+  "decided": 18,
+  "won": 11
  },
  "byMarket": {
   "BTC 6h": {
-   "won": 10,
+   "won": 11,
    "lost": 7
   }
  },
  "waitingTickets": 2,
- "nextResultAt": "2026-11-24T18:00Z",
+ "nextResultAt": "2026-11-25T00:00Z",
  "verdict": "no-own-picks",
  "overallAllTickets": "coinflip",
  "todoNow": [
-  {
-   "call": "Stamps checkIn()",
-   "inputData": "0x183ff085",
-   "to": "0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae",
-   "what": "today's stamp (streak becomes 1)"
-  },
   {
    "call": "Houses join()",
    "inputData": "0xb688a363",
@@ -53,7 +47,7 @@
    "call": "Honors claim()",
    "inputData": "0x4e71d92d",
    "to": "0x3e73bC0309c72EA69bD74CaDEC943668291Ca6ed",
-   "what": "honor earned: SEASON ONE, CARD HOLDER, FIRST WIN, FIVE WINS, STREAK 3"
+   "what": "honor earned: SEASON ONE, CARD HOLDER, FIRST WIN, FIVE WINS, STREAK 3, STREAK 5"
   }
  ],
  "proof": {

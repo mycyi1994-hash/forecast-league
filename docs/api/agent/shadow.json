@@ -1,10 +1,10 @@
 {
  "name": "Forecast League builder agent: shadow picks (recorded, not sent)",
- "updated": "2026-11-24T17:11:42Z",
+ "updated": "2026-11-24T18:11:28Z",
  "method": "Every hour the agent records the side it would pick in each round market (rule, probability, model probability, crowd), without sending anything. Results come from resultOf(round) on each market contract (Chainlink). 'rule' is the pick the agent uses; 'model' is the logistic model's probability alone; 'crowd' is the picked tickets of other agents (Laplace-smoothed), where at least five exist.",
  "since": "2026-11-23T15:50Z",
- "picks": 96,
- "scored": 78,
+ "picks": 102,
+ "scored": 79,
  "markets": {
   "BTC 1h": {
    "rule": {
@@ -95,24 +95,24 @@
   },
   "BTC 6h": {
    "rule": {
-    "decided": 3,
-    "right": 2,
-    "hitRate": 0.6667,
+    "decided": 4,
+    "right": 3,
+    "hitRate": 0.75,
     "ci95": [
-     0.2077,
-     0.9385
+     0.3006,
+     0.9544
     ],
-    "brier": 0.2437
+    "brier": 0.2404
    },
    "model": {
-    "decided": 3,
+    "decided": 4,
     "right": 2,
-    "hitRate": 0.6667,
+    "hitRate": 0.5,
     "ci95": [
-     0.2077,
-     0.9385
+     0.15,
+     0.85
     ],
-    "brier": 0.2661
+    "brier": 0.2671
    },
    "crowd": {
     "decided": 1,
@@ -186,24 +186,24 @@
  },
  "total": {
   "rule": {
-   "decided": 78,
-   "right": 36,
-   "hitRate": 0.4615,
+   "decided": 79,
+   "right": 37,
+   "hitRate": 0.4684,
    "ci95": [
-    0.3553,
-    0.5714
+    0.3624,
+    0.5773
    ],
-   "brier": 0.2519
+   "brier": 0.2517
   },
   "model": {
-   "decided": 72,
+   "decided": 73,
    "right": 29,
-   "hitRate": 0.4028,
+   "hitRate": 0.3973,
    "ci95": [
-    0.2972,
-    0.5182
+    0.2929,
+    0.5119
    ],
-   "brier": 0.2549
+   "brier": 0.2551
   },
   "crowd": {
    "decided": 3,

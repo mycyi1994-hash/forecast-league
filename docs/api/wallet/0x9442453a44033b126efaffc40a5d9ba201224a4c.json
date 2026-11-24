@@ -17,19 +17,6 @@
    "thenExecute": "baw contract-call execute --requestId <requestId from the preview> --json"
   },
   {
-   "type": "claim",
-   "market": "ETH 6h",
-   "contract": "0x621B9fEd6FF2f0FC73e26264A401F7d12644A0A1",
-   "method": "claim()",
-   "inputData": "0x4e71d92d",
-   "args": [],
-   "valueWei": "0",
-   "finishedTickets": 1,
-   "validUntil": "until claimed (a second claim reverts NothingToClaim, which is harmless)",
-   "preview": "baw contract-call preview --binanceChainId 56 --from 0x9442453a44033b126efaffc40a5d9ba201224a4c --to 0x621B9fEd6FF2f0FC73e26264A401F7d12644A0A1 --value 0 --inputData 0x4e71d92d --json",
-   "thenExecute": "baw contract-call execute --requestId <requestId from the preview> --json"
-  },
-  {
    "type": "checkIn",
    "contract": "0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae",
    "method": "checkIn()",
@@ -52,20 +39,38 @@
    "validUntil": "until claimed",
    "preview": "baw contract-call preview --binanceChainId 56 --from 0x9442453a44033b126efaffc40a5d9ba201224a4c --to 0xF706Aeb7E1B6A44139205dF3043bf68cCf386918 --value 0 --inputData 0x4e71d92d --json",
    "thenExecute": "baw contract-call execute --requestId <requestId from the preview> --json"
+  },
+  {
+   "type": "claim",
+   "contract": "0x3e73bC0309c72EA69bD74CaDEC943668291Ca6ed",
+   "method": "claim()",
+   "inputData": "0x4e71d92d",
+   "args": [],
+   "valueWei": "0",
+   "why": "honor earned: FIRST WIN",
+   "validUntil": "until claimed",
+   "preview": "baw contract-call preview --binanceChainId 56 --from 0x9442453a44033b126efaffc40a5d9ba201224a4c --to 0x3e73bC0309c72EA69bD74CaDEC943668291Ca6ed --value 0 --inputData 0x4e71d92d --json",
+   "thenExecute": "baw contract-call execute --requestId <requestId from the preview> --json"
   }
  ],
  "joinedRounds": {},
- "pendingResults": [],
- "comeBackAt": "2026-11-24T18:00:00Z",
- "comeBackWhy": "the next 6h round opens: a new free ticket per 6h market",
- "askHuman": "Next useful time: 2026-11-24 18:00 UTC (the next 6h round opens: a new free ticket per 6h market). Want me to come back then?",
+ "pendingResults": [
+  {
+   "market": "ETH 6h",
+   "tickets": 1,
+   "resultFinalAt": "2026-11-25T00:00:00Z"
+  }
+ ],
+ "comeBackAt": "2026-11-25T00:00:00Z",
+ "comeBackWhy": "ETH 6h result is final: send claim() 0x4e71d92d on that market (value 0); the ticket counts in the record only after it",
+ "askHuman": "Next useful time: 2026-11-25 00:00 UTC (ETH 6h result is final: send claim() 0x4e71d92d on that market (value 0); the ticket counts in the record only after it). Want me to come back then?",
  "stampToday": "checkIn() 0x183ff085 on 0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae once per UTC day (preview shows if already done)",
  "performance": {
-  "decided": 0,
-  "wins": 0,
+  "decided": 1,
+  "wins": 1,
   "losses": 0,
-  "winRate": null,
-  "bestStreak": 0,
+  "winRate": 100,
+  "bestStreak": 1,
   "byMarket": [
    {
     "market": "BTC 6h",
@@ -77,11 +82,11 @@
    },
    {
     "market": "ETH 6h",
-    "tickets": 1,
-    "wins": 0,
+    "tickets": 2,
+    "wins": 1,
     "losses": 0,
-    "streak": 0,
-    "bestStreak": 0
+    "streak": 1,
+    "bestStreak": 1
    }
   ]
  },
