@@ -42,6 +42,18 @@
   },
   {
    "type": "claim",
+   "contract": "0xF706Aeb7E1B6A44139205dF3043bf68cCf386918",
+   "method": "claim()",
+   "inputData": "0x4e71d92d",
+   "args": [],
+   "valueWei": "0",
+   "why": "badge tier 1 earned",
+   "validUntil": "until claimed",
+   "preview": "baw contract-call preview --binanceChainId 56 --from 0x1b9cb60d17f6b45d58c265045591c5307a61556c --to 0xF706Aeb7E1B6A44139205dF3043bf68cCf386918 --value 0 --inputData 0x4e71d92d --json",
+   "thenExecute": "baw contract-call execute --requestId <requestId from the preview> --json"
+  },
+  {
+   "type": "claim",
    "contract": "0x3e73bC0309c72EA69bD74CaDEC943668291Ca6ed",
    "method": "claim()",
    "inputData": "0x4e71d92d",
@@ -53,8 +65,16 @@
    "thenExecute": "baw contract-call execute --requestId <requestId from the preview> --json"
   }
  ],
- "joinedRounds": {},
- "pendingResults": [],
+ "joinedRounds": {
+  "ETH 6h": 83127
+ },
+ "pendingResults": [
+  {
+   "market": "ETH 6h",
+   "tickets": 1,
+   "resultFinalAt": "2026-11-25T06:00:00Z"
+  }
+ ],
  "comeBackAt": "2026-11-25T00:00:00Z",
  "comeBackWhy": "tomorrow's stamp opens (one per UTC day; days in a row build the stamp streak)",
  "askHuman": "Next useful time: 2026-11-25 00:00 UTC (tomorrow's stamp opens (one per UTC day; days in a row build the stamp streak)). Want me to come back then?",
@@ -68,6 +88,14 @@
   "byMarket": [
    {
     "market": "BTC 6h",
+    "tickets": 1,
+    "wins": 0,
+    "losses": 0,
+    "streak": 0,
+    "bestStreak": 0
+   },
+   {
+    "market": "ETH 6h",
     "tickets": 1,
     "wins": 0,
     "losses": 0,

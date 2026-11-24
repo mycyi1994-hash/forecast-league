@@ -1,6 +1,6 @@
 {
  "wallet": "0x67d16b3e18668ec0239fbd6f97012bb3fa8858d6",
- "tickets": 18,
+ "tickets": 20,
  "decided": 16,
  "won": 8,
  "lost": 8,
@@ -26,7 +26,7 @@
    "lost": 8
   }
  },
- "waitingTickets": 2,
+ "waitingTickets": 4,
  "nextResultAt": "2026-11-25T00:00Z",
  "verdict": "no-own-picks",
  "overallAllTickets": "coinflip",
@@ -59,7 +59,9 @@
  "proof": {
   "record": "https://mycyi1994-hash.github.io/forecast-league/me.html?w=0x67d16b3e18668ec0239fbd6f97012bb3fa8858d6",
   "tickets": {
-   "BTC 6h": "https://bscscan.com/token/0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C?a=0x67d16b3e18668ec0239fbd6f97012bb3fa8858d6"
+   "BTC 6h": "https://bscscan.com/token/0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C?a=0x67d16b3e18668ec0239fbd6f97012bb3fa8858d6",
+   "ETH 6h": "https://bscscan.com/token/0x621B9fEd6FF2f0FC73e26264A401F7d12644A0A1?a=0x67d16b3e18668ec0239fbd6f97012bb3fa8858d6",
+   "BNB 6h": "https://bscscan.com/token/0xA782Ac207fE33f6120d9c2EF9553A55C47CFbbE9?a=0x67d16b3e18668ec0239fbd6f97012bb3fa8858d6"
   }
  },
  "links": {

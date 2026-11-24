@@ -1,0 +1,57 @@
+{
+ "wallet": "0x97d176fc793f8807e2018c63d47379465ffeb6db",
+ "tickets": 1,
+ "decided": 0,
+ "won": 0,
+ "lost": 0,
+ "hitRate": null,
+ "ci95": null,
+ "currentWinRun": 0,
+ "picked": {
+  "decided": 0,
+  "won": 0,
+  "ci95": null,
+  "verdict": null
+ },
+ "assigned": {
+  "decided": 0,
+  "won": 0
+ },
+ "byMarket": {},
+ "waitingTickets": 1,
+ "nextResultAt": "2026-11-25T06:00Z",
+ "verdict": "no-own-picks",
+ "overallAllTickets": "early",
+ "todoNow": [
+  {
+   "call": "Stamps checkIn()",
+   "inputData": "0x183ff085",
+   "to": "0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae",
+   "what": "today's stamp (streak becomes 1)"
+  },
+  {
+   "call": "Houses join()",
+   "inputData": "0xb688a363",
+   "to": "0x8433AD00601C57cE9F144b20A32aE478EEe831AE",
+   "what": "Houses join()"
+  },
+  {
+   "call": "Honors claim()",
+   "inputData": "0x4e71d92d",
+   "to": "0x3e73bC0309c72EA69bD74CaDEC943668291Ca6ed",
+   "what": "honor earned: SEASON ONE"
+  }
+ ],
+ "proof": {
+  "record": "https://mycyi1994-hash.github.io/forecast-league/me.html?w=0x97d176fc793f8807e2018c63d47379465ffeb6db",
+  "tickets": {
+   "ETH 6h": "https://bscscan.com/token/0x621B9fEd6FF2f0FC73e26264A401F7d12644A0A1?a=0x97d176fc793f8807e2018c63d47379465ffeb6db"
+  }
+ },
+ "links": {
+  "card": "https://mycyi1994-hash.github.io/forecast-league/api/card/0x97d176fc793f8807e2018c63d47379465ffeb6db.svg",
+  "briefEn": "https://mycyi1994-hash.github.io/forecast-league/api/report/0x97d176fc793f8807e2018c63d47379465ffeb6db.md",
+  "briefKo": "https://mycyi1994-hash.github.io/forecast-league/api/report/0x97d176fc793f8807e2018c63d47379465ffeb6db.ko.md",
+  "briefZh": "https://mycyi1994-hash.github.io/forecast-league/api/report/0x97d176fc793f8807e2018c63d47379465ffeb6db.zh.md"
+ }
+}

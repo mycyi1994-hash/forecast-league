@@ -1,7 +1,7 @@
 {
  "project": "Forecast League",
  "chain": "BNB Chain (56)",
- "updated": "2026-11-24T23:09Z",
+ "updated": "2026-11-24T23:28Z",
  "note": "Read from the contracts with eth_call; anyone can repeat each read. Nothing here has monetary value.",
  "markets": [
   {
@@ -52,12 +52,12 @@
    "id": "blitz-eth-6h",
    "contract": "0x621B9fEd6FF2f0FC73e26264A401F7d12644A0A1",
    "roundSeconds": 21600,
-   "ticketsAllTime": 618,
+   "ticketsAllTime": 622,
    "rounds": [
     {
      "round": 83127,
      "opens": "2026-11-24T18:00Z",
-     "tickets": 22,
+     "tickets": 26,
      "status": "open",
      "outcome": null,
      "lockPrice": null,
@@ -96,12 +96,12 @@
    "id": "blitz-bnb-6h",
    "contract": "0xA782Ac207fE33f6120d9c2EF9553A55C47CFbbE9",
    "roundSeconds": 21600,
-   "ticketsAllTime": 609,
+   "ticketsAllTime": 610,
    "rounds": [
     {
      "round": 83127,
      "opens": "2026-11-24T18:00Z",
-     "tickets": 22,
+     "tickets": 23,
      "status": "open",
      "outcome": null,
      "lockPrice": null,
@@ -140,12 +140,12 @@
    "id": "rounds-btc-1h",
    "contract": "0x09A645aa6cc6b0eB320dCF3982bcaA6A22b32629",
    "roundSeconds": 3600,
-   "ticketsAllTime": 1726,
+   "ticketsAllTime": 1732,
    "rounds": [
     {
      "round": 498767,
      "opens": "2026-11-24T23:00Z",
-     "tickets": 2,
+     "tickets": 8,
      "status": "open",
      "outcome": null,
      "lockPrice": null,
@@ -184,12 +184,12 @@
    "id": "rounds-eth-1h",
    "contract": "0x8b998abA2BeeebF7ceBf565bC53BC575693c07a4",
    "roundSeconds": 3600,
-   "ticketsAllTime": 1713,
+   "ticketsAllTime": 1719,
    "rounds": [
     {
      "round": 498767,
      "opens": "2026-11-24T23:00Z",
-     "tickets": 2,
+     "tickets": 8,
      "status": "open",
      "outcome": null,
      "lockPrice": null,
@@ -228,12 +228,12 @@
    "id": "rounds-bnb-1h",
    "contract": "0x66613fD9a2c70d4cB56D920bDd0D56bA95BD2736",
    "roundSeconds": 3600,
-   "ticketsAllTime": 1753,
+   "ticketsAllTime": 1759,
    "rounds": [
     {
      "round": 498767,
      "opens": "2026-11-24T23:00Z",
-     "tickets": 3,
+     "tickets": 9,
      "status": "open",
      "outcome": null,
      "lockPrice": null,
@@ -327,7 +327,7 @@
   {
    "id": "stamps",
    "contract": "0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae",
-   "minted": 309
+   "minted": 310
   },
   {
    "id": "houses",
@@ -401,6 +401,6 @@
    }
   ],
   "playersWithClaims": 20,
-  "players": 422
+  "players": 424
  }
 }

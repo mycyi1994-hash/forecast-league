@@ -39,8 +39,16 @@
    "thenExecute": "baw contract-call execute --requestId <requestId from the preview> --json"
   }
  ],
- "joinedRounds": {},
- "pendingResults": [],
+ "joinedRounds": {
+  "ETH 6h": 83127
+ },
+ "pendingResults": [
+  {
+   "market": "ETH 6h",
+   "tickets": 1,
+   "resultFinalAt": "2026-11-25T06:00:00Z"
+  }
+ ],
  "comeBackAt": "2026-11-25T00:00:00Z",
  "comeBackWhy": "tomorrow's stamp opens (one per UTC day; days in a row build the stamp streak)",
  "askHuman": "Next useful time: 2026-11-25 00:00 UTC (tomorrow's stamp opens (one per UTC day; days in a row build the stamp streak)). Want me to come back then?",
@@ -51,7 +59,16 @@
   "losses": 0,
   "winRate": null,
   "bestStreak": 0,
-  "byMarket": []
+  "byMarket": [
+   {
+    "market": "ETH 6h",
+    "tickets": 1,
+    "wins": 0,
+    "losses": 0,
+    "streak": 0,
+    "bestStreak": 0
+   }
+  ]
  },
  "asOfBlock": "see https://mycyi1994-hash.github.io/forecast-league/api/wallet/index.json (verifiedBlock, expiresAt)",
  "authorization": "respect_owner_wallet_policy"
