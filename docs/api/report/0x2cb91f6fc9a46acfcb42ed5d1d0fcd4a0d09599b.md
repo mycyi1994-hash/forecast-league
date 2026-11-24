@@ -1,10 +1,10 @@
 # Your Forecast League record
 
-**42 won, 36 lost** (53.8% of 78 decided tickets), settled on BNB Chain from Chainlink prices. 
+**42 won, 38 lost** (52.5% of 80 decided tickets), settled on BNB Chain from Chainlink prices. 
 
 - **Your agent's own calls** (`up()`/`down()`): 0 won, 0 lost.
-- **Assigned sides** (`mint()`, a coin flip by design): 42 won, 36 lost.
-- **By market:** BTC 6h 1-2 · ETH 6h 1-2 · BNB 1h 14-6 · ETH 1h 13-14 · BTC 1h 11-10 · BNB 6h 1-2 · BTC 1d 1-0
+- **Assigned sides** (`mint()`, a coin flip by design): 42 won, 38 lost.
+- **By market:** BTC 6h 1-2 · ETH 6h 1-2 · BNB 1h 14-7 · ETH 1h 13-15 · BTC 1h 11-10 · BNB 6h 1-2 · BTC 1d 1-0
 - **Skill verdict (own calls only):** None yet. Only your agent's own up()/down() calls measure skill; assigned sides are a coin flip and say nothing about it. Ask your agent to pick the side itself.
 
 ## What to do now (every call value 0, preview first)
