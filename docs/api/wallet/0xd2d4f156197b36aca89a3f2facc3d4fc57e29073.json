@@ -83,9 +83,9 @@
  ],
  "joinedRounds": {},
  "pendingResults": [],
- "comeBackAt": "2026-11-24T12:00:00Z",
+ "comeBackAt": "2026-11-24T18:00:00Z",
  "comeBackWhy": "the next 6h round opens: a new free ticket per 6h market",
- "askHuman": "Next useful time: 2026-11-24 12:00 UTC (the next 6h round opens: a new free ticket per 6h market). Want me to come back then?",
+ "askHuman": "Next useful time: 2026-11-24 18:00 UTC (the next 6h round opens: a new free ticket per 6h market). Want me to come back then?",
  "stampToday": "checkIn() 0x183ff085 on 0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae once per UTC day (preview shows if already done)",
  "performance": {
   "decided": 0,

@@ -74,12 +74,6 @@
    "what": "today's stamp (streak becomes 1)"
   },
   {
-   "call": "Houses join()",
-   "inputData": "0xb688a363",
-   "to": "0x8433AD00601C57cE9F144b20A32aE478EEe831AE",
-   "what": "Houses join()"
-  },
-  {
    "call": "Badges claim()",
    "inputData": "0x4e71d92d",
    "to": "0xF706Aeb7E1B6A44139205dF3043bf68cCf386918",

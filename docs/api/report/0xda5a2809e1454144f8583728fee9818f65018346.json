@@ -1,0 +1,46 @@
+{
+ "wallet": "0xda5a2809e1454144f8583728fee9818f65018346",
+ "tickets": 2,
+ "decided": 0,
+ "won": 0,
+ "lost": 0,
+ "hitRate": null,
+ "ci95": null,
+ "currentWinRun": 0,
+ "picked": {
+  "decided": 0,
+  "won": 0,
+  "ci95": null,
+  "verdict": null
+ },
+ "assigned": {
+  "decided": 0,
+  "won": 0
+ },
+ "byMarket": {},
+ "waitingTickets": 2,
+ "nextResultAt": "2026-11-24T13:00Z",
+ "verdict": "no-own-picks",
+ "overallAllTickets": "early",
+ "todoNow": [
+  {
+   "call": "Stamps checkIn()",
+   "inputData": "0x183ff085",
+   "to": "0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae",
+   "what": "today's stamp (streak becomes 2)"
+  }
+ ],
+ "proof": {
+  "record": "https://mycyi1994-hash.github.io/forecast-league/me.html?w=0xda5a2809e1454144f8583728fee9818f65018346",
+  "tickets": {
+   "ETH 1h": "https://bscscan.com/token/0x8b998abA2BeeebF7ceBf565bC53BC575693c07a4?a=0xda5a2809e1454144f8583728fee9818f65018346",
+   "BTC 1d": "https://bscscan.com/token/0x9e521add6F67EEe0Fe5c0b8ef32cb4543f7af50E?a=0xda5a2809e1454144f8583728fee9818f65018346"
+  }
+ },
+ "links": {
+  "card": "https://mycyi1994-hash.github.io/forecast-league/api/card/0xda5a2809e1454144f8583728fee9818f65018346.svg",
+  "briefEn": "https://mycyi1994-hash.github.io/forecast-league/api/report/0xda5a2809e1454144f8583728fee9818f65018346.md",
+  "briefKo": "https://mycyi1994-hash.github.io/forecast-league/api/report/0xda5a2809e1454144f8583728fee9818f65018346.ko.md",
+  "briefZh": "https://mycyi1994-hash.github.io/forecast-league/api/report/0xda5a2809e1454144f8583728fee9818f65018346.zh.md"
+ }
+}
