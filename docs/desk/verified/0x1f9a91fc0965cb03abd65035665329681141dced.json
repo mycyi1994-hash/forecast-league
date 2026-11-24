@@ -2,8 +2,8 @@
  "contract": "0x1f9a91fc0965cb03abd65035665329681141dced",
  "name": "Konoha",
  "verdict": "passed",
- "checkedAt": "2026-11-24T19:13:26Z",
- "block": 135516882,
+ "checkedAt": "2026-11-24T20:11:01Z",
+ "block": 135524562,
  "checks": {
   "simulatedFromAgentIdWallet": true,
   "gateEnforced": true,
