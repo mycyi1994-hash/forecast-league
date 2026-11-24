@@ -1,13 +1,13 @@
 {
  "wallet": "0xa7d32220a3980d6f29e8f715d63b27dbfdd1b938",
  "tickets": 17,
- "decided": 15,
+ "decided": 16,
  "won": 4,
- "lost": 11,
- "hitRate": 0.267,
+ "lost": 12,
+ "hitRate": 0.25,
  "ci95": [
-  0.109,
-  0.52
+  0.102,
+  0.495
  ],
  "currentWinRun": 0,
  "picked": {
@@ -17,25 +17,25 @@
   "verdict": null
  },
  "assigned": {
-  "decided": 15,
+  "decided": 16,
   "won": 4
  },
  "byMarket": {
   "BTC 6h": {
    "won": 4,
-   "lost": 11
+   "lost": 12
   }
  },
- "waitingTickets": 2,
- "nextResultAt": "2026-11-24T06:00Z",
+ "waitingTickets": 1,
+ "nextResultAt": "2026-11-24T12:00Z",
  "verdict": "no-own-picks",
- "overallAllTickets": "coinflip",
+ "overallAllTickets": "below",
  "todoNow": [
   {
    "call": "claim()",
    "inputData": "0x4e71d92d",
    "to": "0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C",
-   "what": "write 15 finished BTC 6h ticket(s) into the record"
+   "what": "write 16 finished BTC 6h ticket(s) into the record"
   },
   {
    "call": "Houses join()",

@@ -2,8 +2,8 @@
 
 > Checked index of Binance Agent ID mints on BNB Chain (chainId 56), refreshed hourly. Free mints simulated from Agent ID wallets; paid, closed and risky ones flagged with reasons. Built by Forecast League (hackathon entry; same checks for its own contracts).
 
-Updated: 2026-11-24T05:12:32Z
-Free and open now: 3684 · passing every check: 106
+Updated: 2026-11-24T06:10:50Z
+Free and open now: 3681 · passing every check: 103
 
 - [projects.json](https://mycyi1994-hash.github.io/forecast-league/desk/projects.json): every checked mint with status, call data, checks and warnings
 - [report.md](https://mycyi1994-hash.github.io/forecast-league/desk/report.md): today's summary

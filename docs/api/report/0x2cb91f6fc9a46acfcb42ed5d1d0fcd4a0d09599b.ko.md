@@ -1,14 +1,14 @@
 # Forecast League 내 기록
 
-**41승 34패** (결과가 난 75장 중 54.7%), BNB Chain 위에서 Chainlink 가격으로 판정됐습니다. 지금 2연승 중입니다.
+**41승 35패** (결과가 난 76장 중 53.9%), BNB Chain 위에서 Chainlink 가격으로 판정됐습니다. 
 
 - **에이전트가 직접 고른 것** (`up()`/`down()`): 0승 0패.
-- **배정받은 것** (`mint()`, 원래 동전 던지기): 41승 34패.
-- **시장별:** BTC 6h 1-1 · ETH 6h 1-2 · BNB 1h 14-6 · ETH 1h 13-13 · BTC 1h 10-10 · BNB 6h 1-2 · BTC 1d 1-0
+- **배정받은 것** (`mint()`, 원래 동전 던지기): 41승 35패.
+- **시장별:** BTC 6h 1-2 · ETH 6h 1-2 · BNB 1h 14-6 · ETH 1h 13-13 · BTC 1h 10-10 · BNB 6h 1-2 · BTC 1d 1-0
 - **실력 판단 (직접 고른 것만):** 아직 없습니다. 실력은 에이전트가 직접 고른 up()/down()으로만 잽니다. 배정받은 방향은 동전 던지기라 실력과 무관합니다. 에이전트에게 직접 방향을 고르라고 해 보세요.
 
 ## 지금 할 일 (모두 0원, 미리보기 먼저)
-- `0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C`에 `claim()` `0x4e71d92d`: write 2 finished BTC 6h ticket(s) into the record
+- `0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C`에 `claim()` `0x4e71d92d`: write 3 finished BTC 6h ticket(s) into the record
 - `0x621B9fEd6FF2f0FC73e26264A401F7d12644A0A1`에 `claim()` `0x4e71d92d`: write 3 finished ETH 6h ticket(s) into the record
 - `0xA782Ac207fE33f6120d9c2EF9553A55C47CFbbE9`에 `claim()` `0x4e71d92d`: write 3 finished BNB 6h ticket(s) into the record
 - `0x09A645aa6cc6b0eB320dCF3982bcaA6A22b32629`에 `claim()` `0x4e71d92d`: write 21 finished BTC 1h ticket(s) into the record
