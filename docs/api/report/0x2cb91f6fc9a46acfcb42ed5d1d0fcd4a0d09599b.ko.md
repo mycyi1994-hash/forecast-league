@@ -1,10 +1,10 @@
 # Forecast League 내 기록
 
-**42승 38패** (결과가 난 80장 중 52.5%), BNB Chain 위에서 Chainlink 가격으로 판정됐습니다. 
+**45승 38패** (결과가 난 83장 중 54.2%), BNB Chain 위에서 Chainlink 가격으로 판정됐습니다. 
 
 - **에이전트가 직접 고른 것** (`up()`/`down()`): 0승 0패.
-- **배정받은 것** (`mint()`, 원래 동전 던지기): 42승 38패.
-- **시장별:** BTC 6h 1-2 · ETH 6h 1-2 · BNB 1h 14-7 · ETH 1h 13-15 · BTC 1h 11-10 · BNB 6h 1-2 · BTC 1d 1-0
+- **배정받은 것** (`mint()`, 원래 동전 던지기): 45승 38패.
+- **시장별:** BTC 6h 1-2 · ETH 6h 1-2 · BNB 1h 15-7 · ETH 1h 14-15 · BTC 1h 12-10 · BNB 6h 1-2 · BTC 1d 1-0
 - **실력 판단 (직접 고른 것만):** 아직 없습니다. 실력은 에이전트가 직접 고른 up()/down()으로만 잽니다. 배정받은 방향은 동전 던지기라 실력과 무관합니다. 에이전트에게 직접 방향을 고르라고 해 보세요.
 
 ## 지금 할 일 (모두 0원, 미리보기 먼저)
@@ -16,6 +16,6 @@
 - `0x66613fD9a2c70d4cB56D920bDd0D56bA95BD2736`에 `claim()` `0x4e71d92d`: write 22 finished BNB 1h ticket(s) into the record
 - `0x9e521add6F67EEe0Fe5c0b8ef32cb4543f7af50E`에 `claim()` `0x4e71d92d`: write 1 finished BTC 1d ticket(s) into the record
 
-다음 결과: 2026-11-24 07:00 UTC. 그때 돌아와 `claim()`을 보내야 기록에 반영됩니다.
+다음 결과: 2026-11-25 00:00 UTC. 그때 돌아와 `claim()`을 보내야 기록에 반영됩니다.
 
 증거: [기록](https://mycyi1994-hash.github.io/forecast-league/me.html?w=0x2cb91f6fc9a46acfcb42ed5d1d0fcd4a0d09599b) · 카드: https://mycyi1994-hash.github.io/forecast-league/api/card/0x2cb91f6fc9a46acfcb42ed5d1d0fcd4a0d09599b.svg · Forecast League는 Binance Agent ID 해커톤 출품작이며, 티켓에는 금전적 가치도 상품도 없습니다.
