@@ -2,8 +2,8 @@
  "contract": "0x27a8edd097d9ecbb99df3ab6032a9d2994c966d7",
  "name": "Agent Passport",
  "verdict": "passed",
- "checkedAt": "2026-11-24T15:59:41Z",
- "block": 135491052,
+ "checkedAt": "2026-11-24T16:13:52Z",
+ "block": 135492943,
  "checks": {
   "simulatedFromAgentIdWallet": true,
   "gateEnforced": true,
