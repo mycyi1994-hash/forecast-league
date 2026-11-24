@@ -41,6 +41,18 @@
   },
   {
    "type": "claim",
+   "contract": "0xF706Aeb7E1B6A44139205dF3043bf68cCf386918",
+   "method": "claim()",
+   "inputData": "0x4e71d92d",
+   "args": [],
+   "valueWei": "0",
+   "why": "badge tier 1 earned",
+   "validUntil": "until claimed",
+   "preview": "baw contract-call preview --binanceChainId 56 --from 0xcd2cdd52166f6403f42eac73b277ca2366661eb3 --to 0xF706Aeb7E1B6A44139205dF3043bf68cCf386918 --value 0 --inputData 0x4e71d92d --json",
+   "thenExecute": "baw contract-call execute --requestId <requestId from the preview> --json"
+  },
+  {
+   "type": "claim",
    "contract": "0x3e73bC0309c72EA69bD74CaDEC943668291Ca6ed",
    "method": "claim()",
    "inputData": "0x4e71d92d",
@@ -52,8 +64,16 @@
    "thenExecute": "baw contract-call execute --requestId <requestId from the preview> --json"
   }
  ],
- "joinedRounds": {},
- "pendingResults": [],
+ "joinedRounds": {
+  "BTC 6h": 83125
+ },
+ "pendingResults": [
+  {
+   "market": "BTC 6h",
+   "tickets": 1,
+   "resultFinalAt": "2026-11-24T18:00:00Z"
+  }
+ ],
  "comeBackAt": "2026-11-24T12:00:00Z",
  "comeBackWhy": "the next 6h round opens: a new free ticket per 6h market",
  "askHuman": "Next useful time: 2026-11-24 12:00 UTC (the next 6h round opens: a new free ticket per 6h market). Want me to come back then?",
@@ -67,7 +87,7 @@
   "byMarket": [
    {
     "market": "BTC 6h",
-    "tickets": 2,
+    "tickets": 3,
     "wins": 0,
     "losses": 0,
     "streak": 0,

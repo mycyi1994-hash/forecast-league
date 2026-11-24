@@ -1,6 +1,6 @@
 {
  "wallet": "0xcd2cdd52166f6403f42eac73b277ca2366661eb3",
- "tickets": 2,
+ "tickets": 3,
  "decided": 2,
  "won": 0,
  "lost": 2,
@@ -26,8 +26,8 @@
    "lost": 2
   }
  },
- "waitingTickets": 0,
- "nextResultAt": null,
+ "waitingTickets": 1,
+ "nextResultAt": "2026-11-24T18:00Z",
  "verdict": "no-own-picks",
  "overallAllTickets": "early",
  "todoNow": [
@@ -48,6 +48,12 @@
    "inputData": "0xb688a363",
    "to": "0x8433AD00601C57cE9F144b20A32aE478EEe831AE",
    "what": "Houses join()"
+  },
+  {
+   "call": "Badges claim()",
+   "inputData": "0x4e71d92d",
+   "to": "0xF706Aeb7E1B6A44139205dF3043bf68cCf386918",
+   "what": "badge tier 1 earned"
   },
   {
    "call": "Honors claim()",
