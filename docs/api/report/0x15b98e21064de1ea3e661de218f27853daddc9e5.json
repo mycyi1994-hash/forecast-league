@@ -1,6 +1,6 @@
 {
  "wallet": "0x15b98e21064de1ea3e661de218f27853daddc9e5",
- "tickets": 6,
+ "tickets": 7,
  "decided": 3,
  "won": 3,
  "lost": 0,
@@ -34,7 +34,7 @@
    "lost": 0
   }
  },
- "waitingTickets": 3,
+ "waitingTickets": 4,
  "nextResultAt": "2026-11-24T06:00Z",
  "verdict": "no-own-picks",
  "overallAllTickets": "early",
@@ -64,10 +64,16 @@
    "what": "today's stamp (streak becomes 2)"
   },
   {
-   "call": "Houses join()",
-   "inputData": "0xb688a363",
-   "to": "0x8433AD00601C57cE9F144b20A32aE478EEe831AE",
-   "what": "Houses join()"
+   "call": "Badges claim()",
+   "inputData": "0x4e71d92d",
+   "to": "0xF706Aeb7E1B6A44139205dF3043bf68cCf386918",
+   "what": "badge tier 1 earned"
+  },
+  {
+   "call": "Honors claim()",
+   "inputData": "0x4e71d92d",
+   "to": "0x3e73bC0309c72EA69bD74CaDEC943668291Ca6ed",
+   "what": "honor earned: CARD HOLDER"
   }
  ],
  "proof": {
@@ -78,6 +84,7 @@
    "ETH 1h": "https://bscscan.com/token/0x8b998abA2BeeebF7ceBf565bC53BC575693c07a4?a=0x15b98e21064de1ea3e661de218f27853daddc9e5",
    "ETH 6h": "https://bscscan.com/token/0x621B9fEd6FF2f0FC73e26264A401F7d12644A0A1?a=0x15b98e21064de1ea3e661de218f27853daddc9e5",
    "BTC 6h": "https://bscscan.com/token/0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C?a=0x15b98e21064de1ea3e661de218f27853daddc9e5",
+   "BNB 6h": "https://bscscan.com/token/0xA782Ac207fE33f6120d9c2EF9553A55C47CFbbE9?a=0x15b98e21064de1ea3e661de218f27853daddc9e5",
    "BTC 1d": "https://bscscan.com/token/0x9e521add6F67EEe0Fe5c0b8ef32cb4543f7af50E?a=0x15b98e21064de1ea3e661de218f27853daddc9e5"
   }
  },
