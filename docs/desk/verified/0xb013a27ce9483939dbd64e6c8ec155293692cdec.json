@@ -2,8 +2,8 @@
  "contract": "0xb013a27ce9483939dbd64e6c8ec155293692cdec",
  "name": "AgentSeal",
  "verdict": "passed",
- "checkedAt": "2026-11-24T14:14:13Z",
- "block": 135476998,
+ "checkedAt": "2026-11-24T15:13:17Z",
+ "block": 135484868,
  "checks": {
   "simulatedFromAgentIdWallet": true,
   "gateEnforced": true,

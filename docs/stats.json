@@ -1,19 +1,19 @@
 {
  "project": "Forecast League",
  "chain": "BNB Chain (56)",
- "updated": "2026-11-24T14:13Z",
+ "updated": "2026-11-24T15:12Z",
  "note": "Read from the contracts with eth_call; anyone can repeat each read. Nothing here has monetary value.",
  "markets": [
   {
    "id": "blitz-btc-6h",
    "contract": "0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C",
    "roundSeconds": 21600,
-   "ticketsAllTime": 1145,
+   "ticketsAllTime": 1147,
    "rounds": [
     {
      "round": 83126,
      "opens": "2026-11-24T12:00Z",
-     "tickets": 39,
+     "tickets": 41,
      "status": "open",
      "outcome": null,
      "lockPrice": null,
@@ -52,12 +52,12 @@
    "id": "blitz-eth-6h",
    "contract": "0x621B9fEd6FF2f0FC73e26264A401F7d12644A0A1",
    "roundSeconds": 21600,
-   "ticketsAllTime": 591,
+   "ticketsAllTime": 592,
    "rounds": [
     {
      "round": 83126,
      "opens": "2026-11-24T12:00Z",
-     "tickets": 21,
+     "tickets": 22,
      "status": "open",
      "outcome": null,
      "lockPrice": null,
@@ -96,12 +96,12 @@
    "id": "blitz-bnb-6h",
    "contract": "0xA782Ac207fE33f6120d9c2EF9553A55C47CFbbE9",
    "roundSeconds": 21600,
-   "ticketsAllTime": 582,
+   "ticketsAllTime": 583,
    "rounds": [
     {
      "round": 83126,
      "opens": "2026-11-24T12:00Z",
-     "tickets": 21,
+     "tickets": 22,
      "status": "open",
      "outcome": null,
      "lockPrice": null,
@@ -140,99 +140,11 @@
    "id": "rounds-btc-1h",
    "contract": "0x09A645aa6cc6b0eB320dCF3982bcaA6A22b32629",
    "roundSeconds": 3600,
-   "ticketsAllTime": 1593,
+   "ticketsAllTime": 1608,
    "rounds": [
     {
-     "round": 498758,
-     "opens": "2026-11-24T14:00Z",
-     "tickets": 2,
-     "status": "open",
-     "outcome": null,
-     "lockPrice": null,
-     "resultPrice": null
-    },
-    {
-     "round": 498757,
-     "opens": "2026-11-24T13:00Z",
-     "tickets": 13,
-     "status": "locked",
-     "outcome": null,
-     "lockPrice": null,
-     "resultPrice": null
-    },
-    {
-     "round": 498756,
-     "opens": "2026-11-24T12:00Z",
-     "tickets": 15,
-     "status": "finished, not settled",
-     "outcome": null,
-     "lockPrice": null,
-     "resultPrice": null
-    },
-    {
-     "round": 498755,
-     "opens": "2026-11-24T11:00Z",
-     "tickets": 13,
-     "status": "finished, not settled",
-     "outcome": null,
-     "lockPrice": null,
-     "resultPrice": null
-    }
-   ]
-  },
-  {
-   "id": "rounds-eth-1h",
-   "contract": "0x8b998abA2BeeebF7ceBf565bC53BC575693c07a4",
-   "roundSeconds": 3600,
-   "ticketsAllTime": 1584,
-   "rounds": [
-    {
-     "round": 498758,
-     "opens": "2026-11-24T14:00Z",
-     "tickets": 2,
-     "status": "open",
-     "outcome": null,
-     "lockPrice": null,
-     "resultPrice": null
-    },
-    {
-     "round": 498757,
-     "opens": "2026-11-24T13:00Z",
-     "tickets": 13,
-     "status": "locked",
-     "outcome": null,
-     "lockPrice": null,
-     "resultPrice": null
-    },
-    {
-     "round": 498756,
-     "opens": "2026-11-24T12:00Z",
-     "tickets": 15,
-     "status": "finished, not settled",
-     "outcome": null,
-     "lockPrice": null,
-     "resultPrice": null
-    },
-    {
-     "round": 498755,
-     "opens": "2026-11-24T11:00Z",
-     "tickets": 16,
-     "status": "finished, not settled",
-     "outcome": null,
-     "lockPrice": null,
-     "resultPrice": null
-    }
-   ]
-  },
-  {
-   "id": "rounds-bnb-1h",
-   "contract": "0x66613fD9a2c70d4cB56D920bDd0D56bA95BD2736",
-   "roundSeconds": 3600,
-   "ticketsAllTime": 1620,
-   "rounds": [
-    {
-     "round": 498758,
-     "opens": "2026-11-24T14:00Z",
+     "round": 498759,
+     "opens": "2026-11-24T15:00Z",
      "tickets": 3,
      "status": "open",
      "outcome": null,
@@ -240,10 +152,19 @@
      "resultPrice": null
     },
     {
+     "round": 498758,
+     "opens": "2026-11-24T14:00Z",
+     "tickets": 14,
+     "status": "locked",
+     "outcome": null,
+     "lockPrice": null,
+     "resultPrice": null
+    },
+    {
      "round": 498757,
      "opens": "2026-11-24T13:00Z",
      "tickets": 13,
-     "status": "locked",
+     "status": "finished, not settled",
      "outcome": null,
      "lockPrice": null,
      "resultPrice": null
@@ -252,19 +173,98 @@
      "round": 498756,
      "opens": "2026-11-24T12:00Z",
      "tickets": 15,
+     "status": "settled",
+     "outcome": "down",
+     "lockPrice": 60341.42,
+     "resultPrice": 59919.59
+    }
+   ]
+  },
+  {
+   "id": "rounds-eth-1h",
+   "contract": "0x8b998abA2BeeebF7ceBf565bC53BC575693c07a4",
+   "roundSeconds": 3600,
+   "ticketsAllTime": 1599,
+   "rounds": [
+    {
+     "round": 498759,
+     "opens": "2026-11-24T15:00Z",
+     "tickets": 3,
+     "status": "open",
+     "outcome": null,
+     "lockPrice": null,
+     "resultPrice": null
+    },
+    {
+     "round": 498758,
+     "opens": "2026-11-24T14:00Z",
+     "tickets": 14,
+     "status": "locked",
+     "outcome": null,
+     "lockPrice": null,
+     "resultPrice": null
+    },
+    {
+     "round": 498757,
+     "opens": "2026-11-24T13:00Z",
+     "tickets": 13,
      "status": "finished, not settled",
      "outcome": null,
      "lockPrice": null,
      "resultPrice": null
     },
     {
-     "round": 498755,
-     "opens": "2026-11-24T11:00Z",
+     "round": 498756,
+     "opens": "2026-11-24T12:00Z",
+     "tickets": 15,
+     "status": "settled",
+     "outcome": "down",
+     "lockPrice": 1700.49109018,
+     "resultPrice": 1687.66256596
+    }
+   ]
+  },
+  {
+   "id": "rounds-bnb-1h",
+   "contract": "0x66613fD9a2c70d4cB56D920bDd0D56bA95BD2736",
+   "roundSeconds": 3600,
+   "ticketsAllTime": 1635,
+   "rounds": [
+    {
+     "round": 498759,
+     "opens": "2026-11-24T15:00Z",
+     "tickets": 3,
+     "status": "open",
+     "outcome": null,
+     "lockPrice": null,
+     "resultPrice": null
+    },
+    {
+     "round": 498758,
+     "opens": "2026-11-24T14:00Z",
+     "tickets": 15,
+     "status": "locked",
+     "outcome": null,
+     "lockPrice": null,
+     "resultPrice": null
+    },
+    {
+     "round": 498757,
+     "opens": "2026-11-24T13:00Z",
      "tickets": 13,
      "status": "finished, not settled",
      "outcome": null,
      "lockPrice": null,
      "resultPrice": null
+    },
+    {
+     "round": 498756,
+     "opens": "2026-11-24T12:00Z",
+     "tickets": 15,
+     "status": "settled",
+     "outcome": "down",
+     "lockPrice": 550.43817489,
+     "resultPrice": 547.71027787
     }
    ]
   },
@@ -272,12 +272,12 @@
    "id": "rounds-btc-1d",
    "contract": "0x9e521add6F67EEe0Fe5c0b8ef32cb4543f7af50E",
    "roundSeconds": 86400,
-   "ticketsAllTime": 235,
+   "ticketsAllTime": 236,
    "rounds": [
     {
      "round": 20781,
      "opens": "2026-11-24T00:00Z",
-     "tickets": 21,
+     "tickets": 22,
      "status": "open",
      "outcome": null,
      "lockPrice": null,
@@ -322,12 +322,12 @@
   {
    "id": "badges",
    "contract": "0xF706Aeb7E1B6A44139205dF3043bf68cCf386918",
-   "minted": 106
+   "minted": 107
   },
   {
    "id": "stamps",
    "contract": "0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae",
-   "minted": 263
+   "minted": 265
   },
   {
    "id": "houses",
@@ -367,10 +367,10 @@
     "losses": 6
    },
    {
-    "wallet": "0xd301d472f2e469a1aafa1af6f214e312f1858873",
+    "wallet": "0x14f395059726c3da2f3e4a1f969c6e61ae844731",
     "name": null,
-    "wins": 76,
-    "losses": 53
+    "wins": 10,
+    "losses": 7
    }
   ],
   "longestStreak": [
