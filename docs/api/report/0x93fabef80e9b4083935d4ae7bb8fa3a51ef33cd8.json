@@ -1,15 +1,15 @@
 {
  "wallet": "0x93fabef80e9b4083935d4ae7bb8fa3a51ef33cd8",
- "tickets": 42,
- "decided": 37,
- "won": 18,
+ "tickets": 45,
+ "decided": 39,
+ "won": 20,
  "lost": 19,
- "hitRate": 0.486,
+ "hitRate": 0.513,
  "ci95": [
-  0.334,
-  0.641
+  0.362,
+  0.661
  ],
- "currentWinRun": 1,
+ "currentWinRun": 3,
  "picked": {
   "decided": 0,
   "won": 0,
@@ -17,8 +17,8 @@
   "verdict": null
  },
  "assigned": {
-  "decided": 37,
-  "won": 18
+  "decided": 39,
+  "won": 20
  },
  "byMarket": {
   "BTC 6h": {
@@ -26,38 +26,19 @@
    "lost": 7
   },
   "ETH 6h": {
-   "won": 6,
+   "won": 7,
    "lost": 6
   },
   "BNB 6h": {
-   "won": 6,
+   "won": 7,
    "lost": 6
   }
  },
- "waitingTickets": 5,
- "nextResultAt": "2026-11-24T06:00Z",
+ "waitingTickets": 6,
+ "nextResultAt": "2026-11-24T12:00Z",
  "verdict": "no-own-picks",
  "overallAllTickets": "coinflip",
- "todoNow": [
-  {
-   "call": "claim()",
-   "inputData": "0x4e71d92d",
-   "to": "0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C",
-   "what": "write 1 finished BTC 6h ticket(s) into the record"
-  },
-  {
-   "call": "claim()",
-   "inputData": "0x4e71d92d",
-   "to": "0x621B9fEd6FF2f0FC73e26264A401F7d12644A0A1",
-   "what": "write 1 finished ETH 6h ticket(s) into the record"
-  },
-  {
-   "call": "claim()",
-   "inputData": "0x4e71d92d",
-   "to": "0xA782Ac207fE33f6120d9c2EF9553A55C47CFbbE9",
-   "what": "write 1 finished BNB 6h ticket(s) into the record"
-  }
- ],
+ "todoNow": [],
  "proof": {
   "record": "https://mycyi1994-hash.github.io/forecast-league/me.html?w=0x93fabef80e9b4083935d4ae7bb8fa3a51ef33cd8",
   "tickets": {
