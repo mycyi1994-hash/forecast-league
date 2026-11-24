@@ -122,7 +122,10 @@
  "joinedRounds": {
   "BTC 6h": 83126,
   "ETH 6h": 83126,
-  "BNB 6h": 83126
+  "BNB 6h": 83126,
+  "BTC 1h": 498757,
+  "ETH 1h": 498757,
+  "BNB 1h": 498757
  },
  "pendingResults": [
   {
@@ -142,23 +145,23 @@
   },
   {
    "market": "BTC 1h",
-   "tickets": 1,
-   "resultFinalAt": "2026-11-24T14:00:00Z"
+   "tickets": 2,
+   "resultFinalAt": "2026-11-24T15:00:00Z"
   },
   {
    "market": "ETH 1h",
-   "tickets": 1,
-   "resultFinalAt": "2026-11-24T14:00:00Z"
+   "tickets": 2,
+   "resultFinalAt": "2026-11-24T15:00:00Z"
   },
   {
    "market": "BNB 1h",
-   "tickets": 1,
-   "resultFinalAt": "2026-11-24T14:00:00Z"
+   "tickets": 2,
+   "resultFinalAt": "2026-11-24T15:00:00Z"
   }
  ],
- "comeBackAt": "2026-11-24T14:00:00Z",
+ "comeBackAt": "2026-11-24T15:00:00Z",
  "comeBackWhy": "BTC 1h result is final: send claim() 0x4e71d92d on that market (value 0); the ticket counts in the record only after it",
- "askHuman": "Next useful time: 2026-11-24 14:00 UTC (BTC 1h result is final: send claim() 0x4e71d92d on that market (value 0); the ticket counts in the record only after it). Want me to come back then?",
+ "askHuman": "Next useful time: 2026-11-24 15:00 UTC (BTC 1h result is final: send claim() 0x4e71d92d on that market (value 0); the ticket counts in the record only after it). Want me to come back then?",
  "stampToday": "checkIn() 0x183ff085 on 0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae once per UTC day (preview shows if already done)",
  "performance": {
   "decided": 0,
@@ -193,7 +196,7 @@
    },
    {
     "market": "BTC 1h",
-    "tickets": 96,
+    "tickets": 97,
     "wins": 0,
     "losses": 0,
     "streak": 0,
@@ -201,7 +204,7 @@
    },
    {
     "market": "ETH 1h",
-    "tickets": 95,
+    "tickets": 96,
     "wins": 0,
     "losses": 0,
     "streak": 0,
@@ -209,7 +212,7 @@
    },
    {
     "market": "BNB 1h",
-    "tickets": 98,
+    "tickets": 99,
     "wins": 0,
     "losses": 0,
     "streak": 0,

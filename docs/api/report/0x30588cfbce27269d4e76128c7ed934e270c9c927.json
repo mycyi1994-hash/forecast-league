@@ -1,6 +1,6 @@
 {
  "wallet": "0x30588cfbce27269d4e76128c7ed934e270c9c927",
- "tickets": 357,
+ "tickets": 360,
  "decided": 343,
  "won": 153,
  "lost": 190,
@@ -50,7 +50,7 @@
    "lost": 2
   }
  },
- "waitingTickets": 14,
+ "waitingTickets": 17,
  "nextResultAt": "2026-11-24T13:00Z",
  "verdict": "no-own-picks",
  "overallAllTickets": "below",
