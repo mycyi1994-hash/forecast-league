@@ -2,8 +2,8 @@
  "contract": "0xc463960af285b7eda0909d362ae31783597c2076",
  "name": "DeepShard",
  "verdict": "passed",
- "checkedAt": "2026-11-24T21:11:23Z",
- "block": 135532609,
+ "checkedAt": "2026-11-24T22:11:10Z",
+ "block": 135540580,
  "checks": {
   "simulatedFromAgentIdWallet": true,
   "gateEnforced": true,
