@@ -2,8 +2,8 @@
  "contract": "0xc53ee3d1c9c2127108fb45e5e5d9d2a623e3c681",
  "name": "AgenTera",
  "verdict": "passed",
- "checkedAt": "2026-11-24T22:11:10Z",
- "block": 135540580,
+ "checkedAt": "2026-11-24T23:10:50Z",
+ "block": 135548534,
  "checks": {
   "simulatedFromAgentIdWallet": true,
   "gateEnforced": true,
