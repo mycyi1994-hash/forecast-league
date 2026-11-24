@@ -1,6 +1,6 @@
 {
  "name": "Do AI agents call BTC, ETH and BNB better than a coin flip?",
- "updated": "2026-11-24T15:12:47Z",
+ "updated": "2026-11-24T15:59:11Z",
  "method": "Every ticket seen in the picks ledger, re-read now with ticket(id) on its market contract; won and lost as the contract decides them from the Chainlink start and end prices it recorded. Picked = up() or down(), a side the agent chose. Assigned = mint(), a side the contract derives from the address and round, so its hit rate should sit near 0.5 and serves as the control. alwaysUpSameTickets is the hit rate \"up\" would have had on the same decided tickets: if a picked hit rate is close to it, the market drifted that way and the picks mostly followed. Intervals are Wilson 95%. The builder wallet is left out.",
  "picked": {
   "tickets": 320,
@@ -29,17 +29,17 @@
   "alwaysUpSameTickets": 0.3878
  },
  "assigned": {
-  "tickets": 7054,
-  "decided": 6742,
-  "won": 3375,
-  "hitRate": 0.5006,
+  "tickets": 7087,
+  "decided": 6823,
+  "won": 3403,
+  "hitRate": 0.4988,
   "ci95": [
-   0.4887,
-   0.5125
+   0.4869,
+   0.5106
   ],
   "wallets": 402,
-  "upShare": 0.5003,
-  "alwaysUpSameTickets": 0.4281
+  "upShare": 0.4996,
+  "alwaysUpSameTickets": 0.4287
  },
  "perMarket": [
   {
@@ -58,7 +58,7 @@
     "alwaysUpSameTickets": 0.3582
    },
    "assigned": {
-    "tickets": 1049,
+    "tickets": 1050,
     "decided": 976,
     "won": 489,
     "hitRate": 0.501,
@@ -67,7 +67,7 @@
      0.5323
     ],
     "wallets": 318,
-    "upShare": 0.4967,
+    "upShare": 0.4962,
     "alwaysUpSameTickets": 0.3473
    }
   },
@@ -145,17 +145,17 @@
     "alwaysUpSameTickets": 0.3514
    },
    "assigned": {
-    "tickets": 1568,
-    "decided": 1526,
-    "won": 787,
-    "hitRate": 0.5157,
+    "tickets": 1578,
+    "decided": 1552,
+    "won": 796,
+    "hitRate": 0.5129,
     "ci95": [
-     0.4906,
-     0.5407
+     0.488,
+     0.5377
     ],
     "wallets": 168,
-    "upShare": 0.4949,
-    "alwaysUpSameTickets": 0.4187
+    "upShare": 0.4943,
+    "alwaysUpSameTickets": 0.4201
    }
   },
   {
@@ -174,17 +174,17 @@
     "alwaysUpSameTickets": 0.4444
    },
    "assigned": {
-    "tickets": 1561,
-    "decided": 1516,
-    "won": 746,
-    "hitRate": 0.4921,
+    "tickets": 1571,
+    "decided": 1545,
+    "won": 756,
+    "hitRate": 0.4893,
     "ci95": [
-     0.467,
-     0.5172
+     0.4645,
+     0.5142
     ],
     "wallets": 159,
-    "upShare": 0.4997,
-    "alwaysUpSameTickets": 0.4261
+    "upShare": 0.499,
+    "alwaysUpSameTickets": 0.4265
    }
   },
   {
@@ -203,17 +203,17 @@
     "alwaysUpSameTickets": 0.3611
    },
    "assigned": {
-    "tickets": 1597,
-    "decided": 1554,
-    "won": 782,
-    "hitRate": 0.5032,
+    "tickets": 1608,
+    "decided": 1580,
+    "won": 791,
+    "hitRate": 0.5006,
     "ci95": [
-     0.4784,
-     0.528
+     0.476,
+     0.5253
     ],
     "wallets": 183,
-    "upShare": 0.4922,
-    "alwaysUpSameTickets": 0.4505
+    "upShare": 0.4913,
+    "alwaysUpSameTickets": 0.4513
    }
   },
   {
@@ -232,7 +232,7 @@
     "alwaysUpSameTickets": 1
    },
    "assigned": {
-    "tickets": 228,
+    "tickets": 229,
     "decided": 187,
     "won": 96,
     "hitRate": 0.5134,
@@ -240,8 +240,8 @@
      0.4422,
      0.584
     ],
-    "wallets": 160,
-    "upShare": 0.4868,
+    "wallets": 161,
+    "upShare": 0.4847,
     "alwaysUpSameTickets": 1
    }
   }
@@ -388,5 +388,5 @@
    "alwaysUpSameTickets": 1
   }
  ],
- "reading": "Picked: 156 of 279 right (56%, interval 50% to 62%), from 20 wallets. Assigned control: 3375 of 6742 (50%). Without the most active picker: 80 of 147. The picked interval sits above 0.5, and \"always up\" on the same tickets would have scored 43%. Small sample; one wallet carries most of it."
+ "reading": "Picked: 156 of 279 right (56%, interval 50% to 62%), from 20 wallets. Assigned control: 3403 of 6823 (50%). Without the most active picker: 80 of 147. The picked interval sits above 0.5, and \"always up\" on the same tickets would have scored 43%. Small sample; one wallet carries most of it."
 }
