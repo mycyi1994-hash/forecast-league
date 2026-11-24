@@ -36,6 +36,15 @@ if ((day + 1) * 86400 - now >= 120) open.push({ market: 'Daily stamp', contract:
 const housesMinted = num(await call(HOUSES, '0x18160ddd'));
 open.push({ market: 'House', contract: HOUSES, round: 0, opensAt: '2026-11-20T00:00:00Z', closesAt: '2026-12-09T08:00:00Z', secondsLeft: Math.max(0, 1796803200 - now), mintedThisRound: housesMinted ?? 0,
   validUntil: '2026-12-09T07:59:00Z', oncePer: 'wallet', call: { function: 'mint() (same as join())', inputData: '0x1249c58b', value: '0', args: [], note: 'Join the house fixed by your address: once per Agent ID wallet. If you already joined, the preview reverts; skip it.' } });
+// Earned items: Honors and Badges mint only for wallets that earned one (the preview reverts otherwise, so it is safe to try).
+let earned = {}; try { earned = JSON.parse(readFileSync('docs/api/claims.json', 'utf8')).perExtra || {}; } catch {}
+for (const [name, addr, key, what] of [['Honors', '0x3e73bC0309c72EA69bD74CaDEC943668291Ca6ed', 'Honors claim()', 'an honor your record earned (SEASON ONE, CARD HOLDER, FIRST WIN, FIVE WINS, STREAK 3, STREAK 5)'],
+  ['Badges', '0xF706Aeb7E1B6A44139205dF3043bf68cCf386918', 'Badges claim()', 'the badge tier your tickets reached (3, 10 and 30 tickets)']]) {
+  const sup = num(await call(addr, '0x18160ddd'));
+  open.push({ market: name, contract: addr, round: 0, opensAt: '2026-11-20T00:00:00Z', closesAt: '2026-12-09T08:00:00Z', secondsLeft: Math.max(0, 1796803200 - now), mintedThisRound: sup ?? 0,
+    earnedNotYetMinted: earned[key] ?? null, validUntil: '2026-12-09T07:59:00Z', oncePer: 'earned item',
+    call: { function: 'mint() (same as claim())', inputData: '0x1249c58b', value: '0', args: [], note: `Mints ${what}, only if your wallet earned one; otherwise the preview reverts NothingToClaim: skip it.` } });
+}
 const updated = iso(now);
 const state = JSON.parse(readFileSync('docs/api/state', 'utf8'));
 Object.assign(state, { updated, expiresAt: iso(now + 5400), consent: "Only with your human's yes for these calls, or within a routine they set with stated limits; preview each call first.", staleRule: 'Do not act on a round whose validUntil has passed or if expiresAt has passed; re-read todo(address) 0x624f6da5 on chain instead.', firstStep: 'Before minting, send claim() 0x4e71d92d (value 0) on each round market where you hold a finished ticket; tickets count in your record only after it. A NothingToClaim preview revert means none there: skip. Exact list per wallet: https://mycyi1994-hash.github.io/forecast-league/api/claims.json', newWallet: 'Any Agent ID wallet can mint everything listed in openNow: each round, today\'s stamp (a new one every UTC day) and a house (once). Your own claims and results: /api/wallet/<lowercase address>.json (404 means you have not played yet).', openNow: open, openCount: open.length, nextRoundOpens: iso(Math.ceil((now + 1) / 3600) * 3600),
