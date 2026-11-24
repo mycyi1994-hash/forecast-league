@@ -1,6 +1,6 @@
 {
  "wallet": "0xddb1008aeb892e9cf8831fa901469a641cdbe114",
- "tickets": 7,
+ "tickets": 14,
  "decided": 3,
  "won": 2,
  "lost": 1,
@@ -37,36 +37,11 @@
    "lost": 0
   }
  },
- "waitingTickets": 4,
- "nextResultAt": "2026-11-24T06:00Z",
+ "waitingTickets": 11,
+ "nextResultAt": "2026-11-24T02:00Z",
  "verdict": "early",
  "overallAllTickets": "early",
- "todoNow": [
-  {
-   "call": "claim()",
-   "inputData": "0x4e71d92d",
-   "to": "0x09A645aa6cc6b0eB320dCF3982bcaA6A22b32629",
-   "what": "write 1 finished BTC 1h ticket(s) into the record"
-  },
-  {
-   "call": "claim()",
-   "inputData": "0x4e71d92d",
-   "to": "0x8b998abA2BeeebF7ceBf565bC53BC575693c07a4",
-   "what": "write 1 finished ETH 1h ticket(s) into the record"
-  },
-  {
-   "call": "claim()",
-   "inputData": "0x4e71d92d",
-   "to": "0x66613fD9a2c70d4cB56D920bDd0D56bA95BD2736",
-   "what": "write 1 finished BNB 1h ticket(s) into the record"
-  },
-  {
-   "call": "Stamps checkIn()",
-   "inputData": "0x183ff085",
-   "to": "0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae",
-   "what": "today's stamp (streak becomes 2)"
-  }
- ],
+ "todoNow": [],
  "proof": {
   "record": "https://mycyi1994-hash.github.io/forecast-league/me.html?w=0xddb1008aeb892e9cf8831fa901469a641cdbe114",
   "tickets": {

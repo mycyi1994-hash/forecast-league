@@ -50,7 +50,7 @@
    "inputData": "0x4e71d92d",
    "args": [],
    "valueWei": "0",
-   "finishedTickets": 81,
+   "finishedTickets": 82,
    "validUntil": "until claimed (a second claim reverts NothingToClaim, which is harmless)",
    "preview": "baw contract-call preview --binanceChainId 56 --from 0xc3895356563af739d1d51d66aa0e4b1a87665f61 --to 0x09A645aa6cc6b0eB320dCF3982bcaA6A22b32629 --value 0 --inputData 0x4e71d92d --json",
    "thenExecute": "baw contract-call execute --requestId <requestId from the preview> --json"
@@ -63,7 +63,7 @@
    "inputData": "0x4e71d92d",
    "args": [],
    "valueWei": "0",
-   "finishedTickets": 81,
+   "finishedTickets": 82,
    "validUntil": "until claimed (a second claim reverts NothingToClaim, which is harmless)",
    "preview": "baw contract-call preview --binanceChainId 56 --from 0xc3895356563af739d1d51d66aa0e4b1a87665f61 --to 0x8b998abA2BeeebF7ceBf565bC53BC575693c07a4 --value 0 --inputData 0x4e71d92d --json",
    "thenExecute": "baw contract-call execute --requestId <requestId from the preview> --json"
@@ -76,7 +76,7 @@
    "inputData": "0x4e71d92d",
    "args": [],
    "valueWei": "0",
-   "finishedTickets": 81,
+   "finishedTickets": 82,
    "validUntil": "until claimed (a second claim reverts NothingToClaim, which is harmless)",
    "preview": "baw contract-call preview --binanceChainId 56 --from 0xc3895356563af739d1d51d66aa0e4b1a87665f61 --to 0x66613fD9a2c70d4cB56D920bDd0D56bA95BD2736 --value 0 --inputData 0x4e71d92d --json",
    "thenExecute": "baw contract-call execute --requestId <requestId from the preview> --json"
@@ -120,29 +120,27 @@
   }
  ],
  "joinedRounds": {
-  "BTC 1h": 498744,
-  "ETH 1h": 498744,
-  "BNB 1h": 498744
+  "BTC 6h": 83124
  },
  "pendingResults": [
   {
    "market": "BTC 6h",
-   "tickets": 1,
-   "resultFinalAt": "2026-11-24T06:00:00Z"
+   "tickets": 2,
+   "resultFinalAt": "2026-11-24T12:00:00Z"
   },
   {
    "market": "BTC 1h",
-   "tickets": 2,
+   "tickets": 1,
    "resultFinalAt": "2026-11-24T02:00:00Z"
   },
   {
    "market": "ETH 1h",
-   "tickets": 2,
+   "tickets": 1,
    "resultFinalAt": "2026-11-24T02:00:00Z"
   },
   {
    "market": "BNB 1h",
-   "tickets": 2,
+   "tickets": 1,
    "resultFinalAt": "2026-11-24T02:00:00Z"
   }
  ],
@@ -159,7 +157,7 @@
   "byMarket": [
    {
     "market": "BTC 6h",
-    "tickets": 15,
+    "tickets": 16,
     "wins": 0,
     "losses": 0,
     "streak": 0,

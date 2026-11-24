@@ -1,7 +1,7 @@
-# Agent ID Mint Desk — 2026-11-24T00:11 UTC
+# Agent ID Mint Desk — 2026-11-24T01:11 UTC
 
-Every Binance-Agent-ID-gated mint the public radar has seen on BNB Chain, simulated from real Agent ID wallets at block 135364639.
-**3677 free and open now** · 878 paid · 722 closed or failing · 5334 checked. Heuristics, not an audit; preview every call.
+Every Binance-Agent-ID-gated mint the public radar has seen on BNB Chain, simulated from real Agent ID wallets at block 135372671.
+**3678 free and open now** · 878 paid · 721 closed or failing · 5334 checked. Heuristics, not an audit; preview every call.
 
 ## Free now, passing every check
 | # | Name | Contract | Call data |
@@ -24,13 +24,13 @@ Every Binance-Agent-ID-gated mint the public radar has seen on BNB Chain, simula
 | 16 | AgentBoard Badge | `0x928979396b22c92449e8deccc544a7d8c4c6fc7b` | `0x183ff085` |
 | 17 | Ostrenne | `0x9feb50ae2dba712a3f121f65f07be8802af39a5e` | `0xa0712d680000000000000000000000000000000000000000000000000000000000000001` |
 | 18 | 代理者卡 | `0xee1749f66ba7e6199084813246852c0f7177b6ce` | `0x4e71d92d0000000000000000000000000000000000000000000000000000000000000001` |
-| 19 | CrumborkAgent | `0x38066af063b6eb0fbdf56e2d38ec265d9a79d996` | `0xa0712d680000000000000000000000000000000000000000000000000000000000000001` |
-| 20 | Forecast League Rounds BNB 1h (desk operator) | `0x66613fd9a2c70d4cb56d920bdd0d56ba95bd2736` | `0x1249c58b` |
-| 21 | 4ever Agent Pass | `0xcc53dfec4289391ac77cba6b483194c483263a75` | `0x1249c58b0000000000000000000000000000000000000000000000000000000000000001` |
-| 22 | Agent Pioneer Badge | `0x77feb51ef3d7d0457d8a94893ae067171c452bf3` | `0x1249c58b` |
-| 23 | Voltrune Rigs | `0x145c5b3ab1268dbf5f86192bce390c9c60076fff` | `0xa0712d680000000000000000000000000000000000000000000000000000000000000001` |
-| 24 | GlorpixAgent | `0xba5cde0ceea8704b8944deb51228ca59a7bd9cf0` | `0xa0712d680000000000000000000000000000000000000000000000000000000000000001` |
-| 25 | Agent Proof Daily Badge | `0xb0e87ef1924bd96082b2d215bb6be846a69a4283` | `0x183ff085` |
+| 19 | Forecast League Badge (desk operator) | `0xf706aeb7e1b6a44139205df3043bf68ccf386918` | `0x4e71d92d` |
+| 20 | CrumborkAgent | `0x38066af063b6eb0fbdf56e2d38ec265d9a79d996` | `0xa0712d680000000000000000000000000000000000000000000000000000000000000001` |
+| 21 | Forecast League Rounds BNB 1h (desk operator) | `0x66613fd9a2c70d4cb56d920bdd0d56ba95bd2736` | `0x1249c58b` |
+| 22 | 4ever Agent Pass | `0xcc53dfec4289391ac77cba6b483194c483263a75` | `0x1249c58b0000000000000000000000000000000000000000000000000000000000000001` |
+| 23 | Agent Pioneer Badge | `0x77feb51ef3d7d0457d8a94893ae067171c452bf3` | `0x1249c58b` |
+| 24 | Voltrune Rigs | `0x145c5b3ab1268dbf5f86192bce390c9c60076fff` | `0xa0712d680000000000000000000000000000000000000000000000000000000000000001` |
+| 25 | GlorpixAgent | `0xba5cde0ceea8704b8944deb51228ca59a7bd9cf0` | `0xa0712d680000000000000000000000000000000000000000000000000000000000000001` |
 
 ## Free now, with warnings
 - Silicomonk `0xb8e692872507c41b091026676b83f66753cc5b85`: has an owner with admin powers

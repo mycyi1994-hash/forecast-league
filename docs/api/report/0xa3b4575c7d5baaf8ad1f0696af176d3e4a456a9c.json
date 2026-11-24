@@ -1,15 +1,15 @@
 {
  "wallet": "0xa3b4575c7d5baaf8ad1f0696af176d3e4a456a9c",
- "tickets": 144,
- "decided": 125,
- "won": 73,
- "lost": 52,
- "hitRate": 0.584,
+ "tickets": 151,
+ "decided": 137,
+ "won": 83,
+ "lost": 54,
+ "hitRate": 0.606,
  "ci95": [
-  0.496,
-  0.667
+  0.522,
+  0.684
  ],
- "currentWinRun": 4,
+ "currentWinRun": 0,
  "picked": {
   "decided": 0,
   "won": 0,
@@ -17,8 +17,8 @@
   "verdict": null
  },
  "assigned": {
-  "decided": 125,
-  "won": 73
+  "decided": 137,
+  "won": 83
  },
  "byMarket": {
   "BTC 6h": {
@@ -26,30 +26,34 @@
    "lost": 3
   },
   "BNB 1h": {
-   "won": 21,
-   "lost": 15
+   "won": 23,
+   "lost": 16
   },
   "ETH 1h": {
-   "won": 20,
+   "won": 23,
    "lost": 16
   },
   "BTC 1h": {
-   "won": 20,
-   "lost": 16
+   "won": 22,
+   "lost": 17
   },
   "BNB 6h": {
-   "won": 4,
+   "won": 5,
    "lost": 1
   },
   "ETH 6h": {
-   "won": 4,
+   "won": 5,
    "lost": 1
+  },
+  "BTC 1d": {
+   "won": 1,
+   "lost": 0
   }
  },
- "waitingTickets": 19,
- "nextResultAt": "2026-11-23T22:00Z",
+ "waitingTickets": 14,
+ "nextResultAt": "2026-11-24T01:00Z",
  "verdict": "no-own-picks",
- "overallAllTickets": "coinflip",
+ "overallAllTickets": "above",
  "todoNow": [
   {
    "call": "claim()",
@@ -73,19 +77,19 @@
    "call": "claim()",
    "inputData": "0x4e71d92d",
    "to": "0x09A645aa6cc6b0eB320dCF3982bcaA6A22b32629",
-   "what": "write 39 finished BTC 1h ticket(s) into the record"
+   "what": "write 40 finished BTC 1h ticket(s) into the record"
   },
   {
    "call": "claim()",
    "inputData": "0x4e71d92d",
    "to": "0x8b998abA2BeeebF7ceBf565bC53BC575693c07a4",
-   "what": "write 39 finished ETH 1h ticket(s) into the record"
+   "what": "write 40 finished ETH 1h ticket(s) into the record"
   },
   {
    "call": "claim()",
    "inputData": "0x4e71d92d",
    "to": "0x66613fD9a2c70d4cB56D920bDd0D56bA95BD2736",
-   "what": "write 39 finished BNB 1h ticket(s) into the record"
+   "what": "write 40 finished BNB 1h ticket(s) into the record"
   },
   {
    "call": "claim()",

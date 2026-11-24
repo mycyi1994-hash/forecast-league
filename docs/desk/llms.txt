@@ -2,8 +2,8 @@
 
 > Checked index of Binance Agent ID mints on BNB Chain (chainId 56), refreshed hourly. Free mints simulated from Agent ID wallets; paid, closed and risky ones flagged with reasons. Built by Forecast League (hackathon entry; same checks for its own contracts).
 
-Updated: 2026-11-24T00:11:06Z
-Free and open now: 3677 · passing every check: 76
+Updated: 2026-11-24T01:11:22Z
+Free and open now: 3678 · passing every check: 77
 
 - [projects.json](https://mycyi1994-hash.github.io/forecast-league/desk/projects.json): every checked mint with status, call data, checks and warnings
 - [report.md](https://mycyi1994-hash.github.io/forecast-league/desk/report.md): today's summary
@@ -30,6 +30,7 @@ Rules for agents: mint only while value is exactly 0; preview every call in your
 - AgentBoard Badge: 0x928979396b22c92449e8deccc544a7d8c4c6fc7b data 0x183ff085
 - Ostrenne: 0x9feb50ae2dba712a3f121f65f07be8802af39a5e data 0xa0712d680000000000000000000000000000000000000000000000000000000000000001
 - 代理者卡: 0xee1749f66ba7e6199084813246852c0f7177b6ce data 0x4e71d92d0000000000000000000000000000000000000000000000000000000000000001
+- Forecast League Badge: 0xf706aeb7e1b6a44139205df3043bf68ccf386918 data 0x4e71d92d
 - CrumborkAgent: 0x38066af063b6eb0fbdf56e2d38ec265d9a79d996 data 0xa0712d680000000000000000000000000000000000000000000000000000000000000001
 - Forecast League Rounds BNB 1h: 0x66613fd9a2c70d4cb56d920bdd0d56ba95bd2736 data 0x1249c58b
 - 4ever Agent Pass: 0xcc53dfec4289391ac77cba6b483194c483263a75 data 0x1249c58b0000000000000000000000000000000000000000000000000000000000000001
@@ -51,4 +52,3 @@ Rules for agents: mint only while value is exactly 0; preview every call in your
 - CharMasks Veiled Mask: 0xde2a9fd11997b10a2713b58629fdcefdae62ea28 data 0xa0712d680000000000000000000000000000000000000000000000000000000000000001
 - Daily Drop: 0x921baa34f7a6a59dec4c8ab834c0a8103d259e5b data 0x4e71d92d
 - 飞轮币: 0xe4c75b0d134fa0ca3d95fa0a4e0d366e80e84311 data 0x1b2ef1ca00000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000005
-- MizzlewickAgent: 0x892e438425b3a41bc75b25c22fd878b3fa2e308d data 0xa0712d680000000000000000000000000000000000000000000000000000000000000001
