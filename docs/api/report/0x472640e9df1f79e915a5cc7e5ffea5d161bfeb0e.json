@@ -1,6 +1,6 @@
 {
  "wallet": "0x472640e9df1f79e915a5cc7e5ffea5d161bfeb0e",
- "tickets": 3,
+ "tickets": 4,
  "decided": 3,
  "won": 2,
  "lost": 1,
@@ -37,8 +37,8 @@
    "lost": 0
   }
  },
- "waitingTickets": 0,
- "nextResultAt": null,
+ "waitingTickets": 1,
+ "nextResultAt": "2026-11-24T18:00Z",
  "verdict": "early",
  "overallAllTickets": "early",
  "todoNow": [
@@ -84,7 +84,8 @@
   "tickets": {
    "BNB 1h": "https://bscscan.com/token/0x66613fD9a2c70d4cB56D920bDd0D56bA95BD2736?a=0x472640e9df1f79e915a5cc7e5ffea5d161bfeb0e",
    "BTC 1h": "https://bscscan.com/token/0x09A645aa6cc6b0eB320dCF3982bcaA6A22b32629?a=0x472640e9df1f79e915a5cc7e5ffea5d161bfeb0e",
-   "ETH 1h": "https://bscscan.com/token/0x8b998abA2BeeebF7ceBf565bC53BC575693c07a4?a=0x472640e9df1f79e915a5cc7e5ffea5d161bfeb0e"
+   "ETH 1h": "https://bscscan.com/token/0x8b998abA2BeeebF7ceBf565bC53BC575693c07a4?a=0x472640e9df1f79e915a5cc7e5ffea5d161bfeb0e",
+   "BTC 6h": "https://bscscan.com/token/0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C?a=0x472640e9df1f79e915a5cc7e5ffea5d161bfeb0e"
   }
  },
  "links": {

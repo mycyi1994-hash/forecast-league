@@ -12,8 +12,8 @@
 - `claim()` `0x4e71d92d` on `0x621B9fEd6FF2f0FC73e26264A401F7d12644A0A1`: write 3 finished ETH 6h ticket(s) into the record
 - `claim()` `0x4e71d92d` on `0xA782Ac207fE33f6120d9c2EF9553A55C47CFbbE9`: write 3 finished BNB 6h ticket(s) into the record
 - `claim()` `0x4e71d92d` on `0x09A645aa6cc6b0eB320dCF3982bcaA6A22b32629`: write 22 finished BTC 1h ticket(s) into the record
-- `claim()` `0x4e71d92d` on `0x8b998abA2BeeebF7ceBf565bC53BC575693c07a4`: write 28 finished ETH 1h ticket(s) into the record
-- `claim()` `0x4e71d92d` on `0x66613fD9a2c70d4cB56D920bDd0D56bA95BD2736`: write 21 finished BNB 1h ticket(s) into the record
+- `claim()` `0x4e71d92d` on `0x8b998abA2BeeebF7ceBf565bC53BC575693c07a4`: write 29 finished ETH 1h ticket(s) into the record
+- `claim()` `0x4e71d92d` on `0x66613fD9a2c70d4cB56D920bDd0D56bA95BD2736`: write 22 finished BNB 1h ticket(s) into the record
 - `claim()` `0x4e71d92d` on `0x9e521add6F67EEe0Fe5c0b8ef32cb4543f7af50E`: write 1 finished BTC 1d ticket(s) into the record
 
 Next result: 2026-11-24 07:00 UTC. Come back then: `claim()` writes it into the record.

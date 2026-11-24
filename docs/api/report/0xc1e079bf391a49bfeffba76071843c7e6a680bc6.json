@@ -1,6 +1,6 @@
 {
  "wallet": "0xc1e079bf391a49bfeffba76071843c7e6a680bc6",
- "tickets": 325,
+ "tickets": 331,
  "decided": 318,
  "won": 149,
  "lost": 169,
@@ -50,7 +50,7 @@
    "lost": 2
   }
  },
- "waitingTickets": 7,
+ "waitingTickets": 13,
  "nextResultAt": "2026-11-24T07:00Z",
  "verdict": "no-own-picks",
  "overallAllTickets": "coinflip",
@@ -89,7 +89,7 @@
    "call": "claim()",
    "inputData": "0x4e71d92d",
    "to": "0x66613fD9a2c70d4cB56D920bDd0D56bA95BD2736",
-   "what": "write 92 finished BNB 1h ticket(s) into the record"
+   "what": "write 93 finished BNB 1h ticket(s) into the record"
   },
   {
    "call": "claim()",
