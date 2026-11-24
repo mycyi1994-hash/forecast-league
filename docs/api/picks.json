@@ -1,61 +1,61 @@
 {
  "name": "Forecast League picks",
- "updated": "2026-11-24T18:11:17Z",
+ "updated": "2026-11-24T19:12:45Z",
  "coveredFromBlock": 134590000,
- "scannedToBlock": 135508590,
+ "scannedToBlock": 135516783,
  "method": "Each ticket is classified by the call that minted it: up() or down() is a side the caller chose, mint() is a side the contract assigned. A ticket minted through another contract counts as picked only if its side differs from the assigned one. The builder wallet is left out.",
  "totals": {
-  "tickets": 7537,
-  "picked": 334,
-  "assigned": 7203,
+  "tickets": 7644,
+  "picked": 346,
+  "assigned": 7298,
   "unknown": 0,
-  "pickedSharePct": 4.4,
-  "wallets": 418,
+  "pickedSharePct": 4.5,
+  "wallets": 420,
   "pickedWallets": 22,
-  "pickedDecided": 285,
-  "pickedWon": 161
+  "pickedDecided": 304,
+  "pickedWon": 172
  },
  "perMarket": [
   {
    "market": "BTC 6h",
-   "tickets": 1143,
-   "picked": 81,
-   "assigned": 1062,
+   "tickets": 1168,
+   "picked": 84,
+   "assigned": 1084,
    "unknown": 0
   },
   {
    "market": "ETH 6h",
-   "tickets": 597,
-   "picked": 63,
-   "assigned": 534,
+   "tickets": 615,
+   "picked": 66,
+   "assigned": 549,
    "unknown": 0
   },
   {
    "market": "BNB 6h",
-   "tickets": 587,
-   "picked": 63,
-   "assigned": 524,
+   "tickets": 605,
+   "picked": 66,
+   "assigned": 539,
    "unknown": 0
   },
   {
    "market": "BTC 1h",
-   "tickets": 1651,
-   "picked": 40,
-   "assigned": 1611,
+   "tickets": 1666,
+   "picked": 41,
+   "assigned": 1625,
    "unknown": 0
   },
   {
    "market": "ETH 1h",
-   "tickets": 1640,
-   "picked": 39,
-   "assigned": 1601,
+   "tickets": 1656,
+   "picked": 40,
+   "assigned": 1616,
    "unknown": 0
   },
   {
    "market": "BNB 1h",
-   "tickets": 1680,
-   "picked": 39,
-   "assigned": 1641,
+   "tickets": 1695,
+   "picked": 40,
+   "assigned": 1655,
    "unknown": 0
   },
   {
@@ -71,33 +71,41 @@
    "wallet": "0xd301d472f2e469a1aafa1af6f214e312f1858873",
    "picked": 143,
    "won": 76,
-   "lost": 57,
-   "waiting": 10,
-   "winRate": 57.1
+   "lost": 62,
+   "waiting": 5,
+   "winRate": 55.1
   },
   {
    "wallet": "0x917a1da59348bb09b40ec1e77ba35b75efcf4210",
-   "picked": 30,
-   "won": 14,
+   "picked": 33,
+   "won": 16,
    "lost": 11,
-   "waiting": 5,
-   "winRate": 56
+   "waiting": 6,
+   "winRate": 59.3
   },
   {
    "wallet": "0x0c0b9afc9028392263dd9f3d3ef8c99bf54c11e7",
-   "picked": 30,
-   "won": 14,
+   "picked": 33,
+   "won": 16,
    "lost": 11,
-   "waiting": 5,
-   "winRate": 56
+   "waiting": 6,
+   "winRate": 59.3
   },
   {
    "wallet": "0xe0df9272b76fa99cf6e3186cbad45d3e9026b937",
    "picked": 30,
-   "won": 14,
+   "won": 16,
    "lost": 11,
-   "waiting": 5,
-   "winRate": 56
+   "waiting": 3,
+   "winRate": 59.3
+  },
+  {
+   "wallet": "0xddb1008aeb892e9cf8831fa901469a641cdbe114",
+   "picked": 32,
+   "won": 12,
+   "lost": 9,
+   "waiting": 11,
+   "winRate": 57.1
   },
   {
    "wallet": "0x33f7a8de5a307413116054286ca4581611f02573",
@@ -106,14 +114,6 @@
    "lost": 7,
    "waiting": 0,
    "winRate": 61.1
-  },
-  {
-   "wallet": "0xddb1008aeb892e9cf8831fa901469a641cdbe114",
-   "picked": 26,
-   "won": 10,
-   "lost": 9,
-   "waiting": 7,
-   "winRate": 52.6
   },
   {
    "wallet": "0x1ec0855d1548bcd4901d3a17d1d8673831193c47",
@@ -129,6 +129,14 @@
    "won": 6,
    "lost": 0,
    "waiting": 0,
+   "winRate": 100
+  },
+  {
+   "wallet": "0x43c5973c95e085299872856d9d953f360da0a59c",
+   "picked": 7,
+   "won": 3,
+   "lost": 0,
+   "waiting": 4,
    "winRate": 100
   },
   {
@@ -154,6 +162,14 @@
    "lost": 0,
    "waiting": 0,
    "winRate": 100
+  },
+  {
+   "wallet": "0x1693dc02a00b57b43fd329e50d97d471ff2cda5c",
+   "picked": 7,
+   "won": 0,
+   "lost": 3,
+   "waiting": 4,
+   "winRate": 0
   },
   {
    "wallet": "0x75fdc45d5e97e6a067578b581d391f1f5a674ad6",
@@ -226,22 +242,6 @@
    "lost": 1,
    "waiting": 0,
    "winRate": 0
-  },
-  {
-   "wallet": "0x43c5973c95e085299872856d9d953f360da0a59c",
-   "picked": 7,
-   "won": 0,
-   "lost": 0,
-   "waiting": 7,
-   "winRate": null
-  },
-  {
-   "wallet": "0x1693dc02a00b57b43fd329e50d97d471ff2cda5c",
-   "picked": 7,
-   "won": 0,
-   "lost": 0,
-   "waiting": 7,
-   "winRate": null
   }
  ],
  "ledger": "https://mycyi1994-hash.github.io/forecast-league/api/picks/ledger.json"

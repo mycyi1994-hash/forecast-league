@@ -1,6 +1,6 @@
 {
  "wallet": "0x34cc8c4cf5fd9d7ee1c71760c27113555ef05c20",
- "tickets": 3,
+ "tickets": 7,
  "decided": 1,
  "won": 0,
  "lost": 1,
@@ -26,11 +26,23 @@
    "lost": 1
   }
  },
- "waitingTickets": 2,
+ "waitingTickets": 6,
  "nextResultAt": "2026-11-24T19:00Z",
  "verdict": "no-own-picks",
  "overallAllTickets": "early",
  "todoNow": [
+  {
+   "call": "claim()",
+   "inputData": "0x4e71d92d",
+   "to": "0x09A645aa6cc6b0eB320dCF3982bcaA6A22b32629",
+   "what": "write 1 finished BTC 1h ticket(s) into the record"
+  },
+  {
+   "call": "claim()",
+   "inputData": "0x4e71d92d",
+   "to": "0x66613fD9a2c70d4cB56D920bDd0D56bA95BD2736",
+   "what": "write 1 finished BNB 1h ticket(s) into the record"
+  },
   {
    "call": "claim()",
    "inputData": "0x4e71d92d",
@@ -44,6 +56,12 @@
    "what": "Houses join()"
   },
   {
+   "call": "Badges claim()",
+   "inputData": "0x4e71d92d",
+   "to": "0xF706Aeb7E1B6A44139205dF3043bf68cCf386918",
+   "what": "badge tier 1 earned"
+  },
+  {
    "call": "Honors claim()",
    "inputData": "0x4e71d92d",
    "to": "0x3e73bC0309c72EA69bD74CaDEC943668291Ca6ed",
@@ -55,7 +73,11 @@
   "tickets": {
    "BTC 1d": "https://bscscan.com/token/0x9e521add6F67EEe0Fe5c0b8ef32cb4543f7af50E?a=0x34cc8c4cf5fd9d7ee1c71760c27113555ef05c20",
    "BNB 1h": "https://bscscan.com/token/0x66613fD9a2c70d4cB56D920bDd0D56bA95BD2736?a=0x34cc8c4cf5fd9d7ee1c71760c27113555ef05c20",
-   "BTC 1h": "https://bscscan.com/token/0x09A645aa6cc6b0eB320dCF3982bcaA6A22b32629?a=0x34cc8c4cf5fd9d7ee1c71760c27113555ef05c20"
+   "BTC 1h": "https://bscscan.com/token/0x09A645aa6cc6b0eB320dCF3982bcaA6A22b32629?a=0x34cc8c4cf5fd9d7ee1c71760c27113555ef05c20",
+   "ETH 1h": "https://bscscan.com/token/0x8b998abA2BeeebF7ceBf565bC53BC575693c07a4?a=0x34cc8c4cf5fd9d7ee1c71760c27113555ef05c20",
+   "BTC 6h": "https://bscscan.com/token/0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C?a=0x34cc8c4cf5fd9d7ee1c71760c27113555ef05c20",
+   "ETH 6h": "https://bscscan.com/token/0x621B9fEd6FF2f0FC73e26264A401F7d12644A0A1?a=0x34cc8c4cf5fd9d7ee1c71760c27113555ef05c20",
+   "BNB 6h": "https://bscscan.com/token/0xA782Ac207fE33f6120d9c2EF9553A55C47CFbbE9?a=0x34cc8c4cf5fd9d7ee1c71760c27113555ef05c20"
   }
  },
  "links": {

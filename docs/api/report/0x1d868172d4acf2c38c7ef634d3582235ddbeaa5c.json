@@ -1,15 +1,15 @@
 {
  "wallet": "0x1d868172d4acf2c38c7ef634d3582235ddbeaa5c",
- "tickets": 365,
- "decided": 348,
- "won": 155,
- "lost": 193,
- "hitRate": 0.445,
+ "tickets": 371,
+ "decided": 359,
+ "won": 163,
+ "lost": 196,
+ "hitRate": 0.454,
  "ci95": [
-  0.394,
-  0.498
+  0.403,
+  0.506
  ],
- "currentWinRun": 1,
+ "currentWinRun": 6,
  "picked": {
   "decided": 0,
   "won": 0,
@@ -17,8 +17,8 @@
   "verdict": null
  },
  "assigned": {
-  "decided": 348,
-  "won": 155
+  "decided": 359,
+  "won": 163
  },
  "byMarket": {
   "BTC 6h": {
@@ -26,23 +26,23 @@
    "lost": 9
   },
   "BNB 1h": {
-   "won": 46,
-   "lost": 54
+   "won": 48,
+   "lost": 55
   },
   "BTC 1h": {
-   "won": 47,
-   "lost": 51
+   "won": 49,
+   "lost": 52
   },
   "ETH 1h": {
-   "won": 37,
-   "lost": 60
+   "won": 39,
+   "lost": 61
   },
   "ETH 6h": {
-   "won": 7,
+   "won": 8,
    "lost": 9
   },
   "BNB 6h": {
-   "won": 7,
+   "won": 8,
    "lost": 9
   },
   "BTC 1d": {
@@ -50,10 +50,10 @@
    "lost": 1
   }
  },
- "waitingTickets": 17,
- "nextResultAt": "2026-11-24T16:00Z",
+ "waitingTickets": 12,
+ "nextResultAt": "2026-11-24T19:00Z",
  "verdict": "no-own-picks",
- "overallAllTickets": "below",
+ "overallAllTickets": "coinflip",
  "todoNow": [
   {
    "call": "claim()",
@@ -77,19 +77,19 @@
    "call": "claim()",
    "inputData": "0x4e71d92d",
    "to": "0x09A645aa6cc6b0eB320dCF3982bcaA6A22b32629",
-   "what": "write 101 finished BTC 1h ticket(s) into the record"
+   "what": "write 102 finished BTC 1h ticket(s) into the record"
   },
   {
    "call": "claim()",
    "inputData": "0x4e71d92d",
    "to": "0x8b998abA2BeeebF7ceBf565bC53BC575693c07a4",
-   "what": "write 100 finished ETH 1h ticket(s) into the record"
+   "what": "write 101 finished ETH 1h ticket(s) into the record"
   },
   {
    "call": "claim()",
    "inputData": "0x4e71d92d",
    "to": "0x66613fD9a2c70d4cB56D920bDd0D56bA95BD2736",
-   "what": "write 103 finished BNB 1h ticket(s) into the record"
+   "what": "write 104 finished BNB 1h ticket(s) into the record"
   },
   {
    "call": "claim()",

@@ -1,6 +1,6 @@
 {
  "name": "Forecast League builder agent: review of its real picks (BTC 6h)",
- "updated": "2026-11-24T18:11:33Z",
+ "updated": "2026-11-24T19:12:58Z",
  "before": {
   "picks": 8,
   "decided": 8,
@@ -15,7 +15,7 @@
   "how": "picked by a written reason each time, no fixed rule, no logged probability"
  },
  "after": {
-  "picks": 4,
+  "picks": 5,
   "decided": 3,
   "right": 2,
   "hitRate": 0.6667,
@@ -29,24 +29,24 @@
  },
  "shadowAllMarkets": {
   "rule": {
-   "decided": 79,
-   "right": 37,
-   "hitRate": 0.4684,
+   "decided": 90,
+   "right": 45,
+   "hitRate": 0.5,
    "ci95": [
-    0.3624,
-    0.5773
+    0.3988,
+    0.6012
    ],
-   "brier": 0.2517
+   "brier": 0.2504
   },
   "model": {
-   "decided": 73,
-   "right": 29,
-   "hitRate": 0.3973,
+   "decided": 82,
+   "right": 32,
+   "hitRate": 0.3902,
    "ci95": [
-    0.2929,
-    0.5119
+    0.2918,
+    0.4985
    ],
-   "brier": 0.2551
+   "brier": 0.2546
   },
   "crowd": {
    "decided": 3,
@@ -179,6 +179,16 @@
    "model": "fl-logit-1",
    "result": null,
    "reason": "Rule follow the last 6h window: BTC moved -0.34% over the last full 6h window, so down; backtests found no reliable edge at 6h, so this is a transparent default, not a prediction I trust."
+  },
+  {
+   "round": 83127,
+   "utc": "2026-11-24T18:46:53Z",
+   "side": "down",
+   "prob": 0.48,
+   "rule": "follow the last 6h window",
+   "model": "fl-logit-1",
+   "result": null,
+   "reason": "Rule follow the last 6h window: BTC moved -0.52% over the last full 6h window, so down; backtests found no reliable edge at 6h, so this is a transparent default, not a prediction I trust."
   }
  ]
 }
