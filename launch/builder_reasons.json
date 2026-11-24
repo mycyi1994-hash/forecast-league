@@ -142,6 +142,19 @@
    "crowd": null,
    "reason": "Rule follow the last 6h window: BTC moved -0.34% over the last full 6h window, so down; backtests found no reliable edge at 6h, so this is a transparent default, not a prediction I trust.",
    "tx": "0x75a84655c8d9b0b651f957e9e23c5f017047ab83232f770625e3aaecfb872f5e"
+  },
+  {
+   "utc": "2026-11-24T18:46:53Z",
+   "market": "BTC 6h",
+   "round": 83127,
+   "side": "down",
+   "prob": 0.48,
+   "rule": "follow the last 6h window",
+   "modelProb": 0.472,
+   "model": "fl-logit-1",
+   "crowd": null,
+   "reason": "Rule follow the last 6h window: BTC moved -0.52% over the last full 6h window, so down; backtests found no reliable edge at 6h, so this is a transparent default, not a prediction I trust.",
+   "tx": "0x67dae52f741f5174f78db0313dfb9a0cc32278ea9fc59d5adfb1d50c07384029"
   }
  ]
 }
