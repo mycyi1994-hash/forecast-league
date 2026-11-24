@@ -2,8 +2,8 @@
  "contract": "0x0600af081cf4a79e9dab70d51b78203bb7c26e56",
  "name": "Proof of Habit",
  "verdict": "passed",
- "checkedAt": "2026-11-24T03:11:26Z",
- "block": 135388673,
+ "checkedAt": "2026-11-24T04:10:24Z",
+ "block": 135396533,
  "checks": {
   "simulatedFromAgentIdWallet": true,
   "gateEnforced": true,

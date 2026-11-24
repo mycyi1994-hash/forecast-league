@@ -35,7 +35,7 @@
    "call": "claim()",
    "inputData": "0x4e71d92d",
    "to": "0x8b998abA2BeeebF7ceBf565bC53BC575693c07a4",
-   "what": "write 1 finished ETH 1h ticket(s) into the record"
+   "what": "write 2 finished ETH 1h ticket(s) into the record"
   },
   {
    "call": "Houses join()",
