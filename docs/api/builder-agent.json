@@ -1,7 +1,7 @@
 {
  "name": "Forecast League: the builder's own agent",
- "updated": "2026-11-24T00:47:16Z",
- "block": 135369459,
+ "updated": "2026-11-24T06:47:45Z",
+ "block": 135417507,
  "label": "The builder's own agent. Excluded from all usage numbers. An example, not evidence of adoption.",
  "wallet": "0x2a2f48145780639dbd91e748df157f35283165da",
  "handle": "dopaminekr",
@@ -11,9 +11,9 @@
  "method": "Ticket ids from balanceOf and tokenOfOwnerByIndex on each of the 7 markets; ticket(id) for side and status; resultOf(round) for the settled prices. Picked or assigned from api/picks/ledger.json (the 4-byte selector of each mint transaction: up()/down() picked, mint() assigned); a ticket not yet in the ledger is read from its own transaction. Daily forecasts from LeagueCore.submissionOf, scores worked out from Scorer.roundOf with the Scorer formula. Nothing is left out.",
  "summary": {
   "all": {
-   "tickets": 24,
+   "tickets": 25,
    "won": 7,
-   "lost": 15,
+   "lost": 16,
    "push": 0,
    "void": 0,
    "waiting": 2
@@ -21,23 +21,23 @@
   "picked": {
    "tickets": 16,
    "won": 5,
-   "lost": 9,
+   "lost": 10,
    "push": 0,
    "void": 0,
-   "waiting": 2
+   "waiting": 1
   },
   "assigned": {
-   "tickets": 8,
+   "tickets": 9,
    "won": 2,
    "lost": 6,
    "push": 0,
    "void": 0,
-   "waiting": 0
+   "waiting": 1
   },
   "routine": {
-   "tickets": 17,
+   "tickets": 18,
    "won": 6,
-   "lost": 9,
+   "lost": 10,
    "push": 0,
    "void": 0,
    "waiting": 2
@@ -46,10 +46,10 @@
  "recordOf": [
   {
    "market": "BTC 6h",
-   "tickets": 17,
+   "tickets": 18,
    "wins": 6,
-   "losses": 9,
-   "streak": 2,
+   "losses": 10,
+   "streak": 0,
    "bestStreak": 2,
    "unclaimed": 2
   },
@@ -563,10 +563,10 @@
    "howSource": "api/picks/ledger.json",
    "tx": "0xffbdc44f96dbdd5b02396d0ed590b39676c0cd7a2df6c854b5ad99057650af02",
    "inRoutine": true,
-   "status": "live",
-   "outcome": null,
-   "lockPrice": null,
-   "resultPrice": null,
+   "status": "lost",
+   "outcome": "down",
+   "lockPrice": 61200.36,
+   "resultPrice": 60543.19969734,
    "reason": "Rule follow the last 6h window: BTC moved +0.40% over the last full 6h window, so up; backtests found no reliable edge at 6h, so this is a transparent default, not a prediction I trust."
   },
   {
@@ -578,8 +578,28 @@
    "lockAt": "2026-11-24T06:00:00Z",
    "resultAt": "2026-11-24T12:00:00Z",
    "side": "down",
-   "how": "picked-indirect",
+   "how": "down",
    "picked": true,
+   "howSource": "api/picks/ledger.json",
+   "tx": "0xab63fbf89cc59e9c44ecc475663dec376e5a7a9c69a253e975e6c1f6264c4bb2",
+   "inRoutine": true,
+   "status": "live",
+   "outcome": null,
+   "lockPrice": null,
+   "resultPrice": null,
+   "reason": "Rule follow the last 6h window: BTC moved -0.65% over the last full 6h window, so down; backtests found no reliable edge at 6h, so this is a transparent default, not a prediction I trust."
+  },
+  {
+   "market": "BTC 6h",
+   "contract": "0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C",
+   "ticket": 1084,
+   "round": 83125,
+   "opensAt": "2026-11-24T06:00:00Z",
+   "lockAt": "2026-11-24T12:00:00Z",
+   "resultAt": "2026-11-24T18:00:00Z",
+   "side": "down",
+   "how": "unknown",
+   "picked": false,
    "howSource": "side compared with assignedSide()",
    "tx": null,
    "inRoutine": true,
@@ -587,16 +607,16 @@
    "outcome": null,
    "lockPrice": null,
    "resultPrice": null,
-   "reason": "Rule follow the last 6h window: BTC moved -0.65% over the last full 6h window, so down; backtests found no reliable edge at 6h, so this is a transparent default, not a prediction I trust."
+   "reason": "Rule follow the last 6h window: BTC moved -1.05% over the last full 6h window, so down; backtests found no reliable edge at 6h, so this is a transparent default, not a prediction I trust."
   }
  ],
  "forecasts": {
   "submissions": 5,
   "scorer": {
-   "epochs": 4,
-   "forecasts": 12,
-   "wins": 2,
-   "total": -833
+   "epochs": 5,
+   "forecasts": 15,
+   "wins": 3,
+   "total": -1018
   },
   "horizonSeconds": 21600,
   "days": [
@@ -733,32 +753,32 @@
     "submittedAt": "2026-11-23T00:47:56Z",
     "lockAt": "2026-11-24T00:00:00Z",
     "targetAt": "2026-11-24T06:00:00Z",
-    "scoredOnChain": false,
+    "scoredOnChain": true,
     "pairs": [
      {
       "pair": "BTC",
       "forecast": 61100,
-      "lockPrice": null,
-      "targetPrice": null,
-      "score": null
+      "lockPrice": 61200.36,
+      "targetPrice": 60543.19969734,
+      "score": 15
      },
      {
       "pair": "ETH",
       "forecast": 1715,
-      "lockPrice": null,
-      "targetPrice": null,
-      "score": null
+      "lockPrice": 1708.2193,
+      "targetPrice": 1703.6653,
+      "score": -100
      },
      {
       "pair": "BNB",
       "forecast": 558.5,
-      "lockPrice": null,
-      "targetPrice": null,
-      "score": null
+      "lockPrice": 556.02551231,
+      "targetPrice": 554.26984049,
+      "score": -100
      }
     ],
-    "total": null,
-    "status": "waiting"
+    "total": -185,
+    "status": "scored"
    }
   ]
  },
@@ -878,6 +898,19 @@
    "crowd": null,
    "reason": "Rule follow the last 6h window: BTC moved -0.65% over the last full 6h window, so down; backtests found no reliable edge at 6h, so this is a transparent default, not a prediction I trust.",
    "tx": "0xab63fbf89cc59e9c44ecc475663dec376e5a7a9c69a253e975e6c1f6264c4bb2"
+  },
+  {
+   "utc": "2026-11-24T06:47:45Z",
+   "market": "BTC 6h",
+   "round": 83125,
+   "side": "down",
+   "prob": 0.48,
+   "rule": "follow the last 6h window",
+   "modelProb": 0.5196,
+   "model": "fl-logit-1",
+   "crowd": null,
+   "reason": "Rule follow the last 6h window: BTC moved -1.05% over the last full 6h window, so down; backtests found no reliable edge at 6h, so this is a transparent default, not a prediction I trust.",
+   "tx": "0x16d6c7187999053c11a4f7136fe2af49f3add58875536d806d6d061d06dceb2f"
   }
  ]
 }
