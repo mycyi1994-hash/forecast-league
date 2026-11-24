@@ -82,18 +82,6 @@
    "thenExecute": "baw contract-call execute --requestId <requestId from the preview> --json"
   },
   {
-   "type": "checkIn",
-   "contract": "0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae",
-   "method": "checkIn()",
-   "inputData": "0x183ff085",
-   "args": [],
-   "valueWei": "0",
-   "why": "today's stamp (streak becomes 1)",
-   "validUntil": "until 00:00 UTC; a new one opens every UTC day",
-   "preview": "baw contract-call preview --binanceChainId 56 --from 0x80016477633efec97bcb9eb535ede807430bc043 --to 0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae --value 0 --inputData 0x183ff085 --json",
-   "thenExecute": "baw contract-call execute --requestId <requestId from the preview> --json"
-  },
-  {
    "type": "join",
    "contract": "0x8433AD00601C57cE9F144b20A32aE478EEe831AE",
    "method": "join()",

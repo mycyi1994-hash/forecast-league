@@ -2,8 +2,8 @@
  "contract": "0x30b6b8c67ab2239185536ba3766e8cb05bfd18ae",
  "name": "Forecast League Stamp",
  "verdict": "passed",
- "checkedAt": "2026-11-24T16:13:52Z",
- "block": 135492943,
+ "checkedAt": "2026-11-24T17:12:13Z",
+ "block": 135500722,
  "checks": {
   "simulatedFromAgentIdWallet": true,
   "gateEnforced": true,
