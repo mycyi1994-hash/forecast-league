@@ -34,6 +34,12 @@
   {
    "call": "claim()",
    "inputData": "0x4e71d92d",
+   "to": "0x621B9fEd6FF2f0FC73e26264A401F7d12644A0A1",
+   "what": "write 1 finished ETH 6h ticket(s) into the record"
+  },
+  {
+   "call": "claim()",
+   "inputData": "0x4e71d92d",
    "to": "0x8b998abA2BeeebF7ceBf565bC53BC575693c07a4",
    "what": "write 1 finished ETH 1h ticket(s) into the record"
   },

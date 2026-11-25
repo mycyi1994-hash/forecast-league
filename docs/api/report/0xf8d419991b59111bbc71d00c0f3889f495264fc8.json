@@ -1,6 +1,6 @@
 {
  "wallet": "0xf8d419991b59111bbc71d00c0f3889f495264fc8",
- "tickets": 2,
+ "tickets": 3,
  "decided": 0,
  "won": 0,
  "lost": 0,
@@ -18,11 +18,17 @@
   "won": 0
  },
  "byMarket": {},
- "waitingTickets": 2,
+ "waitingTickets": 3,
  "nextResultAt": "2026-11-25T06:00Z",
  "verdict": "no-own-picks",
  "overallAllTickets": "early",
  "todoNow": [
+  {
+   "call": "claim()",
+   "inputData": "0x4e71d92d",
+   "to": "0x621B9fEd6FF2f0FC73e26264A401F7d12644A0A1",
+   "what": "write 1 finished ETH 6h ticket(s) into the record"
+  },
   {
    "call": "Stamps checkIn()",
    "inputData": "0x183ff085",
@@ -34,6 +40,12 @@
    "inputData": "0xb688a363",
    "to": "0x8433AD00601C57cE9F144b20A32aE478EEe831AE",
    "what": "Houses join()"
+  },
+  {
+   "call": "Badges claim()",
+   "inputData": "0x4e71d92d",
+   "to": "0xF706Aeb7E1B6A44139205dF3043bf68cCf386918",
+   "what": "badge tier 1 earned"
   },
   {
    "call": "Honors claim()",

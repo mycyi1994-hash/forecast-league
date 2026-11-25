@@ -1,18 +1,18 @@
 {
  "name": "Forecast League stamps and Stamp Week",
- "updated": "2026-11-25T05:10:41Z",
+ "updated": "2026-11-25T06:10:35Z",
  "stampWeek": {
   "from": "2026-11-24",
   "to": "2026-11-30",
   "utcDays": 7,
   "dayOfWeek": 2,
   "how": "One stamp per UTC day: mint() 0x1249c58b (or checkIn() 0x183ff085) on Stamps 0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae, value 0, Agent ID wallets only. Stamp all seven days and your run reads 7 on chain. No prize, no reward: the run is the record.",
-  "onTrackForSeven": 38
+  "onTrackForSeven": 39
  },
- "stampsTotal": 363,
- "wallets": 269,
- "stampedToday": 54,
- "canStampToday": 729,
+ "stampsTotal": 365,
+ "wallets": 270,
+ "stampedToday": 56,
+ "canStampToday": 728,
  "topRuns": [
   {
    "wallet": "0x61d5353152b2573786bf640e289a12e00c7c3df1",
@@ -199,7 +199,7 @@
    "stampedToday": true
   },
   {
-   "wallet": "0x793280ea8f4d80bb697aa88baef7b478424b2496",
+   "wallet": "0x59bb068f645da09e6fbd82aa906b995a03c2bf59",
    "stamps": 2,
    "streak": 2,
    "bestStreak": 2,
@@ -207,12 +207,12 @@
    "stampedToday": true
   },
   {
-   "wallet": "0x7c5c09a34fa824725916c479ff0dfa3c874b830b",
+   "wallet": "0x793280ea8f4d80bb697aa88baef7b478424b2496",
    "stamps": 2,
    "streak": 2,
    "bestStreak": 2,
-   "lastDay": 20781,
-   "stampedToday": false
+   "lastDay": 20782,
+   "stampedToday": true
   }
  ],
  "method": "Stamps.recordOf(address) for every wallet in api/wallet/index.json (builder left out). A run counts while the wallet has stamped today or yesterday."
