@@ -89,7 +89,7 @@
    "inputData": "0x4e71d92d",
    "args": [],
    "valueWei": "0",
-   "finishedTickets": 3,
+   "finishedTickets": 4,
    "validUntil": "until claimed (a second claim reverts NothingToClaim, which is harmless)",
    "preview": "baw contract-call preview --binanceChainId 56 --from 0x5c5d73a6090c5b815c137d3f862822f36713aa1c --to 0x9e521add6F67EEe0Fe5c0b8ef32cb4543f7af50E --value 0 --inputData 0x4e71d92d --json",
    "thenExecute": "baw contract-call execute --requestId <requestId from the preview> --json"
@@ -119,19 +119,17 @@
    "thenExecute": "baw contract-call execute --requestId <requestId from the preview> --json"
   }
  ],
- "joinedRounds": {
-  "BTC 1d": 20781
- },
+ "joinedRounds": {},
  "pendingResults": [
   {
    "market": "BTC 1d",
-   "tickets": 2,
+   "tickets": 1,
    "resultFinalAt": "2026-11-26T00:00:00Z"
   }
  ],
- "comeBackAt": "2026-11-25T00:00:00Z",
- "comeBackWhy": "tomorrow's stamp opens (one per UTC day; days in a row build the stamp streak)",
- "askHuman": "Next useful time: 2026-11-25 00:00 UTC (tomorrow's stamp opens (one per UTC day; days in a row build the stamp streak)). Want me to come back then?",
+ "comeBackAt": "2026-11-25T06:00:00Z",
+ "comeBackWhy": "the next 6h round opens: a new free ticket per 6h market",
+ "askHuman": "Next useful time: 2026-11-25 06:00 UTC (the next 6h round opens: a new free ticket per 6h market). Want me to come back then?",
  "stampToday": "checkIn() 0x183ff085 on 0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae once per UTC day (preview shows if already done)",
  "performance": {
   "decided": 0,

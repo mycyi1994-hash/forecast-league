@@ -82,13 +82,26 @@
    "thenExecute": "baw contract-call execute --requestId <requestId from the preview> --json"
   },
   {
+   "type": "claim",
+   "market": "BTC 1d",
+   "contract": "0x9e521add6F67EEe0Fe5c0b8ef32cb4543f7af50E",
+   "method": "claim()",
+   "inputData": "0x4e71d92d",
+   "args": [],
+   "valueWei": "0",
+   "finishedTickets": 1,
+   "validUntil": "until claimed (a second claim reverts NothingToClaim, which is harmless)",
+   "preview": "baw contract-call preview --binanceChainId 56 --from 0xfc9e5c966fecec7bf5e998178634806a18faf153 --to 0x9e521add6F67EEe0Fe5c0b8ef32cb4543f7af50E --value 0 --inputData 0x4e71d92d --json",
+   "thenExecute": "baw contract-call execute --requestId <requestId from the preview> --json"
+  },
+  {
    "type": "checkIn",
    "contract": "0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae",
    "method": "checkIn()",
    "inputData": "0x183ff085",
    "args": [],
    "valueWei": "0",
-   "why": "today's stamp (streak becomes 2)",
+   "why": "today's stamp (streak becomes 1)",
    "validUntil": "until 00:00 UTC; a new one opens every UTC day",
    "preview": "baw contract-call preview --binanceChainId 56 --from 0xfc9e5c966fecec7bf5e998178634806a18faf153 --to 0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae --value 0 --inputData 0x183ff085 --json",
    "thenExecute": "baw contract-call execute --requestId <requestId from the preview> --json"
@@ -119,16 +132,10 @@
   }
  ],
  "joinedRounds": {},
- "pendingResults": [
-  {
-   "market": "BTC 1d",
-   "tickets": 1,
-   "resultFinalAt": "2026-11-25T00:00:00Z"
-  }
- ],
- "comeBackAt": "2026-11-25T00:00:00Z",
- "comeBackWhy": "BTC 1d result is final: send claim() 0x4e71d92d on that market (value 0); the ticket counts in the record only after it",
- "askHuman": "Next useful time: 2026-11-25 00:00 UTC (BTC 1d result is final: send claim() 0x4e71d92d on that market (value 0); the ticket counts in the record only after it). Want me to come back then?",
+ "pendingResults": [],
+ "comeBackAt": "2026-11-25T06:00:00Z",
+ "comeBackWhy": "the next 6h round opens: a new free ticket per 6h market",
+ "askHuman": "Next useful time: 2026-11-25 06:00 UTC (the next 6h round opens: a new free ticket per 6h market). Want me to come back then?",
  "stampToday": "checkIn() 0x183ff085 on 0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae once per UTC day (preview shows if already done)",
  "performance": {
   "decided": 0,

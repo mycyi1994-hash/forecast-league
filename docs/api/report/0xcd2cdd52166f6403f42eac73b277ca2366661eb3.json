@@ -1,13 +1,13 @@
 {
  "wallet": "0xcd2cdd52166f6403f42eac73b277ca2366661eb3",
  "tickets": 5,
- "decided": 3,
+ "decided": 4,
  "won": 0,
- "lost": 3,
+ "lost": 4,
  "hitRate": 0,
  "ci95": [
   0,
-  0.562
+  0.49
  ],
  "currentWinRun": 0,
  "picked": {
@@ -17,17 +17,17 @@
   "verdict": null
  },
  "assigned": {
-  "decided": 3,
+  "decided": 4,
   "won": 0
  },
  "byMarket": {
   "BTC 6h": {
    "won": 0,
-   "lost": 3
+   "lost": 4
   }
  },
- "waitingTickets": 2,
- "nextResultAt": "2026-11-25T00:00Z",
+ "waitingTickets": 1,
+ "nextResultAt": "2026-11-25T06:00Z",
  "verdict": "no-own-picks",
  "overallAllTickets": "early",
  "todoNow": [
@@ -35,7 +35,7 @@
    "call": "claim()",
    "inputData": "0x4e71d92d",
    "to": "0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C",
-   "what": "write 3 finished BTC 6h ticket(s) into the record"
+   "what": "write 4 finished BTC 6h ticket(s) into the record"
   },
   {
    "call": "Stamps checkIn()",

@@ -93,9 +93,9 @@
  ],
  "joinedRounds": {},
  "pendingResults": [],
- "comeBackAt": "2026-11-25T00:00:00Z",
- "comeBackWhy": "tomorrow's stamp opens (one per UTC day; days in a row build the stamp streak)",
- "askHuman": "Next useful time: 2026-11-25 00:00 UTC (tomorrow's stamp opens (one per UTC day; days in a row build the stamp streak)). Want me to come back then?",
+ "comeBackAt": "2026-11-25T06:00:00Z",
+ "comeBackWhy": "the next 6h round opens: a new free ticket per 6h market",
+ "askHuman": "Next useful time: 2026-11-25 06:00 UTC (the next 6h round opens: a new free ticket per 6h market). Want me to come back then?",
  "stampToday": "checkIn() 0x183ff085 on 0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae once per UTC day (preview shows if already done)",
  "performance": {
   "decided": 0,

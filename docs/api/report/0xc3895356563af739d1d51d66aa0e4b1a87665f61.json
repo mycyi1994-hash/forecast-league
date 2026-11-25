@@ -1,13 +1,13 @@
 {
  "wallet": "0xc3895356563af739d1d51d66aa0e4b1a87665f61",
  "tickets": 342,
- "decided": 331,
+ "decided": 335,
  "won": 176,
- "lost": 155,
- "hitRate": 0.532,
+ "lost": 159,
+ "hitRate": 0.525,
  "ci95": [
-  0.478,
-  0.585
+  0.472,
+  0.578
  ],
  "currentWinRun": 0,
  "picked": {
@@ -17,25 +17,25 @@
   "verdict": null
  },
  "assigned": {
-  "decided": 331,
+  "decided": 335,
   "won": 176
  },
  "byMarket": {
   "BTC 1h": {
    "won": 55,
-   "lost": 48
+   "lost": 49
   },
   "ETH 1h": {
    "won": 55,
-   "lost": 48
+   "lost": 49
   },
   "BNB 1h": {
    "won": 54,
-   "lost": 49
+   "lost": 50
   },
   "BTC 6h": {
    "won": 9,
-   "lost": 8
+   "lost": 9
   },
   "ETH 6h": {
    "won": 1,
@@ -50,8 +50,8 @@
    "lost": 0
   }
  },
- "waitingTickets": 11,
- "nextResultAt": "2026-11-24T23:00Z",
+ "waitingTickets": 7,
+ "nextResultAt": "2026-11-25T00:00Z",
  "verdict": "no-own-picks",
  "overallAllTickets": "coinflip",
  "todoNow": [
@@ -59,7 +59,7 @@
    "call": "claim()",
    "inputData": "0x4e71d92d",
    "to": "0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C",
-   "what": "write 17 finished BTC 6h ticket(s) into the record"
+   "what": "write 18 finished BTC 6h ticket(s) into the record"
   },
   {
    "call": "claim()",
@@ -77,19 +77,19 @@
    "call": "claim()",
    "inputData": "0x4e71d92d",
    "to": "0x09A645aa6cc6b0eB320dCF3982bcaA6A22b32629",
-   "what": "write 104 finished BTC 1h ticket(s) into the record"
+   "what": "write 105 finished BTC 1h ticket(s) into the record"
   },
   {
    "call": "claim()",
    "inputData": "0x4e71d92d",
    "to": "0x8b998abA2BeeebF7ceBf565bC53BC575693c07a4",
-   "what": "write 104 finished ETH 1h ticket(s) into the record"
+   "what": "write 105 finished ETH 1h ticket(s) into the record"
   },
   {
    "call": "claim()",
    "inputData": "0x4e71d92d",
    "to": "0x66613fD9a2c70d4cB56D920bDd0D56bA95BD2736",
-   "what": "write 104 finished BNB 1h ticket(s) into the record"
+   "what": "write 105 finished BNB 1h ticket(s) into the record"
   },
   {
    "call": "claim()",
