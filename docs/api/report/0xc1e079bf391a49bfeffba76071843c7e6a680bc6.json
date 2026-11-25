@@ -1,13 +1,13 @@
 {
  "wallet": "0xc1e079bf391a49bfeffba76071843c7e6a680bc6",
  "tickets": 393,
- "decided": 388,
+ "decided": 390,
  "won": 179,
- "lost": 209,
- "hitRate": 0.461,
+ "lost": 211,
+ "hitRate": 0.459,
  "ci95": [
-  0.412,
-  0.511
+  0.41,
+  0.509
  ],
  "currentWinRun": 0,
  "picked": {
@@ -17,7 +17,7 @@
   "verdict": null
  },
  "assigned": {
-  "decided": 388,
+  "decided": 390,
   "won": 179
  },
  "byMarket": {
@@ -39,19 +39,19 @@
   },
   "ETH 6h": {
    "won": 6,
-   "lost": 12
+   "lost": 13
   },
   "BNB 6h": {
    "won": 6,
-   "lost": 12
+   "lost": 13
   },
   "BTC 1d": {
    "won": 1,
    "lost": 2
   }
  },
- "waitingTickets": 5,
- "nextResultAt": "2026-11-25T06:00Z",
+ "waitingTickets": 3,
+ "nextResultAt": "2026-11-25T12:00Z",
  "verdict": "no-own-picks",
  "overallAllTickets": "coinflip",
  "todoNow": [

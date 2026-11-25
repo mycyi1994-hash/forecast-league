@@ -1,15 +1,15 @@
 {
  "wallet": "0x5ac28eef3f4d6e01f2703576c7e98fe66b4cde61",
  "tickets": 6,
- "decided": 3,
+ "decided": 4,
  "won": 3,
- "lost": 0,
- "hitRate": 1,
+ "lost": 1,
+ "hitRate": 0.75,
  "ci95": [
-  0.438,
-  1
+  0.301,
+  0.954
  ],
- "currentWinRun": 3,
+ "currentWinRun": 0,
  "picked": {
   "decided": 0,
   "won": 0,
@@ -17,17 +17,17 @@
   "verdict": null
  },
  "assigned": {
-  "decided": 3,
+  "decided": 4,
   "won": 3
  },
  "byMarket": {
   "ETH 1h": {
    "won": 3,
-   "lost": 0
+   "lost": 1
   }
  },
- "waitingTickets": 3,
- "nextResultAt": "2026-11-25T06:00Z",
+ "waitingTickets": 2,
+ "nextResultAt": "2026-11-25T07:00Z",
  "verdict": "no-own-picks",
  "overallAllTickets": "early",
  "todoNow": [
@@ -35,13 +35,7 @@
    "call": "claim()",
    "inputData": "0x4e71d92d",
    "to": "0x8b998abA2BeeebF7ceBf565bC53BC575693c07a4",
-   "what": "write 4 finished ETH 1h ticket(s) into the record"
-  },
-  {
-   "call": "Stamps checkIn()",
-   "inputData": "0x183ff085",
-   "to": "0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae",
-   "what": "today's stamp (streak becomes 1)"
+   "what": "write 5 finished ETH 1h ticket(s) into the record"
   },
   {
    "call": "Houses join()",
