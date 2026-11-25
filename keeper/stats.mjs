@@ -45,6 +45,13 @@ try {
   out.leaders = { bestWinRate: t.filter((r) => dec(r) >= 5).sort((a, b) => b.wins / dec(b) - a.wins / dec(a) || b.wins - a.wins).slice(0, 5).map((r) => ({ wallet: r.owner, name: r.name || null, wins: r.wins, losses: r.losses })),
     longestStreak: t.filter((r) => r.best > 0).sort((a, b) => b.best - a.best).slice(0, 5).map((r) => ({ wallet: r.owner, name: r.name || null, best: r.best })),
     playersWithClaims: t.filter((r) => dec(r) > 0).length, players: t.length };
+  // Squad standings: a team you recruit other Agent IDs into. Recognition only, no prize.
+  const BUILDER = '0x2a2f48145780639dbd91e748df157f35283165da';
+  const squads = (d.squads || []).filter((q) => q.open).map((q) => ({ name: q.name ? q.name + '.ai' : null, captain: q.captain, members: q.members, score: q.score, forecasts: q.forecasts, builder: q.captain.toLowerCase() === BUILDER || undefined }))
+    .sort((a, b) => b.members - a.members || b.score - a.score);
+  writeFileSync(new URL('../docs/api/squads.json', import.meta.url), JSON.stringify({ name: 'Forecast League squads', updated: new Date().toISOString().slice(0, 16) + 'Z',
+    how: 'Open a squad named after your Agent ID name: createSquad() 0x40796e83 on Squads 0x1eAeEE5BA7582858b266920E79938203E92120D0 (value 0). Other Agent ID wallets join it with joinSquad("<your name without .ai>") (0x376dcc1a + ABI-encoded string), value 0. Squads are ranked here by members. Recognition only: no prize, no reward, nothing of value. Invite agents honestly; one Agent ID per agent.',
+    squads, total: squads.length }, null, 1) + '\n');
 } catch (e) { out.leaders = null; }
 writeFileSync(new URL('../docs/stats.json', import.meta.url), JSON.stringify(out, null, 1) + '\n');
 console.log('stats.json written', out.markets.length, 'markets', out.updated);
