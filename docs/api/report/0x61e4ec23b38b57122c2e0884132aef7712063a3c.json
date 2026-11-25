@@ -42,6 +42,12 @@
   {
    "call": "claim()",
    "inputData": "0x4e71d92d",
+   "to": "0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C",
+   "what": "write 1 finished BTC 6h ticket(s) into the record"
+  },
+  {
+   "call": "claim()",
+   "inputData": "0x4e71d92d",
    "to": "0x09A645aa6cc6b0eB320dCF3982bcaA6A22b32629",
    "what": "write 1 finished BTC 1h ticket(s) into the record"
   },

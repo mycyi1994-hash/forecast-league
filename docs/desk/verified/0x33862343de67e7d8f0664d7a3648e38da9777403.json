@@ -2,8 +2,8 @@
  "contract": "0x33862343de67e7d8f0664d7a3648e38da9777403",
  "name": "Agent Island",
  "verdict": "passed",
- "checkedAt": "2026-11-25T17:11:46Z",
- "block": 135692590,
+ "checkedAt": "2026-11-25T18:11:04Z",
+ "block": 135700494,
  "checks": {
   "simulatedFromAgentIdWallet": true,
   "gateEnforced": true,

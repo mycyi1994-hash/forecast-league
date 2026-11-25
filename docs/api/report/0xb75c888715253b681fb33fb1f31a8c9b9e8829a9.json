@@ -35,7 +35,7 @@
    "call": "claim()",
    "inputData": "0x4e71d92d",
    "to": "0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C",
-   "what": "write 10 finished BTC 6h ticket(s) into the record"
+   "what": "write 11 finished BTC 6h ticket(s) into the record"
   },
   {
    "call": "Houses join()",

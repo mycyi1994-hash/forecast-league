@@ -1,6 +1,6 @@
 {
  "wallet": "0xe56a377705c98fc05042a5c1cf8d45c8177cc452",
- "tickets": 32,
+ "tickets": 33,
  "decided": 31,
  "won": 9,
  "lost": 22,
@@ -50,7 +50,7 @@
    "lost": 1
   }
  },
- "waitingTickets": 1,
+ "waitingTickets": 2,
  "nextResultAt": "2026-11-25T18:00Z",
  "verdict": "no-own-picks",
  "overallAllTickets": "below",
@@ -65,7 +65,7 @@
    "call": "claim()",
    "inputData": "0x4e71d92d",
    "to": "0x621B9fEd6FF2f0FC73e26264A401F7d12644A0A1",
-   "what": "write 4 finished ETH 6h ticket(s) into the record"
+   "what": "write 5 finished ETH 6h ticket(s) into the record"
   },
   {
    "call": "claim()",

@@ -1,6 +1,6 @@
 {
  "wallet": "0x9442453a44033b126efaffc40a5d9ba201224a4c",
- "tickets": 6,
+ "tickets": 7,
  "decided": 5,
  "won": 2,
  "lost": 3,
@@ -33,7 +33,7 @@
    "lost": 1
   }
  },
- "waitingTickets": 1,
+ "waitingTickets": 2,
  "nextResultAt": "2026-11-26T00:00Z",
  "verdict": "early",
  "overallAllTickets": "early",
