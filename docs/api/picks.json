@@ -1,61 +1,61 @@
 {
  "name": "Forecast League picks",
- "updated": "2026-11-25T10:10:57Z",
+ "updated": "2026-11-25T11:10:48Z",
  "coveredFromBlock": 134590000,
- "scannedToBlock": 135636517,
+ "scannedToBlock": 135644494,
  "method": "Each ticket is classified by the call that minted it: up() or down() is a side the caller chose, mint() is a side the contract assigned. A ticket minted through another contract counts as picked only if its side differs from the assigned one. The builder wallet is left out.",
  "totals": {
-  "tickets": 8431,
-  "picked": 404,
-  "assigned": 8027,
+  "tickets": 8459,
+  "picked": 407,
+  "assigned": 8052,
   "unknown": 0,
   "pickedSharePct": 4.8,
   "wallets": 431,
   "pickedWallets": 22,
-  "pickedDecided": 361,
+  "pickedDecided": 364,
   "pickedWon": 206
  },
  "perMarket": [
   {
    "market": "BTC 6h",
-   "tickets": 1255,
+   "tickets": 1256,
    "picked": 97,
-   "assigned": 1158,
+   "assigned": 1159,
    "unknown": 0
   },
   {
    "market": "ETH 6h",
-   "tickets": 673,
+   "tickets": 674,
    "picked": 77,
-   "assigned": 596,
+   "assigned": 597,
    "unknown": 0
   },
   {
    "market": "BNB 6h",
-   "tickets": 654,
+   "tickets": 655,
    "picked": 77,
-   "assigned": 577,
+   "assigned": 578,
    "unknown": 0
   },
   {
    "market": "BTC 1h",
-   "tickets": 1858,
-   "picked": 48,
-   "assigned": 1810,
+   "tickets": 1866,
+   "picked": 49,
+   "assigned": 1817,
    "unknown": 0
   },
   {
    "market": "ETH 1h",
-   "tickets": 1852,
-   "picked": 47,
-   "assigned": 1805,
+   "tickets": 1861,
+   "picked": 48,
+   "assigned": 1813,
    "unknown": 0
   },
   {
    "market": "BNB 1h",
-   "tickets": 1882,
-   "picked": 47,
-   "assigned": 1835,
+   "tickets": 1890,
+   "picked": 48,
+   "assigned": 1842,
    "unknown": 0
   },
   {
@@ -69,11 +69,11 @@
  "board": [
   {
    "wallet": "0xd301d472f2e469a1aafa1af6f214e312f1858873",
-   "picked": 165,
+   "picked": 168,
    "won": 84,
-   "lost": 70,
+   "lost": 73,
    "waiting": 11,
-   "winRate": 54.5
+   "winRate": 53.5
   },
   {
    "wallet": "0x917a1da59348bb09b40ec1e77ba35b75efcf4210",

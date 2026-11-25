@@ -2,8 +2,8 @@
  "contract": "0x8717fc8751b8ebd6832ea145974aa77d86be9ead",
  "name": "WibblezapAgent",
  "verdict": "passed",
- "checkedAt": "2026-11-25T10:11:39Z",
- "block": 135636617,
+ "checkedAt": "2026-11-25T11:11:23Z",
+ "block": 135644577,
  "checks": {
   "simulatedFromAgentIdWallet": true,
   "gateEnforced": true,

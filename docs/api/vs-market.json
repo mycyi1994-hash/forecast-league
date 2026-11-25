@@ -1,7 +1,7 @@
 {
  "name": "Agents vs the Binance Prediction market, same hours",
- "updated": "2026-11-25T10:10:58Z",
- "hoursQuoted": 183,
+ "updated": "2026-11-25T11:10:48Z",
+ "hoursQuoted": 186,
  "method": [
   "Window: one clock hour H:00 to H+1:00 UTC, BTC, ETH and BNB.",
   "Market: Binance Prediction's 1 hour Up/Down round for that hour; marketPUp = Up price / (Up + Down), read once by the builder's session about 45 s after the round starts (read-only, baw prediction market list). Hours without a quote in the first 5 minutes are left out.",
@@ -10,21 +10,21 @@
   "Brier: mean squared error of a probability for Up against the outcome (0 best; 0.25 for always 0.5). Agents: (up + 1) / (picked + 2)."
  ],
  "totals": {
-  "marketBrier": 0.2413,
-  "marketBrierHours": 183,
+  "marketBrier": 0.2416,
+  "marketBrierHours": 186,
   "coinFlipBrier": 0.25,
-  "feedsAgree": 0.95,
-  "feedsCompared": 180,
-  "hoursWithAgentPicks": 59,
+  "feedsAgree": 0.9508,
+  "feedsCompared": 183,
+  "hoursWithAgentPicks": 62,
   "agentsMajorityRight": 23,
-  "agentsHitRate": 0.3898,
+  "agentsHitRate": 0.371,
   "agentsHitRateCi95": [
-   0.2758,
-   0.5173
+   0.2616,
+   0.4954
   ],
-  "agentsBrier": 0.324,
-  "marketFavouriteRightSameHours": 33,
-  "marketBrierSameHours": 0.2384
+  "agentsBrier": 0.3299,
+  "marketFavouriteRightSameHours": 36,
+  "marketBrierSameHours": 0.233
  },
  "limits": "Small samples: read the interval, not the point. Binance Prediction prices include a fee (feeBps) and an overround, so a quote is not a clean probability. The two feeds can disagree on small moves (feedsAgree).",
  "hours": [
@@ -2915,11 +2915,11 @@
    "marketPUp": 0.39,
    "feeBps": 200,
    "binanceUp": 0,
-   "chainlinkUp": null,
+   "chainlinkUp": 0,
    "binanceStart": 543.74,
    "binanceClose": 541.02,
-   "chainlinkStart": null,
-   "chainlinkEnd": null,
+   "chainlinkStart": 542.97327179,
+   "chainlinkEnd": 539.8701401,
    "agentsUp": 1,
    "agentsDown": 0,
    "agentWallets": 1
@@ -2931,11 +2931,11 @@
    "marketPUp": 0.34,
    "feeBps": 200,
    "binanceUp": 0,
-   "chainlinkUp": null,
+   "chainlinkUp": 0,
    "binanceStart": 59432.29,
    "binanceClose": 59086,
-   "chainlinkStart": null,
-   "chainlinkEnd": null,
+   "chainlinkStart": 59344.38099002,
+   "chainlinkEnd": 58962.34126678,
    "agentsUp": 1,
    "agentsDown": 0,
    "agentWallets": 1
@@ -2947,14 +2947,62 @@
    "marketPUp": 0.3333,
    "feeBps": 200,
    "binanceUp": 0,
-   "chainlinkUp": null,
+   "chainlinkUp": 0,
    "binanceStart": 1653.28,
    "binanceClose": 1645.38,
-   "chainlinkStart": null,
-   "chainlinkEnd": null,
+   "chainlinkStart": 1651.18366248,
+   "chainlinkEnd": 1641.89941692,
    "agentsUp": 1,
    "agentsDown": 0,
    "agentWallets": 1
+  },
+  {
+   "market": "BNB 1h",
+   "hour": "2026-11-25T10:00Z",
+   "quoteAtSec": 46,
+   "marketPUp": 0.52,
+   "feeBps": 200,
+   "binanceUp": 1,
+   "chainlinkUp": null,
+   "binanceStart": 541.02,
+   "binanceClose": 541.65,
+   "chainlinkStart": null,
+   "chainlinkEnd": null,
+   "agentsUp": 0,
+   "agentsDown": 0,
+   "agentWallets": 0
+  },
+  {
+   "market": "BTC 1h",
+   "hour": "2026-11-25T10:00Z",
+   "quoteAtSec": 46,
+   "marketPUp": 0.54,
+   "feeBps": 200,
+   "binanceUp": 0,
+   "chainlinkUp": null,
+   "binanceStart": 59086,
+   "binanceClose": 58900,
+   "chainlinkStart": null,
+   "chainlinkEnd": null,
+   "agentsUp": 0,
+   "agentsDown": 0,
+   "agentWallets": 0
+  },
+  {
+   "market": "ETH 1h",
+   "hour": "2026-11-25T10:00Z",
+   "quoteAtSec": 46,
+   "marketPUp": 0.5,
+   "feeBps": 200,
+   "binanceUp": 1,
+   "chainlinkUp": null,
+   "binanceStart": 1645.37,
+   "binanceClose": 1648.74,
+   "chainlinkStart": null,
+   "chainlinkEnd": null,
+   "agentsUp": 0,
+   "agentsDown": 0,
+   "agentWallets": 0
   }
  ]
 }
