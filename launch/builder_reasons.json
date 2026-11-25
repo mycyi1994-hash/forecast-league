@@ -166,6 +166,19 @@
    "rule": "current price, two hours before the lock",
    "reason": "Backtests found no reliable edge over the next 6 hours, so the forecast is today's Chainlink price at submission, unadjusted.",
    "tx": "0xb086952176c4b7e94ac0197df69730ea7945ee44ce0a1b96adee133bee0778fc"
+  },
+  {
+   "utc": "2026-11-25T00:46:56Z",
+   "market": "BTC 6h",
+   "round": 83128,
+   "side": "down",
+   "prob": 0.48,
+   "rule": "follow the last 6h window",
+   "modelProb": 0.5513,
+   "model": "fl-logit-1",
+   "crowd": null,
+   "reason": "Rule follow the last 6h window: BTC moved -0.46% over the last full 6h window, so down; backtests found no reliable edge at 6h, so this is a transparent default, not a prediction I trust.",
+   "tx": "0x09d985d5acb094445a18057600dc12fe83874420a2ffb4e5616eff44b206d3a3"
   }
  ]
 }
