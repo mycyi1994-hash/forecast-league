@@ -2,8 +2,8 @@
  "contract": "0xe9213e18b421dd7f4e39937647f4553bb45f3d65",
  "name": "大码女装",
  "verdict": "passed",
- "checkedAt": "2026-11-25T12:15:24Z",
- "block": 135653107,
+ "checkedAt": "2026-11-25T13:15:09Z",
+ "block": 135661069,
  "checks": {
   "simulatedFromAgentIdWallet": true,
   "gateEnforced": true,
