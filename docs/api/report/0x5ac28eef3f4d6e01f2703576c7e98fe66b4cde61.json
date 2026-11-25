@@ -1,12 +1,15 @@
 {
  "wallet": "0x5ac28eef3f4d6e01f2703576c7e98fe66b4cde61",
- "tickets": 2,
- "decided": 0,
- "won": 0,
+ "tickets": 3,
+ "decided": 1,
+ "won": 1,
  "lost": 0,
- "hitRate": null,
- "ci95": null,
- "currentWinRun": 0,
+ "hitRate": 1,
+ "ci95": [
+  0.207,
+  1
+ ],
+ "currentWinRun": 1,
  "picked": {
   "decided": 0,
   "won": 0,
@@ -14,12 +17,17 @@
   "verdict": null
  },
  "assigned": {
-  "decided": 0,
-  "won": 0
+  "decided": 1,
+  "won": 1
  },
- "byMarket": {},
+ "byMarket": {
+  "ETH 1h": {
+   "won": 1,
+   "lost": 0
+  }
+ },
  "waitingTickets": 2,
- "nextResultAt": "2026-11-25T03:00Z",
+ "nextResultAt": "2026-11-25T04:00Z",
  "verdict": "no-own-picks",
  "overallAllTickets": "early",
  "todoNow": [
@@ -27,7 +35,7 @@
    "call": "claim()",
    "inputData": "0x4e71d92d",
    "to": "0x8b998abA2BeeebF7ceBf565bC53BC575693c07a4",
-   "what": "write 1 finished ETH 1h ticket(s) into the record"
+   "what": "write 2 finished ETH 1h ticket(s) into the record"
   },
   {
    "call": "Stamps checkIn()",

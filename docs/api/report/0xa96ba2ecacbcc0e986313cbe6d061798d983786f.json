@@ -1,6 +1,6 @@
 {
  "wallet": "0xa96ba2ecacbcc0e986313cbe6d061798d983786f",
- "tickets": 403,
+ "tickets": 406,
  "decided": 392,
  "won": 168,
  "lost": 224,
@@ -50,7 +50,7 @@
    "lost": 3
   }
  },
- "waitingTickets": 11,
+ "waitingTickets": 14,
  "nextResultAt": "2026-11-25T04:00Z",
  "verdict": "no-own-picks",
  "overallAllTickets": "below",
@@ -77,19 +77,19 @@
    "call": "claim()",
    "inputData": "0x4e71d92d",
    "to": "0x09A645aa6cc6b0eB320dCF3982bcaA6A22b32629",
-   "what": "write 111 finished BTC 1h ticket(s) into the record"
+   "what": "write 112 finished BTC 1h ticket(s) into the record"
   },
   {
    "call": "claim()",
    "inputData": "0x4e71d92d",
    "to": "0x8b998abA2BeeebF7ceBf565bC53BC575693c07a4",
-   "what": "write 111 finished ETH 1h ticket(s) into the record"
+   "what": "write 112 finished ETH 1h ticket(s) into the record"
   },
   {
    "call": "claim()",
    "inputData": "0x4e71d92d",
    "to": "0x66613fD9a2c70d4cB56D920bDd0D56bA95BD2736",
-   "what": "write 111 finished BNB 1h ticket(s) into the record"
+   "what": "write 112 finished BNB 1h ticket(s) into the record"
   },
   {
    "call": "claim()",
