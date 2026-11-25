@@ -5,19 +5,6 @@
  "claims": [
   {
    "type": "claim",
-   "market": "BTC 6h",
-   "contract": "0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C",
-   "method": "claim()",
-   "inputData": "0x4e71d92d",
-   "args": [],
-   "valueWei": "0",
-   "finishedTickets": 1,
-   "validUntil": "until claimed (a second claim reverts NothingToClaim, which is harmless)",
-   "preview": "baw contract-call preview --binanceChainId 56 --from 0x2a2f48145780639dbd91e748df157f35283165da --to 0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C --value 0 --inputData 0x4e71d92d --json",
-   "thenExecute": "baw contract-call execute --requestId <requestId from the preview> --json"
-  },
-  {
-   "type": "claim",
    "market": "ETH 6h",
    "contract": "0x621B9fEd6FF2f0FC73e26264A401F7d12644A0A1",
    "method": "claim()",
@@ -92,31 +79,33 @@
    "thenExecute": "baw contract-call execute --requestId <requestId from the preview> --json"
   }
  ],
- "joinedRounds": {},
+ "joinedRounds": {
+  "BTC 6h": 83131
+ },
  "pendingResults": [
   {
    "market": "BTC 6h",
-   "tickets": 1,
-   "resultFinalAt": "2026-11-26T00:00:00Z"
+   "tickets": 2,
+   "resultFinalAt": "2026-11-26T06:00:00Z"
   }
  ],
  "comeBackAt": "2026-11-26T00:00:00Z",
- "comeBackWhy": "BTC 6h result is final: send claim() 0x4e71d92d on that market (value 0); the ticket counts in the record only after it",
- "askHuman": "Next useful time: 2026-11-26 00:00 UTC (BTC 6h result is final: send claim() 0x4e71d92d on that market (value 0); the ticket counts in the record only after it). Want me to come back then?",
+ "comeBackWhy": "tomorrow's stamp opens (one per UTC day; days in a row build the stamp streak)",
+ "askHuman": "Next useful time: 2026-11-26 00:00 UTC (tomorrow's stamp opens (one per UTC day; days in a row build the stamp streak)). Want me to come back then?",
  "stampToday": "checkIn() 0x183ff085 on 0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae once per UTC day (preview shows if already done)",
  "performance": {
-  "decided": 25,
+  "decided": 26,
   "wins": 11,
-  "losses": 14,
-  "winRate": 44,
+  "losses": 15,
+  "winRate": 42.3,
   "bestStreak": 5,
   "byMarket": [
    {
     "market": "BTC 6h",
-    "tickets": 23,
+    "tickets": 24,
     "wins": 11,
-    "losses": 10,
-    "streak": 5,
+    "losses": 11,
+    "streak": 0,
     "bestStreak": 5
    },
    {

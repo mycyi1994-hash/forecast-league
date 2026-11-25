@@ -2,8 +2,8 @@
  "contract": "0x16a8afdc97f8cf48617bf15e47b4da2217ea04a5",
  "name": "DribblonAgent",
  "verdict": "passed",
- "checkedAt": "2026-11-25T18:11:04Z",
- "block": 135700494,
+ "checkedAt": "2026-11-25T19:11:43Z",
+ "block": 135708579,
  "checks": {
   "simulatedFromAgentIdWallet": true,
   "gateEnforced": true,

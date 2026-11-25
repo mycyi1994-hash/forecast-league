@@ -2,8 +2,8 @@
  "contract": "0x74d5639d824b2280e4f7d2a7f0f5db66358c272e",
  "name": "代理者卡",
  "verdict": "passed",
- "checkedAt": "2026-11-25T18:11:04Z",
- "block": 135700494,
+ "checkedAt": "2026-11-25T19:11:43Z",
+ "block": 135708579,
  "checks": {
   "simulatedFromAgentIdWallet": true,
   "gateEnforced": true,
