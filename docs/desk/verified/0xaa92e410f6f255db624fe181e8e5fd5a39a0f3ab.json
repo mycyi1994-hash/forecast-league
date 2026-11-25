@@ -2,8 +2,8 @@
  "contract": "0xaa92e410f6f255db624fe181e8e5fd5a39a0f3ab",
  "name": "Meme Agent",
  "verdict": "passed",
- "checkedAt": "2026-11-25T13:15:09Z",
- "block": 135661069,
+ "checkedAt": "2026-11-25T14:13:26Z",
+ "block": 135668835,
  "checks": {
   "simulatedFromAgentIdWallet": true,
   "gateEnforced": true,

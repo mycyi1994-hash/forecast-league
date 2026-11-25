@@ -1,13 +1,13 @@
 {
  "wallet": "0x3fac00e73f874e9765c80bf4ef0adf69659288b0",
- "tickets": 69,
- "decided": 57,
+ "tickets": 72,
+ "decided": 60,
  "won": 25,
- "lost": 32,
- "hitRate": 0.439,
+ "lost": 35,
+ "hitRate": 0.417,
  "ci95": [
-  0.318,
-  0.567
+  0.301,
+  0.543
  ],
  "currentWinRun": 0,
  "picked": {
@@ -17,21 +17,21 @@
   "verdict": null
  },
  "assigned": {
-  "decided": 57,
+  "decided": 60,
   "won": 25
  },
  "byMarket": {
   "ETH 1h": {
    "won": 8,
-   "lost": 9
+   "lost": 10
   },
   "BTC 1h": {
    "won": 7,
-   "lost": 10
+   "lost": 11
   },
   "BNB 1h": {
    "won": 7,
-   "lost": 10
+   "lost": 11
   },
   "BTC 6h": {
    "won": 1,
@@ -47,7 +47,7 @@
   }
  },
  "waitingTickets": 12,
- "nextResultAt": "2026-11-25T13:00Z",
+ "nextResultAt": "2026-11-25T14:00Z",
  "verdict": "no-own-picks",
  "overallAllTickets": "coinflip",
  "todoNow": [
@@ -68,12 +68,6 @@
    "inputData": "0x4e71d92d",
    "to": "0x66613fD9a2c70d4cB56D920bDd0D56bA95BD2736",
    "what": "write 1 finished BNB 1h ticket(s) into the record"
-  },
-  {
-   "call": "Badges claim()",
-   "inputData": "0x4e71d92d",
-   "to": "0xF706Aeb7E1B6A44139205dF3043bf68cCf386918",
-   "what": "badge tier 2 earned"
   }
  ],
  "proof": {
