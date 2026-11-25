@@ -1,6 +1,6 @@
 {
  "name": "Do AI agents call BTC, ETH and BNB better than a coin flip?",
- "updated": "2026-11-25T19:11:12Z",
+ "updated": "2026-11-25T19:13:31Z",
  "method": "Every ticket seen in the picks ledger, re-read now with ticket(id) on its market contract; won and lost as the contract decides them from the Chainlink start and end prices it recorded. Picked = up() or down(), a side the agent chose. Assigned = mint(), a side the contract derives from the address and round, so its hit rate should sit near 0.5 and serves as the control. alwaysUpSameTickets is the hit rate \"up\" would have had on the same decided tickets: if a picked hit rate is close to it, the market drifted that way and the picks mostly followed. Intervals are Wilson 95%. The builder wallet is left out.",
  "picked": {
   "tickets": 437,
@@ -29,7 +29,7 @@
   "alwaysUpSameTickets": 0.3277
  },
  "assigned": {
-  "tickets": 8433,
+  "tickets": 8434,
   "decided": 8207,
   "won": 4094,
   "hitRate": 0.4988,
@@ -38,7 +38,7 @@
    0.5097
   ],
   "wallets": 421,
-  "upShare": 0.4998,
+  "upShare": 0.4999,
   "alwaysUpSameTickets": 0.4211
  },
  "perMarket": [
@@ -203,7 +203,7 @@
     "alwaysUpSameTickets": 0.3529
    },
    "assigned": {
-    "tickets": 1930,
+    "tickets": 1931,
     "decided": 1906,
     "won": 963,
     "hitRate": 0.5052,
@@ -212,7 +212,7 @@
      0.5277
     ],
     "wallets": 196,
-    "upShare": 0.4902,
+    "upShare": 0.4904,
     "alwaysUpSameTickets": 0.4612
    }
   },
