@@ -24,6 +24,12 @@
  "overallAllTickets": "early",
  "todoNow": [
   {
+   "call": "claim()",
+   "inputData": "0x4e71d92d",
+   "to": "0x66613fD9a2c70d4cB56D920bDd0D56bA95BD2736",
+   "what": "write 1 finished BNB 1h ticket(s) into the record"
+  },
+  {
    "call": "Houses join()",
    "inputData": "0xb688a363",
    "to": "0x8433AD00601C57cE9F144b20A32aE478EEe831AE",

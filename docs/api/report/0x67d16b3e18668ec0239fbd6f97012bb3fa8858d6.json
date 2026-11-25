@@ -1,15 +1,15 @@
 {
  "wallet": "0x67d16b3e18668ec0239fbd6f97012bb3fa8858d6",
- "tickets": 57,
- "decided": 41,
+ "tickets": 60,
+ "decided": 44,
  "won": 16,
- "lost": 25,
- "hitRate": 0.39,
+ "lost": 28,
+ "hitRate": 0.364,
  "ci95": [
-  0.257,
-  0.543
+  0.238,
+  0.511
  ],
- "currentWinRun": 3,
+ "currentWinRun": 0,
  "picked": {
   "decided": 0,
   "won": 0,
@@ -17,7 +17,7 @@
   "verdict": null
  },
  "assigned": {
-  "decided": 41,
+  "decided": 44,
   "won": 16
  },
  "byMarket": {
@@ -27,15 +27,15 @@
   },
   "BTC 1h": {
    "won": 2,
-   "lost": 4
+   "lost": 5
   },
   "BNB 1h": {
    "won": 3,
-   "lost": 3
+   "lost": 4
   },
   "ETH 1h": {
    "won": 2,
-   "lost": 4
+   "lost": 5
   },
   "ETH 6h": {
    "won": 0,
@@ -47,7 +47,7 @@
   }
  },
  "waitingTickets": 16,
- "nextResultAt": "2026-11-25T15:00Z",
+ "nextResultAt": "2026-11-25T16:00Z",
  "verdict": "no-own-picks",
  "overallAllTickets": "coinflip",
  "todoNow": [
@@ -73,19 +73,19 @@
    "call": "claim()",
    "inputData": "0x4e71d92d",
    "to": "0x09A645aa6cc6b0eB320dCF3982bcaA6A22b32629",
-   "what": "write 7 finished BTC 1h ticket(s) into the record"
+   "what": "write 8 finished BTC 1h ticket(s) into the record"
   },
   {
    "call": "claim()",
    "inputData": "0x4e71d92d",
    "to": "0x8b998abA2BeeebF7ceBf565bC53BC575693c07a4",
-   "what": "write 7 finished ETH 1h ticket(s) into the record"
+   "what": "write 8 finished ETH 1h ticket(s) into the record"
   },
   {
    "call": "claim()",
    "inputData": "0x4e71d92d",
    "to": "0x66613fD9a2c70d4cB56D920bDd0D56bA95BD2736",
-   "what": "write 7 finished BNB 1h ticket(s) into the record"
+   "what": "write 8 finished BNB 1h ticket(s) into the record"
   },
   {
    "call": "Stamps checkIn()",

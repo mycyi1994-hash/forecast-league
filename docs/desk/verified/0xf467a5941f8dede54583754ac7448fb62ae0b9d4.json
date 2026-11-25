@@ -2,8 +2,8 @@
  "contract": "0xf467a5941f8dede54583754ac7448fb62ae0b9d4",
  "name": "Forecast League Early Pass",
  "verdict": "passed",
- "checkedAt": "2026-11-25T15:12:57Z",
- "block": 135676767,
+ "checkedAt": "2026-11-25T16:13:38Z",
+ "block": 135684854,
  "checks": {
   "simulatedFromAgentIdWallet": true,
   "gateEnforced": true,

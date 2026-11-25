@@ -1,13 +1,13 @@
 {
  "name": "Forecast League picks",
- "updated": "2026-11-25T15:12:14Z",
+ "updated": "2026-11-25T16:13:02Z",
  "coveredFromBlock": 134590000,
- "scannedToBlock": 135676662,
+ "scannedToBlock": 135684767,
  "method": "Each ticket is classified by the call that minted it: up() or down() is a side the caller chose, mint() is a side the contract assigned. A ticket minted through another contract counts as picked only if its side differs from the assigned one. The builder wallet is left out.",
  "totals": {
-  "tickets": 8680,
+  "tickets": 8717,
   "picked": 428,
-  "assigned": 8252,
+  "assigned": 8289,
   "unknown": 0,
   "pickedSharePct": 4.9,
   "wallets": 432,
@@ -18,9 +18,9 @@
  "perMarket": [
   {
    "market": "BTC 6h",
-   "tickets": 1293,
+   "tickets": 1294,
    "picked": 101,
-   "assigned": 1192,
+   "assigned": 1193,
    "unknown": 0
   },
   {
@@ -39,23 +39,23 @@
   },
   {
    "market": "BTC 1h",
-   "tickets": 1912,
+   "tickets": 1924,
    "picked": 52,
-   "assigned": 1860,
+   "assigned": 1872,
    "unknown": 0
   },
   {
    "market": "ETH 1h",
-   "tickets": 1912,
+   "tickets": 1924,
    "picked": 51,
-   "assigned": 1861,
+   "assigned": 1873,
    "unknown": 0
   },
   {
    "market": "BNB 1h",
-   "tickets": 1938,
+   "tickets": 1950,
    "picked": 51,
-   "assigned": 1887,
+   "assigned": 1899,
    "unknown": 0
   },
   {
