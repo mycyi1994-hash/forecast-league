@@ -1,127 +1,127 @@
 {
  "name": "Forecast League crowd: picked sides per round",
- "updated": "2026-11-25T11:10:48Z",
- "ledgerScannedToBlock": 135644494,
+ "updated": "2026-11-25T12:11:46Z",
+ "ledgerScannedToBlock": 135652618,
  "method": "Picked tickets only (up() or down(); mint() is an assigned side and is left out). The builder wallet is left out. Counts come from the picks ledger, refreshed hourly, so the open round can be missing its latest tickets.",
  "markets": {
   "BTC 6h": [
    {
-    "round": 83129,
+    "round": 83130,
     "status": "open",
+    "windowStart": "2026-11-25T18:00Z",
+    "windowEnd": "2026-11-26T00:00Z",
+    "up": 0,
+    "down": 0,
+    "wallets": 0
+   },
+   {
+    "round": 83129,
+    "status": "locked",
     "windowStart": "2026-11-25T12:00Z",
     "windowEnd": "2026-11-25T18:00Z",
     "up": 1,
     "down": 5,
-    "wallets": 6
-   },
-   {
-    "round": 83128,
-    "status": "locked",
-    "windowStart": "2026-11-25T06:00Z",
-    "windowEnd": "2026-11-25T12:00Z",
-    "up": 0,
-    "down": 6,
     "wallets": 6
    }
   ],
   "ETH 6h": [
    {
-    "round": 83129,
+    "round": 83130,
     "status": "open",
+    "windowStart": "2026-11-25T18:00Z",
+    "windowEnd": "2026-11-26T00:00Z",
+    "up": 0,
+    "down": 0,
+    "wallets": 0
+   },
+   {
+    "round": 83129,
+    "status": "locked",
     "windowStart": "2026-11-25T12:00Z",
     "windowEnd": "2026-11-25T18:00Z",
     "up": 1,
     "down": 5,
     "wallets": 6
-   },
-   {
-    "round": 83128,
-    "status": "locked",
-    "windowStart": "2026-11-25T06:00Z",
-    "windowEnd": "2026-11-25T12:00Z",
-    "up": 0,
-    "down": 5,
-    "wallets": 5
    }
   ],
   "BNB 6h": [
    {
-    "round": 83129,
+    "round": 83130,
     "status": "open",
+    "windowStart": "2026-11-25T18:00Z",
+    "windowEnd": "2026-11-26T00:00Z",
+    "up": 0,
+    "down": 0,
+    "wallets": 0
+   },
+   {
+    "round": 83129,
+    "status": "locked",
     "windowStart": "2026-11-25T12:00Z",
     "windowEnd": "2026-11-25T18:00Z",
     "up": 1,
     "down": 5,
     "wallets": 6
-   },
-   {
-    "round": 83128,
-    "status": "locked",
-    "windowStart": "2026-11-25T06:00Z",
-    "windowEnd": "2026-11-25T12:00Z",
-    "up": 0,
-    "down": 5,
-    "wallets": 5
    }
   ],
   "BTC 1h": [
    {
-    "round": 498779,
+    "round": 498780,
     "status": "open",
-    "windowStart": "2026-11-25T12:00Z",
-    "windowEnd": "2026-11-25T13:00Z",
+    "windowStart": "2026-11-25T13:00Z",
+    "windowEnd": "2026-11-25T14:00Z",
     "up": 0,
     "down": 0,
     "wallets": 0
    },
    {
-    "round": 498778,
+    "round": 498779,
     "status": "locked",
-    "windowStart": "2026-11-25T11:00Z",
-    "windowEnd": "2026-11-25T12:00Z",
+    "windowStart": "2026-11-25T12:00Z",
+    "windowEnd": "2026-11-25T13:00Z",
     "up": 0,
-    "down": 1,
-    "wallets": 1
+    "down": 0,
+    "wallets": 0
    }
   ],
   "ETH 1h": [
    {
-    "round": 498779,
+    "round": 498780,
     "status": "open",
-    "windowStart": "2026-11-25T12:00Z",
-    "windowEnd": "2026-11-25T13:00Z",
+    "windowStart": "2026-11-25T13:00Z",
+    "windowEnd": "2026-11-25T14:00Z",
     "up": 0,
     "down": 0,
     "wallets": 0
    },
    {
-    "round": 498778,
+    "round": 498779,
     "status": "locked",
-    "windowStart": "2026-11-25T11:00Z",
-    "windowEnd": "2026-11-25T12:00Z",
-    "up": 1,
+    "windowStart": "2026-11-25T12:00Z",
+    "windowEnd": "2026-11-25T13:00Z",
+    "up": 0,
     "down": 0,
-    "wallets": 1
+    "wallets": 0
    }
   ],
   "BNB 1h": [
    {
-    "round": 498779,
+    "round": 498780,
     "status": "open",
-    "windowStart": "2026-11-25T12:00Z",
-    "windowEnd": "2026-11-25T13:00Z",
+    "windowStart": "2026-11-25T13:00Z",
+    "windowEnd": "2026-11-25T14:00Z",
     "up": 0,
     "down": 0,
     "wallets": 0
    },
    {
-    "round": 498778,
+    "round": 498779,
     "status": "locked",
-    "windowStart": "2026-11-25T11:00Z",
-    "windowEnd": "2026-11-25T12:00Z",
-    "up": 1,
+    "windowStart": "2026-11-25T12:00Z",
+    "windowEnd": "2026-11-25T13:00Z",
+    "up": 0,
     "down": 0,
-    "wallets": 1
+    "wallets": 0
    }
   ],
   "BTC 1d": [
