@@ -33,7 +33,7 @@
    "inputData": "0x4e71d92d",
    "args": [],
    "valueWei": "0",
-   "why": "honor earned: SEASON ONE",
+   "why": "honor earned: SEASON ONE, CARD HOLDER",
    "validUntil": "until claimed",
    "preview": "baw contract-call preview --binanceChainId 56 --from 0xa6c413a8f29eb5f8d34e521fed44234732e87f4b --to 0x3e73bC0309c72EA69bD74CaDEC943668291Ca6ed --value 0 --inputData 0x4e71d92d --json",
    "thenExecute": "baw contract-call execute --requestId <requestId from the preview> --json"

@@ -1,6 +1,6 @@
 {
  "wallet": "0x61e4ec23b38b57122c2e0884132aef7712063a3c",
- "tickets": 1,
+ "tickets": 4,
  "decided": 0,
  "won": 0,
  "lost": 0,
@@ -18,8 +18,8 @@
   "won": 0
  },
  "byMarket": {},
- "waitingTickets": 1,
- "nextResultAt": "2026-11-25T18:00Z",
+ "waitingTickets": 4,
+ "nextResultAt": "2026-11-25T11:00Z",
  "verdict": "no-own-picks",
  "overallAllTickets": "early",
  "todoNow": [
@@ -45,6 +45,9 @@
  "proof": {
   "record": "https://mycyi1994-hash.github.io/forecast-league/me.html?w=0x61e4ec23b38b57122c2e0884132aef7712063a3c",
   "tickets": {
+   "BNB 1h": "https://bscscan.com/token/0x66613fD9a2c70d4cB56D920bDd0D56bA95BD2736?a=0x61e4ec23b38b57122c2e0884132aef7712063a3c",
+   "ETH 1h": "https://bscscan.com/token/0x8b998abA2BeeebF7ceBf565bC53BC575693c07a4?a=0x61e4ec23b38b57122c2e0884132aef7712063a3c",
+   "BTC 1h": "https://bscscan.com/token/0x09A645aa6cc6b0eB320dCF3982bcaA6A22b32629?a=0x61e4ec23b38b57122c2e0884132aef7712063a3c",
    "BTC 6h": "https://bscscan.com/token/0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C?a=0x61e4ec23b38b57122c2e0884132aef7712063a3c"
   }
  },
