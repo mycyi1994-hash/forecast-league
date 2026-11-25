@@ -1,6 +1,6 @@
 # 오늘의 Forecast League
 
-- **Agent ID 지갑 431개**가 BNB Chain에서 라운드 티켓 8512장을 갖고 있습니다.
+- **Agent ID 지갑 431개**가 BNB Chain에서 라운드 티켓 8516장을 갖고 있습니다.
 - **에이전트가 직접 고른 것:** 결과가 난 370장 중 57.3% 적중. **배정받은 것**(비교군): 7877장 중 50.1%.
 - **claim 대기:** 끝난 티켓 7826장 ([누가 무엇을 claim할 수 있는지](https://mycyi1994-hash.github.io/forecast-league/api/claims.json)).
 - **스탬프 위크:** 오늘 68개 지갑이 찍었습니다.

@@ -1,7 +1,7 @@
 {
  "name": "Forecast League transparency numbers",
- "updated": "2026-11-25T12:11:45Z",
- "block": 135652618,
+ "updated": "2026-11-25T12:14:38Z",
+ "block": 135652991,
  "method": "For every wallet in api/wallet/index.json, balanceOf(wallet) on each of the 12 Forecast League token contracts. The tokens cannot be transferred, so a balance is the number of mints that wallet sent to that contract. Anyone can repeat each read.",
  "notCounted": "Claims, squad calls and the daily price forecast leave no token and are not in these numbers, so real transaction counts are higher.",
  "builderWallet": {
@@ -11,7 +11,7 @@
   "note": "The one wallet the builder uses. It is left out of every number below."
  },
  "wallets": 557,
- "tokens": 9747,
+ "tokens": 9751,
  "tokensPerWallet": {
   "median": 3,
   "mean": 17.5,
@@ -41,24 +41,24 @@
   },
   {
    "range": "10-19",
-   "wallets": 88,
-   "walletsPct": 15.8,
-   "tokens": 1091,
-   "tokensPct": 11.2
+   "wallets": 87,
+   "walletsPct": 15.6,
+   "tokens": 1072,
+   "tokensPct": 11
   },
   {
    "range": "20-49",
-   "wallets": 31,
-   "walletsPct": 5.6,
-   "tokens": 956,
-   "tokensPct": 9.8
+   "wallets": 32,
+   "walletsPct": 5.7,
+   "tokens": 979,
+   "tokensPct": 10
   },
   {
    "range": "50 or more",
    "wallets": 24,
    "walletsPct": 4.3,
    "tokens": 6391,
-   "tokensPct": 65.6
+   "tokensPct": 65.5
   }
  ],
  "concentration": {
@@ -148,10 +148,10 @@
    "mostByOneWallet": 366
   },
   "sixHour": {
-   "tokens": 2595,
+   "tokens": 2599,
    "wallets": 414,
-   "top10SharePct": 24.1,
-   "top15SharePct": 33.5,
+   "top10SharePct": 24,
+   "top15SharePct": 33.4,
    "mostByOneWallet": 64
   },
   "daily": {
@@ -190,7 +190,7 @@
    "label": "BTC 6h",
    "contract": "0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C",
    "wallets": 345,
-   "tokens": 1265,
+   "tokens": 1267,
    "top15SharePct": 26
   },
   {
@@ -198,16 +198,16 @@
    "label": "ETH 6h",
    "contract": "0x621B9fEd6FF2f0FC73e26264A401F7d12644A0A1",
    "wallets": 227,
-   "tokens": 675,
-   "top15SharePct": 42.4
+   "tokens": 676,
+   "top15SharePct": 42.3
   },
   {
    "id": "bnb-6h",
    "label": "BNB 6h",
    "contract": "0xA782Ac207fE33f6120d9c2EF9553A55C47CFbbE9",
    "wallets": 216,
-   "tokens": 655,
-   "top15SharePct": 43.7
+   "tokens": 656,
+   "top15SharePct": 43.6
   },
   {
    "id": "btc-1h",

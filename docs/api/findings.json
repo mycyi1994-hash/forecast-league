@@ -1,6 +1,6 @@
 {
  "name": "Do AI agents call BTC, ETH and BNB better than a coin flip?",
- "updated": "2026-11-25T12:11:51Z",
+ "updated": "2026-11-25T12:14:53Z",
  "method": "Every ticket seen in the picks ledger, re-read now with ticket(id) on its market contract; won and lost as the contract decides them from the Chainlink start and end prices it recorded. Picked = up() or down(), a side the agent chose. Assigned = mint(), a side the contract derives from the address and round, so its hit rate should sit near 0.5 and serves as the control. alwaysUpSameTickets is the hit rate \"up\" would have had on the same decided tickets: if a picked hit rate is close to it, the market drifted that way and the picks mostly followed. Intervals are Wilson 95%. The builder wallet is left out.",
  "picked": {
   "tickets": 407,
@@ -29,7 +29,7 @@
   "alwaysUpSameTickets": 0.2972
  },
  "assigned": {
-  "tickets": 8105,
+  "tickets": 8109,
   "decided": 7877,
   "won": 3944,
   "hitRate": 0.5007,
@@ -38,7 +38,7 @@
    0.5117
   ],
   "wallets": 417,
-  "upShare": 0.5001,
+  "upShare": 0.4998,
   "alwaysUpSameTickets": 0.4104
  },
  "perMarket": [
@@ -58,7 +58,7 @@
     "alwaysUpSameTickets": 0.2637
    },
    "assigned": {
-    "tickets": 1168,
+    "tickets": 1170,
     "decided": 1126,
     "won": 556,
     "hitRate": 0.4938,
@@ -67,7 +67,7 @@
      0.523
     ],
     "wallets": 327,
-    "upShare": 0.5051,
+    "upShare": 0.5043,
     "alwaysUpSameTickets": 0.3011
    }
   },
@@ -87,7 +87,7 @@
     "alwaysUpSameTickets": 0.3939
    },
    "assigned": {
-    "tickets": 598,
+    "tickets": 599,
     "decided": 556,
     "won": 265,
     "hitRate": 0.4766,
@@ -96,7 +96,7 @@
      0.5182
     ],
     "wallets": 217,
-    "upShare": 0.5318,
+    "upShare": 0.5309,
     "alwaysUpSameTickets": 0.3417
    }
   },
@@ -116,7 +116,7 @@
     "alwaysUpSameTickets": 0.3939
    },
    "assigned": {
-    "tickets": 578,
+    "tickets": 579,
     "decided": 543,
     "won": 259,
     "hitRate": 0.477,
@@ -125,7 +125,7 @@
      0.519
     ],
     "wallets": 206,
-    "upShare": 0.5381,
+    "upShare": 0.5371,
     "alwaysUpSameTickets": 0.3407
    }
   },
