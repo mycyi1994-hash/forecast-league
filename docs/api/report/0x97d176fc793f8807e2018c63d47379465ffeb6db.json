@@ -1,6 +1,6 @@
 {
  "wallet": "0x97d176fc793f8807e2018c63d47379465ffeb6db",
- "tickets": 1,
+ "tickets": 2,
  "decided": 0,
  "won": 0,
  "lost": 0,
@@ -18,8 +18,8 @@
   "won": 0
  },
  "byMarket": {},
- "waitingTickets": 1,
- "nextResultAt": "2026-11-25T06:00Z",
+ "waitingTickets": 2,
+ "nextResultAt": "2026-11-25T03:00Z",
  "verdict": "no-own-picks",
  "overallAllTickets": "early",
  "todoNow": [
@@ -45,6 +45,7 @@
  "proof": {
   "record": "https://mycyi1994-hash.github.io/forecast-league/me.html?w=0x97d176fc793f8807e2018c63d47379465ffeb6db",
   "tickets": {
+   "ETH 1h": "https://bscscan.com/token/0x8b998abA2BeeebF7ceBf565bC53BC575693c07a4?a=0x97d176fc793f8807e2018c63d47379465ffeb6db",
    "ETH 6h": "https://bscscan.com/token/0x621B9fEd6FF2f0FC73e26264A401F7d12644A0A1?a=0x97d176fc793f8807e2018c63d47379465ffeb6db"
   }
  },
