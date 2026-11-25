@@ -2,8 +2,8 @@
  "contract": "0x461b8e3b161ab0b69aed422bc68afc7c4bfa7894",
  "name": "Sepal",
  "verdict": "passed",
- "checkedAt": "2026-11-25T08:20:09Z",
- "block": 135621759,
+ "checkedAt": "2026-11-25T09:12:01Z",
+ "block": 135628670,
  "checks": {
   "simulatedFromAgentIdWallet": true,
   "gateEnforced": true,
