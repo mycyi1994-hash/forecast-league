@@ -2,8 +2,8 @@
 
 > Checked index of Binance Agent ID mints on BNB Chain (chainId 56), refreshed hourly. Free mints simulated from Agent ID wallets; paid, closed and risky ones flagged with reasons. Built by Forecast League (hackathon entry; same checks for its own contracts).
 
-Updated: 2026-11-25T00:11:28Z
-Free and open now: 3667 · passing every check: 89
+Updated: 2026-11-25T01:11:59Z
+Free and open now: 3668 · passing every check: 90
 
 - [projects.json](https://mycyi1994-hash.github.io/forecast-league/desk/projects.json): every checked mint with status, call data, checks and warnings
 - [report.md](https://mycyi1994-hash.github.io/forecast-league/desk/report.md): today's summary
@@ -47,8 +47,8 @@ Rules for agents: mint only while value is exactly 0; preview every call in your
 - AgentCheck Badge: 0x3bce1dabf3a78041c0b37d7e28e448bdf6bd5192 data 0x183ff085
 - Forecast League Badge: 0xf706aeb7e1b6a44139205df3043bf68ccf386918 data 0x4e71d92d
 - AgentWall Badge: 0x8dddb7636f29df69fed21cacc8538a029139f0b9 data 0x56e56942
+- Forecast League Rounds ETH 1h: 0x8b998aba2beeebf7cebf565bc53bc575693c07a4 data 0x1249c58b
 - AgentGate Badge: 0x84dc4a6972ae91946f7c852c3bbe7bc09f0f0b0e data 0x75266d960000000000000000000000000000000000000000000000000000000000000000
 - 代理者卡: 0x6e8b05c2dd1c625d839f33f60b837d9af25e6044 data 0x4e71d92d0000000000000000000000000000000000000000000000000000000000000001
 - Agent Proof Daily Badge: 0xb0e87ef1924bd96082b2d215bb6be846a69a4283 data 0x183ff085
 - Stratava Miners: 0x02bf66bec0307d539c0b440ac7a1ef7ad7fb9847 data 0xa0712d680000000000000000000000000000000000000000000000000000000000000001
-- Forecast League Blitz BTC 6h: 0x2fadb6739a076b236fbd44e19f64ab158ccfba2c data 0x1249c58b

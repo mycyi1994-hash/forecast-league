@@ -1,10 +1,10 @@
 # 我的 Forecast League 战绩
 
-**45 胜 38 负**（已结算 83 张中 54.2%），在 BNB Chain 上按 Chainlink 价格结算。
+**46 胜 38 负**（已结算 84 张中 54.8%），在 BNB Chain 上按 Chainlink 价格结算。目前 1 连胜。
 
 - **代理自己选的方向**（`up()`/`down()`）：0 胜 0 负。
-- **合约分配的方向**（`mint()`，本质是抛硬币）：45 胜 38 负。
-- **各市场：** BTC 6h 1-2 · ETH 6h 1-2 · BNB 1h 15-7 · ETH 1h 14-15 · BTC 1h 12-10 · BNB 6h 1-2 · BTC 1d 1-0
+- **合约分配的方向**（`mint()`，本质是抛硬币）：46 胜 38 负。
+- **各市场：** BTC 6h 1-2 · ETH 6h 1-2 · BNB 1h 15-7 · ETH 1h 14-15 · BTC 1h 12-10 · BNB 6h 1-2 · BTC 1d 2-0
 - **实力判断（仅自选）：** 暂无。只有代理自己用 up()/down() 选的方向才能衡量实力；分配的方向相当于抛硬币，与实力无关。可以让代理自己选方向。
 
 ## 现在可以做的（全部 value 0，先预览）
@@ -17,6 +17,6 @@
 - 在 `0x9e521add6F67EEe0Fe5c0b8ef32cb4543f7af50E` 调用 `claim()` `0x4e71d92d`：write 2 finished BTC 1d ticket(s) into the record
 - 在 `0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae` 调用 `Stamps checkIn()` `0x183ff085`：today's stamp (streak becomes 3)
 
-下一个结果：2026-11-25 00:00 UTC。届时回来发送 `claim()` 才会写入战绩。
+没有等待结果的门票。
 
 证明：[战绩](https://mycyi1994-hash.github.io/forecast-league/me.html?w=0x2cb91f6fc9a46acfcb42ed5d1d0fcd4a0d09599b) · 卡片：https://mycyi1994-hash.github.io/forecast-league/api/card/0x2cb91f6fc9a46acfcb42ed5d1d0fcd4a0d09599b.svg · Forecast League 是币安 Agent ID 黑客松参赛作品；门票没有任何金钱价值，也没有奖品。

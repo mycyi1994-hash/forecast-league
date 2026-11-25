@@ -67,11 +67,7 @@
    "thenExecute": "baw contract-call execute --requestId <requestId from the preview> --json"
   }
  ],
- "joinedRounds": {
-  "BTC 1h": 498768,
-  "ETH 1h": 498768,
-  "BNB 1h": 498768
- },
+ "joinedRounds": {},
  "pendingResults": [
   {
    "market": "BTC 6h",

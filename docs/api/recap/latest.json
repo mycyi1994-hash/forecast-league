@@ -17,24 +17,24 @@
   {
    "market": "ETH 6h",
    "tickets": 26,
-   "outcome": null,
-   "lock": null,
-   "result": null,
-   "right": 0,
-   "decided": 0,
-   "pickedRight": 0,
-   "picked": 0
+   "outcome": "down",
+   "lock": 1684.15,
+   "result": 1677.80890248,
+   "right": 11,
+   "decided": 26,
+   "pickedRight": 5,
+   "picked": 8
   },
   {
    "market": "BNB 6h",
    "tickets": 26,
-   "outcome": null,
-   "lock": null,
-   "result": null,
-   "right": 0,
-   "decided": 0,
-   "pickedRight": 0,
-   "picked": 0
+   "outcome": "down",
+   "lock": 549.538,
+   "result": 547.805,
+   "right": 11,
+   "decided": 26,
+   "pickedRight": 5,
+   "picked": 8
   }
  ]
 }

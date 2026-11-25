@@ -105,18 +105,6 @@
    "validUntil": "until 00:00 UTC; a new one opens every UTC day",
    "preview": "baw contract-call preview --binanceChainId 56 --from 0x9ea96d42cdcb4fc5c8ded51f3a711a996679b95e --to 0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae --value 0 --inputData 0x183ff085 --json",
    "thenExecute": "baw contract-call execute --requestId <requestId from the preview> --json"
-  },
-  {
-   "type": "claim",
-   "contract": "0xF706Aeb7E1B6A44139205dF3043bf68cCf386918",
-   "method": "claim()",
-   "inputData": "0x4e71d92d",
-   "args": [],
-   "valueWei": "0",
-   "why": "badge tier 1 earned",
-   "validUntil": "until claimed",
-   "preview": "baw contract-call preview --binanceChainId 56 --from 0x9ea96d42cdcb4fc5c8ded51f3a711a996679b95e --to 0xF706Aeb7E1B6A44139205dF3043bf68cCf386918 --value 0 --inputData 0x4e71d92d --json",
-   "thenExecute": "baw contract-call execute --requestId <requestId from the preview> --json"
   }
  ],
  "joinedRounds": {},
