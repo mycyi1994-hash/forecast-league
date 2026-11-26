@@ -1,15 +1,15 @@
 {
  "wallet": "0x80016477633efec97bcb9eb535ede807430bc043",
- "tickets": 43,
- "decided": 41,
+ "tickets": 44,
+ "decided": 42,
  "won": 12,
- "lost": 29,
- "hitRate": 0.293,
+ "lost": 30,
+ "hitRate": 0.286,
  "ci95": [
-  0.176,
-  0.445
+  0.172,
+  0.436
  ],
- "currentWinRun": 2,
+ "currentWinRun": 0,
  "picked": {
   "decided": 0,
   "won": 0,
@@ -17,7 +17,7 @@
   "verdict": null
  },
  "assigned": {
-  "decided": 41,
+  "decided": 42,
   "won": 12
  },
  "byMarket": {
@@ -43,11 +43,11 @@
   },
   "BTC 1d": {
    "won": 1,
-   "lost": 2
+   "lost": 3
   }
  },
  "waitingTickets": 2,
- "nextResultAt": "2026-11-26T00:00Z",
+ "nextResultAt": "2026-11-26T02:00Z",
  "verdict": "no-own-picks",
  "overallAllTickets": "below",
  "todoNow": [
@@ -86,12 +86,6 @@
    "inputData": "0x4e71d92d",
    "to": "0x9e521add6F67EEe0Fe5c0b8ef32cb4543f7af50E",
    "what": "write 4 finished BTC 1d ticket(s) into the record"
-  },
-  {
-   "call": "Stamps checkIn()",
-   "inputData": "0x183ff085",
-   "to": "0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae",
-   "what": "today's stamp (streak becomes 3)"
   },
   {
    "call": "Houses join()",
