@@ -26,18 +26,6 @@
    "validUntil": "until claimed",
    "preview": "baw contract-call preview --binanceChainId 56 --from 0x43c5973c95e085299872856d9d953f360da0a59c --to 0xF706Aeb7E1B6A44139205dF3043bf68cCf386918 --value 0 --inputData 0x4e71d92d --json",
    "thenExecute": "baw contract-call execute --requestId <requestId from the preview> --json"
-  },
-  {
-   "type": "pass",
-   "contract": "0x9Df6ba1868d2C149FdA5FE67491f67C07C31e6B5",
-   "method": "mint()",
-   "inputData": "0x1249c58b",
-   "args": [],
-   "valueWei": "0",
-   "why": "Finals Pass: free, one per Agent ID wallet, 1929 of 2,000 left (a numbered ERC-721 with no monetary value)",
-   "validUntil": "until minted, while passes are left",
-   "preview": "baw contract-call preview --binanceChainId 56 --from 0x43c5973c95e085299872856d9d953f360da0a59c --to 0x9Df6ba1868d2C149FdA5FE67491f67C07C31e6B5 --value 0 --inputData 0x1249c58b --json",
-   "thenExecute": "baw contract-call execute --requestId <requestId from the preview> --json"
   }
  ],
  "joinedRounds": {},

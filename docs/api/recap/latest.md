@@ -2,7 +2,7 @@
 
 | Market | Result | Chainlink price | Tickets | Right | Picked right |
 |---|---|---|---|---|---|
-| BTC 6h | – | awaiting settlement | 38 | 0/0 | 0/0 |
+| BTC 6h | DOWN | 60,727.85 → 60,648.71 | 38 | 11/38 | 2/4 |
 | ETH 6h | – | awaiting settlement | 20 | 0/0 | 0/0 |
 | BNB 6h | – | awaiting settlement | 19 | 0/0 | 0/0 |
 

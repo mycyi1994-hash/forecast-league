@@ -6,13 +6,13 @@
   {
    "market": "BTC 6h",
    "tickets": 38,
-   "outcome": null,
-   "lock": null,
-   "result": null,
-   "right": 0,
-   "decided": 0,
-   "pickedRight": 0,
-   "picked": 0
+   "outcome": "down",
+   "lock": 60727.84773084,
+   "result": 60648.70738802,
+   "right": 11,
+   "decided": 38,
+   "pickedRight": 2,
+   "picked": 4
   },
   {
    "market": "ETH 6h",
