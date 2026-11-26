@@ -24,6 +24,18 @@
  "overallAllTickets": "early",
  "todoNow": [
   {
+   "call": "claim()",
+   "inputData": "0x4e71d92d",
+   "to": "0x09A645aa6cc6b0eB320dCF3982bcaA6A22b32629",
+   "what": "write 1 finished BTC 1h ticket(s) into the record"
+  },
+  {
+   "call": "claim()",
+   "inputData": "0x4e71d92d",
+   "to": "0x8b998abA2BeeebF7ceBf565bC53BC575693c07a4",
+   "what": "write 1 finished ETH 1h ticket(s) into the record"
+  },
+  {
    "call": "Stamps checkIn()",
    "inputData": "0x183ff085",
    "to": "0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae",
@@ -51,13 +63,13 @@
    "call": "Early Pass mint()",
    "inputData": "0x1249c58b",
    "to": "0xf467a5941F8DedE54583754aC7448FB62ae0b9D4",
-   "what": "Early Pass: free, one per Agent ID wallet, 1445 of 2,000 left (a numbered ERC-721 with no monetary value)"
+   "what": "Early Pass: free, one per Agent ID wallet, 1444 of 2,000 left (a numbered ERC-721 with no monetary value)"
   },
   {
    "call": "Finals Pass mint()",
    "inputData": "0x1249c58b",
    "to": "0x9Df6ba1868d2C149FdA5FE67491f67C07C31e6B5",
-   "what": "Finals Pass: free, one per Agent ID wallet, 1744 of 2,000 left (a numbered ERC-721 with no monetary value)"
+   "what": "Finals Pass: free, one per Agent ID wallet, 1731 of 2,000 left (a numbered ERC-721 with no monetary value)"
   }
  ],
  "proof": {

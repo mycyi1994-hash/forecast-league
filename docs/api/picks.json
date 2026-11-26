@@ -1,61 +1,61 @@
 {
  "name": "Forecast League picks",
- "updated": "2026-11-26T17:12:06Z",
+ "updated": "2026-11-26T18:10:42Z",
  "coveredFromBlock": 134590000,
- "scannedToBlock": 135884473,
+ "scannedToBlock": 135892281,
  "method": "Each ticket is classified by the call that minted it: up() or down() is a side the caller chose, mint() is a side the contract assigned. A ticket minted through another contract counts as picked only if its side differs from the assigned one. The builder wallet is left out.",
  "totals": {
-  "tickets": 9849,
-  "picked": 500,
-  "assigned": 9349,
+  "tickets": 9893,
+  "picked": 503,
+  "assigned": 9390,
   "unknown": 0,
   "pickedSharePct": 5.1,
-  "wallets": 444,
-  "pickedWallets": 23,
-  "pickedDecided": 477,
-  "pickedWon": 266
+  "wallets": 446,
+  "pickedWallets": 24,
+  "pickedDecided": 479,
+  "pickedWon": 267
  },
  "perMarket": [
   {
    "market": "BTC 6h",
-   "tickets": 1444,
-   "picked": 113,
-   "assigned": 1331,
+   "tickets": 1453,
+   "picked": 114,
+   "assigned": 1339,
    "unknown": 0
   },
   {
    "market": "ETH 6h",
-   "tickets": 763,
-   "picked": 93,
-   "assigned": 670,
+   "tickets": 766,
+   "picked": 94,
+   "assigned": 672,
    "unknown": 0
   },
   {
    "market": "BNB 6h",
-   "tickets": 737,
-   "picked": 93,
-   "assigned": 644,
+   "tickets": 739,
+   "picked": 94,
+   "assigned": 645,
    "unknown": 0
   },
   {
    "market": "BTC 1h",
-   "tickets": 2201,
+   "tickets": 2211,
    "picked": 63,
-   "assigned": 2138,
+   "assigned": 2148,
    "unknown": 0
   },
   {
    "market": "ETH 1h",
-   "tickets": 2203,
+   "tickets": 2213,
    "picked": 62,
-   "assigned": 2141,
+   "assigned": 2151,
    "unknown": 0
   },
   {
    "market": "BNB 1h",
-   "tickets": 2226,
+   "tickets": 2236,
    "picked": 62,
-   "assigned": 2164,
+   "assigned": 2174,
    "unknown": 0
   },
   {
@@ -70,10 +70,10 @@
   {
    "wallet": "0xd301d472f2e469a1aafa1af6f214e312f1858873",
    "picked": 211,
-   "won": 109,
+   "won": 110,
    "lost": 94,
-   "waiting": 8,
-   "winRate": 53.7
+   "waiting": 7,
+   "winRate": 53.9
   },
   {
    "wallet": "0xddb1008aeb892e9cf8831fa901469a641cdbe114",
@@ -87,9 +87,9 @@
    "wallet": "0x917a1da59348bb09b40ec1e77ba35b75efcf4210",
    "picked": 54,
    "won": 26,
-   "lost": 22,
-   "waiting": 6,
-   "winRate": 54.2
+   "lost": 23,
+   "waiting": 5,
+   "winRate": 53.1
   },
   {
    "wallet": "0x0c0b9afc9028392263dd9f3d3ef8c99bf54c11e7",
@@ -250,6 +250,14 @@
    "lost": 1,
    "waiting": 0,
    "winRate": 0
+  },
+  {
+   "wallet": "0x1181bbd8a8b2d3f0d6f9b998ceee0e0f1dd2a723",
+   "picked": 3,
+   "won": 0,
+   "lost": 0,
+   "waiting": 3,
+   "winRate": null
   }
  ],
  "ledger": "https://mycyi1994-hash.github.io/forecast-league/api/picks/ledger.json"

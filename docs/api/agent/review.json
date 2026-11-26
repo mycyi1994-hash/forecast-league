@@ -1,6 +1,6 @@
 {
  "name": "Forecast League builder agent: review of its real picks (BTC 6h)",
- "updated": "2026-11-26T17:12:23Z",
+ "updated": "2026-11-26T18:10:52Z",
  "before": {
   "picks": 8,
   "decided": 8,
@@ -16,35 +16,35 @@
  },
  "after": {
   "picks": 11,
-  "decided": 10,
+  "decided": 11,
   "right": 6,
-  "hitRate": 0.6,
+  "hitRate": 0.5455,
   "ci95": [
-   0.3127,
-   0.8318
+   0.2801,
+   0.7873
   ],
-  "brier": 0.2464,
+  "brier": 0.2486,
   "brierCoinFlip": 0.25,
   "how": "the rule in agent/pick.py (follow the last 6h window), probability and model version logged"
  },
  "shadowAllMarkets": {
   "rule": {
-   "decided": 249,
-   "right": 128,
-   "hitRate": 0.5141,
+   "decided": 253,
+   "right": 129,
+   "hitRate": 0.5099,
    "ci95": [
-    0.4522,
-    0.5755
+    0.4486,
+    0.5709
    ],
-   "brier": 0.2498
+   "brier": 0.25
   },
   "model": {
-   "decided": 227,
-   "right": 108,
-   "hitRate": 0.4758,
+   "decided": 231,
+   "right": 111,
+   "hitRate": 0.4805,
    "ci95": [
-    0.4117,
-    0.5406
+    0.4169,
+    0.5447
    ],
    "brier": 0.2518
   },
@@ -247,7 +247,7 @@
    "prob": 0.52,
    "rule": "follow the last 6h window",
    "model": "fl-logit-1",
-   "result": null,
+   "result": "down",
    "reason": "Rule follow the last 6h window: BTC moved +0.60% over the last full 6h window, so up; backtests found no reliable edge at 6h, so this is a transparent default, not a prediction I trust."
   }
  ]
