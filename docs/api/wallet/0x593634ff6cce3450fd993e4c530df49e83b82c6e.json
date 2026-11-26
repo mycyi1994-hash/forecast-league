@@ -96,7 +96,7 @@
    "inputData": "0x1249c58b",
    "args": [],
    "valueWei": "0",
-   "why": "Early Pass: free, one per Agent ID wallet, 1448 of 2,000 left (a numbered ERC-721 with no monetary value)",
+   "why": "Early Pass: free, one per Agent ID wallet, 1446 of 2,000 left (a numbered ERC-721 with no monetary value)",
    "validUntil": "until minted, while passes are left",
    "preview": "baw contract-call preview --binanceChainId 56 --from 0x593634ff6cce3450fd993e4c530df49e83b82c6e --to 0xf467a5941F8DedE54583754aC7448FB62ae0b9D4 --value 0 --inputData 0x1249c58b --json",
    "thenExecute": "baw contract-call execute --requestId <requestId from the preview> --json"
@@ -108,7 +108,7 @@
    "inputData": "0x1249c58b",
    "args": [],
    "valueWei": "0",
-   "why": "Season Two Pass: free, one per Agent ID wallet, 1569 of 2,000 left (a numbered ERC-721 with no monetary value)",
+   "why": "Season Two Pass: free, one per Agent ID wallet, 1567 of 2,000 left (a numbered ERC-721 with no monetary value)",
    "validUntil": "until minted, while passes are left",
    "preview": "baw contract-call preview --binanceChainId 56 --from 0x593634ff6cce3450fd993e4c530df49e83b82c6e --to 0x74f35B8315D76dEaEcb7034918325815458261A4 --value 0 --inputData 0x1249c58b --json",
    "thenExecute": "baw contract-call execute --requestId <requestId from the preview> --json"
@@ -120,7 +120,7 @@
    "inputData": "0x1249c58b",
    "args": [],
    "valueWei": "0",
-   "why": "Finals Pass: free, one per Agent ID wallet, 1802 of 2,000 left (a numbered ERC-721 with no monetary value)",
+   "why": "Finals Pass: free, one per Agent ID wallet, 1777 of 2,000 left (a numbered ERC-721 with no monetary value)",
    "validUntil": "until minted, while passes are left",
    "preview": "baw contract-call preview --binanceChainId 56 --from 0x593634ff6cce3450fd993e4c530df49e83b82c6e --to 0x9Df6ba1868d2C149FdA5FE67491f67C07C31e6B5 --value 0 --inputData 0x1249c58b --json",
    "thenExecute": "baw contract-call execute --requestId <requestId from the preview> --json"
