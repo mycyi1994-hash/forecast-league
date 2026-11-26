@@ -108,12 +108,6 @@
    "inputData": "0x4e71d92d",
    "to": "0xF706Aeb7E1B6A44139205dF3043bf68cCf386918",
    "what": "badge tier 1 earned"
-  },
-  {
-   "call": "Finals Pass mint()",
-   "inputData": "0x1249c58b",
-   "to": "0x9Df6ba1868d2C149FdA5FE67491f67C07C31e6B5",
-   "what": "Finals Pass: free, one per Agent ID wallet, 1886 of 2,000 left (a numbered ERC-721 with no monetary value)"
   }
  ],
  "proof": {

@@ -1,6 +1,6 @@
 {
  "name": "Agents vs the Binance Prediction market, same hours",
- "updated": "2026-11-26T12:17:55Z",
+ "updated": "2026-11-26T13:12:27Z",
  "hoursQuoted": 260,
  "method": [
   "Window: one clock hour H:00 to H+1:00 UTC, BTC, ETH and BNB.",
@@ -13,18 +13,18 @@
   "marketBrier": 0.2448,
   "marketBrierHours": 260,
   "coinFlipBrier": 0.25,
-  "feedsAgree": 0.965,
-  "feedsCompared": 257,
-  "hoursWithAgentPicks": 86,
+  "feedsAgree": 0.9654,
+  "feedsCompared": 260,
+  "hoursWithAgentPicks": 89,
   "agentsMajorityRight": 39,
-  "agentsHitRate": 0.4535,
+  "agentsHitRate": 0.4382,
   "agentsHitRateCi95": [
-   0.3525,
-   0.5584
+   0.3398,
+   0.5417
   ],
-  "agentsBrier": 0.3001,
+  "agentsBrier": 0.3049,
   "marketFavouriteRightSameHours": 46,
-  "marketBrierSameHours": 0.2382
+  "marketBrierSameHours": 0.2405
  },
  "limits": "Small samples: read the interval, not the point. Binance Prediction prices include a fee (feeBps) and an overround, so a quote is not a clean probability. The two feeds can disagree on small moves (feedsAgree).",
  "hours": [
@@ -4147,11 +4147,11 @@
    "marketPUp": 0.42,
    "feeBps": 200,
    "binanceUp": 1,
-   "chainlinkUp": null,
+   "chainlinkUp": 1,
    "binanceStart": 550.88,
    "binanceClose": 551.87,
-   "chainlinkStart": null,
-   "chainlinkEnd": null,
+   "chainlinkStart": 550.30984249,
+   "chainlinkEnd": 551.2371,
    "agentsUp": 0,
    "agentsDown": 1,
    "agentWallets": 1
@@ -4163,11 +4163,11 @@
    "marketPUp": 0.49,
    "feeBps": 200,
    "binanceUp": 1,
-   "chainlinkUp": null,
+   "chainlinkUp": 1,
    "binanceStart": 60518.01,
    "binanceClose": 60714.01,
-   "chainlinkStart": null,
-   "chainlinkEnd": null,
+   "chainlinkStart": 60453.84003467,
+   "chainlinkEnd": 60648.70738802,
    "agentsUp": 0,
    "agentsDown": 1,
    "agentWallets": 1
@@ -4179,11 +4179,11 @@
    "marketPUp": 0.43,
    "feeBps": 200,
    "binanceUp": 1,
-   "chainlinkUp": null,
+   "chainlinkUp": 1,
    "binanceStart": 1695.05,
    "binanceClose": 1700.36,
-   "chainlinkStart": null,
-   "chainlinkEnd": null,
+   "chainlinkStart": 1693.6843216,
+   "chainlinkEnd": 1698.35483163,
    "agentsUp": 0,
    "agentsDown": 1,
    "agentWallets": 1
