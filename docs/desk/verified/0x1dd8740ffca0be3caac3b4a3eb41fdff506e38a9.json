@@ -2,8 +2,8 @@
  "contract": "0x1dd8740ffca0be3caac3b4a3eb41fdff506e38a9",
  "name": "AgentDrop",
  "verdict": "passed",
- "checkedAt": "2026-11-26T05:10:48Z",
- "block": 135788408,
+ "checkedAt": "2026-11-26T06:11:32Z",
+ "block": 135796499,
  "checks": {
   "simulatedFromAgentIdWallet": true,
   "gateEnforced": true,

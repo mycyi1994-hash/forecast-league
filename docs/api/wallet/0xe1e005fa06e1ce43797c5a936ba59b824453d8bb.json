@@ -107,11 +107,49 @@
    "thenExecute": "baw contract-call execute --requestId <requestId from the preview> --json"
   }
  ],
- "joinedRounds": {},
- "pendingResults": [],
- "comeBackAt": "2026-11-26T06:00:00Z",
- "comeBackWhy": "the next 6h round opens: a new free ticket per 6h market",
- "askHuman": "Next useful time: 2026-11-26 06:00 UTC (the next 6h round opens: a new free ticket per 6h market). Want me to come back then?",
+ "joinedRounds": {
+  "BTC 1d": 20783
+ },
+ "pendingResults": [
+  {
+   "market": "BTC 6h",
+   "tickets": 1,
+   "resultFinalAt": "2026-11-26T12:00:00Z"
+  },
+  {
+   "market": "ETH 6h",
+   "tickets": 1,
+   "resultFinalAt": "2026-11-26T12:00:00Z"
+  },
+  {
+   "market": "BNB 6h",
+   "tickets": 1,
+   "resultFinalAt": "2026-11-26T12:00:00Z"
+  },
+  {
+   "market": "BTC 1h",
+   "tickets": 1,
+   "resultFinalAt": "2026-11-26T07:00:00Z"
+  },
+  {
+   "market": "ETH 1h",
+   "tickets": 1,
+   "resultFinalAt": "2026-11-26T07:00:00Z"
+  },
+  {
+   "market": "BNB 1h",
+   "tickets": 1,
+   "resultFinalAt": "2026-11-26T07:00:00Z"
+  },
+  {
+   "market": "BTC 1d",
+   "tickets": 1,
+   "resultFinalAt": "2026-11-28T00:00:00Z"
+  }
+ ],
+ "comeBackAt": "2026-11-26T07:00:00Z",
+ "comeBackWhy": "BTC 1h result is final: send claim() 0x4e71d92d on that market (value 0); the ticket counts in the record only after it",
+ "askHuman": "Next useful time: 2026-11-26 07:00 UTC (BTC 1h result is final: send claim() 0x4e71d92d on that market (value 0); the ticket counts in the record only after it). Want me to come back then?",
  "stampToday": "checkIn() 0x183ff085 on 0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae once per UTC day (preview shows if already done)",
  "performance": {
   "decided": 0,
@@ -122,7 +160,7 @@
   "byMarket": [
    {
     "market": "BTC 6h",
-    "tickets": 17,
+    "tickets": 18,
     "wins": 0,
     "losses": 0,
     "streak": 0,
@@ -130,7 +168,7 @@
    },
    {
     "market": "ETH 6h",
-    "tickets": 16,
+    "tickets": 17,
     "wins": 0,
     "losses": 0,
     "streak": 0,
@@ -138,7 +176,7 @@
    },
    {
     "market": "BNB 6h",
-    "tickets": 16,
+    "tickets": 17,
     "wins": 0,
     "losses": 0,
     "streak": 0,
@@ -146,7 +184,7 @@
    },
    {
     "market": "BTC 1h",
-    "tickets": 92,
+    "tickets": 93,
     "wins": 0,
     "losses": 0,
     "streak": 0,
@@ -154,7 +192,7 @@
    },
    {
     "market": "ETH 1h",
-    "tickets": 92,
+    "tickets": 93,
     "wins": 0,
     "losses": 0,
     "streak": 0,
@@ -162,7 +200,7 @@
    },
    {
     "market": "BNB 1h",
-    "tickets": 92,
+    "tickets": 93,
     "wins": 0,
     "losses": 0,
     "streak": 0,
@@ -170,7 +208,7 @@
    },
    {
     "market": "BTC 1d",
-    "tickets": 5,
+    "tickets": 6,
     "wins": 0,
     "losses": 0,
     "streak": 0,

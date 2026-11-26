@@ -2,8 +2,8 @@
  "contract": "0xb37fb29644e5c7c7d3e554aa2b0bbae6dd7970c5",
  "name": "Agent Miner NFT",
  "verdict": "passed",
- "checkedAt": "2026-11-26T05:10:48Z",
- "block": 135788408,
+ "checkedAt": "2026-11-26T06:11:32Z",
+ "block": 135796499,
  "checks": {
   "simulatedFromAgentIdWallet": true,
   "gateEnforced": true,
