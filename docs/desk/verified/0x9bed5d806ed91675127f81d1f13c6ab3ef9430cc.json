@@ -2,8 +2,8 @@
  "contract": "0x9bed5d806ed91675127f81d1f13c6ab3ef9430cc",
  "name": "STRAWBS: WAKE PROTOCOL",
  "verdict": "passed",
- "checkedAt": "2026-11-26T04:11:39Z",
- "block": 135780527,
+ "checkedAt": "2026-11-26T05:10:48Z",
+ "block": 135788408,
  "checks": {
   "simulatedFromAgentIdWallet": true,
   "gateEnforced": true,
