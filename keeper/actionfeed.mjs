@@ -30,8 +30,10 @@ for (const w of wallets) {
   for (const [, a] of M) per.push({ to: a, data: '0x624f6da5' + w32(w) }, { to: a, data: '0xc06ac6a3' + w32(w) });
   for (const a of Object.values(X)) per.push({ to: a, data: '0x624f6da5' + w32(w) });
   per.push({ to: REG, data: '0x70a08231' + w32(w) });
+  for (const a of PASSES) per.push({ to: a, data: '0x624f6da5' + w32(w) }); // todo(address): canMint, code
 }
-const res = await multi(per); const K = M.length * 2 + 5;
+const res = await multi(per); const K = M.length * 2 + 5 + PASSES.length; const REGI = M.length * 2 + 4;
+const PASSNAME = ['Early Pass', 'Season Two Pass', 'Finals Pass'];
 mkdirSync('docs/api/wallet', { recursive: true });
 // Per-wallet files hold only this wallet's own state, with no timestamps, so a file changes only when the wallet's
 // state changes (a mint, a claim, a settlement). Open rounds are the same for everyone and live in /api/state.
@@ -55,6 +57,8 @@ wallets.forEach((w, wi) => {
   if (ho && n(ho, 1) === 1) extras.push({ type: 'join', contract: X.houses, method: 'join()', inputData: '0xb688a363', args: [], valueWei: '0', validUntil: 'until joined' });
   if (ba && n(ba, 2) === 1) extras.push({ type: 'claim', contract: X.badges, method: 'claim()', inputData: '0x4e71d92d', args: [], valueWei: '0', why: `badge tier ${n(ba, 3)} earned`, validUntil: 'until claimed' });
   if (hn && n(hn, 0) > 0) extras.push({ type: 'claim', contract: X.honors, method: 'claim()', inputData: '0x4e71d92d', args: [], valueWei: '0', why: 'honor earned: ' + HON.filter((_, k) => n(hn, 1) & (1 << k)).join(', '), validUntil: 'until claimed' });
+  // Free numbered passes (one per Agent ID wallet, value 0): listed only while todo(address) says mint() would succeed now.
+  PASSES.forEach((a, k) => { const t = r[REGI + 1 + k]; if (t && n(t, 0) === 1) extras.push({ type: 'pass', contract: a, method: 'mint()', inputData: '0x1249c58b', args: [], valueWei: '0', why: `${PASSNAME[k]}: free, one per Agent ID wallet, ${n(t, 2)} of 2,000 left (a numbered ERC-721 with no monetary value)`, validUntil: 'until minted, while passes are left' }); });
   if (claims.length || extras.length) withClaims++;
   const decided = wins + losses;
   // When to come back, said explicitly: the first result to claim, the next UTC day's stamp or the next 6h round.
@@ -63,8 +67,8 @@ wallets.forEach((w, wi) => {
     { at: iso(Math.ceil((now + 1) / 21600) * 21600), why: 'the next 6h round opens: a new free ticket per 6h market' }].sort((x, y) => (x.at < y.at ? -1 : 1));
   const comeBack = backs[0];
   const body = JSON.stringify({
-    wallet: w, holdsAgentId: !!(r[K - 1] && BigInt(r[K - 1]) > 0n),
-    howToUse: 'Only with your human\'s yes for these calls, or within a routine they set with stated limits; preview each call first. Step 1: send the calls in claims[] below, each value 0 (claims, joins and honors stay valid until done; a checkIn is today\'s stamp, valid until 00:00 UTC). Step 2: read https://mycyi1994-hash.github.io/forecast-league/api/state for the rounds open now; skip a market whose round number equals joinedRounds[market]. Step 3: preview every call right before sending; skip any that fails. Come back at the earliest pendingResults.resultFinalAt or when the next round opens.',
+    wallet: w, holdsAgentId: !!(r[REGI] && BigInt(r[REGI]) > 0n),
+    howToUse: 'Only with your human\'s yes for these calls, or within a routine they set with stated limits; preview each call first. Step 1: send the calls in claims[] below, each value 0 (claims, joins, honors and pass mints stay valid until done; a checkIn is today\'s stamp, valid until 00:00 UTC). Step 2: read https://mycyi1994-hash.github.io/forecast-league/api/state for the rounds open now; skip a market whose round number equals joinedRounds[market]. Step 3: preview every call right before sending; skip any that fails. Come back at the earliest pendingResults.resultFinalAt or when the next round opens.',
     // Each call also carries the exact preview command for the Binance Agentic Wallet CLI, ready to run with the human's yes.
     claims: [...claims, ...extras].map((c) => ({ ...c, preview: `baw contract-call preview --binanceChainId 56 --from ${w} --to ${c.contract} --value 0 --inputData ${c.inputData} --json`, thenExecute: 'baw contract-call execute --requestId <requestId from the preview> --json' })), joinedRounds: joined, pendingResults: pending,
     comeBackAt: comeBack.at, comeBackWhy: comeBack.why,
