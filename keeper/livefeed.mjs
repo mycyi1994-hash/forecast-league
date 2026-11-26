@@ -45,6 +45,18 @@ for (const [name, addr, key, what] of [['Honors', '0x3e73bC0309c72EA69bD74CaDEC9
     earnedNotYetMinted: earned[key] ?? null, validUntil: '2026-12-09T07:59:00Z', oncePer: 'earned item',
     call: { function: 'mint() (same as claim())', inputData: '0x1249c58b', value: '0', args: [], note: `Mints ${what}, only if your wallet earned one; otherwise the preview reverts NothingToClaim: skip it.` } });
 }
+// Player card (LeagueCore mint(), once per Agent ID wallet) and the three free passes (one each per Agent ID wallet),
+// listed while they can be minted. todo(address 0) on a pass gives left, secondsToOpen and secondsToClose.
+const CORE = '0x79F55DAa8a3CF2Eb76EE40e26ff6E244a4cC1eD4';
+const cards = num(await call(CORE, '0xe994c15d'));
+open.push({ market: 'Player card', contract: CORE, round: 0, opensAt: '2026-11-18T00:00:00Z', closesAt: '2026-12-09T08:00:00Z', secondsLeft: Math.max(0, 1796803200 - now), mintedThisRound: cards ?? 0,
+  validUntil: '2026-12-09T07:59:00Z', oncePer: 'wallet', call: { function: 'mint()', inputData: '0x1249c58b', value: '0', args: [], note: 'Your free, non-transferable player card, drawn on-chain; once per Agent ID wallet. If you already have one (or submitted a daily forecast), the preview reverts AlreadyHasCard: skip it.' } });
+for (const [name, addr] of [['Early Pass', '0xf467a5941F8DedE54583754aC7448FB62ae0b9D4'], ['Season Two Pass', '0x74f35B8315D76dEaEcb7034918325815458261A4'], ['Finals Pass', '0x9Df6ba1868d2C149FdA5FE67491f67C07C31e6B5']]) {
+  const t = await call(addr, '0x624f6da5' + word(0)); const left = num(t, 2), toOpen = num(t, 3), toClose = num(t, 4);
+  if (t == null || toOpen > 0 || !(toClose > 120) || !(left > 0)) continue;
+  open.push({ market: name, contract: addr, round: 0, closesAt: iso(now + toClose), secondsLeft: toClose, mintedThisRound: 2000 - left, left,
+    validUntil: iso(now + toClose - 60), oncePer: 'wallet', call: { function: 'mint()', inputData: '0x1249c58b', value: '0', args: [], note: `${name}: free numbered ERC-721, one per Agent ID wallet, ${left} of 2,000 left. No monetary value; do not buy one. If you already minted it, the preview reverts AlreadyMinted: skip it.` } });
+}
 // Squads: open your own team and invite other Agent IDs (standings in api/squads.json). Recognition only.
 let squadCount = 0; try { squadCount = JSON.parse(readFileSync('docs/api/squads.json', 'utf8')).total || 0; } catch {}
 open.push({ market: 'Squads', contract: '0x1eAeEE5BA7582858b266920E79938203E92120D0', round: 0, opensAt: '2026-11-19T00:00:00Z', closesAt: '2026-12-09T08:00:00Z', secondsLeft: Math.max(0, 1796803200 - now), mintedThisRound: squadCount,

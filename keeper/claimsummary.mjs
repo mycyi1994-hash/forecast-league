@@ -7,7 +7,7 @@ import { readFileSync, writeFileSync, readdirSync, existsSync } from 'node:fs';
 const DIR = 'docs/api/wallet';
 const BUILDER = '0x2a2f48145780639dbd91e748df157f35283165da';
 const SITE = 'https://mycyi1994-hash.github.io/forecast-league';
-const EXTRA = { '0x30b6b8c67ab2239185536ba3766e8cb05bfd18ae': 'Stamps checkIn()', '0x8433ad00601c57ce9f144b20a32ae478eee831ae': 'Houses join()', '0x3e73bc0309c72ea69bd74cadec943668291ca6ed': 'Honors claim()', '0xf706aeb7e1b6a44139205df3043bf68ccf386918': 'Badges claim()' };
+const EXTRA = { '0x30b6b8c67ab2239185536ba3766e8cb05bfd18ae': 'Stamps checkIn()', '0x8433ad00601c57ce9f144b20a32ae478eee831ae': 'Houses join()', '0x3e73bc0309c72ea69bd74cadec943668291ca6ed': 'Honors claim()', '0xf706aeb7e1b6a44139205df3043bf68ccf386918': 'Badges claim()', '0x79f55daa8a3cf2eb76ee40e26ff6e244a4cc1ed4': 'Card mint()', '0xf467a5941f8dede54583754ac7448fb62ae0b9d4': 'Early Pass mint()', '0x74f35b8315d76deaecb7034918325815458261a4': 'Season Two Pass mint()', '0x9df6ba1868d2c149fda5fe67491f67c07c31e6b5': 'Finals Pass mint()' };
 const perMarket = {}; const perExtra = {}; const wallets = [];
 let tickets = 0;
 for (const f of existsSync(DIR) ? readdirSync(DIR) : []) {

@@ -670,6 +670,12 @@ async function buildAll(args) {
   try { const h = await call(EXTRAS.houses, '0x624f6da5' + w); if (slot(h, 1) === 1n) extras.push(one(EXTRAS.houses, '0xb688a363', 'join(): your house, fixed by your address')); } catch {}
   try { const o = await call(EXTRAS.honors, '0x624f6da5' + w); const n = Number(slot(o, 0)); const mask = Number(slot(o, 1));
     if (n > 0) { const names = HONOR_NAMES.filter((_, k) => mask & (1 << k)); extras.push(one(EXTRAS.honors, '0x4e71d92d', `claim(): honor ${names.join(', ')}`)); unlocked.push(`Honor ${names.join(', ')} (1 call)`); } } catch {}
+  // The free player card (once per Agent ID wallet) and the three free passes (one each), while mint() would succeed.
+  try { if (slot(await call(CONFIG.core, '0x70a08231' + w), 0) === 0n && slot(await call('0x60B9262456dE011F7d15a54CdD8c48bAaa8B022F', '0x70a08231' + w), 0) > 0n)
+    extras.push(one(CONFIG.core, '0x1249c58b', 'mint(): your free player card (non-transferable, drawn on-chain)')); } catch {}
+  for (const [name, pass] of [['Early Pass', '0xf467a5941F8DedE54583754aC7448FB62ae0b9D4'], ['Season Two Pass', '0x74f35B8315D76dEaEcb7034918325815458261A4'], ['Finals Pass', '0x9Df6ba1868d2C149FdA5FE67491f67C07C31e6B5']]) {
+    try { const t = await call(pass, '0x624f6da5' + w); if (slot(t, 0) === 1n) extras.push(one(pass, '0x1249c58b', `mint(): ${name}, free, one per Agent ID wallet, ${Number(slot(t, 2))} of 2,000 left (no monetary value)`)); } catch {}
+  }
   // Health: is there gas for the next run, and did the routine miss rounds it could have played?
   const health = {};
   try { const bal = Number(BigInt(await rpc('eth_getBalance', [address, 'latest']))) / 1e18; health.bnb = Number(bal.toFixed(6));

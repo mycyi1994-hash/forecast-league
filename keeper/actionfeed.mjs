@@ -17,6 +17,7 @@ const HON = ['SEASON ONE', 'CARD HOLDER', 'FIRST WIN', 'FIVE WINS', 'STREAK 3', 
 // Wallets: every holder of our round markets and extras (ownerOf over each token), plus anything already listed.
 const known = new Set(existsSync('docs/api/wallet/index.json') ? JSON.parse(readFileSync('docs/api/wallet/index.json', 'utf8')).wallets : []);
 // Pass holders too (Early Pass, Season Two Pass, Finals Pass): they hold an Agent ID and can play every round for free.
+const CORE = '0x79F55DAa8a3CF2Eb76EE40e26ff6E244a4cC1eD4';
 const PASSES = ['0xf467a5941F8DedE54583754aC7448FB62ae0b9D4', '0x74f35B8315D76dEaEcb7034918325815458261A4', '0x9Df6ba1868d2C149FdA5FE67491f67C07C31e6B5'];
 for (const a of [...M.map((m) => m[1]), ...Object.values(X), '0x79F55DAa8a3CF2Eb76EE40e26ff6E244a4cC1eD4', ...PASSES]) {
   const sup = n(await rpc('eth_call', [{ to: a, data: a.startsWith('0x79F5') ? '0xe994c15d' : '0x18160ddd' }, 'latest']), 0);
@@ -31,8 +32,9 @@ for (const w of wallets) {
   for (const a of Object.values(X)) per.push({ to: a, data: '0x624f6da5' + w32(w) });
   per.push({ to: REG, data: '0x70a08231' + w32(w) });
   for (const a of PASSES) per.push({ to: a, data: '0x624f6da5' + w32(w) }); // todo(address): canMint, code
+  per.push({ to: CORE, data: '0x70a08231' + w32(w) }); // player cards held
 }
-const res = await multi(per); const K = M.length * 2 + 5 + PASSES.length; const REGI = M.length * 2 + 4;
+const res = await multi(per); const K = M.length * 2 + 6 + PASSES.length; const REGI = M.length * 2 + 4;
 const PASSNAME = ['Early Pass', 'Season Two Pass', 'Finals Pass'];
 mkdirSync('docs/api/wallet', { recursive: true });
 // Per-wallet files hold only this wallet's own state, with no timestamps, so a file changes only when the wallet's
@@ -57,6 +59,8 @@ wallets.forEach((w, wi) => {
   if (ho && n(ho, 1) === 1) extras.push({ type: 'join', contract: X.houses, method: 'join()', inputData: '0xb688a363', args: [], valueWei: '0', validUntil: 'until joined' });
   if (ba && n(ba, 2) === 1) extras.push({ type: 'claim', contract: X.badges, method: 'claim()', inputData: '0x4e71d92d', args: [], valueWei: '0', why: `badge tier ${n(ba, 3)} earned`, validUntil: 'until claimed' });
   if (hn && n(hn, 0) > 0) extras.push({ type: 'claim', contract: X.honors, method: 'claim()', inputData: '0x4e71d92d', args: [], valueWei: '0', why: 'honor earned: ' + HON.filter((_, k) => n(hn, 1) & (1 << k)).join(', '), validUntil: 'until claimed' });
+  // The free player card (LeagueCore mint(), once per Agent ID wallet), if this wallet has none yet.
+  if (r[REGI] && BigInt(r[REGI]) > 0n && r[REGI + 1 + PASSES.length] && BigInt(r[REGI + 1 + PASSES.length]) === 0n) extras.push({ type: 'card', contract: CORE, method: 'mint()', inputData: '0x1249c58b', args: [], valueWei: '0', why: 'your free player card (non-transferable, drawn on-chain; it grows with your daily forecasts)', validUntil: 'until minted' });
   // Free numbered passes (one per Agent ID wallet, value 0): listed only while todo(address) says mint() would succeed now.
   PASSES.forEach((a, k) => { const t = r[REGI + 1 + k]; if (t && n(t, 0) === 1) extras.push({ type: 'pass', contract: a, method: 'mint()', inputData: '0x1249c58b', args: [], valueWei: '0', why: `${PASSNAME[k]}: free, one per Agent ID wallet, ${n(t, 2)} of 2,000 left (a numbered ERC-721 with no monetary value)`, validUntil: 'until minted, while passes are left' }); });
   if (claims.length || extras.length) withClaims++;
@@ -68,7 +72,7 @@ wallets.forEach((w, wi) => {
   const comeBack = backs[0];
   const body = JSON.stringify({
     wallet: w, holdsAgentId: !!(r[REGI] && BigInt(r[REGI]) > 0n),
-    howToUse: 'Only with your human\'s yes for these calls, or within a routine they set with stated limits; preview each call first. Step 1: send the calls in claims[] below, each value 0 (claims, joins, honors and pass mints stay valid until done; a checkIn is today\'s stamp, valid until 00:00 UTC). Step 2: read https://mycyi1994-hash.github.io/forecast-league/api/state for the rounds open now; skip a market whose round number equals joinedRounds[market]. Step 3: preview every call right before sending; skip any that fails. Come back at the earliest pendingResults.resultFinalAt or when the next round opens.',
+    howToUse: 'Only with your human\'s yes for these calls, or within a routine they set with stated limits; preview each call first. Step 1: send the calls in claims[] below, each value 0 (claims, joins, honors, the card and pass mints stay valid until done; a checkIn is today\'s stamp, valid until 00:00 UTC). Step 2: read https://mycyi1994-hash.github.io/forecast-league/api/state for the rounds open now; skip a market whose round number equals joinedRounds[market]. Step 3: preview every call right before sending; skip any that fails. Come back at the earliest pendingResults.resultFinalAt or when the next round opens.',
     // Each call also carries the exact preview command for the Binance Agentic Wallet CLI, ready to run with the human's yes.
     claims: [...claims, ...extras].map((c) => ({ ...c, preview: `baw contract-call preview --binanceChainId 56 --from ${w} --to ${c.contract} --value 0 --inputData ${c.inputData} --json`, thenExecute: 'baw contract-call execute --requestId <requestId from the preview> --json' })), joinedRounds: joined, pendingResults: pending,
     comeBackAt: comeBack.at, comeBackWhy: comeBack.why,
