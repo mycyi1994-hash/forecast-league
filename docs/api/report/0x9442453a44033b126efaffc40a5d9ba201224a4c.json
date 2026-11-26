@@ -1,6 +1,6 @@
 {
  "wallet": "0x9442453a44033b126efaffc40a5d9ba201224a4c",
- "tickets": 7,
+ "tickets": 9,
  "decided": 7,
  "won": 2,
  "lost": 5,
@@ -33,17 +33,11 @@
    "lost": 2
   }
  },
- "waitingTickets": 0,
- "nextResultAt": null,
+ "waitingTickets": 2,
+ "nextResultAt": "2026-11-27T00:00Z",
  "verdict": "early",
  "overallAllTickets": "early",
  "todoNow": [
-  {
-   "call": "claim()",
-   "inputData": "0x4e71d92d",
-   "to": "0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C",
-   "what": "write 4 finished BTC 6h ticket(s) into the record"
-  },
   {
    "call": "claim()",
    "inputData": "0x4e71d92d",
@@ -84,13 +78,13 @@
    "call": "Season Two Pass mint()",
    "inputData": "0x1249c58b",
    "to": "0x74f35B8315D76dEaEcb7034918325815458261A4",
-   "what": "Season Two Pass: free, one per Agent ID wallet, 1565 of 2,000 left (a numbered ERC-721 with no monetary value)"
+   "what": "Season Two Pass: free, one per Agent ID wallet, 1564 of 2,000 left (a numbered ERC-721 with no monetary value)"
   },
   {
    "call": "Finals Pass mint()",
    "inputData": "0x1249c58b",
    "to": "0x9Df6ba1868d2C149FdA5FE67491f67C07C31e6B5",
-   "what": "Finals Pass: free, one per Agent ID wallet, 1749 of 2,000 left (a numbered ERC-721 with no monetary value)"
+   "what": "Finals Pass: free, one per Agent ID wallet, 1744 of 2,000 left (a numbered ERC-721 with no monetary value)"
   }
  ],
  "proof": {
