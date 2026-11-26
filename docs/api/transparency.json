@@ -1,7 +1,7 @@
 {
  "name": "Forecast League transparency numbers",
- "updated": "2026-11-26T08:28:21Z",
- "block": 135814719,
+ "updated": "2026-11-26T08:34:22Z",
+ "block": 135815514,
  "method": "For every wallet in api/wallet/index.json, balanceOf(wallet) on each of the 12 Forecast League token contracts. The tokens cannot be transferred, so a balance is the number of mints that wallet sent to that contract. Anyone can repeat each read.",
  "notCounted": "Claims, squad calls and the daily price forecast leave no token and are not in these numbers, so real transaction counts are higher.",
  "builderWallet": {
@@ -10,32 +10,32 @@
   "contractsUsed": 12,
   "note": "The one wallet the builder uses. It is left out of every number below."
  },
- "wallets": 582,
- "tokens": 10809,
+ "wallets": 583,
+ "tokens": 10810,
  "tokensPerWallet": {
   "median": 3,
-  "mean": 18.6,
+  "mean": 18.5,
   "most": 515
  },
  "distribution": [
   {
    "range": "1",
-   "wallets": 175,
-   "walletsPct": 30.1,
-   "tokens": 175,
+   "wallets": 176,
+   "walletsPct": 30.2,
+   "tokens": 176,
    "tokensPct": 1.6
   },
   {
    "range": "2-3",
    "wallets": 132,
-   "walletsPct": 22.7,
+   "walletsPct": 22.6,
    "tokens": 317,
    "tokensPct": 2.9
   },
   {
    "range": "4-9",
    "wallets": 129,
-   "walletsPct": 22.2,
+   "walletsPct": 22.1,
    "tokens": 868,
    "tokensPct": 8
   },
@@ -63,7 +63,7 @@
  ],
  "concentration": {
   "top10SharePct": 43.4,
-  "top15SharePct": 58.2,
+  "top15SharePct": 58.1,
   "top10": [
    {
     "wallet": "0x30588cfbce27269d4e76128c7ed934e270c9c927",
@@ -120,13 +120,13 @@
  "contractsUsed": [
   {
    "range": "1",
-   "wallets": 204,
-   "walletsPct": 35.1
+   "wallets": 205,
+   "walletsPct": 35.2
   },
   {
    "range": "2-3",
    "wallets": 153,
-   "walletsPct": 26.3
+   "walletsPct": 26.2
   },
   {
    "range": "4-7",
@@ -136,7 +136,7 @@
   {
    "range": "8 or more",
    "wallets": 161,
-   "walletsPct": 27.7
+   "walletsPct": 27.6
   }
  ],
  "groups": {
@@ -169,10 +169,10 @@
    "mostByOneWallet": 1
   },
   "extras": {
-   "tokens": 996,
-   "wallets": 324,
+   "tokens": 997,
+   "wallets": 325,
    "top10SharePct": 10.7,
-   "top15SharePct": 14.4,
+   "top15SharePct": 14.3,
    "mostByOneWallet": 15
   }
  },
@@ -245,8 +245,8 @@
    "id": "stamps",
    "label": "Stamps",
    "contract": "0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae",
-   "wallets": 300,
-   "tokens": 447,
+   "wallets": 301,
+   "tokens": 448,
    "top15SharePct": 16.1
   },
   {

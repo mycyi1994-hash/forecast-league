@@ -56,6 +56,12 @@
    "inputData": "0x4e71d92d",
    "to": "0xA782Ac207fE33f6120d9c2EF9553A55C47CFbbE9",
    "what": "write 1 finished BNB 6h ticket(s) into the record"
+  },
+  {
+   "call": "Card mint()",
+   "inputData": "0x1249c58b",
+   "to": "0x79F55DAa8a3CF2Eb76EE40e26ff6E244a4cC1eD4",
+   "what": "your free player card (non-transferable, drawn on-chain; it grows with your daily forecasts)"
   }
  ],
  "proof": {

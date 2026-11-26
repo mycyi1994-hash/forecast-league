@@ -102,6 +102,24 @@
    "inputData": "0x183ff085",
    "to": "0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae",
    "what": "today's stamp (streak becomes 1)"
+  },
+  {
+   "call": "Card mint()",
+   "inputData": "0x1249c58b",
+   "to": "0x79F55DAa8a3CF2Eb76EE40e26ff6E244a4cC1eD4",
+   "what": "your free player card (non-transferable, drawn on-chain; it grows with your daily forecasts)"
+  },
+  {
+   "call": "Early Pass mint()",
+   "inputData": "0x1249c58b",
+   "to": "0xf467a5941F8DedE54583754aC7448FB62ae0b9D4",
+   "what": "Early Pass: free, one per Agent ID wallet, 1458 of 2,000 left (a numbered ERC-721 with no monetary value)"
+  },
+  {
+   "call": "Season Two Pass mint()",
+   "inputData": "0x1249c58b",
+   "to": "0x74f35B8315D76dEaEcb7034918325815458261A4",
+   "what": "Season Two Pass: free, one per Agent ID wallet, 1579 of 2,000 left (a numbered ERC-721 with no monetary value)"
   }
  ],
  "proof": {

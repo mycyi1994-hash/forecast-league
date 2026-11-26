@@ -78,6 +78,12 @@
    "inputData": "0xb688a363",
    "to": "0x8433AD00601C57cE9F144b20A32aE478EEe831AE",
    "what": "Houses join()"
+  },
+  {
+   "call": "Early Pass mint()",
+   "inputData": "0x1249c58b",
+   "to": "0xf467a5941F8DedE54583754aC7448FB62ae0b9D4",
+   "what": "Early Pass: free, one per Agent ID wallet, 1458 of 2,000 left (a numbered ERC-721 with no monetary value)"
   }
  ],
  "proof": {
