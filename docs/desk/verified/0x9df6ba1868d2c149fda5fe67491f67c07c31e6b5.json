@@ -2,8 +2,8 @@
  "contract": "0x9df6ba1868d2c149fda5fe67491f67c07c31e6b5",
  "name": "Forecast League Finals Pass",
  "verdict": "passed",
- "checkedAt": "2026-11-26T22:11:03Z",
- "block": 135924331,
+ "checkedAt": "2026-11-26T22:16:58Z",
+ "block": 135925120,
  "checks": {
   "simulatedFromAgentIdWallet": true,
   "gateEnforced": true,
