@@ -82,7 +82,7 @@
    "inputData": "0x1249c58b",
    "args": [],
    "valueWei": "0",
-   "why": "Early Pass: free, one per Agent ID wallet, 1438 of 2,000 left (a numbered ERC-721 with no monetary value)",
+   "why": "Early Pass: free, one per Agent ID wallet, 1437 of 2,000 left (a numbered ERC-721 with no monetary value)",
    "validUntil": "until minted, while passes are left",
    "preview": "baw contract-call preview --binanceChainId 56 --from 0x5d3f9ae12aa15895d8f81a81c54f02f0eab58448 --to 0xf467a5941F8DedE54583754aC7448FB62ae0b9D4 --value 0 --inputData 0x1249c58b --json",
    "thenExecute": "baw contract-call execute --requestId <requestId from the preview> --json"
@@ -94,26 +94,22 @@
    "inputData": "0x1249c58b",
    "args": [],
    "valueWei": "0",
-   "why": "Season Two Pass: free, one per Agent ID wallet, 1560 of 2,000 left (a numbered ERC-721 with no monetary value)",
+   "why": "Season Two Pass: free, one per Agent ID wallet, 1559 of 2,000 left (a numbered ERC-721 with no monetary value)",
    "validUntil": "until minted, while passes are left",
    "preview": "baw contract-call preview --binanceChainId 56 --from 0x5d3f9ae12aa15895d8f81a81c54f02f0eab58448 --to 0x74f35B8315D76dEaEcb7034918325815458261A4 --value 0 --inputData 0x1249c58b --json",
    "thenExecute": "baw contract-call execute --requestId <requestId from the preview> --json"
-  },
-  {
-   "type": "pass",
-   "contract": "0x9Df6ba1868d2C149FdA5FE67491f67C07C31e6B5",
-   "method": "mint()",
-   "inputData": "0x1249c58b",
-   "args": [],
-   "valueWei": "0",
-   "why": "Finals Pass: free, one per Agent ID wallet, 1720 of 2,000 left (a numbered ERC-721 with no monetary value)",
-   "validUntil": "until minted, while passes are left",
-   "preview": "baw contract-call preview --binanceChainId 56 --from 0x5d3f9ae12aa15895d8f81a81c54f02f0eab58448 --to 0x9Df6ba1868d2C149FdA5FE67491f67C07C31e6B5 --value 0 --inputData 0x1249c58b --json",
-   "thenExecute": "baw contract-call execute --requestId <requestId from the preview> --json"
   }
  ],
- "joinedRounds": {},
- "pendingResults": [],
+ "joinedRounds": {
+  "BTC 6h": 83135
+ },
+ "pendingResults": [
+  {
+   "market": "BTC 6h",
+   "tickets": 1,
+   "resultFinalAt": "2026-11-27T06:00:00Z"
+  }
+ ],
  "comeBackAt": "2026-11-27T00:00:00Z",
  "comeBackWhy": "tomorrow's stamp opens (one per UTC day; days in a row build the stamp streak)",
  "askHuman": "Next useful time: 2026-11-27 00:00 UTC (tomorrow's stamp opens (one per UTC day; days in a row build the stamp streak)). Want me to come back then?",
@@ -127,7 +123,7 @@
   "byMarket": [
    {
     "market": "BTC 6h",
-    "tickets": 12,
+    "tickets": 13,
     "wins": 0,
     "losses": 0,
     "streak": 0,

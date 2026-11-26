@@ -75,13 +75,13 @@
    "call": "Early Pass mint()",
    "inputData": "0x1249c58b",
    "to": "0xf467a5941F8DedE54583754aC7448FB62ae0b9D4",
-   "what": "Early Pass: free, one per Agent ID wallet, 1438 of 2,000 left (a numbered ERC-721 with no monetary value)"
+   "what": "Early Pass: free, one per Agent ID wallet, 1437 of 2,000 left (a numbered ERC-721 with no monetary value)"
   },
   {
    "call": "Finals Pass mint()",
    "inputData": "0x1249c58b",
    "to": "0x9Df6ba1868d2C149FdA5FE67491f67C07C31e6B5",
-   "what": "Finals Pass: free, one per Agent ID wallet, 1720 of 2,000 left (a numbered ERC-721 with no monetary value)"
+   "what": "Finals Pass: free, one per Agent ID wallet, 1715 of 2,000 left (a numbered ERC-721 with no monetary value)"
   }
  ],
  "proof": {
