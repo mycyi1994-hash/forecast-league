@@ -1,15 +1,15 @@
 {
  "wallet": "0x85c20de6ffa571ea9a88dc4349edb19f601d722a",
  "tickets": 256,
- "decided": 245,
- "won": 120,
+ "decided": 248,
+ "won": 123,
  "lost": 125,
- "hitRate": 0.49,
+ "hitRate": 0.496,
  "ci95": [
-  0.428,
-  0.552
+  0.434,
+  0.558
  ],
- "currentWinRun": 1,
+ "currentWinRun": 4,
  "picked": {
   "decided": 0,
   "won": 0,
@@ -17,20 +17,20 @@
   "verdict": null
  },
  "assigned": {
-  "decided": 245,
-  "won": 120
+  "decided": 248,
+  "won": 123
  },
  "byMarket": {
   "ETH 1h": {
-   "won": 32,
+   "won": 33,
    "lost": 37
   },
   "BNB 1h": {
-   "won": 36,
+   "won": 37,
    "lost": 34
   },
   "BTC 1h": {
-   "won": 35,
+   "won": 36,
    "lost": 33
   },
   "ETH 6h": {
@@ -50,8 +50,8 @@
    "lost": 1
   }
  },
- "waitingTickets": 11,
- "nextResultAt": "2026-11-26T15:00Z",
+ "waitingTickets": 8,
+ "nextResultAt": "2026-11-26T18:00Z",
  "verdict": "no-own-picks",
  "overallAllTickets": "coinflip",
  "todoNow": [
@@ -113,7 +113,7 @@
    "call": "Finals Pass mint()",
    "inputData": "0x1249c58b",
    "to": "0x9Df6ba1868d2C149FdA5FE67491f67C07C31e6B5",
-   "what": "Finals Pass: free, one per Agent ID wallet, 1765 of 2,000 left (a numbered ERC-721 with no monetary value)"
+   "what": "Finals Pass: free, one per Agent ID wallet, 1749 of 2,000 left (a numbered ERC-721 with no monetary value)"
   }
  ],
  "proof": {
