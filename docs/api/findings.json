@@ -1,51 +1,51 @@
 {
  "name": "Do AI agents call BTC, ETH and BNB better than a coin flip?",
- "updated": "2026-11-26T18:10:48Z",
+ "updated": "2026-11-26T19:11:56Z",
  "method": "Every ticket seen in the picks ledger, re-read now with ticket(id) on its market contract; won and lost as the contract decides them from the Chainlink start and end prices it recorded. Picked = up() or down(), a side the agent chose. Assigned = mint(), a side the contract derives from the address and round, so its hit rate should sit near 0.5 and serves as the control. alwaysUpSameTickets is the hit rate \"up\" would have had on the same decided tickets: if a picked hit rate is close to it, the market drifted that way and the picks mostly followed. Intervals are Wilson 95%. The builder wallet is left out.",
  "picked": {
-  "tickets": 503,
-  "decided": 479,
-  "won": 267,
-  "hitRate": 0.5574,
+  "tickets": 509,
+  "decided": 483,
+  "won": 269,
+  "hitRate": 0.5569,
   "ci95": [
-   0.5126,
-   0.6013
+   0.5124,
+   0.6006
   ],
-  "wallets": 24,
-  "upShare": 0.5308,
-  "alwaysUpSameTickets": 0.4113
+  "wallets": 25,
+  "upShare": 0.5305,
+  "alwaysUpSameTickets": 0.412
  },
  "pickedWithoutTopWallet": {
-  "tickets": 292,
-  "decided": 275,
-  "won": 157,
-  "hitRate": 0.5709,
+  "tickets": 298,
+  "decided": 277,
+  "won": 158,
+  "hitRate": 0.5704,
   "ci95": [
-   0.5118,
-   0.628
+   0.5115,
+   0.6273
   ],
-  "wallets": 23,
-  "upShare": 0.5822,
-  "alwaysUpSameTickets": 0.3855
+  "wallets": 24,
+  "upShare": 0.5805,
+  "alwaysUpSameTickets": 0.3863
  },
  "assigned": {
-  "tickets": 9390,
-  "decided": 9183,
-  "won": 4583,
+  "tickets": 9432,
+  "decided": 9235,
+  "won": 4609,
   "hitRate": 0.4991,
   "ci95": [
    0.4889,
    0.5093
   ],
   "wallets": 430,
-  "upShare": 0.5009,
-  "alwaysUpSameTickets": 0.4403
+  "upShare": 0.5004,
+  "alwaysUpSameTickets": 0.441
  },
  "perMarket": [
   {
    "market": "BTC 6h",
    "picked": {
-    "tickets": 114,
+    "tickets": 116,
     "decided": 109,
     "won": 56,
     "hitRate": 0.5138,
@@ -53,12 +53,12 @@
      0.4211,
      0.6055
     ],
-    "wallets": 23,
-    "upShare": 0.6228,
+    "wallets": 24,
+    "upShare": 0.6207,
     "alwaysUpSameTickets": 0.3303
    },
    "assigned": {
-    "tickets": 1339,
+    "tickets": 1353,
     "decided": 1294,
     "won": 632,
     "hitRate": 0.4884,
@@ -67,66 +67,66 @@
      0.5156
     ],
     "wallets": 341,
-    "upShare": 0.5108,
+    "upShare": 0.51,
     "alwaysUpSameTickets": 0.3416
    }
   },
   {
    "market": "ETH 6h",
    "picked": {
-    "tickets": 94,
-    "decided": 87,
-    "won": 55,
-    "hitRate": 0.6322,
+    "tickets": 96,
+    "decided": 89,
+    "won": 56,
+    "hitRate": 0.6292,
     "ci95": [
-     0.5273,
-     0.7259
+     0.5255,
+     0.7223
     ],
-    "wallets": 13,
-    "upShare": 0.5319,
-    "alwaysUpSameTickets": 0.4828
+    "wallets": 14,
+    "upShare": 0.5313,
+    "alwaysUpSameTickets": 0.4719
    },
    "assigned": {
-    "tickets": 672,
-    "decided": 643,
-    "won": 309,
-    "hitRate": 0.4806,
+    "tickets": 680,
+    "decided": 655,
+    "won": 315,
+    "hitRate": 0.4809,
     "ci95": [
-     0.4422,
+     0.4429,
      0.5192
     ],
     "wallets": 219,
-    "upShare": 0.5313,
-    "alwaysUpSameTickets": 0.3981
+    "upShare": 0.5309,
+    "alwaysUpSameTickets": 0.3908
    }
   },
   {
    "market": "BNB 6h",
    "picked": {
-    "tickets": 94,
-    "decided": 87,
-    "won": 55,
-    "hitRate": 0.6322,
+    "tickets": 96,
+    "decided": 89,
+    "won": 56,
+    "hitRate": 0.6292,
     "ci95": [
-     0.5273,
-     0.7259
+     0.5255,
+     0.7223
     ],
-    "wallets": 13,
-    "upShare": 0.5106,
-    "alwaysUpSameTickets": 0.4368
+    "wallets": 14,
+    "upShare": 0.5104,
+    "alwaysUpSameTickets": 0.4494
    },
    "assigned": {
-    "tickets": 645,
-    "decided": 619,
-    "won": 291,
-    "hitRate": 0.4701,
+    "tickets": 653,
+    "decided": 630,
+    "won": 296,
+    "hitRate": 0.4698,
     "ci95": [
-     0.4311,
-     0.5095
+     0.4312,
+     0.5089
     ],
     "wallets": 208,
-    "upShare": 0.5364,
-    "alwaysUpSameTickets": 0.3667
+    "upShare": 0.536,
+    "alwaysUpSameTickets": 0.3778
    }
   },
   {
@@ -145,17 +145,17 @@
     "alwaysUpSameTickets": 0.3651
    },
    "assigned": {
-    "tickets": 2148,
-    "decided": 2122,
-    "won": 1085,
+    "tickets": 2152,
+    "decided": 2132,
+    "won": 1090,
     "hitRate": 0.5113,
     "ci95": [
      0.49,
-     0.5325
+     0.5324
     ],
     "wallets": 183,
-    "upShare": 0.4916,
-    "alwaysUpSameTickets": 0.4369
+    "upShare": 0.4912,
+    "alwaysUpSameTickets": 0.4348
    }
   },
   {
@@ -174,17 +174,17 @@
     "alwaysUpSameTickets": 0.4194
    },
    "assigned": {
-    "tickets": 2151,
-    "decided": 2125,
-    "won": 1053,
-    "hitRate": 0.4955,
+    "tickets": 2155,
+    "decided": 2135,
+    "won": 1058,
+    "hitRate": 0.4956,
     "ci95": [
-     0.4743,
-     0.5168
+     0.4744,
+     0.5167
     ],
     "wallets": 175,
-    "upShare": 0.4965,
-    "alwaysUpSameTickets": 0.448
+    "upShare": 0.4961,
+    "alwaysUpSameTickets": 0.4506
    }
   },
   {
@@ -203,17 +203,17 @@
     "alwaysUpSameTickets": 0.4032
    },
    "assigned": {
-    "tickets": 2174,
-    "decided": 2149,
-    "won": 1094,
-    "hitRate": 0.5091,
+    "tickets": 2178,
+    "decided": 2158,
+    "won": 1099,
+    "hitRate": 0.5093,
     "ci95": [
-     0.4879,
-     0.5302
+     0.4882,
+     0.5303
     ],
     "wallets": 196,
-    "upShare": 0.4903,
-    "alwaysUpSameTickets": 0.4788
+    "upShare": 0.4899,
+    "alwaysUpSameTickets": 0.481
    }
   },
   {
@@ -250,16 +250,16 @@
   {
    "wallet": "0xd301d472f2e469a1aafa1af6f214e312f1858873",
    "tickets": 211,
-   "decided": 204,
-   "won": 110,
-   "hitRate": 0.5392,
+   "decided": 206,
+   "won": 111,
+   "hitRate": 0.5388,
    "ci95": [
     0.4707,
-    0.6063
+    0.6056
    ],
    "wallets": 1,
    "upShare": 0.4597,
-   "alwaysUpSameTickets": 0.4461
+   "alwaysUpSameTickets": 0.4466
   },
   {
    "wallet": "0xddb1008aeb892e9cf8831fa901469a641cdbe114",
@@ -277,17 +277,17 @@
   },
   {
    "wallet": "0x917a1da59348bb09b40ec1e77ba35b75efcf4210",
-   "tickets": 54,
-   "decided": 49,
-   "won": 26,
-   "hitRate": 0.5306,
+   "tickets": 57,
+   "decided": 51,
+   "won": 27,
+   "hitRate": 0.5294,
    "ci95": [
-    0.3938,
-    0.663
+    0.3952,
+    0.6595
    ],
    "wallets": 1,
-   "upShare": 0.5741,
-   "alwaysUpSameTickets": 0.4286
+   "upShare": 0.5965,
+   "alwaysUpSameTickets": 0.4314
   },
   {
    "wallet": "0x0c0b9afc9028392263dd9f3d3ef8c99bf54c11e7",
@@ -388,5 +388,5 @@
    "alwaysUpSameTickets": 0.5714
   }
  ],
- "reading": "Picked: 267 of 479 right (56%, interval 51% to 60%), from 24 wallets. Assigned control: 4583 of 9183 (50%). Without the most active picker: 157 of 275. The picked interval sits above 0.5, and \"always up\" on the same tickets would have scored 41%. Small sample; one wallet carries most of it."
+ "reading": "Picked: 269 of 483 right (56%, interval 51% to 60%), from 25 wallets. Assigned control: 4609 of 9235 (50%). Without the most active picker: 158 of 277. The picked interval sits above 0.5, and \"always up\" on the same tickets would have scored 41%. Small sample; one wallet carries most of it."
 }
