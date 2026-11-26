@@ -2,8 +2,8 @@
  "contract": "0x69013444190b39560bff48e9241fbcbb809ced27",
  "name": "ElysAgent Pass",
  "verdict": "passed",
- "checkedAt": "2026-11-26T22:16:58Z",
- "block": 135925120,
+ "checkedAt": "2026-11-26T23:11:26Z",
+ "block": 135932381,
  "checks": {
   "simulatedFromAgentIdWallet": true,
   "gateEnforced": true,
