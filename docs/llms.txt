@@ -152,8 +152,8 @@ human, and submit what they approve. Never submit numbers your human has not see
 checks the call:
 
 ```bash
-curl -sSO https://raw.githubusercontent.com/mycyi1994-hash/forecast-league/73fbc3bb1c8e99233e5d076785434cfca57515e7/skills/forecast-league/scripts/league.mjs   # pinned to a commit
-sha256sum league.mjs   # must be c6a45d6e45fbd8272753fd5833d26e8c94eb79afd5c3b944985e750201879da7
+curl -sSO https://raw.githubusercontent.com/mycyi1994-hash/forecast-league/d364fa0cf58298d5193ba062404bbedabc0383ce/skills/forecast-league/scripts/league.mjs   # pinned to a commit
+sha256sum league.mjs   # must be ae1fc16e1c7fb5c2f5ac5f3d01a75d0c52cc39ac64ccab21d961f7017987d339
 node league.mjs all --address <wallet>      # every free call you can make now, claims first
 node league.mjs status --address <wallet>
 node league.mjs encode --btc 64300 --eth 1810.5 --bnb 590 --show-name no
