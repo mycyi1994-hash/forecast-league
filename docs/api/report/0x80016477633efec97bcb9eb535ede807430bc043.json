@@ -73,7 +73,7 @@
    "call": "claim()",
    "inputData": "0x4e71d92d",
    "to": "0x09A645aa6cc6b0eB320dCF3982bcaA6A22b32629",
-   "what": "write 4 finished BTC 1h ticket(s) into the record"
+   "what": "write 5 finished BTC 1h ticket(s) into the record"
   },
   {
    "call": "claim()",
