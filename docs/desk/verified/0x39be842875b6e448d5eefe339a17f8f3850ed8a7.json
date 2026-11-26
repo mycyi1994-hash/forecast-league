@@ -1,0 +1,16 @@
+{
+ "contract": "0x39be842875b6e448d5eefe339a17f8f3850ed8a7",
+ "name": "Threadmoth",
+ "verdict": "passed",
+ "checkedAt": "2026-11-26T03:10:48Z",
+ "block": 135772418,
+ "checks": {
+  "simulatedFromAgentIdWallet": true,
+  "gateEnforced": true,
+  "upgradeable": false,
+  "owner": null,
+  "sourceVerified": true
+ },
+ "badge": "Checked by Agent ID Mint Desk: https://mycyi1994-hash.github.io/forecast-league/desk/verified/0x39be842875b6e448d5eefe339a17f8f3850ed8a7.json",
+ "note": "Heuristic simulation, not an audit."
+}

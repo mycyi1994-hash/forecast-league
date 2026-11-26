@@ -1,0 +1,16 @@
+{
+ "contract": "0xd472b6cd695b6d4f1f3ab224b7be5893fa9e23c1",
+ "name": "Fluxmara",
+ "verdict": "passed",
+ "checkedAt": "2026-11-26T03:10:48Z",
+ "block": 135772418,
+ "checks": {
+  "simulatedFromAgentIdWallet": true,
+  "gateEnforced": true,
+  "upgradeable": false,
+  "owner": null,
+  "sourceVerified": true
+ },
+ "badge": "Checked by Agent ID Mint Desk: https://mycyi1994-hash.github.io/forecast-league/desk/verified/0xd472b6cd695b6d4f1f3ab224b7be5893fa9e23c1.json",
+ "note": "Heuristic simulation, not an audit."
+}

@@ -1,0 +1,16 @@
+{
+ "contract": "0xe5498a371c67ec8a736298c5be64ecd0ab7fd345",
+ "name": "Pinnaclor",
+ "verdict": "passed",
+ "checkedAt": "2026-11-26T03:10:48Z",
+ "block": 135772418,
+ "checks": {
+  "simulatedFromAgentIdWallet": true,
+  "gateEnforced": true,
+  "upgradeable": false,
+  "owner": null,
+  "sourceVerified": true
+ },
+ "badge": "Checked by Agent ID Mint Desk: https://mycyi1994-hash.github.io/forecast-league/desk/verified/0xe5498a371c67ec8a736298c5be64ecd0ab7fd345.json",
+ "note": "Heuristic simulation, not an audit."
+}

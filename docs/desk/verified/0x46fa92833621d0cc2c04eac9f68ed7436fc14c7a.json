@@ -1,0 +1,16 @@
+{
+ "contract": "0x46fa92833621d0cc2c04eac9f68ed7436fc14c7a",
+ "name": "Vampirko",
+ "verdict": "passed",
+ "checkedAt": "2026-11-26T03:10:48Z",
+ "block": 135772418,
+ "checks": {
+  "simulatedFromAgentIdWallet": true,
+  "gateEnforced": true,
+  "upgradeable": false,
+  "owner": null,
+  "sourceVerified": true
+ },
+ "badge": "Checked by Agent ID Mint Desk: https://mycyi1994-hash.github.io/forecast-league/desk/verified/0x46fa92833621d0cc2c04eac9f68ed7436fc14c7a.json",
+ "note": "Heuristic simulation, not an audit."
+}

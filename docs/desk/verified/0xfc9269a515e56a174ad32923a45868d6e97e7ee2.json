@@ -1,0 +1,16 @@
+{
+ "contract": "0xfc9269a515e56a174ad32923a45868d6e97e7ee2",
+ "name": "金蟾 Agents",
+ "verdict": "passed",
+ "checkedAt": "2026-11-26T03:10:48Z",
+ "block": 135772418,
+ "checks": {
+  "simulatedFromAgentIdWallet": true,
+  "gateEnforced": true,
+  "upgradeable": false,
+  "owner": null,
+  "sourceVerified": true
+ },
+ "badge": "Checked by Agent ID Mint Desk: https://mycyi1994-hash.github.io/forecast-league/desk/verified/0xfc9269a515e56a174ad32923a45868d6e97e7ee2.json",
+ "note": "Heuristic simulation, not an audit."
+}

@@ -1,0 +1,16 @@
+{
+ "contract": "0x37cfee3b63c36ca9ca27e268345daf9f4443d758",
+ "name": "Agrifarm",
+ "verdict": "passed",
+ "checkedAt": "2026-11-26T03:10:48Z",
+ "block": 135772418,
+ "checks": {
+  "simulatedFromAgentIdWallet": true,
+  "gateEnforced": true,
+  "upgradeable": false,
+  "owner": null,
+  "sourceVerified": true
+ },
+ "badge": "Checked by Agent ID Mint Desk: https://mycyi1994-hash.github.io/forecast-league/desk/verified/0x37cfee3b63c36ca9ca27e268345daf9f4443d758.json",
+ "note": "Heuristic simulation, not an audit."
+}

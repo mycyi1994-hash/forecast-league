@@ -1,0 +1,16 @@
+{
+ "contract": "0x242d8c0cf57fef91a2492b040a2fbb0ce780e408",
+ "name": "Poppina",
+ "verdict": "passed",
+ "checkedAt": "2026-11-26T03:10:48Z",
+ "block": 135772418,
+ "checks": {
+  "simulatedFromAgentIdWallet": true,
+  "gateEnforced": true,
+  "upgradeable": false,
+  "owner": null,
+  "sourceVerified": true
+ },
+ "badge": "Checked by Agent ID Mint Desk: https://mycyi1994-hash.github.io/forecast-league/desk/verified/0x242d8c0cf57fef91a2492b040a2fbb0ce780e408.json",
+ "note": "Heuristic simulation, not an audit."
+}

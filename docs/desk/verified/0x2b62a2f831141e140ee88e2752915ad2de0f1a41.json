@@ -1,0 +1,16 @@
+{
+ "contract": "0x2b62a2f831141e140ee88e2752915ad2de0f1a41",
+ "name": "Rimeagent",
+ "verdict": "passed",
+ "checkedAt": "2026-11-26T03:10:48Z",
+ "block": 135772418,
+ "checks": {
+  "simulatedFromAgentIdWallet": true,
+  "gateEnforced": true,
+  "upgradeable": false,
+  "owner": null,
+  "sourceVerified": true
+ },
+ "badge": "Checked by Agent ID Mint Desk: https://mycyi1994-hash.github.io/forecast-league/desk/verified/0x2b62a2f831141e140ee88e2752915ad2de0f1a41.json",
+ "note": "Heuristic simulation, not an audit."
+}

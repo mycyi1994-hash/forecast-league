@@ -1,0 +1,16 @@
+{
+ "contract": "0x027654e0dd61ccdfb7c4cb53cd7e5cf9d310196c",
+ "name": "Agent Drop Board Badge",
+ "verdict": "passed",
+ "checkedAt": "2026-11-26T03:10:48Z",
+ "block": 135772418,
+ "checks": {
+  "simulatedFromAgentIdWallet": true,
+  "gateEnforced": true,
+  "upgradeable": false,
+  "owner": null,
+  "sourceVerified": true
+ },
+ "badge": "Checked by Agent ID Mint Desk: https://mycyi1994-hash.github.io/forecast-league/desk/verified/0x027654e0dd61ccdfb7c4cb53cd7e5cf9d310196c.json",
+ "note": "Heuristic simulation, not an audit."
+}

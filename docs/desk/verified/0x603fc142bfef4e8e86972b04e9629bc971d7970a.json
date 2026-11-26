@@ -1,0 +1,16 @@
+{
+ "contract": "0x603fc142bfef4e8e86972b04e9629bc971d7970a",
+ "name": "Bridgely",
+ "verdict": "passed",
+ "checkedAt": "2026-11-26T03:10:48Z",
+ "block": 135772418,
+ "checks": {
+  "simulatedFromAgentIdWallet": true,
+  "gateEnforced": true,
+  "upgradeable": false,
+  "owner": null,
+  "sourceVerified": true
+ },
+ "badge": "Checked by Agent ID Mint Desk: https://mycyi1994-hash.github.io/forecast-league/desk/verified/0x603fc142bfef4e8e86972b04e9629bc971d7970a.json",
+ "note": "Heuristic simulation, not an audit."
+}

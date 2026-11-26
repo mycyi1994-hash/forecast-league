@@ -1,0 +1,16 @@
+{
+ "contract": "0x7c40b78992d86edffb5553c74db5ef427100bb95",
+ "name": "Rave",
+ "verdict": "passed",
+ "checkedAt": "2026-11-26T03:10:48Z",
+ "block": 135772418,
+ "checks": {
+  "simulatedFromAgentIdWallet": true,
+  "gateEnforced": true,
+  "upgradeable": false,
+  "owner": null,
+  "sourceVerified": true
+ },
+ "badge": "Checked by Agent ID Mint Desk: https://mycyi1994-hash.github.io/forecast-league/desk/verified/0x7c40b78992d86edffb5553c74db5ef427100bb95.json",
+ "note": "Heuristic simulation, not an audit."
+}

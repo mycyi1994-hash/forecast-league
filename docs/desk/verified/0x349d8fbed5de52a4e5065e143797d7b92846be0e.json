@@ -1,0 +1,16 @@
+{
+ "contract": "0x349d8fbed5de52a4e5065e143797d7b92846be0e",
+ "name": "招财猫 Agents",
+ "verdict": "passed",
+ "checkedAt": "2026-11-26T03:10:48Z",
+ "block": 135772418,
+ "checks": {
+  "simulatedFromAgentIdWallet": true,
+  "gateEnforced": true,
+  "upgradeable": false,
+  "owner": null,
+  "sourceVerified": true
+ },
+ "badge": "Checked by Agent ID Mint Desk: https://mycyi1994-hash.github.io/forecast-league/desk/verified/0x349d8fbed5de52a4e5065e143797d7b92846be0e.json",
+ "note": "Heuristic simulation, not an audit."
+}

@@ -1,0 +1,16 @@
+{
+ "contract": "0x0623f0799cef0567756dc0afcfea18ebe3e6886d",
+ "name": "Koalaxy",
+ "verdict": "passed",
+ "checkedAt": "2026-11-26T03:10:48Z",
+ "block": 135772418,
+ "checks": {
+  "simulatedFromAgentIdWallet": true,
+  "gateEnforced": true,
+  "upgradeable": false,
+  "owner": null,
+  "sourceVerified": true
+ },
+ "badge": "Checked by Agent ID Mint Desk: https://mycyi1994-hash.github.io/forecast-league/desk/verified/0x0623f0799cef0567756dc0afcfea18ebe3e6886d.json",
+ "note": "Heuristic simulation, not an audit."
+}

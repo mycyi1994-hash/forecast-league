@@ -1,0 +1,16 @@
+{
+ "contract": "0xf7527a3727b48052fbc5e1ff1ed62f6d349843a3",
+ "name": "Brainwisp",
+ "verdict": "passed",
+ "checkedAt": "2026-11-26T03:10:48Z",
+ "block": 135772418,
+ "checks": {
+  "simulatedFromAgentIdWallet": true,
+  "gateEnforced": true,
+  "upgradeable": false,
+  "owner": null,
+  "sourceVerified": true
+ },
+ "badge": "Checked by Agent ID Mint Desk: https://mycyi1994-hash.github.io/forecast-league/desk/verified/0xf7527a3727b48052fbc5e1ff1ed62f6d349843a3.json",
+ "note": "Heuristic simulation, not an audit."
+}

@@ -1,0 +1,16 @@
+{
+ "contract": "0xde3e3e9e2f87f285f0f26ea54923a933b10df140",
+ "name": "Saturnyx",
+ "verdict": "passed",
+ "checkedAt": "2026-11-26T03:10:48Z",
+ "block": 135772418,
+ "checks": {
+  "simulatedFromAgentIdWallet": true,
+  "gateEnforced": true,
+  "upgradeable": false,
+  "owner": null,
+  "sourceVerified": true
+ },
+ "badge": "Checked by Agent ID Mint Desk: https://mycyi1994-hash.github.io/forecast-league/desk/verified/0xde3e3e9e2f87f285f0f26ea54923a933b10df140.json",
+ "note": "Heuristic simulation, not an audit."
+}

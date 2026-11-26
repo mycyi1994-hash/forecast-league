@@ -1,0 +1,16 @@
+{
+ "contract": "0x8eb3d013ca636cdb388ee5802efd525d5e4056e8",
+ "name": "Lennox the Corgi",
+ "verdict": "passed",
+ "checkedAt": "2026-11-26T03:10:48Z",
+ "block": 135772418,
+ "checks": {
+  "simulatedFromAgentIdWallet": true,
+  "gateEnforced": true,
+  "upgradeable": false,
+  "owner": null,
+  "sourceVerified": true
+ },
+ "badge": "Checked by Agent ID Mint Desk: https://mycyi1994-hash.github.io/forecast-league/desk/verified/0x8eb3d013ca636cdb388ee5802efd525d5e4056e8.json",
+ "note": "Heuristic simulation, not an audit."
+}

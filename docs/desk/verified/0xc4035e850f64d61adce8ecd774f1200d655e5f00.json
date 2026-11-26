@@ -1,0 +1,16 @@
+{
+ "contract": "0xc4035e850f64d61adce8ecd774f1200d655e5f00",
+ "name": "Rayglide",
+ "verdict": "passed",
+ "checkedAt": "2026-11-26T03:10:48Z",
+ "block": 135772418,
+ "checks": {
+  "simulatedFromAgentIdWallet": true,
+  "gateEnforced": true,
+  "upgradeable": false,
+  "owner": null,
+  "sourceVerified": true
+ },
+ "badge": "Checked by Agent ID Mint Desk: https://mycyi1994-hash.github.io/forecast-league/desk/verified/0xc4035e850f64d61adce8ecd774f1200d655e5f00.json",
+ "note": "Heuristic simulation, not an audit."
+}

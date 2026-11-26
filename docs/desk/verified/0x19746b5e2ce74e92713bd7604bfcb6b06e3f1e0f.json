@@ -1,0 +1,16 @@
+{
+ "contract": "0x19746b5e2ce74e92713bd7604bfcb6b06e3f1e0f",
+ "name": "Tucao",
+ "verdict": "passed",
+ "checkedAt": "2026-11-26T03:10:48Z",
+ "block": 135772418,
+ "checks": {
+  "simulatedFromAgentIdWallet": true,
+  "gateEnforced": true,
+  "upgradeable": false,
+  "owner": null,
+  "sourceVerified": true
+ },
+ "badge": "Checked by Agent ID Mint Desk: https://mycyi1994-hash.github.io/forecast-league/desk/verified/0x19746b5e2ce74e92713bd7604bfcb6b06e3f1e0f.json",
+ "note": "Heuristic simulation, not an audit."
+}

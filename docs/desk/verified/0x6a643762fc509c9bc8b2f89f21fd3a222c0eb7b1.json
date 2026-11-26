@@ -1,0 +1,16 @@
+{
+ "contract": "0x6a643762fc509c9bc8b2f89f21fd3a222c0eb7b1",
+ "name": "ELSY",
+ "verdict": "passed",
+ "checkedAt": "2026-11-26T03:10:48Z",
+ "block": 135772418,
+ "checks": {
+  "simulatedFromAgentIdWallet": true,
+  "gateEnforced": true,
+  "upgradeable": false,
+  "owner": null,
+  "sourceVerified": true
+ },
+ "badge": "Checked by Agent ID Mint Desk: https://mycyi1994-hash.github.io/forecast-league/desk/verified/0x6a643762fc509c9bc8b2f89f21fd3a222c0eb7b1.json",
+ "note": "Heuristic simulation, not an audit."
+}

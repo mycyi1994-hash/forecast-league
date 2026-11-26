@@ -1,0 +1,16 @@
+{
+ "contract": "0xd12e7bfc9ccd9123a41f3b08a8a584fb9e174da8",
+ "name": "Frost Agent Pass",
+ "verdict": "passed",
+ "checkedAt": "2026-11-26T03:10:48Z",
+ "block": 135772418,
+ "checks": {
+  "simulatedFromAgentIdWallet": true,
+  "gateEnforced": true,
+  "upgradeable": false,
+  "owner": null,
+  "sourceVerified": true
+ },
+ "badge": "Checked by Agent ID Mint Desk: https://mycyi1994-hash.github.io/forecast-league/desk/verified/0xd12e7bfc9ccd9123a41f3b08a8a584fb9e174da8.json",
+ "note": "Heuristic simulation, not an audit."
+}

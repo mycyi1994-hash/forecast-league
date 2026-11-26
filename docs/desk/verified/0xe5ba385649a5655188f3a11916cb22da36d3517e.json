@@ -1,0 +1,16 @@
+{
+ "contract": "0xe5ba385649a5655188f3a11916cb22da36d3517e",
+ "name": "Rackfarm",
+ "verdict": "passed",
+ "checkedAt": "2026-11-26T03:10:48Z",
+ "block": 135772418,
+ "checks": {
+  "simulatedFromAgentIdWallet": true,
+  "gateEnforced": true,
+  "upgradeable": false,
+  "owner": null,
+  "sourceVerified": true
+ },
+ "badge": "Checked by Agent ID Mint Desk: https://mycyi1994-hash.github.io/forecast-league/desk/verified/0xe5ba385649a5655188f3a11916cb22da36d3517e.json",
+ "note": "Heuristic simulation, not an audit."
+}

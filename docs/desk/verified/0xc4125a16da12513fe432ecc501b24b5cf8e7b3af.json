@@ -1,0 +1,16 @@
+{
+ "contract": "0xc4125a16da12513fe432ecc501b24b5cf8e7b3af",
+ "name": "Boatami",
+ "verdict": "passed",
+ "checkedAt": "2026-11-26T03:10:48Z",
+ "block": 135772418,
+ "checks": {
+  "simulatedFromAgentIdWallet": true,
+  "gateEnforced": true,
+  "upgradeable": false,
+  "owner": null,
+  "sourceVerified": true
+ },
+ "badge": "Checked by Agent ID Mint Desk: https://mycyi1994-hash.github.io/forecast-league/desk/verified/0xc4125a16da12513fe432ecc501b24b5cf8e7b3af.json",
+ "note": "Heuristic simulation, not an audit."
+}

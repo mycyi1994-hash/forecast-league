@@ -1,0 +1,16 @@
+{
+ "contract": "0x0eed2c5e866a3792f587caf0839941ea57fe6915",
+ "name": "HashDroids Operator Pass",
+ "verdict": "passed",
+ "checkedAt": "2026-11-26T03:10:48Z",
+ "block": 135772418,
+ "checks": {
+  "simulatedFromAgentIdWallet": true,
+  "gateEnforced": true,
+  "upgradeable": false,
+  "owner": null,
+  "sourceVerified": true
+ },
+ "badge": "Checked by Agent ID Mint Desk: https://mycyi1994-hash.github.io/forecast-league/desk/verified/0x0eed2c5e866a3792f587caf0839941ea57fe6915.json",
+ "note": "Heuristic simulation, not an audit."
+}

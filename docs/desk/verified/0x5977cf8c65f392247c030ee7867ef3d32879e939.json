@@ -1,0 +1,16 @@
+{
+ "contract": "0x5977cf8c65f392247c030ee7867ef3d32879e939",
+ "name": "Scriptwren",
+ "verdict": "passed",
+ "checkedAt": "2026-11-26T03:10:48Z",
+ "block": 135772418,
+ "checks": {
+  "simulatedFromAgentIdWallet": true,
+  "gateEnforced": true,
+  "upgradeable": false,
+  "owner": null,
+  "sourceVerified": true
+ },
+ "badge": "Checked by Agent ID Mint Desk: https://mycyi1994-hash.github.io/forecast-league/desk/verified/0x5977cf8c65f392247c030ee7867ef3d32879e939.json",
+ "note": "Heuristic simulation, not an audit."
+}

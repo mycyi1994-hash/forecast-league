@@ -1,0 +1,16 @@
+{
+ "contract": "0xeee31d337866a57cd59fdecc8b6e6548e182ea78",
+ "name": "MECHA",
+ "verdict": "passed",
+ "checkedAt": "2026-11-26T03:10:48Z",
+ "block": 135772418,
+ "checks": {
+  "simulatedFromAgentIdWallet": true,
+  "gateEnforced": true,
+  "upgradeable": false,
+  "owner": null,
+  "sourceVerified": true
+ },
+ "badge": "Checked by Agent ID Mint Desk: https://mycyi1994-hash.github.io/forecast-league/desk/verified/0xeee31d337866a57cd59fdecc8b6e6548e182ea78.json",
+ "note": "Heuristic simulation, not an audit."
+}

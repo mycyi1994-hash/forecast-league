@@ -1,0 +1,16 @@
+{
+ "contract": "0x82eea4aeb666e978d904722066436ae69a196ac7",
+ "name": "EMBER Spark",
+ "verdict": "passed",
+ "checkedAt": "2026-11-26T03:10:48Z",
+ "block": 135772418,
+ "checks": {
+  "simulatedFromAgentIdWallet": true,
+  "gateEnforced": true,
+  "upgradeable": false,
+  "owner": null,
+  "sourceVerified": true
+ },
+ "badge": "Checked by Agent ID Mint Desk: https://mycyi1994-hash.github.io/forecast-league/desk/verified/0x82eea4aeb666e978d904722066436ae69a196ac7.json",
+ "note": "Heuristic simulation, not an audit."
+}

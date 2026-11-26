@@ -1,0 +1,16 @@
+{
+ "contract": "0x566619a4a936985833e5db71adfc031a446304f6",
+ "name": "DRAKE DECK Free Edition",
+ "verdict": "passed",
+ "checkedAt": "2026-11-26T03:10:48Z",
+ "block": 135772418,
+ "checks": {
+  "simulatedFromAgentIdWallet": true,
+  "gateEnforced": true,
+  "upgradeable": false,
+  "owner": null,
+  "sourceVerified": true
+ },
+ "badge": "Checked by Agent ID Mint Desk: https://mycyi1994-hash.github.io/forecast-league/desk/verified/0x566619a4a936985833e5db71adfc031a446304f6.json",
+ "note": "Heuristic simulation, not an audit."
+}

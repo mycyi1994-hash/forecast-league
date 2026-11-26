@@ -1,0 +1,16 @@
+{
+ "contract": "0x4a0eb5da10116b2bb6db5c4622df7790efe47ded",
+ "name": "Kelpiare",
+ "verdict": "passed",
+ "checkedAt": "2026-11-26T03:10:48Z",
+ "block": 135772418,
+ "checks": {
+  "simulatedFromAgentIdWallet": true,
+  "gateEnforced": true,
+  "upgradeable": false,
+  "owner": null,
+  "sourceVerified": true
+ },
+ "badge": "Checked by Agent ID Mint Desk: https://mycyi1994-hash.github.io/forecast-league/desk/verified/0x4a0eb5da10116b2bb6db5c4622df7790efe47ded.json",
+ "note": "Heuristic simulation, not an audit."
+}

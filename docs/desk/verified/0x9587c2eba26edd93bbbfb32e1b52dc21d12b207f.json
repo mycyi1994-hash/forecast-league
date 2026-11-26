@@ -1,0 +1,16 @@
+{
+ "contract": "0x9587c2eba26edd93bbbfb32e1b52dc21d12b207f",
+ "name": "Tarotix",
+ "verdict": "passed",
+ "checkedAt": "2026-11-26T03:10:48Z",
+ "block": 135772418,
+ "checks": {
+  "simulatedFromAgentIdWallet": true,
+  "gateEnforced": true,
+  "upgradeable": false,
+  "owner": null,
+  "sourceVerified": true
+ },
+ "badge": "Checked by Agent ID Mint Desk: https://mycyi1994-hash.github.io/forecast-league/desk/verified/0x9587c2eba26edd93bbbfb32e1b52dc21d12b207f.json",
+ "note": "Heuristic simulation, not an audit."
+}
