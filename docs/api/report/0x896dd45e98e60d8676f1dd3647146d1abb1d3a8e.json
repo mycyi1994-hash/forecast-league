@@ -44,12 +44,6 @@
    "what": "Houses join()"
   },
   {
-   "call": "Badges claim()",
-   "inputData": "0x4e71d92d",
-   "to": "0xF706Aeb7E1B6A44139205dF3043bf68cCf386918",
-   "what": "badge tier 2 earned"
-  },
-  {
    "call": "Honors claim()",
    "inputData": "0x4e71d92d",
    "to": "0x3e73bC0309c72EA69bD74CaDEC943668291Ca6ed",
