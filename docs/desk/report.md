@@ -1,7 +1,7 @@
-# Agent ID Mint Desk — 2026-11-26T11:11 UTC
+# Agent ID Mint Desk — 2026-11-26T12:07 UTC
 
-Every Binance-Agent-ID-gated mint the public radar has seen on BNB Chain, simulated from real Agent ID wallets at block 135836450.
-**3606 free and open now** · 857 paid · 727 closed or failing · 5334 checked. Heuristics, not an audit; preview every call.
+Every Binance-Agent-ID-gated mint the public radar has seen on BNB Chain, simulated from real Agent ID wallets at block 135843946.
+**3607 free and open now** · 857 paid · 727 closed or failing · 5334 checked. Heuristics, not an audit; preview every call.
 
 ## Free now, passing every check
 | # | Name | Contract | Call data |
@@ -25,12 +25,12 @@ Every Binance-Agent-ID-gated mint the public radar has seen on BNB Chain, simula
 | 17 | AgentB | `0xc047f826e9e53d853c5683290ee50b6f02496529` | `0x1249c58b` |
 | 18 | Agent Gold Miner | `0x14cba1c21c5685a742a9382fc5e1386a016fc75a` | `0xa0712d680000000000000000000000000000000000000000000000000000000000000001` |
 | 19 | Agent Gold Miner | `0x6de46f5d65833e551b6d00c8a30665e65e241a2c` | `0xa0712d680000000000000000000000000000000000000000000000000000000000000001` |
-| 20 | MizzlewickAgent | `0x892e438425b3a41bc75b25c22fd878b3fa2e308d` | `0xa0712d680000000000000000000000000000000000000000000000000000000000000001` |
-| 21 | AgentBoard Badge | `0x928979396b22c92449e8deccc544a7d8c4c6fc7b` | `0x183ff085` |
-| 22 | AgentShift Worker | `0x8837bd107a6e8812bde0eeb6adec089f53f9bcc2` | `0x1249c58b0000000000000000000000000000000000000000000000000000000000000001` |
-| 23 | DeepShard | `0xc463960af285b7eda0909d362ae31783597c2076` | `0x1249c58b` |
-| 24 | AgentStreak Badge | `0xa011517fd16f6a240c309e9df8316e56306f5361` | `0xd9a59e330000000000000000000000000000000000000000000000000000000000000000` |
-| 25 | GlorpixAgent | `0xba5cde0ceea8704b8944deb51228ca59a7bd9cf0` | `0xa0712d680000000000000000000000000000000000000000000000000000000000000001` |
+| 20 | Forecast League Finals Pass (desk operator) | `0x9df6ba1868d2c149fda5fe67491f67c07c31e6b5` | `0x1249c58b` |
+| 21 | MizzlewickAgent | `0x892e438425b3a41bc75b25c22fd878b3fa2e308d` | `0xa0712d680000000000000000000000000000000000000000000000000000000000000001` |
+| 22 | AgentBoard Badge | `0x928979396b22c92449e8deccc544a7d8c4c6fc7b` | `0x183ff085` |
+| 23 | AgentShift Worker | `0x8837bd107a6e8812bde0eeb6adec089f53f9bcc2` | `0x1249c58b0000000000000000000000000000000000000000000000000000000000000001` |
+| 24 | DeepShard | `0xc463960af285b7eda0909d362ae31783597c2076` | `0x1249c58b` |
+| 25 | AgentStreak Badge | `0xa011517fd16f6a240c309e9df8316e56306f5361` | `0xd9a59e330000000000000000000000000000000000000000000000000000000000000000` |
 
 ## Free now, with warnings
 - Minerly `0x951b86dc309b26fbb149606647cc12f64f21ffff`: has an owner with admin powers

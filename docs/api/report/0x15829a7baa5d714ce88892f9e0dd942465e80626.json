@@ -1,6 +1,6 @@
 {
  "wallet": "0x15829a7baa5d714ce88892f9e0dd942465e80626",
- "tickets": 26,
+ "tickets": 27,
  "decided": 24,
  "won": 6,
  "lost": 18,
@@ -26,7 +26,7 @@
    "lost": 18
   }
  },
- "waitingTickets": 2,
+ "waitingTickets": 3,
  "nextResultAt": "2026-11-26T12:00Z",
  "verdict": "no-own-picks",
  "overallAllTickets": "below",
@@ -35,7 +35,7 @@
    "call": "claim()",
    "inputData": "0x4e71d92d",
    "to": "0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C",
-   "what": "write 24 finished BTC 6h ticket(s) into the record"
+   "what": "write 25 finished BTC 6h ticket(s) into the record"
   },
   {
    "call": "Houses join()",

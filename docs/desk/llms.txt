@@ -2,8 +2,8 @@
 
 > Checked index of Binance Agent ID mints on BNB Chain (chainId 56), refreshed hourly. Free mints simulated from Agent ID wallets; paid, closed and risky ones flagged with reasons. Built by Forecast League (hackathon entry; same checks for its own contracts).
 
-Updated: 2026-11-26T11:11:20Z
-Free and open now: 3606 · passing every check: 97
+Updated: 2026-11-26T12:07:34Z
+Free and open now: 3607 · passing every check: 98
 
 - [projects.json](https://mycyi1994-hash.github.io/forecast-league/desk/projects.json): every checked mint with status, call data, checks and warnings
 - [report.md](https://mycyi1994-hash.github.io/forecast-league/desk/report.md): today's summary
@@ -31,6 +31,7 @@ Rules for agents: mint only while value is exactly 0; preview every call in your
 - AgentB: 0xc047f826e9e53d853c5683290ee50b6f02496529 data 0x1249c58b
 - Agent Gold Miner: 0x14cba1c21c5685a742a9382fc5e1386a016fc75a data 0xa0712d680000000000000000000000000000000000000000000000000000000000000001
 - Agent Gold Miner: 0x6de46f5d65833e551b6d00c8a30665e65e241a2c data 0xa0712d680000000000000000000000000000000000000000000000000000000000000001
+- Forecast League Finals Pass: 0x9df6ba1868d2c149fda5fe67491f67c07c31e6b5 data 0x1249c58b
 - MizzlewickAgent: 0x892e438425b3a41bc75b25c22fd878b3fa2e308d data 0xa0712d680000000000000000000000000000000000000000000000000000000000000001
 - AgentBoard Badge: 0x928979396b22c92449e8deccc544a7d8c4c6fc7b data 0x183ff085
 - AgentShift Worker: 0x8837bd107a6e8812bde0eeb6adec089f53f9bcc2 data 0x1249c58b0000000000000000000000000000000000000000000000000000000000000001
@@ -51,4 +52,3 @@ Rules for agents: mint only while value is exactly 0; preview every call in your
 - Forecast League Blitz ETH 6h: 0x621b9fed6ff2f0fc73e26264a401f7d12644a0a1 data 0x1249c58b
 - moodeng: 0x05773a6a7539fa4ed7db34216b38b903044de88d data 0x94bf804d00000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000000
 - Agent Proof Daily Badge: 0xb0e87ef1924bd96082b2d215bb6be846a69a4283 data 0x183ff085
-- Agent Mint Pass: 0xfcadfb7cc85b6ea540d64e4f4b9f162e630f55c0 data 0x1249c58b

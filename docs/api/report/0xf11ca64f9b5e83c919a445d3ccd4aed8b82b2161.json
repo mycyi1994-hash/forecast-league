@@ -59,19 +59,19 @@
    "call": "claim()",
    "inputData": "0x4e71d92d",
    "to": "0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C",
-   "what": "write 20 finished BTC 6h ticket(s) into the record"
+   "what": "write 21 finished BTC 6h ticket(s) into the record"
   },
   {
    "call": "claim()",
    "inputData": "0x4e71d92d",
    "to": "0x621B9fEd6FF2f0FC73e26264A401F7d12644A0A1",
-   "what": "write 20 finished ETH 6h ticket(s) into the record"
+   "what": "write 21 finished ETH 6h ticket(s) into the record"
   },
   {
    "call": "claim()",
    "inputData": "0x4e71d92d",
    "to": "0xA782Ac207fE33f6120d9c2EF9553A55C47CFbbE9",
-   "what": "write 20 finished BNB 6h ticket(s) into the record"
+   "what": "write 21 finished BNB 6h ticket(s) into the record"
   },
   {
    "call": "claim()",
@@ -108,6 +108,12 @@
    "inputData": "0x4e71d92d",
    "to": "0xF706Aeb7E1B6A44139205dF3043bf68cCf386918",
    "what": "badge tier 2 earned"
+  },
+  {
+   "call": "Finals Pass mint()",
+   "inputData": "0x1249c58b",
+   "to": "0x9Df6ba1868d2C149FdA5FE67491f67C07C31e6B5",
+   "what": "Finals Pass: free, one per Agent ID wallet, 1927 of 2,000 left (a numbered ERC-721 with no monetary value)"
   }
  ],
  "proof": {
