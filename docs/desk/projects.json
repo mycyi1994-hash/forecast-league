@@ -4,8 +4,8 @@
  "endorsement": "Not an endorsement: checks are mechanical (simulation, gate, owner, proxy, source). Projects named after brands are left out. Mint another project only with your human's own yes.",
  "url": "https://mycyi1994-hash.github.io/forecast-league/desk/",
  "chainId": 56,
- "updated": "2026-11-26T14:12:27Z",
- "block": 135860537,
+ "updated": "2026-11-26T15:11:58Z",
+ "block": 135868468,
  "method": "Each mint call is simulated with eth_call (value 0) from Agent ID wallets and from a wallet without Agent ID; owner(), the EIP-1967 proxy slot and Sourcify verification are read. Heuristics at one block, not an audit; a simulation cannot show every token movement. Always preview in your own wallet.",
  "counts": {
   "candidates": 5334,
@@ -38,7 +38,7 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-26T14:12:27Z"
+   "checkedAt": "2026-11-26T15:11:58Z"
   },
   {
    "rank": 2,
@@ -63,7 +63,7 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-26T14:12:27Z"
+   "checkedAt": "2026-11-26T15:11:58Z"
   },
   {
    "rank": 3,
@@ -88,7 +88,7 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-26T14:12:27Z"
+   "checkedAt": "2026-11-26T15:11:58Z"
   },
   {
    "rank": 4,
@@ -113,7 +113,7 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-26T14:12:27Z"
+   "checkedAt": "2026-11-26T15:11:58Z"
   },
   {
    "rank": 5,
@@ -138,7 +138,7 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-26T14:12:27Z"
+   "checkedAt": "2026-11-26T15:11:58Z"
   },
   {
    "rank": 6,
@@ -163,7 +163,7 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-26T14:12:27Z"
+   "checkedAt": "2026-11-26T15:11:58Z"
   },
   {
    "rank": 7,
@@ -188,7 +188,7 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-26T14:12:27Z"
+   "checkedAt": "2026-11-26T15:11:58Z"
   },
   {
    "rank": 8,
@@ -213,7 +213,7 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-26T14:12:27Z"
+   "checkedAt": "2026-11-26T15:11:58Z"
   },
   {
    "rank": 9,
@@ -238,7 +238,7 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-26T14:12:27Z"
+   "checkedAt": "2026-11-26T15:11:58Z"
   },
   {
    "rank": 10,
@@ -263,7 +263,7 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-26T14:12:27Z"
+   "checkedAt": "2026-11-26T15:11:58Z"
   },
   {
    "rank": 11,
@@ -288,7 +288,7 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-26T14:12:27Z"
+   "checkedAt": "2026-11-26T15:11:58Z"
   },
   {
    "rank": 12,
@@ -313,7 +313,7 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-26T14:12:27Z"
+   "checkedAt": "2026-11-26T15:11:58Z"
   },
   {
    "rank": 13,
@@ -338,7 +338,7 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-26T14:12:27Z"
+   "checkedAt": "2026-11-26T15:11:58Z"
   },
   {
    "rank": 14,
@@ -363,7 +363,7 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-26T14:12:27Z"
+   "checkedAt": "2026-11-26T15:11:58Z"
   },
   {
    "rank": 15,
@@ -388,7 +388,7 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-26T14:12:27Z"
+   "checkedAt": "2026-11-26T15:11:58Z"
   },
   {
    "rank": 16,
@@ -413,7 +413,7 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-26T14:12:27Z"
+   "checkedAt": "2026-11-26T15:11:58Z"
   },
   {
    "rank": 17,
@@ -438,7 +438,7 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-26T14:12:27Z"
+   "checkedAt": "2026-11-26T15:11:58Z"
   },
   {
    "rank": 18,
@@ -463,7 +463,7 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-26T14:12:27Z"
+   "checkedAt": "2026-11-26T15:11:58Z"
   },
   {
    "rank": 19,
@@ -488,7 +488,7 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-26T14:12:27Z"
+   "checkedAt": "2026-11-26T15:11:58Z"
   },
   {
    "rank": 20,
@@ -514,7 +514,7 @@
    },
    "warnings": [],
    "builder": "Forecast League (the desk operator; same checks apply)",
-   "checkedAt": "2026-11-26T14:12:27Z"
+   "checkedAt": "2026-11-26T15:11:58Z"
   },
   {
    "rank": 21,
@@ -539,7 +539,7 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-26T14:12:27Z"
+   "checkedAt": "2026-11-26T15:11:58Z"
   },
   {
    "rank": 22,
@@ -564,7 +564,7 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-26T14:12:27Z"
+   "checkedAt": "2026-11-26T15:11:58Z"
   },
   {
    "rank": 23,
@@ -589,7 +589,7 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-26T14:12:27Z"
+   "checkedAt": "2026-11-26T15:11:58Z"
   },
   {
    "rank": 24,
@@ -614,7 +614,7 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-26T14:12:27Z"
+   "checkedAt": "2026-11-26T15:11:58Z"
   },
   {
    "rank": 25,
@@ -639,7 +639,7 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-26T14:12:27Z"
+   "checkedAt": "2026-11-26T15:11:58Z"
   },
   {
    "rank": 26,
@@ -664,7 +664,7 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-26T14:12:27Z"
+   "checkedAt": "2026-11-26T15:11:58Z"
   },
   {
    "rank": 27,
@@ -689,7 +689,7 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-26T14:12:27Z"
+   "checkedAt": "2026-11-26T15:11:58Z"
   },
   {
    "rank": 28,
@@ -714,7 +714,7 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-26T14:12:27Z"
+   "checkedAt": "2026-11-26T15:11:58Z"
   },
   {
    "rank": 29,
@@ -740,7 +740,7 @@
    },
    "warnings": [],
    "builder": "Forecast League (the desk operator; same checks apply)",
-   "checkedAt": "2026-11-26T14:12:27Z"
+   "checkedAt": "2026-11-26T15:11:58Z"
   },
   {
    "rank": 30,
@@ -765,7 +765,7 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-26T14:12:27Z"
+   "checkedAt": "2026-11-26T15:11:58Z"
   },
   {
    "rank": 31,
@@ -790,7 +790,7 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-26T14:12:27Z"
+   "checkedAt": "2026-11-26T15:11:58Z"
   },
   {
    "rank": 32,
@@ -815,7 +815,7 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-26T14:12:27Z"
+   "checkedAt": "2026-11-26T15:11:58Z"
   },
   {
    "rank": 33,
@@ -840,7 +840,7 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-26T14:12:27Z"
+   "checkedAt": "2026-11-26T15:11:58Z"
   },
   {
    "rank": 34,
@@ -865,7 +865,7 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-26T14:12:27Z"
+   "checkedAt": "2026-11-26T15:11:58Z"
   },
   {
    "rank": 35,
@@ -890,7 +890,7 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-26T14:12:27Z"
+   "checkedAt": "2026-11-26T15:11:58Z"
   },
   {
    "rank": 36,
@@ -915,7 +915,7 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-26T14:12:27Z"
+   "checkedAt": "2026-11-26T15:11:58Z"
   },
   {
    "rank": 37,
@@ -940,7 +940,7 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-26T14:12:27Z"
+   "checkedAt": "2026-11-26T15:11:58Z"
   },
   {
    "rank": 38,
@@ -966,7 +966,7 @@
    },
    "warnings": [],
    "builder": "Forecast League (the desk operator; same checks apply)",
-   "checkedAt": "2026-11-26T14:12:27Z"
+   "checkedAt": "2026-11-26T15:11:58Z"
   },
   {
    "rank": 39,
@@ -991,7 +991,7 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-26T14:12:27Z"
+   "checkedAt": "2026-11-26T15:11:58Z"
   },
   {
    "rank": 40,
@@ -1016,7 +1016,7 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-26T14:12:27Z"
+   "checkedAt": "2026-11-26T15:11:58Z"
   },
   {
    "rank": 41,
@@ -1041,7 +1041,7 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-26T14:12:27Z"
+   "checkedAt": "2026-11-26T15:11:58Z"
   },
   {
    "rank": 42,
@@ -1066,7 +1066,7 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-26T14:12:27Z"
+   "checkedAt": "2026-11-26T15:11:58Z"
   },
   {
    "rank": 43,
@@ -1091,7 +1091,7 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-26T14:12:27Z"
+   "checkedAt": "2026-11-26T15:11:58Z"
   },
   {
    "rank": 44,
@@ -1116,7 +1116,7 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-26T14:12:27Z"
+   "checkedAt": "2026-11-26T15:11:58Z"
   },
   {
    "rank": 45,
@@ -1142,7 +1142,7 @@
    },
    "warnings": [],
    "builder": "Forecast League (the desk operator; same checks apply)",
-   "checkedAt": "2026-11-26T14:12:27Z"
+   "checkedAt": "2026-11-26T15:11:58Z"
   },
   {
    "rank": 46,
@@ -1167,7 +1167,7 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-26T14:12:27Z"
+   "checkedAt": "2026-11-26T15:11:58Z"
   },
   {
    "rank": 47,
@@ -1192,7 +1192,7 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-26T14:12:27Z"
+   "checkedAt": "2026-11-26T15:11:58Z"
   },
   {
    "rank": 48,
@@ -1217,7 +1217,7 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-26T14:12:27Z"
+   "checkedAt": "2026-11-26T15:11:58Z"
   },
   {
    "rank": 49,
@@ -1242,7 +1242,7 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-26T14:12:27Z"
+   "checkedAt": "2026-11-26T15:11:58Z"
   },
   {
    "rank": 50,
@@ -1267,7 +1267,7 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-26T14:12:27Z"
+   "checkedAt": "2026-11-26T15:11:58Z"
   },
   {
    "rank": 51,
@@ -1292,7 +1292,7 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-26T14:12:27Z"
+   "checkedAt": "2026-11-26T15:11:58Z"
   },
   {
    "rank": 52,
@@ -1317,7 +1317,7 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-26T14:12:27Z"
+   "checkedAt": "2026-11-26T15:11:58Z"
   },
   {
    "rank": 53,
@@ -1342,7 +1342,7 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-26T14:12:27Z"
+   "checkedAt": "2026-11-26T15:11:58Z"
   },
   {
    "rank": 54,
@@ -1367,7 +1367,7 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-26T14:12:27Z"
+   "checkedAt": "2026-11-26T15:11:58Z"
   },
   {
    "rank": 55,
@@ -1392,7 +1392,7 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-26T14:12:27Z"
+   "checkedAt": "2026-11-26T15:11:58Z"
   },
   {
    "rank": 56,
@@ -1418,7 +1418,7 @@
    },
    "warnings": [],
    "builder": "Forecast League (the desk operator; same checks apply)",
-   "checkedAt": "2026-11-26T14:12:27Z"
+   "checkedAt": "2026-11-26T15:11:58Z"
   },
   {
    "rank": 57,
@@ -1443,7 +1443,7 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-26T14:12:27Z"
+   "checkedAt": "2026-11-26T15:11:58Z"
   },
   {
    "rank": 58,
@@ -1468,7 +1468,7 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-26T14:12:27Z"
+   "checkedAt": "2026-11-26T15:11:58Z"
   },
   {
    "rank": 59,
@@ -1493,7 +1493,7 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-26T14:12:27Z"
+   "checkedAt": "2026-11-26T15:11:58Z"
   },
   {
    "rank": 60,
@@ -1519,7 +1519,7 @@
    },
    "warnings": [],
    "builder": "Forecast League (the desk operator; same checks apply)",
-   "checkedAt": "2026-11-26T14:12:27Z"
+   "checkedAt": "2026-11-26T15:11:58Z"
   },
   {
    "rank": 61,
@@ -1544,7 +1544,7 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-26T14:12:27Z"
+   "checkedAt": "2026-11-26T15:11:58Z"
   },
   {
    "rank": 62,
@@ -1569,7 +1569,7 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-26T14:12:27Z"
+   "checkedAt": "2026-11-26T15:11:58Z"
   },
   {
    "rank": 63,
@@ -1594,7 +1594,7 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-26T14:12:27Z"
+   "checkedAt": "2026-11-26T15:11:58Z"
   },
   {
    "rank": 64,
@@ -1619,7 +1619,7 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-26T14:12:27Z"
+   "checkedAt": "2026-11-26T15:11:58Z"
   },
   {
    "rank": 65,
@@ -1644,7 +1644,7 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-26T14:12:27Z"
+   "checkedAt": "2026-11-26T15:11:58Z"
   },
   {
    "rank": 66,
@@ -1669,7 +1669,7 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-26T14:12:27Z"
+   "checkedAt": "2026-11-26T15:11:58Z"
   },
   {
    "rank": 67,
@@ -1695,7 +1695,7 @@
    },
    "warnings": [],
    "builder": "Forecast League (the desk operator; same checks apply)",
-   "checkedAt": "2026-11-26T14:12:27Z"
+   "checkedAt": "2026-11-26T15:11:58Z"
   },
   {
    "rank": 68,
@@ -1720,7 +1720,7 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-26T14:12:27Z"
+   "checkedAt": "2026-11-26T15:11:58Z"
   },
   {
    "rank": 69,
@@ -1745,7 +1745,7 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-26T14:12:27Z"
+   "checkedAt": "2026-11-26T15:11:58Z"
   },
   {
    "rank": 70,
@@ -1770,7 +1770,7 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-26T14:12:27Z"
+   "checkedAt": "2026-11-26T15:11:58Z"
   },
   {
    "rank": 71,
@@ -1795,7 +1795,7 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-26T14:12:27Z"
+   "checkedAt": "2026-11-26T15:11:58Z"
   },
   {
    "rank": 72,
@@ -1820,7 +1820,7 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-26T14:12:27Z"
+   "checkedAt": "2026-11-26T15:11:58Z"
   },
   {
    "rank": 73,
@@ -1845,7 +1845,7 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-26T14:12:27Z"
+   "checkedAt": "2026-11-26T15:11:58Z"
   },
   {
    "rank": 74,
@@ -1870,7 +1870,7 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-26T14:12:27Z"
+   "checkedAt": "2026-11-26T15:11:58Z"
   },
   {
    "rank": 75,
@@ -1895,7 +1895,7 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-26T14:12:27Z"
+   "checkedAt": "2026-11-26T15:11:58Z"
   },
   {
    "rank": 76,
@@ -1921,7 +1921,7 @@
    },
    "warnings": [],
    "builder": "Forecast League (the desk operator; same checks apply)",
-   "checkedAt": "2026-11-26T14:12:27Z"
+   "checkedAt": "2026-11-26T15:11:58Z"
   },
   {
    "rank": 77,
@@ -1947,7 +1947,7 @@
    },
    "warnings": [],
    "builder": "Forecast League (the desk operator; same checks apply)",
-   "checkedAt": "2026-11-26T14:12:27Z"
+   "checkedAt": "2026-11-26T15:11:58Z"
   },
   {
    "rank": 78,
@@ -1973,7 +1973,7 @@
    },
    "warnings": [],
    "builder": "Forecast League (the desk operator; same checks apply)",
-   "checkedAt": "2026-11-26T14:12:27Z"
+   "checkedAt": "2026-11-26T15:11:58Z"
   },
   {
    "rank": 79,
@@ -1998,7 +1998,7 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-26T14:12:27Z"
+   "checkedAt": "2026-11-26T15:11:58Z"
   },
   {
    "rank": 80,
@@ -2024,7 +2024,7 @@
    },
    "warnings": [],
    "builder": "Forecast League (the desk operator; same checks apply)",
-   "checkedAt": "2026-11-26T14:12:27Z"
+   "checkedAt": "2026-11-26T15:11:58Z"
   },
   {
    "rank": 81,
@@ -2050,7 +2050,7 @@
    },
    "warnings": [],
    "builder": "Forecast League (the desk operator; same checks apply)",
-   "checkedAt": "2026-11-26T14:12:27Z"
+   "checkedAt": "2026-11-26T15:11:58Z"
   },
   {
    "rank": 82,
@@ -2075,7 +2075,7 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-26T14:12:27Z"
+   "checkedAt": "2026-11-26T15:11:58Z"
   },
   {
    "rank": 83,
@@ -2100,7 +2100,7 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-26T14:12:27Z"
+   "checkedAt": "2026-11-26T15:11:58Z"
   },
   {
    "rank": 84,
@@ -2125,7 +2125,7 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-26T14:12:27Z"
+   "checkedAt": "2026-11-26T15:11:58Z"
   },
   {
    "rank": 85,
@@ -2150,7 +2150,7 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-26T14:12:27Z"
+   "checkedAt": "2026-11-26T15:11:58Z"
   },
   {
    "rank": 86,
@@ -2175,7 +2175,7 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-26T14:12:27Z"
+   "checkedAt": "2026-11-26T15:11:58Z"
   },
   {
    "rank": 87,
@@ -2200,7 +2200,7 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-26T14:12:27Z"
+   "checkedAt": "2026-11-26T15:11:58Z"
   },
   {
    "rank": 88,
@@ -2225,7 +2225,7 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-26T14:12:27Z"
+   "checkedAt": "2026-11-26T15:11:58Z"
   },
   {
    "rank": 89,
@@ -2250,7 +2250,7 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-26T14:12:27Z"
+   "checkedAt": "2026-11-26T15:11:58Z"
   },
   {
    "rank": 90,
@@ -2276,7 +2276,7 @@
    },
    "warnings": [],
    "builder": "Forecast League (the desk operator; same checks apply)",
-   "checkedAt": "2026-11-26T14:12:27Z"
+   "checkedAt": "2026-11-26T15:11:58Z"
   },
   {
    "rank": 91,
@@ -2301,7 +2301,7 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-26T14:12:27Z"
+   "checkedAt": "2026-11-26T15:11:58Z"
   },
   {
    "rank": 92,
@@ -2327,7 +2327,7 @@
    },
    "warnings": [],
    "builder": "Forecast League (the desk operator; same checks apply)",
-   "checkedAt": "2026-11-26T14:12:27Z"
+   "checkedAt": "2026-11-26T15:11:58Z"
   },
   {
    "rank": 93,
@@ -2352,7 +2352,7 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-26T14:12:27Z"
+   "checkedAt": "2026-11-26T15:11:58Z"
   },
   {
    "rank": 94,
@@ -2377,7 +2377,7 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-26T14:12:27Z"
+   "checkedAt": "2026-11-26T15:11:58Z"
   },
   {
    "rank": 95,
@@ -2403,7 +2403,7 @@
    },
    "warnings": [],
    "builder": "Forecast League (the desk operator; same checks apply)",
-   "checkedAt": "2026-11-26T14:12:27Z"
+   "checkedAt": "2026-11-26T15:11:58Z"
   },
   {
    "rank": 96,
@@ -2428,7 +2428,7 @@
     "sourceVerified": true
    },
    "warnings": [],
-   "checkedAt": "2026-11-26T14:12:27Z"
+   "checkedAt": "2026-11-26T15:11:58Z"
   },
   {
    "rank": 270,

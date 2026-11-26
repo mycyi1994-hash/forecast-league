@@ -2,8 +2,8 @@
  "contract": "0x2d61347d9b48de99cbdf0d8d7a2dd73f5b15e90d",
  "name": "Trash Bandits",
  "verdict": "passed",
- "checkedAt": "2026-11-26T14:12:27Z",
- "block": 135860537,
+ "checkedAt": "2026-11-26T15:11:58Z",
+ "block": 135868468,
  "checks": {
   "simulatedFromAgentIdWallet": true,
   "gateEnforced": true,

@@ -58,7 +58,7 @@
    "inputData": "0x1249c58b",
    "args": [],
    "valueWei": "0",
-   "why": "Season Two Pass: free, one per Agent ID wallet, 1567 of 2,000 left (a numbered ERC-721 with no monetary value)",
+   "why": "Season Two Pass: free, one per Agent ID wallet, 1565 of 2,000 left (a numbered ERC-721 with no monetary value)",
    "validUntil": "until minted, while passes are left",
    "preview": "baw contract-call preview --binanceChainId 56 --from 0x35dedad3f15216de891d3609991d035873dee75a --to 0x74f35B8315D76dEaEcb7034918325815458261A4 --value 0 --inputData 0x1249c58b --json",
    "thenExecute": "baw contract-call execute --requestId <requestId from the preview> --json"
