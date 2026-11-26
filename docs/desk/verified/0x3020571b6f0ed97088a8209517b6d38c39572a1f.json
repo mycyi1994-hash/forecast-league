@@ -2,8 +2,8 @@
  "contract": "0x3020571b6f0ed97088a8209517b6d38c39572a1f",
  "name": "Agent ID Badge",
  "verdict": "passed",
- "checkedAt": "2026-11-26T03:10:48Z",
- "block": 135772418,
+ "checkedAt": "2026-11-26T04:11:39Z",
+ "block": 135780527,
  "checks": {
   "simulatedFromAgentIdWallet": true,
   "gateEnforced": true,
