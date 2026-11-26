@@ -1,6 +1,6 @@
 {
  "wallet": "0x85c20de6ffa571ea9a88dc4349edb19f601d722a",
- "tickets": 259,
+ "tickets": 268,
  "decided": 251,
  "won": 125,
  "lost": 126,
@@ -50,7 +50,7 @@
    "lost": 1
   }
  },
- "waitingTickets": 8,
+ "waitingTickets": 17,
  "nextResultAt": "2026-11-26T20:00Z",
  "verdict": "no-own-picks",
  "overallAllTickets": "coinflip",
@@ -77,19 +77,19 @@
    "call": "claim()",
    "inputData": "0x4e71d92d",
    "to": "0x09A645aa6cc6b0eB320dCF3982bcaA6A22b32629",
-   "what": "write 69 finished BTC 1h ticket(s) into the record"
+   "what": "write 70 finished BTC 1h ticket(s) into the record"
   },
   {
    "call": "claim()",
    "inputData": "0x4e71d92d",
    "to": "0x8b998abA2BeeebF7ceBf565bC53BC575693c07a4",
-   "what": "write 70 finished ETH 1h ticket(s) into the record"
+   "what": "write 71 finished ETH 1h ticket(s) into the record"
   },
   {
    "call": "claim()",
    "inputData": "0x4e71d92d",
    "to": "0x66613fD9a2c70d4cB56D920bDd0D56bA95BD2736",
-   "what": "write 71 finished BNB 1h ticket(s) into the record"
+   "what": "write 72 finished BNB 1h ticket(s) into the record"
   },
   {
    "call": "claim()",
@@ -113,7 +113,7 @@
    "call": "Finals Pass mint()",
    "inputData": "0x1249c58b",
    "to": "0x9Df6ba1868d2C149FdA5FE67491f67C07C31e6B5",
-   "what": "Finals Pass: free, one per Agent ID wallet, 1724 of 2,000 left (a numbered ERC-721 with no monetary value)"
+   "what": "Finals Pass: free, one per Agent ID wallet, 1722 of 2,000 left (a numbered ERC-721 with no monetary value)"
   }
  ],
  "proof": {
