@@ -1,7 +1,7 @@
 {
  "name": "Forecast League: the builder's own agent",
- "updated": "2026-11-25T21:47:30Z",
- "block": 135729347,
+ "updated": "2026-11-26T00:47:07Z",
+ "block": 135753289,
  "label": "The builder's own agent. Excluded from all usage numbers. An example, not evidence of adoption.",
  "wallet": "0x2a2f48145780639dbd91e748df157f35283165da",
  "handle": "dopaminekr",
@@ -11,9 +11,9 @@
  "method": "Ticket ids from balanceOf and tokenOfOwnerByIndex on each of the 7 markets; ticket(id) for side and status; resultOf(round) for the settled prices. Picked or assigned from api/picks/ledger.json (the 4-byte selector of each mint transaction: up()/down() picked, mint() assigned); a ticket not yet in the ledger is read from its own transaction. Daily forecasts from LeagueCore.submissionOf, scores worked out from Scorer.roundOf with the Scorer formula. Nothing is left out.",
  "summary": {
   "all": {
-   "tickets": 31,
+   "tickets": 32,
    "won": 12,
-   "lost": 17,
+   "lost": 18,
    "push": 0,
    "void": 0,
    "waiting": 2
@@ -21,23 +21,23 @@
   "picked": {
    "tickets": 23,
    "won": 10,
-   "lost": 11,
+   "lost": 12,
    "push": 0,
    "void": 0,
-   "waiting": 2
+   "waiting": 1
   },
   "assigned": {
-   "tickets": 8,
+   "tickets": 9,
    "won": 2,
    "lost": 6,
    "push": 0,
    "void": 0,
-   "waiting": 0
+   "waiting": 1
   },
   "routine": {
-   "tickets": 24,
+   "tickets": 25,
    "won": 11,
-   "lost": 11,
+   "lost": 12,
    "push": 0,
    "void": 0,
    "waiting": 2
@@ -46,9 +46,9 @@
  "recordOf": [
   {
    "market": "BTC 6h",
-   "tickets": 24,
+   "tickets": 25,
    "wins": 11,
-   "losses": 11,
+   "losses": 12,
    "streak": 0,
    "bestStreak": 5,
    "unclaimed": 2
@@ -703,10 +703,10 @@
    "howSource": "api/picks/ledger.json",
    "tx": "0x3adeb4866a363050273c11ec43c756bd931b9c8ab134d0a3607702e9b39f3a11",
    "inRoutine": true,
-   "status": "live",
-   "outcome": null,
-   "lockPrice": null,
-   "resultPrice": null,
+   "status": "lost",
+   "outcome": "up",
+   "lockPrice": 59550.17527131,
+   "resultPrice": 60381.42612697,
    "reason": "Rule follow the last 6h window: BTC moved -0.87% over the last full 6h window, so down; backtests found no reliable edge at 6h, so this is a transparent default, not a prediction I trust."
   },
   {
@@ -728,6 +728,26 @@
    "lockPrice": null,
    "resultPrice": null,
    "reason": "Rule follow the last 6h window: BTC moved +1.64% over the last full 6h window, so up; backtests found no reliable edge at 6h, so this is a transparent default, not a prediction I trust."
+  },
+  {
+   "market": "BTC 6h",
+   "contract": "0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C",
+   "ticket": 1383,
+   "round": 83132,
+   "opensAt": "2026-11-26T00:00:00Z",
+   "lockAt": "2026-11-26T06:00:00Z",
+   "resultAt": "2026-11-26T12:00:00Z",
+   "side": "up",
+   "how": "unknown",
+   "picked": false,
+   "howSource": "side compared with assignedSide()",
+   "tx": null,
+   "inRoutine": true,
+   "status": "live",
+   "outcome": null,
+   "lockPrice": null,
+   "resultPrice": null,
+   "reason": "Rule follow the last 6h window: BTC moved +1.43% over the last full 6h window, so up; backtests found no reliable edge at 6h, so this is a transparent default, not a prediction I trust."
   }
  ],
  "forecasts": {
@@ -1195,6 +1215,19 @@
    "rule": "current price, two hours before the lock",
    "reason": "Backtests found no reliable edge over the next 6 hours, so the forecast is today's Chainlink price at submission, unadjusted.",
    "tx": "0x3809988ecaff9224f449301e45e44aa028fdac418fd8aaf405daf80a27196aa8"
+  },
+  {
+   "utc": "2026-11-26T00:47:07Z",
+   "market": "BTC 6h",
+   "round": 83132,
+   "side": "up",
+   "prob": 0.52,
+   "rule": "follow the last 6h window",
+   "modelProb": 0.5106,
+   "model": "fl-logit-1",
+   "crowd": null,
+   "reason": "Rule follow the last 6h window: BTC moved +1.43% over the last full 6h window, so up; backtests found no reliable edge at 6h, so this is a transparent default, not a prediction I trust.",
+   "tx": "0xfa1fa8bcda753e44f4220ab1b0d11b0c9c4877c85ebea4c86f16ea673c00cf6c"
   }
  ]
 }
