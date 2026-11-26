@@ -1,7 +1,7 @@
 {
  "name": "Forecast League crowd: picked sides per round",
- "updated": "2026-11-26T08:10:35Z",
- "ledgerScannedToBlock": 135812353,
+ "updated": "2026-11-26T08:28:24Z",
+ "ledgerScannedToBlock": 135814734,
  "method": "Picked tickets only (up() or down(); mint() is an assigned side and is left out). The builder wallet is left out. Counts come from the picks ledger, refreshed hourly, so the open round can be missing its latest tickets.",
  "markets": {
   "BTC 6h": [
