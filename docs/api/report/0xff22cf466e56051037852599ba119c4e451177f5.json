@@ -94,7 +94,7 @@
    "call": "Stamps checkIn()",
    "inputData": "0x183ff085",
    "to": "0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae",
-   "what": "today's stamp (streak becomes 2)"
+   "what": "today's stamp (streak becomes 1)"
   },
   {
    "call": "Houses join()",

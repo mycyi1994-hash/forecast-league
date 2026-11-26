@@ -11,7 +11,7 @@
    "inputData": "0x4e71d92d",
    "args": [],
    "valueWei": "0",
-   "finishedTickets": 9,
+   "finishedTickets": 10,
    "validUntil": "until claimed (a second claim reverts NothingToClaim, which is harmless)",
    "preview": "baw contract-call preview --binanceChainId 56 --from 0x85c20de6ffa571ea9a88dc4349edb19f601d722a --to 0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C --value 0 --inputData 0x4e71d92d --json",
    "thenExecute": "baw contract-call execute --requestId <requestId from the preview> --json"
@@ -24,7 +24,7 @@
    "inputData": "0x4e71d92d",
    "args": [],
    "valueWei": "0",
-   "finishedTickets": 9,
+   "finishedTickets": 10,
    "validUntil": "until claimed (a second claim reverts NothingToClaim, which is harmless)",
    "preview": "baw contract-call preview --binanceChainId 56 --from 0x85c20de6ffa571ea9a88dc4349edb19f601d722a --to 0x621B9fEd6FF2f0FC73e26264A401F7d12644A0A1 --value 0 --inputData 0x4e71d92d --json",
    "thenExecute": "baw contract-call execute --requestId <requestId from the preview> --json"
@@ -37,7 +37,7 @@
    "inputData": "0x4e71d92d",
    "args": [],
    "valueWei": "0",
-   "finishedTickets": 9,
+   "finishedTickets": 10,
    "validUntil": "until claimed (a second claim reverts NothingToClaim, which is harmless)",
    "preview": "baw contract-call preview --binanceChainId 56 --from 0x85c20de6ffa571ea9a88dc4349edb19f601d722a --to 0xA782Ac207fE33f6120d9c2EF9553A55C47CFbbE9 --value 0 --inputData 0x4e71d92d --json",
    "thenExecute": "baw contract-call execute --requestId <requestId from the preview> --json"
@@ -50,7 +50,7 @@
    "inputData": "0x4e71d92d",
    "args": [],
    "valueWei": "0",
-   "finishedTickets": 53,
+   "finishedTickets": 54,
    "validUntil": "until claimed (a second claim reverts NothingToClaim, which is harmless)",
    "preview": "baw contract-call preview --binanceChainId 56 --from 0x85c20de6ffa571ea9a88dc4349edb19f601d722a --to 0x09A645aa6cc6b0eB320dCF3982bcaA6A22b32629 --value 0 --inputData 0x4e71d92d --json",
    "thenExecute": "baw contract-call execute --requestId <requestId from the preview> --json"
@@ -63,7 +63,7 @@
    "inputData": "0x4e71d92d",
    "args": [],
    "valueWei": "0",
-   "finishedTickets": 54,
+   "finishedTickets": 55,
    "validUntil": "until claimed (a second claim reverts NothingToClaim, which is harmless)",
    "preview": "baw contract-call preview --binanceChainId 56 --from 0x85c20de6ffa571ea9a88dc4349edb19f601d722a --to 0x8b998abA2BeeebF7ceBf565bC53BC575693c07a4 --value 0 --inputData 0x4e71d92d --json",
    "thenExecute": "baw contract-call execute --requestId <requestId from the preview> --json"
@@ -76,7 +76,7 @@
    "inputData": "0x4e71d92d",
    "args": [],
    "valueWei": "0",
-   "finishedTickets": 55,
+   "finishedTickets": 56,
    "validUntil": "until claimed (a second claim reverts NothingToClaim, which is harmless)",
    "preview": "baw contract-call preview --binanceChainId 56 --from 0x85c20de6ffa571ea9a88dc4349edb19f601d722a --to 0x66613fD9a2c70d4cB56D920bDd0D56bA95BD2736 --value 0 --inputData 0x4e71d92d --json",
    "thenExecute": "baw contract-call execute --requestId <requestId from the preview> --json"
@@ -89,7 +89,7 @@
    "inputData": "0x4e71d92d",
    "args": [],
    "valueWei": "0",
-   "finishedTickets": 1,
+   "finishedTickets": 2,
    "validUntil": "until claimed (a second claim reverts NothingToClaim, which is harmless)",
    "preview": "baw contract-call preview --binanceChainId 56 --from 0x85c20de6ffa571ea9a88dc4349edb19f601d722a --to 0x9e521add6F67EEe0Fe5c0b8ef32cb4543f7af50E --value 0 --inputData 0x4e71d92d --json",
    "thenExecute": "baw contract-call execute --requestId <requestId from the preview> --json"
@@ -143,51 +143,50 @@
   }
  ],
  "joinedRounds": {
-  "BTC 6h": 83131,
-  "ETH 6h": 83131,
-  "BNB 6h": 83131,
-  "BTC 1d": 20782
+  "BTC 1h": 498792,
+  "ETH 1h": 498792,
+  "BNB 1h": 498792
  },
  "pendingResults": [
   {
    "market": "BTC 6h",
-   "tickets": 2,
+   "tickets": 1,
    "resultFinalAt": "2026-11-26T06:00:00Z"
   },
   {
    "market": "ETH 6h",
-   "tickets": 2,
+   "tickets": 1,
    "resultFinalAt": "2026-11-26T06:00:00Z"
   },
   {
    "market": "BNB 6h",
-   "tickets": 2,
+   "tickets": 1,
    "resultFinalAt": "2026-11-26T06:00:00Z"
   },
   {
    "market": "BTC 1h",
-   "tickets": 1,
-   "resultFinalAt": "2026-11-26T00:00:00Z"
+   "tickets": 2,
+   "resultFinalAt": "2026-11-26T02:00:00Z"
   },
   {
    "market": "ETH 1h",
-   "tickets": 1,
-   "resultFinalAt": "2026-11-26T00:00:00Z"
+   "tickets": 2,
+   "resultFinalAt": "2026-11-26T02:00:00Z"
   },
   {
    "market": "BNB 1h",
-   "tickets": 1,
-   "resultFinalAt": "2026-11-26T00:00:00Z"
+   "tickets": 2,
+   "resultFinalAt": "2026-11-26T02:00:00Z"
   },
   {
    "market": "BTC 1d",
-   "tickets": 2,
+   "tickets": 1,
    "resultFinalAt": "2026-11-27T00:00:00Z"
   }
  ],
- "comeBackAt": "2026-11-26T00:00:00Z",
+ "comeBackAt": "2026-11-26T02:00:00Z",
  "comeBackWhy": "BTC 1h result is final: send claim() 0x4e71d92d on that market (value 0); the ticket counts in the record only after it",
- "askHuman": "Next useful time: 2026-11-26 00:00 UTC (BTC 1h result is final: send claim() 0x4e71d92d on that market (value 0); the ticket counts in the record only after it). Want me to come back then?",
+ "askHuman": "Next useful time: 2026-11-26 02:00 UTC (BTC 1h result is final: send claim() 0x4e71d92d on that market (value 0); the ticket counts in the record only after it). Want me to come back then?",
  "stampToday": "checkIn() 0x183ff085 on 0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae once per UTC day (preview shows if already done)",
  "performance": {
   "decided": 0,
@@ -222,7 +221,7 @@
    },
    {
     "market": "BTC 1h",
-    "tickets": 54,
+    "tickets": 56,
     "wins": 0,
     "losses": 0,
     "streak": 0,
@@ -230,7 +229,7 @@
    },
    {
     "market": "ETH 1h",
-    "tickets": 55,
+    "tickets": 57,
     "wins": 0,
     "losses": 0,
     "streak": 0,
@@ -238,7 +237,7 @@
    },
    {
     "market": "BNB 1h",
-    "tickets": 56,
+    "tickets": 58,
     "wins": 0,
     "losses": 0,
     "streak": 0,

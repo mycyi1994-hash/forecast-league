@@ -1,68 +1,68 @@
 {
  "name": "Forecast League picks",
- "updated": "2026-11-25T23:10:52Z",
+ "updated": "2026-11-26T00:10:21Z",
  "coveredFromBlock": 134590000,
- "scannedToBlock": 135740455,
+ "scannedToBlock": 135748380,
  "method": "Each ticket is classified by the call that minted it: up() or down() is a side the caller chose, mint() is a side the contract assigned. A ticket minted through another contract counts as picked only if its side differs from the assigned one. The builder wallet is left out.",
  "totals": {
-  "tickets": 9011,
+  "tickets": 9064,
   "picked": 437,
-  "assigned": 8574,
+  "assigned": 8627,
   "unknown": 0,
   "pickedSharePct": 4.8,
   "wallets": 436,
   "pickedWallets": 22,
-  "pickedDecided": 413,
-  "pickedWon": 234
+  "pickedDecided": 417,
+  "pickedWon": 235
  },
  "perMarket": [
   {
    "market": "BTC 6h",
-   "tickets": 1332,
+   "tickets": 1339,
    "picked": 103,
-   "assigned": 1229,
+   "assigned": 1236,
    "unknown": 0
   },
   {
    "market": "ETH 6h",
-   "tickets": 710,
+   "tickets": 712,
    "picked": 83,
-   "assigned": 627,
+   "assigned": 629,
    "unknown": 0
   },
   {
    "market": "BNB 6h",
-   "tickets": 687,
+   "tickets": 688,
    "picked": 83,
-   "assigned": 604,
+   "assigned": 605,
    "unknown": 0
   },
   {
    "market": "BTC 1h",
-   "tickets": 1998,
+   "tickets": 2012,
    "picked": 53,
-   "assigned": 1945,
+   "assigned": 1959,
    "unknown": 0
   },
   {
    "market": "ETH 1h",
-   "tickets": 2000,
+   "tickets": 2014,
    "picked": 52,
-   "assigned": 1948,
+   "assigned": 1962,
    "unknown": 0
   },
   {
    "market": "BNB 1h",
-   "tickets": 2026,
+   "tickets": 2040,
    "picked": 52,
-   "assigned": 1974,
+   "assigned": 1988,
    "unknown": 0
   },
   {
    "market": "BTC 1d",
-   "tickets": 258,
+   "tickets": 259,
    "picked": 11,
-   "assigned": 247,
+   "assigned": 248,
    "unknown": 0
   }
  ],
@@ -70,26 +70,18 @@
   {
    "wallet": "0xd301d472f2e469a1aafa1af6f214e312f1858873",
    "picked": 177,
-   "won": 91,
+   "won": 92,
    "lost": 81,
-   "waiting": 5,
-   "winRate": 52.9
+   "waiting": 4,
+   "winRate": 53.2
   },
   {
    "wallet": "0xddb1008aeb892e9cf8831fa901469a641cdbe114",
    "picked": 57,
    "won": 27,
-   "lost": 22,
-   "waiting": 8,
-   "winRate": 55.1
-  },
-  {
-   "wallet": "0x917a1da59348bb09b40ec1e77ba35b75efcf4210",
-   "picked": 45,
-   "won": 25,
-   "lost": 14,
-   "waiting": 6,
-   "winRate": 64.1
+   "lost": 23,
+   "waiting": 7,
+   "winRate": 54
   },
   {
    "wallet": "0x0c0b9afc9028392263dd9f3d3ef8c99bf54c11e7",
@@ -98,6 +90,14 @@
    "lost": 14,
    "waiting": 0,
    "winRate": 64.1
+  },
+  {
+   "wallet": "0x917a1da59348bb09b40ec1e77ba35b75efcf4210",
+   "picked": 45,
+   "won": 25,
+   "lost": 15,
+   "waiting": 5,
+   "winRate": 62.5
   },
   {
    "wallet": "0xe0df9272b76fa99cf6e3186cbad45d3e9026b937",
@@ -111,9 +111,9 @@
    "wallet": "0x1ec0855d1548bcd4901d3a17d1d8673831193c47",
    "picked": 18,
    "won": 15,
-   "lost": 0,
-   "waiting": 3,
-   "winRate": 100
+   "lost": 1,
+   "waiting": 2,
+   "winRate": 93.8
   },
   {
    "wallet": "0x33f7a8de5a307413116054286ca4581611f02573",

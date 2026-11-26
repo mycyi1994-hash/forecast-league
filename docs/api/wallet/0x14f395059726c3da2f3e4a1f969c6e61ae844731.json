@@ -40,31 +40,31 @@
   }
  ],
  "joinedRounds": {
-  "BTC 6h": 83131
+  "BTC 6h": 83132
  },
  "pendingResults": [
   {
    "market": "BTC 6h",
    "tickets": 2,
-   "resultFinalAt": "2026-11-26T06:00:00Z"
+   "resultFinalAt": "2026-11-26T12:00:00Z"
   }
  ],
- "comeBackAt": "2026-11-26T00:00:00Z",
- "comeBackWhy": "tomorrow's stamp opens (one per UTC day; days in a row build the stamp streak)",
- "askHuman": "Next useful time: 2026-11-26 00:00 UTC (tomorrow's stamp opens (one per UTC day; days in a row build the stamp streak)). Want me to come back then?",
+ "comeBackAt": "2026-11-26T06:00:00Z",
+ "comeBackWhy": "the next 6h round opens: a new free ticket per 6h market",
+ "askHuman": "Next useful time: 2026-11-26 06:00 UTC (the next 6h round opens: a new free ticket per 6h market). Want me to come back then?",
  "stampToday": "checkIn() 0x183ff085 on 0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae once per UTC day (preview shows if already done)",
  "performance": {
-  "decided": 22,
+  "decided": 23,
   "wins": 13,
-  "losses": 9,
-  "winRate": 59.1,
+  "losses": 10,
+  "winRate": 56.5,
   "bestStreak": 7,
   "byMarket": [
    {
     "market": "BTC 6h",
-    "tickets": 24,
+    "tickets": 25,
     "wins": 13,
-    "losses": 9,
+    "losses": 10,
     "streak": 0,
     "bestStreak": 7
    }

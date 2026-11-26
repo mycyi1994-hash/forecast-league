@@ -1,48 +1,48 @@
-# Agent ID Mint Desk — 2026-11-25T23:11 UTC
+# Agent ID Mint Desk — 2026-11-26T00:11 UTC
 
-Every Binance-Agent-ID-gated mint the public radar has seen on BNB Chain, simulated from real Agent ID wallets at block 135740556.
+Every Binance-Agent-ID-gated mint the public radar has seen on BNB Chain, simulated from real Agent ID wallets at block 135748477.
 **3686 free and open now** · 877 paid · 707 closed or failing · 5334 checked. Heuristics, not an audit; preview every call.
 
 ## Free now, passing every check
 | # | Name | Contract | Call data |
 |---|---|---|---|
-| 1 | AgentBoard Badge | `0x928979396b22c92449e8deccc544a7d8c4c6fc7b` | `0x183ff085` |
-| 2 | Agent Gold Miner | `0x6de46f5d65833e551b6d00c8a30665e65e241a2c` | `0xa0712d680000000000000000000000000000000000000000000000000000000000000001` |
-| 3 | QuonkersAgent | `0xe8b5e3ca9f4f51366f9f4860ed70b8e929e80470` | `0xa0712d680000000000000000000000000000000000000000000000000000000000000001` |
-| 4 | ElysAgent Pass | `0x69013444190b39560bff48e9241fbcbb809ced27` | `0x6a627842000000000000000000000000a3fbe3664db8478c094dd36b2bb306d72cbcb37a` |
-| 5 | AgentMint Pass | `0xb0ba38b0524d5f17ae2dc13da155815706a64fba` | `0x1249c58b0000000000000000000000000000000000000000000000000000000000000001` |
-| 6 | Pascabowo Pass | `0x366810d042fb69303282223667647d96809ab1ca` | `0x1249c58b` |
-| 7 | Agent Island | `0x33862343de67e7d8f0664d7a3648e38da9777403` | `0xa0712d680000000000000000000000000000000000000000000000000000000000000001` |
-| 8 | New Drop | `0x0299c31212541f2f199496e1c3f2204c1ff78023` | `0x0d4d15130000000000000000000000006e42c5eb171276246f47ef689b7a7392c4c743e100000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000000` |
+| 1 | AgentMark Badge | `0xbc682d5cf1ad8ffae05ba119cf88bd6ede75267c` | `0xda1b3cb0` |
+| 2 | AgentStreak Badge | `0x1c0e0fbe2b29c05a41c3e762ea6394af78c78f27` | `0x183ff085` |
+| 3 | AgentPass Badge | `0x2dc27a937ea00f5d67ef557a4aefac6b12735225` | `0xda1b3cb0` |
+| 4 | AgentWall Badge | `0x8dddb7636f29df69fed21cacc8538a029139f0b9` | `0x56e56942` |
+| 5 | Agent Stamp | `0x071e1689b69ca831de56250d52f911ae95a01812` | `0x1249c58b0000000000000000000000000000000000000000000000000000000000000001` |
+| 6 | Agent Pioneer Badge | `0x77feb51ef3d7d0457d8a94893ae067171c452bf3` | `0x1249c58b` |
+| 7 | Agent Badge | `0x0883ba789dd45a94fbc8a7ed116c20e516228309` | `0x4e71d92d` |
+| 8 | 代理者卡 | `0x74d5639d824b2280e4f7d2a7f0f5db66358c272e` | `0x4e71d92d` |
 | 9 | AgentPass | `0x2cab70c426f92c0d08aeb7cfe41b27b746feeb09` | `0x1249c58b` |
-| 10 | Forecast League Rounds BTC 1h (desk operator) | `0x09a645aa6cc6b0eb320dcf3982bcaa6a22b32629` | `0x1249c58b` |
-| 11 | Solaris | `0x8a6700cd5d1bfe8ee02ce753d20cfa2d168139d6` | `0xa0712d680000000000000000000000000000000000000000000000000000000000000001` |
-| 12 | 代理者卡 | `0xee1749f66ba7e6199084813246852c0f7177b6ce` | `0x4e71d92d0000000000000000000000000000000000000000000000000000000000000001` |
-| 13 | Agent Passport | `0x27a8edd097d9ecbb99df3ab6032a9d2994c966d7` | `0x1249c58b0000000000000000000000000000000000000000000000000000000000000001` |
-| 14 | 4ever Agent Pass | `0xcc53dfec4289391ac77cba6b483194c483263a75` | `0x1249c58b0000000000000000000000000000000000000000000000000000000000000001` |
-| 15 | Tigora | `0xe8c46e7c734259fec1a78fc846dcfad94ecb70e5` | `0xa0712d680000000000000000000000000000000000000000000000000000000000000001` |
-| 16 | Proof of Habit Join Pass | `0x165d51e696d42d442eb1fa9f715c08b26ddff968` | `0x4e71d92d` |
-| 17 | Forecast League Blitz ETH 6h (desk operator) | `0x621b9fed6ff2f0fc73e26264a401f7d12644a0a1` | `0x1249c58b` |
-| 18 | YammerjackAgent | `0x2a71cef7101b8b19c4ab18bed40c3ec5ec87b9b7` | `0xa0712d680000000000000000000000000000000000000000000000000000000000000001` |
-| 19 | STRAWBS: WAKE PROTOCOL | `0x9bed5d806ed91675127f81d1f13c6ab3ef9430cc` | `0x1249c58b` |
-| 20 | Agent Pioneer Badge | `0x77feb51ef3d7d0457d8a94893ae067171c452bf3` | `0x1249c58b` |
-| 21 | Forecast League Stamp (desk operator) | `0x30b6b8c67ab2239185536ba3766e8cb05bfd18ae` | `0x183ff085` |
-| 22 | AgentWall Badge | `0x484508765eb1b7e6471d745722be747b581638a1` | `0x24c214d3000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000097777773333333334340000000000000000000000000000000000000000000000` |
+| 10 | Pascabowo Pass | `0x366810d042fb69303282223667647d96809ab1ca` | `0x1249c58b` |
+| 11 | Sepal | `0x461b8e3b161ab0b69aed422bc68afc7c4bfa7894` | `0xa0712d680000000000000000000000000000000000000000000000000000000000000001` |
+| 12 | Agent Sigil | `0x647d90e42a6a3d190b0ca600abf316f1eefb052f` | `0x1249c58b` |
+| 13 | AgentBadge | `0xb82db22dbf252d3e31ab450a4d492ece2e9feaa4` | `0x4e71d92d` |
+| 14 | AgentB | `0xc047f826e9e53d853c5683290ee50b6f02496529` | `0x1249c58b` |
+| 15 | Agent Gold Miner | `0x6de46f5d65833e551b6d00c8a30665e65e241a2c` | `0xa0712d680000000000000000000000000000000000000000000000000000000000000001` |
+| 16 | MizzlewickAgent | `0x892e438425b3a41bc75b25c22fd878b3fa2e308d` | `0xa0712d680000000000000000000000000000000000000000000000000000000000000001` |
+| 17 | AgentBoard Badge | `0x928979396b22c92449e8deccc544a7d8c4c6fc7b` | `0x183ff085` |
+| 18 | DeepShard | `0xc463960af285b7eda0909d362ae31783597c2076` | `0x1249c58b` |
+| 19 | AgentStreak Badge | `0xa011517fd16f6a240c309e9df8316e56306f5361` | `0xd9a59e330000000000000000000000000000000000000000000000000000000000000000` |
+| 20 | GlorpixAgent | `0xba5cde0ceea8704b8944deb51228ca59a7bd9cf0` | `0xa0712d680000000000000000000000000000000000000000000000000000000000000001` |
+| 21 | CrumborkAgent | `0x38066af063b6eb0fbdf56e2d38ec265d9a79d996` | `0xa0712d680000000000000000000000000000000000000000000000000000000000000001` |
+| 22 | Forecast League Rounds ETH 1h (desk operator) | `0x8b998aba2beeebf7cebf565bc53bc575693c07a4` | `0x1249c58b` |
 | 23 | Agent ID Genesis Badge | `0x988bffcb78a21b10228ae45ba3dcf20d7d260f76` | `0x4e71d92d` |
-| 24 | PlonkraAgent | `0xec266bdd979b19d8a2f1266ef0610b4791dbd24b` | `0xa0712d680000000000000000000000000000000000000000000000000000000000000001` |
-| 25 | 杀零猫 | `0x176bc04d46f9ba02a78163a203ad4e012baa75ae` | `0xd33685db` |
+| 24 | 代理者卡 | `0x3c763e0f8e223ec254b941360d4b94da0b78e5c2` | `0x4e71d92d` |
+| 25 | STRAWBS: WAKE PROTOCOL | `0x9bed5d806ed91675127f81d1f13c6ab3ef9430cc` | `0x1249c58b` |
 
 ## Free now, with warnings
-- Trump 47 `0x6c24f3df78a924c9c0a5025a7ee1f267bb7351c3`: has an owner with admin powers
-- MECHA `0xeee31d337866a57cd59fdecc8b6e6548e182ea78`: has an owner with admin powers
-- Swaptide `0x8f108fd15b80814584f79862f209f306b2e888fc`: has an owner with admin powers
-- Ravenhex `0xb44050254a25daa8077c14bbb20d0a595e6cece2`: has an owner with admin powers
-- Diceborn `0xa7f040dda3f00f72f4bc1b4c138f344cddfe9b24`: has an owner with admin powers
-- Cupcakia `0xe2ca00c356dbed58b289e0fad56b285c4214ca22`: has an owner with admin powers
-- Dropnix `0xb95531eb859c556b7c9521a99b7b67ba12519564`: has an owner with admin powers
-- 404 `0xcf8d64926c7299192794f6bbfe733a8f211efe13`: has an owner with admin powers
-- Saturnyx `0xde3e3e9e2f87f285f0f26ea54923a933b10df140`: has an owner with admin powers
-- Krakenbo `0x46c1815082ccf1273e3c07548ef2004046bb7fc0`: has an owner with admin powers
+- Minerly `0x951b86dc309b26fbb149606647cc12f64f21ffff`: has an owner with admin powers
+- Pilotchrome `0x3ad8738c82ade72bc632ea58a51e2368847bbf44`: has an owner with admin powers
+- Pixel Laptop `0x273fc2c7705b23eb129e35ac8da26348e6fc4980`: has an owner with admin powers
+- Kryntar Divers `0xb77d3495d3ed4427da78c9d0f7cb76c21c23d9fe`: has an owner with admin powers
+- Rubynode `0x6c18618771c691e25a69e2fd344fdaf1187de453`: has an owner with admin powers
+- Rocketrix `0xbb05dd3fdf0f25c369ef90a715ac68d5622a7710`: has an owner with admin powers
+- Shadow Nodes `0x8f03c578ba0406b65800e59d7b55835961bde57e`: has an owner with admin powers
+- Keyforge `0xd9d4466342c993b43f02ae2e21d6f125a1bd937f`: has an owner with admin powers
+- 福蝠 Agents `0xdb7a8fa53f96cf4744c21bb6c78a2272ec6566e5`: has an owner with admin powers
+- Nexobyte `0x7a75c1f85b2c047954e9b59e1a998f15091a9bc8`: has an owner with admin powers
 
 Machine-readable: https://mycyi1994-hash.github.io/forecast-league/desk/projects.json · Badge for passing projects: https://mycyi1994-hash.github.io/forecast-league/desk/verified/<address>.json
 Operator: Forecast League, a Binance Agent ID Hackathon entry. Its own contracts are listed under the same checks.
