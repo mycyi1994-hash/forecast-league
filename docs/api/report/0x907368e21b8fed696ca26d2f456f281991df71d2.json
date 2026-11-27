@@ -1,15 +1,15 @@
 {
  "wallet": "0x907368e21b8fed696ca26d2f456f281991df71d2",
  "tickets": 6,
- "decided": 5,
+ "decided": 6,
  "won": 3,
- "lost": 2,
- "hitRate": 0.6,
+ "lost": 3,
+ "hitRate": 0.5,
  "ci95": [
-  0.231,
-  0.882
+  0.188,
+  0.812
  ],
- "currentWinRun": 1,
+ "currentWinRun": 0,
  "picked": {
   "decided": 0,
   "won": 0,
@@ -17,17 +17,17 @@
   "verdict": null
  },
  "assigned": {
-  "decided": 5,
+  "decided": 6,
   "won": 3
  },
  "byMarket": {
   "BTC 6h": {
    "won": 3,
-   "lost": 2
+   "lost": 3
   }
  },
- "waitingTickets": 1,
- "nextResultAt": "2026-11-27T12:00Z",
+ "waitingTickets": 0,
+ "nextResultAt": null,
  "verdict": "no-own-picks",
  "overallAllTickets": "early",
  "todoNow": [
@@ -35,7 +35,7 @@
    "call": "claim()",
    "inputData": "0x4e71d92d",
    "to": "0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C",
-   "what": "write 5 finished BTC 6h ticket(s) into the record"
+   "what": "write 6 finished BTC 6h ticket(s) into the record"
   },
   {
    "call": "Stamps checkIn()",
@@ -71,7 +71,7 @@
    "call": "Season Two Pass mint()",
    "inputData": "0x1249c58b",
    "to": "0x74f35B8315D76dEaEcb7034918325815458261A4",
-   "what": "Season Two Pass: free, one per Agent ID wallet, 1549 of 2,000 left (a numbered ERC-721 with no monetary value)"
+   "what": "Season Two Pass: free, one per Agent ID wallet, 1547 of 2,000 left (a numbered ERC-721 with no monetary value)"
   }
  ],
  "proof": {

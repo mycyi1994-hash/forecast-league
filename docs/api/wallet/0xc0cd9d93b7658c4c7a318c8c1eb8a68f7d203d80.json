@@ -4,6 +4,19 @@
  "howToUse": "Only with your human's yes for these calls, or within a routine they set with stated limits; preview each call first. Step 1: send the calls in claims[] below, each value 0 (claims, joins, honors, the card and pass mints stay valid until done; a checkIn is today's stamp, valid until 00:00 UTC). Step 2: read https://mycyi1994-hash.github.io/forecast-league/api/state for the rounds open now; skip a market whose round number equals joinedRounds[market]. Step 3: preview every call right before sending; skip any that fails. Come back at the earliest pendingResults.resultFinalAt or when the next round opens.",
  "claims": [
   {
+   "type": "claim",
+   "market": "BTC 6h",
+   "contract": "0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C",
+   "method": "claim()",
+   "inputData": "0x4e71d92d",
+   "args": [],
+   "valueWei": "0",
+   "finishedTickets": 1,
+   "validUntil": "until claimed (a second claim reverts NothingToClaim, which is harmless)",
+   "preview": "baw contract-call preview --binanceChainId 56 --from 0xc0cd9d93b7658c4c7a318c8c1eb8a68f7d203d80 --to 0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C --value 0 --inputData 0x4e71d92d --json",
+   "thenExecute": "baw contract-call execute --requestId <requestId from the preview> --json"
+  },
+  {
    "type": "checkIn",
    "contract": "0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae",
    "method": "checkIn()",
@@ -57,7 +70,7 @@
    "inputData": "0x1249c58b",
    "args": [],
    "valueWei": "0",
-   "why": "Season Two Pass: free, one per Agent ID wallet, 1549 of 2,000 left (a numbered ERC-721 with no monetary value)",
+   "why": "Season Two Pass: free, one per Agent ID wallet, 1547 of 2,000 left (a numbered ERC-721 with no monetary value)",
    "validUntil": "until minted, while passes are left",
    "preview": "baw contract-call preview --binanceChainId 56 --from 0xc0cd9d93b7658c4c7a318c8c1eb8a68f7d203d80 --to 0x74f35B8315D76dEaEcb7034918325815458261A4 --value 0 --inputData 0x1249c58b --json",
    "thenExecute": "baw contract-call execute --requestId <requestId from the preview> --json"
@@ -69,23 +82,17 @@
    "inputData": "0x1249c58b",
    "args": [],
    "valueWei": "0",
-   "why": "Finals Pass: free, one per Agent ID wallet, 1645 of 2,000 left (a numbered ERC-721 with no monetary value)",
+   "why": "Finals Pass: free, one per Agent ID wallet, 1616 of 2,000 left (a numbered ERC-721 with no monetary value)",
    "validUntil": "until minted, while passes are left",
    "preview": "baw contract-call preview --binanceChainId 56 --from 0xc0cd9d93b7658c4c7a318c8c1eb8a68f7d203d80 --to 0x9Df6ba1868d2C149FdA5FE67491f67C07C31e6B5 --value 0 --inputData 0x1249c58b --json",
    "thenExecute": "baw contract-call execute --requestId <requestId from the preview> --json"
   }
  ],
  "joinedRounds": {},
- "pendingResults": [
-  {
-   "market": "BTC 6h",
-   "tickets": 1,
-   "resultFinalAt": "2026-11-27T12:00:00Z"
-  }
- ],
- "comeBackAt": "2026-11-27T12:00:00Z",
- "comeBackWhy": "BTC 6h result is final: send claim() 0x4e71d92d on that market (value 0); the ticket counts in the record only after it",
- "askHuman": "Next useful time: 2026-11-27 12:00 UTC (BTC 6h result is final: send claim() 0x4e71d92d on that market (value 0); the ticket counts in the record only after it). Want me to come back then?",
+ "pendingResults": [],
+ "comeBackAt": "2026-11-27T18:00:00Z",
+ "comeBackWhy": "the next 6h round opens: a new free ticket per 6h market",
+ "askHuman": "Next useful time: 2026-11-27 18:00 UTC (the next 6h round opens: a new free ticket per 6h market). Want me to come back then?",
  "stampToday": "checkIn() 0x183ff085 on 0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae once per UTC day (preview shows if already done)",
  "performance": {
   "decided": 0,
