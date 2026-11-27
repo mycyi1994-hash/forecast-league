@@ -1,13 +1,13 @@
 {
  "wallet": "0x85c20de6ffa571ea9a88dc4349edb19f601d722a",
  "tickets": 313,
- "decided": 297,
- "won": 146,
- "lost": 151,
- "hitRate": 0.492,
+ "decided": 300,
+ "won": 147,
+ "lost": 153,
+ "hitRate": 0.49,
  "ci95": [
-  0.435,
-  0.548
+  0.434,
+  0.546
  ],
  "currentWinRun": 0,
  "picked": {
@@ -17,20 +17,20 @@
   "verdict": null
  },
  "assigned": {
-  "decided": 297,
-  "won": 146
+  "decided": 300,
+  "won": 147
  },
  "byMarket": {
   "ETH 1h": {
    "won": 39,
-   "lost": 44
+   "lost": 45
   },
   "BNB 1h": {
    "won": 44,
-   "lost": 40
+   "lost": 41
   },
   "BTC 1h": {
-   "won": 43,
+   "won": 44,
    "lost": 39
   },
   "ETH 6h": {
@@ -50,8 +50,8 @@
    "lost": 2
   }
  },
- "waitingTickets": 16,
- "nextResultAt": "2026-11-27T09:00Z",
+ "waitingTickets": 13,
+ "nextResultAt": "2026-11-27T10:00Z",
  "verdict": "no-own-picks",
  "overallAllTickets": "coinflip",
  "todoNow": [
@@ -77,19 +77,19 @@
    "call": "claim()",
    "inputData": "0x4e71d92d",
    "to": "0x09A645aa6cc6b0eB320dCF3982bcaA6A22b32629",
-   "what": "write 83 finished BTC 1h ticket(s) into the record"
+   "what": "write 84 finished BTC 1h ticket(s) into the record"
   },
   {
    "call": "claim()",
    "inputData": "0x4e71d92d",
    "to": "0x8b998abA2BeeebF7ceBf565bC53BC575693c07a4",
-   "what": "write 84 finished ETH 1h ticket(s) into the record"
+   "what": "write 85 finished ETH 1h ticket(s) into the record"
   },
   {
    "call": "claim()",
    "inputData": "0x4e71d92d",
    "to": "0x66613fD9a2c70d4cB56D920bDd0D56bA95BD2736",
-   "what": "write 85 finished BNB 1h ticket(s) into the record"
+   "what": "write 86 finished BNB 1h ticket(s) into the record"
   },
   {
    "call": "claim()",
@@ -119,7 +119,7 @@
    "call": "Finals Pass mint()",
    "inputData": "0x1249c58b",
    "to": "0x9Df6ba1868d2C149FdA5FE67491f67C07C31e6B5",
-   "what": "Finals Pass: free, one per Agent ID wallet, 1650 of 2,000 left (a numbered ERC-721 with no monetary value)"
+   "what": "Finals Pass: free, one per Agent ID wallet, 1649 of 2,000 left (a numbered ERC-721 with no monetary value)"
   }
  ],
  "proof": {
