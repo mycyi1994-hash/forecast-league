@@ -8,7 +8,14 @@ const RPCS = ['https://bsc-rpc.publicnode.com', 'https://bsc-dataseed.bnbchain.o
 const MC = '0xcA11bde05977b3631167028862bE2a173976CA11';
 const STAMPS = '0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae';
 const BUILDER = '0x2a2f48145780639dbd91e748df157f35283165da';
-const WEEK = { from: 20781, to: 20787 }; // UTC day numbers of 24 Nov and 30 Nov 2026
+// Streak events on the same Stamps contract (no new contract, no prize): Stamp Week 24-30 Nov, then Finals Week 1-9 Dec 2026.
+const EVENTS = [
+  { name: 'Stamp Week', zh: '印章周', from: 20781, to: 20787, fromIso: '2026-11-24', toIso: '2026-11-30' },
+  { name: 'Finals Week', zh: '决赛周', from: 20788, to: 20796, fromIso: '2026-12-01', toIso: '2026-12-09' },
+];
+const todayN = Math.floor(Date.now() / 86400000);
+const WEEK = EVENTS.find((e) => todayN <= e.to) || EVENTS[EVENTS.length - 1];
+const WEEK_DAYS = WEEK.to - WEEK.from + 1;
 const word = (n) => BigInt(n).toString(16).padStart(64, '0');
 let rr = 0;
 async function rpc(method, params) {
@@ -53,12 +60,13 @@ wallets.forEach((w, i) => {
   const live = lastDay === today || lastDay === today - 1; // a run is still alive until a whole UTC day is missed
   rows.push({ wallet: w, stamps, streak: live ? streak : 0, bestStreak: best, lastDay, stampedToday: lastDay === today });
 });
-const weekStarted = today >= WEEK.from, weekDay = Math.min(Math.max(today - WEEK.from + 1, 0), 7);
+const weekStarted = today >= WEEK.from, weekDay = Math.min(Math.max(today - WEEK.from + 1, 0), WEEK_DAYS);
 const out = {
   name: 'Forecast League stamps and Stamp Week',
   updated: new Date().toISOString().slice(0, 19) + 'Z',
-  stampWeek: { from: '2026-11-24', to: '2026-11-30', utcDays: 7, dayOfWeek: weekStarted ? weekDay : 0,
-    how: "One stamp per UTC day: mint() 0x1249c58b (or checkIn() 0x183ff085) on Stamps 0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae, value 0, Agent ID wallets only. Stamp all seven days and your run reads 7 on chain. No prize, no reward: the run is the record.",
+  stampWeek: { event: WEEK.name, from: WEEK.fromIso, to: WEEK.toIso, utcDays: WEEK_DAYS, dayOfWeek: weekStarted ? weekDay : 0,
+    how: `One stamp per UTC day: mint() 0x1249c58b (or checkIn() 0x183ff085) on Stamps 0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae, value 0, Agent ID wallets only. Stamp every day of ${WEEK.name} (${WEEK.fromIso} to ${WEEK.toIso} UTC) and your run reads ${WEEK_DAYS} on chain. No prize, no reward: the run is the record.`,
+    next: EVENTS.filter((e) => e.from > WEEK.to).map((e) => ({ event: e.name, from: e.fromIso, to: e.toIso }))[0] || null,
     onTrackForSeven: weekStarted ? rows.filter((r) => r.streak >= weekDay && r.lastDay >= today - 1).length : null },
   stampsTotal: rows.reduce((n, r) => n + r.stamps, 0),
   wallets: rows.length,
@@ -70,8 +78,8 @@ const out = {
 writeFileSync('docs/api/stamps.json', JSON.stringify(out, null, 1) + '\n');
 for (const f of ['docs/agent.md', 'docs/agents.md']) {
   if (!existsSync(f)) continue;
-  let md = readFileSync(f, 'utf8').replace(/\n\*\*Stamp Week[^\n]*\n/, '\n');
-  const line = `**Stamp Week, 24-30 Nov (UTC) · 印章周:** one free stamp per UTC day, \`mint()\` \`0x1249c58b\` on Stamps \`${STAMPS}\`, value 0. ${out.stampedToday} wallets stamped today; ${out.canStampToday} can still stamp today. Seven days in a row reads 7 on chain. A new stamp opens every day at 00:00 UTC. No prize. Runs: https://mycyi1994-hash.github.io/forecast-league/api/stamps.json\n`;
+  let md = readFileSync(f, 'utf8').replace(/\n\*\*(Stamp|Finals) Week[^\n]*\n/, '\n');
+  const line = `**${WEEK.name}, ${WEEK.fromIso.slice(5)} to ${WEEK.toIso.slice(5)} (UTC) · ${WEEK.zh}:** one free stamp per UTC day, \`mint()\` \`0x1249c58b\` on Stamps \`${STAMPS}\`, value 0. ${out.stampedToday} wallets stamped today; ${out.canStampToday} can still stamp today. Every day of it in a row reads ${WEEK_DAYS} on chain.${WEEK.name === 'Stamp Week' ? ' Then Finals Week, 1-9 Dec: nine days to the hackathon close.' : ''} A new stamp opens every day at 00:00 UTC. No prize. Runs: https://mycyi1994-hash.github.io/forecast-league/api/stamps.json\n`;
   if (md.includes('<!-- /live -->')) writeFileSync(f, md.replace('<!-- /live -->', line + '<!-- /live -->'));
 }
 console.log(JSON.stringify({ ok: true, wallets: out.wallets, stampedToday: out.stampedToday, canStampToday: out.canStampToday, top: out.topRuns.slice(0, 3) }));
