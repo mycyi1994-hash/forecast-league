@@ -2,8 +2,8 @@
  "contract": "0x77feb51ef3d7d0457d8a94893ae067171c452bf3",
  "name": "Agent Pioneer Badge",
  "verdict": "passed",
- "checkedAt": "2026-11-27T07:10:54Z",
- "block": 135996290,
+ "checkedAt": "2026-11-27T08:11:45Z",
+ "block": 136004402,
  "checks": {
   "simulatedFromAgentIdWallet": true,
   "gateEnforced": true,

@@ -53,26 +53,7 @@
  "nextResultAt": "2026-11-28T00:00Z",
  "verdict": "early",
  "overallAllTickets": "early",
- "todoNow": [
-  {
-   "call": "Stamps checkIn()",
-   "inputData": "0x183ff085",
-   "to": "0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae",
-   "what": "today's stamp (streak becomes 2)"
-  },
-  {
-   "call": "Badges claim()",
-   "inputData": "0x4e71d92d",
-   "to": "0xF706Aeb7E1B6A44139205dF3043bf68cCf386918",
-   "what": "badge tier 1 earned"
-  },
-  {
-   "call": "Honors claim()",
-   "inputData": "0x4e71d92d",
-   "to": "0x3e73bC0309c72EA69bD74CaDEC943668291Ca6ed",
-   "what": "honor earned: SEASON ONE, CARD HOLDER, FIRST WIN"
-  }
- ],
+ "todoNow": [],
  "proof": {
   "record": "https://mycyi1994-hash.github.io/forecast-league/me.html?w=0x1b61315fd8fe9c5b9aed6926c03ed8fb506d7790",
   "tickets": {

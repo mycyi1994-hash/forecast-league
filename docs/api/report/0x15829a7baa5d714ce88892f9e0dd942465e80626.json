@@ -1,6 +1,6 @@
 {
  "wallet": "0x15829a7baa5d714ce88892f9e0dd942465e80626",
- "tickets": 29,
+ "tickets": 30,
  "decided": 28,
  "won": 9,
  "lost": 19,
@@ -26,7 +26,7 @@
    "lost": 19
   }
  },
- "waitingTickets": 1,
+ "waitingTickets": 2,
  "nextResultAt": "2026-11-27T12:00Z",
  "verdict": "no-own-picks",
  "overallAllTickets": "coinflip",
@@ -48,6 +48,12 @@
    "inputData": "0xb688a363",
    "to": "0x8433AD00601C57cE9F144b20A32aE478EEe831AE",
    "what": "Houses join()"
+  },
+  {
+   "call": "Badges claim()",
+   "inputData": "0x4e71d92d",
+   "to": "0xF706Aeb7E1B6A44139205dF3043bf68cCf386918",
+   "what": "badge tier 3 earned"
   },
   {
    "call": "Honors claim()",
