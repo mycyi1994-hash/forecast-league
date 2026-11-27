@@ -1,6 +1,6 @@
 {
  "name": "Forecast League builder agent: review of its real picks (BTC 6h)",
- "updated": "2026-11-27T10:10:44Z",
+ "updated": "2026-11-27T11:11:46Z",
  "before": {
   "picks": 8,
   "decided": 8,
@@ -29,24 +29,24 @@
  },
  "shadowAllMarkets": {
   "rule": {
-   "decided": 306,
-   "right": 146,
-   "hitRate": 0.4771,
+   "decided": 309,
+   "right": 147,
+   "hitRate": 0.4757,
    "ci95": [
-    0.4218,
-    0.533
+    0.4207,
+    0.5314
    ],
-   "brier": 0.2513
+   "brier": 0.2514
   },
   "model": {
-   "decided": 278,
-   "right": 136,
-   "hitRate": 0.4892,
+   "decided": 281,
+   "right": 139,
+   "hitRate": 0.4947,
    "ci95": [
-    0.431,
-    0.5477
+    0.4367,
+    0.5528
    ],
-   "brier": 0.2515
+   "brier": 0.2513
   },
   "crowd": {
    "decided": 3,

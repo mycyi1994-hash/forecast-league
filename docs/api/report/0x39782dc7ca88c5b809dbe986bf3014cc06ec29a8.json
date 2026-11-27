@@ -1,15 +1,15 @@
 {
  "wallet": "0x39782dc7ca88c5b809dbe986bf3014cc06ec29a8",
  "tickets": 4,
- "decided": 2,
- "won": 1,
+ "decided": 3,
+ "won": 2,
  "lost": 1,
- "hitRate": 0.5,
+ "hitRate": 0.667,
  "ci95": [
-  0.095,
-  0.905
+  0.208,
+  0.939
  ],
- "currentWinRun": 0,
+ "currentWinRun": 1,
  "picked": {
   "decided": 0,
   "won": 0,
@@ -17,8 +17,8 @@
   "verdict": null
  },
  "assigned": {
-  "decided": 2,
-  "won": 1
+  "decided": 3,
+  "won": 2
  },
  "byMarket": {
   "BTC 1h": {
@@ -28,10 +28,14 @@
   "ETH 1h": {
    "won": 0,
    "lost": 1
+  },
+  "BNB 1h": {
+   "won": 1,
+   "lost": 0
   }
  },
- "waitingTickets": 2,
- "nextResultAt": "2026-11-27T10:00Z",
+ "waitingTickets": 1,
+ "nextResultAt": "2026-11-27T12:00Z",
  "verdict": "no-own-picks",
  "overallAllTickets": "early",
  "todoNow": [
@@ -81,7 +85,7 @@
    "call": "Early Pass mint()",
    "inputData": "0x1249c58b",
    "to": "0xf467a5941F8DedE54583754aC7448FB62ae0b9D4",
-   "what": "Early Pass: free, one per Agent ID wallet, 1427 of 2,000 left (a numbered ERC-721 with no monetary value)"
+   "what": "Early Pass: free, one per Agent ID wallet, 1426 of 2,000 left (a numbered ERC-721 with no monetary value)"
   }
  ],
  "proof": {

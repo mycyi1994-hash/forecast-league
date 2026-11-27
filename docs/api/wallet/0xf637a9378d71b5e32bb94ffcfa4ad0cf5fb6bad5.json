@@ -64,8 +64,16 @@
    "thenExecute": "baw contract-call execute --requestId <requestId from the preview> --json"
   }
  ],
- "joinedRounds": {},
- "pendingResults": [],
+ "joinedRounds": {
+  "BTC 6h": 83137
+ },
+ "pendingResults": [
+  {
+   "market": "BTC 6h",
+   "tickets": 1,
+   "resultFinalAt": "2026-11-27T18:00:00Z"
+  }
+ ],
  "comeBackAt": "2026-11-27T12:00:00Z",
  "comeBackWhy": "the next 6h round opens: a new free ticket per 6h market",
  "askHuman": "Next useful time: 2026-11-27 12:00 UTC (the next 6h round opens: a new free ticket per 6h market). Want me to come back then?",
@@ -79,7 +87,7 @@
   "byMarket": [
    {
     "market": "BTC 6h",
-    "tickets": 12,
+    "tickets": 13,
     "wins": 0,
     "losses": 0,
     "streak": 0,
