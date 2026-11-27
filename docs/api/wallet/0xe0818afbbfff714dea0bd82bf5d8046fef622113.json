@@ -93,41 +93,33 @@
    "validUntil": "until claimed (a second claim reverts NothingToClaim, which is harmless)",
    "preview": "baw contract-call preview --binanceChainId 56 --from 0xe0818afbbfff714dea0bd82bf5d8046fef622113 --to 0x9e521add6F67EEe0Fe5c0b8ef32cb4543f7af50E --value 0 --inputData 0x4e71d92d --json",
    "thenExecute": "baw contract-call execute --requestId <requestId from the preview> --json"
-  },
-  {
-   "type": "checkIn",
-   "contract": "0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae",
-   "method": "checkIn()",
-   "inputData": "0x183ff085",
-   "args": [],
-   "valueWei": "0",
-   "why": "today's stamp (streak becomes 4)",
-   "validUntil": "until 00:00 UTC; a new one opens every UTC day",
-   "preview": "baw contract-call preview --binanceChainId 56 --from 0xe0818afbbfff714dea0bd82bf5d8046fef622113 --to 0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae --value 0 --inputData 0x183ff085 --json",
-   "thenExecute": "baw contract-call execute --requestId <requestId from the preview> --json"
   }
  ],
- "joinedRounds": {},
+ "joinedRounds": {
+  "BTC 6h": 83136,
+  "ETH 6h": 83136,
+  "BNB 6h": 83136
+ },
  "pendingResults": [
   {
    "market": "BTC 6h",
-   "tickets": 1,
-   "resultFinalAt": "2026-11-27T06:00:00Z"
+   "tickets": 2,
+   "resultFinalAt": "2026-11-27T12:00:00Z"
   },
   {
    "market": "ETH 6h",
-   "tickets": 1,
-   "resultFinalAt": "2026-11-27T06:00:00Z"
+   "tickets": 2,
+   "resultFinalAt": "2026-11-27T12:00:00Z"
   },
   {
    "market": "BNB 6h",
-   "tickets": 1,
-   "resultFinalAt": "2026-11-27T06:00:00Z"
+   "tickets": 2,
+   "resultFinalAt": "2026-11-27T12:00:00Z"
   }
  ],
  "comeBackAt": "2026-11-27T06:00:00Z",
- "comeBackWhy": "BTC 6h result is final: send claim() 0x4e71d92d on that market (value 0); the ticket counts in the record only after it",
- "askHuman": "Next useful time: 2026-11-27 06:00 UTC (BTC 6h result is final: send claim() 0x4e71d92d on that market (value 0); the ticket counts in the record only after it). Want me to come back then?",
+ "comeBackWhy": "the next 6h round opens: a new free ticket per 6h market",
+ "askHuman": "Next useful time: 2026-11-27 06:00 UTC (the next 6h round opens: a new free ticket per 6h market). Want me to come back then?",
  "stampToday": "checkIn() 0x183ff085 on 0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae once per UTC day (preview shows if already done)",
  "performance": {
   "decided": 0,
@@ -138,14 +130,6 @@
   "byMarket": [
    {
     "market": "BTC 6h",
-    "tickets": 12,
-    "wins": 0,
-    "losses": 0,
-    "streak": 0,
-    "bestStreak": 0
-   },
-   {
-    "market": "ETH 6h",
     "tickets": 13,
     "wins": 0,
     "losses": 0,
@@ -153,8 +137,16 @@
     "bestStreak": 0
    },
    {
+    "market": "ETH 6h",
+    "tickets": 14,
+    "wins": 0,
+    "losses": 0,
+    "streak": 0,
+    "bestStreak": 0
+   },
+   {
     "market": "BNB 6h",
-    "tickets": 12,
+    "tickets": 13,
     "wins": 0,
     "losses": 0,
     "streak": 0,
