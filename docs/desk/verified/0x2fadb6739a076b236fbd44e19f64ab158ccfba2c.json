@@ -2,8 +2,8 @@
  "contract": "0x2fadb6739a076b236fbd44e19f64ab158ccfba2c",
  "name": "Forecast League Blitz BTC 6h",
  "verdict": "passed",
- "checkedAt": "2026-11-27T01:12:05Z",
- "block": 135948465,
+ "checkedAt": "2026-11-27T02:11:27Z",
+ "block": 135956378,
  "checks": {
   "simulatedFromAgentIdWallet": true,
   "gateEnforced": true,

@@ -2,8 +2,8 @@
  "contract": "0xc29741f54bf41d7df36f952a9f207a1a91fbd1e7",
  "name": "AgentStamp",
  "verdict": "passed",
- "checkedAt": "2026-11-27T01:12:05Z",
- "block": 135948465,
+ "checkedAt": "2026-11-27T02:11:27Z",
+ "block": 135956378,
  "checks": {
   "simulatedFromAgentIdWallet": true,
   "gateEnforced": true,

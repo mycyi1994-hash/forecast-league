@@ -72,7 +72,7 @@
    "inputData": "0x4e71d92d",
    "args": [],
    "valueWei": "0",
-   "why": "badge tier 1 earned",
+   "why": "badge tier 2 earned",
    "validUntil": "until claimed",
    "preview": "baw contract-call preview --binanceChainId 56 --from 0x1f360e62e2b7502f3fffd48ce330eb03d874fb55 --to 0xF706Aeb7E1B6A44139205dF3043bf68cCf386918 --value 0 --inputData 0x4e71d92d --json",
    "thenExecute": "baw contract-call execute --requestId <requestId from the preview> --json"
