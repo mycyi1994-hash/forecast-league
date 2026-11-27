@@ -281,6 +281,17 @@
    "crowd": null,
    "reason": "Rule follow the last 6h window: BTC moved -2.81% over the last full 6h window, so down; backtests found no reliable edge at 6h, so this is a transparent default, not a prediction I trust.",
    "tx": "0xbb34b67b553b6fe0987f425f27fa66fe44d9ceadc3d99c55ec529b7ab370ddcc"
+  },
+  {
+   "utc": "2026-11-27T21:47:26Z",
+   "market": "daily forecast",
+   "round": 20784,
+   "btc": 59732.79,
+   "eth": 1663.3,
+   "bnb": 552.54,
+   "rule": "current price, two hours before the lock",
+   "reason": "Backtests found no reliable edge over the next 6 hours, so the forecast is today's Chainlink price at submission, unadjusted.",
+   "tx": "0xc0e806db7816ca074f00e67ae4a1d2d4adb869b2fe3f338dcb8809c02e156f12"
   }
  ]
 }

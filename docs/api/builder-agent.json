@@ -1,7 +1,7 @@
 {
  "name": "Forecast League: the builder's own agent",
- "updated": "2026-11-27T18:47:12Z",
- "block": 136089099,
+ "updated": "2026-11-27T21:47:26Z",
+ "block": 136113118,
  "label": "The builder's own agent. Excluded from all usage numbers. An example, not evidence of adoption.",
  "wallet": "0x2a2f48145780639dbd91e748df157f35283165da",
  "handle": "dopaminekr",
@@ -19,20 +19,20 @@
    "waiting": 2
   },
   "picked": {
-   "tickets": 26,
+   "tickets": 27,
    "won": 11,
    "lost": 14,
    "push": 0,
    "void": 0,
-   "waiting": 1
+   "waiting": 2
   },
   "assigned": {
-   "tickets": 9,
+   "tickets": 8,
    "won": 2,
    "lost": 6,
    "push": 0,
    "void": 0,
-   "waiting": 1
+   "waiting": 0
   },
   "routine": {
    "tickets": 28,
@@ -798,10 +798,10 @@
    "lockAt": "2026-11-28T00:00:00Z",
    "resultAt": "2026-11-28T06:00:00Z",
    "side": "down",
-   "how": "unknown",
-   "picked": false,
-   "howSource": "side compared with assignedSide()",
-   "tx": null,
+   "how": "down",
+   "picked": true,
+   "howSource": "api/picks/ledger.json",
+   "tx": "0xbb34b67b553b6fe0987f425f27fa66fe44d9ceadc3d99c55ec529b7ab370ddcc",
    "inRoutine": true,
    "status": "live",
    "outcome": null,
@@ -811,7 +811,7 @@
   }
  ],
  "forecasts": {
-  "submissions": 7,
+  "submissions": 8,
   "scorer": {
    "epochs": 7,
    "forecasts": 21,
@@ -1043,6 +1043,38 @@
     ],
     "total": -152,
     "status": "scored"
+   },
+   {
+    "epoch": 20784,
+    "submittedAt": "2026-11-27T21:47:26Z",
+    "lockAt": "2026-11-28T00:00:00Z",
+    "targetAt": "2026-11-28T06:00:00Z",
+    "scoredOnChain": false,
+    "pairs": [
+     {
+      "pair": "BTC",
+      "forecast": 59732.79,
+      "lockPrice": null,
+      "targetPrice": null,
+      "score": null
+     },
+     {
+      "pair": "ETH",
+      "forecast": 1663.3,
+      "lockPrice": null,
+      "targetPrice": null,
+      "score": null
+     },
+     {
+      "pair": "BNB",
+      "forecast": 552.54,
+      "lockPrice": null,
+      "targetPrice": null,
+      "score": null
+     }
+    ],
+    "total": null,
+    "status": "waiting"
    }
   ]
  },
@@ -1327,6 +1359,17 @@
    "crowd": null,
    "reason": "Rule follow the last 6h window: BTC moved -2.81% over the last full 6h window, so down; backtests found no reliable edge at 6h, so this is a transparent default, not a prediction I trust.",
    "tx": "0xbb34b67b553b6fe0987f425f27fa66fe44d9ceadc3d99c55ec529b7ab370ddcc"
+  },
+  {
+   "utc": "2026-11-27T21:47:26Z",
+   "market": "daily forecast",
+   "round": 20784,
+   "btc": 59732.79,
+   "eth": 1663.3,
+   "bnb": 552.54,
+   "rule": "current price, two hours before the lock",
+   "reason": "Backtests found no reliable edge over the next 6 hours, so the forecast is today's Chainlink price at submission, unadjusted.",
+   "tx": "0xc0e806db7816ca074f00e67ae4a1d2d4adb869b2fe3f338dcb8809c02e156f12"
   }
  ]
 }
