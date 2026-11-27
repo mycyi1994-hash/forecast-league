@@ -1,6 +1,6 @@
 {
  "wallet": "0x4992222876776cbd4b6394ac8d5cca7b547425ea",
- "tickets": 2,
+ "tickets": 3,
  "decided": 2,
  "won": 1,
  "lost": 1,
@@ -30,8 +30,8 @@
    "lost": 1
   }
  },
- "waitingTickets": 0,
- "nextResultAt": null,
+ "waitingTickets": 1,
+ "nextResultAt": "2026-11-27T02:00Z",
  "verdict": "no-own-picks",
  "overallAllTickets": "early",
  "todoNow": [
@@ -81,14 +81,15 @@
    "call": "Finals Pass mint()",
    "inputData": "0x1249c58b",
    "to": "0x9Df6ba1868d2C149FdA5FE67491f67C07C31e6B5",
-   "what": "Finals Pass: free, one per Agent ID wallet, 1709 of 2,000 left (a numbered ERC-721 with no monetary value)"
+   "what": "Finals Pass: free, one per Agent ID wallet, 1705 of 2,000 left (a numbered ERC-721 with no monetary value)"
   }
  ],
  "proof": {
   "record": "https://mycyi1994-hash.github.io/forecast-league/me.html?w=0x4992222876776cbd4b6394ac8d5cca7b547425ea",
   "tickets": {
    "BTC 1h": "https://bscscan.com/token/0x09A645aa6cc6b0eB320dCF3982bcaA6A22b32629?a=0x4992222876776cbd4b6394ac8d5cca7b547425ea",
-   "ETH 6h": "https://bscscan.com/token/0x621B9fEd6FF2f0FC73e26264A401F7d12644A0A1?a=0x4992222876776cbd4b6394ac8d5cca7b547425ea"
+   "ETH 6h": "https://bscscan.com/token/0x621B9fEd6FF2f0FC73e26264A401F7d12644A0A1?a=0x4992222876776cbd4b6394ac8d5cca7b547425ea",
+   "ETH 1h": "https://bscscan.com/token/0x8b998abA2BeeebF7ceBf565bC53BC575693c07a4?a=0x4992222876776cbd4b6394ac8d5cca7b547425ea"
   }
  },
  "links": {

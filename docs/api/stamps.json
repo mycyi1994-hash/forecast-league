@@ -1,58 +1,82 @@
 {
  "name": "Forecast League stamps and Stamp Week",
- "updated": "2026-11-27T00:10:15Z",
+ "updated": "2026-11-27T01:11:03Z",
  "stampWeek": {
   "from": "2026-11-24",
   "to": "2026-11-30",
   "utcDays": 7,
   "dayOfWeek": 4,
   "how": "One stamp per UTC day: mint() 0x1249c58b (or checkIn() 0x183ff085) on Stamps 0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae, value 0, Agent ID wallets only. Stamp all seven days and your run reads 7 on chain. No prize, no reward: the run is the record.",
-  "onTrackForSeven": 16
+  "onTrackForSeven": 25
  },
- "stampsTotal": 500,
- "wallets": 326,
- "stampedToday": 19,
- "canStampToday": 890,
+ "stampsTotal": 522,
+ "wallets": 329,
+ "stampedToday": 41,
+ "canStampToday": 872,
  "topRuns": [
   {
    "wallet": "0x61d5353152b2573786bf640e289a12e00c7c3df1",
-   "stamps": 7,
-   "streak": 7,
-   "bestStreak": 7,
-   "lastDay": 20783,
-   "stampedToday": false
+   "stamps": 8,
+   "streak": 8,
+   "bestStreak": 8,
+   "lastDay": 20784,
+   "stampedToday": true
   },
   {
    "wallet": "0x93fabef80e9b4083935d4ae7bb8fa3a51ef33cd8",
-   "stamps": 7,
-   "streak": 7,
-   "bestStreak": 7,
-   "lastDay": 20783,
-   "stampedToday": false
+   "stamps": 8,
+   "streak": 8,
+   "bestStreak": 8,
+   "lastDay": 20784,
+   "stampedToday": true
   },
   {
    "wallet": "0xd301d472f2e469a1aafa1af6f214e312f1858873",
-   "stamps": 7,
-   "streak": 7,
-   "bestStreak": 7,
-   "lastDay": 20783,
-   "stampedToday": false
+   "stamps": 8,
+   "streak": 8,
+   "bestStreak": 8,
+   "lastDay": 20784,
+   "stampedToday": true
   },
   {
    "wallet": "0x86a49a9e391c5dc143d2d8b2e8bb77e8bb61ede9",
-   "stamps": 6,
-   "streak": 6,
-   "bestStreak": 6,
-   "lastDay": 20783,
-   "stampedToday": false
+   "stamps": 7,
+   "streak": 7,
+   "bestStreak": 7,
+   "lastDay": 20784,
+   "stampedToday": true
   },
   {
    "wallet": "0x917a1da59348bb09b40ec1e77ba35b75efcf4210",
+   "stamps": 6,
+   "streak": 6,
+   "bestStreak": 6,
+   "lastDay": 20784,
+   "stampedToday": true
+  },
+  {
+   "wallet": "0xe51fc540853508efa7b60332af5d6e0da7dc7b62",
    "stamps": 5,
    "streak": 5,
    "bestStreak": 5,
-   "lastDay": 20783,
-   "stampedToday": false
+   "lastDay": 20784,
+   "stampedToday": true
+  },
+  {
+   "wallet": "0x0880e49f7d517ae5566eb429339d33e505769c54",
+   "stamps": 4,
+   "streak": 4,
+   "bestStreak": 4,
+   "lastDay": 20784,
+   "stampedToday": true
+  },
+  {
+   "wallet": "0x100c9d3e9c610ea5439c6b45b38a42b0f3265064",
+   "stamps": 4,
+   "streak": 4,
+   "bestStreak": 4,
+   "lastDay": 20784,
+   "stampedToday": true
   },
   {
    "wallet": "0x14f395059726c3da2f3e4a1f969c6e61ae844731",
@@ -71,6 +95,14 @@
    "stampedToday": false
   },
   {
+   "wallet": "0x32def82c29d76b0e6e70992c4514482444aa1dc3",
+   "stamps": 4,
+   "streak": 4,
+   "bestStreak": 4,
+   "lastDay": 20784,
+   "stampedToday": true
+  },
+  {
    "wallet": "0x34bcb0e77b9ed14dc4da3934668891b70bd257f3",
    "stamps": 4,
    "streak": 4,
@@ -80,6 +112,30 @@
   },
   {
    "wallet": "0x34ea2343981b4fc1d55fb551857a94d16f6c0597",
+   "stamps": 4,
+   "streak": 4,
+   "bestStreak": 4,
+   "lastDay": 20784,
+   "stampedToday": true
+  },
+  {
+   "wallet": "0x3fac00e73f874e9765c80bf4ef0adf69659288b0",
+   "stamps": 4,
+   "streak": 4,
+   "bestStreak": 4,
+   "lastDay": 20784,
+   "stampedToday": true
+  },
+  {
+   "wallet": "0x793280ea8f4d80bb697aa88baef7b478424b2496",
+   "stamps": 4,
+   "streak": 4,
+   "bestStreak": 4,
+   "lastDay": 20784,
+   "stampedToday": true
+  },
+  {
+   "wallet": "0x80016477633efec97bcb9eb535ede807430bc043",
    "stamps": 4,
    "streak": 4,
    "bestStreak": 4,
@@ -127,6 +183,14 @@
    "stampedToday": false
   },
   {
+   "wallet": "0xcf8afb65977a6561b6f31735be5ee2f5fa0d1e6d",
+   "stamps": 4,
+   "streak": 4,
+   "bestStreak": 4,
+   "lastDay": 20784,
+   "stampedToday": true
+  },
+  {
    "wallet": "0xe24ae46004f02f79c35954eb61ff3723b7e22084",
    "stamps": 4,
    "streak": 4,
@@ -135,84 +199,20 @@
    "stampedToday": false
   },
   {
-   "wallet": "0xe51fc540853508efa7b60332af5d6e0da7dc7b62",
+   "wallet": "0xf1b2098f369eea617912b9dc79021befe87245a2",
    "stamps": 4,
    "streak": 4,
    "bestStreak": 4,
-   "lastDay": 20783,
-   "stampedToday": false
+   "lastDay": 20784,
+   "stampedToday": true
   },
   {
-   "wallet": "0x0a90f878e4cf3ef3bc0ee4a67e2ff0166986ad5f",
+   "wallet": "0xf2ebc3284238cd69f233b5383dc5b972c3c56d27",
    "stamps": 4,
-   "streak": 3,
-   "bestStreak": 3,
-   "lastDay": 20783,
-   "stampedToday": false
-  },
-  {
-   "wallet": "0x466ab5d27f802f4c6f3abc23adb82528b149bebc",
-   "stamps": 4,
-   "streak": 3,
-   "bestStreak": 3,
-   "lastDay": 20783,
-   "stampedToday": false
-  },
-  {
-   "wallet": "0x0880e49f7d517ae5566eb429339d33e505769c54",
-   "stamps": 3,
-   "streak": 3,
-   "bestStreak": 3,
-   "lastDay": 20783,
-   "stampedToday": false
-  },
-  {
-   "wallet": "0x100c9d3e9c610ea5439c6b45b38a42b0f3265064",
-   "stamps": 3,
-   "streak": 3,
-   "bestStreak": 3,
-   "lastDay": 20783,
-   "stampedToday": false
-  },
-  {
-   "wallet": "0x2fcf15e1d294766d35221c3dede19891ccf99c65",
-   "stamps": 3,
-   "streak": 3,
-   "bestStreak": 3,
-   "lastDay": 20783,
-   "stampedToday": false
-  },
-  {
-   "wallet": "0x32def82c29d76b0e6e70992c4514482444aa1dc3",
-   "stamps": 3,
-   "streak": 3,
-   "bestStreak": 3,
-   "lastDay": 20783,
-   "stampedToday": false
-  },
-  {
-   "wallet": "0x3fac00e73f874e9765c80bf4ef0adf69659288b0",
-   "stamps": 3,
-   "streak": 3,
-   "bestStreak": 3,
-   "lastDay": 20783,
-   "stampedToday": false
-  },
-  {
-   "wallet": "0x793280ea8f4d80bb697aa88baef7b478424b2496",
-   "stamps": 3,
-   "streak": 3,
-   "bestStreak": 3,
-   "lastDay": 20783,
-   "stampedToday": false
-  },
-  {
-   "wallet": "0x80016477633efec97bcb9eb535ede807430bc043",
-   "stamps": 3,
-   "streak": 3,
-   "bestStreak": 3,
-   "lastDay": 20783,
-   "stampedToday": false
+   "streak": 4,
+   "bestStreak": 4,
+   "lastDay": 20784,
+   "stampedToday": true
   }
  ],
  "method": "Stamps.recordOf(address) for every wallet in api/wallet/index.json (builder left out). A run counts while the wallet has stamped today or yesterday."

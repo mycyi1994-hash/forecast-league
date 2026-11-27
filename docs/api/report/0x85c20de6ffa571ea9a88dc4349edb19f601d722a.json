@@ -1,15 +1,15 @@
 {
  "wallet": "0x85c20de6ffa571ea9a88dc4349edb19f601d722a",
  "tickets": 283,
- "decided": 263,
- "won": 133,
- "lost": 130,
- "hitRate": 0.506,
+ "decided": 270,
+ "won": 136,
+ "lost": 134,
+ "hitRate": 0.504,
  "ci95": [
-  0.446,
-  0.566
+  0.444,
+  0.563
  ],
- "currentWinRun": 0,
+ "currentWinRun": 1,
  "picked": {
   "decided": 0,
   "won": 0,
@@ -17,41 +17,41 @@
   "verdict": null
  },
  "assigned": {
-  "decided": 263,
-  "won": 133
+  "decided": 270,
+  "won": 136
  },
  "byMarket": {
   "ETH 1h": {
    "won": 35,
-   "lost": 39
+   "lost": 40
   },
   "BNB 1h": {
-   "won": 40,
+   "won": 41,
    "lost": 35
   },
   "BTC 1h": {
-   "won": 39,
+   "won": 40,
    "lost": 34
   },
   "ETH 6h": {
-   "won": 7,
+   "won": 8,
    "lost": 6
   },
   "BTC 6h": {
    "won": 6,
-   "lost": 7
+   "lost": 8
   },
   "BNB 6h": {
    "won": 5,
-   "lost": 8
+   "lost": 9
   },
   "BTC 1d": {
    "won": 1,
-   "lost": 1
+   "lost": 2
   }
  },
- "waitingTickets": 20,
- "nextResultAt": "2026-11-27T00:00Z",
+ "waitingTickets": 13,
+ "nextResultAt": "2026-11-27T01:00Z",
  "verdict": "no-own-picks",
  "overallAllTickets": "coinflip",
  "todoNow": [
@@ -77,19 +77,19 @@
    "call": "claim()",
    "inputData": "0x4e71d92d",
    "to": "0x09A645aa6cc6b0eB320dCF3982bcaA6A22b32629",
-   "what": "write 74 finished BTC 1h ticket(s) into the record"
+   "what": "write 75 finished BTC 1h ticket(s) into the record"
   },
   {
    "call": "claim()",
    "inputData": "0x4e71d92d",
    "to": "0x8b998abA2BeeebF7ceBf565bC53BC575693c07a4",
-   "what": "write 75 finished ETH 1h ticket(s) into the record"
+   "what": "write 76 finished ETH 1h ticket(s) into the record"
   },
   {
    "call": "claim()",
    "inputData": "0x4e71d92d",
    "to": "0x66613fD9a2c70d4cB56D920bDd0D56bA95BD2736",
-   "what": "write 76 finished BNB 1h ticket(s) into the record"
+   "what": "write 77 finished BNB 1h ticket(s) into the record"
   },
   {
    "call": "claim()",
@@ -119,7 +119,7 @@
    "call": "Finals Pass mint()",
    "inputData": "0x1249c58b",
    "to": "0x9Df6ba1868d2C149FdA5FE67491f67C07C31e6B5",
-   "what": "Finals Pass: free, one per Agent ID wallet, 1709 of 2,000 left (a numbered ERC-721 with no monetary value)"
+   "what": "Finals Pass: free, one per Agent ID wallet, 1705 of 2,000 left (a numbered ERC-721 with no monetary value)"
   }
  ],
  "proof": {

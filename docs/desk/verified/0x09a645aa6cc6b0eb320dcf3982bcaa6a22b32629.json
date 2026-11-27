@@ -2,8 +2,8 @@
  "contract": "0x09a645aa6cc6b0eb320dcf3982bcaa6a22b32629",
  "name": "Forecast League Rounds BTC 1h",
  "verdict": "passed",
- "checkedAt": "2026-11-27T00:11:27Z",
- "block": 135940381,
+ "checkedAt": "2026-11-27T01:12:05Z",
+ "block": 135948465,
  "checks": {
   "simulatedFromAgentIdWallet": true,
   "gateEnforced": true,
