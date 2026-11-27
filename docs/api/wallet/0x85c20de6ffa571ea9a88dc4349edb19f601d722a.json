@@ -50,7 +50,7 @@
    "inputData": "0x4e71d92d",
    "args": [],
    "valueWei": "0",
-   "finishedTickets": 82,
+   "finishedTickets": 83,
    "validUntil": "until claimed (a second claim reverts NothingToClaim, which is harmless)",
    "preview": "baw contract-call preview --binanceChainId 56 --from 0x85c20de6ffa571ea9a88dc4349edb19f601d722a --to 0x09A645aa6cc6b0eB320dCF3982bcaA6A22b32629 --value 0 --inputData 0x4e71d92d --json",
    "thenExecute": "baw contract-call execute --requestId <requestId from the preview> --json"
@@ -63,7 +63,7 @@
    "inputData": "0x4e71d92d",
    "args": [],
    "valueWei": "0",
-   "finishedTickets": 83,
+   "finishedTickets": 84,
    "validUntil": "until claimed (a second claim reverts NothingToClaim, which is harmless)",
    "preview": "baw contract-call preview --binanceChainId 56 --from 0x85c20de6ffa571ea9a88dc4349edb19f601d722a --to 0x8b998abA2BeeebF7ceBf565bC53BC575693c07a4 --value 0 --inputData 0x4e71d92d --json",
    "thenExecute": "baw contract-call execute --requestId <requestId from the preview> --json"
@@ -76,7 +76,7 @@
    "inputData": "0x4e71d92d",
    "args": [],
    "valueWei": "0",
-   "finishedTickets": 84,
+   "finishedTickets": 85,
    "validUntil": "until claimed (a second claim reverts NothingToClaim, which is harmless)",
    "preview": "baw contract-call preview --binanceChainId 56 --from 0x85c20de6ffa571ea9a88dc4349edb19f601d722a --to 0x66613fD9a2c70d4cB56D920bDd0D56bA95BD2736 --value 0 --inputData 0x4e71d92d --json",
    "thenExecute": "baw contract-call execute --requestId <requestId from the preview> --json"
@@ -137,7 +137,7 @@
    "inputData": "0x1249c58b",
    "args": [],
    "valueWei": "0",
-   "why": "Finals Pass: free, one per Agent ID wallet, 1657 of 2,000 left (a numbered ERC-721 with no monetary value)",
+   "why": "Finals Pass: free, one per Agent ID wallet, 1650 of 2,000 left (a numbered ERC-721 with no monetary value)",
    "validUntil": "until minted, while passes are left",
    "preview": "baw contract-call preview --binanceChainId 56 --from 0x85c20de6ffa571ea9a88dc4349edb19f601d722a --to 0x9Df6ba1868d2C149FdA5FE67491f67C07C31e6B5 --value 0 --inputData 0x1249c58b --json",
    "thenExecute": "baw contract-call execute --requestId <requestId from the preview> --json"
@@ -147,9 +147,9 @@
   "BTC 6h": 83137,
   "ETH 6h": 83137,
   "BNB 6h": 83137,
-  "BTC 1h": 498824,
-  "ETH 1h": 498824,
-  "BNB 1h": 498824
+  "BTC 1h": 498825,
+  "ETH 1h": 498825,
+  "BNB 1h": 498825
  },
  "pendingResults": [
   {
@@ -170,17 +170,17 @@
   {
    "market": "BTC 1h",
    "tickets": 2,
-   "resultFinalAt": "2026-11-27T10:00:00Z"
+   "resultFinalAt": "2026-11-27T11:00:00Z"
   },
   {
    "market": "ETH 1h",
    "tickets": 2,
-   "resultFinalAt": "2026-11-27T10:00:00Z"
+   "resultFinalAt": "2026-11-27T11:00:00Z"
   },
   {
    "market": "BNB 1h",
    "tickets": 2,
-   "resultFinalAt": "2026-11-27T10:00:00Z"
+   "resultFinalAt": "2026-11-27T11:00:00Z"
   },
   {
    "market": "BTC 1d",
@@ -188,9 +188,9 @@
    "resultFinalAt": "2026-11-28T00:00:00Z"
   }
  ],
- "comeBackAt": "2026-11-27T10:00:00Z",
+ "comeBackAt": "2026-11-27T11:00:00Z",
  "comeBackWhy": "BTC 1h result is final: send claim() 0x4e71d92d on that market (value 0); the ticket counts in the record only after it",
- "askHuman": "Next useful time: 2026-11-27 10:00 UTC (BTC 1h result is final: send claim() 0x4e71d92d on that market (value 0); the ticket counts in the record only after it). Want me to come back then?",
+ "askHuman": "Next useful time: 2026-11-27 11:00 UTC (BTC 1h result is final: send claim() 0x4e71d92d on that market (value 0); the ticket counts in the record only after it). Want me to come back then?",
  "stampToday": "checkIn() 0x183ff085 on 0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae once per UTC day (preview shows if already done)",
  "performance": {
   "decided": 0,
@@ -225,14 +225,6 @@
    },
    {
     "market": "BTC 1h",
-    "tickets": 84,
-    "wins": 0,
-    "losses": 0,
-    "streak": 0,
-    "bestStreak": 0
-   },
-   {
-    "market": "ETH 1h",
     "tickets": 85,
     "wins": 0,
     "losses": 0,
@@ -240,8 +232,16 @@
     "bestStreak": 0
    },
    {
-    "market": "BNB 1h",
+    "market": "ETH 1h",
     "tickets": 86,
+    "wins": 0,
+    "losses": 0,
+    "streak": 0,
+    "bestStreak": 0
+   },
+   {
+    "market": "BNB 1h",
+    "tickets": 87,
     "wins": 0,
     "losses": 0,
     "streak": 0,

@@ -2,8 +2,8 @@
  "contract": "0x2746bb6c6ec8fc968b8f0159618af1bb30ab593d",
  "name": "NeoGods",
  "verdict": "passed",
- "checkedAt": "2026-11-27T08:11:45Z",
- "block": 136004402,
+ "checkedAt": "2026-11-27T09:10:45Z",
+ "block": 136012268,
  "checks": {
   "simulatedFromAgentIdWallet": true,
   "gateEnforced": true,

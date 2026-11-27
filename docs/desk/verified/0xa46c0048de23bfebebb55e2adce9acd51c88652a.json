@@ -2,8 +2,8 @@
  "contract": "0xa46c0048de23bfebebb55e2adce9acd51c88652a",
  "name": "Pyrevow Relics",
  "verdict": "passed",
- "checkedAt": "2026-11-27T08:11:45Z",
- "block": 136004402,
+ "checkedAt": "2026-11-27T09:10:45Z",
+ "block": 136012268,
  "checks": {
   "simulatedFromAgentIdWallet": true,
   "gateEnforced": true,
