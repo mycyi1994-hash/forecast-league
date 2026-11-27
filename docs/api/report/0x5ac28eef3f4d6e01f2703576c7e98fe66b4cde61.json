@@ -1,15 +1,15 @@
 {
  "wallet": "0x5ac28eef3f4d6e01f2703576c7e98fe66b4cde61",
  "tickets": 24,
- "decided": 22,
- "won": 12,
+ "decided": 23,
+ "won": 13,
  "lost": 10,
- "hitRate": 0.545,
+ "hitRate": 0.565,
  "ci95": [
-  0.347,
-  0.731
+  0.368,
+  0.744
  ],
- "currentWinRun": 0,
+ "currentWinRun": 1,
  "picked": {
   "decided": 0,
   "won": 0,
@@ -17,17 +17,17 @@
   "verdict": null
  },
  "assigned": {
-  "decided": 22,
-  "won": 12
+  "decided": 23,
+  "won": 13
  },
  "byMarket": {
   "ETH 1h": {
-   "won": 12,
+   "won": 13,
    "lost": 10
   }
  },
- "waitingTickets": 2,
- "nextResultAt": "2026-11-27T15:00Z",
+ "waitingTickets": 1,
+ "nextResultAt": "2026-11-27T16:00Z",
  "verdict": "no-own-picks",
  "overallAllTickets": "coinflip",
  "todoNow": [
@@ -35,7 +35,7 @@
    "call": "claim()",
    "inputData": "0x4e71d92d",
    "to": "0x8b998abA2BeeebF7ceBf565bC53BC575693c07a4",
-   "what": "write 22 finished ETH 1h ticket(s) into the record"
+   "what": "write 23 finished ETH 1h ticket(s) into the record"
   },
   {
    "call": "Houses join()",

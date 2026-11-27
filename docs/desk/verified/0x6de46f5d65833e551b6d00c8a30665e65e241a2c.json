@@ -2,8 +2,8 @@
  "contract": "0x6de46f5d65833e551b6d00c8a30665e65e241a2c",
  "name": "Agent Gold Miner",
  "verdict": "passed",
- "checkedAt": "2026-11-27T14:58:53Z",
- "block": 136058666,
+ "checkedAt": "2026-11-27T15:33:40Z",
+ "block": 136063298,
  "checks": {
   "simulatedFromAgentIdWallet": true,
   "gateEnforced": true,

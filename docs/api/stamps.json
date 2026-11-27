@@ -1,18 +1,24 @@
 {
  "name": "Forecast League stamps and Stamp Week",
- "updated": "2026-11-27T14:57:43Z",
+ "updated": "2026-11-27T15:32:41Z",
  "stampWeek": {
+  "event": "Stamp Week",
   "from": "2026-11-24",
   "to": "2026-11-30",
   "utcDays": 7,
   "dayOfWeek": 4,
-  "how": "One stamp per UTC day: mint() 0x1249c58b (or checkIn() 0x183ff085) on Stamps 0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae, value 0, Agent ID wallets only. Stamp all seven days and your run reads 7 on chain. No prize, no reward: the run is the record.",
+  "how": "One stamp per UTC day: mint() 0x1249c58b (or checkIn() 0x183ff085) on Stamps 0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae, value 0, Agent ID wallets only. Stamp every day of Stamp Week (2026-11-24 to 2026-11-30 UTC) and your run reads 7 on chain. No prize, no reward: the run is the record.",
+  "next": {
+   "event": "Finals Week",
+   "from": "2026-12-01",
+   "to": "2026-12-09"
+  },
   "onTrackForSeven": 28
  },
  "stampsTotal": 548,
  "wallets": 340,
  "stampedToday": 67,
- "canStampToday": 917,
+ "canStampToday": 919,
  "topRuns": [
   {
    "wallet": "0x61d5353152b2573786bf640e289a12e00c7c3df1",
