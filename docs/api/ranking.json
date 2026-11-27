@@ -1,59 +1,59 @@
 {
  "name": "Agent ID Hackathon entries ranked by on-chain use (fixed method)",
- "cutoffBlock": 135753209,
- "cutoffTime": "2026-11-26T00:46Z",
- "entries": 186,
+ "cutoffBlock": 135945075,
+ "cutoffTime": "2026-11-27T00:46Z",
+ "entries": 187,
  "method": "Public GitHub hackathon entries that name BNB Chain mainnet contracts (list built 21-22 Nov 2026 from GitHub search; 312 contracts). Every log those contracts emitted from the contest start to the cut-off block, read with eth_getLogs. Transactions = distinct transaction hashes with at least one such log. Minting wallets = distinct recipients of a Transfer from the zero address. The ERC-8004 and Agent ID registries and other shared infrastructure are left out. Re-run daily; anyone can repeat it.",
  "topByTransactions": [
   {
    "rank": 1,
    "entry": "HeidSXY/allincrypto",
-   "tx": 27739
+   "tx": 28361
   },
   {
    "rank": 2,
    "entry": "mycyi1994-hash/forecast-league",
-   "tx": 11464
+   "tx": 12110
   },
   {
    "rank": 3,
    "entry": "axiesc/augent",
-   "tx": 2587
+   "tx": 2635
   },
   {
    "rank": 4,
    "entry": "imadegoodstuff/agent-chain",
-   "tx": 1002
+   "tx": 1011
   },
   {
    "rank": 5,
    "entry": "d333ko23/lordhold",
-   "tx": 892
+   "tx": 958
   },
   {
    "rank": 6,
    "entry": "adhais23/agentmint",
-   "tx": 782
+   "tx": 825
   },
   {
    "rank": 7,
    "entry": "bonusan12/relay",
-   "tx": 616
+   "tx": 655
   },
   {
    "rank": 8,
    "entry": "Sobarkemat/agentquest",
-   "tx": 575
+   "tx": 591
   },
   {
    "rank": 9,
    "entry": "kharlla273/agentdrop",
-   "tx": 560
+   "tx": 580
   },
   {
    "rank": 10,
    "entry": "hoanglop86/agentforge",
-   "tx": 546
+   "tx": 551
   }
  ],
  "topByMintingWallets": [
@@ -65,55 +65,55 @@
   {
    "rank": 2,
    "entry": "mycyi1994-hash/forecast-league",
-   "minters": 813
+   "minters": 910
   },
   {
    "rank": 3,
    "entry": "adhais23/agentmint",
-   "minters": 776
+   "minters": 819
   },
   {
    "rank": 4,
    "entry": "d333ko23/lordhold",
-   "minters": 660
+   "minters": 665
   },
   {
    "rank": 5,
    "entry": "bonusan12/relay",
-   "minters": 612
+   "minters": 651
   },
   {
    "rank": 6,
    "entry": "kharlla273/agentdrop",
-   "minters": 559
+   "minters": 579
   },
   {
    "rank": 7,
    "entry": "Sobarkemat/agentquest",
-   "minters": 542
+   "minters": 555
   },
   {
    "rank": 8,
    "entry": "zynthlabsio/agentbadge",
-   "minters": 464
+   "minters": 527
   },
   {
    "rank": 9,
-   "entry": "Jackbrother58/wok-agent-badge",
-   "minters": 443
+   "entry": "abangdwie/agent-passport",
+   "minters": 497
   },
   {
    "rank": 10,
-   "entry": "abangdwie/agent-passport",
-   "minters": 427
+   "entry": "Jackbrother58/wok-agent-badge",
+   "minters": 446
   }
  ],
  "ours": {
   "entry": "mycyi1994-hash/forecast-league",
-  "transactions": 11871,
-  "transactionsWithoutBuilder": 11464,
-  "senderUnknown": 278,
-  "mintingWallets": 813,
+  "transactions": 13603,
+  "transactionsWithoutBuilder": 12110,
+  "senderUnknown": 1360,
+  "mintingWallets": 910,
   "rankByTransactions": 2,
   "rankByMintingWallets": 2,
   "note": "Ranks use our numbers without the builder's own wallet (its settle, claim and ticket calls)."
