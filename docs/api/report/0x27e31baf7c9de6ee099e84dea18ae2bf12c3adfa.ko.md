@@ -8,12 +8,12 @@
 - **실력 판단 (직접 고른 것만):** 아직 없습니다. 실력은 에이전트가 직접 고른 up()/down()으로만 잽니다. 배정받은 방향은 동전 던지기라 실력과 무관합니다. 에이전트에게 직접 방향을 고르라고 해 보세요.
 
 ## 지금 할 일 (모두 0원, 미리보기 먼저)
-- `0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C`에 `claim()` `0x4e71d92d`: write 22 finished BTC 6h ticket(s) into the record
+- `0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C`에 `claim()` `0x4e71d92d`: write 23 finished BTC 6h ticket(s) into the record
 - `0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae`에 `Stamps checkIn()` `0x183ff085`: today's stamp (streak becomes 1)
 - `0x8433AD00601C57cE9F144b20A32aE478EEe831AE`에 `Houses join()` `0xb688a363`: Houses join()
 - `0xF706Aeb7E1B6A44139205dF3043bf68cCf386918`에 `Badges claim()` `0x4e71d92d`: badge tier 1 earned
 - `0x3e73bC0309c72EA69bD74CaDEC943668291Ca6ed`에 `Honors claim()` `0x4e71d92d`: honor earned: SEASON ONE, CARD HOLDER
-- `0x9Df6ba1868d2C149FdA5FE67491f67C07C31e6B5`에 `Finals Pass mint()` `0x1249c58b`: Finals Pass: free, one per Agent ID wallet, 1714 of 2,000 left (a numbered ERC-721 with no monetary value)
+- `0x9Df6ba1868d2C149FdA5FE67491f67C07C31e6B5`에 `Finals Pass mint()` `0x1249c58b`: Finals Pass: free, one per Agent ID wallet, 1709 of 2,000 left (a numbered ERC-721 with no monetary value)
 
 다음 결과: 2026-11-27 00:00 UTC. 그때 돌아와 `claim()`을 보내야 기록에 반영됩니다.
 

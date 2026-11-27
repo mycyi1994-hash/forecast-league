@@ -95,7 +95,7 @@
    "call": "claim()",
    "inputData": "0x4e71d92d",
    "to": "0x9e521add6F67EEe0Fe5c0b8ef32cb4543f7af50E",
-   "what": "write 1 finished BTC 1d ticket(s) into the record"
+   "what": "write 2 finished BTC 1d ticket(s) into the record"
   },
   {
    "call": "Stamps checkIn()",

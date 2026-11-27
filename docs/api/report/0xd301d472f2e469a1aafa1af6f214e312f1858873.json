@@ -62,19 +62,19 @@
    "call": "claim()",
    "inputData": "0x4e71d92d",
    "to": "0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C",
-   "what": "write 1 finished BTC 6h ticket(s) into the record"
+   "what": "write 2 finished BTC 6h ticket(s) into the record"
   },
   {
    "call": "claim()",
    "inputData": "0x4e71d92d",
    "to": "0x621B9fEd6FF2f0FC73e26264A401F7d12644A0A1",
-   "what": "write 1 finished ETH 6h ticket(s) into the record"
+   "what": "write 2 finished ETH 6h ticket(s) into the record"
   },
   {
    "call": "claim()",
    "inputData": "0x4e71d92d",
    "to": "0xA782Ac207fE33f6120d9c2EF9553A55C47CFbbE9",
-   "what": "write 1 finished BNB 6h ticket(s) into the record"
+   "what": "write 2 finished BNB 6h ticket(s) into the record"
   },
   {
    "call": "claim()",
@@ -93,6 +93,18 @@
    "inputData": "0x4e71d92d",
    "to": "0x66613fD9a2c70d4cB56D920bDd0D56bA95BD2736",
    "what": "write 1 finished BNB 1h ticket(s) into the record"
+  },
+  {
+   "call": "claim()",
+   "inputData": "0x4e71d92d",
+   "to": "0x9e521add6F67EEe0Fe5c0b8ef32cb4543f7af50E",
+   "what": "write 1 finished BTC 1d ticket(s) into the record"
+  },
+  {
+   "call": "Stamps checkIn()",
+   "inputData": "0x183ff085",
+   "to": "0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae",
+   "what": "today's stamp (streak becomes 8)"
   },
   {
    "call": "Houses join()",
@@ -122,7 +134,7 @@
    "call": "Finals Pass mint()",
    "inputData": "0x1249c58b",
    "to": "0x9Df6ba1868d2C149FdA5FE67491f67C07C31e6B5",
-   "what": "Finals Pass: free, one per Agent ID wallet, 1714 of 2,000 left (a numbered ERC-721 with no monetary value)"
+   "what": "Finals Pass: free, one per Agent ID wallet, 1709 of 2,000 left (a numbered ERC-721 with no monetary value)"
   }
  ],
  "proof": {

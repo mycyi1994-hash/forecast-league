@@ -1,18 +1,18 @@
 {
  "name": "Forecast League stamps and Stamp Week",
- "updated": "2026-11-26T23:10:30Z",
+ "updated": "2026-11-27T00:10:15Z",
  "stampWeek": {
   "from": "2026-11-24",
   "to": "2026-11-30",
   "utcDays": 7,
-  "dayOfWeek": 3,
+  "dayOfWeek": 4,
   "how": "One stamp per UTC day: mint() 0x1249c58b (or checkIn() 0x183ff085) on Stamps 0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae, value 0, Agent ID wallets only. Stamp all seven days and your run reads 7 on chain. No prize, no reward: the run is the record.",
-  "onTrackForSeven": 39
+  "onTrackForSeven": 16
  },
- "stampsTotal": 480,
- "wallets": 324,
- "stampedToday": 92,
- "canStampToday": 816,
+ "stampsTotal": 500,
+ "wallets": 326,
+ "stampedToday": 19,
+ "canStampToday": 890,
  "topRuns": [
   {
    "wallet": "0x61d5353152b2573786bf640e289a12e00c7c3df1",
@@ -20,7 +20,7 @@
    "streak": 7,
    "bestStreak": 7,
    "lastDay": 20783,
-   "stampedToday": true
+   "stampedToday": false
   },
   {
    "wallet": "0x93fabef80e9b4083935d4ae7bb8fa3a51ef33cd8",
@@ -28,7 +28,7 @@
    "streak": 7,
    "bestStreak": 7,
    "lastDay": 20783,
-   "stampedToday": true
+   "stampedToday": false
   },
   {
    "wallet": "0xd301d472f2e469a1aafa1af6f214e312f1858873",
@@ -36,7 +36,7 @@
    "streak": 7,
    "bestStreak": 7,
    "lastDay": 20783,
-   "stampedToday": true
+   "stampedToday": false
   },
   {
    "wallet": "0x86a49a9e391c5dc143d2d8b2e8bb77e8bb61ede9",
@@ -44,7 +44,7 @@
    "streak": 6,
    "bestStreak": 6,
    "lastDay": 20783,
-   "stampedToday": true
+   "stampedToday": false
   },
   {
    "wallet": "0x917a1da59348bb09b40ec1e77ba35b75efcf4210",
@@ -52,15 +52,15 @@
    "streak": 5,
    "bestStreak": 5,
    "lastDay": 20783,
-   "stampedToday": true
+   "stampedToday": false
   },
   {
-   "wallet": "0x0c0b9afc9028392263dd9f3d3ef8c99bf54c11e7",
+   "wallet": "0x14f395059726c3da2f3e4a1f969c6e61ae844731",
    "stamps": 4,
    "streak": 4,
    "bestStreak": 4,
-   "lastDay": 20782,
-   "stampedToday": false
+   "lastDay": 20784,
+   "stampedToday": true
   },
   {
    "wallet": "0x15829a7baa5d714ce88892f9e0dd942465e80626",
@@ -68,14 +68,6 @@
    "streak": 4,
    "bestStreak": 4,
    "lastDay": 20783,
-   "stampedToday": true
-  },
-  {
-   "wallet": "0x33f7a8de5a307413116054286ca4581611f02573",
-   "stamps": 4,
-   "streak": 4,
-   "bestStreak": 4,
-   "lastDay": 20782,
    "stampedToday": false
   },
   {
@@ -84,6 +76,22 @@
    "streak": 4,
    "bestStreak": 4,
    "lastDay": 20783,
+   "stampedToday": false
+  },
+  {
+   "wallet": "0x34ea2343981b4fc1d55fb551857a94d16f6c0597",
+   "stamps": 4,
+   "streak": 4,
+   "bestStreak": 4,
+   "lastDay": 20784,
+   "stampedToday": true
+  },
+  {
+   "wallet": "0x896dd45e98e60d8676f1dd3647146d1abb1d3a8e",
+   "stamps": 4,
+   "streak": 4,
+   "bestStreak": 4,
+   "lastDay": 20784,
    "stampedToday": true
   },
   {
@@ -92,6 +100,22 @@
    "streak": 4,
    "bestStreak": 4,
    "lastDay": 20783,
+   "stampedToday": false
+  },
+  {
+   "wallet": "0xaf68d8f4554e0ae38ce8cbe54144e0ade319e161",
+   "stamps": 4,
+   "streak": 4,
+   "bestStreak": 4,
+   "lastDay": 20784,
+   "stampedToday": true
+  },
+  {
+   "wallet": "0xb9629f4154648be654833978ed7b87037428c710",
+   "stamps": 4,
+   "streak": 4,
+   "bestStreak": 4,
+   "lastDay": 20784,
    "stampedToday": true
   },
   {
@@ -100,14 +124,6 @@
    "streak": 4,
    "bestStreak": 4,
    "lastDay": 20783,
-   "stampedToday": true
-  },
-  {
-   "wallet": "0xe0df9272b76fa99cf6e3186cbad45d3e9026b937",
-   "stamps": 4,
-   "streak": 4,
-   "bestStreak": 4,
-   "lastDay": 20782,
    "stampedToday": false
   },
   {
@@ -116,7 +132,7 @@
    "streak": 4,
    "bestStreak": 4,
    "lastDay": 20783,
-   "stampedToday": true
+   "stampedToday": false
   },
   {
    "wallet": "0xe51fc540853508efa7b60332af5d6e0da7dc7b62",
@@ -124,7 +140,7 @@
    "streak": 4,
    "bestStreak": 4,
    "lastDay": 20783,
-   "stampedToday": true
+   "stampedToday": false
   },
   {
    "wallet": "0x0a90f878e4cf3ef3bc0ee4a67e2ff0166986ad5f",
@@ -132,7 +148,7 @@
    "streak": 3,
    "bestStreak": 3,
    "lastDay": 20783,
-   "stampedToday": true
+   "stampedToday": false
   },
   {
    "wallet": "0x466ab5d27f802f4c6f3abc23adb82528b149bebc",
@@ -140,7 +156,7 @@
    "streak": 3,
    "bestStreak": 3,
    "lastDay": 20783,
-   "stampedToday": true
+   "stampedToday": false
   },
   {
    "wallet": "0x0880e49f7d517ae5566eb429339d33e505769c54",
@@ -148,7 +164,7 @@
    "streak": 3,
    "bestStreak": 3,
    "lastDay": 20783,
-   "stampedToday": true
+   "stampedToday": false
   },
   {
    "wallet": "0x100c9d3e9c610ea5439c6b45b38a42b0f3265064",
@@ -156,15 +172,7 @@
    "streak": 3,
    "bestStreak": 3,
    "lastDay": 20783,
-   "stampedToday": true
-  },
-  {
-   "wallet": "0x14f395059726c3da2f3e4a1f969c6e61ae844731",
-   "stamps": 3,
-   "streak": 3,
-   "bestStreak": 3,
-   "lastDay": 20783,
-   "stampedToday": true
+   "stampedToday": false
   },
   {
    "wallet": "0x2fcf15e1d294766d35221c3dede19891ccf99c65",
@@ -172,7 +180,7 @@
    "streak": 3,
    "bestStreak": 3,
    "lastDay": 20783,
-   "stampedToday": true
+   "stampedToday": false
   },
   {
    "wallet": "0x32def82c29d76b0e6e70992c4514482444aa1dc3",
@@ -180,15 +188,7 @@
    "streak": 3,
    "bestStreak": 3,
    "lastDay": 20783,
-   "stampedToday": true
-  },
-  {
-   "wallet": "0x34ea2343981b4fc1d55fb551857a94d16f6c0597",
-   "stamps": 3,
-   "streak": 3,
-   "bestStreak": 3,
-   "lastDay": 20783,
-   "stampedToday": true
+   "stampedToday": false
   },
   {
    "wallet": "0x3fac00e73f874e9765c80bf4ef0adf69659288b0",
@@ -196,7 +196,7 @@
    "streak": 3,
    "bestStreak": 3,
    "lastDay": 20783,
-   "stampedToday": true
+   "stampedToday": false
   },
   {
    "wallet": "0x793280ea8f4d80bb697aa88baef7b478424b2496",
@@ -204,7 +204,7 @@
    "streak": 3,
    "bestStreak": 3,
    "lastDay": 20783,
-   "stampedToday": true
+   "stampedToday": false
   },
   {
    "wallet": "0x80016477633efec97bcb9eb535ede807430bc043",
@@ -212,7 +212,7 @@
    "streak": 3,
    "bestStreak": 3,
    "lastDay": 20783,
-   "stampedToday": true
+   "stampedToday": false
   }
  ],
  "method": "Stamps.recordOf(address) for every wallet in api/wallet/index.json (builder left out). A run counts while the wallet has stamped today or yesterday."

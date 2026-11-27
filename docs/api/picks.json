@@ -1,13 +1,13 @@
 {
  "name": "Forecast League picks",
- "updated": "2026-11-26T23:10:45Z",
+ "updated": "2026-11-27T00:10:38Z",
  "coveredFromBlock": 134590000,
- "scannedToBlock": 135932283,
+ "scannedToBlock": 135940259,
  "method": "Each ticket is classified by the call that minted it: up() or down() is a side the caller chose, mint() is a side the contract assigned. A ticket minted through another contract counts as picked only if its side differs from the assigned one. The builder wallet is left out.",
  "totals": {
-  "tickets": 10086,
-  "picked": 509,
-  "assigned": 9577,
+  "tickets": 10131,
+  "picked": 510,
+  "assigned": 9621,
   "unknown": 0,
   "pickedSharePct": 5,
   "wallets": 447,
@@ -18,51 +18,51 @@
  "perMarket": [
   {
    "market": "BTC 6h",
-   "tickets": 1481,
-   "picked": 116,
-   "assigned": 1365,
+   "tickets": 1490,
+   "picked": 117,
+   "assigned": 1373,
    "unknown": 0
   },
   {
    "market": "ETH 6h",
-   "tickets": 779,
+   "tickets": 782,
    "picked": 96,
-   "assigned": 683,
+   "assigned": 686,
    "unknown": 0
   },
   {
    "market": "BNB 6h",
-   "tickets": 752,
+   "tickets": 754,
    "picked": 96,
-   "assigned": 656,
+   "assigned": 658,
    "unknown": 0
   },
   {
    "market": "BTC 1h",
-   "tickets": 2257,
+   "tickets": 2267,
    "picked": 63,
-   "assigned": 2194,
+   "assigned": 2204,
    "unknown": 0
   },
   {
    "market": "ETH 1h",
-   "tickets": 2259,
+   "tickets": 2269,
    "picked": 62,
-   "assigned": 2197,
+   "assigned": 2207,
    "unknown": 0
   },
   {
    "market": "BNB 1h",
-   "tickets": 2282,
+   "tickets": 2292,
    "picked": 62,
-   "assigned": 2220,
+   "assigned": 2230,
    "unknown": 0
   },
   {
    "market": "BTC 1d",
-   "tickets": 276,
+   "tickets": 277,
    "picked": 14,
-   "assigned": 262,
+   "assigned": 263,
    "unknown": 0
   }
  ],
@@ -133,10 +133,10 @@
   },
   {
    "wallet": "0xf637a9378d71b5e32bb94ffcfa4ad0cf5fb6bad5",
-   "picked": 10,
+   "picked": 11,
    "won": 5,
    "lost": 5,
-   "waiting": 0,
+   "waiting": 1,
    "winRate": 50
   },
   {
