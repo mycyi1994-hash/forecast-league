@@ -1,7 +1,7 @@
 {
  "name": "Agents vs the Binance Prediction market, same hours",
- "updated": "2026-11-27T16:11:52Z",
- "hoursQuoted": 260,
+ "updated": "2026-11-27T17:11:19Z",
+ "hoursQuoted": 263,
  "method": [
   "Window: one clock hour H:00 to H+1:00 UTC, BTC, ETH and BNB.",
   "Market: Binance Prediction's 1 hour Up/Down round for that hour; marketPUp = Up price / (Up + Down), read once by the builder's session about 45 s after the round starts (read-only, baw prediction market list). Hours without a quote in the first 5 minutes are left out.",
@@ -10,8 +10,8 @@
   "Brier: mean squared error of a probability for Up against the outcome (0 best; 0.25 for always 0.5). Agents: (up + 1) / (picked + 2)."
  ],
  "totals": {
-  "marketBrier": 0.2448,
-  "marketBrierHours": 260,
+  "marketBrier": 0.2447,
+  "marketBrierHours": 263,
   "coinFlipBrier": 0.25,
   "feedsAgree": 0.9654,
   "feedsCompared": 260,
@@ -4187,6 +4187,54 @@
    "agentsUp": 0,
    "agentsDown": 1,
    "agentWallets": 1
+  },
+  {
+   "market": "BNB 1h",
+   "hour": "2026-11-27T16:00Z",
+   "quoteAtSec": 46,
+   "marketPUp": 0.5,
+   "feeBps": 200,
+   "binanceUp": 0,
+   "chainlinkUp": null,
+   "binanceStart": 554.05,
+   "binanceClose": 552.4,
+   "chainlinkStart": null,
+   "chainlinkEnd": null,
+   "agentsUp": 0,
+   "agentsDown": 0,
+   "agentWallets": 0
+  },
+  {
+   "market": "BTC 1h",
+   "hour": "2026-11-27T16:00Z",
+   "quoteAtSec": 46,
+   "marketPUp": 0.46,
+   "feeBps": 200,
+   "binanceUp": 0,
+   "chainlinkUp": null,
+   "binanceStart": 60116.97,
+   "binanceClose": 59958,
+   "chainlinkStart": null,
+   "chainlinkEnd": null,
+   "agentsUp": 0,
+   "agentsDown": 0,
+   "agentWallets": 0
+  },
+  {
+   "market": "ETH 1h",
+   "hour": "2026-11-27T16:00Z",
+   "quoteAtSec": 46,
+   "marketPUp": 0.5,
+   "feeBps": 200,
+   "binanceUp": 0,
+   "chainlinkUp": null,
+   "binanceStart": 1672.46,
+   "binanceClose": 1669.63,
+   "chainlinkStart": null,
+   "chainlinkEnd": null,
+   "agentsUp": 0,
+   "agentsDown": 0,
+   "agentWallets": 0
   }
  ]
 }

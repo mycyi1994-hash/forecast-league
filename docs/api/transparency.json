@@ -1,7 +1,7 @@
 {
  "name": "Forecast League transparency numbers",
- "updated": "2026-11-27T16:11:49Z",
- "block": 136068366,
+ "updated": "2026-11-27T17:11:16Z",
+ "block": 136076296,
  "method": "For every wallet in api/wallet/index.json, balanceOf(wallet) on each of the 12 Forecast League token contracts. The tokens cannot be transferred, so a balance is the number of mints that wallet sent to that contract. Anyone can repeat each read.",
  "notCounted": "Claims, squad calls and the daily price forecast leave no token and are not in these numbers, so real transaction counts are higher.",
  "builderWallet": {
@@ -11,18 +11,18 @@
   "note": "The one wallet the builder uses. It is left out of every number below."
  },
  "wallets": 651,
- "tokens": 12414,
+ "tokens": 12449,
  "tokensPerWallet": {
   "median": 3,
   "mean": 19.1,
-  "most": 624
+  "most": 627
  },
  "distribution": [
   {
    "range": "1",
-   "wallets": 203,
-   "walletsPct": 31.2,
-   "tokens": 203,
+   "wallets": 202,
+   "walletsPct": 31,
+   "tokens": 202,
    "tokensPct": 1.6
   },
   {
@@ -34,16 +34,16 @@
   },
   {
    "range": "4-9",
-   "wallets": 147,
-   "walletsPct": 22.6,
-   "tokens": 968,
+   "wallets": 148,
+   "walletsPct": 22.7,
+   "tokens": 972,
    "tokensPct": 7.8
   },
   {
    "range": "10-19",
    "wallets": 88,
    "walletsPct": 13.5,
-   "tokens": 1093,
+   "tokens": 1095,
    "tokensPct": 8.8
   },
   {
@@ -57,52 +57,52 @@
    "range": "50 or more",
    "wallets": 30,
    "walletsPct": 4.6,
-   "tokens": 8751,
+   "tokens": 8781,
    "tokensPct": 70.5
   }
  ],
  "concentration": {
-  "top10SharePct": 43.6,
+  "top10SharePct": 43.7,
   "top15SharePct": 58,
   "top10": [
    {
     "wallet": "0x30588cfbce27269d4e76128c7ed934e270c9c927",
-    "tokens": 624,
+    "tokens": 627,
     "contractsUsed": 11
    },
    {
     "wallet": "0x798c87dc6f9ce1df9944a42c522013f22809397c",
-    "tokens": 624,
+    "tokens": 627,
     "contractsUsed": 11
    },
    {
     "wallet": "0xa96ba2ecacbcc0e986313cbe6d061798d983786f",
-    "tokens": 624,
+    "tokens": 627,
     "contractsUsed": 11
    },
    {
     "wallet": "0xc8e6a46c8779eacabc76e2abc2335e02f220d0cd",
-    "tokens": 624,
+    "tokens": 627,
     "contractsUsed": 11
    },
    {
     "wallet": "0xe55ced81314edf295594fecc1ed5f27d5d3b2eae",
-    "tokens": 624,
+    "tokens": 627,
     "contractsUsed": 11
    },
    {
     "wallet": "0xc3895356563af739d1d51d66aa0e4b1a87665f61",
-    "tokens": 551,
+    "tokens": 554,
     "contractsUsed": 12
    },
    {
     "wallet": "0xf11ca64f9b5e83c919a445d3ccd4aed8b82b2161",
-    "tokens": 473,
+    "tokens": 479,
     "contractsUsed": 12
    },
    {
     "wallet": "0xe1e005fa06e1ce43797c5a936ba59b824453d8bb",
-    "tokens": 464,
+    "tokens": 467,
     "contractsUsed": 11
    },
    {
@@ -120,13 +120,13 @@
  "contractsUsed": [
   {
    "range": "1",
-   "wallets": 246,
-   "walletsPct": 37.8
+   "wallets": 245,
+   "walletsPct": 37.6
   },
   {
    "range": "2-3",
-   "wallets": 164,
-   "walletsPct": 25.2
+   "wallets": 165,
+   "walletsPct": 25.3
   },
   {
    "range": "4-7",
@@ -141,14 +141,14 @@
  ],
  "groups": {
   "hourly": {
-   "tokens": 7378,
+   "tokens": 7408,
    "wallets": 230,
-   "top10SharePct": 61.5,
-   "top15SharePct": 81.3,
-   "mostByOneWallet": 519
+   "top10SharePct": 61.6,
+   "top15SharePct": 81.4,
+   "mostByOneWallet": 522
   },
   "sixHour": {
-   "tokens": 3241,
+   "tokens": 3243,
    "wallets": 442,
    "top10SharePct": 24.8,
    "top15SharePct": 34.2,
@@ -162,17 +162,17 @@
    "mostByOneWallet": 8
   },
   "card": {
-   "tokens": 371,
-   "wallets": 371,
+   "tokens": 373,
+   "wallets": 373,
    "top10SharePct": 2.7,
    "top15SharePct": 4,
    "mostByOneWallet": 1
   },
   "extras": {
-   "tokens": 1126,
+   "tokens": 1127,
    "wallets": 364,
    "top10SharePct": 10.4,
-   "top15SharePct": 13.9,
+   "top15SharePct": 13.8,
    "mostByOneWallet": 16
   }
  },
@@ -181,8 +181,8 @@
    "id": "card",
    "label": "Card",
    "contract": "0x79F55DAa8a3CF2Eb76EE40e26ff6E244a4cC1eD4",
-   "wallets": 371,
-   "tokens": 371,
+   "wallets": 373,
+   "tokens": 373,
    "top15SharePct": 4
   },
   {
@@ -190,7 +190,7 @@
    "label": "BTC 6h",
    "contract": "0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C",
    "wallets": 373,
-   "tokens": 1595,
+   "tokens": 1596,
    "top15SharePct": 28.2
   },
   {
@@ -198,8 +198,8 @@
    "label": "ETH 6h",
    "contract": "0x621B9fEd6FF2f0FC73e26264A401F7d12644A0A1",
    "wallets": 240,
-   "tokens": 838,
-   "top15SharePct": 43.7
+   "tokens": 839,
+   "top15SharePct": 43.6
   },
   {
    "id": "bnb-6h",
@@ -214,24 +214,24 @@
    "label": "BTC 1h",
    "contract": "0x09A645aa6cc6b0eB320dCF3982bcaA6A22b32629",
    "wallets": 198,
-   "tokens": 2449,
-   "top15SharePct": 81.5
+   "tokens": 2459,
+   "top15SharePct": 81.6
   },
   {
    "id": "eth-1h",
    "label": "ETH 1h",
    "contract": "0x8b998abA2BeeebF7ceBf565bC53BC575693c07a4",
    "wallets": 189,
-   "tokens": 2458,
-   "top15SharePct": 81
+   "tokens": 2468,
+   "top15SharePct": 81.1
   },
   {
    "id": "bnb-1h",
    "label": "BNB 1h",
    "contract": "0x66613fD9a2c70d4cB56D920bDd0D56bA95BD2736",
    "wallets": 209,
-   "tokens": 2471,
-   "top15SharePct": 81.3
+   "tokens": 2481,
+   "top15SharePct": 81.4
   },
   {
    "id": "btc-1d",
@@ -253,8 +253,8 @@
    "id": "houses",
    "label": "Houses",
    "contract": "0x8433AD00601C57cE9F144b20A32aE478EEe831AE",
-   "wallets": 170,
-   "tokens": 170,
+   "wallets": 171,
+   "tokens": 171,
    "top15SharePct": 8.8
   },
   {
