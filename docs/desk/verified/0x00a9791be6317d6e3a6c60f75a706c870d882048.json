@@ -2,8 +2,8 @@
  "contract": "0x00a9791be6317d6e3a6c60f75a706c870d882048",
  "name": "Zephyra",
  "verdict": "passed",
- "checkedAt": "2026-11-27T14:12:30Z",
- "block": 136052487,
+ "checkedAt": "2026-11-27T14:58:53Z",
+ "block": 136058666,
  "checks": {
   "simulatedFromAgentIdWallet": true,
   "gateEnforced": true,
