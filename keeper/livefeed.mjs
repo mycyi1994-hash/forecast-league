@@ -63,7 +63,7 @@ for (const [name, addr] of [['Early Pass', '0xf467a5941F8DedE54583754aC7448FB62a
 for (const act of ['settle', 'score']) {
   let out = null; try { out = JSON.parse(execFileSync('node', ['keeper/keeper.mjs', act], { encoding: 'utf8', timeout: 120000, stdio: ['ignore', 'pipe', 'ignore'] })); } catch {}
   for (const c of (out?.calls || []).filter((x) => x.inputData && x.simulation === 'ok')) {
-    open.push({ market: act === 'settle' ? `Daily round settle (${c.pair})` : 'Daily round scoring', contract: c.to, round: out.epoch ?? 0, oncePer: 'round (the first sender writes it; later ones revert in the preview: skip)', mintedThisRound: 0,
+    open.push({ market: act === 'settle' ? `Daily round settle (${c.pair})` : 'Daily round scoring', contract: c.to, round: out.epoch ?? 0, opensAt: iso(now), closesAt: iso(now + 3600), secondsLeft: 3600, oncePer: 'round (first sender only)', mintedThisRound: 0,
       validUntil: iso(now + 3600), call: { function: act === 'settle' ? 'settle(epoch, feed, lockRound, targetRound)' : 'scoreMany(agents, epoch)', inputData: c.inputData, value: '0', args: 'encoded in inputData',
         note: act === 'settle' ? "Optional housekeeping anyone may send: writes the daily round's Chainlink start and end prices so forecasts can be scored. No token, no value; it helps every forecaster's record." : "Optional housekeeping anyone may send: writes each forecaster's daily score into their record. No token, no value." } });
   }
