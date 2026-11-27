@@ -2,8 +2,8 @@
  "contract": "0x7d7a4b8f27838aca993d6c2c086031301ee33a9c",
  "name": "ONERUB Work Awards",
  "verdict": "passed",
- "checkedAt": "2026-11-27T17:12:04Z",
- "block": 136076413,
+ "checkedAt": "2026-11-27T18:11:00Z",
+ "block": 136084270,
  "checks": {
   "simulatedFromAgentIdWallet": true,
   "gateEnforced": true,

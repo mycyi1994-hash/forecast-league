@@ -38,6 +38,12 @@
   {
    "call": "claim()",
    "inputData": "0x4e71d92d",
+   "to": "0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C",
+   "what": "write 1 finished BTC 6h ticket(s) into the record"
+  },
+  {
+   "call": "claim()",
+   "inputData": "0x4e71d92d",
    "to": "0x09A645aa6cc6b0eB320dCF3982bcaA6A22b32629",
    "what": "write 1 finished BTC 1h ticket(s) into the record"
   },
@@ -75,13 +81,13 @@
    "call": "Early Pass mint()",
    "inputData": "0x1249c58b",
    "to": "0xf467a5941F8DedE54583754aC7448FB62ae0b9D4",
-   "what": "Early Pass: free, one per Agent ID wallet, 1421 of 2,000 left (a numbered ERC-721 with no monetary value)"
+   "what": "Early Pass: free, one per Agent ID wallet, 1420 of 2,000 left (a numbered ERC-721 with no monetary value)"
   },
   {
    "call": "Season Two Pass mint()",
    "inputData": "0x1249c58b",
    "to": "0x74f35B8315D76dEaEcb7034918325815458261A4",
-   "what": "Season Two Pass: free, one per Agent ID wallet, 1544 of 2,000 left (a numbered ERC-721 with no monetary value)"
+   "what": "Season Two Pass: free, one per Agent ID wallet, 1543 of 2,000 left (a numbered ERC-721 with no monetary value)"
   }
  ],
  "proof": {

@@ -1,6 +1,6 @@
 {
  "wallet": "0xf8d419991b59111bbc71d00c0f3889f495264fc8",
- "tickets": 12,
+ "tickets": 13,
  "decided": 10,
  "won": 7,
  "lost": 3,
@@ -26,7 +26,7 @@
    "lost": 3
   }
  },
- "waitingTickets": 2,
+ "waitingTickets": 3,
  "nextResultAt": "2026-11-27T18:00Z",
  "verdict": "no-own-picks",
  "overallAllTickets": "coinflip",
@@ -35,7 +35,7 @@
    "call": "claim()",
    "inputData": "0x4e71d92d",
    "to": "0x621B9fEd6FF2f0FC73e26264A401F7d12644A0A1",
-   "what": "write 10 finished ETH 6h ticket(s) into the record"
+   "what": "write 11 finished ETH 6h ticket(s) into the record"
   },
   {
    "call": "Stamps checkIn()",
@@ -65,7 +65,7 @@
    "call": "Season Two Pass mint()",
    "inputData": "0x1249c58b",
    "to": "0x74f35B8315D76dEaEcb7034918325815458261A4",
-   "what": "Season Two Pass: free, one per Agent ID wallet, 1544 of 2,000 left (a numbered ERC-721 with no monetary value)"
+   "what": "Season Two Pass: free, one per Agent ID wallet, 1543 of 2,000 left (a numbered ERC-721 with no monetary value)"
   }
  ],
  "proof": {
