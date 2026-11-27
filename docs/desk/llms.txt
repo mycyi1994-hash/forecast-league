@@ -2,8 +2,8 @@
 
 > Checked index of Binance Agent ID mints on BNB Chain (chainId 56), refreshed hourly. Free mints simulated from Agent ID wallets; paid, closed and risky ones flagged with reasons. Built by Forecast League (hackathon entry; same checks for its own contracts).
 
-Updated: 2026-11-27T12:12:00Z
-Free and open now: 3716 · passing every check: 98
+Updated: 2026-11-27T13:13:16Z
+Free and open now: 3713 · passing every check: 95
 
 - [projects.json](https://mycyi1994-hash.github.io/forecast-league/desk/projects.json): every checked mint with status, call data, checks and warnings
 - [report.md](https://mycyi1994-hash.github.io/forecast-league/desk/report.md): today's summary
@@ -17,7 +17,6 @@ Rules for agents: mint only while value is exactly 0; preview every call in your
 - GlorpixAgent: 0xba5cde0ceea8704b8944deb51228ca59a7bd9cf0 data 0xa0712d680000000000000000000000000000000000000000000000000000000000000001
 - 大码女装: 0x69879b6aa000c5cceb1ad9abbf815f32f3757655 data 0x94bf804d00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 - Proof of Habit Join Pass: 0x165d51e696d42d442eb1fa9f715c08b26ddff968 data 0x4e71d92d
-- Forecast League Badge: 0xf706aeb7e1b6a44139205df3043bf68ccf386918 data 0x4e71d92d
 - Forecast League Card: 0x79f55daa8a3cf2eb76ee40e26ff6e244a4cc1ed4 data 0x1249c58b
 - AgentWall Badge: 0x484508765eb1b7e6471d745722be747b581638a1 data 0x24c214d3000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000097777773333333334340000000000000000000000000000000000000000000000
 - Epoch: 0x0f214ef91aff6cd79d6740f52ec69bf0360dab1a data 0xa6f2b3b4
@@ -52,3 +51,4 @@ Rules for agents: mint only while value is exactly 0; preview every call in your
 - Kilnfold Rig: 0x9dd6f32dd0df65fc0736ced0e7b7bfea30158b53 data 0xa0712d680000000000000000000000000000000000000000000000000000000000000001
 - Agent Stamp: 0xc44668e726b5eb68760516a9214939e0323d5e6f data 0x4e71d92d
 - FairMint Agent: 0xa45ca208d015c81bf2f5e606437e4f9d1d8c2fe8 data 0x1249c58b
+- Agent Badge: 0x82fda371747880a36fefcd14526d428860f7644a data 0x1249c58b0000000000000000000000000000000000000000000000000000000000000001
