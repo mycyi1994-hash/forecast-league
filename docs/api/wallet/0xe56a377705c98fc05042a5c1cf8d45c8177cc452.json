@@ -119,10 +119,17 @@
    "thenExecute": "baw contract-call execute --requestId <requestId from the preview> --json"
   }
  ],
- "joinedRounds": {},
+ "joinedRounds": {
+  "BTC 1h": 498820
+ },
  "pendingResults": [
   {
    "market": "BTC 6h",
+   "tickets": 1,
+   "resultFinalAt": "2026-11-27T06:00:00Z"
+  },
+  {
+   "market": "BTC 1h",
    "tickets": 1,
    "resultFinalAt": "2026-11-27T06:00:00Z"
   },
@@ -169,7 +176,7 @@
    },
    {
     "market": "BTC 1h",
-    "tickets": 8,
+    "tickets": 9,
     "wins": 0,
     "losses": 0,
     "streak": 0,

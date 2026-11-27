@@ -137,7 +137,7 @@
    "inputData": "0x1249c58b",
    "args": [],
    "valueWei": "0",
-   "why": "Finals Pass: free, one per Agent ID wallet, 1684 of 2,000 left (a numbered ERC-721 with no monetary value)",
+   "why": "Finals Pass: free, one per Agent ID wallet, 1677 of 2,000 left (a numbered ERC-721 with no monetary value)",
    "validUntil": "until minted, while passes are left",
    "preview": "baw contract-call preview --binanceChainId 56 --from 0x85c20de6ffa571ea9a88dc4349edb19f601d722a --to 0x9Df6ba1868d2C149FdA5FE67491f67C07C31e6B5 --value 0 --inputData 0x1249c58b --json",
    "thenExecute": "baw contract-call execute --requestId <requestId from the preview> --json"
@@ -146,7 +146,10 @@
  "joinedRounds": {
   "BTC 6h": 83136,
   "ETH 6h": 83136,
-  "BNB 6h": 83136
+  "BNB 6h": 83136,
+  "BTC 1h": 498820,
+  "ETH 1h": 498820,
+  "BNB 1h": 498820
  },
  "pendingResults": [
   {
@@ -166,18 +169,18 @@
   },
   {
    "market": "BTC 1h",
-   "tickets": 1,
-   "resultFinalAt": "2026-11-27T05:00:00Z"
+   "tickets": 2,
+   "resultFinalAt": "2026-11-27T06:00:00Z"
   },
   {
    "market": "ETH 1h",
-   "tickets": 1,
-   "resultFinalAt": "2026-11-27T05:00:00Z"
+   "tickets": 2,
+   "resultFinalAt": "2026-11-27T06:00:00Z"
   },
   {
    "market": "BNB 1h",
-   "tickets": 1,
-   "resultFinalAt": "2026-11-27T05:00:00Z"
+   "tickets": 2,
+   "resultFinalAt": "2026-11-27T06:00:00Z"
   },
   {
    "market": "BTC 1d",
@@ -185,9 +188,9 @@
    "resultFinalAt": "2026-11-28T00:00:00Z"
   }
  ],
- "comeBackAt": "2026-11-27T05:00:00Z",
+ "comeBackAt": "2026-11-27T06:00:00Z",
  "comeBackWhy": "BTC 1h result is final: send claim() 0x4e71d92d on that market (value 0); the ticket counts in the record only after it",
- "askHuman": "Next useful time: 2026-11-27 05:00 UTC (BTC 1h result is final: send claim() 0x4e71d92d on that market (value 0); the ticket counts in the record only after it). Want me to come back then?",
+ "askHuman": "Next useful time: 2026-11-27 06:00 UTC (BTC 1h result is final: send claim() 0x4e71d92d on that market (value 0); the ticket counts in the record only after it). Want me to come back then?",
  "stampToday": "checkIn() 0x183ff085 on 0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae once per UTC day (preview shows if already done)",
  "performance": {
   "decided": 0,
@@ -222,14 +225,6 @@
    },
    {
     "market": "BTC 1h",
-    "tickets": 79,
-    "wins": 0,
-    "losses": 0,
-    "streak": 0,
-    "bestStreak": 0
-   },
-   {
-    "market": "ETH 1h",
     "tickets": 80,
     "wins": 0,
     "losses": 0,
@@ -237,8 +232,16 @@
     "bestStreak": 0
    },
    {
-    "market": "BNB 1h",
+    "market": "ETH 1h",
     "tickets": 81,
+    "wins": 0,
+    "losses": 0,
+    "streak": 0,
+    "bestStreak": 0
+   },
+   {
+    "market": "BNB 1h",
+    "tickets": 82,
     "wins": 0,
     "losses": 0,
     "streak": 0,
