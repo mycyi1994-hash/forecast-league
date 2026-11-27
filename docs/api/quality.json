@@ -1,20 +1,20 @@
 {
  "name": "Forecast League usage, quality-adjusted",
- "asOfBlock": 135752964,
- "asOf": "2026-11-26T00:44Z",
+ "asOfBlock": 135944964,
+ "asOf": "2026-11-27T00:45Z",
  "method": "Transactions to the entry's contracts during the contest, one per transaction hash, the builder wallet left out (every sender here holds an Agent ID: the contracts refuse others). Active days are UTC days with at least one call. Lockstep groups: wallets with 20+ calls whose call times match another wallet's within about 30 seconds on more than 80% of their calls; they may be one operator running several Agent IDs, so the \"one user per group\" figures count each group once. Script: keeper/quality.mjs.",
  "raw": {
-  "transactions": 11742,
-  "wallets": 815,
-  "walletDays": 1694,
-  "wallets2PlusDays": 405,
-  "wallets3PlusDays": 208
+  "transactions": 13466,
+  "wallets": 910,
+  "walletDays": 2066,
+  "wallets2PlusDays": 498,
+  "wallets3PlusDays": 254
  },
  "lockstepGroups": {
   "groups": 3,
   "wallets": 7,
-  "transactions": 2567,
-  "share": "21.9%",
+  "transactions": 2988,
+  "share": "22.2%",
   "sizes": [
    3,
    2,
@@ -22,57 +22,57 @@
   ]
  },
  "oneUserPerGroup": {
-  "users": 811,
-  "transactions": 9175,
-  "users2PlusDays": 401,
-  "users3PlusDays": 204
+  "users": 906,
+  "transactions": 10478,
+  "users2PlusDays": 494,
+  "users3PlusDays": 250
  },
  "calls": {
   "mint": {
-   "transactions": 10192,
-   "share": "86.8%"
+   "transactions": 11615,
+   "share": "86.3%"
   },
   "claim": {
-   "transactions": 816,
-   "share": "6.9%"
+   "transactions": 996,
+   "share": "7.4%"
   },
   "up": {
-   "transactions": 233,
+   "transactions": 267,
    "share": "2%"
   },
   "down": {
-   "transactions": 200,
-   "share": "1.7%"
+   "transactions": 239,
+   "share": "1.8%"
   },
   "other": {
-   "transactions": 160,
+   "transactions": 190,
    "share": "1.4%"
   },
   "checkIn": {
-   "transactions": 97,
+   "transactions": 112,
    "share": "0.8%"
   },
   "join": {
-   "transactions": 44,
-   "share": "0.4%"
+   "transactions": 47,
+   "share": "0.3%"
   }
  },
  "walletsBy": {
-  "pickedUpOrDown": 20,
-  "claimed": 126,
-  "onlyOneFunction": 631
+  "pickedUpOrDown": 23,
+  "claimed": 128,
+  "onlyOneFunction": 710
  },
- "reading": "815 Agent ID wallets made 11742 transactions; 405 came back on 2+ days and 208 on 3+ days. 7 wallets in 3 lockstep groups made 21.9% of the transactions; counting each group as one user leaves 811 users and 9175 transactions. Most calls are mint() (the assigned side); 20 wallets ever picked a side themselves and 126 ever claimed.",
+ "reading": "910 Agent ID wallets made 13466 transactions; 498 came back on 2+ days and 254 on 3+ days. 7 wallets in 3 lockstep groups made 22.2% of the transactions; counting each group as one user leaves 906 users and 10478 transactions. Most calls are mint() (the assigned side); 23 wallets ever picked a side themselves and 128 ever claimed.",
  "sameLensLeader": {
   "entry": "allincrypto (most raw transactions among public entries)",
   "allSenders": {
-   "transactions": 27739,
-   "wallets": 4583
+   "transactions": 28361,
+   "wallets": 4645
   },
   "agentIdSendersOnly": {
-   "transactions": 4787,
+   "transactions": 4796,
    "wallets": 1756,
-   "wallets2PlusDays": 202,
+   "wallets2PlusDays": 210,
    "wallets3PlusDays": 25
   },
   "note": "Their contracts are open to any wallet (a token with swaps and approvals), so many senders hold no Agent ID; ours accept Agent ID holders only. Neither number says anything about intent. Same block range and method as above."
