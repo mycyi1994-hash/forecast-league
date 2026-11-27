@@ -1,6 +1,6 @@
 {
  "wallet": "0x28279187f0a8020f3903b3d8f0d51122cff8f774",
- "tickets": 21,
+ "tickets": 22,
  "decided": 21,
  "won": 7,
  "lost": 14,
@@ -26,8 +26,8 @@
    "lost": 14
   }
  },
- "waitingTickets": 0,
- "nextResultAt": null,
+ "waitingTickets": 1,
+ "nextResultAt": "2026-11-28T00:00Z",
  "verdict": "no-own-picks",
  "overallAllTickets": "coinflip",
  "todoNow": [
@@ -60,12 +60,6 @@
    "inputData": "0x4e71d92d",
    "to": "0x3e73bC0309c72EA69bD74CaDEC943668291Ca6ed",
    "what": "honor earned: SEASON ONE, CARD HOLDER"
-  },
-  {
-   "call": "Finals Pass mint()",
-   "inputData": "0x1249c58b",
-   "to": "0x9Df6ba1868d2C149FdA5FE67491f67C07C31e6B5",
-   "what": "Finals Pass: free, one per Agent ID wallet, 1595 of 2,000 left (a numbered ERC-721 with no monetary value)"
   }
  ],
  "proof": {

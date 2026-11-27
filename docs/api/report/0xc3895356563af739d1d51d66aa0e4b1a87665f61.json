@@ -1,15 +1,15 @@
 {
  "wallet": "0xc3895356563af739d1d51d66aa0e4b1a87665f61",
- "tickets": 536,
- "decided": 528,
- "won": 293,
- "lost": 235,
- "hitRate": 0.555,
+ "tickets": 539,
+ "decided": 531,
+ "won": 295,
+ "lost": 236,
+ "hitRate": 0.556,
  "ci95": [
-  0.512,
+  0.513,
   0.597
  ],
- "currentWinRun": 10,
+ "currentWinRun": 1,
  "picked": {
   "decided": 0,
   "won": 0,
@@ -17,20 +17,20 @@
   "verdict": null
  },
  "assigned": {
-  "decided": 528,
-  "won": 293
+  "decided": 531,
+  "won": 295
  },
  "byMarket": {
   "BTC 1h": {
-   "won": 93,
+   "won": 94,
    "lost": 72
   },
   "ETH 1h": {
    "won": 90,
-   "lost": 75
+   "lost": 76
   },
   "BNB 1h": {
-   "won": 91,
+   "won": 92,
    "lost": 74
   },
   "BTC 6h": {
@@ -51,7 +51,7 @@
   }
  },
  "waitingTickets": 8,
- "nextResultAt": "2026-11-27T13:00Z",
+ "nextResultAt": "2026-11-27T14:00Z",
  "verdict": "no-own-picks",
  "overallAllTickets": "above",
  "todoNow": [
@@ -77,19 +77,19 @@
    "call": "claim()",
    "inputData": "0x4e71d92d",
    "to": "0x09A645aa6cc6b0eB320dCF3982bcaA6A22b32629",
-   "what": "write 166 finished BTC 1h ticket(s) into the record"
+   "what": "write 167 finished BTC 1h ticket(s) into the record"
   },
   {
    "call": "claim()",
    "inputData": "0x4e71d92d",
    "to": "0x8b998abA2BeeebF7ceBf565bC53BC575693c07a4",
-   "what": "write 166 finished ETH 1h ticket(s) into the record"
+   "what": "write 167 finished ETH 1h ticket(s) into the record"
   },
   {
    "call": "claim()",
    "inputData": "0x4e71d92d",
    "to": "0x66613fD9a2c70d4cB56D920bDd0D56bA95BD2736",
-   "what": "write 166 finished BNB 1h ticket(s) into the record"
+   "what": "write 167 finished BNB 1h ticket(s) into the record"
   },
   {
    "call": "claim()",
@@ -113,7 +113,7 @@
    "call": "Finals Pass mint()",
    "inputData": "0x1249c58b",
    "to": "0x9Df6ba1868d2C149FdA5FE67491f67C07C31e6B5",
-   "what": "Finals Pass: free, one per Agent ID wallet, 1595 of 2,000 left (a numbered ERC-721 with no monetary value)"
+   "what": "Finals Pass: free, one per Agent ID wallet, 1574 of 2,000 left (a numbered ERC-721 with no monetary value)"
   }
  ],
  "proof": {
