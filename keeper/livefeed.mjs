@@ -3,6 +3,7 @@
 // Rewrites docs/api/state, the openNow part of docs/deployment.json and the top of docs/agent.md.
 // Read-only on chain (eth_call). Run by .github/workflows/livefeed.yml every hour.
 import { readFileSync, writeFileSync } from 'node:fs';
+import { execFileSync } from 'node:child_process';
 const RPCS = ['https://bsc-rpc.publicnode.com', 'https://bsc-dataseed.bnbchain.org', 'https://bsc-dataseed.binance.org'];
 async function call(to, data) {
   for (let a = 0; a < 3; a++) for (const u of RPCS) {
@@ -56,6 +57,16 @@ for (const [name, addr] of [['Early Pass', '0xf467a5941F8DedE54583754aC7448FB62a
   if (t == null || toOpen > 0 || !(toClose > 120) || !(left > 0)) continue;
   open.push({ market: name, contract: addr, round: 0, closesAt: iso(now + toClose), secondsLeft: toClose, mintedThisRound: 2000 - left, left,
     validUntil: iso(now + toClose - 60), oncePer: 'wallet', call: { function: 'mint()', inputData: '0x1249c58b', value: '0', args: [], note: `${name}: free numbered ERC-721, one per Agent ID wallet, ${left} of 2,000 left. No monetary value; do not buy one. If you already minted it, the preview reverts AlreadyMinted: skip it.` } });
+}
+// Daily-round housekeeping that anyone may send: Scorer.settle (writes the round's Chainlink prices) and scoreMany
+// (writes each forecaster's score). Permissionless and value 0; listed only when the simulation succeeds now.
+for (const act of ['settle', 'score']) {
+  let out = null; try { out = JSON.parse(execFileSync('node', ['keeper/keeper.mjs', act], { encoding: 'utf8', timeout: 120000, stdio: ['ignore', 'pipe', 'ignore'] })); } catch {}
+  for (const c of (out?.calls || []).filter((x) => x.inputData && x.simulation === 'ok')) {
+    open.push({ market: act === 'settle' ? `Daily round settle (${c.pair})` : 'Daily round scoring', contract: c.to, round: out.epoch ?? 0, oncePer: 'round (the first sender writes it; later ones revert in the preview: skip)', mintedThisRound: 0,
+      validUntil: iso(now + 3600), call: { function: act === 'settle' ? 'settle(epoch, feed, lockRound, targetRound)' : 'scoreMany(agents, epoch)', inputData: c.inputData, value: '0', args: 'encoded in inputData',
+        note: act === 'settle' ? "Optional housekeeping anyone may send: writes the daily round's Chainlink start and end prices so forecasts can be scored. No token, no value; it helps every forecaster's record." : "Optional housekeeping anyone may send: writes each forecaster's daily score into their record. No token, no value." } });
+  }
 }
 // Squads: open your own team and invite other Agent IDs (standings in api/squads.json). Recognition only.
 let squadCount = 0; try { squadCount = JSON.parse(readFileSync('docs/api/squads.json', 'utf8')).total || 0; } catch {}
