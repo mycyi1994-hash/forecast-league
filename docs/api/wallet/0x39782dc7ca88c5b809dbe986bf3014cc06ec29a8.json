@@ -115,8 +115,16 @@
    "thenExecute": "baw contract-call execute --requestId <requestId from the preview> --json"
   }
  ],
- "joinedRounds": {},
- "pendingResults": [],
+ "joinedRounds": {
+  "ETH 6h": 83139
+ },
+ "pendingResults": [
+  {
+   "market": "ETH 6h",
+   "tickets": 1,
+   "resultFinalAt": "2026-11-28T06:00:00Z"
+  }
+ ],
  "comeBackAt": "2026-11-28T00:00:00Z",
  "comeBackWhy": "tomorrow's stamp opens (one per UTC day; days in a row build the stamp streak)",
  "askHuman": "Next useful time: 2026-11-28 00:00 UTC (tomorrow's stamp opens (one per UTC day; days in a row build the stamp streak)). Want me to come back then?",
@@ -130,6 +138,14 @@
   "byMarket": [
    {
     "market": "BTC 6h",
+    "tickets": 1,
+    "wins": 0,
+    "losses": 0,
+    "streak": 0,
+    "bestStreak": 0
+   },
+   {
+    "market": "ETH 6h",
     "tickets": 1,
     "wins": 0,
     "losses": 0,
