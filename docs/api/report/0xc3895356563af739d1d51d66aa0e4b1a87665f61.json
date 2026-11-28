@@ -1,6 +1,6 @@
 {
  "wallet": "0xc3895356563af739d1d51d66aa0e4b1a87665f61",
- "tickets": 593,
+ "tickets": 596,
  "decided": 585,
  "won": 317,
  "lost": 268,
@@ -50,7 +50,7 @@
    "lost": 0
   }
  },
- "waitingTickets": 8,
+ "waitingTickets": 11,
  "nextResultAt": "2026-11-28T07:00Z",
  "verdict": "no-own-picks",
  "overallAllTickets": "above",
@@ -113,7 +113,7 @@
    "call": "Finals Pass mint()",
    "inputData": "0x1249c58b",
    "to": "0x9Df6ba1868d2C149FdA5FE67491f67C07C31e6B5",
-   "what": "Finals Pass: free, one per Agent ID wallet, 1513 of 2,000 left (a numbered ERC-721 with no monetary value)"
+   "what": "Finals Pass: free, one per Agent ID wallet, 1509 of 2,000 left (a numbered ERC-721 with no monetary value)"
   }
  ],
  "proof": {

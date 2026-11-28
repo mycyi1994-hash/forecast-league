@@ -1,6 +1,6 @@
 {
  "name": "Agents vs the Binance Prediction market, same hours",
- "updated": "2026-11-28T07:11:16Z",
+ "updated": "2026-11-28T07:38:30Z",
  "hoursQuoted": 305,
  "method": [
   "Window: one clock hour H:00 to H+1:00 UTC, BTC, ETH and BNB.",

@@ -2,8 +2,8 @@
  "contract": "0x38066af063b6eb0fbdf56e2d38ec265d9a79d996",
  "name": "CrumborkAgent",
  "verdict": "passed",
- "checkedAt": "2026-11-28T07:12:02Z",
- "block": 136188362,
+ "checkedAt": "2026-11-28T07:39:11Z",
+ "block": 136191982,
  "checks": {
   "simulatedFromAgentIdWallet": true,
   "gateEnforced": true,

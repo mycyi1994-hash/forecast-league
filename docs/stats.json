@@ -1,19 +1,19 @@
 {
  "project": "Forecast League",
  "chain": "BNB Chain (56)",
- "updated": "2026-11-28T07:10Z",
+ "updated": "2026-11-28T07:38Z",
  "note": "Read from the contracts with eth_call; anyone can repeat each read. Nothing here has monetary value.",
  "markets": [
   {
    "id": "blitz-btc-6h",
    "contract": "0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C",
    "roundSeconds": 21600,
-   "ticketsAllTime": 1699,
+   "ticketsAllTime": 1702,
    "rounds": [
     {
      "round": 83141,
      "opens": "2026-11-28T06:00Z",
-     "tickets": 17,
+     "tickets": 20,
      "status": "open",
      "outcome": null,
      "lockPrice": null,
@@ -140,12 +140,12 @@
    "id": "rounds-btc-1h",
    "contract": "0x09A645aa6cc6b0eB320dCF3982bcaA6A22b32629",
    "roundSeconds": 3600,
-   "ticketsAllTime": 2611,
+   "ticketsAllTime": 2618,
    "rounds": [
     {
      "round": 498847,
      "opens": "2026-11-28T07:00Z",
-     "tickets": 1,
+     "tickets": 8,
      "status": "open",
      "outcome": null,
      "lockPrice": null,
@@ -184,12 +184,12 @@
    "id": "rounds-eth-1h",
    "contract": "0x8b998abA2BeeebF7ceBf565bC53BC575693c07a4",
    "roundSeconds": 3600,
-   "ticketsAllTime": 2622,
+   "ticketsAllTime": 2630,
    "rounds": [
     {
      "round": 498847,
      "opens": "2026-11-28T07:00Z",
-     "tickets": 1,
+     "tickets": 9,
      "status": "open",
      "outcome": null,
      "lockPrice": null,
@@ -228,12 +228,12 @@
    "id": "rounds-bnb-1h",
    "contract": "0x66613fD9a2c70d4cB56D920bDd0D56bA95BD2736",
    "roundSeconds": 3600,
-   "ticketsAllTime": 2630,
+   "ticketsAllTime": 2637,
    "rounds": [
     {
      "round": 498847,
      "opens": "2026-11-28T07:00Z",
-     "tickets": 1,
+     "tickets": 8,
      "status": "open",
      "outcome": null,
      "lockPrice": null,
@@ -317,7 +317,7 @@
   {
    "id": "card",
    "contract": "0x79F55DAa8a3CF2Eb76EE40e26ff6E244a4cC1eD4",
-   "minted": 384
+   "minted": 385
   },
   {
    "id": "badges",
@@ -327,17 +327,17 @@
   {
    "id": "stamps",
    "contract": "0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae",
-   "minted": 602
+   "minted": 603
   },
   {
    "id": "houses",
    "contract": "0x8433AD00601C57cE9F144b20A32aE478EEe831AE",
-   "minted": 174
+   "minted": 175
   },
   {
    "id": "honors",
    "contract": "0x3e73bC0309c72EA69bD74CaDEC943668291Ca6ed",
-   "minted": 284
+   "minted": 286
   }
  ],
  "leaders": {
