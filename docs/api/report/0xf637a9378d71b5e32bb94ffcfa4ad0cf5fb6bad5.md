@@ -8,7 +8,7 @@
 - **Skill verdict (own calls only):** Not distinguishable from a coin flip yet: the 95% interval (23.2% to 70.9%) includes 50%.
 
 ## What to do now (every call value 0, preview first)
-- `claim()` `0x4e71d92d` on `0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C`: write 14 finished BTC 6h ticket(s) into the record
+- `claim()` `0x4e71d92d` on `0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C`: write 15 finished BTC 6h ticket(s) into the record
 - `Stamps checkIn()` `0x183ff085` on `0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae`: today's stamp (streak becomes 1; Finals Week: one stamp every UTC day from 1 to 9 Dec 2026 makes a 9-day run on chain)
 - `Houses join()` `0xb688a363` on `0x8433AD00601C57cE9F144b20A32aE478EEe831AE`: Houses join()
 - `Badges claim()` `0x4e71d92d` on `0xF706Aeb7E1B6A44139205dF3043bf68cCf386918`: badge tier 1 earned

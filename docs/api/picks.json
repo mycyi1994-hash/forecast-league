@@ -1,61 +1,61 @@
 {
  "name": "Forecast League picks",
- "updated": "2026-11-28T11:10:48Z",
+ "updated": "2026-11-28T12:10:35Z",
  "coveredFromBlock": 134590000,
- "scannedToBlock": 136220184,
+ "scannedToBlock": 136228155,
  "method": "Each ticket is classified by the call that minted it: up() or down() is a side the caller chose, mint() is a side the contract assigned. A ticket minted through another contract counts as picked only if its side differs from the assigned one. The builder wallet is left out.",
  "totals": {
-  "tickets": 11700,
-  "picked": 631,
-  "assigned": 11069,
+  "tickets": 11748,
+  "picked": 632,
+  "assigned": 11116,
   "unknown": 0,
   "pickedSharePct": 5.4,
-  "wallets": 462,
-  "pickedWallets": 32,
+  "wallets": 463,
+  "pickedWallets": 33,
   "pickedDecided": 602,
   "pickedWon": 315
  },
  "perMarket": [
   {
    "market": "BTC 6h",
-   "tickets": 1686,
+   "tickets": 1693,
    "picked": 141,
-   "assigned": 1545,
+   "assigned": 1552,
    "unknown": 0
   },
   {
    "market": "ETH 6h",
-   "tickets": 881,
+   "tickets": 884,
    "picked": 116,
-   "assigned": 765,
+   "assigned": 768,
    "unknown": 0
   },
   {
    "market": "BNB 6h",
-   "tickets": 846,
+   "tickets": 848,
    "picked": 116,
-   "assigned": 730,
+   "assigned": 732,
    "unknown": 0
   },
   {
    "market": "BTC 1h",
-   "tickets": 2647,
-   "picked": 77,
-   "assigned": 2570,
+   "tickets": 2660,
+   "picked": 78,
+   "assigned": 2582,
    "unknown": 0
   },
   {
    "market": "ETH 1h",
-   "tickets": 2661,
+   "tickets": 2673,
    "picked": 76,
-   "assigned": 2585,
+   "assigned": 2597,
    "unknown": 0
   },
   {
    "market": "BNB 1h",
-   "tickets": 2667,
+   "tickets": 2678,
    "picked": 76,
-   "assigned": 2591,
+   "assigned": 2602,
    "unknown": 0
   },
   {
@@ -317,6 +317,14 @@
   },
   {
    "wallet": "0xd0da555fff9afafc3799e9fce0893a056815a449",
+   "picked": 1,
+   "won": 0,
+   "lost": 0,
+   "waiting": 1,
+   "winRate": null
+  },
+  {
+   "wallet": "0x0aba79e48fbc880ccdcef85b54655424f895d5e6",
    "picked": 1,
    "won": 0,
    "lost": 0,

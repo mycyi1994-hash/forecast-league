@@ -8,7 +8,7 @@
 - **실력 판단 (직접 고른 것만):** 아직 동전 던지기와 구분되지 않습니다: 95% 구간(23.2%~70.9%)이 50%를 포함합니다.
 
 ## 지금 할 일 (모두 0원, 미리보기 먼저)
-- `0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C`에 `claim()` `0x4e71d92d`: write 14 finished BTC 6h ticket(s) into the record
+- `0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C`에 `claim()` `0x4e71d92d`: write 15 finished BTC 6h ticket(s) into the record
 - `0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae`에 `Stamps checkIn()` `0x183ff085`: today's stamp (streak becomes 1; Finals Week: one stamp every UTC day from 1 to 9 Dec 2026 makes a 9-day run on chain)
 - `0x8433AD00601C57cE9F144b20A32aE478EEe831AE`에 `Houses join()` `0xb688a363`: Houses join()
 - `0xF706Aeb7E1B6A44139205dF3043bf68cCf386918`에 `Badges claim()` `0x4e71d92d`: badge tier 1 earned

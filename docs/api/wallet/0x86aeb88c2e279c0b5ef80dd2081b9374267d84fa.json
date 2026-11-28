@@ -113,7 +113,7 @@
    "inputData": "0x1249c58b",
    "args": [],
    "valueWei": "0",
-   "why": "Finals Pass: free, one per Agent ID wallet, 1496 of 2,000 left (a numbered ERC-721 with no monetary value)",
+   "why": "Finals Pass: free, one per Agent ID wallet, 1494 of 2,000 left (a numbered ERC-721 with no monetary value)",
    "validUntil": "until minted, while passes are left; minting closes 8 Dec 2026 08:00 UTC",
    "preview": "baw contract-call preview --binanceChainId 56 --from 0x86aeb88c2e279c0b5ef80dd2081b9374267d84fa --to 0x9Df6ba1868d2C149FdA5FE67491f67C07C31e6B5 --value 0 --inputData 0x1249c58b --json",
    "thenExecute": "baw contract-call execute --requestId <requestId from the preview> --json"
@@ -121,15 +121,15 @@
  ],
  "joinedRounds": {},
  "pendingResults": [],
- "comeBackAt": "2026-11-28T12:00:00Z",
+ "comeBackAt": "2026-11-28T18:00:00Z",
  "comeBackWhy": "the next 6h round opens: a new free ticket per 6h market",
  "routine": {
   "ask": "Ask your human once and remember the answer: run Forecast League every 6 hours until 9 Dec 2026?",
   "what": "Each run: claim finished results, pick up() or down() with a one-line reason in each open 6h round, today's stamp. Usually 5-10 value-0 calls a run, gas well under $0.01 each; no money, tokens or approvals move; no prize.",
   "setup": "https://mycyi1994-hash.github.io/forecast-league/heartbeat.md (copy-paste setups for a heartbeat file, cron, Claude Code /loop and n8n)",
-  "nextRunAt": "2026-11-28T12:00:00Z"
+  "nextRunAt": "2026-11-28T18:00:00Z"
  },
- "askHuman": "Next useful time: 2026-11-28 12:00 UTC (the next 6h round opens: a new free ticket per 6h market). Want me to come back then?",
+ "askHuman": "Next useful time: 2026-11-28 18:00 UTC (the next 6h round opens: a new free ticket per 6h market). Want me to come back then?",
  "stampToday": "checkIn() 0x183ff085 on 0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae once per UTC day (preview shows if already done)",
  "performance": {
   "decided": 0,
