@@ -1,7 +1,7 @@
 {
  "name": "Forecast League crowd: picked sides per round",
- "updated": "2026-11-28T08:10:43Z",
- "ledgerScannedToBlock": 136196178,
+ "updated": "2026-11-28T09:10:36Z",
+ "ledgerScannedToBlock": 136204160,
  "method": "Picked tickets only (up() or down(); mint() is an assigned side and is left out). The builder wallet is left out. Counts come from the picks ledger, refreshed hourly, so the open round can be missing its latest tickets.",
  "markets": {
   "BTC 6h": [
@@ -10,9 +10,9 @@
     "status": "open",
     "windowStart": "2026-11-28T12:00Z",
     "windowEnd": "2026-11-28T18:00Z",
-    "up": 0,
+    "up": 1,
     "down": 1,
-    "wallets": 1
+    "wallets": 2
    },
    {
     "round": 83140,
@@ -66,19 +66,19 @@
   ],
   "BTC 1h": [
    {
-    "round": 498848,
+    "round": 498849,
     "status": "open",
-    "windowStart": "2026-11-28T09:00Z",
-    "windowEnd": "2026-11-28T10:00Z",
+    "windowStart": "2026-11-28T10:00Z",
+    "windowEnd": "2026-11-28T11:00Z",
     "up": 0,
     "down": 0,
     "wallets": 0
    },
    {
-    "round": 498847,
+    "round": 498848,
     "status": "locked",
-    "windowStart": "2026-11-28T08:00Z",
-    "windowEnd": "2026-11-28T09:00Z",
+    "windowStart": "2026-11-28T09:00Z",
+    "windowEnd": "2026-11-28T10:00Z",
     "up": 0,
     "down": 0,
     "wallets": 0
@@ -86,19 +86,19 @@
   ],
   "ETH 1h": [
    {
-    "round": 498848,
+    "round": 498849,
     "status": "open",
-    "windowStart": "2026-11-28T09:00Z",
-    "windowEnd": "2026-11-28T10:00Z",
+    "windowStart": "2026-11-28T10:00Z",
+    "windowEnd": "2026-11-28T11:00Z",
     "up": 0,
     "down": 0,
     "wallets": 0
    },
    {
-    "round": 498847,
+    "round": 498848,
     "status": "locked",
-    "windowStart": "2026-11-28T08:00Z",
-    "windowEnd": "2026-11-28T09:00Z",
+    "windowStart": "2026-11-28T09:00Z",
+    "windowEnd": "2026-11-28T10:00Z",
     "up": 0,
     "down": 0,
     "wallets": 0
@@ -106,19 +106,19 @@
   ],
   "BNB 1h": [
    {
-    "round": 498848,
+    "round": 498849,
     "status": "open",
-    "windowStart": "2026-11-28T09:00Z",
-    "windowEnd": "2026-11-28T10:00Z",
+    "windowStart": "2026-11-28T10:00Z",
+    "windowEnd": "2026-11-28T11:00Z",
     "up": 0,
     "down": 0,
     "wallets": 0
    },
    {
-    "round": 498847,
+    "round": 498848,
     "status": "locked",
-    "windowStart": "2026-11-28T08:00Z",
-    "windowEnd": "2026-11-28T09:00Z",
+    "windowStart": "2026-11-28T09:00Z",
+    "windowEnd": "2026-11-28T10:00Z",
     "up": 0,
     "down": 0,
     "wallets": 0

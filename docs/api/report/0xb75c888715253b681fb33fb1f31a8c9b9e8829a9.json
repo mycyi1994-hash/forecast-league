@@ -1,6 +1,6 @@
 {
  "wallet": "0xb75c888715253b681fb33fb1f31a8c9b9e8829a9",
- "tickets": 21,
+ "tickets": 22,
  "decided": 21,
  "won": 9,
  "lost": 12,
@@ -26,8 +26,8 @@
    "lost": 12
   }
  },
- "waitingTickets": 0,
- "nextResultAt": null,
+ "waitingTickets": 1,
+ "nextResultAt": "2026-11-28T18:00Z",
  "verdict": "no-own-picks",
  "overallAllTickets": "coinflip",
  "todoNow": [
@@ -36,12 +36,6 @@
    "inputData": "0x4e71d92d",
    "to": "0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C",
    "what": "write 21 finished BTC 6h ticket(s) into the record"
-  },
-  {
-   "call": "Stamps checkIn()",
-   "inputData": "0x183ff085",
-   "to": "0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae",
-   "what": "today's stamp (streak becomes 5; Finals Week: one stamp every UTC day from 1 to 9 Dec 2026 makes a 9-day run on chain)"
   },
   {
    "call": "Houses join()",

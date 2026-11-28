@@ -1,61 +1,61 @@
 {
  "name": "Forecast League picks",
- "updated": "2026-11-28T08:10:42Z",
+ "updated": "2026-11-28T09:10:35Z",
  "coveredFromBlock": 134590000,
- "scannedToBlock": 136196178,
+ "scannedToBlock": 136204160,
  "method": "Each ticket is classified by the call that minted it: up() or down() is a side the caller chose, mint() is a side the contract assigned. A ticket minted through another contract counts as picked only if its side differs from the assigned one. The builder wallet is left out.",
  "totals": {
-  "tickets": 11583,
-  "picked": 621,
-  "assigned": 10962,
+  "tickets": 11615,
+  "picked": 622,
+  "assigned": 10993,
   "unknown": 0,
   "pickedSharePct": 5.4,
-  "wallets": 457,
-  "pickedWallets": 31,
+  "wallets": 459,
+  "pickedWallets": 32,
   "pickedDecided": 602,
   "pickedWon": 315
  },
  "perMarket": [
   {
    "market": "BTC 6h",
-   "tickets": 1673,
-   "picked": 139,
-   "assigned": 1534,
+   "tickets": 1679,
+   "picked": 140,
+   "assigned": 1539,
    "unknown": 0
   },
   {
    "market": "ETH 6h",
-   "tickets": 877,
+   "tickets": 878,
    "picked": 115,
-   "assigned": 762,
+   "assigned": 763,
    "unknown": 0
   },
   {
    "market": "BNB 6h",
-   "tickets": 842,
+   "tickets": 843,
    "picked": 115,
-   "assigned": 727,
+   "assigned": 728,
    "unknown": 0
   },
   {
    "market": "BTC 1h",
-   "tickets": 2618,
+   "tickets": 2626,
    "picked": 77,
-   "assigned": 2541,
+   "assigned": 2549,
    "unknown": 0
   },
   {
    "market": "ETH 1h",
-   "tickets": 2631,
+   "tickets": 2639,
    "picked": 76,
-   "assigned": 2555,
+   "assigned": 2563,
    "unknown": 0
   },
   {
    "market": "BNB 1h",
-   "tickets": 2638,
+   "tickets": 2646,
    "picked": 76,
-   "assigned": 2562,
+   "assigned": 2570,
    "unknown": 0
   },
   {
@@ -314,6 +314,14 @@
    "lost": 1,
    "waiting": 0,
    "winRate": 0
+  },
+  {
+   "wallet": "0xd0da555fff9afafc3799e9fce0893a056815a449",
+   "picked": 1,
+   "won": 0,
+   "lost": 0,
+   "waiting": 1,
+   "winRate": null
   }
  ],
  "ledger": "https://mycyi1994-hash.github.io/forecast-league/api/picks/ledger.json"

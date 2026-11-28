@@ -1,15 +1,15 @@
 {
  "wallet": "0x5ac28eef3f4d6e01f2703576c7e98fe66b4cde61",
- "tickets": 32,
- "decided": 30,
+ "tickets": 33,
+ "decided": 31,
  "won": 18,
- "lost": 12,
- "hitRate": 0.6,
+ "lost": 13,
+ "hitRate": 0.581,
  "ci95": [
-  0.423,
-  0.754
+  0.408,
+  0.736
  ],
- "currentWinRun": 2,
+ "currentWinRun": 0,
  "picked": {
   "decided": 0,
   "won": 0,
@@ -17,17 +17,17 @@
   "verdict": null
  },
  "assigned": {
-  "decided": 30,
+  "decided": 31,
   "won": 18
  },
  "byMarket": {
   "ETH 1h": {
    "won": 18,
-   "lost": 12
+   "lost": 13
   }
  },
  "waitingTickets": 2,
- "nextResultAt": "2026-11-28T08:00Z",
+ "nextResultAt": "2026-11-28T09:00Z",
  "verdict": "no-own-picks",
  "overallAllTickets": "coinflip",
  "todoNow": [
@@ -35,7 +35,7 @@
    "call": "claim()",
    "inputData": "0x4e71d92d",
    "to": "0x8b998abA2BeeebF7ceBf565bC53BC575693c07a4",
-   "what": "write 31 finished ETH 1h ticket(s) into the record"
+   "what": "write 32 finished ETH 1h ticket(s) into the record"
   },
   {
    "call": "Houses join()",
@@ -47,13 +47,7 @@
    "call": "Honors claim()",
    "inputData": "0x4e71d92d",
    "to": "0x3e73bC0309c72EA69bD74CaDEC943668291Ca6ed",
-   "what": "honor earned: SEASON ONE"
-  },
-  {
-   "call": "Card mint()",
-   "inputData": "0x1249c58b",
-   "to": "0x79F55DAa8a3CF2Eb76EE40e26ff6E244a4cC1eD4",
-   "what": "your free player card (non-transferable, drawn on-chain; it grows with your daily forecasts)"
+   "what": "honor earned: SEASON ONE, CARD HOLDER"
   }
  ],
  "proof": {

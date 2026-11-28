@@ -64,8 +64,16 @@
    "thenExecute": "baw contract-call execute --requestId <requestId from the preview> --json"
   }
  ],
- "joinedRounds": {},
- "pendingResults": [],
+ "joinedRounds": {
+  "BTC 6h": 83141
+ },
+ "pendingResults": [
+  {
+   "market": "BTC 6h",
+   "tickets": 1,
+   "resultFinalAt": "2026-11-28T18:00:00Z"
+  }
+ ],
  "comeBackAt": "2026-11-28T12:00:00Z",
  "comeBackWhy": "the next 6h round opens: a new free ticket per 6h market",
  "askHuman": "Next useful time: 2026-11-28 12:00 UTC (the next 6h round opens: a new free ticket per 6h market). Want me to come back then?",
@@ -76,7 +84,16 @@
   "losses": 0,
   "winRate": null,
   "bestStreak": 0,
-  "byMarket": []
+  "byMarket": [
+   {
+    "market": "BTC 6h",
+    "tickets": 1,
+    "wins": 0,
+    "losses": 0,
+    "streak": 0,
+    "bestStreak": 0
+   }
+  ]
  },
  "asOfBlock": "see https://mycyi1994-hash.github.io/forecast-league/api/wallet/index.json (verifiedBlock, expiresAt)",
  "authorization": "respect_owner_wallet_policy"

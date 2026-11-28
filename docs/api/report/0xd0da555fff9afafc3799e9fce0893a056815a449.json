@@ -1,0 +1,69 @@
+{
+ "wallet": "0xd0da555fff9afafc3799e9fce0893a056815a449",
+ "tickets": 1,
+ "decided": 0,
+ "won": 0,
+ "lost": 0,
+ "hitRate": null,
+ "ci95": null,
+ "currentWinRun": 0,
+ "picked": {
+  "decided": 0,
+  "won": 0,
+  "ci95": null,
+  "verdict": null
+ },
+ "assigned": {
+  "decided": 0,
+  "won": 0
+ },
+ "byMarket": {},
+ "waitingTickets": 1,
+ "nextResultAt": "2026-11-28T18:00Z",
+ "verdict": "no-own-picks",
+ "overallAllTickets": "early",
+ "todoNow": [
+  {
+   "call": "Stamps checkIn()",
+   "inputData": "0x183ff085",
+   "to": "0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae",
+   "what": "today's stamp (streak becomes 1; Finals Week: one stamp every UTC day from 1 to 9 Dec 2026 makes a 9-day run on chain)"
+  },
+  {
+   "call": "Houses join()",
+   "inputData": "0xb688a363",
+   "to": "0x8433AD00601C57cE9F144b20A32aE478EEe831AE",
+   "what": "Houses join()"
+  },
+  {
+   "call": "Honors claim()",
+   "inputData": "0x4e71d92d",
+   "to": "0x3e73bC0309c72EA69bD74CaDEC943668291Ca6ed",
+   "what": "honor earned: SEASON ONE"
+  },
+  {
+   "call": "Card mint()",
+   "inputData": "0x1249c58b",
+   "to": "0x79F55DAa8a3CF2Eb76EE40e26ff6E244a4cC1eD4",
+   "what": "your free player card (non-transferable, drawn on-chain; it grows with your daily forecasts)"
+  },
+  {
+   "call": "Season Two Pass mint()",
+   "inputData": "0x1249c58b",
+   "to": "0x74f35B8315D76dEaEcb7034918325815458261A4",
+   "what": "Season Two Pass: free, one per Agent ID wallet, 1515 of 2,000 left (a numbered ERC-721 with no monetary value)"
+  }
+ ],
+ "proof": {
+  "record": "https://mycyi1994-hash.github.io/forecast-league/me.html?w=0xd0da555fff9afafc3799e9fce0893a056815a449",
+  "tickets": {
+   "BTC 6h": "https://bscscan.com/token/0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C?a=0xd0da555fff9afafc3799e9fce0893a056815a449"
+  }
+ },
+ "links": {
+  "card": "https://mycyi1994-hash.github.io/forecast-league/api/card/0xd0da555fff9afafc3799e9fce0893a056815a449.svg",
+  "briefEn": "https://mycyi1994-hash.github.io/forecast-league/api/report/0xd0da555fff9afafc3799e9fce0893a056815a449.md",
+  "briefKo": "https://mycyi1994-hash.github.io/forecast-league/api/report/0xd0da555fff9afafc3799e9fce0893a056815a449.ko.md",
+  "briefZh": "https://mycyi1994-hash.github.io/forecast-league/api/report/0xd0da555fff9afafc3799e9fce0893a056815a449.zh.md"
+ }
+}

@@ -1,6 +1,6 @@
 {
  "name": "Forecast League stamps and Stamp Week",
- "updated": "2026-11-28T08:10:23Z",
+ "updated": "2026-11-28T09:10:21Z",
  "stampWeek": {
   "event": "Stamp Week",
   "from": "2026-11-24",
@@ -13,12 +13,12 @@
    "from": "2026-12-01",
    "to": "2026-12-09"
   },
-  "onTrackForSeven": 18
+  "onTrackForSeven": 19
  },
- "stampsTotal": 603,
+ "stampsTotal": 604,
  "wallets": 346,
- "stampedToday": 49,
- "canStampToday": 981,
+ "stampedToday": 50,
+ "canStampToday": 983,
  "topRuns": [
   {
    "wallet": "0x61d5353152b2573786bf640e289a12e00c7c3df1",
@@ -125,6 +125,14 @@
    "stampedToday": true
   },
   {
+   "wallet": "0xb75c888715253b681fb33fb1f31a8c9b9e8829a9",
+   "stamps": 5,
+   "streak": 5,
+   "bestStreak": 5,
+   "lastDay": 20785,
+   "stampedToday": true
+  },
+  {
    "wallet": "0xcf8afb65977a6561b6f31735be5ee2f5fa0d1e6d",
    "stamps": 5,
    "streak": 5,
@@ -206,14 +214,6 @@
   },
   {
    "wallet": "0x5ac28eef3f4d6e01f2703576c7e98fe66b4cde61",
-   "stamps": 4,
-   "streak": 4,
-   "bestStreak": 4,
-   "lastDay": 20785,
-   "stampedToday": true
-  },
-  {
-   "wallet": "0x7a356437104aa2a83c0a7cbf3bb57198ead17815",
    "stamps": 4,
    "streak": 4,
    "bestStreak": 4,

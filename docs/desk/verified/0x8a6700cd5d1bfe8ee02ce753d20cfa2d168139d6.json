@@ -2,8 +2,8 @@
  "contract": "0x8a6700cd5d1bfe8ee02ce753d20cfa2d168139d6",
  "name": "Solaris",
  "verdict": "passed",
- "checkedAt": "2026-11-28T08:11:26Z",
- "block": 136196282,
+ "checkedAt": "2026-11-28T09:11:19Z",
+ "block": 136204264,
  "checks": {
   "simulatedFromAgentIdWallet": true,
   "gateEnforced": true,
