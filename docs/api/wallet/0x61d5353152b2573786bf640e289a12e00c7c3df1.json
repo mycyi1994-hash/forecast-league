@@ -95,18 +95,6 @@
    "thenExecute": "baw contract-call execute --requestId <requestId from the preview> --json"
   },
   {
-   "type": "checkIn",
-   "contract": "0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae",
-   "method": "checkIn()",
-   "inputData": "0x183ff085",
-   "args": [],
-   "valueWei": "0",
-   "why": "today's stamp (streak becomes 9)",
-   "validUntil": "until 00:00 UTC; a new one opens every UTC day",
-   "preview": "baw contract-call preview --binanceChainId 56 --from 0x61d5353152b2573786bf640e289a12e00c7c3df1 --to 0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae --value 0 --inputData 0x183ff085 --json",
-   "thenExecute": "baw contract-call execute --requestId <requestId from the preview> --json"
-  },
-  {
    "type": "claim",
    "contract": "0xF706Aeb7E1B6A44139205dF3043bf68cCf386918",
    "method": "claim()",
@@ -119,12 +107,14 @@
    "thenExecute": "baw contract-call execute --requestId <requestId from the preview> --json"
   }
  ],
- "joinedRounds": {},
+ "joinedRounds": {
+  "BTC 1d": 20785
+ },
  "pendingResults": [
   {
    "market": "BTC 1d",
-   "tickets": 1,
-   "resultFinalAt": "2026-11-29T00:00:00Z"
+   "tickets": 2,
+   "resultFinalAt": "2026-11-30T00:00:00Z"
   }
  ],
  "comeBackAt": "2026-11-28T06:00:00Z",
@@ -188,7 +178,7 @@
    },
    {
     "market": "BTC 1d",
-    "tickets": 7,
+    "tickets": 8,
     "wins": 0,
     "losses": 0,
     "streak": 0,

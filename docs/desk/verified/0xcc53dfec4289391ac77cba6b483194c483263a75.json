@@ -2,8 +2,8 @@
  "contract": "0xcc53dfec4289391ac77cba6b483194c483263a75",
  "name": "4ever Agent Pass",
  "verdict": "passed",
- "checkedAt": "2026-11-28T01:11:32Z",
- "block": 136140323,
+ "checkedAt": "2026-11-28T02:10:49Z",
+ "block": 136148225,
  "checks": {
   "simulatedFromAgentIdWallet": true,
   "gateEnforced": true,

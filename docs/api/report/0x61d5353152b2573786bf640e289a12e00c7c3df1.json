@@ -1,6 +1,6 @@
 {
  "wallet": "0x61d5353152b2573786bf640e289a12e00c7c3df1",
- "tickets": 67,
+ "tickets": 68,
  "decided": 66,
  "won": 29,
  "lost": 37,
@@ -50,7 +50,7 @@
    "lost": 1
   }
  },
- "waitingTickets": 1,
+ "waitingTickets": 2,
  "nextResultAt": "2026-11-29T00:00Z",
  "verdict": "no-own-picks",
  "overallAllTickets": "coinflip",
@@ -96,12 +96,6 @@
    "inputData": "0x4e71d92d",
    "to": "0x9e521add6F67EEe0Fe5c0b8ef32cb4543f7af50E",
    "what": "write 6 finished BTC 1d ticket(s) into the record"
-  },
-  {
-   "call": "Stamps checkIn()",
-   "inputData": "0x183ff085",
-   "to": "0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae",
-   "what": "today's stamp (streak becomes 9)"
   },
   {
    "call": "Badges claim()",

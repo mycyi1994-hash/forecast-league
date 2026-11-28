@@ -1,6 +1,6 @@
 {
  "name": "Forecast League stamps and Stamp Week",
- "updated": "2026-11-28T01:10:30Z",
+ "updated": "2026-11-28T02:10:04Z",
  "stampWeek": {
   "event": "Stamp Week",
   "from": "2026-11-24",
@@ -13,20 +13,28 @@
    "from": "2026-12-01",
    "to": "2026-12-09"
   },
-  "onTrackForSeven": 16
+  "onTrackForSeven": 17
  },
- "stampsTotal": 575,
+ "stampsTotal": 592,
  "wallets": 344,
- "stampedToday": 21,
- "canStampToday": 982,
+ "stampedToday": 38,
+ "canStampToday": 971,
  "topRuns": [
   {
    "wallet": "0x61d5353152b2573786bf640e289a12e00c7c3df1",
+   "stamps": 9,
+   "streak": 9,
+   "bestStreak": 9,
+   "lastDay": 20785,
+   "stampedToday": true
+  },
+  {
+   "wallet": "0x86a49a9e391c5dc143d2d8b2e8bb77e8bb61ede9",
    "stamps": 8,
    "streak": 8,
    "bestStreak": 8,
-   "lastDay": 20784,
-   "stampedToday": false
+   "lastDay": 20785,
+   "stampedToday": true
   },
   {
    "wallet": "0x93fabef80e9b4083935d4ae7bb8fa3a51ef33cd8",
@@ -45,18 +53,18 @@
    "stampedToday": false
   },
   {
-   "wallet": "0x86a49a9e391c5dc143d2d8b2e8bb77e8bb61ede9",
-   "stamps": 7,
-   "streak": 7,
-   "bestStreak": 7,
-   "lastDay": 20784,
-   "stampedToday": false
-  },
-  {
    "wallet": "0x917a1da59348bb09b40ec1e77ba35b75efcf4210",
    "stamps": 7,
    "streak": 7,
    "bestStreak": 7,
+   "lastDay": 20785,
+   "stampedToday": true
+  },
+  {
+   "wallet": "0x0a90f878e4cf3ef3bc0ee4a67e2ff0166986ad5f",
+   "stamps": 6,
+   "streak": 5,
+   "bestStreak": 5,
    "lastDay": 20785,
    "stampedToday": true
   },
@@ -149,14 +157,6 @@
    "stampedToday": true
   },
   {
-   "wallet": "0x0a90f878e4cf3ef3bc0ee4a67e2ff0166986ad5f",
-   "stamps": 5,
-   "streak": 4,
-   "bestStreak": 4,
-   "lastDay": 20784,
-   "stampedToday": false
-  },
-  {
    "wallet": "0x664e909a60f9cac1e6a7181613d6bb56adeb070b",
    "stamps": 5,
    "streak": 4,
@@ -197,23 +197,23 @@
    "stampedToday": false
   },
   {
+   "wallet": "0x5ac28eef3f4d6e01f2703576c7e98fe66b4cde61",
+   "stamps": 4,
+   "streak": 4,
+   "bestStreak": 4,
+   "lastDay": 20785,
+   "stampedToday": true
+  },
+  {
+   "wallet": "0x7a356437104aa2a83c0a7cbf3bb57198ead17815",
+   "stamps": 4,
+   "streak": 4,
+   "bestStreak": 4,
+   "lastDay": 20785,
+   "stampedToday": true
+  },
+  {
    "wallet": "0xb75c888715253b681fb33fb1f31a8c9b9e8829a9",
-   "stamps": 4,
-   "streak": 4,
-   "bestStreak": 4,
-   "lastDay": 20784,
-   "stampedToday": false
-  },
-  {
-   "wallet": "0xb9629f4154648be654833978ed7b87037428c710",
-   "stamps": 4,
-   "streak": 4,
-   "bestStreak": 4,
-   "lastDay": 20784,
-   "stampedToday": false
-  },
-  {
-   "wallet": "0xe0818afbbfff714dea0bd82bf5d8046fef622113",
    "stamps": 4,
    "streak": 4,
    "bestStreak": 4,
