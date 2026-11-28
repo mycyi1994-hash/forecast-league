@@ -98,6 +98,12 @@
    "what": "write 1 finished BTC 1d ticket(s) into the record"
   },
   {
+   "call": "Stamps checkIn()",
+   "inputData": "0x183ff085",
+   "to": "0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae",
+   "what": "today's stamp (streak becomes 5)"
+  },
+  {
    "call": "Badges claim()",
    "inputData": "0x4e71d92d",
    "to": "0xF706Aeb7E1B6A44139205dF3043bf68cCf386918",

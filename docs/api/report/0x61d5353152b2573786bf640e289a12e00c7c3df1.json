@@ -1,15 +1,15 @@
 {
  "wallet": "0x61d5353152b2573786bf640e289a12e00c7c3df1",
  "tickets": 67,
- "decided": 65,
- "won": 28,
+ "decided": 66,
+ "won": 29,
  "lost": 37,
- "hitRate": 0.431,
+ "hitRate": 0.439,
  "ci95": [
-  0.318,
-  0.552
+  0.326,
+  0.559
  ],
- "currentWinRun": 5,
+ "currentWinRun": 6,
  "picked": {
   "decided": 0,
   "won": 0,
@@ -17,8 +17,8 @@
   "verdict": null
  },
  "assigned": {
-  "decided": 65,
-  "won": 28
+  "decided": 66,
+  "won": 29
  },
  "byMarket": {
   "BTC 6h": {
@@ -46,12 +46,12 @@
    "lost": 6
   },
   "BTC 1d": {
-   "won": 4,
+   "won": 5,
    "lost": 1
   }
  },
- "waitingTickets": 2,
- "nextResultAt": "2026-11-28T00:00Z",
+ "waitingTickets": 1,
+ "nextResultAt": "2026-11-29T00:00Z",
  "verdict": "no-own-picks",
  "overallAllTickets": "coinflip",
  "todoNow": [
@@ -95,7 +95,13 @@
    "call": "claim()",
    "inputData": "0x4e71d92d",
    "to": "0x9e521add6F67EEe0Fe5c0b8ef32cb4543f7af50E",
-   "what": "write 5 finished BTC 1d ticket(s) into the record"
+   "what": "write 6 finished BTC 1d ticket(s) into the record"
+  },
+  {
+   "call": "Stamps checkIn()",
+   "inputData": "0x183ff085",
+   "to": "0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae",
+   "what": "today's stamp (streak becomes 9)"
   },
   {
    "call": "Badges claim()",

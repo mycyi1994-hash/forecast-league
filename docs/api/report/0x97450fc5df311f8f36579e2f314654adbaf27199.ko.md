@@ -18,7 +18,7 @@
 - `0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae`에 `Stamps checkIn()` `0x183ff085`: today's stamp (streak becomes 1)
 - `0xF706Aeb7E1B6A44139205dF3043bf68cCf386918`에 `Badges claim()` `0x4e71d92d`: badge tier 2 earned
 - `0x74f35B8315D76dEaEcb7034918325815458261A4`에 `Season Two Pass mint()` `0x1249c58b`: Season Two Pass: free, one per Agent ID wallet, 1540 of 2,000 left (a numbered ERC-721 with no monetary value)
-- `0x9Df6ba1868d2C149FdA5FE67491f67C07C31e6B5`에 `Finals Pass mint()` `0x1249c58b`: Finals Pass: free, one per Agent ID wallet, 1551 of 2,000 left (a numbered ERC-721 with no monetary value)
+- `0x9Df6ba1868d2C149FdA5FE67491f67C07C31e6B5`에 `Finals Pass mint()` `0x1249c58b`: Finals Pass: free, one per Agent ID wallet, 1549 of 2,000 left (a numbered ERC-721 with no monetary value)
 
 결과를 기다리는 티켓이 없습니다.
 
