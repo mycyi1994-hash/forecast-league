@@ -2,8 +2,8 @@
  "contract": "0x66613fd9a2c70d4cb56d920bdd0d56ba95bd2736",
  "name": "Forecast League Rounds BNB 1h",
  "verdict": "passed",
- "checkedAt": "2026-11-28T07:39:11Z",
- "block": 136191982,
+ "checkedAt": "2026-11-28T08:11:26Z",
+ "block": 136196282,
  "checks": {
   "simulatedFromAgentIdWallet": true,
   "gateEnforced": true,

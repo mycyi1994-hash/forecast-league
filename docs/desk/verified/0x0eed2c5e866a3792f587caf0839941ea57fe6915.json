@@ -2,8 +2,8 @@
  "contract": "0x0eed2c5e866a3792f587caf0839941ea57fe6915",
  "name": "HashDroids Operator Pass",
  "verdict": "passed",
- "checkedAt": "2026-11-28T07:39:11Z",
- "block": 136191982,
+ "checkedAt": "2026-11-28T08:11:26Z",
+ "block": 136196282,
  "checks": {
   "simulatedFromAgentIdWallet": true,
   "gateEnforced": true,
