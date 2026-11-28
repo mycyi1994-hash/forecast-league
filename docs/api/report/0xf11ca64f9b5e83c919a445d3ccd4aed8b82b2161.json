@@ -1,15 +1,15 @@
 {
  "wallet": "0xf11ca64f9b5e83c919a445d3ccd4aed8b82b2161",
  "tickets": 549,
- "decided": 532,
- "won": 238,
+ "decided": 535,
+ "won": 241,
  "lost": 294,
- "hitRate": 0.447,
+ "hitRate": 0.45,
  "ci95": [
-  0.406,
-  0.49
+  0.409,
+  0.493
  ],
- "currentWinRun": 0,
+ "currentWinRun": 3,
  "picked": {
   "decided": 0,
   "won": 0,
@@ -17,20 +17,20 @@
   "verdict": null
  },
  "assigned": {
-  "decided": 532,
-  "won": 238
+  "decided": 535,
+  "won": 241
  },
  "byMarket": {
   "ETH 1h": {
-   "won": 68,
+   "won": 69,
    "lost": 82
   },
   "BTC 1h": {
-   "won": 68,
+   "won": 69,
    "lost": 82
   },
   "BNB 1h": {
-   "won": 64,
+   "won": 65,
    "lost": 86
   },
   "BTC 6h": {
@@ -50,8 +50,8 @@
    "lost": 2
   }
  },
- "waitingTickets": 17,
- "nextResultAt": "2026-11-28T14:00Z",
+ "waitingTickets": 14,
+ "nextResultAt": "2026-11-28T15:00Z",
  "verdict": "no-own-picks",
  "overallAllTickets": "below",
  "todoNow": [
@@ -77,31 +77,25 @@
    "call": "claim()",
    "inputData": "0x4e71d92d",
    "to": "0x09A645aa6cc6b0eB320dCF3982bcaA6A22b32629",
-   "what": "write 151 finished BTC 1h ticket(s) into the record"
+   "what": "write 152 finished BTC 1h ticket(s) into the record"
   },
   {
    "call": "claim()",
    "inputData": "0x4e71d92d",
    "to": "0x8b998abA2BeeebF7ceBf565bC53BC575693c07a4",
-   "what": "write 151 finished ETH 1h ticket(s) into the record"
+   "what": "write 152 finished ETH 1h ticket(s) into the record"
   },
   {
    "call": "claim()",
    "inputData": "0x4e71d92d",
    "to": "0x66613fD9a2c70d4cB56D920bDd0D56bA95BD2736",
-   "what": "write 151 finished BNB 1h ticket(s) into the record"
+   "what": "write 152 finished BNB 1h ticket(s) into the record"
   },
   {
    "call": "claim()",
    "inputData": "0x4e71d92d",
    "to": "0x9e521add6F67EEe0Fe5c0b8ef32cb4543f7af50E",
    "what": "write 7 finished BTC 1d ticket(s) into the record"
-  },
-  {
-   "call": "Stamps checkIn()",
-   "inputData": "0x183ff085",
-   "to": "0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae",
-   "what": "today's stamp (streak becomes 1; Finals Week: one stamp every UTC day from 1 to 9 Dec 2026 makes a 9-day run on chain)"
   },
   {
    "call": "Badges claim()",

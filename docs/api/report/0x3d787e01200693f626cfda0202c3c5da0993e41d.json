@@ -1,0 +1,44 @@
+{
+ "wallet": "0x3d787e01200693f626cfda0202c3c5da0993e41d",
+ "tickets": 7,
+ "decided": 0,
+ "won": 0,
+ "lost": 0,
+ "hitRate": null,
+ "ci95": null,
+ "currentWinRun": 0,
+ "picked": {
+  "decided": 0,
+  "won": 0,
+  "ci95": null,
+  "verdict": null
+ },
+ "assigned": {
+  "decided": 0,
+  "won": 0
+ },
+ "byMarket": {},
+ "waitingTickets": 7,
+ "nextResultAt": "2026-11-28T16:00Z",
+ "verdict": "no-own-picks",
+ "overallAllTickets": "early",
+ "todoNow": [],
+ "proof": {
+  "record": "https://mycyi1994-hash.github.io/forecast-league/me.html?w=0x3d787e01200693f626cfda0202c3c5da0993e41d",
+  "tickets": {
+   "BTC 1h": "https://bscscan.com/token/0x09A645aa6cc6b0eB320dCF3982bcaA6A22b32629?a=0x3d787e01200693f626cfda0202c3c5da0993e41d",
+   "ETH 1h": "https://bscscan.com/token/0x8b998abA2BeeebF7ceBf565bC53BC575693c07a4?a=0x3d787e01200693f626cfda0202c3c5da0993e41d",
+   "BNB 1h": "https://bscscan.com/token/0x66613fD9a2c70d4cB56D920bDd0D56bA95BD2736?a=0x3d787e01200693f626cfda0202c3c5da0993e41d",
+   "BTC 6h": "https://bscscan.com/token/0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C?a=0x3d787e01200693f626cfda0202c3c5da0993e41d",
+   "ETH 6h": "https://bscscan.com/token/0x621B9fEd6FF2f0FC73e26264A401F7d12644A0A1?a=0x3d787e01200693f626cfda0202c3c5da0993e41d",
+   "BNB 6h": "https://bscscan.com/token/0xA782Ac207fE33f6120d9c2EF9553A55C47CFbbE9?a=0x3d787e01200693f626cfda0202c3c5da0993e41d",
+   "BTC 1d": "https://bscscan.com/token/0x9e521add6F67EEe0Fe5c0b8ef32cb4543f7af50E?a=0x3d787e01200693f626cfda0202c3c5da0993e41d"
+  }
+ },
+ "links": {
+  "card": "https://mycyi1994-hash.github.io/forecast-league/api/card/0x3d787e01200693f626cfda0202c3c5da0993e41d.svg",
+  "briefEn": "https://mycyi1994-hash.github.io/forecast-league/api/report/0x3d787e01200693f626cfda0202c3c5da0993e41d.md",
+  "briefKo": "https://mycyi1994-hash.github.io/forecast-league/api/report/0x3d787e01200693f626cfda0202c3c5da0993e41d.ko.md",
+  "briefZh": "https://mycyi1994-hash.github.io/forecast-league/api/report/0x3d787e01200693f626cfda0202c3c5da0993e41d.zh.md"
+ }
+}

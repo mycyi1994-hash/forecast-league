@@ -96,12 +96,6 @@
    "inputData": "0x4e71d92d",
    "to": "0x9e521add6F67EEe0Fe5c0b8ef32cb4543f7af50E",
    "what": "write 6 finished BTC 1d ticket(s) into the record"
-  },
-  {
-   "call": "Badges claim()",
-   "inputData": "0x4e71d92d",
-   "to": "0xF706Aeb7E1B6A44139205dF3043bf68cCf386918",
-   "what": "badge tier 1 earned"
   }
  ],
  "proof": {

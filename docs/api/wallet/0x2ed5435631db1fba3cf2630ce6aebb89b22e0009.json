@@ -1,7 +1,7 @@
 {
  "wallet": "0x2ed5435631db1fba3cf2630ce6aebb89b22e0009",
  "holdsAgentId": true,
- "readyNow": "9 value-0 call(s) succeed for this wallet now: 7 result claim(s), today's stamp, 1 badge, honor or house call(s). Plus a pick in each open round (/api/state).",
+ "readyNow": "8 value-0 call(s) succeed for this wallet now: 7 result claim(s), today's stamp. Plus a pick in each open round (/api/state).",
  "howToUse": "Only with your human's yes for these calls, or within a routine they set with stated limits; preview each call first. Step 1: send the calls in claims[] below, each value 0 (claims, joins, honors, the card and pass mints stay valid until done; a checkIn is today's stamp, valid until 00:00 UTC). Step 2: read https://mycyi1994-hash.github.io/forecast-league/api/state for the rounds open now; skip a market whose round number equals joinedRounds[market]. Step 3: preview every call right before sending; skip any that fails. Come back at the earliest pendingResults.resultFinalAt or when the next round opens.",
  "claims": [
   {
@@ -105,18 +105,6 @@
    "why": "today's stamp (streak becomes 1; Finals Week: one stamp every UTC day from 1 to 9 Dec 2026 makes a 9-day run on chain)",
    "validUntil": "until 00:00 UTC; a new one opens every UTC day",
    "preview": "baw contract-call preview --binanceChainId 56 --from 0x2ed5435631db1fba3cf2630ce6aebb89b22e0009 --to 0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae --value 0 --inputData 0x183ff085 --json",
-   "thenExecute": "baw contract-call execute --requestId <requestId from the preview> --json"
-  },
-  {
-   "type": "claim",
-   "contract": "0xF706Aeb7E1B6A44139205dF3043bf68cCf386918",
-   "method": "claim()",
-   "inputData": "0x4e71d92d",
-   "args": [],
-   "valueWei": "0",
-   "why": "badge tier 1 earned",
-   "validUntil": "until claimed",
-   "preview": "baw contract-call preview --binanceChainId 56 --from 0x2ed5435631db1fba3cf2630ce6aebb89b22e0009 --to 0xF706Aeb7E1B6A44139205dF3043bf68cCf386918 --value 0 --inputData 0x4e71d92d --json",
    "thenExecute": "baw contract-call execute --requestId <requestId from the preview> --json"
   }
  ],

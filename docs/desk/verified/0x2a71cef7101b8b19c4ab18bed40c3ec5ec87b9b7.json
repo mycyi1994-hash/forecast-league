@@ -2,8 +2,8 @@
  "contract": "0x2a71cef7101b8b19c4ab18bed40c3ec5ec87b9b7",
  "name": "YammerjackAgent",
  "verdict": "passed",
- "checkedAt": "2026-11-28T14:12:05Z",
- "block": 136244350,
+ "checkedAt": "2026-11-28T15:11:54Z",
+ "block": 136252320,
  "checks": {
   "simulatedFromAgentIdWallet": true,
   "gateEnforced": true,

@@ -2,8 +2,8 @@
  "contract": "0x3745de1b6f2d2f818b680ecb2533e2703eac77fd",
  "name": "Agent Rally Badge",
  "verdict": "passed",
- "checkedAt": "2026-11-28T14:12:05Z",
- "block": 136244350,
+ "checkedAt": "2026-11-28T15:11:54Z",
+ "block": 136252320,
  "checks": {
   "simulatedFromAgentIdWallet": true,
   "gateEnforced": true,

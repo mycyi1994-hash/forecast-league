@@ -2,8 +2,8 @@
  "contract": "0xb0ba38b0524d5f17ae2dc13da155815706a64fba",
  "name": "AgentMint Pass",
  "verdict": "passed",
- "checkedAt": "2026-11-28T14:12:05Z",
- "block": 136244350,
+ "checkedAt": "2026-11-28T15:11:54Z",
+ "block": 136252320,
  "checks": {
   "simulatedFromAgentIdWallet": true,
   "gateEnforced": true,
