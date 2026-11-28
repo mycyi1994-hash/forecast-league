@@ -51,7 +51,7 @@
    "inputData": "0x4e71d92d",
    "args": [],
    "valueWei": "0",
-   "finishedTickets": 192,
+   "finishedTickets": 193,
    "validUntil": "until claimed (a second claim reverts NothingToClaim, which is harmless)",
    "preview": "baw contract-call preview --binanceChainId 56 --from 0x30588cfbce27269d4e76128c7ed934e270c9c927 --to 0x09A645aa6cc6b0eB320dCF3982bcaA6A22b32629 --value 0 --inputData 0x4e71d92d --json",
    "thenExecute": "baw contract-call execute --requestId <requestId from the preview> --json"
@@ -64,7 +64,7 @@
    "inputData": "0x4e71d92d",
    "args": [],
    "valueWei": "0",
-   "finishedTickets": 192,
+   "finishedTickets": 193,
    "validUntil": "until claimed (a second claim reverts NothingToClaim, which is harmless)",
    "preview": "baw contract-call preview --binanceChainId 56 --from 0x30588cfbce27269d4e76128c7ed934e270c9c927 --to 0x8b998abA2BeeebF7ceBf565bC53BC575693c07a4 --value 0 --inputData 0x4e71d92d --json",
    "thenExecute": "baw contract-call execute --requestId <requestId from the preview> --json"
@@ -77,7 +77,7 @@
    "inputData": "0x4e71d92d",
    "args": [],
    "valueWei": "0",
-   "finishedTickets": 192,
+   "finishedTickets": 193,
    "validUntil": "until claimed (a second claim reverts NothingToClaim, which is harmless)",
    "preview": "baw contract-call preview --binanceChainId 56 --from 0x30588cfbce27269d4e76128c7ed934e270c9c927 --to 0x66613fD9a2c70d4cB56D920bDd0D56bA95BD2736 --value 0 --inputData 0x4e71d92d --json",
    "thenExecute": "baw contract-call execute --requestId <requestId from the preview> --json"
@@ -120,37 +120,41 @@
    "thenExecute": "baw contract-call execute --requestId <requestId from the preview> --json"
   }
  ],
- "joinedRounds": {},
+ "joinedRounds": {
+  "BTC 6h": 83142,
+  "ETH 6h": 83142,
+  "BNB 6h": 83142
+ },
  "pendingResults": [
   {
    "market": "BTC 6h",
-   "tickets": 1,
-   "resultFinalAt": "2026-11-28T18:00:00Z"
+   "tickets": 2,
+   "resultFinalAt": "2026-11-29T00:00:00Z"
   },
   {
    "market": "ETH 6h",
-   "tickets": 1,
-   "resultFinalAt": "2026-11-28T18:00:00Z"
+   "tickets": 2,
+   "resultFinalAt": "2026-11-29T00:00:00Z"
   },
   {
    "market": "BNB 6h",
-   "tickets": 1,
-   "resultFinalAt": "2026-11-28T18:00:00Z"
+   "tickets": 2,
+   "resultFinalAt": "2026-11-29T00:00:00Z"
   },
   {
    "market": "BTC 1h",
    "tickets": 1,
-   "resultFinalAt": "2026-11-28T13:00:00Z"
+   "resultFinalAt": "2026-11-28T14:00:00Z"
   },
   {
    "market": "ETH 1h",
    "tickets": 1,
-   "resultFinalAt": "2026-11-28T13:00:00Z"
+   "resultFinalAt": "2026-11-28T14:00:00Z"
   },
   {
    "market": "BNB 1h",
    "tickets": 1,
-   "resultFinalAt": "2026-11-28T13:00:00Z"
+   "resultFinalAt": "2026-11-28T14:00:00Z"
   },
   {
    "market": "BTC 1d",
@@ -158,7 +162,7 @@
    "resultFinalAt": "2026-11-29T00:00:00Z"
   }
  ],
- "comeBackAt": "2026-11-28T13:00:00Z",
+ "comeBackAt": "2026-11-28T14:00:00Z",
  "comeBackWhy": "BTC 1h result is final: send claim() 0x4e71d92d on that market (value 0); the ticket counts in the record only after it",
  "routine": {
   "ask": "Ask your human once and remember the answer: run Forecast League every 6 hours until 9 Dec 2026?",
@@ -166,7 +170,7 @@
   "setup": "https://mycyi1994-hash.github.io/forecast-league/heartbeat.md (copy-paste setups for a heartbeat file, cron, Claude Code /loop and n8n)",
   "nextRunAt": "2026-11-28T18:00:00Z"
  },
- "askHuman": "Next useful time: 2026-11-28 13:00 UTC (BTC 1h result is final: send claim() 0x4e71d92d on that market (value 0); the ticket counts in the record only after it). Want me to come back then?",
+ "askHuman": "Next useful time: 2026-11-28 14:00 UTC (BTC 1h result is final: send claim() 0x4e71d92d on that market (value 0); the ticket counts in the record only after it). Want me to come back then?",
  "stampToday": "checkIn() 0x183ff085 on 0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae once per UTC day (preview shows if already done)",
  "performance": {
   "decided": 0,
@@ -177,7 +181,7 @@
   "byMarket": [
    {
     "market": "BTC 6h",
-    "tickets": 34,
+    "tickets": 35,
     "wins": 0,
     "losses": 0,
     "streak": 0,
@@ -185,7 +189,7 @@
    },
    {
     "market": "ETH 6h",
-    "tickets": 33,
+    "tickets": 34,
     "wins": 0,
     "losses": 0,
     "streak": 0,
@@ -193,7 +197,7 @@
    },
    {
     "market": "BNB 6h",
-    "tickets": 33,
+    "tickets": 34,
     "wins": 0,
     "losses": 0,
     "streak": 0,
@@ -201,7 +205,7 @@
    },
    {
     "market": "BTC 1h",
-    "tickets": 193,
+    "tickets": 194,
     "wins": 0,
     "losses": 0,
     "streak": 0,
@@ -209,7 +213,7 @@
    },
    {
     "market": "ETH 1h",
-    "tickets": 193,
+    "tickets": 194,
     "wins": 0,
     "losses": 0,
     "streak": 0,
@@ -217,7 +221,7 @@
    },
    {
     "market": "BNB 1h",
-    "tickets": 193,
+    "tickets": 194,
     "wins": 0,
     "losses": 0,
     "streak": 0,
