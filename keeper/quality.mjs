@@ -43,6 +43,19 @@ const out = {
   walletsBy: { pickedUpOrDown: all.filter((w) => w.fns.has('up') || w.fns.has('down')).length, claimed: all.filter((w) => w.fns.has('claim')).length, onlyOneFunction: all.filter((w) => w.fns.size === 1).length },
   reading: null,
 };
+// Per UTC day: transactions, active wallets, wallets seen for the first time, wallets that picked a side themselves.
+{ const byDay = new Map(); const seen = new Set();
+  const rows = [...txb].map(([h, b]) => [X[h], b]).filter(([x]) => x && x.f !== BUILDER).sort((a, b) => a[1] - b[1]);
+  for (const [x, b] of rows) { const d = day(b); const r = byDay.get(d) || byDay.set(d, { transactions: 0, w: new Set(), n: 0, p: new Set() }).get(d);
+    r.transactions++; r.w.add(x.f); if (!seen.has(x.f)) { seen.add(x.f); r.n++; } if (SEL[x.s] === 'up' || SEL[x.s] === 'down') r.p.add(x.f); }
+  out.byDay = [...byDay].map(([date, r]) => ({ date, transactions: r.transactions, activeWallets: r.w.size, newWallets: r.n, walletsThatPicked: r.p.size }));
+  const lastFull = out.byDay.filter((d) => d.date < out.asOf.slice(0, 10));
+  out.byDayNote = 'UTC days; the last row is the day in progress at asOfBlock. Builder wallet left out.';
+  out.weeks = [['Week 1', '2026-11-18', '2026-11-24'], ['Week 2', '2026-11-25', '2026-12-01'], ['Week 3', '2026-12-02', '2026-12-09']].map(([name, from, to]) => {
+    const ds = out.byDay.filter((d) => d.date >= from && d.date <= to); if (!ds.length) return null;
+    const ws = new Set(rows.filter(([, b]) => day(b) >= from && day(b) <= to).map(([x]) => x.f));
+    return { name, from, to, days: ds.length, transactions: ds.reduce((s, d) => s + d.transactions, 0), activeWallets: ws.size, newWallets: ds.reduce((s, d) => s + d.newWallets, 0), complete: lastFull.some((d) => d.date === to) };
+  }).filter(Boolean); }
 out.reading = `${out.raw.wallets} Agent ID wallets made ${out.raw.transactions} transactions; ${out.raw.wallets2PlusDays} came back on 2+ days and ${out.raw.wallets3PlusDays} on 3+ days. ${out.lockstepGroups.wallets} wallets in ${out.lockstepGroups.groups} lockstep groups made ${out.lockstepGroups.share} of the transactions; counting each group as one user leaves ${out.oneUserPerGroup.users} users and ${out.oneUserPerGroup.transactions} transactions. Most calls are mint() (the assigned side); ${out.walletsBy.pickedUpOrDown} wallets ever picked a side themselves and ${out.walletsBy.claimed} ever claimed.`;
 // The same lens on the entry with the most raw transactions, if its logs are in the data dir (aic.json, aic_tx.json, aid.json):
 // only senders holding an Agent ID, only transactions that emitted a log on the entry's own submitted contracts.

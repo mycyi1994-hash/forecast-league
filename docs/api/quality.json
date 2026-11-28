@@ -63,6 +63,101 @@
   "onlyOneFunction": 769
  },
  "reading": "983 Agent ID wallets made 14560 transactions; 525 came back on 2+ days and 269 on 3+ days. 7 wallets in 3 lockstep groups made 22.6% of the transactions; counting each group as one user leaves 979 users and 11272 transactions. Most calls are mint() (the assigned side); 28 wallets ever picked a side themselves and 130 ever claimed.",
+ "byDay": [
+  {
+   "date": "2026-11-19",
+   "transactions": 172,
+   "activeWallets": 171,
+   "newWallets": 171,
+   "walletsThatPicked": 0
+  },
+  {
+   "date": "2026-11-20",
+   "transactions": 2155,
+   "activeWallets": 351,
+   "newWallets": 214,
+   "walletsThatPicked": 10
+  },
+  {
+   "date": "2026-11-21",
+   "transactions": 2261,
+   "activeWallets": 432,
+   "newWallets": 183,
+   "walletsThatPicked": 3
+  },
+  {
+   "date": "2026-11-22",
+   "transactions": 1983,
+   "activeWallets": 228,
+   "newWallets": 103,
+   "walletsThatPicked": 7
+  },
+  {
+   "date": "2026-11-23",
+   "transactions": 1862,
+   "activeWallets": 157,
+   "newWallets": 63,
+   "walletsThatPicked": 9
+  },
+  {
+   "date": "2026-11-24",
+   "transactions": 1638,
+   "activeWallets": 154,
+   "newWallets": 37,
+   "walletsThatPicked": 7
+  },
+  {
+   "date": "2026-11-25",
+   "transactions": 1532,
+   "activeWallets": 150,
+   "newWallets": 35,
+   "walletsThatPicked": 8
+  },
+  {
+   "date": "2026-11-26",
+   "transactions": 1728,
+   "activeWallets": 363,
+   "newWallets": 102,
+   "walletsThatPicked": 8
+  },
+  {
+   "date": "2026-11-27",
+   "transactions": 1101,
+   "activeWallets": 194,
+   "newWallets": 73,
+   "walletsThatPicked": 10
+  },
+  {
+   "date": "2026-11-28",
+   "transactions": 128,
+   "activeWallets": 42,
+   "newWallets": 2,
+   "walletsThatPicked": 2
+  }
+ ],
+ "byDayNote": "UTC days; the last row is the day in progress at asOfBlock. Builder wallet left out.",
+ "weeks": [
+  {
+   "name": "Week 1",
+   "from": "2026-11-18",
+   "to": "2026-11-24",
+   "days": 6,
+   "transactions": 10071,
+   "activeWallets": 771,
+   "newWallets": 771,
+   "complete": true
+  },
+  {
+   "name": "Week 2",
+   "from": "2026-11-25",
+   "to": "2026-12-01",
+   "days": 4,
+   "transactions": 4489,
+   "activeWallets": 510,
+   "newWallets": 212,
+   "complete": false
+  }
+ ],
  "sameLensLeader": {
   "entry": "allincrypto (most raw transactions among public entries)",
   "allSenders": {

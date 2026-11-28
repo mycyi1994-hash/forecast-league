@@ -463,6 +463,11 @@ ${row('Wallets active on 2+ days', f(q.raw.wallets2PlusDays), L && f(L.agentIdSe
 ${row('Wallets active on 3+ days', f(q.raw.wallets3PlusDays), L && f(L.agentIdSendersOnly.wallets3PlusDays))}
 ${row('All senders, any wallet', f(q.raw.transactions) + ' tx', L && f(L.allSenders.transactions) + ' tx')}
 </table></div>
+${q.byDay ? `<p><b>Day by day</b> (UTC; the last row is the day in progress). A use that keeps coming back, not one launch spike.</p>
+<div class="scroll"><table><tr><th>Day</th><th>Transactions</th><th>Active wallets</th><th>New wallets</th><th>Wallets that picked a side</th></tr>
+${q.byDay.map((d) => `<tr><td>${d.date.slice(5)}</td><td>${f(d.transactions)}</td><td>${f(d.activeWallets)}</td><td>${f(d.newWallets)}</td><td>${f(d.walletsThatPicked)}</td></tr>`).join('')}
+</table></div>
+${q.weeks ? `<p class="muted">By week (calendar weeks from the contest start on 18 Nov; the organisers' own week boundaries may differ): ${q.weeks.map((w) => `${w.name} (${w.from.slice(5)} to ${w.to.slice(5)}${w.complete ? '' : ', in progress'}): ${f(w.transactions)} transactions, ${f(w.activeWallets)} active wallets, ${f(w.newWallets)} new`).join('; ')}.</p>` : ''}` : ''}
 <p class="muted">${q.reading} ${L ? L.note : ''} Method and script: <a href="api/quality.json">api/quality.json</a>, <a href="https://github.com/mycyi1994-hash/forecast-league/blob/main/keeper/quality.mjs">keeper/quality.mjs</a>.</p>`;
   }).catch(() => { el.innerHTML = '<p class="muted">api/quality.json is not available.</p>'; });
 })();

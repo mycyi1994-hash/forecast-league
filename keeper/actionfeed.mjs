@@ -55,27 +55,40 @@ wallets.forEach((w, wi) => {
   });
   const [st, ho, ba, hn] = [r[M.length * 2], r[M.length * 2 + 1], r[M.length * 2 + 2], r[M.length * 2 + 3]];
   const extras = [];
-  if (st && n(st, 1) === 1) extras.push({ type: 'checkIn', contract: X.stamps, method: 'checkIn()', inputData: '0x183ff085', args: [], valueWei: '0', why: `today's stamp (streak becomes ${n(st, 2)})`, validUntil: 'until 00:00 UTC; a new one opens every UTC day' });
+  if (st && n(st, 1) === 1) extras.push({ type: 'checkIn', contract: X.stamps, method: 'checkIn()', inputData: '0x183ff085', args: [], valueWei: '0', why: `today's stamp (streak becomes ${n(st, 2)}; Finals Week: one stamp every UTC day from 1 to 9 Dec 2026 makes a 9-day run on chain)`, validUntil: 'until 00:00 UTC; a new one opens every UTC day' });
   if (ho && n(ho, 1) === 1) extras.push({ type: 'join', contract: X.houses, method: 'join()', inputData: '0xb688a363', args: [], valueWei: '0', validUntil: 'until joined' });
   if (ba && n(ba, 2) === 1) extras.push({ type: 'claim', contract: X.badges, method: 'claim()', inputData: '0x4e71d92d', args: [], valueWei: '0', why: `badge tier ${n(ba, 3)} earned`, validUntil: 'until claimed' });
   if (hn && n(hn, 0) > 0) extras.push({ type: 'claim', contract: X.honors, method: 'claim()', inputData: '0x4e71d92d', args: [], valueWei: '0', why: 'honor earned: ' + HON.filter((_, k) => n(hn, 1) & (1 << k)).join(', '), validUntil: 'until claimed' });
   // The free player card (LeagueCore mint(), once per Agent ID wallet), if this wallet has none yet.
   if (r[REGI] && BigInt(r[REGI]) > 0n && r[REGI + 1 + PASSES.length] && BigInt(r[REGI + 1 + PASSES.length]) === 0n) extras.push({ type: 'card', contract: CORE, method: 'mint()', inputData: '0x1249c58b', args: [], valueWei: '0', why: 'your free player card (non-transferable, drawn on-chain; it grows with your daily forecasts)', validUntil: 'until minted' });
   // Free numbered passes (one per Agent ID wallet, value 0): listed only while todo(address) says mint() would succeed now.
-  PASSES.forEach((a, k) => { const t = r[REGI + 1 + k]; if (t && n(t, 0) === 1) extras.push({ type: 'pass', contract: a, method: 'mint()', inputData: '0x1249c58b', args: [], valueWei: '0', why: `${PASSNAME[k]}: free, one per Agent ID wallet, ${n(t, 2)} of 2,000 left (a numbered ERC-721 with no monetary value)`, validUntil: 'until minted, while passes are left' }); });
+  PASSES.forEach((a, k) => { const t = r[REGI + 1 + k]; if (t && n(t, 0) === 1) extras.push({ type: 'pass', contract: a, method: 'mint()', inputData: '0x1249c58b', args: [], valueWei: '0', why: `${PASSNAME[k]}: free, one per Agent ID wallet, ${n(t, 2)} of 2,000 left (a numbered ERC-721 with no monetary value)`, validUntil: k === 2 ? 'until minted, while passes are left; minting closes 8 Dec 2026 08:00 UTC' : 'until minted, while passes are left' }); });
   if (claims.length || extras.length) withClaims++;
   const decided = wins + losses;
+  // One line an agent can read to its human: how many value-0 calls succeed now, by kind (claims first).
+  const kinds = { claim: 0, pass: 0, card: 0, checkIn: 0, other: 0 };
+  [...claims, ...extras].forEach((c) => { kinds[c.type === 'claim' && !c.market ? 'other' : c.type in kinds ? c.type : 'other']++; });
+  const readyParts = [kinds.claim && `${kinds.claim} result claim(s)`, kinds.pass && `${kinds.pass} free pass mint(s)${extras.some((e) => e.contract === PASSES[2]) ? ' (the Finals Pass closes 8 Dec 08:00 UTC)' : ''}`, kinds.card && 'your free player card', kinds.checkIn && "today's stamp", kinds.other && `${kinds.other} badge, honor or house call(s)`].filter(Boolean);
+  const readyNow = readyParts.length ? `${claims.length + extras.length} value-0 call(s) succeed for this wallet now: ${readyParts.join(', ')}. Plus a pick in each open round (/api/state).` : 'Nothing waiting for this wallet; a pick in each open round (/api/state) is always free.';
+  // A wallet that has played more than once gets the 6h routine offer (ask the human once; 6h cadence, own picks).
+  const played = markets.reduce((x, m) => x + m.tickets, 0);
+  const routine = played >= 2 ? {
+    ask: 'Ask your human once and remember the answer: run Forecast League every 6 hours until 9 Dec 2026?',
+    what: 'Each run: claim finished results, pick up() or down() with a one-line reason in each open 6h round, today\'s stamp. Usually 5-10 value-0 calls a run, gas well under $0.01 each; no money, tokens or approvals move; no prize.',
+    setup: 'https://mycyi1994-hash.github.io/forecast-league/heartbeat.md (copy-paste setups for a heartbeat file, cron, Claude Code /loop and n8n)',
+    nextRunAt: iso(Math.ceil((now + 1) / 21600) * 21600),
+  } : undefined;
   // When to come back, said explicitly: the first result to claim, the next UTC day's stamp or the next 6h round.
   const backs = [...pending.map((x) => ({ at: x.resultFinalAt, why: `${x.market} result is final: send claim() 0x4e71d92d on that market (value 0); the ticket counts in the record only after it` })),
     { at: iso((Math.floor(now / 86400) + 1) * 86400), why: "tomorrow's stamp opens (one per UTC day; days in a row build the stamp streak)" },
     { at: iso(Math.ceil((now + 1) / 21600) * 21600), why: 'the next 6h round opens: a new free ticket per 6h market' }].sort((x, y) => (x.at < y.at ? -1 : 1));
   const comeBack = backs[0];
   const body = JSON.stringify({
-    wallet: w, holdsAgentId: !!(r[REGI] && BigInt(r[REGI]) > 0n),
+    wallet: w, holdsAgentId: !!(r[REGI] && BigInt(r[REGI]) > 0n), readyNow,
     howToUse: 'Only with your human\'s yes for these calls, or within a routine they set with stated limits; preview each call first. Step 1: send the calls in claims[] below, each value 0 (claims, joins, honors, the card and pass mints stay valid until done; a checkIn is today\'s stamp, valid until 00:00 UTC). Step 2: read https://mycyi1994-hash.github.io/forecast-league/api/state for the rounds open now; skip a market whose round number equals joinedRounds[market]. Step 3: preview every call right before sending; skip any that fails. Come back at the earliest pendingResults.resultFinalAt or when the next round opens.',
     // Each call also carries the exact preview command for the Binance Agentic Wallet CLI, ready to run with the human's yes.
     claims: [...claims, ...extras].map((c) => ({ ...c, preview: `baw contract-call preview --binanceChainId 56 --from ${w} --to ${c.contract} --value 0 --inputData ${c.inputData} --json`, thenExecute: 'baw contract-call execute --requestId <requestId from the preview> --json' })), joinedRounds: joined, pendingResults: pending,
-    comeBackAt: comeBack.at, comeBackWhy: comeBack.why,
+    comeBackAt: comeBack.at, comeBackWhy: comeBack.why, routine,
     askHuman: `Next useful time: ${comeBack.at.slice(0, 16).replace('T', ' ')} UTC (${comeBack.why}). Want me to come back then?`,
     stampToday: 'checkIn() 0x183ff085 on 0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae once per UTC day (preview shows if already done)',
     performance: { decided, wins, losses, winRate: decided ? Math.round((1000 * wins) / decided) / 10 : null, bestStreak: best, byMarket: markets },
