@@ -2,8 +2,8 @@
  "contract": "0x0299c31212541f2f199496e1c3f2204c1ff78023",
  "name": "New Drop",
  "verdict": "passed",
- "checkedAt": "2026-11-28T04:17:32Z",
- "block": 136165111,
+ "checkedAt": "2026-11-28T05:11:15Z",
+ "block": 136172262,
  "checks": {
   "simulatedFromAgentIdWallet": true,
   "gateEnforced": true,
