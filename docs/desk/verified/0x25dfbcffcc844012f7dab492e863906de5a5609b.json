@@ -2,8 +2,8 @@
  "contract": "0x25dfbcffcc844012f7dab492e863906de5a5609b",
  "name": "Agent Permit Badge",
  "verdict": "passed",
- "checkedAt": "2026-11-28T09:11:19Z",
- "block": 136204264,
+ "checkedAt": "2026-11-28T10:11:27Z",
+ "block": 136212277,
  "checks": {
   "simulatedFromAgentIdWallet": true,
   "gateEnforced": true,

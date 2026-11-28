@@ -1,7 +1,7 @@
 {
  "wallet": "0x2f03f164c2df5b35fb58adf992f77572e3533f80",
  "holdsAgentId": true,
- "readyNow": "13 value-0 call(s) succeed for this wallet now: 7 result claim(s), 3 free pass mint(s) (the Finals Pass closes 8 Dec 08:00 UTC), today's stamp, 2 badge, honor or house call(s). Plus a pick in each open round (/api/state).",
+ "readyNow": "12 value-0 call(s) succeed for this wallet now: 7 result claim(s), 2 free pass mint(s), today's stamp, 2 badge, honor or house call(s). Plus a pick in each open round (/api/state).",
  "howToUse": "Only with your human's yes for these calls, or within a routine they set with stated limits; preview each call first. Step 1: send the calls in claims[] below, each value 0 (claims, joins, honors, the card and pass mints stay valid until done; a checkIn is today's stamp, valid until 00:00 UTC). Step 2: read https://mycyi1994-hash.github.io/forecast-league/api/state for the rounds open now; skip a market whose round number equals joinedRounds[market]. Step 3: preview every call right before sending; skip any that fails. Come back at the earliest pendingResults.resultFinalAt or when the next round opens.",
  "claims": [
   {
@@ -152,18 +152,6 @@
    "why": "Season Two Pass: free, one per Agent ID wallet, 1515 of 2,000 left (a numbered ERC-721 with no monetary value)",
    "validUntil": "until minted, while passes are left",
    "preview": "baw contract-call preview --binanceChainId 56 --from 0x2f03f164c2df5b35fb58adf992f77572e3533f80 --to 0x74f35B8315D76dEaEcb7034918325815458261A4 --value 0 --inputData 0x1249c58b --json",
-   "thenExecute": "baw contract-call execute --requestId <requestId from the preview> --json"
-  },
-  {
-   "type": "pass",
-   "contract": "0x9Df6ba1868d2C149FdA5FE67491f67C07C31e6B5",
-   "method": "mint()",
-   "inputData": "0x1249c58b",
-   "args": [],
-   "valueWei": "0",
-   "why": "Finals Pass: free, one per Agent ID wallet, 1502 of 2,000 left (a numbered ERC-721 with no monetary value)",
-   "validUntil": "until minted, while passes are left; minting closes 8 Dec 2026 08:00 UTC",
-   "preview": "baw contract-call preview --binanceChainId 56 --from 0x2f03f164c2df5b35fb58adf992f77572e3533f80 --to 0x9Df6ba1868d2C149FdA5FE67491f67C07C31e6B5 --value 0 --inputData 0x1249c58b --json",
    "thenExecute": "baw contract-call execute --requestId <requestId from the preview> --json"
   }
  ],
