@@ -1,6 +1,6 @@
 {
  "name": "Forecast League stamps and Stamp Week",
- "updated": "2026-11-28T02:10:04Z",
+ "updated": "2026-11-28T03:10:59Z",
  "stampWeek": {
   "event": "Stamp Week",
   "from": "2026-11-24",
@@ -13,12 +13,12 @@
    "from": "2026-12-01",
    "to": "2026-12-09"
   },
-  "onTrackForSeven": 17
+  "onTrackForSeven": 18
  },
- "stampsTotal": 592,
+ "stampsTotal": 594,
  "wallets": 344,
- "stampedToday": 38,
- "canStampToday": 971,
+ "stampedToday": 40,
+ "canStampToday": 975,
  "topRuns": [
   {
    "wallet": "0x61d5353152b2573786bf640e289a12e00c7c3df1",
@@ -133,6 +133,14 @@
    "stampedToday": true
   },
   {
+   "wallet": "0xe0818afbbfff714dea0bd82bf5d8046fef622113",
+   "stamps": 5,
+   "streak": 5,
+   "bestStreak": 5,
+   "lastDay": 20785,
+   "stampedToday": true
+  },
+  {
    "wallet": "0xe51fc540853508efa7b60332af5d6e0da7dc7b62",
    "stamps": 5,
    "streak": 5,
@@ -211,14 +219,6 @@
    "bestStreak": 4,
    "lastDay": 20785,
    "stampedToday": true
-  },
-  {
-   "wallet": "0xb75c888715253b681fb33fb1f31a8c9b9e8829a9",
-   "stamps": 4,
-   "streak": 4,
-   "bestStreak": 4,
-   "lastDay": 20784,
-   "stampedToday": false
   }
  ],
  "method": "Stamps.recordOf(address) for every wallet in api/wallet/index.json (builder left out). A run counts while the wallet has stamped today or yesterday."

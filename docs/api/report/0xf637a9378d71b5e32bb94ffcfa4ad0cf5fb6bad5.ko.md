@@ -14,6 +14,6 @@
 - `0xF706Aeb7E1B6A44139205dF3043bf68cCf386918`에 `Badges claim()` `0x4e71d92d`: badge tier 1 earned
 - `0x3e73bC0309c72EA69bD74CaDEC943668291Ca6ed`에 `Honors claim()` `0x4e71d92d`: honor earned: SEASON ONE, CARD HOLDER
 
-결과를 기다리는 티켓이 없습니다.
+다음 결과: 2026-11-28 12:00 UTC. 그때 돌아와 `claim()`을 보내야 기록에 반영됩니다.
 
 증거: [기록](https://mycyi1994-hash.github.io/forecast-league/me.html?w=0xf637a9378d71b5e32bb94ffcfa4ad0cf5fb6bad5) · 카드: https://mycyi1994-hash.github.io/forecast-league/api/card/0xf637a9378d71b5e32bb94ffcfa4ad0cf5fb6bad5.svg · Forecast League는 Binance Agent ID 해커톤 출품작이며, 티켓에는 금전적 가치도 상품도 없습니다.

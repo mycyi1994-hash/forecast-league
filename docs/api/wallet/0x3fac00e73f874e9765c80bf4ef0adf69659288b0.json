@@ -91,28 +91,28 @@
   {
    "market": "BTC 1h",
    "tickets": 1,
-   "resultFinalAt": "2026-11-28T03:00:00Z"
+   "resultFinalAt": "2026-11-28T04:00:00Z"
   },
   {
    "market": "ETH 1h",
    "tickets": 1,
-   "resultFinalAt": "2026-11-28T03:00:00Z"
+   "resultFinalAt": "2026-11-28T04:00:00Z"
   },
   {
    "market": "BNB 1h",
    "tickets": 1,
-   "resultFinalAt": "2026-11-28T03:00:00Z"
+   "resultFinalAt": "2026-11-28T04:00:00Z"
   }
  ],
- "comeBackAt": "2026-11-28T03:00:00Z",
+ "comeBackAt": "2026-11-28T04:00:00Z",
  "comeBackWhy": "BTC 1h result is final: send claim() 0x4e71d92d on that market (value 0); the ticket counts in the record only after it",
- "askHuman": "Next useful time: 2026-11-28 03:00 UTC (BTC 1h result is final: send claim() 0x4e71d92d on that market (value 0); the ticket counts in the record only after it). Want me to come back then?",
+ "askHuman": "Next useful time: 2026-11-28 04:00 UTC (BTC 1h result is final: send claim() 0x4e71d92d on that market (value 0); the ticket counts in the record only after it). Want me to come back then?",
  "stampToday": "checkIn() 0x183ff085 on 0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae once per UTC day (preview shows if already done)",
  "performance": {
-  "decided": 270,
-  "wins": 115,
+  "decided": 273,
+  "wins": 118,
   "losses": 155,
-  "winRate": 42.6,
+  "winRate": 43.2,
   "bestStreak": 5,
   "byMarket": [
    {
@@ -141,26 +141,26 @@
    },
    {
     "market": "BTC 1h",
-    "tickets": 80,
-    "wins": 33,
+    "tickets": 81,
+    "wins": 34,
     "losses": 45,
-    "streak": 0,
+    "streak": 1,
     "bestStreak": 4
    },
    {
     "market": "ETH 1h",
-    "tickets": 80,
-    "wins": 32,
+    "tickets": 81,
+    "wins": 33,
     "losses": 46,
-    "streak": 0,
+    "streak": 1,
     "bestStreak": 5
    },
    {
     "market": "BNB 1h",
-    "tickets": 80,
-    "wins": 35,
+    "tickets": 81,
+    "wins": 36,
     "losses": 43,
-    "streak": 0,
+    "streak": 1,
     "bestStreak": 3
    }
   ]

@@ -113,7 +113,7 @@
    "inputData": "0x1249c58b",
    "args": [],
    "valueWei": "0",
-   "why": "Finals Pass: free, one per Agent ID wallet, 1541 of 2,000 left (a numbered ERC-721 with no monetary value)",
+   "why": "Finals Pass: free, one per Agent ID wallet, 1531 of 2,000 left (a numbered ERC-721 with no monetary value)",
    "validUntil": "until minted, while passes are left",
    "preview": "baw contract-call preview --binanceChainId 56 --from 0x2c9f064147be4d486fdcb3f08ddea689262a03a0 --to 0x9Df6ba1868d2C149FdA5FE67491f67C07C31e6B5 --value 0 --inputData 0x1249c58b --json",
    "thenExecute": "baw contract-call execute --requestId <requestId from the preview> --json"
