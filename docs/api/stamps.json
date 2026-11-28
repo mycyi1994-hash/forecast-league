@@ -1,6 +1,6 @@
 {
  "name": "Forecast League stamps and Stamp Week",
- "updated": "2026-11-28T03:10:59Z",
+ "updated": "2026-11-28T04:12:29Z",
  "stampWeek": {
   "event": "Stamp Week",
   "from": "2026-11-24",
@@ -15,9 +15,9 @@
   },
   "onTrackForSeven": 18
  },
- "stampsTotal": 594,
+ "stampsTotal": 597,
  "wallets": 344,
- "stampedToday": 40,
+ "stampedToday": 43,
  "canStampToday": 975,
  "topRuns": [
   {

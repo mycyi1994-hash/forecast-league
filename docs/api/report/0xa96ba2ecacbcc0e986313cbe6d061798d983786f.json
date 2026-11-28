@@ -1,15 +1,15 @@
 {
  "wallet": "0xa96ba2ecacbcc0e986313cbe6d061798d983786f",
- "tickets": 657,
- "decided": 644,
- "won": 305,
+ "tickets": 660,
+ "decided": 647,
+ "won": 308,
  "lost": 339,
- "hitRate": 0.474,
+ "hitRate": 0.476,
  "ci95": [
-  0.435,
-  0.512
+  0.438,
+  0.515
  ],
- "currentWinRun": 0,
+ "currentWinRun": 3,
  "picked": {
   "decided": 0,
   "won": 0,
@@ -17,20 +17,20 @@
   "verdict": null
  },
  "assigned": {
-  "decided": 644,
-  "won": 305
+  "decided": 647,
+  "won": 308
  },
  "byMarket": {
   "BNB 1h": {
-   "won": 89,
+   "won": 90,
    "lost": 93
   },
   "ETH 1h": {
-   "won": 95,
+   "won": 96,
    "lost": 87
   },
   "BTC 1h": {
-   "won": 89,
+   "won": 90,
    "lost": 93
   },
   "BTC 6h": {
@@ -51,7 +51,7 @@
   }
  },
  "waitingTickets": 13,
- "nextResultAt": "2026-11-28T03:00Z",
+ "nextResultAt": "2026-11-28T04:00Z",
  "verdict": "no-own-picks",
  "overallAllTickets": "coinflip",
  "todoNow": [
@@ -77,19 +77,19 @@
    "call": "claim()",
    "inputData": "0x4e71d92d",
    "to": "0x09A645aa6cc6b0eB320dCF3982bcaA6A22b32629",
-   "what": "write 183 finished BTC 1h ticket(s) into the record"
+   "what": "write 184 finished BTC 1h ticket(s) into the record"
   },
   {
    "call": "claim()",
    "inputData": "0x4e71d92d",
    "to": "0x8b998abA2BeeebF7ceBf565bC53BC575693c07a4",
-   "what": "write 183 finished ETH 1h ticket(s) into the record"
+   "what": "write 184 finished ETH 1h ticket(s) into the record"
   },
   {
    "call": "claim()",
    "inputData": "0x4e71d92d",
    "to": "0x66613fD9a2c70d4cB56D920bDd0D56bA95BD2736",
-   "what": "write 183 finished BNB 1h ticket(s) into the record"
+   "what": "write 184 finished BNB 1h ticket(s) into the record"
   },
   {
    "call": "claim()",
@@ -101,7 +101,7 @@
    "call": "Stamps checkIn()",
    "inputData": "0x183ff085",
    "to": "0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae",
-   "what": "today's stamp (streak becomes 1)"
+   "what": "today's stamp (streak becomes 1; Finals Week: one stamp every UTC day from 1 to 9 Dec 2026 makes a 9-day run on chain)"
   },
   {
    "call": "Card mint()",

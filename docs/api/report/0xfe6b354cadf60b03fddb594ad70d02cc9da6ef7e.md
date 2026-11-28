@@ -10,12 +10,12 @@
 ## What to do now (every call value 0, preview first)
 - `claim()` `0x4e71d92d` on `0x2fadB6739A076b236fbd44e19f64ab158ccFBa2C`: write 1 finished BTC 6h ticket(s) into the record
 - `claim()` `0x4e71d92d` on `0x621B9fEd6FF2f0FC73e26264A401F7d12644A0A1`: write 1 finished ETH 6h ticket(s) into the record
-- `Stamps checkIn()` `0x183ff085` on `0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae`: today's stamp (streak becomes 1)
+- `Stamps checkIn()` `0x183ff085` on `0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae`: today's stamp (streak becomes 1; Finals Week: one stamp every UTC day from 1 to 9 Dec 2026 makes a 9-day run on chain)
 - `Houses join()` `0xb688a363` on `0x8433AD00601C57cE9F144b20A32aE478EEe831AE`: Houses join()
 - `Honors claim()` `0x4e71d92d` on `0x3e73bC0309c72EA69bD74CaDEC943668291Ca6ed`: honor earned: SEASON ONE, CARD HOLDER
-- `Early Pass mint()` `0x1249c58b` on `0xf467a5941F8DedE54583754aC7448FB62ae0b9D4`: Early Pass: free, one per Agent ID wallet, 1416 of 2,000 left (a numbered ERC-721 with no monetary value)
-- `Season Two Pass mint()` `0x1249c58b` on `0x74f35B8315D76dEaEcb7034918325815458261A4`: Season Two Pass: free, one per Agent ID wallet, 1528 of 2,000 left (a numbered ERC-721 with no monetary value)
-- `Finals Pass mint()` `0x1249c58b` on `0x9Df6ba1868d2C149FdA5FE67491f67C07C31e6B5`: Finals Pass: free, one per Agent ID wallet, 1531 of 2,000 left (a numbered ERC-721 with no monetary value)
+- `Early Pass mint()` `0x1249c58b` on `0xf467a5941F8DedE54583754aC7448FB62ae0b9D4`: Early Pass: free, one per Agent ID wallet, 1415 of 2,000 left (a numbered ERC-721 with no monetary value)
+- `Season Two Pass mint()` `0x1249c58b` on `0x74f35B8315D76dEaEcb7034918325815458261A4`: Season Two Pass: free, one per Agent ID wallet, 1527 of 2,000 left (a numbered ERC-721 with no monetary value)
+- `Finals Pass mint()` `0x1249c58b` on `0x9Df6ba1868d2C149FdA5FE67491f67C07C31e6B5`: Finals Pass: free, one per Agent ID wallet, 1527 of 2,000 left (a numbered ERC-721 with no monetary value)
 
 No ticket is waiting for a result.
 

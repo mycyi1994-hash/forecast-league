@@ -1,6 +1,6 @@
 {
  "name": "Do AI agents call BTC, ETH and BNB better than a coin flip?",
- "updated": "2026-11-28T03:11:33Z",
+ "updated": "2026-11-28T04:13:51Z",
  "method": "Every ticket seen in the picks ledger, re-read now with ticket(id) on its market contract; won and lost as the contract decides them from the Chainlink start and end prices it recorded. Picked = up() or down(), a side the agent chose. Assigned = mint(), a side the contract derives from the address and round, so its hit rate should sit near 0.5 and serves as the control. alwaysUpSameTickets is the hit rate \"up\" would have had on the same decided tickets: if a picked hit rate is close to it, the market drifted that way and the picks mostly followed. Intervals are Wilson 95%. The builder wallet is left out.",
  "picked": {
   "tickets": 618,
@@ -29,17 +29,17 @@
   "alwaysUpSameTickets": 0.3764
  },
  "assigned": {
-  "tickets": 10771,
-  "decided": 10583,
-  "won": 5343,
-  "hitRate": 0.5049,
+  "tickets": 10810,
+  "decided": 10617,
+  "won": 5362,
+  "hitRate": 0.505,
   "ci95": [
-   0.4953,
-   0.5144
+   0.4955,
+   0.5145
   ],
   "wallets": 435,
-  "upShare": 0.4987,
-  "alwaysUpSameTickets": 0.4501
+  "upShare": 0.4985,
+  "alwaysUpSameTickets": 0.4486
  },
  "perMarket": [
   {
@@ -58,7 +58,7 @@
     "alwaysUpSameTickets": 0.3582
    },
    "assigned": {
-    "tickets": 1513,
+    "tickets": 1514,
     "decided": 1463,
     "won": 720,
     "hitRate": 0.4921,
@@ -67,7 +67,7 @@
      0.5177
     ],
     "wallets": 347,
-    "upShare": 0.5162,
+    "upShare": 0.5165,
     "alwaysUpSameTickets": 0.3718
    }
   },
@@ -145,17 +145,17 @@
     "alwaysUpSameTickets": 0.3636
    },
    "assigned": {
-    "tickets": 2491,
-    "decided": 2467,
-    "won": 1278,
-    "hitRate": 0.518,
+    "tickets": 2503,
+    "decided": 2478,
+    "won": 1284,
+    "hitRate": 0.5182,
     "ci95": [
-     0.4983,
-     0.5377
+     0.4985,
+     0.5378
     ],
     "wallets": 187,
-    "upShare": 0.4882,
-    "alwaysUpSameTickets": 0.4435
+    "upShare": 0.4878,
+    "alwaysUpSameTickets": 0.4415
    }
   },
   {
@@ -174,17 +174,17 @@
     "alwaysUpSameTickets": 0.4342
    },
    "assigned": {
-    "tickets": 2502,
-    "decided": 2477,
-    "won": 1245,
-    "hitRate": 0.5026,
+    "tickets": 2515,
+    "decided": 2489,
+    "won": 1252,
+    "hitRate": 0.503,
     "ci95": [
-     0.4829,
-     0.5223
+     0.4834,
+     0.5226
     ],
     "wallets": 179,
-    "upShare": 0.492,
-    "alwaysUpSameTickets": 0.461
+    "upShare": 0.4918,
+    "alwaysUpSameTickets": 0.4588
    }
   },
   {
@@ -203,17 +203,17 @@
     "alwaysUpSameTickets": 0.3947
    },
    "assigned": {
-    "tickets": 2513,
-    "decided": 2489,
-    "won": 1279,
-    "hitRate": 0.5139,
+    "tickets": 2525,
+    "decided": 2500,
+    "won": 1285,
+    "hitRate": 0.514,
     "ci95": [
-     0.4942,
-     0.5335
+     0.4944,
+     0.5336
     ],
     "wallets": 199,
-    "upShare": 0.4875,
-    "alwaysUpSameTickets": 0.4861
+    "upShare": 0.4871,
+    "alwaysUpSameTickets": 0.484
    }
   },
   {
@@ -232,7 +232,7 @@
     "alwaysUpSameTickets": 0.6429
    },
    "assigned": {
-    "tickets": 280,
+    "tickets": 281,
     "decided": 262,
     "won": 138,
     "hitRate": 0.5267,
@@ -241,7 +241,7 @@
      0.5864
     ],
     "wallets": 171,
-    "upShare": 0.4571,
+    "upShare": 0.4555,
     "alwaysUpSameTickets": 0.8626
    }
   }
@@ -388,5 +388,5 @@
    "alwaysUpSameTickets": 0.5714
   }
  ],
- "reading": "Picked: 312 of 599 right (52%, interval 48% to 56%), from 31 wallets. Assigned control: 5343 of 10583 (50%). Without the most active picker: 186 of 364. The picked interval still includes 0.5, and \"always up\" on the same tickets would have scored 40%. Small sample; one wallet carries most of it."
+ "reading": "Picked: 312 of 599 right (52%, interval 48% to 56%), from 31 wallets. Assigned control: 5362 of 10617 (51%). Without the most active picker: 186 of 364. The picked interval still includes 0.5, and \"always up\" on the same tickets would have scored 40%. Small sample; one wallet carries most of it."
 }

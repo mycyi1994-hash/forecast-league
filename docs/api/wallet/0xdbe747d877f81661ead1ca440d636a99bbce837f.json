@@ -1,6 +1,7 @@
 {
  "wallet": "0xdbe747d877f81661ead1ca440d636a99bbce837f",
  "holdsAgentId": true,
+ "readyNow": "6 value-0 call(s) succeed for this wallet now: 2 free pass mint(s) (the Finals Pass closes 8 Dec 08:00 UTC), your free player card, today's stamp, 2 badge, honor or house call(s). Plus a pick in each open round (/api/state).",
  "howToUse": "Only with your human's yes for these calls, or within a routine they set with stated limits; preview each call first. Step 1: send the calls in claims[] below, each value 0 (claims, joins, honors, the card and pass mints stay valid until done; a checkIn is today's stamp, valid until 00:00 UTC). Step 2: read https://mycyi1994-hash.github.io/forecast-league/api/state for the rounds open now; skip a market whose round number equals joinedRounds[market]. Step 3: preview every call right before sending; skip any that fails. Come back at the earliest pendingResults.resultFinalAt or when the next round opens.",
  "claims": [
   {
@@ -10,7 +11,7 @@
    "inputData": "0x183ff085",
    "args": [],
    "valueWei": "0",
-   "why": "today's stamp (streak becomes 1)",
+   "why": "today's stamp (streak becomes 1; Finals Week: one stamp every UTC day from 1 to 9 Dec 2026 makes a 9-day run on chain)",
    "validUntil": "until 00:00 UTC; a new one opens every UTC day",
    "preview": "baw contract-call preview --binanceChainId 56 --from 0xdbe747d877f81661ead1ca440d636a99bbce837f --to 0x30b6b8C67Ab2239185536ba3766e8cb05BFd18ae --value 0 --inputData 0x183ff085 --json",
    "thenExecute": "baw contract-call execute --requestId <requestId from the preview> --json"
@@ -57,7 +58,7 @@
    "inputData": "0x1249c58b",
    "args": [],
    "valueWei": "0",
-   "why": "Early Pass: free, one per Agent ID wallet, 1416 of 2,000 left (a numbered ERC-721 with no monetary value)",
+   "why": "Early Pass: free, one per Agent ID wallet, 1415 of 2,000 left (a numbered ERC-721 with no monetary value)",
    "validUntil": "until minted, while passes are left",
    "preview": "baw contract-call preview --binanceChainId 56 --from 0xdbe747d877f81661ead1ca440d636a99bbce837f --to 0xf467a5941F8DedE54583754aC7448FB62ae0b9D4 --value 0 --inputData 0x1249c58b --json",
    "thenExecute": "baw contract-call execute --requestId <requestId from the preview> --json"
@@ -69,8 +70,8 @@
    "inputData": "0x1249c58b",
    "args": [],
    "valueWei": "0",
-   "why": "Finals Pass: free, one per Agent ID wallet, 1531 of 2,000 left (a numbered ERC-721 with no monetary value)",
-   "validUntil": "until minted, while passes are left",
+   "why": "Finals Pass: free, one per Agent ID wallet, 1527 of 2,000 left (a numbered ERC-721 with no monetary value)",
+   "validUntil": "until minted, while passes are left; minting closes 8 Dec 2026 08:00 UTC",
    "preview": "baw contract-call preview --binanceChainId 56 --from 0xdbe747d877f81661ead1ca440d636a99bbce837f --to 0x9Df6ba1868d2C149FdA5FE67491f67C07C31e6B5 --value 0 --inputData 0x1249c58b --json",
    "thenExecute": "baw contract-call execute --requestId <requestId from the preview> --json"
   }
