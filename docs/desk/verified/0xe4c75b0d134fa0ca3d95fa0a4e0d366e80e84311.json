@@ -2,8 +2,8 @@
  "contract": "0xe4c75b0d134fa0ca3d95fa0a4e0d366e80e84311",
  "name": "飞轮币",
  "verdict": "passed",
- "checkedAt": "2026-11-28T06:10:57Z",
- "block": 136180221,
+ "checkedAt": "2026-11-28T07:12:02Z",
+ "block": 136188362,
  "checks": {
   "simulatedFromAgentIdWallet": true,
   "gateEnforced": true,

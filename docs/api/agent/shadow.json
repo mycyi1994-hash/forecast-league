@@ -1,29 +1,29 @@
 {
  "name": "Forecast League builder agent: shadow picks (recorded, not sent)",
- "updated": "2026-11-28T06:10:27Z",
+ "updated": "2026-11-28T07:11:29Z",
  "method": "Every hour the agent records the side it would pick in each round market (rule, probability, model probability, crowd), without sending anything. Results come from resultOf(round) on each market contract (Chainlink). 'rule' is the pick the agent uses; 'model' is the logistic model's probability alone; 'crowd' is the picked tickets of other agents (Laplace-smoothed), where at least five exist.",
  "since": "2026-11-23T15:50Z",
- "picks": 393,
- "scored": 375,
+ "picks": 396,
+ "scored": 381,
  "markets": {
   "BTC 1h": {
    "rule": {
-    "decided": 108,
-    "right": 48,
-    "hitRate": 0.4444,
+    "decided": 109,
+    "right": 49,
+    "hitRate": 0.4495,
     "ci95": [
-     0.3542,
-     0.5385
+     0.3595,
+     0.5431
     ],
-    "brier": 0.2526
+    "brier": 0.2524
    },
    "model": {
-    "decided": 108,
-    "right": 49,
-    "hitRate": 0.4537,
+    "decided": 109,
+    "right": 50,
+    "hitRate": 0.4587,
     "ci95": [
-     0.363,
-     0.5476
+     0.3682,
+     0.5521
     ],
     "brier": 0.2536
    },
@@ -37,24 +37,24 @@
   },
   "ETH 1h": {
    "rule": {
-    "decided": 108,
-    "right": 50,
-    "hitRate": 0.463,
+    "decided": 109,
+    "right": 51,
+    "hitRate": 0.4679,
     "ci95": [
-     0.3718,
-     0.5567
+     0.3769,
+     0.5611
     ],
-    "brier": 0.2519
+    "brier": 0.2517
    },
    "model": {
-    "decided": 108,
+    "decided": 109,
     "right": 46,
-    "hitRate": 0.4259,
+    "hitRate": 0.422,
     "ci95": [
-     0.3368,
-     0.5201
+     0.3335,
+     0.5158
     ],
-    "brier": 0.2539
+    "brier": 0.254
    },
    "crowd": {
     "decided": 0,
@@ -66,22 +66,22 @@
   },
   "BNB 1h": {
    "rule": {
-    "decided": 108,
-    "right": 46,
-    "hitRate": 0.4259,
+    "decided": 109,
+    "right": 47,
+    "hitRate": 0.4312,
     "ci95": [
-     0.3368,
-     0.5201
+     0.3421,
+     0.5249
     ],
-    "brier": 0.2534
+    "brier": 0.2532
    },
    "model": {
-    "decided": 107,
+    "decided": 108,
     "right": 60,
-    "hitRate": 0.5607,
+    "hitRate": 0.5556,
     "ci95": [
-     0.4662,
-     0.6511
+     0.4615,
+     0.6458
     ],
     "brier": 0.2496
    },
@@ -95,24 +95,24 @@
   },
   "BTC 6h": {
    "rule": {
-    "decided": 17,
-    "right": 7,
-    "hitRate": 0.4118,
+    "decided": 18,
+    "right": 8,
+    "hitRate": 0.4444,
     "ci95": [
-     0.2161,
-     0.6399
+     0.2456,
+     0.6628
     ],
-    "brier": 0.2539
+    "brier": 0.2526
    },
    "model": {
-    "decided": 17,
+    "decided": 18,
     "right": 8,
-    "hitRate": 0.4706,
+    "hitRate": 0.4444,
     "ci95": [
-     0.2616,
-     0.6904
+     0.2456,
+     0.6628
     ],
-    "brier": 0.2482
+    "brier": 0.2483
    },
    "crowd": {
     "decided": 1,
@@ -127,14 +127,14 @@
   },
   "ETH 6h": {
    "rule": {
-    "decided": 17,
-    "right": 10,
-    "hitRate": 0.5882,
+    "decided": 18,
+    "right": 11,
+    "hitRate": 0.6111,
     "ci95": [
-     0.3601,
-     0.7839
+     0.3862,
+     0.797
     ],
-    "brier": 0.2469
+    "brier": 0.246
    },
    "model": {
     "decided": 0,
@@ -156,14 +156,14 @@
   },
   "BNB 6h": {
    "rule": {
-    "decided": 17,
-    "right": 9,
-    "hitRate": 0.5294,
+    "decided": 18,
+    "right": 10,
+    "hitRate": 0.5556,
     "ci95": [
-     0.3096,
-     0.7384
+     0.3372,
+     0.7544
     ],
-    "brier": 0.2492
+    "brier": 0.2482
    },
    "model": {
     "decided": 0,
@@ -186,22 +186,22 @@
  },
  "total": {
   "rule": {
-   "decided": 375,
-   "right": 170,
-   "hitRate": 0.4533,
+   "decided": 381,
+   "right": 176,
+   "hitRate": 0.4619,
    "ci95": [
-    0.4037,
-    0.5039
+    0.4125,
+    0.5121
    ],
-   "brier": 0.2523
+   "brier": 0.2519
   },
   "model": {
-   "decided": 340,
-   "right": 163,
-   "hitRate": 0.4794,
+   "decided": 344,
+   "right": 164,
+   "hitRate": 0.4767,
    "ci95": [
-    0.4268,
-    0.5324
+    0.4245,
+    0.5295
    ],
    "brier": 0.2522
   },

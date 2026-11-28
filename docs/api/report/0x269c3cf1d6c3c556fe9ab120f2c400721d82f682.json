@@ -1,13 +1,13 @@
 {
  "wallet": "0x269c3cf1d6c3c556fe9ab120f2c400721d82f682",
- "tickets": 10,
- "decided": 8,
+ "tickets": 11,
+ "decided": 9,
  "won": 1,
- "lost": 7,
- "hitRate": 0.125,
+ "lost": 8,
+ "hitRate": 0.111,
  "ci95": [
-  0.022,
-  0.471
+  0.02,
+  0.435
  ],
  "currentWinRun": 0,
  "picked": {
@@ -17,17 +17,17 @@
   "verdict": null
  },
  "assigned": {
-  "decided": 8,
+  "decided": 9,
   "won": 1
  },
  "byMarket": {
   "BTC 6h": {
    "won": 1,
-   "lost": 7
+   "lost": 8
   }
  },
  "waitingTickets": 2,
- "nextResultAt": "2026-11-28T06:00Z",
+ "nextResultAt": "2026-11-28T12:00Z",
  "verdict": "no-own-picks",
  "overallAllTickets": "early",
  "todoNow": [
@@ -71,7 +71,7 @@
    "call": "Early Pass mint()",
    "inputData": "0x1249c58b",
    "to": "0xf467a5941F8DedE54583754aC7448FB62ae0b9D4",
-   "what": "Early Pass: free, one per Agent ID wallet, 1410 of 2,000 left (a numbered ERC-721 with no monetary value)"
+   "what": "Early Pass: free, one per Agent ID wallet, 1408 of 2,000 left (a numbered ERC-721 with no monetary value)"
   }
  ],
  "proof": {

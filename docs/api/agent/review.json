@@ -1,6 +1,6 @@
 {
  "name": "Forecast League builder agent: review of its real picks (BTC 6h)",
- "updated": "2026-11-28T06:10:30Z",
+ "updated": "2026-11-28T07:11:33Z",
  "before": {
   "picks": 8,
   "decided": 8,
@@ -15,36 +15,36 @@
   "how": "picked by a written reason each time, no fixed rule, no logged probability"
  },
  "after": {
-  "picks": 14,
-  "decided": 12,
-  "right": 6,
-  "hitRate": 0.5,
+  "picks": 15,
+  "decided": 13,
+  "right": 7,
+  "hitRate": 0.5385,
   "ci95": [
-   0.2538,
-   0.7462
+   0.2914,
+   0.7679
   ],
-  "brier": 0.2504,
+  "brier": 0.2489,
   "brierCoinFlip": 0.25,
   "how": "the rule in agent/pick.py (follow the last 6h window), probability and model version logged"
  },
  "shadowAllMarkets": {
   "rule": {
-   "decided": 375,
-   "right": 170,
-   "hitRate": 0.4533,
+   "decided": 381,
+   "right": 176,
+   "hitRate": 0.4619,
    "ci95": [
-    0.4037,
-    0.5039
+    0.4125,
+    0.5121
    ],
-   "brier": 0.2523
+   "brier": 0.2519
   },
   "model": {
-   "decided": 340,
-   "right": 163,
-   "hitRate": 0.4794,
+   "decided": 344,
+   "right": 164,
+   "hitRate": 0.4767,
    "ci95": [
-    0.4268,
-    0.5324
+    0.4245,
+    0.5295
    ],
    "brier": 0.2522
   },
@@ -267,7 +267,7 @@
    "prob": 0.48,
    "rule": "follow the last 6h window",
    "model": "fl-logit-1",
-   "result": null,
+   "result": "down",
    "reason": "Rule follow the last 6h window: BTC moved -2.81% over the last full 6h window, so down; backtests found no reliable edge at 6h, so this is a transparent default, not a prediction I trust."
   },
   {
@@ -279,6 +279,16 @@
    "model": "fl-logit-1",
    "result": null,
    "reason": "Rule follow the last 6h window: BTC moved -0.01% over the last full 6h window, so down; backtests found no reliable edge at 6h, so this is a transparent default, not a prediction I trust."
+  },
+  {
+   "round": 83141,
+   "utc": "2026-11-28T06:47:24Z",
+   "side": "down",
+   "prob": 0.48,
+   "rule": "follow the last 6h window",
+   "model": "fl-logit-1",
+   "result": null,
+   "reason": "Rule follow the last 6h window: BTC moved -0.31% over the last full 6h window, so down; backtests found no reliable edge at 6h, so this is a transparent default, not a prediction I trust."
   }
  ]
 }
