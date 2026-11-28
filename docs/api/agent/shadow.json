@@ -1,31 +1,31 @@
 {
  "name": "Forecast League builder agent: shadow picks (recorded, not sent)",
- "updated": "2026-11-28T05:10:43Z",
+ "updated": "2026-11-28T06:10:27Z",
  "method": "Every hour the agent records the side it would pick in each round market (rule, probability, model probability, crowd), without sending anything. Results come from resultOf(round) on each market contract (Chainlink). 'rule' is the pick the agent uses; 'model' is the logistic model's probability alone; 'crowd' is the picked tickets of other agents (Laplace-smoothed), where at least five exist.",
  "since": "2026-11-23T15:50Z",
- "picks": 387,
- "scored": 372,
+ "picks": 393,
+ "scored": 375,
  "markets": {
   "BTC 1h": {
    "rule": {
-    "decided": 107,
+    "decided": 108,
     "right": 48,
-    "hitRate": 0.4486,
+    "hitRate": 0.4444,
     "ci95": [
-     0.3578,
-     0.543
+     0.3542,
+     0.5385
     ],
-    "brier": 0.2525
+    "brier": 0.2526
    },
    "model": {
-    "decided": 107,
-    "right": 48,
-    "hitRate": 0.4486,
+    "decided": 108,
+    "right": 49,
+    "hitRate": 0.4537,
     "ci95": [
-     0.3578,
-     0.543
+     0.363,
+     0.5476
     ],
-    "brier": 0.2537
+    "brier": 0.2536
    },
    "crowd": {
     "decided": 0,
@@ -37,24 +37,24 @@
   },
   "ETH 1h": {
    "rule": {
-    "decided": 107,
+    "decided": 108,
     "right": 50,
-    "hitRate": 0.4673,
+    "hitRate": 0.463,
     "ci95": [
-     0.3755,
-     0.5613
+     0.3718,
+     0.5567
     ],
-    "brier": 0.2517
+    "brier": 0.2519
    },
    "model": {
-    "decided": 107,
+    "decided": 108,
     "right": 46,
-    "hitRate": 0.4299,
+    "hitRate": 0.4259,
     "ci95": [
-     0.3401,
-     0.5245
+     0.3368,
+     0.5201
     ],
-    "brier": 0.2537
+    "brier": 0.2539
    },
    "crowd": {
     "decided": 0,
@@ -66,24 +66,24 @@
   },
   "BNB 1h": {
    "rule": {
-    "decided": 107,
+    "decided": 108,
     "right": 46,
-    "hitRate": 0.4299,
+    "hitRate": 0.4259,
     "ci95": [
-     0.3401,
-     0.5245
+     0.3368,
+     0.5201
     ],
-    "brier": 0.2532
+    "brier": 0.2534
    },
    "model": {
-    "decided": 106,
+    "decided": 107,
     "right": 60,
-    "hitRate": 0.566,
+    "hitRate": 0.5607,
     "ci95": [
-     0.471,
-     0.6564
+     0.4662,
+     0.6511
     ],
-    "brier": 0.2495
+    "brier": 0.2496
    },
    "crowd": {
     "decided": 0,
@@ -186,24 +186,24 @@
  },
  "total": {
   "rule": {
-   "decided": 372,
+   "decided": 375,
    "right": 170,
-   "hitRate": 0.457,
+   "hitRate": 0.4533,
    "ci95": [
-    0.4071,
-    0.5078
+    0.4037,
+    0.5039
    ],
-   "brier": 0.2521
+   "brier": 0.2523
   },
   "model": {
-   "decided": 337,
-   "right": 162,
-   "hitRate": 0.4807,
+   "decided": 340,
+   "right": 163,
+   "hitRate": 0.4794,
    "ci95": [
-    0.4279,
-    0.534
+    0.4268,
+    0.5324
    ],
-   "brier": 0.2521
+   "brier": 0.2522
   },
   "crowd": {
    "decided": 3,

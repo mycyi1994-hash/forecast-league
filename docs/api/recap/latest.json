@@ -1,40 +1,40 @@
 {
- "round": 83138,
- "lockUTC": "2026-11-27T18:00Z",
- "resultUTC": "2026-11-28T00:00Z",
+ "round": 83139,
+ "lockUTC": "2026-11-28T00:00Z",
+ "resultUTC": "2026-11-28T06:00Z",
  "markets": [
   {
    "market": "BTC 6h",
-   "tickets": 35,
-   "outcome": "up",
-   "lock": 59827.80343169,
-   "result": 59859.59413765,
-   "right": 22,
-   "decided": 35,
-   "pickedRight": 3,
-   "picked": 4
+   "tickets": 27,
+   "outcome": null,
+   "lock": null,
+   "result": null,
+   "right": 0,
+   "decided": 0,
+   "pickedRight": 0,
+   "picked": 0
   },
   {
    "market": "ETH 6h",
-   "tickets": 19,
-   "outcome": "down",
-   "lock": 1669.29941997,
-   "result": 1661.10950623,
-   "right": 6,
-   "decided": 19,
-   "pickedRight": 1,
-   "picked": 3
+   "tickets": 14,
+   "outcome": null,
+   "lock": null,
+   "result": null,
+   "right": 0,
+   "decided": 0,
+   "pickedRight": 0,
+   "picked": 0
   },
   {
    "market": "BNB 6h",
-   "tickets": 17,
-   "outcome": "up",
-   "lock": 551.459,
-   "result": 554.26074197,
-   "right": 12,
-   "decided": 17,
-   "pickedRight": 2,
-   "picked": 3
+   "tickets": 12,
+   "outcome": null,
+   "lock": null,
+   "result": null,
+   "right": 0,
+   "decided": 0,
+   "pickedRight": 0,
+   "picked": 0
   }
  ]
 }

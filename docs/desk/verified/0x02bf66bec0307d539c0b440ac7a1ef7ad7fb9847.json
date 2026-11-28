@@ -2,8 +2,8 @@
  "contract": "0x02bf66bec0307d539c0b440ac7a1ef7ad7fb9847",
  "name": "Stratava Miners",
  "verdict": "passed",
- "checkedAt": "2026-11-28T05:11:15Z",
- "block": 136172262,
+ "checkedAt": "2026-11-28T06:10:57Z",
+ "block": 136180221,
  "checks": {
   "simulatedFromAgentIdWallet": true,
   "gateEnforced": true,
